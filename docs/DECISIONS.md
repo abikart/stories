@@ -3,6 +3,14 @@
 Divergences from the spec docs, made during the build per the guardrails in
 [03-poc-requirements.md](03-poc-requirements.md). Newest first.
 
+## M3 (2026-07-10)
+
+- **Tap-a-word sound-out is sweep + whole word, not a phoneme bank.** TTS-generated isolated phonemes are unreliable ("s" reads as "ess"), and wrong phoneme audio is pedagogically worse than none. Instead, tapping a word sweeps the Spark through its graphemes slowly (~340ms each, visual sound-out) then plays the word's narration slice (the blend). A recorded human phoneme bank can slot in later.
+- **Read-along re-speaks on re-entry.** Word slices play every time the Spark enters a word moving forward (not furthest-latched like chimes/cues) — re-scrubbing a word for practice speaks it again.
+- **Story assets are served by a route handler** (`/content/[storyId]/[...file]`) straight from content/ — no mirroring into public/. Costs static-exportability (needs a node runtime), which we don't need for the POC; noted as the trade.
+- **Tailwind v4 `@theme static` is required** — plain/inline `@theme` tree-shakes tokens that are only referenced at runtime (per-story accent vars resolved from story data). Also: mid-session `@theme` edits can leave stale HMR CSS where new rules exist in the sheet but don't cascade — cold-restart the dev server before debugging "impossible" CSS.
+- **ElevenLabs narration settings**: Rachel voice, eleven_multilingual_v2, speed 0.87, stability 0.5 — warm and slow enough for early readers. Word timestamps derived from character alignment by whitespace-run grouping; the narrate script validates run count against token count.
+
 ## M1 (2026-07-10)
 
 - **Timeline is measurement-based.** Doc 04 weighted token t-ranges by grapheme count; instead the timeline is built from *rendered* grapheme pixel ranges (gaps split at midpoints), so the Spark is always directly under the letters it lights — the reading.com feel. Assumes single-line prose (fine for level-1/2 page limits); multi-line handling deferred until a story needs it.

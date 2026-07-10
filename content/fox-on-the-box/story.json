@@ -4,144 +4,496 @@
   "level": 1,
   "accent": "orange",
   "phonicsScope": {
-    "graphemes": ["s", "a", "t", "p", "i", "n", "m", "d", "g", "o", "c", "k", "e", "u", "r", "h", "b", "f", "l", "x", "j"],
-    "sightWords": ["the", "is", "a"]
+    "graphemes": [
+      "s",
+      "a",
+      "t",
+      "p",
+      "i",
+      "n",
+      "m",
+      "d",
+      "g",
+      "o",
+      "c",
+      "k",
+      "e",
+      "u",
+      "r",
+      "h",
+      "b",
+      "f",
+      "l",
+      "x",
+      "j"
+    ],
+    "sightWords": [
+      "the",
+      "is",
+      "a"
+    ]
   },
   "pages": [
     {
       "id": "p1",
       "text": "The fox sat on the box.",
       "tokens": [
-        { "w": "The", "sight": true },
-        { "w": "fox", "g": ["f", "o", "x"] },
-        { "w": "sat", "g": ["s", "a", "t"] },
-        { "w": "on", "g": ["o", "n"] },
-        { "w": "the", "sight": true },
-        { "w": "box", "g": ["b", "o", "x"], "punct": "." }
+        {
+          "w": "The",
+          "sight": true
+        },
+        {
+          "w": "fox",
+          "g": [
+            "f",
+            "o",
+            "x"
+          ]
+        },
+        {
+          "w": "sat",
+          "g": [
+            "s",
+            "a",
+            "t"
+          ]
+        },
+        {
+          "w": "on",
+          "g": [
+            "o",
+            "n"
+          ]
+        },
+        {
+          "w": "the",
+          "sight": true
+        },
+        {
+          "w": "box",
+          "g": [
+            "b",
+            "o",
+            "x"
+          ],
+          "punct": "."
+        }
       ],
       "scene": {
         "backend": "coded",
         "module": "fox-box",
-        "cues": [{ "atWord": 2, "cue": "sit" }]
+        "cues": [
+          {
+            "atWord": 2,
+            "cue": "sit"
+          }
+        ]
+      },
+      "narration": {
+        "audio": "audio/p1.mp3",
+        "words": "audio/p1.words.json"
       }
     },
     {
       "id": "p2",
       "text": "The box is big.",
       "tokens": [
-        { "w": "The", "sight": true },
-        { "w": "box", "g": ["b", "o", "x"] },
-        { "w": "is", "sight": true },
-        { "w": "big", "g": ["b", "i", "g"], "punct": "." }
+        {
+          "w": "The",
+          "sight": true
+        },
+        {
+          "w": "box",
+          "g": [
+            "b",
+            "o",
+            "x"
+          ]
+        },
+        {
+          "w": "is",
+          "sight": true
+        },
+        {
+          "w": "big",
+          "g": [
+            "b",
+            "i",
+            "g"
+          ],
+          "punct": "."
+        }
       ],
       "scene": {
         "backend": "coded",
         "module": "fox-box",
-        "cues": [{ "atWord": 3, "cue": "reveal" }]
+        "cues": [
+          {
+            "atWord": 3,
+            "cue": "reveal"
+          }
+        ]
+      },
+      "narration": {
+        "audio": "audio/p2.mp3",
+        "words": "audio/p2.words.json"
       }
     },
     {
       "id": "p3",
       "text": "A bug is on the box.",
       "tokens": [
-        { "w": "A", "sight": true },
-        { "w": "bug", "g": ["b", "u", "g"] },
-        { "w": "is", "sight": true },
-        { "w": "on", "g": ["o", "n"] },
-        { "w": "the", "sight": true },
-        { "w": "box", "g": ["b", "o", "x"], "punct": "." }
+        {
+          "w": "A",
+          "sight": true
+        },
+        {
+          "w": "bug",
+          "g": [
+            "b",
+            "u",
+            "g"
+          ]
+        },
+        {
+          "w": "is",
+          "sight": true
+        },
+        {
+          "w": "on",
+          "g": [
+            "o",
+            "n"
+          ]
+        },
+        {
+          "w": "the",
+          "sight": true
+        },
+        {
+          "w": "box",
+          "g": [
+            "b",
+            "o",
+            "x"
+          ],
+          "punct": "."
+        }
       ],
       "scene": {
         "backend": "coded",
         "module": "fox-box",
-        "cues": [{ "atWord": 1, "cue": "crawl" }]
+        "cues": [
+          {
+            "atWord": 1,
+            "cue": "crawl"
+          }
+        ]
+      },
+      "narration": {
+        "audio": "audio/p3.mp3",
+        "words": "audio/p3.words.json"
       }
     },
     {
       "id": "p4",
       "text": "The fox met the bug.",
       "tokens": [
-        { "w": "The", "sight": true },
-        { "w": "fox", "g": ["f", "o", "x"] },
-        { "w": "met", "g": ["m", "e", "t"] },
-        { "w": "the", "sight": true },
-        { "w": "bug", "g": ["b", "u", "g"], "punct": "." }
+        {
+          "w": "The",
+          "sight": true
+        },
+        {
+          "w": "fox",
+          "g": [
+            "f",
+            "o",
+            "x"
+          ]
+        },
+        {
+          "w": "met",
+          "g": [
+            "m",
+            "e",
+            "t"
+          ]
+        },
+        {
+          "w": "the",
+          "sight": true
+        },
+        {
+          "w": "bug",
+          "g": [
+            "b",
+            "u",
+            "g"
+          ],
+          "punct": "."
+        }
       ],
       "scene": {
         "backend": "coded",
         "module": "fox-box",
-        "cues": [{ "atWord": 2, "cue": "lean" }]
+        "cues": [
+          {
+            "atWord": 2,
+            "cue": "lean"
+          }
+        ]
+      },
+      "narration": {
+        "audio": "audio/p4.mp3",
+        "words": "audio/p4.words.json"
       }
     },
     {
       "id": "p5",
       "text": "The bug hops on the fox!",
       "tokens": [
-        { "w": "The", "sight": true },
-        { "w": "bug", "g": ["b", "u", "g"] },
-        { "w": "hops", "g": ["h", "o", "p", "s"] },
-        { "w": "on", "g": ["o", "n"] },
-        { "w": "the", "sight": true },
-        { "w": "fox", "g": ["f", "o", "x"], "punct": "!" }
+        {
+          "w": "The",
+          "sight": true
+        },
+        {
+          "w": "bug",
+          "g": [
+            "b",
+            "u",
+            "g"
+          ]
+        },
+        {
+          "w": "hops",
+          "g": [
+            "h",
+            "o",
+            "p",
+            "s"
+          ]
+        },
+        {
+          "w": "on",
+          "g": [
+            "o",
+            "n"
+          ]
+        },
+        {
+          "w": "the",
+          "sight": true
+        },
+        {
+          "w": "fox",
+          "g": [
+            "f",
+            "o",
+            "x"
+          ],
+          "punct": "!"
+        }
       ],
       "scene": {
         "backend": "coded",
         "module": "fox-box",
-        "cues": [{ "atWord": 2, "cue": "hop" }]
+        "cues": [
+          {
+            "atWord": 2,
+            "cue": "hop"
+          }
+        ]
+      },
+      "narration": {
+        "audio": "audio/p5.mp3",
+        "words": "audio/p5.words.json"
       }
     },
     {
       "id": "p6",
       "text": "The fox hops on the box!",
       "tokens": [
-        { "w": "The", "sight": true },
-        { "w": "fox", "g": ["f", "o", "x"] },
-        { "w": "hops", "g": ["h", "o", "p", "s"] },
-        { "w": "on", "g": ["o", "n"] },
-        { "w": "the", "sight": true },
-        { "w": "box", "g": ["b", "o", "x"], "punct": "!" }
+        {
+          "w": "The",
+          "sight": true
+        },
+        {
+          "w": "fox",
+          "g": [
+            "f",
+            "o",
+            "x"
+          ]
+        },
+        {
+          "w": "hops",
+          "g": [
+            "h",
+            "o",
+            "p",
+            "s"
+          ]
+        },
+        {
+          "w": "on",
+          "g": [
+            "o",
+            "n"
+          ]
+        },
+        {
+          "w": "the",
+          "sight": true
+        },
+        {
+          "w": "box",
+          "g": [
+            "b",
+            "o",
+            "x"
+          ],
+          "punct": "!"
+        }
       ],
       "scene": {
         "backend": "coded",
         "module": "fox-box",
         "cues": [
-          { "atWord": 2, "cue": "jump" },
-          { "atWord": 5, "cue": "land" }
+          {
+            "atWord": 2,
+            "cue": "jump"
+          },
+          {
+            "atWord": 5,
+            "cue": "land"
+          }
         ]
+      },
+      "narration": {
+        "audio": "audio/p6.mp3",
+        "words": "audio/p6.words.json"
       }
     },
     {
       "id": "p7",
       "text": "The box tips!",
       "tokens": [
-        { "w": "The", "sight": true },
-        { "w": "box", "g": ["b", "o", "x"] },
-        { "w": "tips", "g": ["t", "i", "p", "s"], "punct": "!" }
+        {
+          "w": "The",
+          "sight": true
+        },
+        {
+          "w": "box",
+          "g": [
+            "b",
+            "o",
+            "x"
+          ]
+        },
+        {
+          "w": "tips",
+          "g": [
+            "t",
+            "i",
+            "p",
+            "s"
+          ],
+          "punct": "!"
+        }
       ],
       "scene": {
         "backend": "coded",
         "module": "fox-box",
-        "cues": [{ "atWord": 2, "cue": "wobble" }]
+        "cues": [
+          {
+            "atWord": 2,
+            "cue": "wobble"
+          }
+        ]
+      },
+      "narration": {
+        "audio": "audio/p7.mp3",
+        "words": "audio/p7.words.json"
       }
     },
     {
       "id": "p8",
       "text": "The fox and the bug sit in the box.",
       "tokens": [
-        { "w": "The", "sight": true },
-        { "w": "fox", "g": ["f", "o", "x"] },
-        { "w": "and", "g": ["a", "n", "d"] },
-        { "w": "the", "sight": true },
-        { "w": "bug", "g": ["b", "u", "g"] },
-        { "w": "sit", "g": ["s", "i", "t"] },
-        { "w": "in", "g": ["i", "n"] },
-        { "w": "the", "sight": true },
-        { "w": "box", "g": ["b", "o", "x"], "punct": "." }
+        {
+          "w": "The",
+          "sight": true
+        },
+        {
+          "w": "fox",
+          "g": [
+            "f",
+            "o",
+            "x"
+          ]
+        },
+        {
+          "w": "and",
+          "g": [
+            "a",
+            "n",
+            "d"
+          ]
+        },
+        {
+          "w": "the",
+          "sight": true
+        },
+        {
+          "w": "bug",
+          "g": [
+            "b",
+            "u",
+            "g"
+          ]
+        },
+        {
+          "w": "sit",
+          "g": [
+            "s",
+            "i",
+            "t"
+          ]
+        },
+        {
+          "w": "in",
+          "g": [
+            "i",
+            "n"
+          ]
+        },
+        {
+          "w": "the",
+          "sight": true
+        },
+        {
+          "w": "box",
+          "g": [
+            "b",
+            "o",
+            "x"
+          ],
+          "punct": "."
+        }
       ],
       "scene": {
         "backend": "coded",
         "module": "fox-box",
-        "cues": [{ "atWord": 5, "cue": "peek" }]
+        "cues": [
+          {
+            "atWord": 5,
+            "cue": "peek"
+          }
+        ]
+      },
+      "narration": {
+        "audio": "audio/p8.mp3",
+        "words": "audio/p8.words.json"
       }
     }
   ]

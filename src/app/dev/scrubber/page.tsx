@@ -23,7 +23,7 @@ const page: Page = {
 export default function DevScrubber() {
   return (
     <main className="mx-auto flex min-h-dvh max-w-4xl flex-col justify-center px-6">
-      <Reader page={page} />
+      <Reader page={page} storyId="dev" accent="blue" />
     </main>
   );
 }

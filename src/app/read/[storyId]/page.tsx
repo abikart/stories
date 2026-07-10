@@ -29,14 +29,17 @@ export default async function ReadPage({
   const page = story.pages[pageIndex];
 
   return (
-    <main className="mx-auto flex min-h-dvh max-w-4xl flex-col justify-center gap-6 px-6 py-10">
+    <main
+      className="mx-auto flex min-h-dvh flex-col justify-center gap-4 px-6 py-6"
+      style={{ maxWidth: "min(58rem, calc((100dvh - 330px) * 16 / 9))" }}
+    >
       <header className="flex items-baseline justify-between">
         <h1 className="font-display text-2xl font-semibold">{story.title}</h1>
         <span className="text-sm text-ink-soft">
           page {pageIndex + 1} / {story.pages.length}
         </span>
       </header>
-      <Reader key={page.id} page={page} />
+      <Reader key={page.id} page={page} storyId={storyId} accent={story.accent} />
       <nav className="flex justify-between text-sm text-ink-soft">
         {pageIndex > 0 ? (
           <Link href={`/read/${storyId}?p=${pageIndex - 1}`}>← previous</Link>

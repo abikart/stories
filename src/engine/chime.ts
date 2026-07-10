@@ -6,15 +6,21 @@
 
 let ctx: AudioContext | null = null;
 
-/** Call from the first user gesture — Web Audio unlock. */
-export function unlockAudio() {
-  if (typeof window === "undefined") return;
+/** The app's single AudioContext — created on demand (decode works while suspended). */
+export function getAudioContext(): AudioContext | null {
+  if (typeof window === "undefined") return null;
   if (!ctx) {
     const AC = window.AudioContext ?? (window as unknown as { webkitAudioContext: typeof AudioContext }).webkitAudioContext;
-    if (!AC) return;
+    if (!AC) return null;
     ctx = new AC();
   }
-  if (ctx.state === "suspended") void ctx.resume();
+  return ctx;
+}
+
+/** Call from the first user gesture — Web Audio unlock. */
+export function unlockAudio() {
+  const c = getAudioContext();
+  if (c && c.state === "suspended") void c.resume();
 }
 
 const PENTATONIC = [523.25, 587.33, 659.25, 783.99, 880.0]; // C5 D5 E5 G5 A5
