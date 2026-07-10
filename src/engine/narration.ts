@@ -84,33 +84,41 @@ export class PageNarration {
     this.playingAll = false;
   }
 
-  /**
-   * Piecewise-linear map: narration seconds → timeline t. Inside word k it
-   * interpolates across token k's t-range; silences interpolate between
-   * neighbors, so the Spark glides through gaps instead of teleporting.
-   */
   audioTimeToT(at: number, timeline: PageTimeline): number {
-    const words = this.words;
-    if (words.length === 0) return 0;
-    const seg = (a0: number, a1: number, t0: number, t1: number) =>
-      a1 <= a0 ? t1 : t0 + ((at - a0) / (a1 - a0)) * (t1 - t0);
-
-    const first = words[0];
-    const firstTok = timeline.tokens[first.i];
-    if (at < first.start) return seg(0, first.start, 0, firstTok?.start ?? 0);
-
-    for (let k = 0; k < words.length; k++) {
-      const w = words[k];
-      const tok = timeline.tokens[w.i];
-      if (!tok) continue;
-      if (at <= w.end) {
-        if (at >= w.start) return seg(w.start, w.end, tok.start, tok.end);
-        // in the gap before word k
-        const prev = words[k - 1];
-        const prevTok = prev ? timeline.tokens[prev.i] : null;
-        return seg(prev?.end ?? 0, w.start, prevTok?.end ?? 0, tok.start);
-      }
-    }
-    return 1;
+    return audioTimeToT(this.words, at, timeline);
   }
+}
+
+/**
+ * Piecewise-linear map: narration seconds → timeline t. Inside word k it
+ * interpolates across token k's t-range; silences interpolate between
+ * neighbors, so the Spark glides through gaps instead of teleporting.
+ * Pure — the render stage uses it without an AudioContext.
+ */
+export function audioTimeToT(
+  words: WordTimestamps,
+  at: number,
+  timeline: PageTimeline,
+): number {
+  if (words.length === 0) return 0;
+  const seg = (a0: number, a1: number, t0: number, t1: number) =>
+    a1 <= a0 ? t1 : t0 + ((at - a0) / (a1 - a0)) * (t1 - t0);
+
+  const first = words[0];
+  const firstTok = timeline.tokens[first.i];
+  if (at < first.start) return seg(0, first.start, 0, firstTok?.start ?? 0);
+
+  for (let k = 0; k < words.length; k++) {
+    const w = words[k];
+    const tok = timeline.tokens[w.i];
+    if (!tok) continue;
+    if (at <= w.end) {
+      if (at >= w.start) return seg(w.start, w.end, tok.start, tok.end);
+      // in the gap before word k
+      const prev = words[k - 1];
+      const prevTok = prev ? timeline.tokens[prev.i] : null;
+      return seg(prev?.end ?? 0, w.start, prevTok?.end ?? 0, tok.start);
+    }
+  }
+  return 1;
 }

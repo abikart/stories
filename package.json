@@ -11,7 +11,8 @@
     "gen-frames": "tsx scripts/gen-frames.ts",
     "segment": "tsx scripts/segment.ts",
     "lint:stories": "tsx scripts/lint-story.ts",
-    "new-story": "tsx scripts/new-story.ts"
+    "new-story": "tsx scripts/new-story.ts",
+    "render": "tsx scripts/render-video.ts"
   },
   "dependencies": {
     "next": "^15.3.0",
@@ -24,6 +25,7 @@
     "@types/node": "^22.0.0",
     "@types/react": "^19.1.0",
     "@types/react-dom": "^19.1.0",
+    "playwright": "^1.61.1",
     "tailwindcss": "^4.1.0",
     "tsx": "^4.19.0",
     "typescript": "^5.8.0"

@@ -19,3 +19,6 @@ dist/
 # playwright
 test-results/
 playwright-report/
+
+# rendered videos
+/out/

@@ -3,6 +3,12 @@
 Divergences from the spec docs, made during the build per the guardrails in
 [03-poc-requirements.md](03-poc-requirements.md). Newest first.
 
+## M7 (2026-07-10)
+
+- **No CDP virtual time.** Pausing Chromium's clock for frame-exact animation stepping deadlocks `page.screenshot()` (the compositor starves waiting for BeginFrames) — the first render run froze at frame 60/943. Dropped it: capture runs near-realtime (~28–35fps ≥ 30fps playback), so wall-clock CSS/WAAPI beats land at ≈correct speed. Frame-exact stepping would need CDP `HeadlessExperimental.beginFrame` — post-POC.
+- **Ambient in the video is ffmpeg-synthesized** (`anoisesrc=brown` → lowpass → −26dB-ish), the same recipe as the in-app Web Audio bed; narration mp3s are placed by `adelay` using the SAME plan object the visuals used, so audio/visual sync is by construction.
+- **The render plan** (enter 0.7s dormant beat, decoded-audio duration + 0.15s, 1.3s wake hold per page) is computed in the browser from decoded narration and read back by the script — one source of truth for both eyes and ears.
+
 ## M6 (2026-07-10)
 
 - **Segmentation is scope-driven**: a word segments greedily (longest-first) against the story's declared graphemes only — "ship" is (sh)(i)(p) only where "sh" is taught. Case-preserving by construction.

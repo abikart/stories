@@ -1,16 +1,20 @@
-/*
- * Chrome-free 16:9 read-aloud playthrough for video capture (milestone M7).
- * Stub until the reader engine and ClockDriver exist.
- */
+import { notFound } from "next/navigation";
+import { listStoryIds, loadStory } from "@/lib/stories";
+import { RenderStage } from "@/components/player/RenderStage";
+
+export async function generateStaticParams() {
+  const ids = await listStoryIds();
+  return ids.map((storyId) => ({ storyId }));
+}
+
+/* Chrome-free capture target for scripts/render-video.ts (M7). */
 export default async function RenderPage({
   params,
 }: {
   params: Promise<{ storyId: string }>;
 }) {
   const { storyId } = await params;
-  return (
-    <main className="grid aspect-video place-items-center bg-paper">
-      <p className="text-ink-soft">render mode for “{storyId}” — built at M7</p>
-    </main>
-  );
+  const story = await loadStory(storyId).catch(() => null);
+  if (!story) notFound();
+  return <RenderStage story={story} />;
 }

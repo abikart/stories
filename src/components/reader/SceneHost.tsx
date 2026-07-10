@@ -46,6 +46,7 @@ export function SceneHost({
       sceneRef.current = s;
       scene.seek(engine.t);
       scene.setAwake(engine.furthest);
+      host.setAttribute("data-scene-ready", ""); // render capture waits on this
     });
 
     const offFrame = engine.onFrame((t, furthest) => {

@@ -352,3 +352,10 @@ body {
     animation: none !important;
   }
 }
+
+/* ---------- render stage (M7 video capture) ---------- */
+
+.render-prose .prose-line {
+  font-size: 60px;
+  white-space: nowrap;
+}
