@@ -23,7 +23,7 @@ export function ShelfStats() {
   if (words === null || (words === 0 && stickers.length === 0)) return null;
   return (
     <div className="flex items-center justify-center gap-4" data-testid="shelf-stats">
-      <span className="rounded-full bg-paper-deep px-4 py-2 text-sm font-semibold text-ink">
+      <span className="rounded-full bg-paper-deep px-4 py-2 text-sm font-semibold tabular-nums text-ink">
         ⭐ {words} words read
       </span>
       {stickers.map((id) => (

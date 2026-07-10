@@ -7,6 +7,7 @@ import { AmbientBed } from "@/engine/ambient";
 import { getAudioContext, unlockAudio } from "@/engine/chime";
 import { Reader } from "@/components/reader/Reader";
 import type { ReadingMode } from "@/components/reader/ModeSwitcher";
+import { ReadingSettings } from "./ReadingSettings";
 import { Sticker } from "./stickers";
 
 const MODE_KEY = "stories:mode";
@@ -177,7 +178,8 @@ export function StoryPlayer({ story, initialPage = 0 }: { story: Story; initialP
           </Link>
           <h1 className="font-display text-xl font-semibold">{story.title}</h1>
         </div>
-        <div className="flex items-center gap-4">
+        <div className="flex items-center gap-2">
+          <ReadingSettings />
           <button
             type="button"
             className="mute-btn"
@@ -187,7 +189,7 @@ export function StoryPlayer({ story, initialPage = 0 }: { story: Story; initialP
           >
             {muted ? "🔇" : "🔊"}
           </button>
-          <span className="text-sm text-ink-soft">
+          <span className="ml-2 text-sm tabular-nums text-ink-soft">
             page {pageIndex + 1} / {story.pages.length}
           </span>
         </div>
