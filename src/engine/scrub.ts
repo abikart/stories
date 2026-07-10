@@ -1,8 +1,10 @@
 import { CriticallyDampedSpring } from "./spring";
 import type { PageTimeline } from "./timeline";
+import type { Cue } from "./types";
 
 type FrameFn = (t: number, furthest: number) => void;
 type WordFn = (tokenIndex: number) => void;
+type CueFn = (name: string) => void;
 
 /**
  * The scrub engine (docs/04): one smoothed timeline value, many consumers.
@@ -14,7 +16,10 @@ export class ScrubEngine {
   private spring = new CriticallyDampedSpring();
   private frameSubs: FrameFn[] = [];
   private wordSubs: WordFn[] = [];
+  private cueSubs: CueFn[] = [];
   private completed: boolean[] = [];
+  private cues: Cue[] = [];
+  private firedCues: boolean[] = [];
   private raf = 0;
   private running = false;
   private last = 0;
@@ -63,6 +68,19 @@ export class ScrubEngine {
     };
   }
 
+  /** Page scene beats — fired (latched) when furthest-t crosses INTO the cue's token. */
+  setCues(cues: Cue[]) {
+    this.cues = cues;
+    this.firedCues = cues.map(() => false);
+  }
+
+  onCue(fn: CueFn): () => void {
+    this.cueSubs.push(fn);
+    return () => {
+      this.cueSubs = this.cueSubs.filter((f) => f !== fn);
+    };
+  }
+
   dispose() {
     cancelAnimationFrame(this.raf);
     this.running = false;
@@ -106,6 +124,14 @@ export class ScrubEngine {
         if (!this.completed[i] && this.furthest >= this.timeline.tokens[i].end - 1e-4) {
           this.completed[i] = true;
           for (const fn of this.wordSubs) fn(i);
+        }
+      }
+      for (let ci = 0; ci < this.cues.length; ci++) {
+        if (this.firedCues[ci]) continue;
+        const tok = this.timeline.tokens[this.cues[ci].atWord];
+        if (tok && this.furthest > tok.start + 1e-4) {
+          this.firedCues[ci] = true;
+          for (const fn of this.cueSubs) fn(this.cues[ci].cue);
         }
       }
     }

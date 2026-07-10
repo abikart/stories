@@ -6,6 +6,7 @@ import { ScrubEngine } from "@/engine/scrub";
 import { chime } from "@/engine/chime";
 import { HighlightPainter, measureProse } from "./measure";
 import { ProseLine } from "./ProseLine";
+import { SceneHost } from "./SceneHost";
 import { Scrubber } from "./Scrubber";
 
 /**
@@ -69,9 +70,7 @@ export function Reader({ page }: { page: Page }) {
 
   return (
     <div ref={rootRef} className="reader flex flex-col gap-8" style={{ "--t": "0" } as React.CSSProperties}>
-      <div className="scene-window grid aspect-[16/9] w-full place-items-center rounded-xl bg-paper-deep shadow-card">
-        <span className="text-sm text-ink-soft">the world sleeps here — scenes arrive at M2</span>
-      </div>
+      <SceneHost engine={engine} page={page} />
       <div className="flex flex-col gap-5 px-1">
         <ProseLine
           ref={proseRef}
