@@ -1,3 +1,5 @@
+"use client";
+
 import { Reader } from "@/components/reader/Reader";
 import type { Page } from "@/engine/types";
 
@@ -23,7 +25,7 @@ const page: Page = {
 export default function DevScrubber() {
   return (
     <main className="mx-auto flex min-h-dvh max-w-4xl flex-col justify-center px-6">
-      <Reader page={page} storyId="dev" accent="blue" />
+      <Reader page={page} storyId="dev" accent="blue" mode="read-it" onModeChange={() => {}} />
     </main>
   );
 }

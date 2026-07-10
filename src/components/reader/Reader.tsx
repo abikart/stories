@@ -13,22 +13,34 @@ import { SceneHost } from "./SceneHost";
 import { Scrubber } from "./Scrubber";
 
 const CANDY = new Set(["green", "blue", "purple", "orange", "yellow", "red", "teal"]);
-const MODE_KEY = "stories:mode";
 
 /**
  * One page of the reader. Three modes, one timeline (docs/02):
  *  - Read it: the finger drives; tap-a-word sweeps the graphemes then speaks it
  *  - Read along: the finger drives; entering a word speaks its slice
  *  - Read to me: the narration clock drives; highlights + scene follow
+ * Mode state lives in the StoryPlayer (it owns auto-advance).
  */
 export function Reader({
   page,
   storyId,
   accent,
+  mode,
+  onModeChange,
+  autoPlay = false,
+  onNarratingChange,
+  onInterrupt,
+  onPageComplete,
 }: {
   page: Page;
   storyId: string;
   accent?: string;
+  mode: ReadingMode;
+  onModeChange: (m: ReadingMode) => void;
+  autoPlay?: boolean;
+  onNarratingChange?: (playing: boolean) => void;
+  onInterrupt?: () => void;
+  onPageComplete?: () => void;
 }) {
   const [engine] = useState(() => new ScrubEngine());
   const rootRef = useRef<HTMLDivElement>(null);
@@ -38,11 +50,14 @@ export function Reader({
   const driverRef = useRef<ClockDriver | null>(null);
   const sweepRef = useRef<number | null>(null);
   const lastTokRef = useRef(-1);
-  const modeRef = useRef<ReadingMode>("read-along");
+  const modeRef = useRef<ReadingMode>(mode);
+  const autoPlayedRef = useRef(false);
   const statsRef = useRef({ slices: 0 });
+  const callbacksRef = useRef({ onNarratingChange, onInterrupt, onPageComplete });
+  callbacksRef.current = { onNarratingChange, onInterrupt, onPageComplete };
+  modeRef.current = mode;
 
   const [rail, setRail] = useState({ left: 0, width: 0 });
-  const [mode, setModeState] = useState<ReadingMode>("read-along");
   const [narrReady, setNarrReady] = useState(false);
   const [isNarrating, setIsNarrating] = useState(false);
 
@@ -59,16 +74,6 @@ export function Reader({
     setIsNarrating(false);
   };
 
-  const setMode = (m: ReadingMode) => {
-    stopPlayback();
-    stopSweep();
-    modeRef.current = m;
-    setModeState(m);
-    try {
-      localStorage.setItem(MODE_KEY, m);
-    } catch {}
-  };
-
   /** Tap-a-word: glide through its graphemes slowly, then speak the whole word. */
   const sweepWord = (i: number) => {
     const tl = engine.timeline;
@@ -76,6 +81,7 @@ export function Reader({
     unlockAudio();
     stopPlayback();
     stopSweep();
+    callbacksRef.current.onInterrupt?.();
     const tok = tl.tokens[i];
     const cellCount = Math.max(1, tl.cells.filter((c) => c.tokenIndex === i).length);
     const duration = Math.max(480, cellCount * 340);
@@ -110,18 +116,8 @@ export function Reader({
     });
     driverRef.current.start();
     setIsNarrating(true);
+    callbacksRef.current.onNarratingChange?.(true);
   };
-
-  // restore persisted mode
-  useEffect(() => {
-    try {
-      const saved = localStorage.getItem(MODE_KEY) as ReadingMode | null;
-      if (saved === "read-it" || saved === "read-along" || saved === "read-to-me") {
-        modeRef.current = saved;
-        setModeState(saved);
-      }
-    } catch {}
-  }, []);
 
   // narration assets
   useEffect(() => {
@@ -148,6 +144,16 @@ export function Reader({
     };
   }, [page, storyId]);
 
+  // read-to-me auto-play on page entry (story is auto-advancing)
+  useEffect(() => {
+    if (autoPlay && narrReady && mode === "read-to-me" && !autoPlayedRef.current) {
+      autoPlayedRef.current = true;
+      const id = window.setTimeout(play, 350);
+      return () => clearTimeout(id);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [autoPlay, narrReady, mode]);
+
   // engine wiring: measurement, painter, frame paint, word events
   useEffect(() => {
     const root = rootRef.current;
@@ -172,7 +178,6 @@ export function Reader({
     const offFrame = engine.onFrame((t, furthest) => {
       painterRef.current?.paint(t, furthest);
       root.style.setProperty("--t", String(t));
-      // read-along: speak each word as the Spark enters it (forward only)
       const tok = engine.timeline?.tokenIndexAt(t) ?? -1;
       if (tok !== lastTokRef.current) {
         if (
@@ -187,6 +192,7 @@ export function Reader({
         lastTokRef.current = tok;
       }
     });
+    const lastIndex = page.tokens.length - 1;
     const offWord = engine.onWordComplete((i) => {
       chime(i);
       const core = root.querySelector(".spark-core");
@@ -195,6 +201,7 @@ export function Reader({
         void (core as HTMLElement).offsetWidth;
         core.setAttribute("data-hop", "");
       }
+      if (i === lastIndex) callbacksRef.current.onPageComplete?.();
     });
 
     if (process.env.NODE_ENV === "development") {
@@ -232,7 +239,15 @@ export function Reader({
             type="button"
             className="play-btn"
             disabled={!narrReady}
-            onClick={isNarrating ? stopPlayback : play}
+            onClick={() => {
+              if (isNarrating) {
+                stopPlayback();
+                callbacksRef.current.onNarratingChange?.(false);
+                callbacksRef.current.onInterrupt?.();
+              } else {
+                play();
+              }
+            }}
           >
             {isNarrating ? (
               <svg width="14" height="14" viewBox="0 0 14 14" aria-hidden>
@@ -248,7 +263,14 @@ export function Reader({
         ) : (
           <span />
         )}
-        <ModeSwitcher mode={mode} onChange={setMode} />
+        <ModeSwitcher
+          mode={mode}
+          onChange={(m) => {
+            stopPlayback();
+            stopSweep();
+            onModeChange(m);
+          }}
+        />
       </div>
       <div className="flex flex-col gap-5 px-1">
         <ProseLine ref={proseRef} tokens={page.tokens} onWordTap={sweepWord} />
@@ -259,6 +281,7 @@ export function Reader({
           onEngage={() => {
             stopPlayback();
             stopSweep();
+            callbacksRef.current.onInterrupt?.();
           }}
         />
       </div>

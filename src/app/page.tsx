@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { loadAllStories } from "@/lib/stories";
+import { ShelfStats } from "@/components/player/ShelfStats";
 
 /* Placeholder landing — the real one is milestone M8. */
 export default async function Home() {
@@ -12,6 +13,7 @@ export default async function Home() {
           Stories you can touch. Words that wake worlds.
         </p>
       </div>
+      <ShelfStats />
       <ul className="flex w-full flex-col gap-4">
         {stories.map((s) => (
           <li key={s.id}>

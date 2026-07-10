@@ -3,6 +3,12 @@
 Divergences from the spec docs, made during the build per the guardrails in
 [03-poc-requirements.md](03-poc-requirements.md). Newest first.
 
+## M4 (2026-07-10)
+
+- **Ambient bed is synthesized** (brown noise → wandering lowpass = soft wind), per the doc-06 fallback table — no asset, starts from the Start-screen tap (which doubles as the Web Audio unlock gesture), swells on page wake, mute persisted.
+- **Page turns are explicit in finger modes** (bouncy next-arrow appears on completion; kid agency), **automatic in Read-to-me** (1.5s after completion, next page auto-plays) — passive mode should flow like a bedtime reading.
+- **Words counter counts completed pages once per visit** (page tokens added on first completion per mount); re-reads count again by design — it measures reading done, not unique words.
+
 ## M3 (2026-07-10)
 
 - **Tap-a-word sound-out is sweep + whole word, not a phoneme bank.** TTS-generated isolated phonemes are unreliable ("s" reads as "ess"), and wrong phoneme audio is pedagogically worse than none. Instead, tapping a word sweeps the Spark through its graphemes slowly (~340ms each, visual sound-out) then plays the word's narration slice (the blend). A recorded human phoneme bank can slot in later.
