@@ -232,7 +232,7 @@ export function Reader({
       className="reader flex flex-col gap-6"
       style={{ "--t": "0", "--accent": accentVar } as React.CSSProperties}
     >
-      <SceneHost engine={engine} page={page} />
+      <SceneHost engine={engine} page={page} storyId={storyId} />
       <div className="flex min-h-12 items-center justify-between gap-4">
         {mode === "read-to-me" ? (
           <button

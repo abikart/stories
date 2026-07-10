@@ -3,6 +3,14 @@
 Divergences from the spec docs, made during the build per the guardrails in
 [03-poc-requirements.md](03-poc-requirements.md). Newest first.
 
+## M5 (2026-07-10)
+
+- **Frames are PNG, not WebP** — this machine's ffmpeg has no WebP encoder and `sips` can't write it either. `frames.ext` is now part of the Storyspec (default png); directory format otherwise unchanged, so AI-generated WebP drops in later. Ship story: ~10MB of frames, committed as content.
+- **Grapheme case must match the word**: `g.join("") === w` exactly — found via "Splish" segmented lowercase rendering as "splish" (the prose renders graphemes, not `w`). This is a hard rule for the M6 linter/segmenter.
+- **Frames scenes bake beats into the timeline** (drips land at their words' t positions by construction); `cue()` on the frames backend is just a subtle flash accent.
+- **Next-arrow shows in every mode once a page completes** — originally hidden in Read-to-me (auto-advance), which dead-ended kids who scrub manually without pressing Play.
+- **`start()` no longer resets to page 0** — honors `?p=` initial page (dev + M7 render entry).
+
 ## M4 (2026-07-10)
 
 - **Ambient bed is synthesized** (brown noise → wandering lowpass = soft wind), per the doc-06 fallback table — no asset, starts from the Start-screen tap (which doubles as the Web Audio unlock gesture), swells on page wake, mute persisted.

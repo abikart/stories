@@ -88,8 +88,7 @@ export function StoryPlayer({ story, initialPage = 0 }: { story: Story; initialP
       ambientRef.current.setMuted(muted);
       ambientRef.current.setLevel(1);
     }
-    goTo(0);
-    setPhase("reading");
+    setPhase("reading"); // pageIndex stays at initialPage (?p= dev/render entry)
   };
 
   const goTo = (i: number) => {
@@ -221,7 +220,7 @@ export function StoryPlayer({ story, initialPage = 0 }: { story: Story; initialP
         ) : (
           <span />
         )}
-        {pageDone && !isLast && mode !== "read-to-me" && (
+        {pageDone && !isLast && (
           <button type="button" className="next-arrow" onClick={next} aria-label="next page">
             <svg width="22" height="22" viewBox="0 0 24 24" aria-hidden>
               <path d="M8 4 L18 12 L8 20 Z" fill="currentColor" />

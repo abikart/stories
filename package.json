@@ -7,7 +7,8 @@
     "build": "next build",
     "start": "next start",
     "typecheck": "tsc --noEmit",
-    "narrate": "tsx scripts/narrate.ts"
+    "narrate": "tsx scripts/narrate.ts",
+    "gen-frames": "tsx scripts/gen-frames.ts"
   },
   "dependencies": {
     "next": "^15.3.0",

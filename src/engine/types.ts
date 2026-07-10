@@ -39,9 +39,11 @@ export const SceneSpecSchema = z.discriminatedUnion("backend", [
   z.object({
     backend: z.literal("frames"),
     frames: z.object({
-      /** Directory of WebP frames relative to the story dir. */
+      /** Directory of frames relative to the story dir. */
       dir: z.string().min(1),
       count: z.number().int().min(2),
+      /** Frame file extension (webp when an encoder is available). */
+      ext: z.enum(["webp", "png"]).default("png"),
     }),
     cues: z.array(CueSchema).optional(),
   }),

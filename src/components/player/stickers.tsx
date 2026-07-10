@@ -46,6 +46,22 @@ const STICKER_ART: Record<string, React.ReactNode> = {
       </g>
     </g>
   ),
+  "the-ship-in-the-rain": (
+    <g>
+      {/* sea */}
+      <path d="M14 78 Q30 72 46 78 T78 78 T106 78 L106 96 A56 56 0 0 1 14 96 Z" fill="#2760f6" opacity="0.85" />
+      {/* hull */}
+      <path d="M38 66 L82 66 L74 80 L46 80 Z" fill="#584741" />
+      {/* mast + sail */}
+      <rect x="58" y="30" width="3" height="36" fill="#584741" />
+      <path d="M61 32 L61 62 L82 62 Z" fill="#fffef1" />
+      <path d="M56 34 L44 56 L56 58 Z" fill="#f2cd0f" />
+      {/* rainbow */}
+      <path d="M22 56 A38 38 0 0 1 98 56" fill="none" stroke="#cc1d31" strokeWidth="4" strokeLinecap="round" />
+      <path d="M28 56 A32 32 0 0 1 92 56" fill="none" stroke="#f2cd0f" strokeWidth="4" strokeLinecap="round" />
+      <path d="M34 56 A26 26 0 0 1 86 56" fill="none" stroke="#32c992" strokeWidth="4" strokeLinecap="round" />
+    </g>
+  ),
 };
 
 function StarArt() {

@@ -7,6 +7,7 @@ import type { SceneSpec } from "./types";
  */
 export interface SceneCtx {
   pageId: string;
+  storyId: string;
   reducedMotion: boolean;
 }
 
@@ -37,6 +38,6 @@ export async function loadSceneFactory(spec: SceneSpec): Promise<SceneFactory> {
     if (!loader) throw new Error(`unknown coded scene module: ${spec.module}`);
     return (await loader()).default;
   }
-  // frames backend arrives at M5
-  return (await codedScenes.none()).default;
+  const { createFramesScene } = await import("./scenes/frames");
+  return () => createFramesScene(spec.frames);
 }

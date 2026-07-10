@@ -10,7 +10,15 @@ import type { ScrubEngine } from "@/engine/scrub";
  * Binds a page's scene (any backend) to the scrub engine: seek + awake
  * every frame, latched cues, all from the same t as the text.
  */
-export function SceneHost({ engine, page }: { engine: ScrubEngine; page: Page }) {
+export function SceneHost({
+  engine,
+  page,
+  storyId,
+}: {
+  engine: ScrubEngine;
+  page: Page;
+  storyId: string;
+}) {
   const hostRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -26,6 +34,7 @@ export function SceneHost({ engine, page }: { engine: ScrubEngine; page: Page })
       const s = factory();
       await s.mount(host, {
         pageId: page.id,
+        storyId,
         reducedMotion: window.matchMedia("(prefers-reduced-motion: reduce)").matches,
       });
       if (dead) {
@@ -50,7 +59,7 @@ export function SceneHost({ engine, page }: { engine: ScrubEngine; page: Page })
       scene?.destroy();
       scene = null;
     };
-  }, [engine, page]);
+  }, [engine, page, storyId]);
 
   return <div ref={hostRef} className="scene-window aspect-[16/9] w-full overflow-hidden rounded-xl bg-paper-deep shadow-card" />;
 }
