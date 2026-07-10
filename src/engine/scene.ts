@@ -29,6 +29,7 @@ export type SceneFactory = () => Scene;
 
 const codedScenes: Record<string, () => Promise<{ default: SceneFactory }>> = {
   "fox-box": () => import("./scenes/fox-box"),
+  popcorn: () => import("./scenes/popcorn"),
   none: () => import("./scenes/none"),
 };
 

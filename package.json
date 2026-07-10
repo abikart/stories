@@ -8,7 +8,10 @@
     "start": "next start",
     "typecheck": "tsc --noEmit",
     "narrate": "tsx scripts/narrate.ts",
-    "gen-frames": "tsx scripts/gen-frames.ts"
+    "gen-frames": "tsx scripts/gen-frames.ts",
+    "segment": "tsx scripts/segment.ts",
+    "lint:stories": "tsx scripts/lint-story.ts",
+    "new-story": "tsx scripts/new-story.ts"
   },
   "dependencies": {
     "next": "^15.3.0",

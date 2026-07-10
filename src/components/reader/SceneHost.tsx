@@ -20,6 +20,7 @@ export function SceneHost({
   storyId: string;
 }) {
   const hostRef = useRef<HTMLDivElement>(null);
+  const sceneRef = useRef<Scene | null>(null);
 
   useEffect(() => {
     const host = hostRef.current;
@@ -42,6 +43,7 @@ export function SceneHost({
         return;
       }
       scene = s;
+      sceneRef.current = s;
       scene.seek(engine.t);
       scene.setAwake(engine.furthest);
     });
@@ -58,8 +60,21 @@ export function SceneHost({
       offCue();
       scene?.destroy();
       scene = null;
+      sceneRef.current = null;
     };
   }, [engine, page, storyId]);
 
-  return <div ref={hostRef} className="scene-window aspect-[16/9] w-full overflow-hidden rounded-xl bg-paper-deep shadow-card" />;
+  return (
+    <div
+      ref={hostRef}
+      className="scene-window aspect-[16/9] w-full overflow-hidden rounded-xl bg-paper-deep shadow-card"
+      onClick={(e) => {
+        const r = hostRef.current!.getBoundingClientRect();
+        sceneRef.current?.event?.("tap", {
+          x: (e.clientX - r.left) / r.width,
+          y: (e.clientY - r.top) / r.height,
+        });
+      }}
+    />
+  );
 }

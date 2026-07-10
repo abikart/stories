@@ -3,6 +3,13 @@
 Divergences from the spec docs, made during the build per the guardrails in
 [03-poc-requirements.md](03-poc-requirements.md). Newest first.
 
+## M6 (2026-07-10)
+
+- **Segmentation is scope-driven**: a word segments greedily (longest-first) against the story's declared graphemes only — "ship" is (sh)(i)(p) only where "sh" is taught. Case-preserving by construction.
+- **Linter checks are structural, not phonemic** (v1): scope membership, resegmentability, g.join===w, text reconstruction, sight-word discipline, cue ranges, word budgets, asset presence. True phoneme validation (o in "cold" ≠ taught /ŏ/) needs a pronunciation lexicon — noted as post-POC.
+- **Popcorn pile persists across pages via module-level scene state**, reset when p1 mounts. Kernel landings have a timer fallback because WAAPI pauses in hidden tabs — a kernel must always reach the pile.
+- **Scene taps**: SceneHost forwards clicks as `event("tap", {x,y})`; scenes decide what post-wake taps do (popcorn: 3 bonus kernels).
+
 ## M5 (2026-07-10)
 
 - **Frames are PNG, not WebP** — this machine's ffmpeg has no WebP encoder and `sips` can't write it either. `frames.ext` is now part of the Storyspec (default png); directory format otherwise unchanged, so AI-generated WebP drops in later. Ship story: ~10MB of frames, committed as content.

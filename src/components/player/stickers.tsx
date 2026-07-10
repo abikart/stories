@@ -46,6 +46,25 @@ const STICKER_ART: Record<string, React.ReactNode> = {
       </g>
     </g>
   ),
+  "pop-pop-pop": (
+    <g>
+      {/* popcorn pile */}
+      {[[42, 82, 11], [60, 88, 12], [78, 82, 11], [52, 72, 10], [68, 72, 10], [60, 63, 10]].map(
+        ([x, y, r], i) => (
+          <g key={i}>
+            <circle cx={x} cy={y} r={r} fill="#fffef1" />
+            <circle cx={x - r * 0.6} cy={y + r * 0.3} r={r * 0.7} fill="#fdf6e0" />
+            <circle cx={x + r * 0.6} cy={y + r * 0.3} r={r * 0.7} fill="#fff8d6" />
+          </g>
+        ),
+      )}
+      {/* Pip peeking from the pile */}
+      <ellipse cx="60" cy="46" rx="20" ry="18" fill="#f2cd0f" />
+      <circle cx="54" cy="42" r="2.6" fill="#272831" />
+      <circle cx="66" cy="42" r="2.6" fill="#272831" />
+      <path d="M 55 50 Q 60 54 65 50" stroke="#272831" strokeWidth="2.4" fill="none" strokeLinecap="round" />
+    </g>
+  ),
   "the-ship-in-the-rain": (
     <g>
       {/* sea */}

@@ -17,6 +17,20 @@ stories.sh is a web-first storybook app for kids learning to read (ages 3–7). 
 | [docs/07-poc-stories.md](docs/07-poc-stories.md) | Page-by-page briefs for the three POC stories |
 | [docs/08-design-system.md](docs/08-design-system.md) | Design tokens, type, motion — modeled on board.fun |
 
+## Authoring a story (the terminal is the CMS)
+
+```bash
+pnpm new-story my-story --title "The ..." --level 1   # scaffold with the level's phonics scope
+# edit content/my-story/story.json: pages, texts, tokens ({w, punct?, sight?}), cues, scenes
+pnpm segment my-story        # fills tokens[].g from the scope (greedy, longest-first, case-preserving)
+pnpm lint:stories my-story   # decodability gate — fix until ✓ (suggests in-scope words)
+pnpm narrate my-story        # ElevenLabs (or say fallback) → audio + word timestamps
+pnpm gen-frames my-story     # only for frames-backend pages (procedural renderer)
+pnpm dev                     # read it end-to-end in the browser
+```
+
+Coded scenes are TS modules in [src/engine/scenes/](src/engine/scenes/) implementing the Scene contract, registered in [scene.ts](src/engine/scene.ts). The linter is the pedagogical authority: every word must be decodable within the story's declared `phonicsScope` or listed as a sight word.
+
 ## Status
 
-Pre-code. The next step is an autonomous build loop executing the milestones in [docs/03-poc-requirements.md](docs/03-poc-requirements.md).
+POC in progress via the autonomous build loop — milestones M0–M6 of [docs/03-poc-requirements.md](docs/03-poc-requirements.md) complete: three playable stories (two coded scenes + one procedural frames story), three reading modes with ElevenLabs narration, celebrations/stickers, and the content pipeline above. Remaining: M7 render-to-video, M8 landing + polish.
