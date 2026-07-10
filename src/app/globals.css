@@ -47,3 +47,139 @@ body {
   color: var(--color-ink);
   font-family: var(--font-body);
 }
+
+/* ---------- reader: prose highlight states (docs/08) ---------- */
+
+.prose-line {
+  letter-spacing: 0.01em;
+  line-height: 1.6;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.prose-token {
+  display: inline-block;
+  margin-right: 0.38em;
+  border-bottom: 3px solid transparent;
+  transition: border-color 0.3s ease-out;
+}
+
+.prose-token[data-read] {
+  border-bottom-color: var(--color-read);
+}
+
+.prose-cell {
+  display: inline-block;
+  padding: 0.02em 0.03em;
+  border-radius: var(--radius-sm);
+  opacity: 0.35;
+  transition:
+    opacity 0.12s linear,
+    background-color 0.12s linear,
+    box-shadow 0.12s linear;
+}
+
+.prose-cell[data-state="lit"] {
+  opacity: 1;
+}
+
+.prose-cell[data-state="active"] {
+  opacity: 1;
+  background-color: var(--color-spark);
+  box-shadow: 0 0 14px 2px rgb(242 205 15 / 0.45);
+}
+
+.prose-punct {
+  opacity: 0.8;
+}
+
+/* ---------- reader: rail + Spark ---------- */
+
+.rail {
+  position: relative;
+  height: 12px;
+  border-radius: var(--radius-round);
+  background: var(--color-paper-deep);
+  box-shadow: inset 0 0 0 1px var(--color-paper-edge);
+  cursor: pointer;
+  touch-action: none;
+  /* generous touch target without visual bulk */
+  background-clip: padding-box;
+  border-block: 14px solid transparent;
+  box-sizing: content-box;
+  margin-block: -14px;
+}
+
+.rail:focus-visible {
+  outline: 3px solid var(--color-candy-blue);
+  outline-offset: 6px;
+}
+
+.rail-fill {
+  position: absolute;
+  inset: 0;
+  border-radius: var(--radius-round);
+  background: var(--color-read);
+  opacity: 0.45;
+  transform-origin: left center;
+  transform: scaleX(var(--t));
+  will-change: transform;
+}
+
+.spark {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 44px;
+  height: 44px;
+  display: grid;
+  place-items: center;
+  transform: translate(calc(var(--t) * var(--rail-w) * 1px - 22px), -50%);
+  will-change: transform;
+  pointer-events: none;
+}
+
+.spark-core {
+  width: 30px;
+  height: 30px;
+  border-radius: var(--radius-round);
+  background: radial-gradient(circle at 38% 32%, #fff9cf, var(--color-spark) 62%, #dcb70d);
+  box-shadow:
+    0 0 14px 5px rgb(242 205 15 / 0.5),
+    0 1px 2px rgb(39 40 49 / 0.25);
+  animation: spark-bob 2.2s ease-in-out infinite;
+}
+
+.reader[data-dragging] .spark-core {
+  animation: none;
+}
+
+.spark-core[data-hop] {
+  animation: spark-hop 0.28s ease-out;
+}
+
+@keyframes spark-bob {
+  50% {
+    transform: translateY(-3px);
+  }
+}
+
+@keyframes spark-hop {
+  30% {
+    transform: translateY(-9px) scale(1.15, 0.9);
+  }
+  100% {
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .spark-core {
+    animation: none !important;
+  }
+  .prose-cell,
+  .prose-token,
+  .rail-fill {
+    transition: none !important;
+  }
+}

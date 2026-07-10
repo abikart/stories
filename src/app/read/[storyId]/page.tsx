@@ -1,75 +1,52 @@
+import Link from "next/link";
 import { notFound } from "next/navigation";
 import { listStoryIds, loadStory } from "@/lib/stories";
-import type { Token } from "@/engine/types";
+import { Reader } from "@/components/reader/Reader";
 
 export async function generateStaticParams() {
   const ids = await listStoryIds();
   return ids.map((storyId) => ({ storyId }));
 }
 
-function Word({ token }: { token: Token }) {
-  return (
-    <span className="inline-flex items-baseline" data-sight={token.sight ? "" : undefined}>
-      {token.sight ? (
-        <span className="rounded-sm underline decoration-sight-word decoration-2 underline-offset-4">
-          {token.w}
-        </span>
-      ) : (
-        <span>
-          {token.g!.map((grapheme, i) => (
-            <span key={i} data-grapheme={grapheme}>
-              {grapheme}
-            </span>
-          ))}
-        </span>
-      )}
-      {token.punct}
-    </span>
-  );
-}
-
 /*
- * M0: renders tokenized prose from story.json — proves data → screen.
- * The interactive reader (Spark scrubber, scenes, modes) replaces this
- * from M1 onward.
+ * M1: one page at a time with the Spark scrubber. The ?p= param and the
+ * bare prev/next links are dev navigation — the real page-turn flow,
+ * celebrations, and modes arrive at M3/M4.
  */
 export default async function ReadPage({
   params,
+  searchParams,
 }: {
   params: Promise<{ storyId: string }>;
+  searchParams: Promise<{ p?: string }>;
 }) {
   const { storyId } = await params;
+  const { p } = await searchParams;
   const story = await loadStory(storyId).catch(() => null);
   if (!story) notFound();
 
+  const pageIndex = Math.min(Math.max(Number(p ?? 0) || 0, 0), story.pages.length - 1);
+  const page = story.pages[pageIndex];
+
   return (
-    <main className="mx-auto max-w-3xl px-6 py-12">
-      <header className="mb-10">
-        <h1 className="font-display text-4xl font-bold">{story.title}</h1>
-        <p className="mt-1 text-sm text-ink-soft">
-          Level {story.level} · sight words: {story.phonicsScope.sightWords.join(", ")}
-        </p>
+    <main className="mx-auto flex min-h-dvh max-w-4xl flex-col justify-center gap-6 px-6 py-10">
+      <header className="flex items-baseline justify-between">
+        <h1 className="font-display text-2xl font-semibold">{story.title}</h1>
+        <span className="text-sm text-ink-soft">
+          page {pageIndex + 1} / {story.pages.length}
+        </span>
       </header>
-      <ol className="flex flex-col gap-8">
-        {story.pages.map((page) => (
-          <li key={page.id} className="rounded-xl bg-paper-deep p-6 shadow-card">
-            <p
-              className="font-reading text-3xl font-medium leading-relaxed"
-              style={{ letterSpacing: "0.01em" }}
-            >
-              {page.tokens.map((t, i) => (
-                <span key={i}>
-                  <Word token={t} />{" "}
-                </span>
-              ))}
-            </p>
-            <p className="mt-3 text-xs text-ink-soft">
-              {page.id} · scene: {page.scene.backend}
-              {page.scene.cues?.length ? ` · ${page.scene.cues.length} cues` : ""}
-            </p>
-          </li>
-        ))}
-      </ol>
+      <Reader key={page.id} page={page} />
+      <nav className="flex justify-between text-sm text-ink-soft">
+        {pageIndex > 0 ? (
+          <Link href={`/read/${storyId}?p=${pageIndex - 1}`}>← previous</Link>
+        ) : (
+          <Link href="/">← library</Link>
+        )}
+        {pageIndex < story.pages.length - 1 && (
+          <Link href={`/read/${storyId}?p=${pageIndex + 1}`}>next →</Link>
+        )}
+      </nav>
     </main>
   );
 }
