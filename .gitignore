@@ -1,0 +1,21 @@
+# dependencies & build output
+node_modules/
+.next/
+out/
+dist/
+
+# secrets — never commit API keys
+.env
+.env.local
+.env*.local
+
+# local machine state
+.claude/settings.local.json
+.DS_Store
+
+# generated render output
+/renders/
+
+# playwright
+test-results/
+playwright-report/

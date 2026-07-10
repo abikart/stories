@@ -1,0 +1,49 @@
+@import "tailwindcss";
+
+/* Design tokens — docs/08-design-system.md ("Warm paper & candy") */
+@theme inline {
+  /* paper & ink */
+  --color-paper: #fffef1;
+  --color-paper-deep: #f2f1e5;
+  --color-paper-edge: #ededde;
+  --color-ink: #272831;
+  --color-ink-soft: #6f7066;
+
+  /* candy accents */
+  --color-candy-green: #32c992;
+  --color-candy-blue: #2760f6;
+  --color-candy-purple: #6d13ec;
+  --color-candy-orange: #f48813;
+  --color-candy-yellow: #f2cd0f;
+  --color-candy-red: #cc1d31;
+  --color-candy-teal: #9dc7c8;
+
+  /* semantic */
+  --color-spark: #f2cd0f;
+  --color-read: #32c992;
+  --color-sight-word: #9dc7c8;
+
+  /* type — variables provided by next/font in layout.tsx */
+  --font-display: var(--font-quicksand);
+  --font-body: var(--font-inter);
+  --font-reading: var(--font-lexend);
+
+  /* shape */
+  --radius-sm: 0.25rem;
+  --radius-xl: 0.75rem;
+  --radius-round: 999px;
+
+  /* depth */
+  --shadow-card: 0 2px 8px rgb(39 40 49 / 0.06), 0 8px 24px rgb(39 40 49 / 0.08);
+}
+
+:root {
+  /* per-story accent — stories override via inline style */
+  --accent: var(--color-candy-purple);
+}
+
+body {
+  background: var(--color-paper);
+  color: var(--color-ink);
+  font-family: var(--font-body);
+}

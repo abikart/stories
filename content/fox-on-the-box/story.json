@@ -1,0 +1,148 @@
+{
+  "id": "fox-on-the-box",
+  "title": "The Fox on the Box",
+  "level": 1,
+  "accent": "orange",
+  "phonicsScope": {
+    "graphemes": ["s", "a", "t", "p", "i", "n", "m", "d", "g", "o", "c", "k", "e", "u", "r", "h", "b", "f", "l", "x", "j"],
+    "sightWords": ["the", "is", "a"]
+  },
+  "pages": [
+    {
+      "id": "p1",
+      "text": "The fox sat on the box.",
+      "tokens": [
+        { "w": "The", "sight": true },
+        { "w": "fox", "g": ["f", "o", "x"] },
+        { "w": "sat", "g": ["s", "a", "t"] },
+        { "w": "on", "g": ["o", "n"] },
+        { "w": "the", "sight": true },
+        { "w": "box", "g": ["b", "o", "x"], "punct": "." }
+      ],
+      "scene": {
+        "backend": "coded",
+        "module": "fox-box",
+        "cues": [{ "atWord": 2, "cue": "sit" }]
+      }
+    },
+    {
+      "id": "p2",
+      "text": "The box is big.",
+      "tokens": [
+        { "w": "The", "sight": true },
+        { "w": "box", "g": ["b", "o", "x"] },
+        { "w": "is", "sight": true },
+        { "w": "big", "g": ["b", "i", "g"], "punct": "." }
+      ],
+      "scene": {
+        "backend": "coded",
+        "module": "fox-box",
+        "cues": [{ "atWord": 3, "cue": "reveal" }]
+      }
+    },
+    {
+      "id": "p3",
+      "text": "A bug is on the box.",
+      "tokens": [
+        { "w": "A", "sight": true },
+        { "w": "bug", "g": ["b", "u", "g"] },
+        { "w": "is", "sight": true },
+        { "w": "on", "g": ["o", "n"] },
+        { "w": "the", "sight": true },
+        { "w": "box", "g": ["b", "o", "x"], "punct": "." }
+      ],
+      "scene": {
+        "backend": "coded",
+        "module": "fox-box",
+        "cues": [{ "atWord": 1, "cue": "crawl" }]
+      }
+    },
+    {
+      "id": "p4",
+      "text": "The fox met the bug.",
+      "tokens": [
+        { "w": "The", "sight": true },
+        { "w": "fox", "g": ["f", "o", "x"] },
+        { "w": "met", "g": ["m", "e", "t"] },
+        { "w": "the", "sight": true },
+        { "w": "bug", "g": ["b", "u", "g"], "punct": "." }
+      ],
+      "scene": {
+        "backend": "coded",
+        "module": "fox-box",
+        "cues": [{ "atWord": 2, "cue": "lean" }]
+      }
+    },
+    {
+      "id": "p5",
+      "text": "The bug hops on the fox!",
+      "tokens": [
+        { "w": "The", "sight": true },
+        { "w": "bug", "g": ["b", "u", "g"] },
+        { "w": "hops", "g": ["h", "o", "p", "s"] },
+        { "w": "on", "g": ["o", "n"] },
+        { "w": "the", "sight": true },
+        { "w": "fox", "g": ["f", "o", "x"], "punct": "!" }
+      ],
+      "scene": {
+        "backend": "coded",
+        "module": "fox-box",
+        "cues": [{ "atWord": 2, "cue": "hop" }]
+      }
+    },
+    {
+      "id": "p6",
+      "text": "The fox hops on the box!",
+      "tokens": [
+        { "w": "The", "sight": true },
+        { "w": "fox", "g": ["f", "o", "x"] },
+        { "w": "hops", "g": ["h", "o", "p", "s"] },
+        { "w": "on", "g": ["o", "n"] },
+        { "w": "the", "sight": true },
+        { "w": "box", "g": ["b", "o", "x"], "punct": "!" }
+      ],
+      "scene": {
+        "backend": "coded",
+        "module": "fox-box",
+        "cues": [
+          { "atWord": 2, "cue": "jump" },
+          { "atWord": 5, "cue": "land" }
+        ]
+      }
+    },
+    {
+      "id": "p7",
+      "text": "The box tips!",
+      "tokens": [
+        { "w": "The", "sight": true },
+        { "w": "box", "g": ["b", "o", "x"] },
+        { "w": "tips", "g": ["t", "i", "p", "s"], "punct": "!" }
+      ],
+      "scene": {
+        "backend": "coded",
+        "module": "fox-box",
+        "cues": [{ "atWord": 2, "cue": "wobble" }]
+      }
+    },
+    {
+      "id": "p8",
+      "text": "The fox and the bug sit in the box.",
+      "tokens": [
+        { "w": "The", "sight": true },
+        { "w": "fox", "g": ["f", "o", "x"] },
+        { "w": "and", "g": ["a", "n", "d"] },
+        { "w": "the", "sight": true },
+        { "w": "bug", "g": ["b", "u", "g"] },
+        { "w": "sit", "g": ["s", "i", "t"] },
+        { "w": "in", "g": ["i", "n"] },
+        { "w": "the", "sight": true },
+        { "w": "box", "g": ["b", "o", "x"], "punct": "." }
+      ],
+      "scene": {
+        "backend": "coded",
+        "module": "fox-box",
+        "cues": [{ "atWord": 5, "cue": "peek" }]
+      }
+    }
+  ]
+}
