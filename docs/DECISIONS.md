@@ -1,5 +1,11 @@
 # Build decisions log
 
+## Video scenes (2026-07-10, post-M8)
+
+- **Delivered AI clips become frames, not `<video>` elements** (v1): `currentTime` scrubbing is jank-prone without dense keyframes; exploded JPEG frames (12 samples/sec, 48–96/page, 1280×720) reuse the proven FramesScene — identical behavior in reader + render, dormancy/cues free. Native video backend deferred for long ambient pages.
+- **Slider-sync constrains generation**: prompts hard-require one continuous slow strictly-forward take ending settled — cyclic/cut motion feels broken under a scrub. Continuity via videoBrief (style/world/characters/shots) stored in story.json and repeated verbatim per prompt.
+- Verified end-to-end with a synthetic ffmpeg clip: ingest → 72 frames → scene rewired with cues preserved → scrubs in-browser (distinct frame hashes at t=0/0.5/0.95).
+
 Divergences from the spec docs, made during the build per the guardrails in
 [03-poc-requirements.md](03-poc-requirements.md). Newest first.
 

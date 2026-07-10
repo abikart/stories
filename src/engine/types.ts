@@ -42,8 +42,8 @@ export const SceneSpecSchema = z.discriminatedUnion("backend", [
       /** Directory of frames relative to the story dir. */
       dir: z.string().min(1),
       count: z.number().int().min(2),
-      /** Frame file extension (webp when an encoder is available). */
-      ext: z.enum(["webp", "png"]).default("png"),
+      /** Frame file extension (webp when an encoder is available; jpg for video-derived painterly frames). */
+      ext: z.enum(["webp", "png", "jpg"]).default("png"),
     }),
     cues: z.array(CueSchema).optional(),
   }),
@@ -73,11 +73,26 @@ export const PhonicsScopeSchema = z.object({
   sightWords: z.array(z.string().min(1)),
 });
 
+/** Authoring metadata for AI-video scenes (docs/09): feeds the prompt-pack generator. */
+export const VideoBriefSchema = z
+  .object({
+    /** Global art direction, e.g. "soft watercolor, Studio Ghibli-inspired". */
+    style: z.string(),
+    /** The recurring setting, kept identical across every shot for continuity. */
+    world: z.string(),
+    /** Character continuity sheet — repeated verbatim in every page prompt. */
+    characters: z.array(z.string()),
+    /** Per-page shot description keyed by page id. */
+    shots: z.record(z.string(), z.string()),
+  })
+  .partial();
+
 export const StorySchema = z.object({
   id: z.string().min(1),
   title: z.string().min(1),
   level: z.number().int().min(1),
   phonicsScope: PhonicsScopeSchema,
+  videoBrief: VideoBriefSchema.optional(),
   /** Ambient audio bed relative to the story dir. */
   ambient: z.string().optional(),
   /** Reward sticker image relative to the story dir. */

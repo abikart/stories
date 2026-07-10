@@ -16,6 +16,7 @@ stories.sh is a web-first storybook app for kids learning to read (ages 3–7). 
 | [docs/06-content-pipeline.md](docs/06-content-pipeline.md) | AI authoring workflow, decodability linter, TTS, video render, YouTube |
 | [docs/07-poc-stories.md](docs/07-poc-stories.md) | Page-by-page briefs for the three POC stories |
 | [docs/08-design-system.md](docs/08-design-system.md) | Design tokens, type, motion — modeled on board.fun |
+| [docs/09-video-scenes.md](docs/09-video-scenes.md) | AI-video scene workflow: prompt packs → Grok Imagine → ingest |
 
 ## Authoring a story (the terminal is the CMS)
 
@@ -26,6 +27,8 @@ pnpm segment my-story        # fills tokens[].g from the scope (greedy, longest-
 pnpm lint:stories my-story   # decodability gate — fix until ✓ (suggests in-scope words)
 pnpm narrate my-story        # ElevenLabs (or say fallback) → audio + word timestamps
 pnpm gen-frames my-story     # only for frames-backend pages (procedural renderer)
+pnpm video-prompts my-story --style ghibli   # prompt pack for AI video (Grok Imagine etc.)
+pnpm ingest-video my-story   # explode delivered clips in video-drops/ into scrub scenes
 pnpm dev                     # read it end-to-end in the browser
 ```
 

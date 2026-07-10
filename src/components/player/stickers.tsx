@@ -46,6 +46,28 @@ const STICKER_ART: Record<string, React.ReactNode> = {
       </g>
     </g>
   ),
+  "the-boat-in-the-mist": (
+    <g>
+      {/* misty water */}
+      <path d="M14 74 Q30 70 46 74 T78 74 T106 74 L106 92 A56 56 0 0 1 14 92 Z" fill="#9dc7c8" opacity="0.7" />
+      {/* mist bands */}
+      <ellipse cx="40" cy="52" rx="24" ry="6" fill="#fffef1" opacity="0.8" />
+      <ellipse cx="82" cy="44" rx="20" ry="5" fill="#fffef1" opacity="0.7" />
+      {/* boat */}
+      <path d="M40 62 L80 62 L72 74 L48 74 Z" fill="#8a5a3c" />
+      <circle cx="46" cy="58" r="4" fill="#f2cd0f" />
+      {/* fish peeking */}
+      <g transform="translate(88 62)">
+        <ellipse cx="0" cy="0" rx="10" ry="7" fill="#9dc7c8" />
+        <circle cx="-4" cy="-2" r="1.8" fill="#272831" />
+        <circle cx="-7" cy="1.5" r="1.6" fill="#f4a9b8" />
+        <path d="M 8 -4 Q 14 0 8 4 Z" fill="#7fb0b2" />
+      </g>
+      {/* song bubbles */}
+      <circle cx="96" cy="46" r="2.4" fill="#fffef1" opacity="0.9" />
+      <circle cx="101" cy="38" r="1.8" fill="#fffef1" opacity="0.7" />
+    </g>
+  ),
   "pop-pop-pop": (
     <g>
       {/* popcorn pile */}

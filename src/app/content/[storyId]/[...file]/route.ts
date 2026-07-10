@@ -12,6 +12,7 @@ const TYPES: Record<string, string> = {
   ".json": "application/json",
   ".webp": "image/webp",
   ".png": "image/png",
+  ".jpg": "image/jpeg",
 };
 
 export async function GET(
