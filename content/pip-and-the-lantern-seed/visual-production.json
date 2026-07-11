@@ -1,0 +1,55 @@
+{
+  "provider": "Grok Imagine",
+  "project": "stories.sh",
+  "agent": "Pip and the Lantern Seed — golden assets",
+  "agentUrl": "https://grok.com/imagine/agent/local-canvas-203a7476-4916-4f1b-87e1-e47b083dd7a7",
+  "masterAspectRatio": "16:9",
+  "actionSafe": "center-4:3",
+  "reference": {
+    "cardId": "50d27e",
+    "status": "approved-downloaded",
+    "file": "references/world-reference.jpg",
+    "width": 1792,
+    "height": 1008
+  },
+  "blocker": "Cloudflare human verification appeared after Scene 01 generation; do not solve without the user.",
+  "states": [
+    {
+      "id": "the-cold-lantern-idle",
+      "scene": "the-cold-lantern",
+      "role": "idle-loop",
+      "cardId": "7ddb0b",
+      "status": "generated-on-canvas-awaiting-download"
+    },
+    {
+      "id": "the-tiny-light-action",
+      "scene": "the-tiny-light",
+      "role": "action-once",
+      "status": "pending"
+    },
+    {
+      "id": "the-blue-dark-idle",
+      "scene": "the-blue-dark",
+      "role": "idle-loop",
+      "status": "pending"
+    },
+    {
+      "id": "the-blue-dark-resolve",
+      "scene": "the-blue-dark",
+      "role": "resolve-loop",
+      "status": "pending"
+    },
+    {
+      "id": "the-lantern-blooms",
+      "scene": "the-lantern-blooms",
+      "role": "living-illustration",
+      "status": "pending"
+    },
+    {
+      "id": "the-window-idle",
+      "scene": "the-window",
+      "role": "idle-loop",
+      "status": "pending"
+    }
+  ]
+}

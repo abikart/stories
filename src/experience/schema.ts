@@ -51,6 +51,11 @@ export const PerformanceSchema = z.object({
   model: z.string().min(1),
   selectedCandidate: z.string().min(1),
   candidatesManifest: z.string().min(1),
+  stems: z.object({
+    music: z.string().min(1).optional(),
+    ambience: z.string().min(1).optional(),
+    effects: z.string().min(1).optional(),
+  }).optional(),
 });
 
 export const MediaStateSchema = z.object({

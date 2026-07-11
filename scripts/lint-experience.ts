@@ -28,6 +28,14 @@ async function main() {
         JSON.parse(await fs.readFile(productionPath, "utf8")),
       );
       const assets = new Set<string>([production.stage.backdrop.poster]);
+      if (production.performance) {
+        assets.add(production.performance.audio);
+        assets.add(production.performance.alignment);
+        assets.add(production.performance.candidatesManifest);
+        Object.values(production.performance.stems ?? {}).forEach((asset) => {
+          if (asset) assets.add(asset);
+        });
+      }
       for (const scene of production.scenes) {
         const graph = createMediaGraph(scene);
         if (scene.interaction) {

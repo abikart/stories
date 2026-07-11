@@ -3,6 +3,25 @@
 Newest decisions go first. Record meaningful divergences, tradeoffs, and quality
 gates; do not duplicate routine implementation details.
 
+## 2026-07-11 — M6 soundscape and visual reference
+
+- The golden soundscape uses separate narration, music, ambience, and effect
+  elements so Read-mode waits and deterministic film rendering share the same
+  real-seconds clock. `Soundscape` is isolated from visual scene renders behind
+  an imperative play/pause/seek controller.
+- The score and source effects come from ElevenLabs; untouched generations,
+  prompts, provider IDs, response cost metadata, normalized stems, cue times,
+  mix ratios, and a stereo preview are stored with the story package.
+- Narration remains the intelligibility anchor. Delivery targets are about -16
+  LUFS narration, -24 LUFS music, and -32 LUFS ambience; runtime gains remain
+  conservative. The preview measures -15.77 LUFS and -3.91dB true peak.
+- Grok's approved world reference establishes an original gouache-watercolor
+  language and exact Pip/Glow/lantern continuity. It is a 1792×1008 16:9 asset;
+  no named artist or studio appears in the prompts.
+- Visual production is resumable from the exact Grok agent URL and card IDs in
+  `visual-production.json`. A Cloudflare verification challenge is a user gate,
+  not permission to automate or route around it.
+
 ## 2026-07-11 — M5 drag-to-guide
 
 - The hero interaction is bound to `the-blue-dark` after phrase `p10`: Glow has

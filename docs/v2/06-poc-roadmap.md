@@ -98,7 +98,9 @@ result is credible as both a launch demo and a YouTube story.
 - M5 complete: data-bound drag-to-guide recipe, safe-stop release, pointer/touch
   capture, keyboard equivalent, failed-drop return, reduced motion, media-state
   resolution, focused fixture, and automatic Watch path.
-- M6 next: approved golden visuals, motion states, ambience, music, and effects.
+- M6 in progress: golden soundscape and approved Grok reference are complete;
+  Scene 01 is generated on the saved canvas. Remaining keyframes/videos and
+  integration await the visible Cloudflare human-verification step.
 
 Do not start Story Studio, migrate old stories, or add more interaction recipes
 before the media state machine and expressive performance timeline are verified.

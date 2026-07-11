@@ -54,6 +54,15 @@ Last updated: 2026-07-10
   and reduced motion resolves without travel animation.
 - `/dev/drag-to-guide` is the focused recipe fixture sourced from the production
   binding rather than duplicate fixture coordinates.
+- M6 sound production is complete: ElevenLabs instrumental score, seamless
+  woodland ambience, three timed effects, normalized delivery stems, source
+  provenance, and a stereo mix preview. Runtime stems remain within 31ms of the
+  narration after play, pause, and arbitrary seek.
+- The approved 1792×1008 Grok world/character reference is stored at
+  `content/pip-and-the-lantern-seed/references/world-reference.jpg`.
+- The Grok agent generated the Scene 01 cold-lantern keyframe on its canvas, then
+  Cloudflare presented a human-verification challenge. The canvas and exact URL
+  are recorded in `visual-production.json`; do not solve the CAPTCHA without Zo.
 
 ## Fixed decisions
 
@@ -66,11 +75,10 @@ Last updated: 2026-07-10
 
 ## Immediate next action
 
-Implement M6: replace the technical placeholder with approved Grok-generated
-key illustrations, motion states, posters, ambience, music, and effects. Use a
-fresh agent inside the authorized `stories.sh` project, preserve character and
-world continuity, validate centered 4:3 action safety, and integrate delivery
-assets into the existing production package and player.
+Zo must complete the visible Cloudflare human verification in the saved Grok
+agent. Then resume that exact canvas: download Scene 01, generate/download Scenes
+02–05 plus the blue-dark resolve state, animate all six states, integrate videos
+and extracted posters, and run the full continuity/action-safe/phone-speaker QA.
 
 ## Verification baseline
 
@@ -95,6 +103,9 @@ M5 QA confirmed keyboard completion, actual pointer drag completion, failed-drop
 return, media transition to `resolve`, automatic Watch completion, and narration
 resume from the same master. The interaction fixture passed all five viewports
 with no overflow, a 52px draggable, and a target no smaller than 44×44px.
+M6 sound QA confirmed four synchronized audio elements, play/pause parity, 50s
+seek parity, restart drift no greater than 31ms, clean console, -15.77 LUFS mix
+preview, -3.91dB true peak, and effect activity at 25.25s, 47.4s, and 64.2s.
 
 ## Session close protocol
 

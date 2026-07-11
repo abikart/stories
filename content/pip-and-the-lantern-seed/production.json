@@ -22,7 +22,12 @@
     "duration": 77.6,
     "model": "eleven_v3",
     "selectedCandidate": "george-natural-a",
-    "candidatesManifest": "audio/candidates/manifest.json"
+    "candidatesManifest": "audio/candidates/manifest.json",
+    "stems": {
+      "music": "audio/music.mp3",
+      "ambience": "audio/ambience.mp3",
+      "effects": "audio/effects.mp3"
+    }
   },
   "scenes": [
     {
@@ -528,42 +533,6 @@
         "idle",
         "resolve"
       ],
-      "interaction": {
-        "recipe": "drag-to-guide",
-        "triggerAfterPhrase": "p10",
-        "prompt": "Guide Glow's light home to Pip.",
-        "startRegion": {
-          "x": 0.62,
-          "y": 0.38,
-          "width": 0.1,
-          "height": 0.12
-        },
-        "targetRegion": {
-          "x": 0.28,
-          "y": 0.5,
-          "width": 0.13,
-          "height": 0.16
-        },
-        "path": [
-          {
-            "x": 0.67,
-            "y": 0.44
-          },
-          {
-            "x": 0.56,
-            "y": 0.37
-          },
-          {
-            "x": 0.45,
-            "y": 0.51
-          },
-          {
-            "x": 0.345,
-            "y": 0.58
-          }
-        ],
-        "completeMediaState": "resolve"
-      },
       "phrases": [
         {
           "id": "p08",
@@ -903,7 +872,43 @@
             "mobilePolicy": "dock"
           }
         }
-      ]
+      ],
+      "interaction": {
+        "recipe": "drag-to-guide",
+        "triggerAfterPhrase": "p10",
+        "prompt": "Guide Glow's light home to Pip.",
+        "startRegion": {
+          "x": 0.62,
+          "y": 0.38,
+          "width": 0.1,
+          "height": 0.12
+        },
+        "targetRegion": {
+          "x": 0.28,
+          "y": 0.5,
+          "width": 0.13,
+          "height": 0.16
+        },
+        "path": [
+          {
+            "x": 0.67,
+            "y": 0.44
+          },
+          {
+            "x": 0.56,
+            "y": 0.37
+          },
+          {
+            "x": 0.45,
+            "y": 0.51
+          },
+          {
+            "x": 0.345,
+            "y": 0.58
+          }
+        ],
+        "completeMediaState": "resolve"
+      }
     },
     {
       "id": "the-lantern-blooms",

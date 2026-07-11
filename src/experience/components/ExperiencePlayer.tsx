@@ -19,6 +19,7 @@ import {
 } from "@/experience/performance/PerformanceClock";
 import { flattenPhrases } from "@/experience/performance/timeline";
 import { DragToGuide } from "@/experience/interactions/DragToGuide";
+import { Soundscape, type SoundscapeHandle } from "@/experience/audio/Soundscape";
 
 type PlayerMode = "watch" | "read";
 
@@ -58,6 +59,7 @@ export function ExperiencePlayer({ production }: { production: ExperienceProduct
     phrase.safeStopAfter ? [{ id: phrase.id, phraseIndex, time: phrase.end }] : []
   )), [phrases]);
   const audioRef = useRef<HTMLAudioElement>(null);
+  const soundscapeRef = useRef<SoundscapeHandle>(null);
   const clockRef = useRef<PerformanceClock | null>(null);
   const unsubscribeRef = useRef<(() => void) | null>(null);
   const deckRef = useRef<MediaDeckHandle>(null);
@@ -96,7 +98,8 @@ export function ExperiencePlayer({ production }: { production: ExperienceProduct
     if (!clock) return;
     setPlaybackError("");
     try {
-      await clock.play();
+      const time = audioRef.current?.currentTime ?? 0;
+      await Promise.all([clock.play(), soundscapeRef.current?.play(time)]);
     } catch {
       setPlaybackError("Your browser blocked narration. Tap play again or open the story in Chrome or Safari.");
     }
@@ -115,6 +118,8 @@ export function ExperiencePlayer({ production }: { production: ExperienceProduct
 
   useEffect(() => {
     void deckRef.current?.setPlaying(snapshot.playing);
+    if (!snapshot.playing) soundscapeRef.current?.pause();
+    soundscapeRef.current?.seek(snapshot.time);
   }, [activeSceneIndex, snapshot.playing]);
 
   useEffect(() => {
@@ -186,9 +191,8 @@ export function ExperiencePlayer({ production }: { production: ExperienceProduct
       clock.pause();
     } else if (snapshot.ended || snapshot.time >= performance.duration - 0.05) {
       setStopCursor(0);
-      void clock.replay().catch(() => {
-        setPlaybackError("Your browser blocked narration. Tap play again or open the story in Chrome or Safari.");
-      });
+      clock.seek(0);
+      void play(clock);
     } else {
       void play(clock);
     }
@@ -203,9 +207,8 @@ export function ExperiencePlayer({ production }: { production: ExperienceProduct
     setActiveSceneIndex(0);
     setCompletedInteractions(new Set());
     setPlaybackError("");
-    void clock.replay().catch(() => {
-      setPlaybackError("Your browser blocked narration. Tap play again or open the story in Chrome or Safari.");
-    });
+    clock.seek(0);
+    void play(clock);
   }
 
   function seek(time: number) {
@@ -221,6 +224,7 @@ export function ExperiencePlayer({ production }: { production: ExperienceProduct
       }
       return next;
     });
+    soundscapeRef.current?.seek(time);
     clockRef.current?.seek(time);
   }
 
@@ -321,6 +325,9 @@ export function ExperiencePlayer({ production }: { production: ExperienceProduct
           onLoadedMetadata={(event) => initializeClock(event.currentTarget)}
           onCanPlay={(event) => initializeClock(event.currentTarget)}
         />
+        {performance.stems ? (
+          <Soundscape ref={soundscapeRef} storyId={production.id} stems={performance.stems} />
+        ) : null}
 
         <div className="story-transport" aria-label="Story controls">
           <button className="story-icon-button" type="button" onClick={replay} aria-label="Replay story">
