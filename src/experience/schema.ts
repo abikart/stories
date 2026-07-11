@@ -31,7 +31,21 @@ export const PhraseSchema = z.object({
   start: z.number().min(0),
   end: z.number().positive(),
   safeStopAfter: z.boolean().optional(),
+  words: z.array(z.object({
+    text: z.string().min(1),
+    start: z.number().min(0),
+    end: z.number().positive(),
+  })).optional(),
   overlay: OverlayPlacementSchema,
+});
+
+export const PerformanceSchema = z.object({
+  audio: z.string().min(1),
+  alignment: z.string().min(1),
+  duration: z.number().positive(),
+  model: z.string().min(1),
+  selectedCandidate: z.string().min(1),
+  candidatesManifest: z.string().min(1),
 });
 
 export const MediaStateSchema = z.object({
@@ -58,6 +72,7 @@ export const ExperienceProductionSchema = z.object({
   logline: z.string().min(1),
   accent: z.string().min(1),
   stage: StageContractSchema,
+  performance: PerformanceSchema.optional(),
   scenes: z.array(ExperienceSceneSchema).min(1),
 });
 
@@ -65,6 +80,7 @@ export type Point = z.infer<typeof PointSchema>;
 export type StageContract = z.infer<typeof StageContractSchema>;
 export type OverlayPlacement = z.infer<typeof OverlayPlacementSchema>;
 export type ExperiencePhrase = z.infer<typeof PhraseSchema>;
+export type Performance = z.infer<typeof PerformanceSchema>;
 export type MediaState = z.infer<typeof MediaStateSchema>;
 export type ExperienceScene = z.infer<typeof ExperienceSceneSchema>;
 export type ExperienceProduction = z.infer<typeof ExperienceProductionSchema>;

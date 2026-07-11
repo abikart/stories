@@ -1,0 +1,35 @@
+{
+  "cleanText": "In Bramble Hollow, every door glowed before moonrise. Every door but Pip's. Pip was the smallest lantern keeper, and tonight her lantern would not wake. She polished the glass. She whispered, “Please?” Nothing. Then a tiny light blinked beneath the ferns. It was Glow, a firefly caught in a silver spider thread. “Hold still,” said Pip. She tugged once. Twice. Pop! Glow floated free. But the path home had vanished into the blue dark. Pip's wings trembled. “I don't know the way.” Glow hovered beside her. “Then we will find it together.” Past the sleepy mushrooms, across the whispering creek, and under the leaning pine they went. Pip followed the little warm light. At her doorstep, Glow circled the cold lantern. One golden spark slipped inside. The lantern bloomed. “You woke it!” Pip cheered. Glow shook his head. “We did.” From that night on, Pip left one window glowing for anyone who had lost the way.",
+  "directedText": "[warmly, with quiet bedtime wonder] In Bramble Hollow, every door glowed before moonrise. Every door but Pip's. [gently concerned] Pip was the smallest lantern keeper, and tonight her lantern would not wake. She polished the glass. She whispered, “Please?” ... Nothing. [brightening with curiosity] Then a tiny light blinked beneath the ferns. It was Glow, a firefly caught in a silver spider thread. [softly reassuring] “Hold still,” said Pip. She tugged once. Twice. [playfully] Pop! Glow floated free. [the warmth gives way to a hush] But the path home had vanished into the blue dark. Pip's wings trembled. [small and honest] “I don't know the way.” [gentle and certain] Glow hovered beside her. “Then we will find it together.” [with a light, walking rhythm] Past the sleepy mushrooms, across the whispering creek, and under the leaning pine they went. Pip followed the little warm light. [building soft anticipation] At her doorstep, Glow circled the cold lantern. One golden spark slipped inside. [with wonder, allowing the moment to open] The lantern bloomed. [delighted] “You woke it!” Pip cheered. [fondly] Glow shook his head. “We did.” [quietly luminous, like closing a beloved book] From that night on, Pip left one window glowing for anyone who had lost the way.",
+  "targetDurationSeconds": 78,
+  "candidates": [
+    {
+      "id": "george-natural-a",
+      "voiceId": "JBFqnCBsd6RMkjVDRZzb",
+      "voiceName": "George — Warm Captivating Storyteller",
+      "stability": 0.5,
+      "preference": 1
+    },
+    {
+      "id": "george-creative-b",
+      "voiceId": "JBFqnCBsd6RMkjVDRZzb",
+      "voiceName": "George — Warm Captivating Storyteller",
+      "stability": 0,
+      "preference": 0.96
+    },
+    {
+      "id": "bella-natural-a",
+      "voiceId": "hpp4J3VqNfWAUOO0d1Us",
+      "voiceName": "Bella — Bright and Warm",
+      "stability": 0.5,
+      "preference": 0.9
+    },
+    {
+      "id": "bella-creative-b",
+      "voiceId": "hpp4J3VqNfWAUOO0d1Us",
+      "voiceName": "Bella — Bright and Warm",
+      "stability": 0,
+      "preference": 0.86
+    }
+  ]
+}

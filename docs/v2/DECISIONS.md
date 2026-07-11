@@ -3,6 +3,28 @@
 Newest decisions go first. Record meaningful divergences, tradeoffs, and quality
 gates; do not duplicate routine implementation details.
 
+## 2026-07-11 — M3 expressive performance
+
+- The golden story is **Pip and the Lantern Seed**, a 77.6-second Bramble Hollow
+  story for ages 5–7. Its theme is reciprocal help, expressed through action
+  and the closing image rather than an explained moral.
+- Generate and align one continuous performance. Phrase and word timing are
+  metadata over that master; Read-with-me must never assemble speech from
+  per-word clips.
+- Four Eleven v3 candidates used two voice profiles and two stability settings.
+  Candidate selection combines the intended warm storyteller profile with fit
+  to the 78-second target; all candidates and provenance remain in the package.
+- The delivery master is loudness-normalized toward -16 LUFS while untouched
+  generation candidates remain available for audit. Normalization does not
+  alter the forced-alignment timeline.
+- The native `HTMLAudioElement` is the performance-clock authority. React state
+  samples it for UI but does not maintain a competing elapsed-time clock.
+- Safe stops are authored only after complete phrases. Read-with-me may pause at
+  those points, never between words or by replacing expressive audio.
+- Exact responsive QA uses a same-origin iframe harness at `/dev/viewport` when
+  the browser's viewport override is unavailable. The content frame—not an
+  approximate CSS mock—is the measured viewport.
+
 ## 2026-07-11 — M2 native media deck
 
 - The media runtime owns exactly two slots: the active state and one likely-next

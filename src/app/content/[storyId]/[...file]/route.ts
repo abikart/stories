@@ -14,6 +14,7 @@ const TYPES: Record<string, string> = {
   ".webp": "image/webp",
   ".png": "image/png",
   ".jpg": "image/jpeg",
+  ".svg": "image/svg+xml",
 };
 
 export async function GET(

@@ -26,6 +26,17 @@ Last updated: 2026-07-10
   legal transitions, interruptible crossfades, canonical driver, and fallback.
 - `pnpm lint:experiences` validates v2 schemas, graphs, canonical paths, and
   referenced assets.
+- M3 expressive performance timeline is complete at `/dev/performance` for the
+  original golden story, **Pip and the Lantern Seed**.
+- Four whole-story Eleven v3 candidates cost 5,104 directed characters total.
+  `george-natural-a` is the selected 77.6-second performance; the final master
+  is mono 44.1kHz/128kbps and loudness-normalized near -16 LUFS.
+- Eleven forced alignment produced 156 timed spoken words across 18 phrases,
+  five scenes, and nine authored safe stops with 0.0342 alignment loss.
+- `PerformanceClock` keeps the native audio element authoritative and drives
+  phrase/word state, seek, pause, and replay from real seconds.
+- `/dev/viewport` is the reusable exact-size same-origin QA harness when a
+  browser's viewport override is unavailable.
 
 ## Fixed decisions
 
@@ -38,10 +49,10 @@ Last updated: 2026-07-10
 
 ## Immediate next action
 
-Implement M3: author the original 60–90 second golden story and performance
-direction, generate 3–5 continuous Eleven v3 candidates within the 50k-credit
-cap, select a provisional final performance, run forced alignment, and store
-audio, prompts, candidate metadata, phrases, safe stops, and provenance.
+Implement M4: turn the responsive stage and performance clock into the reusable
+Watch / Read-with-me player. Add mode switching, a narration ribbon, dialogue
+bubbles, aligned word highlighting, safe-stop waiting, pause/resume, and replay
+without introducing per-word audio or story-specific runtime code.
 
 ## Verification baseline
 
@@ -53,6 +64,10 @@ M2 browser QA additionally confirmed canonical completion at `resolve`, active
 transition cancellation, healthy-current fallback after a failed standby clip,
 exactly two mounted video elements, one active layer, all five viewports, and a
 clean browser console.
+M3 Chrome QA confirmed uninterrupted audio playback, pause/resume, exact seek
+to 58.2s (`Glow`), word highlighting, and replay to the opening phrase. The
+390×844, 430×932, 768×1024, 1024×768, and 1440×900 framed matrix has no
+horizontal overflow; every action and seek control is at least 44px high.
 
 ## Session close protocol
 

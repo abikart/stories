@@ -89,7 +89,10 @@ result is credible as both a launch demo and a YouTube story.
 - M1 complete: responsive cinematic stage and schema-v2 fixture.
 - M2 complete: two-slot native media deck, legal graph transitions, canonical
   driver, cancellation, and poster-backed failure recovery.
-- M3 next: original golden story and expressive aligned performance.
+- M3 complete: original 77.6-second golden story, four Eleven v3 whole-story
+  candidates, selected normalized performance, forced alignment, 18 phrases,
+  156 timed words, nine safe stops, and a real-seconds audio clock.
+- M4 next: reusable Watch and Read-with-me modes on the responsive stage.
 
 Do not start Story Studio, migrate old stories, or add more interaction recipes
 before the media state machine and expressive performance timeline are verified.

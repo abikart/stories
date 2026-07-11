@@ -1,0 +1,69 @@
+{
+  "generatedAt": "2026-07-11T05:10:31.330Z",
+  "model": "eleven_v3",
+  "directedCharactersPerCandidate": 1276,
+  "totalCharactersCharged": 5104,
+  "selectionMethod": "editorial voice-profile preference plus target-duration fit",
+  "targetDurationSeconds": 78,
+  "selected": "george-natural-a",
+  "alignmentLoss": 0.03416895604683199,
+  "normalization": {
+    "integratedLufs": -16,
+    "loudnessRange": 11,
+    "truePeakDb": -1.5
+  },
+  "candidates": [
+    {
+      "id": "george-natural-a",
+      "voiceId": "JBFqnCBsd6RMkjVDRZzb",
+      "voiceName": "George — Warm Captivating Storyteller",
+      "stability": 0.5,
+      "preference": 1,
+      "file": "audio/candidates/george-natural-a.mp3",
+      "duration": 77.6,
+      "bytes": 1242636,
+      "generatedAt": "2026-07-11T05:09:06.884Z",
+      "model": "eleven_v3",
+      "charactersCharged": 1276
+    },
+    {
+      "id": "george-creative-b",
+      "voiceId": "JBFqnCBsd6RMkjVDRZzb",
+      "voiceName": "George — Warm Captivating Storyteller",
+      "stability": 0,
+      "preference": 0.96,
+      "file": "audio/candidates/george-creative-b.mp3",
+      "duration": 74.16,
+      "bytes": 1187466,
+      "generatedAt": "2026-07-11T05:09:36.309Z",
+      "model": "eleven_v3",
+      "charactersCharged": 1276
+    },
+    {
+      "id": "bella-natural-a",
+      "voiceId": "hpp4J3VqNfWAUOO0d1Us",
+      "voiceName": "Bella — Bright and Warm",
+      "stability": 0.5,
+      "preference": 0.9,
+      "file": "audio/candidates/bella-natural-a.mp3",
+      "duration": 74.56,
+      "bytes": 1194153,
+      "generatedAt": "2026-07-11T05:10:04.377Z",
+      "model": "eleven_v3",
+      "charactersCharged": 1276
+    },
+    {
+      "id": "bella-creative-b",
+      "voiceId": "hpp4J3VqNfWAUOO0d1Us",
+      "voiceName": "Bella — Bright and Warm",
+      "stability": 0,
+      "preference": 0.86,
+      "file": "audio/candidates/bella-creative-b.mp3",
+      "duration": 71.92,
+      "bytes": 1151939,
+      "generatedAt": "2026-07-11T05:10:31.330Z",
+      "model": "eleven_v3",
+      "charactersCharged": 1276
+    }
+  ]
+}

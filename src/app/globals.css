@@ -915,3 +915,219 @@ html[data-easy-read] .prose-line {
     transition-duration: 80ms;
   }
 }
+
+/* ---------- v2 expressive performance audition ---------- */
+
+.performance-audition {
+  position: relative;
+  isolation: isolate;
+  min-height: 100dvh;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  padding: max(20px, env(safe-area-inset-top)) max(16px, env(safe-area-inset-right)) max(20px, env(safe-area-inset-bottom)) max(16px, env(safe-area-inset-left));
+  background: #20335c;
+}
+
+.performance-audition-backdrop {
+  position: absolute;
+  z-index: -1;
+  inset: -34px;
+  background-image: var(--audition-backdrop);
+  background-position: center;
+  background-size: cover;
+  filter: blur(28px) brightness(0.72) saturate(0.84);
+  transform: scale(1.06);
+}
+
+.performance-audition-card {
+  width: min(1040px, 100%);
+  display: grid;
+  grid-template-columns: minmax(0, 1.08fr) minmax(340px, 0.92fr);
+  padding: 10px;
+  border-radius: 32px;
+  background: rgb(255 254 241 / 0.92);
+  box-shadow:
+    0 0 0 1px rgb(255 255 255 / 0.1),
+    0 22px 70px rgb(12 18 37 / 0.34);
+  backdrop-filter: blur(18px);
+}
+
+.performance-audition-art {
+  min-height: 510px;
+  border-radius: 22px;
+  background-image: var(--audition-backdrop);
+  background-position: center;
+  background-size: cover;
+  outline: 1px solid rgb(0 0 0 / 0.1);
+  outline-offset: -1px;
+}
+
+.performance-audition-copy {
+  display: flex;
+  flex-direction: column;
+  padding: clamp(24px, 4vw, 44px);
+}
+
+.performance-kicker,
+.performance-phrase > span {
+  color: #8a6710;
+  font-family: var(--font-display);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.performance-audition h1 {
+  margin-top: 6px;
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 4.8vw, 3.25rem);
+  font-weight: 700;
+  line-height: 1.02;
+  text-wrap: balance;
+}
+
+.performance-meta {
+  margin-top: 8px;
+  color: var(--color-ink-soft);
+  font-size: 0.8rem;
+  font-variant-numeric: tabular-nums;
+  text-wrap: pretty;
+}
+
+.performance-phrase {
+  min-height: 172px;
+  margin-top: 28px;
+  padding: 18px;
+  border-radius: 20px;
+  background: #fffdf2;
+  box-shadow:
+    0 0 0 1px rgb(0 0 0 / 0.06),
+    0 4px 14px rgb(39 40 49 / 0.07);
+}
+
+.performance-phrase p {
+  margin-top: 7px;
+  font-family: var(--font-reading);
+  font-size: clamp(1.05rem, 2.2vw, 1.35rem);
+  font-weight: 500;
+  line-height: 1.6;
+  text-wrap: pretty;
+}
+
+.performance-phrase [data-word-state="future"] {
+  opacity: 0.34;
+}
+
+.performance-phrase [data-word-state="past"] {
+  color: #2b765f;
+}
+
+.performance-phrase [data-word-state="active"] {
+  padding: 0.05em 0.13em;
+  border-radius: 0.28em;
+  background: var(--audition-accent);
+  box-shadow: 0 0 12px rgb(255 216 77 / 0.44);
+}
+
+.performance-error {
+  margin-top: 10px;
+  color: #9b332f;
+  font-size: 0.8rem;
+  line-height: 1.4;
+}
+
+.performance-seek {
+  width: 100%;
+  height: 44px;
+  margin-top: 14px;
+  accent-color: #c79317;
+  cursor: pointer;
+}
+
+.performance-time {
+  display: flex;
+  justify-content: space-between;
+  margin-top: -7px;
+  color: var(--color-ink-soft);
+  font-size: 0.75rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.performance-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 9px;
+  margin-top: auto;
+  padding-top: 22px;
+}
+
+.performance-actions button {
+  min-height: 44px;
+  padding: 10px 16px;
+  border-radius: 999px;
+  background: #263858;
+  color: white;
+  font-family: var(--font-display);
+  font-size: 0.82rem;
+  font-weight: 700;
+  box-shadow:
+    0 0 0 1px rgb(0 0 0 / 0.08),
+    0 3px 10px rgb(30 44 72 / 0.2);
+  transition-property: scale, background-color, opacity;
+  transition-duration: 150ms;
+  transition-timing-function: ease-out;
+}
+
+.performance-actions button:hover {
+  background: #314971;
+}
+
+.performance-actions button:disabled {
+  opacity: 0.46;
+}
+
+.performance-actions button:active {
+  scale: 0.96;
+}
+
+@media (max-width: 720px) {
+  .performance-audition {
+    align-items: start;
+  }
+
+  .performance-audition-card {
+    grid-template-columns: 1fr;
+    border-radius: 26px;
+  }
+
+  .performance-audition-art {
+    min-height: 0;
+    aspect-ratio: 4 / 3;
+    border-radius: 18px;
+  }
+
+  .performance-audition-copy {
+    padding: 22px 14px 16px;
+  }
+
+  .performance-phrase {
+    min-height: 150px;
+    margin-top: 20px;
+  }
+
+  .performance-actions {
+    margin-top: 6px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .performance-audition-backdrop {
+    transform: none;
+  }
+
+  .performance-actions button {
+    transition-duration: 0ms;
+  }
+}

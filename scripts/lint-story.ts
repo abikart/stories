@@ -136,11 +136,18 @@ async function lintStory(storyId: string): Promise<Issue[]> {
 
 async function main() {
   const only = process.argv[2];
+  const entries = only ? [] : await fs.readdir(CONTENT, { withFileTypes: true });
+  const candidates = entries
+    .filter((entry) => entry.isDirectory() && !entry.name.startsWith("_"))
+    .map((entry) => entry.name);
   const ids = only
     ? [only]
-    : (await fs.readdir(CONTENT, { withFileTypes: true }))
-        .filter((e) => e.isDirectory() && !e.name.startsWith("_"))
-        .map((e) => e.name);
+    : (await Promise.all(candidates.map(async (id) => ({
+        id,
+        hasStory: await fs.access(path.join(CONTENT, id, "story.json")).then(() => true, () => false),
+      }))))
+        .filter((candidate) => candidate.hasStory)
+        .map((candidate) => candidate.id);
 
   let errors = 0;
   let warnings = 0;
