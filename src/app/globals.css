@@ -1240,8 +1240,9 @@ html[data-easy-read] .prose-line {
 .story-mode-switch button:active,
 .story-transport button:active,
 .story-start-card button:active,
-.story-wait-card button:active {
-  scale: 0.97;
+.story-wait-card button:active,
+.story-reading-nav button:active:not(:disabled) {
+  scale: 0.96;
 }
 
 .story-player-stage {
@@ -1320,6 +1321,74 @@ html[data-easy-read] .prose-line {
   background: var(--experience-accent);
   color: #1d2c3c;
   box-shadow: 0 0 14px color-mix(in srgb, var(--experience-accent), transparent 56%);
+}
+
+.story-reading-nav {
+  display: grid;
+  grid-template-columns: 44px minmax(0, 1fr) 44px;
+  align-items: center;
+  gap: 8px;
+  margin-top: 14px;
+  padding: 8px;
+  border-radius: 14px;
+  background: rgb(32 48 73 / 0.06);
+  box-shadow:
+    inset 0 0 0 1px rgb(31 43 57 / 0.07),
+    0 5px 14px rgb(8 17 27 / 0.06);
+}
+
+.story-reading-nav > button {
+  min-width: 44px;
+  min-height: 44px;
+  border-radius: 11px;
+  background: #fffdf2;
+  color: #243044;
+  box-shadow: 0 2px 8px rgb(8 17 27 / 0.09);
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  font-weight: 750;
+  transition-property: scale, opacity, background-color, box-shadow;
+  transition-duration: 150ms;
+  transition-timing-function: cubic-bezier(0.2, 0, 0, 1);
+}
+
+.story-reading-nav > button:hover:not(:disabled) {
+  background: white;
+  box-shadow: 0 4px 12px rgb(8 17 27 / 0.13);
+}
+
+.story-reading-nav > button:disabled {
+  opacity: 0.34;
+}
+
+.story-reading-nav > div {
+  min-width: 0;
+  display: grid;
+  justify-items: center;
+  gap: 2px;
+  color: #526072;
+  font-family: var(--font-display);
+  text-align: center;
+}
+
+.story-reading-nav > div span {
+  font-size: 0.65rem;
+  font-weight: 750;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.story-reading-nav > div strong {
+  font-size: 0.76rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.story-reading-nav > .story-reading-continue {
+  grid-column: 1 / -1;
+  width: 100%;
+  padding-inline: 16px;
+  background: var(--experience-accent);
+  font-size: 0.78rem;
 }
 
 .story-start-card,
@@ -1572,7 +1641,8 @@ html[data-easy-read] .prose-line {
   .story-icon-button,
   .story-play-button,
   .story-start-card button,
-  .story-wait-card button {
+  .story-wait-card button,
+  .story-reading-nav > button {
     transition-duration: 0ms;
   }
 }

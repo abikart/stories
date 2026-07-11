@@ -1,6 +1,6 @@
 # v2 session handoff
 
-Last updated: 2026-07-10
+Last updated: 2026-07-11
 
 ## Read first
 
@@ -71,6 +71,27 @@ Last updated: 2026-07-10
 - Cloudflare presented one human-verification screen after Scene 01. No challenge
   was automated; after Chrome restarted, the signed-in session resumed without
   the gate and production completed normally.
+- M6.1 continuity correction is complete. The 18 expressive phrases now contain
+  27 sentence-sized reading units mapped across 16 machine-validated visual
+  beats. Broad scenes remain location containers; they no longer determine how
+  much prose must share one visual state.
+- Read-with-me retains every sentence since the previous safe stop. Previous and
+  next controls restore each sentence's authored visual state, while Continue
+  resumes the untouched performance master from the latest sentence.
+- `beat-board.json` proves every reading unit has one visual beat;
+  `continuity.json` proves the lantern remains dark until the single doorstep
+  spark. Strict `pnpm lint:experiences -- pip-and-the-lantern-seed` now validates
+  both contracts and all 27 referenced assets.
+- Corrective media adds distinct village, Pip-exception, failed-attempt,
+  path-reveal, travel, doorstep-cold, single-bloom, and resolved-hold states.
+  Travel is a 10.041667-second one-shot; the failed attempt and definitive bloom
+  are 6.041667-second one-shots. Full Grok provenance lives in the M6.1 revision
+  of `visual-production.json`.
+- The content route supports HTTP byte ranges, so audio/video seeking works
+  before playback and after pauses. Seeking past the hero interaction derives
+  its completed state from the destination and cannot overwrite a later cue.
+- `.codex/skills/author-story-film` is the project-owned, validated production
+  skill for beat coverage, continuity, generation, integration, and release QA.
 
 ## Fixed decisions
 
@@ -83,10 +104,10 @@ Last updated: 2026-07-10
 
 ## Immediate next action
 
-Start M7 from the existing golden production package: add deterministic
+Start M7 from the corrected golden production package: add deterministic
 `/film/[storyId]` playback, drive the interaction canonically, mux the authored
 stems, render a 1080p film, and compare film frames against the interactive route.
-Do not regenerate M6 media unless a documented continuity defect is found.
+Use `$author-story-film` for any further story-package or media revision.
 
 ## Verification baseline
 
@@ -121,6 +142,12 @@ one active layer, clean console output, keyboard and actual pointer-drag resolve
 and narration resume. The 390×844, 430×932, 768×1024, 1024×768, and 1440×900
 matrix has no horizontal overflow; all story buttons and the scrubber are at
 least 44px, and the same 16:9 masters preserve the centered action-safe beat.
+M6.1 QA confirmed two- and four-sentence passage history, reverse visual-state
+restoration, paused interaction completion, exact post-interaction travel seek,
+the new travel and bloom sources, a final `lit-hold`, and no console errors.
+At 390×844 the embedded reading navigator is 312×112px with zero horizontal
+overflow. Strict experience lint, typecheck, the optimized production build,
+skill validation, and HTTP `206 Partial Content` media delivery pass.
 
 ## Session close protocol
 

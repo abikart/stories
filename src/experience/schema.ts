@@ -29,6 +29,23 @@ export const OverlayPlacementSchema = z.object({
   mobilePolicy: z.enum(["anchor", "dock"]),
 });
 
+export const WordTimingSchema = z.object({
+  text: z.string().min(1),
+  start: z.number().min(0),
+  end: z.number().positive(),
+});
+
+export const ReadingUnitSchema = z.object({
+  id: z.string().min(1),
+  speaker: z.string().min(1),
+  text: z.string().min(1),
+  start: z.number().min(0),
+  end: z.number().positive(),
+  words: z.array(WordTimingSchema).min(1),
+  mediaState: z.string().min(1),
+  overlay: OverlayPlacementSchema.optional(),
+});
+
 export const PhraseSchema = z.object({
   id: z.string().min(1),
   speaker: z.string().min(1),
@@ -36,11 +53,8 @@ export const PhraseSchema = z.object({
   start: z.number().min(0),
   end: z.number().positive(),
   safeStopAfter: z.boolean().optional(),
-  words: z.array(z.object({
-    text: z.string().min(1),
-    start: z.number().min(0),
-    end: z.number().positive(),
-  })).optional(),
+  words: z.array(WordTimingSchema).optional(),
+  readingUnits: z.array(ReadingUnitSchema).min(1).optional(),
   overlay: OverlayPlacementSchema,
 });
 
@@ -71,6 +85,7 @@ export const MediaStateSchema = z.object({
 export const InteractionBindingSchema = z.object({
   recipe: z.literal("drag-to-guide"),
   triggerAfterPhrase: z.string().min(1),
+  triggerAtReadingUnit: z.string().min(1).optional(),
   prompt: z.string().min(1),
   startRegion: NormalizedRectSchema,
   targetRegion: NormalizedRectSchema,
@@ -94,6 +109,11 @@ export const ExperienceProductionSchema = z.object({
   accent: z.string().min(1),
   stage: StageContractSchema,
   performance: PerformanceSchema.optional(),
+  productionPlan: z.object({
+    coverage: z.literal("reading-unit"),
+    beatBoard: z.string().min(1),
+    continuityLedger: z.string().min(1),
+  }).optional(),
   scenes: z.array(ExperienceSceneSchema).min(1),
 });
 
@@ -101,6 +121,8 @@ export type Point = z.infer<typeof PointSchema>;
 export type NormalizedRect = z.infer<typeof NormalizedRectSchema>;
 export type StageContract = z.infer<typeof StageContractSchema>;
 export type OverlayPlacement = z.infer<typeof OverlayPlacementSchema>;
+export type WordTiming = z.infer<typeof WordTimingSchema>;
+export type ReadingUnit = z.infer<typeof ReadingUnitSchema>;
 export type ExperiencePhrase = z.infer<typeof PhraseSchema>;
 export type Performance = z.infer<typeof PerformanceSchema>;
 export type MediaState = z.infer<typeof MediaStateSchema>;

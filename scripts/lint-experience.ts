@@ -2,6 +2,11 @@ import { promises as fs } from "fs";
 import path from "path";
 import { ExperienceProductionSchema } from "../src/experience/schema";
 import { createMediaGraph } from "../src/experience/media/graph";
+import {
+  BeatBoardSchema,
+  ContinuityLedgerSchema,
+  validateProductionPlan,
+} from "../src/experience/production-plan";
 
 const CONTENT = path.resolve(process.cwd(), "content");
 
@@ -10,6 +15,7 @@ async function exists(file: string) {
 }
 
 async function main() {
+  const allowPendingAssets = process.argv.includes("--allow-pending");
   const requested = process.argv.slice(2).filter((arg) => !arg.startsWith("--"));
   const entries = requested.length > 0
     ? requested
@@ -35,6 +41,20 @@ async function main() {
         Object.values(production.performance.stems ?? {}).forEach((asset) => {
           if (asset) assets.add(asset);
         });
+      }
+      if (production.productionPlan) {
+        assets.add(production.productionPlan.beatBoard);
+        assets.add(production.productionPlan.continuityLedger);
+        const beatBoard = BeatBoardSchema.parse(JSON.parse(await fs.readFile(
+          path.join(CONTENT, id, production.productionPlan.beatBoard),
+          "utf8",
+        )));
+        const continuityLedger = ContinuityLedgerSchema.parse(JSON.parse(await fs.readFile(
+          path.join(CONTENT, id, production.productionPlan.continuityLedger),
+          "utf8",
+        )));
+        const planErrors = validateProductionPlan(production, beatBoard, continuityLedger, { allowPendingAssets });
+        if (planErrors.length > 0) throw new Error(planErrors.join("; "));
       }
       for (const scene of production.scenes) {
         const graph = createMediaGraph(scene);

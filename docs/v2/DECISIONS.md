@@ -3,6 +3,34 @@
 Newest decisions go first. Record meaningful divergences, tradeoffs, and quality
 gates; do not duplicate routine implementation details.
 
+## 2026-07-11 — M6.1 sentence-addressable production and continuity
+
+- Performance phrases and reading display units are separate layers. Phrases
+  preserve expressive cadence and safe stops; nested reading units own complete
+  sentence text, aligned word subsets, and media-state cues. No audio is cut or
+  reassembled to gain finer visual coverage.
+- Read-with-me waits expose every reading unit since the prior safe stop. The
+  child may move backward and forward through the passage, and the media deck
+  restores the corresponding state. Continue returns to the latest sentence and
+  resumes the same audio element.
+- Story release now requires two machine-readable contracts: a beat board that
+  covers each reading unit exactly once and a continuity ledger that permits
+  subject changes only at declared unit IDs. Planning lint may allow pending
+  assets; strict lint may not.
+- The lantern is a continuity invariant: dark through the route reveal and
+  visible journey, `spark-entering` only at `u14`, and lit from `u15` onward.
+  Glow reveals the route; Glow does not touch or seed-light the lantern early.
+- Broad scene containers are retained for location, interaction ownership, and
+  media preloading. Sentence-level states live inside them, avoiding a forced
+  scene component or generated video for every sentence.
+- HTTP byte-range delivery is part of the runtime contract. Without `206`
+  responses, native media may play but cannot reliably scrub, which breaks mode
+  recovery and production QA.
+- The project-owned `$author-story-film` skill records the production sequence
+  and gates, while schemas, package files, and validators remain the source of
+  truth. This makes the workflow resumable without hiding product decisions in
+  one chat transcript.
+
 ## 2026-07-11 — M6 golden visual package
 
 - The golden sequence uses one selected 1792×1008 Grok keyframe per story scene

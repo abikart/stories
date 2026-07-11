@@ -34,20 +34,49 @@
       "id": "the-cold-lantern",
       "media": [
         {
-          "id": "idle",
+          "id": "village-glow",
+          "kind": "poster",
+          "src": "scenes/the-cold-lantern/village-glow.jpg",
+          "transitionsTo": [
+            "pip-exception"
+          ]
+        },
+        {
+          "id": "pip-exception",
+          "kind": "poster",
+          "src": "scenes/the-cold-lantern/pip-exception.jpg",
+          "transitionsTo": [
+            "pip-cold",
+            "village-glow"
+          ]
+        },
+        {
+          "id": "pip-cold",
           "kind": "video",
           "src": "scenes/the-cold-lantern/idle.mp4",
           "poster": "scenes/the-cold-lantern/poster.jpg",
           "loop": true,
-          "focalPoint": {
-            "x": 0.5,
-            "y": 0.5
-          },
-          "transitionsTo": []
+          "transitionsTo": [
+            "failed-attempt",
+            "pip-exception"
+          ]
+        },
+        {
+          "id": "failed-attempt",
+          "kind": "video",
+          "src": "scenes/the-cold-lantern/failed-attempt.mp4",
+          "poster": "scenes/the-cold-lantern/failed-attempt.jpg",
+          "loop": false,
+          "transitionsTo": [
+            "pip-cold"
+          ]
         }
       ],
       "canonicalPath": [
-        "idle"
+        "village-glow",
+        "pip-exception",
+        "pip-cold",
+        "failed-attempt"
       ],
       "phrases": [
         {
@@ -106,7 +135,59 @@
             },
             "placement": "below",
             "mobilePolicy": "dock"
-          }
+          },
+          "readingUnits": [
+            {
+              "id": "u01",
+              "speaker": "Narrator",
+              "text": "In Bramble Hollow, every door glowed before moonrise.",
+              "start": 0.14,
+              "end": 3.859,
+              "words": [
+                {
+                  "text": "In",
+                  "start": 0.14,
+                  "end": 0.239
+                },
+                {
+                  "text": "Bramble",
+                  "start": 0.34,
+                  "end": 0.68
+                },
+                {
+                  "text": "Hollow,",
+                  "start": 0.799,
+                  "end": 1.179
+                },
+                {
+                  "text": "every",
+                  "start": 1.659,
+                  "end": 1.879
+                },
+                {
+                  "text": "door",
+                  "start": 2.019,
+                  "end": 2.259
+                },
+                {
+                  "text": "glowed",
+                  "start": 2.399,
+                  "end": 2.799
+                },
+                {
+                  "text": "before",
+                  "start": 2.839,
+                  "end": 3.099
+                },
+                {
+                  "text": "moonrise.",
+                  "start": 3.24,
+                  "end": 3.859
+                }
+              ],
+              "mediaState": "village-glow"
+            }
+          ]
         },
         {
           "id": "p02",
@@ -145,7 +226,39 @@
             },
             "placement": "above-right",
             "mobilePolicy": "dock"
-          }
+          },
+          "readingUnits": [
+            {
+              "id": "u02",
+              "speaker": "Narrator",
+              "text": "Every door but Pip's.",
+              "start": 4.859,
+              "end": 5.98,
+              "words": [
+                {
+                  "text": "Every",
+                  "start": 4.859,
+                  "end": 5.039
+                },
+                {
+                  "text": "door",
+                  "start": 5.139,
+                  "end": 5.319
+                },
+                {
+                  "text": "but",
+                  "start": 5.359,
+                  "end": 5.48
+                },
+                {
+                  "text": "Pip's.",
+                  "start": 5.579,
+                  "end": 5.98
+                }
+              ],
+              "mediaState": "pip-exception"
+            }
+          ]
         },
         {
           "id": "p03",
@@ -228,7 +341,84 @@
             },
             "placement": "above-right",
             "mobilePolicy": "dock"
-          }
+          },
+          "readingUnits": [
+            {
+              "id": "u03",
+              "speaker": "Narrator",
+              "text": "Pip was the smallest lantern keeper, and tonight her lantern would not wake.",
+              "start": 7.219,
+              "end": 11.46,
+              "words": [
+                {
+                  "text": "Pip",
+                  "start": 7.219,
+                  "end": 7.419
+                },
+                {
+                  "text": "was",
+                  "start": 7.46,
+                  "end": 7.579
+                },
+                {
+                  "text": "the",
+                  "start": 7.619,
+                  "end": 7.739
+                },
+                {
+                  "text": "smallest",
+                  "start": 7.799,
+                  "end": 8.239
+                },
+                {
+                  "text": "lantern",
+                  "start": 8.34,
+                  "end": 8.659
+                },
+                {
+                  "text": "keeper,",
+                  "start": 8.779,
+                  "end": 9.079
+                },
+                {
+                  "text": "and",
+                  "start": 9.519,
+                  "end": 9.619
+                },
+                {
+                  "text": "tonight",
+                  "start": 9.659,
+                  "end": 10.019
+                },
+                {
+                  "text": "her",
+                  "start": 10.099,
+                  "end": 10.199
+                },
+                {
+                  "text": "lantern",
+                  "start": 10.279,
+                  "end": 10.619
+                },
+                {
+                  "text": "would",
+                  "start": 10.679,
+                  "end": 10.819
+                },
+                {
+                  "text": "not",
+                  "start": 10.88,
+                  "end": 11.039
+                },
+                {
+                  "text": "wake.",
+                  "start": 11.139,
+                  "end": 11.46
+                }
+              ],
+              "mediaState": "pip-cold"
+            }
+          ]
         },
         {
           "id": "p04",
@@ -287,7 +477,79 @@
             },
             "placement": "above-right",
             "mobilePolicy": "dock"
-          }
+          },
+          "readingUnits": [
+            {
+              "id": "u04a",
+              "speaker": "Narrator",
+              "text": "She polished the glass.",
+              "start": 12.579,
+              "end": 13.659,
+              "words": [
+                {
+                  "text": "She",
+                  "start": 12.579,
+                  "end": 12.719
+                },
+                {
+                  "text": "polished",
+                  "start": 12.779,
+                  "end": 13.059
+                },
+                {
+                  "text": "the",
+                  "start": 13.119,
+                  "end": 13.159
+                },
+                {
+                  "text": "glass.",
+                  "start": 13.219,
+                  "end": 13.659
+                }
+              ],
+              "mediaState": "failed-attempt"
+            },
+            {
+              "id": "u04b",
+              "speaker": "Narrator",
+              "text": "She whispered, “Please?”",
+              "start": 14.279,
+              "end": 16.04,
+              "words": [
+                {
+                  "text": "She",
+                  "start": 14.279,
+                  "end": 14.38
+                },
+                {
+                  "text": "whispered,",
+                  "start": 14.439,
+                  "end": 14.779
+                },
+                {
+                  "text": "“Please?”",
+                  "start": 15.399,
+                  "end": 16.04
+                }
+              ],
+              "mediaState": "failed-attempt"
+            },
+            {
+              "id": "u04c",
+              "speaker": "Narrator",
+              "text": "Nothing.",
+              "start": 17.299,
+              "end": 17.699,
+              "words": [
+                {
+                  "text": "Nothing.",
+                  "start": 17.299,
+                  "end": 17.699
+                }
+              ],
+              "mediaState": "failed-attempt"
+            }
+          ]
         }
       ]
     },
@@ -295,20 +557,47 @@
       "id": "the-tiny-light",
       "media": [
         {
-          "id": "action",
+          "id": "tiny-blink",
+          "kind": "poster",
+          "src": "scenes/the-tiny-light/poster.jpg",
+          "transitionsTo": [
+            "trapped"
+          ]
+        },
+        {
+          "id": "trapped",
+          "kind": "poster",
+          "src": "scenes/the-tiny-light/poster.jpg",
+          "transitionsTo": [
+            "rescue",
+            "tiny-blink"
+          ]
+        },
+        {
+          "id": "rescue",
           "kind": "video",
           "src": "scenes/the-tiny-light/action.mp4",
           "poster": "scenes/the-tiny-light/poster.jpg",
           "loop": false,
-          "focalPoint": {
-            "x": 0.5,
-            "y": 0.5
-          },
-          "transitionsTo": []
+          "transitionsTo": [
+            "free",
+            "trapped"
+          ]
+        },
+        {
+          "id": "free",
+          "kind": "poster",
+          "src": "scenes/the-tiny-light/free.jpg",
+          "transitionsTo": [
+            "rescue"
+          ]
         }
       ],
       "canonicalPath": [
-        "action"
+        "tiny-blink",
+        "trapped",
+        "rescue",
+        "free"
       ],
       "phrases": [
         {
@@ -367,7 +656,59 @@
             },
             "placement": "above-left",
             "mobilePolicy": "dock"
-          }
+          },
+          "readingUnits": [
+            {
+              "id": "u05",
+              "speaker": "Narrator",
+              "text": "Then a tiny light blinked beneath the ferns.",
+              "start": 18.939,
+              "end": 21.279,
+              "words": [
+                {
+                  "text": "Then",
+                  "start": 18.939,
+                  "end": 19.039
+                },
+                {
+                  "text": "a",
+                  "start": 19.1,
+                  "end": 19.139
+                },
+                {
+                  "text": "tiny",
+                  "start": 19.219,
+                  "end": 19.559
+                },
+                {
+                  "text": "light",
+                  "start": 19.619,
+                  "end": 19.84
+                },
+                {
+                  "text": "blinked",
+                  "start": 19.959,
+                  "end": 20.279
+                },
+                {
+                  "text": "beneath",
+                  "start": 20.34,
+                  "end": 20.579
+                },
+                {
+                  "text": "the",
+                  "start": 20.639,
+                  "end": 20.719
+                },
+                {
+                  "text": "ferns.",
+                  "start": 20.779,
+                  "end": 21.279
+                }
+              ],
+              "mediaState": "tiny-blink"
+            }
+          ]
         },
         {
           "id": "p06",
@@ -440,7 +781,74 @@
             },
             "placement": "above-left",
             "mobilePolicy": "dock"
-          }
+          },
+          "readingUnits": [
+            {
+              "id": "u06",
+              "speaker": "Narrator",
+              "text": "It was Glow, a firefly caught in a silver spider thread.",
+              "start": 22.039,
+              "end": 25.679,
+              "words": [
+                {
+                  "text": "It",
+                  "start": 22.039,
+                  "end": 22.119
+                },
+                {
+                  "text": "was",
+                  "start": 22.18,
+                  "end": 22.28
+                },
+                {
+                  "text": "Glow,",
+                  "start": 22.379,
+                  "end": 22.76
+                },
+                {
+                  "text": "a",
+                  "start": 23.159,
+                  "end": 23.219
+                },
+                {
+                  "text": "firefly",
+                  "start": 23.319,
+                  "end": 23.84
+                },
+                {
+                  "text": "caught",
+                  "start": 23.979,
+                  "end": 24.219
+                },
+                {
+                  "text": "in",
+                  "start": 24.26,
+                  "end": 24.319
+                },
+                {
+                  "text": "a",
+                  "start": 24.399,
+                  "end": 24.439
+                },
+                {
+                  "text": "silver",
+                  "start": 24.539,
+                  "end": 24.859
+                },
+                {
+                  "text": "spider",
+                  "start": 24.92,
+                  "end": 25.279
+                },
+                {
+                  "text": "thread.",
+                  "start": 25.34,
+                  "end": 25.679
+                }
+              ],
+              "mediaState": "trapped"
+            }
+          ]
         },
         {
           "id": "p07",
@@ -519,7 +927,119 @@
             },
             "placement": "above-right",
             "mobilePolicy": "dock"
-          }
+          },
+          "readingUnits": [
+            {
+              "id": "u07a",
+              "speaker": "Pip",
+              "text": "“Hold still,” said Pip.",
+              "start": 26.859,
+              "end": 28.459,
+              "words": [
+                {
+                  "text": "“Hold",
+                  "start": 26.859,
+                  "end": 27.119
+                },
+                {
+                  "text": "still,”",
+                  "start": 27.18,
+                  "end": 27.879
+                },
+                {
+                  "text": "said",
+                  "start": 27.979,
+                  "end": 28.099
+                },
+                {
+                  "text": "Pip.",
+                  "start": 28.199,
+                  "end": 28.459
+                }
+              ],
+              "mediaState": "rescue"
+            },
+            {
+              "id": "u07b",
+              "speaker": "Narrator",
+              "text": "She tugged once.",
+              "start": 29.139,
+              "end": 29.979,
+              "words": [
+                {
+                  "text": "She",
+                  "start": 29.139,
+                  "end": 29.26
+                },
+                {
+                  "text": "tugged",
+                  "start": 29.319,
+                  "end": 29.579
+                },
+                {
+                  "text": "once.",
+                  "start": 29.679,
+                  "end": 29.979
+                }
+              ],
+              "mediaState": "rescue"
+            },
+            {
+              "id": "u07c",
+              "speaker": "Narrator",
+              "text": "Twice.",
+              "start": 30.399,
+              "end": 30.84,
+              "words": [
+                {
+                  "text": "Twice.",
+                  "start": 30.399,
+                  "end": 30.84
+                }
+              ],
+              "mediaState": "rescue"
+            },
+            {
+              "id": "u07d",
+              "speaker": "Narrator",
+              "text": "Pop!",
+              "start": 31.5,
+              "end": 31.779,
+              "words": [
+                {
+                  "text": "Pop!",
+                  "start": 31.5,
+                  "end": 31.779
+                }
+              ],
+              "mediaState": "rescue"
+            },
+            {
+              "id": "u07e",
+              "speaker": "Narrator",
+              "text": "Glow floated free.",
+              "start": 32.54,
+              "end": 33.739,
+              "words": [
+                {
+                  "text": "Glow",
+                  "start": 32.54,
+                  "end": 32.84
+                },
+                {
+                  "text": "floated",
+                  "start": 32.939,
+                  "end": 33.319
+                },
+                {
+                  "text": "free.",
+                  "start": 33.38,
+                  "end": 33.739
+                }
+              ],
+              "mediaState": "free"
+            }
+          ]
         }
       ]
     },
@@ -527,35 +1047,41 @@
       "id": "the-blue-dark",
       "media": [
         {
-          "id": "idle",
+          "id": "lost",
           "kind": "video",
           "src": "scenes/the-blue-dark/idle.mp4",
           "poster": "scenes/the-blue-dark/poster-idle.jpg",
           "loop": true,
-          "focalPoint": {
-            "x": 0.5,
-            "y": 0.5
-          },
           "transitionsTo": [
-            "resolve"
+            "path-revealed",
+            "travel"
           ]
         },
         {
-          "id": "resolve",
+          "id": "path-revealed",
+          "kind": "poster",
+          "src": "scenes/the-blue-dark/path-revealed.jpg",
+          "transitionsTo": [
+            "travel",
+            "lost"
+          ]
+        },
+        {
+          "id": "travel",
           "kind": "video",
-          "src": "scenes/the-blue-dark/resolve.mp4",
-          "poster": "scenes/the-blue-dark/poster-resolve.jpg",
-          "loop": true,
-          "focalPoint": {
-            "x": 0.5,
-            "y": 0.5
-          },
-          "transitionsTo": []
+          "src": "scenes/the-blue-dark/travel.mp4",
+          "poster": "scenes/the-blue-dark/travel.jpg",
+          "loop": false,
+          "transitionsTo": [
+            "path-revealed",
+            "lost"
+          ]
         }
       ],
       "canonicalPath": [
-        "idle",
-        "resolve"
+        "lost",
+        "path-revealed",
+        "travel"
       ],
       "phrases": [
         {
@@ -624,7 +1150,69 @@
             },
             "placement": "below",
             "mobilePolicy": "dock"
-          }
+          },
+          "readingUnits": [
+            {
+              "id": "u08",
+              "speaker": "Narrator",
+              "text": "But the path home had vanished into the blue dark.",
+              "start": 34.759,
+              "end": 37.299,
+              "words": [
+                {
+                  "text": "But",
+                  "start": 34.759,
+                  "end": 34.84
+                },
+                {
+                  "text": "the",
+                  "start": 34.88,
+                  "end": 34.959
+                },
+                {
+                  "text": "path",
+                  "start": 35.04,
+                  "end": 35.299
+                },
+                {
+                  "text": "home",
+                  "start": 35.38,
+                  "end": 35.579
+                },
+                {
+                  "text": "had",
+                  "start": 35.619,
+                  "end": 35.739
+                },
+                {
+                  "text": "vanished",
+                  "start": 35.819,
+                  "end": 36.18
+                },
+                {
+                  "text": "into",
+                  "start": 36.219,
+                  "end": 36.38
+                },
+                {
+                  "text": "the",
+                  "start": 36.419,
+                  "end": 36.5
+                },
+                {
+                  "text": "blue",
+                  "start": 36.54,
+                  "end": 36.819
+                },
+                {
+                  "text": "dark.",
+                  "start": 36.899,
+                  "end": 37.299
+                }
+              ],
+              "mediaState": "lost"
+            }
+          ]
         },
         {
           "id": "p09",
@@ -683,7 +1271,69 @@
             },
             "placement": "above-right",
             "mobilePolicy": "dock"
-          }
+          },
+          "readingUnits": [
+            {
+              "id": "u09a",
+              "speaker": "Narrator",
+              "text": "Pip's wings trembled.",
+              "start": 38.319,
+              "end": 39.559,
+              "words": [
+                {
+                  "text": "Pip's",
+                  "start": 38.319,
+                  "end": 38.559
+                },
+                {
+                  "text": "wings",
+                  "start": 38.639,
+                  "end": 39.02
+                },
+                {
+                  "text": "trembled.",
+                  "start": 39.079,
+                  "end": 39.559
+                }
+              ],
+              "mediaState": "lost"
+            },
+            {
+              "id": "u09b",
+              "speaker": "Pip",
+              "text": "“I don't know the way.”",
+              "start": 40.419,
+              "end": 42.659,
+              "words": [
+                {
+                  "text": "“I",
+                  "start": 40.419,
+                  "end": 40.54
+                },
+                {
+                  "text": "don't",
+                  "start": 40.599,
+                  "end": 40.759
+                },
+                {
+                  "text": "know",
+                  "start": 40.799,
+                  "end": 40.919
+                },
+                {
+                  "text": "the",
+                  "start": 40.959,
+                  "end": 41.059
+                },
+                {
+                  "text": "way.”",
+                  "start": 41.119,
+                  "end": 42.659
+                }
+              ],
+              "mediaState": "lost"
+            }
+          ]
         },
         {
           "id": "p10",
@@ -752,7 +1402,79 @@
             },
             "placement": "above-left",
             "mobilePolicy": "dock"
-          }
+          },
+          "readingUnits": [
+            {
+              "id": "u10a",
+              "speaker": "Narrator",
+              "text": "Glow hovered beside her.",
+              "start": 42.739,
+              "end": 44.079,
+              "words": [
+                {
+                  "text": "Glow",
+                  "start": 42.739,
+                  "end": 43.079
+                },
+                {
+                  "text": "hovered",
+                  "start": 43.139,
+                  "end": 43.399
+                },
+                {
+                  "text": "beside",
+                  "start": 43.459,
+                  "end": 43.84
+                },
+                {
+                  "text": "her.",
+                  "start": 43.899,
+                  "end": 44.079
+                }
+              ],
+              "mediaState": "lost"
+            },
+            {
+              "id": "u10b",
+              "speaker": "Glow",
+              "text": "“Then we will find it together.”",
+              "start": 44.939,
+              "end": 47.399,
+              "words": [
+                {
+                  "text": "“Then",
+                  "start": 44.939,
+                  "end": 45.139
+                },
+                {
+                  "text": "we",
+                  "start": 45.219,
+                  "end": 45.279
+                },
+                {
+                  "text": "will",
+                  "start": 45.34,
+                  "end": 45.479
+                },
+                {
+                  "text": "find",
+                  "start": 45.559,
+                  "end": 45.739
+                },
+                {
+                  "text": "it",
+                  "start": 45.779,
+                  "end": 45.86
+                },
+                {
+                  "text": "together.”",
+                  "start": 45.919,
+                  "end": 47.399
+                }
+              ],
+              "mediaState": "lost"
+            }
+          ]
         },
         {
           "id": "p11",
@@ -845,7 +1567,94 @@
             },
             "placement": "below",
             "mobilePolicy": "dock"
-          }
+          },
+          "readingUnits": [
+            {
+              "id": "u11",
+              "speaker": "Narrator",
+              "text": "Past the sleepy mushrooms, across the whispering creek, and under the leaning pine they went.",
+              "start": 47.459,
+              "end": 53.02,
+              "words": [
+                {
+                  "text": "Past",
+                  "start": 47.459,
+                  "end": 47.759
+                },
+                {
+                  "text": "the",
+                  "start": 47.799,
+                  "end": 47.899
+                },
+                {
+                  "text": "sleepy",
+                  "start": 47.979,
+                  "end": 48.299
+                },
+                {
+                  "text": "mushrooms,",
+                  "start": 48.36,
+                  "end": 48.939
+                },
+                {
+                  "text": "across",
+                  "start": 49.36,
+                  "end": 49.68
+                },
+                {
+                  "text": "the",
+                  "start": 49.739,
+                  "end": 49.779
+                },
+                {
+                  "text": "whispering",
+                  "start": 49.86,
+                  "end": 50.36
+                },
+                {
+                  "text": "creek,",
+                  "start": 50.439,
+                  "end": 50.719
+                },
+                {
+                  "text": "and",
+                  "start": 51.119,
+                  "end": 51.239
+                },
+                {
+                  "text": "under",
+                  "start": 51.319,
+                  "end": 51.5
+                },
+                {
+                  "text": "the",
+                  "start": 51.559,
+                  "end": 51.619
+                },
+                {
+                  "text": "leaning",
+                  "start": 51.699,
+                  "end": 52.039
+                },
+                {
+                  "text": "pine",
+                  "start": 52.119,
+                  "end": 52.439
+                },
+                {
+                  "text": "they",
+                  "start": 52.479,
+                  "end": 52.619
+                },
+                {
+                  "text": "went.",
+                  "start": 52.68,
+                  "end": 53.02
+                }
+              ],
+              "mediaState": "travel"
+            }
+          ]
         },
         {
           "id": "p12",
@@ -894,13 +1703,55 @@
             },
             "placement": "below",
             "mobilePolicy": "dock"
-          }
+          },
+          "readingUnits": [
+            {
+              "id": "u12",
+              "speaker": "Narrator",
+              "text": "Pip followed the little warm light.",
+              "start": 54.159,
+              "end": 55.919,
+              "words": [
+                {
+                  "text": "Pip",
+                  "start": 54.159,
+                  "end": 54.399
+                },
+                {
+                  "text": "followed",
+                  "start": 54.479,
+                  "end": 54.759
+                },
+                {
+                  "text": "the",
+                  "start": 54.799,
+                  "end": 54.86
+                },
+                {
+                  "text": "little",
+                  "start": 54.879,
+                  "end": 55.159
+                },
+                {
+                  "text": "warm",
+                  "start": 55.219,
+                  "end": 55.5
+                },
+                {
+                  "text": "light.",
+                  "start": 55.579,
+                  "end": 55.919
+                }
+              ],
+              "mediaState": "travel"
+            }
+          ]
         }
       ],
       "interaction": {
         "recipe": "drag-to-guide",
         "triggerAfterPhrase": "p10",
-        "prompt": "Guide Glow's light home to Pip.",
+        "prompt": "Guide Glow along the hidden path home.",
         "startRegion": {
           "x": 0.6,
           "y": 0.33,
@@ -935,27 +1786,46 @@
             "y": 0.68
           }
         ],
-        "completeMediaState": "resolve"
+        "completeMediaState": "path-revealed",
+        "triggerAtReadingUnit": "u10b"
       }
     },
     {
       "id": "the-lantern-blooms",
       "media": [
         {
+          "id": "doorstep-cold",
+          "kind": "poster",
+          "src": "scenes/the-lantern-blooms/doorstep-cold.jpg",
+          "transitionsTo": [
+            "bloom"
+          ]
+        },
+        {
           "id": "bloom",
           "kind": "video",
-          "src": "scenes/the-lantern-blooms/bloom.mp4",
-          "poster": "scenes/the-lantern-blooms/poster.jpg",
+          "src": "scenes/the-lantern-blooms/bloom-v2.mp4",
+          "poster": "scenes/the-lantern-blooms/doorstep-cold.jpg",
           "loop": false,
-          "focalPoint": {
-            "x": 0.5,
-            "y": 0.5
-          },
-          "transitionsTo": []
+          "transitionsTo": [
+            "lit-hold",
+            "doorstep-cold"
+          ]
+        },
+        {
+          "id": "lit-hold",
+          "kind": "poster",
+          "src": "scenes/the-lantern-blooms/lit-hold.jpg",
+          "transitionsTo": [
+            "bloom",
+            "doorstep-cold"
+          ]
         }
       ],
       "canonicalPath": [
-        "bloom"
+        "doorstep-cold",
+        "bloom",
+        "lit-hold"
       ],
       "phrases": [
         {
@@ -1014,7 +1884,59 @@
             },
             "placement": "above-left",
             "mobilePolicy": "dock"
-          }
+          },
+          "readingUnits": [
+            {
+              "id": "u13",
+              "speaker": "Narrator",
+              "text": "At her doorstep, Glow circled the cold lantern.",
+              "start": 56.879,
+              "end": 59.899,
+              "words": [
+                {
+                  "text": "At",
+                  "start": 56.879,
+                  "end": 57
+                },
+                {
+                  "text": "her",
+                  "start": 57.039,
+                  "end": 57.139
+                },
+                {
+                  "text": "doorstep,",
+                  "start": 57.199,
+                  "end": 58.039
+                },
+                {
+                  "text": "Glow",
+                  "start": 58.099,
+                  "end": 58.459
+                },
+                {
+                  "text": "circled",
+                  "start": 58.539,
+                  "end": 58.919
+                },
+                {
+                  "text": "the",
+                  "start": 58.959,
+                  "end": 59.039
+                },
+                {
+                  "text": "cold",
+                  "start": 59.099,
+                  "end": 59.359
+                },
+                {
+                  "text": "lantern.",
+                  "start": 59.439,
+                  "end": 59.899
+                }
+              ],
+              "mediaState": "doorstep-cold"
+            }
+          ]
         },
         {
           "id": "p14",
@@ -1057,7 +1979,44 @@
             },
             "placement": "above-left",
             "mobilePolicy": "dock"
-          }
+          },
+          "readingUnits": [
+            {
+              "id": "u14",
+              "speaker": "Narrator",
+              "text": "One golden spark slipped inside.",
+              "start": 60.799,
+              "end": 63.079,
+              "words": [
+                {
+                  "text": "One",
+                  "start": 60.799,
+                  "end": 60.959
+                },
+                {
+                  "text": "golden",
+                  "start": 61.079,
+                  "end": 61.419
+                },
+                {
+                  "text": "spark",
+                  "start": 61.539,
+                  "end": 62.059
+                },
+                {
+                  "text": "slipped",
+                  "start": 62.139,
+                  "end": 62.379
+                },
+                {
+                  "text": "inside.",
+                  "start": 62.439,
+                  "end": 63.079
+                }
+              ],
+              "mediaState": "bloom"
+            }
+          ]
         },
         {
           "id": "p15",
@@ -1091,7 +2050,34 @@
             },
             "placement": "above-left",
             "mobilePolicy": "dock"
-          }
+          },
+          "readingUnits": [
+            {
+              "id": "u15",
+              "speaker": "Narrator",
+              "text": "The lantern bloomed.",
+              "start": 64.26,
+              "end": 65.279,
+              "words": [
+                {
+                  "text": "The",
+                  "start": 64.26,
+                  "end": 64.319
+                },
+                {
+                  "text": "lantern",
+                  "start": 64.379,
+                  "end": 64.759
+                },
+                {
+                  "text": "bloomed.",
+                  "start": 64.799,
+                  "end": 65.279
+                }
+              ],
+              "mediaState": "bloom"
+            }
+          ]
         },
         {
           "id": "p16",
@@ -1134,7 +2120,44 @@
             },
             "placement": "above-right",
             "mobilePolicy": "dock"
-          }
+          },
+          "readingUnits": [
+            {
+              "id": "u16",
+              "speaker": "Pip",
+              "text": "“You woke it!” Pip cheered.",
+              "start": 66.119,
+              "end": 68.059,
+              "words": [
+                {
+                  "text": "“You",
+                  "start": 66.119,
+                  "end": 66.339
+                },
+                {
+                  "text": "woke",
+                  "start": 66.4,
+                  "end": 66.659
+                },
+                {
+                  "text": "it!”",
+                  "start": 66.739,
+                  "end": 67.379
+                },
+                {
+                  "text": "Pip",
+                  "start": 67.459,
+                  "end": 67.659
+                },
+                {
+                  "text": "cheered.",
+                  "start": 67.72,
+                  "end": 68.059
+                }
+              ],
+              "mediaState": "lit-hold"
+            }
+          ]
         },
         {
           "id": "p17",
@@ -1183,7 +2206,59 @@
             },
             "placement": "above-left",
             "mobilePolicy": "dock"
-          }
+          },
+          "readingUnits": [
+            {
+              "id": "u17a",
+              "speaker": "Narrator",
+              "text": "Glow shook his head.",
+              "start": 69.119,
+              "end": 70.139,
+              "words": [
+                {
+                  "text": "Glow",
+                  "start": 69.119,
+                  "end": 69.439
+                },
+                {
+                  "text": "shook",
+                  "start": 69.479,
+                  "end": 69.619
+                },
+                {
+                  "text": "his",
+                  "start": 69.68,
+                  "end": 69.819
+                },
+                {
+                  "text": "head.",
+                  "start": 69.86,
+                  "end": 70.139
+                }
+              ],
+              "mediaState": "lit-hold"
+            },
+            {
+              "id": "u17b",
+              "speaker": "Glow",
+              "text": "“We did.”",
+              "start": 70.879,
+              "end": 72.479,
+              "words": [
+                {
+                  "text": "“We",
+                  "start": 70.879,
+                  "end": 71.079
+                },
+                {
+                  "text": "did.”",
+                  "start": 71.139,
+                  "end": 72.479
+                }
+              ],
+              "mediaState": "lit-hold"
+            }
+          ]
         }
       ]
     },
@@ -1196,10 +2271,6 @@
           "src": "scenes/the-window/idle.mp4",
           "poster": "scenes/the-window/poster.jpg",
           "loop": true,
-          "focalPoint": {
-            "x": 0.5,
-            "y": 0.5
-          },
           "transitionsTo": []
         }
       ],
@@ -1304,9 +2375,101 @@
             },
             "placement": "below",
             "mobilePolicy": "dock"
-          }
+          },
+          "readingUnits": [
+            {
+              "id": "u18",
+              "speaker": "Narrator",
+              "text": "From that night on, Pip left one window glowing for anyone who had lost the way.",
+              "start": 72.54,
+              "end": 77.239,
+              "words": [
+                {
+                  "text": "From",
+                  "start": 72.54,
+                  "end": 72.659
+                },
+                {
+                  "text": "that",
+                  "start": 72.699,
+                  "end": 72.839
+                },
+                {
+                  "text": "night",
+                  "start": 72.919,
+                  "end": 73.139
+                },
+                {
+                  "text": "on,",
+                  "start": 73.22,
+                  "end": 73.439
+                },
+                {
+                  "text": "Pip",
+                  "start": 73.879,
+                  "end": 74.099
+                },
+                {
+                  "text": "left",
+                  "start": 74.18,
+                  "end": 74.439
+                },
+                {
+                  "text": "one",
+                  "start": 74.54,
+                  "end": 74.659
+                },
+                {
+                  "text": "window",
+                  "start": 74.76,
+                  "end": 75.139
+                },
+                {
+                  "text": "glowing",
+                  "start": 75.22,
+                  "end": 75.879
+                },
+                {
+                  "text": "for",
+                  "start": 75.939,
+                  "end": 76.079
+                },
+                {
+                  "text": "anyone",
+                  "start": 76.139,
+                  "end": 76.559
+                },
+                {
+                  "text": "who",
+                  "start": 76.619,
+                  "end": 76.699
+                },
+                {
+                  "text": "had",
+                  "start": 76.72,
+                  "end": 76.839
+                },
+                {
+                  "text": "lost",
+                  "start": 76.879,
+                  "end": 77.119
+                },
+                {
+                  "text": "the",
+                  "start": 77.159,
+                  "end": 77.239
+                }
+              ],
+              "mediaState": "idle"
+            }
+          ]
         }
       ]
     }
-  ]
+  ],
+  "productionPlan": {
+    "coverage": "reading-unit",
+    "beatBoard": "beat-board.json",
+    "continuityLedger": "continuity.json"
+  }
 }

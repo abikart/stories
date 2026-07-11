@@ -90,7 +90,7 @@
           "reason": "First animation take progressively over-lit the lantern before the later bloom scene."
         }
       ],
-      "status": "approved-integrated"
+      "status": "replaced-m6.1"
     },
     {
       "id": "the-lantern-blooms",
@@ -107,7 +107,7 @@
           "reason": "The tighter doorway framing left less breathing room and made the pre-bloom lantern and cottage too bright."
         }
       ],
-      "status": "approved-integrated"
+      "status": "replaced-m6.1"
     },
     {
       "id": "the-window-idle",
@@ -126,6 +126,93 @@
         }
       ],
       "status": "approved-integrated"
+    }
+  ],
+  "revisions": [
+    {
+      "id": "m6.1-reading-unit-coverage",
+      "generatedAt": "2026-07-11",
+      "reason": "Replace broad looping scenes with sentence-addressable visual beats, add visible travel, and enforce that the lantern lights only once at Pip's doorstep.",
+      "agentConversation": "642a7309-22d1-4097-9907-283c7d36c9e7",
+      "assets": [
+        {
+          "id": "village-glow",
+          "cardId": "0d7207",
+          "sourceAssetId": "5d0dc6ed-dbef-4c14-9dc0-9db8897306a2",
+          "file": "scenes/the-cold-lantern/village-glow.jpg",
+          "role": "opening-establishing-keyframe",
+          "status": "approved-integrated"
+        },
+        {
+          "id": "pip-exception",
+          "cardId": "b770d0",
+          "sourceAssetId": "24627cbb-e3a6-4628-b16e-afd46252ad1d",
+          "file": "scenes/the-cold-lantern/pip-exception.jpg",
+          "role": "opening-exception-keyframe",
+          "status": "approved-integrated"
+        },
+        {
+          "id": "failed-attempt",
+          "cardId": "986cca",
+          "sourceAssetId": "c84fab37-a303-4560-b142-11bade3718c3",
+          "motionAssetId": "2d6a14ac-c682-493c-9072-b5a08d401732",
+          "sourceDownload": "imagine-df257707-70fe-4e0d-a5b2-344dcc547b97.mp4",
+          "poster": "scenes/the-cold-lantern/failed-attempt.jpg",
+          "video": "scenes/the-cold-lantern/failed-attempt.mp4",
+          "role": "failed-attempt-action-once",
+          "motionPrompt": "Pip polishes once, whispers please, then receives no response; the lantern remains completely dark throughout and the shot ends on gentle disappointment.",
+          "status": "approved-integrated"
+        },
+        {
+          "id": "path-revealed-dark-lantern",
+          "cardId": "8e998e",
+          "sourceAssetId": "10d8dba0-cec5-4489-9af1-90c3a97fc93c",
+          "file": "scenes/the-blue-dark/path-revealed.jpg",
+          "role": "interaction-resolve-keyframe",
+          "continuityNote": "Glow reveals the dotted route; Pip's lantern remains black and emits no light.",
+          "status": "approved-integrated"
+        },
+        {
+          "id": "travel-home",
+          "cardId": "b64fe9",
+          "sourceAssetId": "2b63d362-bca5-4569-8310-678d15df15c4",
+          "motionAssetId": "cdf2222b-b6a9-4a7f-b5a8-3694f93c7ca7",
+          "sourceDownload": "imagine-8b0fd62f-f37b-44e5-9f0d-b413f659281f.mp4",
+          "poster": "scenes/the-blue-dark/travel.jpg",
+          "video": "scenes/the-blue-dark/travel.mp4",
+          "duration": 10.041667,
+          "role": "travel-action-once",
+          "motionPrompt": "Pip visibly walks from the mushroom crossing toward home while Glow leads; the lantern remains dark for the entire ten-second shot.",
+          "status": "approved-integrated"
+        },
+        {
+          "id": "doorstep-cold",
+          "cardId": "8c255e",
+          "sourceAssetId": "c673eb25-ee4e-4c80-85c7-82b1bdc7b51e",
+          "file": "scenes/the-lantern-blooms/doorstep-cold.jpg",
+          "role": "pre-spark-keyframe",
+          "continuityNote": "Glow may circle, but no spark has entered and the lantern is completely dark.",
+          "status": "approved-integrated"
+        },
+        {
+          "id": "lantern-bloom-v2",
+          "sourceAssetId": "c673eb25-ee4e-4c80-85c7-82b1bdc7b51e",
+          "motionAssetId": "f23cbe70-9fdc-49bd-8637-cffc94a5c782",
+          "sourceDownload": "imagine-0dcf6f6a-f25e-4e81-b6ef-db79a21cc625.mp4",
+          "video": "scenes/the-lantern-blooms/bloom-v2.mp4",
+          "derivedHold": "scenes/the-lantern-blooms/lit-hold.jpg",
+          "role": "single-bloom-action-once",
+          "motionPrompt": "Begin completely dark; one spark enters once, the lantern blooms once, then holds steadily lit without pulsing or repeating.",
+          "status": "approved-integrated"
+        },
+        {
+          "id": "glow-free-hold",
+          "derivedFrom": "scenes/the-tiny-light/action.mp4",
+          "file": "scenes/the-tiny-light/free.jpg",
+          "role": "resolved-hold",
+          "status": "approved-integrated"
+        }
+      ]
     }
   ]
 }

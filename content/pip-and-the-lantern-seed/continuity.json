@@ -1,0 +1,41 @@
+{
+  "schemaVersion": 1,
+  "storyId": "pip-and-the-lantern-seed",
+  "subjects": {
+    "lantern": {
+      "description": "Pip's acorn lantern must light exactly once, at the doorstep.",
+      "initial": "dark",
+      "transitions": [
+        { "from": "dark", "to": "spark-entering", "atReadingUnit": "u14" },
+        { "from": "spark-entering", "to": "lit", "atReadingUnit": "u15" }
+      ]
+    },
+    "glow": {
+      "description": "Glow moves from unseen need to helper and companion without duplicating the lantern transformation.",
+      "initial": "absent",
+      "transitions": [
+        { "from": "absent", "to": "hidden", "atReadingUnit": "u05" },
+        { "from": "hidden", "to": "trapped", "atReadingUnit": "u06" },
+        { "from": "trapped", "to": "helping", "atReadingUnit": "u07a" },
+        { "from": "helping", "to": "free", "atReadingUnit": "u07e" },
+        { "from": "free", "to": "companion", "atReadingUnit": "u08" },
+        { "from": "companion", "to": "guide", "atReadingUnit": "u11" },
+        { "from": "guide", "to": "circling", "atReadingUnit": "u13" },
+        { "from": "circling", "to": "sharing-spark", "atReadingUnit": "u14" },
+        { "from": "sharing-spark", "to": "companion", "atReadingUnit": "u15" }
+      ]
+    },
+    "location": {
+      "description": "Every narrated movement must have a corresponding visual location change.",
+      "initial": "village",
+      "transitions": [
+        { "from": "village", "to": "pip-door", "atReadingUnit": "u02" },
+        { "from": "pip-door", "to": "fern-hollow", "atReadingUnit": "u05" },
+        { "from": "fern-hollow", "to": "blue-path", "atReadingUnit": "u08" },
+        { "from": "blue-path", "to": "journey", "atReadingUnit": "u11" },
+        { "from": "journey", "to": "doorstep", "atReadingUnit": "u13" },
+        { "from": "doorstep", "to": "window", "atReadingUnit": "u18" }
+      ]
+    }
+  }
+}

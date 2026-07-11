@@ -1,0 +1,4 @@
+interface:
+  display_name: "Author Story Film"
+  short_description: "Build validated interactive story-film packages"
+  default_prompt: "Use $author-story-film to plan and produce a continuity-safe interactive story."

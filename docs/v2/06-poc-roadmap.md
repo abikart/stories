@@ -102,6 +102,10 @@ result is credible as both a launch demo and a YouTube story.
   keyframes, six 1280×720 motion states, matched interaction handoff, complete
   prompt/candidate provenance, ElevenLabs soundscape, responsive integration,
   continuity review, phone playback, and five-viewport Chrome QA.
+- M6.1 complete: 27 sentence-sized reading units, 16-beat coverage board,
+  machine-checked continuity ledger, navigable Read-with-me passages, byte-range
+  seeking, corrected dark-lantern interaction resolve, visible 10-second journey,
+  definitive one-time doorstep bloom, and reusable `$author-story-film` skill.
 - M7 next: deterministic film route, canonical interaction automation, stem
   muxing, 1080p render, and interactive-versus-film parity review.
 

@@ -42,19 +42,30 @@ the expressive performance.
 
 ## Visual workflow
 
-1. Approve series bible and story beat board.
-2. Create canonical character/location references.
-3. Approve 16:9 key illustrations with the centered 4:3 action-safe overlay.
-4. Assign each beat a production tier: living illustration, motion shot, or
+1. Approve the series bible, expressive performance phrases, and sentence-sized
+   reading units.
+2. Build a beat board that covers every reading unit exactly once and a
+   continuity ledger that names each legal prop, character, and location change.
+3. Create canonical character/location references.
+4. Approve 16:9 key illustrations with the centered 4:3 action-safe overlay.
+5. Assign each beat a production tier: living illustration, motion shot, or
    hero interaction.
-5. For state transitions, approve handoff keyframes before animation.
-6. Generate or animate from those references.
-7. Ingest creative masters, extract posters, and create delivery renditions.
-8. Preview all responsive presets and the film path.
+6. Run planning lint with pending assets allowed; generate only the missing or
+   rejected beats.
+7. For state transitions, approve handoff keyframes before animation.
+8. Generate or animate from those references, then review start, middle, and end
+   frames against the continuity ledger.
+9. Ingest creative masters, extract posters, and create delivery renditions.
+10. Run strict release lint, Read-with-me passage QA, responsive presets, and
+    the film path.
 
 Pure text-to-video generation is acceptable for exploration, not continuity-
 critical final states. Image-to-video or controlled compositing should be the
 default for recurring characters.
+
+For this repository, `$author-story-film` packages the resumable workflow. The
+runtime contract and validators remain authoritative; the skill tells a fresh
+session which artifacts to update and which acceptance gates must pass.
 
 ## Seam grammar
 

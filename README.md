@@ -49,4 +49,6 @@ The original POC is preserved as a working reference. Active development is the
 performance-first foundation with responsive cinematic staging, reusable media
 state machines, meaningful interaction recipes, and one production package for
 interactive web plus linear film. Work continues on branch
-`codex/interactive-story-runtime`.
+`codex/interactive-story-runtime`. The golden story now uses sentence-sized
+reading units, machine-checked beat/continuity plans, navigable Read-with-me
+passages, and the project-owned `$author-story-film` production skill.

@@ -17,7 +17,11 @@ import {
   PerformanceClock,
   type PerformanceClockSnapshot,
 } from "@/experience/performance/PerformanceClock";
-import { flattenPhrases } from "@/experience/performance/timeline";
+import {
+  flattenPhrases,
+  flattenReadingUnits,
+  sampleReadingUnit,
+} from "@/experience/performance/timeline";
 import { DragToGuide } from "@/experience/interactions/DragToGuide";
 import { Soundscape, type SoundscapeHandle } from "@/experience/audio/Soundscape";
 
@@ -39,6 +43,8 @@ type SafeStop = {
   id: string;
   phraseIndex: number;
   time: number;
+  unitStartIndex: number;
+  unitEndIndex: number;
 };
 
 function assetUrl(storyId: string, asset: string) {
@@ -55,9 +61,27 @@ export function ExperiencePlayer({ production }: { production: ExperienceProduct
 
   const performance = production.performance;
   const phrases = useMemo(() => flattenPhrases(production), [production]);
-  const safeStops = useMemo<SafeStop[]>(() => phrases.flatMap((phrase, phraseIndex) => (
-    phrase.safeStopAfter ? [{ id: phrase.id, phraseIndex, time: phrase.end }] : []
-  )), [phrases]);
+  const readingUnits = useMemo(() => flattenReadingUnits(production), [production]);
+  const safeStops = useMemo<SafeStop[]>(() => {
+    let previousUnitEnd = -1;
+    return phrases.flatMap((phrase, phraseIndex) => {
+      if (!phrase.safeStopAfter) return [];
+      let unitEndIndex = previousUnitEnd;
+      for (let index = previousUnitEnd + 1; index < readingUnits.length; index++) {
+        if (readingUnits[index].end <= phrase.end + 0.04) unitEndIndex = index;
+        else break;
+      }
+      const stop = {
+        id: phrase.id,
+        phraseIndex,
+        time: phrase.end,
+        unitStartIndex: previousUnitEnd + 1,
+        unitEndIndex,
+      };
+      previousUnitEnd = unitEndIndex;
+      return [stop];
+    });
+  }, [phrases, readingUnits]);
   const audioRef = useRef<HTMLAudioElement>(null);
   const soundscapeRef = useRef<SoundscapeHandle>(null);
   const clockRef = useRef<PerformanceClock | null>(null);
@@ -65,7 +89,7 @@ export function ExperiencePlayer({ production }: { production: ExperienceProduct
   const deckRef = useRef<MediaDeckHandle>(null);
   const stopCursorRef = useRef(0);
   const [mode, setMode] = useState<PlayerMode>("watch");
-  const [displayPhraseIndex, setDisplayPhraseIndex] = useState(0);
+  const [displayUnitIndex, setDisplayUnitIndex] = useState(0);
   const [activeSceneIndex, setActiveSceneIndex] = useState(0);
   const [waiting, setWaiting] = useState<SafeStop | null>(null);
   const [completedInteractions, setCompletedInteractions] = useState<Set<string>>(() => new Set());
@@ -79,6 +103,10 @@ export function ExperiencePlayer({ production }: { production: ExperienceProduct
     sceneIndex: -1,
     wordIndex: -1,
   });
+  const activeReadingSample = useMemo(
+    () => sampleReadingUnit(readingUnits, snapshot.time),
+    [readingUnits, snapshot.time],
+  );
 
   const initializeClock = useCallback((audio: HTMLAudioElement | null) => {
     if (!audio) return null;
@@ -112,9 +140,13 @@ export function ExperiencePlayer({ production }: { production: ExperienceProduct
 
   useEffect(() => {
     if (snapshot.phraseIndex < 0) return;
-    setDisplayPhraseIndex(snapshot.phraseIndex);
     setActiveSceneIndex(snapshot.sceneIndex);
   }, [snapshot.phraseIndex, snapshot.sceneIndex]);
+
+  useEffect(() => {
+    if (waiting || activeReadingSample.unitIndex < 0) return;
+    setDisplayUnitIndex(activeReadingSample.unitIndex);
+  }, [activeReadingSample.unitIndex, waiting]);
 
   useEffect(() => {
     void deckRef.current?.setPlaying(snapshot.playing);
@@ -128,15 +160,19 @@ export function ExperiencePlayer({ production }: { production: ExperienceProduct
     if (!stop || snapshot.time < stop.time) return;
     clockRef.current?.pause();
     stopCursorRef.current += 1;
-    setDisplayPhraseIndex(stop.phraseIndex);
+    setDisplayUnitIndex(stop.unitEndIndex);
     setWaiting(stop);
   }, [mode, safeStops, snapshot.playing, snapshot.time, waiting]);
 
-  const phrase = phrases[displayPhraseIndex] ?? phrases[0];
+  const displayUnit = readingUnits[displayUnitIndex] ?? readingUnits[0];
+  const liveUnit = readingUnits[activeReadingSample.unitIndex] ?? displayUnit;
   const scene = production.scenes[activeSceneIndex] ?? production.scenes[0];
   const interaction = scene.interaction;
   const interactionTrigger = interaction
     ? phrases.find((candidate) => candidate.id === interaction.triggerAfterPhrase)
+    : null;
+  const interactionTriggerUnit = interaction?.triggerAtReadingUnit
+    ? readingUnits.find((candidate) => candidate.id === interaction.triggerAtReadingUnit)
     : null;
   const interactionComplete = completedInteractions.has(scene.id);
   const requiredInteraction = Boolean(
@@ -145,12 +181,16 @@ export function ExperiencePlayer({ production }: { production: ExperienceProduct
   const recipeMode = requiredInteraction
     ? "interactive"
     : interaction && !interactionComplete && mode === "watch"
-      && snapshot.time >= (interactionTrigger?.end ?? Number.POSITIVE_INFINITY)
+      && snapshot.time >= (interactionTriggerUnit?.start ?? interactionTrigger?.end ?? Number.POSITIVE_INFINITY)
       ? "canonical"
       : null;
-  const media = scene.media[0];
+  const visualUnit = waiting ? displayUnit : liveUnit;
+  const visualState = interactionComplete && visualUnit.phraseId === interaction?.triggerAfterPhrase
+    ? interaction.completeMediaState
+    : visualUnit.mediaState;
+  const media = scene.media.find((state) => state.id === visualState) ?? scene.media[0];
   const focal = media.focalPoint ?? production.stage.defaultFocalPoint;
-  const anchor = phrase.overlay.anchor ?? { x: 0.5, y: 0.5 };
+  const anchor = displayUnit.overlay.anchor ?? { x: 0.5, y: 0.5 };
   const stageStyle: PlayerStyle = {
     "--experience-accent": production.accent,
     "--experience-backdrop": `url("${assetUrl(production.id, production.stage.backdrop.poster)}")`,
@@ -165,16 +205,26 @@ export function ExperiencePlayer({ production }: { production: ExperienceProduct
   const shownWordIndex = snapshot.time === 0 && !snapshot.playing
     ? -1
     : waiting
-    ? (phrase.words?.length ?? 1) - 1
-    : phrase.id === phrases[snapshot.phraseIndex]?.id
-      ? snapshot.wordIndex
-      : (phrase.words?.length ?? 1) - 1;
+    ? displayUnit.words.length
+    : displayUnit.id === liveUnit.id
+      ? activeReadingSample.wordIndex
+      : displayUnit.words.length - 1;
+  const passagePosition = waiting ? displayUnitIndex - waiting.unitStartIndex + 1 : 1;
+  const passageLength = waiting ? waiting.unitEndIndex - waiting.unitStartIndex + 1 : 1;
+
+  useEffect(() => {
+    const timer = window.setTimeout(() => {
+      void deckRef.current?.transitionTo(visualState);
+    }, 0);
+    return () => window.clearTimeout(timer);
+  }, [activeSceneIndex, visualState]);
 
   function changeMode(nextMode: PlayerMode) {
     if (nextMode === mode) return;
     setMode(nextMode);
     setStopCursor(snapshot.time);
     if (nextMode === "watch" && waiting) {
+      setDisplayUnitIndex(waiting.unitEndIndex);
       setWaiting(null);
       void play(clockRef.current);
     }
@@ -185,6 +235,7 @@ export function ExperiencePlayer({ production }: { production: ExperienceProduct
     const clock = initializeClock(audioRef.current);
     if (!clock) return;
     if (waiting) {
+      setDisplayUnitIndex(waiting.unitEndIndex);
       setWaiting(null);
       void play(clock);
     } else if (snapshot.playing) {
@@ -203,7 +254,7 @@ export function ExperiencePlayer({ production }: { production: ExperienceProduct
     if (!clock) return;
     stopCursorRef.current = 0;
     setWaiting(null);
-    setDisplayPhraseIndex(0);
+    setDisplayUnitIndex(0);
     setActiveSceneIndex(0);
     setCompletedInteractions(new Set());
     setPlaybackError("");
@@ -212,6 +263,7 @@ export function ExperiencePlayer({ production }: { production: ExperienceProduct
   }
 
   function seek(time: number) {
+    const clock = initializeClock(audioRef.current);
     setWaiting(null);
     setStopCursor(time);
     setCompletedInteractions((current) => {
@@ -220,22 +272,28 @@ export function ExperiencePlayer({ production }: { production: ExperienceProduct
         const trigger = candidate.interaction
           ? phrases.find((phraseCandidate) => phraseCandidate.id === candidate.interaction?.triggerAfterPhrase)
           : null;
-        if (trigger && time < trigger.end) next.delete(candidate.id);
+        if (!trigger) continue;
+        if (time >= trigger.end) next.add(candidate.id);
+        else next.delete(candidate.id);
       }
       return next;
     });
     soundscapeRef.current?.seek(time);
-    clockRef.current?.seek(time);
+    clock?.seek(time);
   }
 
   async function completeInteraction() {
     if (!interaction || completedInteractions.has(scene.id)) return;
     await deckRef.current?.transitionTo(interaction.completeMediaState);
     setCompletedInteractions((current) => new Set(current).add(scene.id));
-    if (waiting?.id === interaction.triggerAfterPhrase) {
-      setWaiting(null);
-      void play(clockRef.current);
-    }
+  }
+
+  function browsePassage(direction: -1 | 1) {
+    if (!waiting) return;
+    setDisplayUnitIndex((current) => Math.max(
+      waiting.unitStartIndex,
+      Math.min(waiting.unitEndIndex, current + direction),
+    ));
   }
 
   return (
@@ -278,25 +336,52 @@ export function ExperiencePlayer({ production }: { production: ExperienceProduct
 
           <div
             className="story-overlay"
-            data-kind={phrase.overlay.kind}
-            data-placement={phrase.overlay.placement ?? "above"}
-            data-mobile-policy={phrase.overlay.mobilePolicy}
+            data-kind={displayUnit.overlay.kind}
+            data-placement={displayUnit.overlay.placement ?? "above"}
+            data-mobile-policy={displayUnit.overlay.mobilePolicy}
             style={overlayStyle}
           >
-            <div className="story-overlay-content" key={phrase.id}>
-              <span className="story-overlay-speaker">{phrase.speaker}</span>
-              <p aria-label={phrase.text}>
-                {phrase.words?.map((word, index) => (
+            <div className="story-overlay-content" key={displayUnit.id}>
+              <span className="story-overlay-speaker">{displayUnit.speaker}</span>
+              <p aria-label={displayUnit.text}>
+                {displayUnit.words.map((word, index) => (
                   <span
                     aria-hidden="true"
-                    key={`${phrase.id}-${index}`}
+                    key={`${displayUnit.id}-${index}`}
                     data-word-state={index < shownWordIndex ? "past" : index === shownWordIndex ? "active" : "future"}
                   >
                     {word.text}{" "}
                   </span>
-                )) ?? phrase.text}
+                ))}
               </p>
             </div>
+            {waiting && !requiredInteraction ? (
+              <div className="story-reading-nav" role="group" aria-label="Reading passage">
+                <button
+                  type="button"
+                  aria-label="Previous sentence"
+                  disabled={displayUnitIndex === waiting.unitStartIndex}
+                  onClick={() => browsePassage(-1)}
+                >
+                  ←
+                </button>
+                <div>
+                  <span>Your turn</span>
+                  <strong>Sentence {passagePosition} of {passageLength}</strong>
+                </div>
+                <button
+                  type="button"
+                  aria-label="Next sentence"
+                  disabled={displayUnitIndex === waiting.unitEndIndex}
+                  onClick={() => browsePassage(1)}
+                >
+                  →
+                </button>
+                <button className="story-reading-continue" type="button" onClick={togglePlayback}>
+                  Continue story
+                </button>
+              </div>
+            ) : null}
           </div>
 
           {snapshot.time === 0 && !snapshot.playing ? (
@@ -306,14 +391,6 @@ export function ExperiencePlayer({ production }: { production: ExperienceProduct
               <button type="button" onClick={togglePlayback}>
                 Begin story
               </button>
-            </div>
-          ) : null}
-
-          {waiting && !requiredInteraction ? (
-            <div className="story-wait-card" role="status">
-              <span>Your turn</span>
-              <p>Take your time with the words. Pip will wait.</p>
-              <button type="button" onClick={togglePlayback}>Continue the story</button>
             </div>
           ) : null}
         </div>

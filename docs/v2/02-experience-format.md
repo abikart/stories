@@ -12,6 +12,8 @@ Each v2 story lives beside its assets:
 ```text
 content/<story-id>/
   production.json
+  beat-board.json
+  continuity.json
   audio/
     performance.mp3
     alignment.json
@@ -38,6 +40,11 @@ type ExperienceProduction = {
   stage: StageContract;
   cast: CastMember[];
   performance: Performance;
+  productionPlan?: {
+    coverage: "reading-unit";
+    beatBoard: string;
+    continuityLedger: string;
+  };
   scenes: Scene[];
   canonicalPath: CanonicalAction[];
 };
@@ -66,6 +73,18 @@ type Phrase = {
   safeStopAfter?: boolean;
   words: AlignedWord[];
   overlay: OverlayPlacement;
+  readingUnits?: ReadingUnit[];
+};
+
+type ReadingUnit = {
+  id: string;
+  speaker: string;
+  text: string;
+  start: number;
+  end: number;
+  words: AlignedWord[];
+  mediaState: string;
+  overlay?: OverlayPlacement;
 };
 
 type Scene = {
@@ -101,6 +120,12 @@ implemented. This document defines intent.
 - Media transitions are explicit. A state may only transition to declared
   successors.
 - Every phrase references final-audio seconds and the words inside that range.
+- Expressive phrases remain performance units. `readingUnits` subdivide them
+  into sentence-sized display and visual-cue units without cutting the audio.
+- A reading-unit production plan must cover every reading unit exactly once in
+  its beat board. Every referenced media state must exist in the owning scene.
+- The continuity ledger declares legal subject transitions at exact reading
+  units. Release lint fails on undeclared changes or unresolved asset statuses.
 - Safe stops occur after complete performance phrases, never inside a word.
 - Interaction coordinates use normalized media space, not CSS pixels.
 - Story-specific behavior lives in data bindings to registered recipes.
