@@ -105,8 +105,12 @@
         }
       ],
       "scene": {
-        "backend": "coded",
-        "module": "none"
+        "backend": "frames",
+        "frames": {
+          "dir": "scenes/p1",
+          "count": 73,
+          "ext": "jpg"
+        }
       },
       "narration": {
         "audio": "audio/p1.mp3",
@@ -157,8 +161,12 @@
         }
       ],
       "scene": {
-        "backend": "coded",
-        "module": "none",
+        "backend": "frames",
+        "frames": {
+          "dir": "scenes/p2",
+          "count": 73,
+          "ext": "jpg"
+        },
         "cues": [
           {
             "atWord": 3,
@@ -211,8 +219,12 @@
         }
       ],
       "scene": {
-        "backend": "coded",
-        "module": "none",
+        "backend": "frames",
+        "frames": {
+          "dir": "scenes/p3",
+          "count": 73,
+          "ext": "jpg"
+        },
         "cues": [
           {
             "atWord": 2,
@@ -255,8 +267,12 @@
         }
       ],
       "scene": {
-        "backend": "coded",
-        "module": "none"
+        "backend": "frames",
+        "frames": {
+          "dir": "scenes/p4",
+          "count": 73,
+          "ext": "jpg"
+        }
       },
       "narration": {
         "audio": "audio/p4.mp3",
@@ -328,8 +344,12 @@
         }
       ],
       "scene": {
-        "backend": "coded",
-        "module": "none"
+        "backend": "frames",
+        "frames": {
+          "dir": "scenes/p5",
+          "count": 73,
+          "ext": "jpg"
+        }
       },
       "narration": {
         "audio": "audio/p5.mp3",
