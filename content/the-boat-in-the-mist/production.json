@@ -16,21 +16,52 @@
   "scenes": [
     {
       "id": "mist-arrival",
+      "canonicalPath": ["enter", "idle", "action", "resolve"],
       "media": [
         {
-          "id": "drifting",
+          "id": "enter",
           "kind": "video",
           "src": "video-drops/p1.mp4",
           "poster": "scenes/p1/frame_0001.jpg",
           "loop": true,
           "focalPoint": { "x": 0.5, "y": 0.46 },
-          "transitionsTo": ["waiting"]
+          "transitionsTo": ["idle"]
         },
         {
-          "id": "waiting",
-          "kind": "poster",
-          "src": "scenes/p1/frame_0073.jpg",
-          "transitionsTo": []
+          "id": "idle",
+          "kind": "video",
+          "src": "video-drops/p2.mp4",
+          "poster": "scenes/p2/frame_0001.jpg",
+          "loop": true,
+          "focalPoint": { "x": 0.5, "y": 0.46 },
+          "transitionsTo": ["action", "enter", "broken-fixture"]
+        },
+        {
+          "id": "action",
+          "kind": "video",
+          "src": "video-drops/p3.mp4",
+          "poster": "scenes/p3/frame_0001.jpg",
+          "loop": true,
+          "focalPoint": { "x": 0.5, "y": 0.46 },
+          "transitionsTo": ["resolve"]
+        },
+        {
+          "id": "resolve",
+          "kind": "video",
+          "src": "video-drops/p4.mp4",
+          "poster": "scenes/p4/frame_0001.jpg",
+          "loop": true,
+          "focalPoint": { "x": 0.5, "y": 0.46 },
+          "transitionsTo": ["enter"]
+        },
+        {
+          "id": "broken-fixture",
+          "kind": "video",
+          "src": "scenes/p2/frame_0001.jpg",
+          "poster": "scenes/p2/frame_0001.jpg",
+          "loop": false,
+          "focalPoint": { "x": 0.5, "y": 0.46 },
+          "transitionsTo": ["idle"]
         }
       ],
       "phrases": [

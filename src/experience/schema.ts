@@ -47,6 +47,7 @@ export const MediaStateSchema = z.object({
 export const ExperienceSceneSchema = z.object({
   id: z.string().min(1),
   media: z.array(MediaStateSchema).min(1),
+  canonicalPath: z.array(z.string().min(1)).min(1).optional(),
   phrases: z.array(PhraseSchema).default([]),
 });
 

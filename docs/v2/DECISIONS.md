@@ -3,6 +3,25 @@
 Newest decisions go first. Record meaningful divergences, tradeoffs, and quality
 gates; do not duplicate routine implementation details.
 
+## 2026-07-11 — M2 native media deck
+
+- The media runtime owns exactly two slots: the active state and one likely-next
+  state. A transition reuses the standby slot, then immediately turns the
+  released slot into the next preload.
+- Poster backgrounds live underneath every video layer permanently, so decode
+  failure never exposes black. A failed standby transition preserves the active
+  state and enters an explicit recoverable error phase.
+- Readiness is checked both from media events and synchronously after slot
+  assignment. Browsers can reach `readyState >= 2` before React observes a
+  readiness event, so event-only state machines can stall on already-decoded
+  local media.
+- Runtime slot ownership is mirrored in refs while React renders the layers.
+  Long-running canonical drivers must not make transition decisions from a
+  stale render closure.
+- The Boat package includes a deliberately invalid-media `broken-fixture`
+  state for fallback QA. It is ignored by the canonical path and will not be
+  copied into the golden story.
+
 ## 2026-07-10 — v2 foundation
 
 - Keep the existing repository and create v2 in parallel on

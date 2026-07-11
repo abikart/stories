@@ -87,7 +87,9 @@ result is credible as both a launch demo and a YouTube story.
 
 - M0 complete: durable v2 documentation and handoff.
 - M1 complete: responsive cinematic stage and schema-v2 fixture.
-- M2 next: native media state machine.
+- M2 complete: two-slot native media deck, legal graph transitions, canonical
+  driver, cancellation, and poster-backed failure recovery.
+- M3 next: original golden story and expressive aligned performance.
 
 Do not start Story Studio, migrate old stories, or add more interaction recipes
 before the media state machine and expressive performance timeline are verified.

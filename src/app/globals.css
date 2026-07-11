@@ -618,16 +618,40 @@ html[data-easy-read] .prose-line {
   box-shadow: inset 0 0 0 1px rgb(0 0 0 / 0.1);
 }
 
-.experience-media video {
+.experience-media-layer {
+  position: absolute;
+  inset: 0;
+  background-color: #bfdedb;
+  background-image: var(--media-poster);
+  background-position: var(--media-focal-x) var(--media-focal-y);
+  background-size: cover;
+  opacity: 0;
+  transition-property: opacity;
+  transition-duration: 420ms;
+  transition-timing-function: cubic-bezier(0.2, 0, 0, 1);
+}
+
+.experience-media-layer[data-active] {
+  z-index: 1;
+  opacity: 1;
+}
+
+.experience-media-layer[data-entering] {
+  z-index: 2;
+  opacity: 1;
+}
+
+.experience-media-layer video {
   width: 100%;
   height: 100%;
   display: block;
   object-fit: cover;
-  object-position: var(--focal-x) var(--focal-y);
+  object-position: var(--media-focal-x) var(--media-focal-y);
 }
 
 .experience-vignette {
   position: absolute;
+  z-index: 3;
   inset: 0;
   background:
     linear-gradient(180deg, rgb(16 44 48 / 0.08), transparent 28%),
@@ -637,6 +661,7 @@ html[data-easy-read] .prose-line {
 
 .experience-action-safe {
   position: absolute;
+  z-index: 5;
   inset-block: 0;
   left: 0;
   width: 100%;
@@ -659,6 +684,21 @@ html[data-easy-read] .prose-line {
 
 .experience-shell[data-debug] .experience-action-safe {
   display: grid;
+}
+
+.experience-state-badge {
+  position: absolute;
+  z-index: 4;
+  left: 12px;
+  bottom: 12px;
+  padding: 5px 9px;
+  border-radius: 999px;
+  background: rgb(39 40 49 / 0.66);
+  color: white;
+  font-family: var(--font-body);
+  font-size: 0.68rem;
+  font-variant-numeric: tabular-nums;
+  backdrop-filter: blur(8px);
 }
 
 .experience-bubble {
@@ -735,6 +775,49 @@ html[data-easy-read] .prose-line {
   text-align: center;
 }
 
+.experience-state-controls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 10px;
+  color: #21393d;
+  font-family: var(--font-display);
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+
+.experience-state-controls > span,
+.experience-state-controls button {
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  padding: 9px 13px;
+  border-radius: 999px;
+  background: rgb(255 254 241 / 0.72);
+  box-shadow: 0 0 0 1px rgb(0 0 0 / 0.06);
+  backdrop-filter: blur(10px);
+}
+
+.experience-state-controls button {
+  transition-property: scale, opacity, background-color;
+  transition-duration: 150ms;
+  transition-timing-function: ease-out;
+}
+
+.experience-state-controls button:hover:not(:disabled) {
+  background: rgb(255 254 241 / 0.96);
+}
+
+.experience-state-controls button:active:not(:disabled) {
+  scale: 0.96;
+}
+
+.experience-state-controls button:disabled {
+  opacity: 0.46;
+}
+
 @media (min-width: 600px) {
   .preset-pocket { display: none; }
   .preset-book { display: inline; }
@@ -806,6 +889,16 @@ html[data-easy-read] .prose-line {
     z-index: 3;
     margin: 0;
   }
+
+  .experience-state-controls {
+    position: absolute;
+    left: max(26px, env(safe-area-inset-left));
+    bottom: max(24px, env(safe-area-inset-bottom));
+    z-index: 3;
+    max-width: 62%;
+    justify-content: flex-start;
+    margin: 0;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -816,5 +909,9 @@ html[data-easy-read] .prose-line {
 
   .experience-controls button {
     transition-duration: 0ms;
+  }
+
+  .experience-media-layer {
+    transition-duration: 80ms;
   }
 }

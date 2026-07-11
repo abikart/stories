@@ -22,6 +22,10 @@ Last updated: 2026-07-10
 - Typecheck, all four v1 story linters, and production build pass.
 - Real-browser verification passed at 390×844, 430×932, 768×1024,
   1024×768, and 1440×900 with no console warnings/errors.
+- M2 native media state machine is complete: two-slot preload ownership,
+  legal transitions, interruptible crossfades, canonical driver, and fallback.
+- `pnpm lint:experiences` validates v2 schemas, graphs, canonical paths, and
+  referenced assets.
 
 ## Fixed decisions
 
@@ -34,10 +38,10 @@ Last updated: 2026-07-10
 
 ## Immediate next action
 
-Implement M2's native media state machine: current/next video ownership,
-poster readiness, legal state transitions, dual-layer opacity crossfades,
-cancellation, failure fallback, and a simple canonical driver. Use multiple
-Boat clips only as technical fixtures; do not treat them as golden-story art.
+Implement M3: author the original 60–90 second golden story and performance
+direction, generate 3–5 continuous Eleven v3 candidates within the 50k-credit
+cap, select a provisional final performance, run forced alignment, and store
+audio, prompts, candidate metadata, phrases, safe stops, and provenance.
 
 ## Verification baseline
 
@@ -45,6 +49,10 @@ Boat clips only as technical fixtures; do not treat them as golden-story art.
 Responsive QA confirmed Pocket (4:3 + docked phrase), Book (4:3 + anchored
 phrase), Cinema (16:9 + anchored phrase), native MP4 playback, 44px controls,
 working play/pause and guide toggles, and correct action-safe geometry.
+M2 browser QA additionally confirmed canonical completion at `resolve`, active
+transition cancellation, healthy-current fallback after a failed standby clip,
+exactly two mounted video elements, one active layer, all five viewports, and a
+clean browser console.
 
 ## Session close protocol
 
