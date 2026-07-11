@@ -64,6 +64,10 @@ pnpm lint:experiences
 pnpm build
 ```
 
+Run `pnpm qa:experience -- <story-id>` against a clean local dev server after
+runtime or timeline changes. Stop the dev server before `pnpm build`, because
+both commands own `.next`; restart it before browser QA.
+
 Strict lint must fail while any beat is `needs-generation`, `derived-pending`, or `replace-needed`.
 
 ## Handoff

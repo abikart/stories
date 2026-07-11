@@ -3,6 +3,20 @@
 Newest decisions go first. Record meaningful divergences, tradeoffs, and quality
 gates; do not duplicate routine implementation details.
 
+## 2026-07-11 — M6.3 atomic scrub reconciliation
+
+- The active scene is derived from the same reading unit that supplies the
+  media state. It is not mirrored through delayed React state; therefore a
+  reverse seek cannot briefly ask the later scene to render an earlier state.
+- A seek back to the already-visible state cancels any different state still
+  loading in the standby slot. The last scrub position is authoritative and a
+  superseded crossfade cannot commit afterward.
+- Reverse scrubbing across all reading units and complete ending playback are
+  persisted as `pnpm qa:experience -- <story-id>` browser regression checks.
+- Development and production builds must not own `.next` concurrently. Stop a
+  dev server before `pnpm build`, then restart it for browser QA; otherwise
+  stale chunk requests can surface as opaque Next development errors.
+
 ## 2026-07-11 — M6.2 cue restoration and continuous Watch motion
 
 - Poster layers use the selected state's own `src`; the story-level backdrop is

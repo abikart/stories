@@ -99,6 +99,10 @@ Last updated: 2026-07-11
   discovery, free-Glow, revealed-route, cold-doorstep, and lit-lantern holds are
   native video states; strict lint rejects future narration or interaction cues
   that regress to static posters.
+- M6.3 scrub reconciliation is complete. Scene and cue now derive atomically
+  from one reading unit, and returning to the visible cue cancels any superseded
+  standby transition. Reverse scrubbing can no longer send `travel` to the
+  `the-lantern-blooms` graph or let an older transition win later.
 
 ## Fixed decisions
 
@@ -160,6 +164,10 @@ the exact village, Pip, tiny-light, trapped, free-Glow, travel, doorstep, and
 lit-hold sources, opening motion plays immediately, and the browser console is
 clean. Read-with-me restores the prior and next living states at its first wait.
 The five-viewport matrix passes with no overflow and all buttons at least 44px.
+M6.3 QA stress-scrubs backward through every reading unit, then plays the final
+8.6 seconds through `Play again`; the exact opening and closing states restore
+with no page error or unhandled rejection. The check is now reusable through
+`pnpm qa:experience -- pip-and-the-lantern-seed` against a clean dev server.
 
 ## Session close protocol
 

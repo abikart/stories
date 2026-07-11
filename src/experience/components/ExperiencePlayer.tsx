@@ -90,7 +90,6 @@ export function ExperiencePlayer({ production }: { production: ExperienceProduct
   const stopCursorRef = useRef(0);
   const [mode, setMode] = useState<PlayerMode>("watch");
   const [displayUnitIndex, setDisplayUnitIndex] = useState(0);
-  const [activeSceneIndex, setActiveSceneIndex] = useState(0);
   const [waiting, setWaiting] = useState<SafeStop | null>(null);
   const [completedInteractions, setCompletedInteractions] = useState<Set<string>>(() => new Set());
   const [playbackError, setPlaybackError] = useState("");
@@ -107,6 +106,10 @@ export function ExperiencePlayer({ production }: { production: ExperienceProduct
     () => sampleReadingUnit(readingUnits, snapshot.time),
     [readingUnits, snapshot.time],
   );
+  const displayUnit = readingUnits[displayUnitIndex] ?? readingUnits[0];
+  const liveUnit = readingUnits[activeReadingSample.unitIndex] ?? displayUnit;
+  const visualUnit = waiting ? displayUnit : liveUnit;
+  const activeSceneIndex = visualUnit.sceneIndex;
 
   const initializeClock = useCallback((audio: HTMLAudioElement | null) => {
     if (!audio) return null;
@@ -139,11 +142,6 @@ export function ExperiencePlayer({ production }: { production: ExperienceProduct
   }, []);
 
   useEffect(() => {
-    if (snapshot.phraseIndex < 0) return;
-    setActiveSceneIndex(snapshot.sceneIndex);
-  }, [snapshot.phraseIndex, snapshot.sceneIndex]);
-
-  useEffect(() => {
     if (waiting || activeReadingSample.unitIndex < 0) return;
     setDisplayUnitIndex(activeReadingSample.unitIndex);
   }, [activeReadingSample.unitIndex, waiting]);
@@ -164,8 +162,6 @@ export function ExperiencePlayer({ production }: { production: ExperienceProduct
     setWaiting(stop);
   }, [mode, safeStops, snapshot.playing, snapshot.time, waiting]);
 
-  const displayUnit = readingUnits[displayUnitIndex] ?? readingUnits[0];
-  const liveUnit = readingUnits[activeReadingSample.unitIndex] ?? displayUnit;
   const scene = production.scenes[activeSceneIndex] ?? production.scenes[0];
   const interaction = scene.interaction;
   const interactionTrigger = interaction
@@ -184,7 +180,6 @@ export function ExperiencePlayer({ production }: { production: ExperienceProduct
       && snapshot.time >= (interactionTriggerUnit?.start ?? interactionTrigger?.end ?? Number.POSITIVE_INFINITY)
       ? "canonical"
       : null;
-  const visualUnit = waiting ? displayUnit : liveUnit;
   const visualState = interactionComplete && visualUnit.phraseId === interaction?.triggerAfterPhrase
     ? interaction.completeMediaState
     : visualUnit.mediaState;
@@ -255,7 +250,6 @@ export function ExperiencePlayer({ production }: { production: ExperienceProduct
     stopCursorRef.current = 0;
     setWaiting(null);
     setDisplayUnitIndex(0);
-    setActiveSceneIndex(0);
     setCompletedInteractions(new Set());
     setPlaybackError("");
     clock.seek(0);

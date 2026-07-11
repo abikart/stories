@@ -14,6 +14,7 @@
     "segment": "tsx scripts/segment.ts",
     "lint:stories": "tsx scripts/lint-story.ts",
     "lint:experiences": "tsx scripts/lint-experience.ts",
+    "qa:experience": "tsx scripts/qa-experience-playback.ts",
     "new-story": "tsx scripts/new-story.ts",
     "render": "tsx scripts/render-video.ts",
     "ingest-video": "tsx scripts/ingest-video.ts",

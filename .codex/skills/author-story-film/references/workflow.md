@@ -71,3 +71,8 @@ For video, inspect at least start, midpoint, and final frames. Reject camera dri
 ## Required browser matrix
 
 Verify 390×844, 430×932, 768×1024, 1024×768, and 1440×900. Check media readiness, crop, overlays, passage history, pointer/touch/keyboard interaction, controls, audio synchronization, seeking, and console errors.
+
+Stress reverse scrubbing across every reading unit and play through the final
+scene. Scene identity and media state must change atomically, superseded loads
+must not win later, and the browser must report no page error or unhandled
+rejection. Use `pnpm qa:experience -- <story-id>` against a clean dev server.

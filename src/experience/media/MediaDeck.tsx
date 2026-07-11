@@ -132,7 +132,26 @@ export const MediaDeck = forwardRef<MediaDeckHandle, {
 
   const moveTo = useCallback((stateId: string, requireGraphEdge: boolean) => {
     const from = currentRef.current;
-    if (stateId === from) return Promise.resolve(true);
+    if (stateId === from) {
+      const pending = pendingRef.current;
+      if (pending && pending.stateId !== stateId) {
+        pendingRef.current = null;
+        transitionToken.current += 1;
+        setEnteringSlot(null);
+        pending.resolve(false);
+
+        const likely = graph.likelyNext(from) ?? graph.requireState(from);
+        readyBySlot.current[pending.slot] = null;
+        setSlots((previous) => {
+          const next: [string, string] = [...previous];
+          next[pending.slot] = likely.id;
+          slotsRef.current = next;
+          return next;
+        });
+        publish("idle", from);
+      }
+      return Promise.resolve(true);
+    }
     if (requireGraphEdge && !graph.canTransition(from, stateId)) return Promise.resolve(false);
 
     pendingRef.current?.resolve(false);
