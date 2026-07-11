@@ -13,7 +13,7 @@
     },
     "backdrop": {
       "color": "#20335c",
-      "poster": "scenes/placeholder.svg"
+      "poster": "scenes/the-cold-lantern/poster.jpg"
     }
   },
   "performance": {
@@ -34,14 +34,20 @@
       "id": "the-cold-lantern",
       "media": [
         {
-          "id": "placeholder",
-          "kind": "poster",
-          "src": "scenes/placeholder.svg",
+          "id": "idle",
+          "kind": "video",
+          "src": "scenes/the-cold-lantern/idle.mp4",
+          "poster": "scenes/the-cold-lantern/poster.jpg",
+          "loop": true,
+          "focalPoint": {
+            "x": 0.5,
+            "y": 0.5
+          },
           "transitionsTo": []
         }
       ],
       "canonicalPath": [
-        "placeholder"
+        "idle"
       ],
       "phrases": [
         {
@@ -289,14 +295,20 @@
       "id": "the-tiny-light",
       "media": [
         {
-          "id": "placeholder",
-          "kind": "poster",
-          "src": "scenes/placeholder.svg",
+          "id": "action",
+          "kind": "video",
+          "src": "scenes/the-tiny-light/action.mp4",
+          "poster": "scenes/the-tiny-light/poster.jpg",
+          "loop": false,
+          "focalPoint": {
+            "x": 0.5,
+            "y": 0.5
+          },
           "transitionsTo": []
         }
       ],
       "canonicalPath": [
-        "placeholder"
+        "action"
       ],
       "phrases": [
         {
@@ -516,16 +528,28 @@
       "media": [
         {
           "id": "idle",
-          "kind": "poster",
-          "src": "scenes/placeholder.svg",
+          "kind": "video",
+          "src": "scenes/the-blue-dark/idle.mp4",
+          "poster": "scenes/the-blue-dark/poster-idle.jpg",
+          "loop": true,
+          "focalPoint": {
+            "x": 0.5,
+            "y": 0.5
+          },
           "transitionsTo": [
             "resolve"
           ]
         },
         {
           "id": "resolve",
-          "kind": "poster",
-          "src": "scenes/placeholder.svg",
+          "kind": "video",
+          "src": "scenes/the-blue-dark/resolve.mp4",
+          "poster": "scenes/the-blue-dark/poster-resolve.jpg",
+          "loop": true,
+          "focalPoint": {
+            "x": 0.5,
+            "y": 0.5
+          },
           "transitionsTo": []
         }
       ],
@@ -878,33 +902,37 @@
         "triggerAfterPhrase": "p10",
         "prompt": "Guide Glow's light home to Pip.",
         "startRegion": {
-          "x": 0.62,
-          "y": 0.38,
-          "width": 0.1,
-          "height": 0.12
+          "x": 0.6,
+          "y": 0.33,
+          "width": 0.13,
+          "height": 0.18
         },
         "targetRegion": {
-          "x": 0.28,
-          "y": 0.5,
+          "x": 0.49,
+          "y": 0.57,
           "width": 0.13,
-          "height": 0.16
+          "height": 0.22
         },
         "path": [
           {
-            "x": 0.67,
-            "y": 0.44
+            "x": 0.665,
+            "y": 0.42
           },
           {
-            "x": 0.56,
-            "y": 0.37
+            "x": 0.7,
+            "y": 0.53
           },
           {
-            "x": 0.45,
-            "y": 0.51
+            "x": 0.65,
+            "y": 0.65
           },
           {
-            "x": 0.345,
-            "y": 0.58
+            "x": 0.57,
+            "y": 0.72
+          },
+          {
+            "x": 0.545,
+            "y": 0.68
           }
         ],
         "completeMediaState": "resolve"
@@ -914,14 +942,20 @@
       "id": "the-lantern-blooms",
       "media": [
         {
-          "id": "placeholder",
-          "kind": "poster",
-          "src": "scenes/placeholder.svg",
+          "id": "bloom",
+          "kind": "video",
+          "src": "scenes/the-lantern-blooms/bloom.mp4",
+          "poster": "scenes/the-lantern-blooms/poster.jpg",
+          "loop": false,
+          "focalPoint": {
+            "x": 0.5,
+            "y": 0.5
+          },
           "transitionsTo": []
         }
       ],
       "canonicalPath": [
-        "placeholder"
+        "bloom"
       ],
       "phrases": [
         {
@@ -1157,14 +1191,20 @@
       "id": "the-window",
       "media": [
         {
-          "id": "placeholder",
-          "kind": "living-illustration",
-          "src": "scenes/placeholder.svg",
+          "id": "idle",
+          "kind": "video",
+          "src": "scenes/the-window/idle.mp4",
+          "poster": "scenes/the-window/poster.jpg",
+          "loop": true,
+          "focalPoint": {
+            "x": 0.5,
+            "y": 0.5
+          },
           "transitionsTo": []
         }
       ],
       "canonicalPath": [
-        "placeholder"
+        "idle"
       ],
       "phrases": [
         {

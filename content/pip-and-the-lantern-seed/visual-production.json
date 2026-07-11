@@ -1,8 +1,16 @@
 {
   "provider": "Grok Imagine",
-  "project": "stories.sh",
-  "agent": "Pip and the Lantern Seed — golden assets",
-  "agentUrl": "https://grok.com/imagine/agent/local-canvas-203a7476-4916-4f1b-87e1-e47b083dd7a7",
+  "generatedAt": "2026-07-10",
+  "project": {
+    "requestedName": "stories.sh",
+    "uiLabel": "Untitled Project",
+    "note": "The dedicated project accepted the stories.sh request in-agent, while the Grok sidebar continued to display Untitled Project."
+  },
+  "agent": {
+    "requestedName": "Pip and the Lantern Seed — golden assets",
+    "uiLabel": "You are the visual production agent…",
+    "url": "https://grok.com/imagine/agent/ae595eda-06c9-4691-8983-5dcdda92c27b"
+  },
   "masterAspectRatio": "16:9",
   "actionSafe": "center-4:3",
   "reference": {
@@ -12,44 +20,112 @@
     "width": 1792,
     "height": 1008
   },
-  "blocker": "Cloudflare human verification appeared after Scene 01 generation; do not solve without the user.",
+  "generationNotes": [
+    "A Cloudflare human-verification screen appeared once after Scene 01 generation. No challenge was automated; after Chrome was restarted with the requested permissions, the signed-in session resumed without the gate.",
+    "Every accepted keyframe is 1792×1008 and keeps faces, gestures, lanterns, and Glow inside the centered 4:3 action-safe region.",
+    "Every accepted motion asset is a 6.041667-second 1280×720 H.264 clip at 24 fps. Runtime playback is muted; narration, score, ambience, and effects come from the authored audio stems."
+  ],
   "states": [
     {
       "id": "the-cold-lantern-idle",
       "scene": "the-cold-lantern",
       "role": "idle-loop",
-      "cardId": "7ddb0b",
-      "status": "generated-on-canvas-awaiting-download"
+      "selectedCardId": "7ddb0b",
+      "poster": "scenes/the-cold-lantern/poster.jpg",
+      "video": "scenes/the-cold-lantern/idle.mp4",
+      "sourceDownload": "imagine-d1307258-7604-4caa-8716-9c079e71630a.mp4",
+      "motionPrompt": "Locked camera, near-still living illustration. Ferns sway barely, Pip breathes, scarf fringe lifts once, and distant cottage windows shimmer faintly. Pip remains in place. The acorn lantern must remain completely dark and Glow must not appear. Preserve the exact composition, character anatomy, watercolor paper texture, and paper border. No camera move, no new objects, no text, no morphing; make the beginning and end compatible for a calm loop.",
+      "status": "approved-integrated"
     },
     {
       "id": "the-tiny-light-action",
       "scene": "the-tiny-light",
       "role": "action-once",
-      "status": "pending"
+      "selectedCardId": "cd7b63",
+      "poster": "scenes/the-tiny-light/poster.jpg",
+      "video": "scenes/the-tiny-light/action.mp4",
+      "sourceDownload": "imagine-5afd48e5-1482-4b00-91c2-185e3a5dd213.mp4",
+      "motionPrompt": "Locked camera. Pip gives the existing single silver thread two small careful tugs; on the second tug it releases and Glow floats free, settling beside Pip with a relieved warm hover. Ferns and scarf move subtly. Preserve the exact composition, character anatomy, thread continuity, painterly texture, and paper border. No camera move, no new objects, no text, no morphing. End on a steady resolved hold for story narration.",
+      "rejectedCandidates": [
+        {
+          "cardId": "8af932",
+          "reason": "The wider creek frame made the rescue less intimate and the single thread less legible."
+        }
+      ],
+      "status": "approved-integrated"
     },
     {
       "id": "the-blue-dark-idle",
       "scene": "the-blue-dark",
       "role": "idle-loop",
-      "status": "pending"
+      "selectedCardId": "85e9f5",
+      "poster": "scenes/the-blue-dark/poster-idle.jpg",
+      "video": "scenes/the-blue-dark/idle.mp4",
+      "sourceDownload": "imagine-47b668e7-e4bb-4e5e-bd4a-c97c7354facb.mp4",
+      "motionPrompt": "Locked camera. Pip breathes softly beside the completely dark lantern; Glow hovers in place with a gentle halo. Ferns and leaves move slightly, creek reflections shimmer, and the scarf fringe lifts once. No character travel, no route trail, no lantern bloom, no camera move, no new objects, no text, and no morphing. Preserve the exact composition, anatomy, gouache-watercolor texture, and paper border; make the beginning and end compatible for a calm loop.",
+      "rejectedCandidates": [
+        {
+          "cardId": "768ba4",
+          "reason": "The darker creek composition drifted toward a digital look and separated Glow too far from the central interaction route."
+        }
+      ],
+      "status": "approved-integrated"
     },
     {
       "id": "the-blue-dark-resolve",
       "scene": "the-blue-dark",
       "role": "resolve-loop",
-      "status": "pending"
+      "selectedCardId": "83069a",
+      "poster": "scenes/the-blue-dark/poster-resolve.jpg",
+      "video": "scenes/the-blue-dark/resolve.mp4",
+      "sourceDownload": "imagine-2c211fd6-50b7-4eea-b960-de475cfd6fed.mp4",
+      "motionPrompt": "Locked camera. Animate only the existing restrained dotted firefly trail so its tiny dots twinkle gently in place along the existing mushroom-and-creek route. Add only faint creek reflections and barely perceptible leaf, scarf, and Glow hover motion. CRITICAL: Pip's acorn lantern glass and metal must remain pixel-stable at the exact tiny seed-glow shown in the source for the entire clip—do not brighten it, pulse it, light it, bloom it, or cast any new light from it. Preserve the exact composition, anatomy, dotted route, gouache-watercolor texture, and paper border. No camera move, no new objects, no text, no morphing, no bright ribbon. Calm loop-compatible beginning and end.",
+      "rejectedCandidates": [
+        {
+          "cardId": "2e33a4",
+          "reason": "The continuous ribbon was too bright and visually dominant for a restrained companionship beat."
+        },
+        {
+          "sourceDownload": "imagine-aeaff9e1-952b-4ce1-86cf-a3230efad235.mp4",
+          "reason": "First animation take progressively over-lit the lantern before the later bloom scene."
+        }
+      ],
+      "status": "approved-integrated"
     },
     {
       "id": "the-lantern-blooms",
       "scene": "the-lantern-blooms",
-      "role": "living-illustration",
-      "status": "pending"
+      "role": "action-once",
+      "selectedCardId": "f33872",
+      "poster": "scenes/the-lantern-blooms/poster.jpg",
+      "video": "scenes/the-lantern-blooms/bloom.mp4",
+      "sourceDownload": "imagine-cb56d4aa-8b39-4f2b-999e-5e0e81be8564.mp4",
+      "motionPrompt": "Locked camera. Glow makes one gentle circle above Pip, then a single golden spark enters the acorn lantern. The lantern blooms warmly from a tiny glow to full amber light while Pip's expression shifts from wonder to quiet delight. Leaves, scarf fringe, and grasses breathe subtly. Preserve the exact composition, character anatomy, painterly gouache texture, and paper border. No camera move, no new objects, no text, no morphing. End on a calm final hold suitable for story narration.",
+      "rejectedCandidates": [
+        {
+          "cardId": "93c28a",
+          "reason": "The tighter doorway framing left less breathing room and made the pre-bloom lantern and cottage too bright."
+        }
+      ],
+      "status": "approved-integrated"
     },
     {
       "id": "the-window-idle",
       "scene": "the-window",
       "role": "idle-loop",
-      "status": "pending"
+      "selectedCardId": "c13632",
+      "motionCardId": "4c21c7",
+      "poster": "scenes/the-window/poster.jpg",
+      "video": "scenes/the-window/idle.mp4",
+      "sourceDownload": "imagine-1580d784-88af-4aa9-a389-04e8edc7d814.mp4",
+      "motionPrompt": "Grok Imagine default Animate applied to the selected closing keyframe; intended motion was restrained firefly drift, gentle grasses and leaves, and a steady window glow with no camera travel.",
+      "rejectedCandidates": [
+        {
+          "cardId": "ae4d60",
+          "reason": "The front-facing hillside cottage gave the path less depth and made the window feel too frontal."
+        }
+      ],
+      "status": "approved-integrated"
     }
   ]
 }
