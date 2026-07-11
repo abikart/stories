@@ -9,6 +9,7 @@ const CONTENT = path.resolve(process.cwd(), "content");
 
 const TYPES: Record<string, string> = {
   ".mp3": "audio/mpeg",
+  ".mp4": "video/mp4",
   ".json": "application/json",
   ".webp": "image/webp",
   ".png": "image/png",

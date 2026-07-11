@@ -17,3 +17,8 @@ gates; do not duplicate routine implementation details.
   scrubbable short moments.
 - The first content target is a 60–90 second golden sequence with Watch and
   Read-with-me modes, not a migration of the existing library.
+- V2 production metadata lives in `content/<id>/production.json` beside v1
+  `story.json` during the parallel POC. A dedicated loader validates schema v2.
+- The responsive-stage fixture reuses an original Boat MP4 directly through the
+  content asset route. This is a technical fixture, not approval of its action-
+  safe composition or creative quality.

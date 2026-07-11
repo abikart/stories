@@ -86,7 +86,8 @@ result is credible as both a launch demo and a YouTube story.
 ## Current status
 
 - M0 complete: durable v2 documentation and handoff.
-- M1 active: responsive cinematic stage and schema-v2 fixture.
+- M1 complete: responsive cinematic stage and schema-v2 fixture.
+- M2 next: native media state machine.
 
 Do not start Story Studio, migrate old stories, or add more interaction recipes
-before the responsive stage is verified.
+before the media state machine and expressive performance timeline are verified.

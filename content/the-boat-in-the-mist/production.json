@@ -1,0 +1,54 @@
+{
+  "schemaVersion": 2,
+  "id": "the-boat-in-the-mist",
+  "title": "The Boat in the Mist",
+  "logline": "One 16:9 story world, composed for every screen.",
+  "accent": "#f2cd0f",
+  "stage": {
+    "masterAspectRatio": "16:9",
+    "actionSafe": "center-4:3",
+    "defaultFocalPoint": { "x": 0.5, "y": 0.5 },
+    "backdrop": {
+      "color": "#bfdedb",
+      "poster": "scenes/p1/frame_0001.jpg"
+    }
+  },
+  "scenes": [
+    {
+      "id": "mist-arrival",
+      "media": [
+        {
+          "id": "drifting",
+          "kind": "video",
+          "src": "video-drops/p1.mp4",
+          "poster": "scenes/p1/frame_0001.jpg",
+          "loop": true,
+          "focalPoint": { "x": 0.5, "y": 0.46 },
+          "transitionsTo": ["waiting"]
+        },
+        {
+          "id": "waiting",
+          "kind": "poster",
+          "src": "scenes/p1/frame_0073.jpg",
+          "transitionsTo": []
+        }
+      ],
+      "phrases": [
+        {
+          "id": "mist-opening",
+          "speaker": "Narrator",
+          "text": "The boat is in the mist.",
+          "start": 0,
+          "end": 2.8,
+          "safeStopAfter": true,
+          "overlay": {
+            "kind": "narration",
+            "anchor": { "x": 0.68, "y": 0.25 },
+            "placement": "above-left",
+            "mobilePolicy": "dock"
+          }
+        }
+      ]
+    }
+  ]
+}

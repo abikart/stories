@@ -16,7 +16,12 @@ Last updated: 2026-07-10
 - The Boat in the Mist AI clips are committed as v1 frame scenes.
 - V2 is an interactive story-film runtime built alongside v1.
 - M0 documentation is complete and indexed in `docs/v2/README.md`.
-- M1 responsive cinematic stage is the active implementation milestone.
+- M1 responsive cinematic stage is implemented at `/dev/experience-stage`.
+- `content/the-boat-in-the-mist/production.json` is a temporary schema-v2
+  fixture using the original Boat p1 video master.
+- Typecheck, all four v1 story linters, and production build pass.
+- Real-browser verification passed at 390×844, 430×932, 768×1024,
+  1024×768, and 1440×900 with no console warnings/errors.
 
 ## Fixed decisions
 
@@ -29,15 +34,17 @@ Last updated: 2026-07-10
 
 ## Immediate next action
 
-Implement and verify `/dev/experience-stage` with the v2 schema subset,
-responsive preset label, safe-area debug guides, anchored/docked dialogue, and
-one existing 16:9 Boat clip as a temporary fixture.
+Implement M2's native media state machine: current/next video ownership,
+poster readiness, legal state transitions, dual-layer opacity crossfades,
+cancellation, failure fallback, and a simple canonical driver. Use multiple
+Boat clips only as technical fixtures; do not treat them as golden-story art.
 
 ## Verification baseline
 
-Before this branch, `pnpm typecheck`, `pnpm lint:stories`, and `pnpm build` all
-passed. The git working tree was clean at commit `3ebe181` plus the prior status
-checkpoint `bc302e8`.
+`pnpm typecheck`, `pnpm lint:stories`, and `pnpm build` pass on the v2 branch.
+Responsive QA confirmed Pocket (4:3 + docked phrase), Book (4:3 + anchored
+phrase), Cinema (16:9 + anchored phrase), native MP4 playback, 44px controls,
+working play/pause and guide toggles, and correct action-safe geometry.
 
 ## Session close protocol
 
