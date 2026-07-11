@@ -3,6 +3,27 @@
 Newest decisions go first. Record meaningful divergences, tradeoffs, and quality
 gates; do not duplicate routine implementation details.
 
+## 2026-07-11 — M5 drag-to-guide
+
+- The hero interaction is bound to `the-blue-dark` after phrase `p10`: Glow has
+  offered to find the path together, and the child guides his light home.
+- Interaction behavior is engine-owned. The story supplies normalized start and
+  target regions, a visual path, prompt, trigger phrase, and completion media
+  state; it supplies no React or pointer code.
+- Read-with-me exposes the direct manipulation at its authored safe stop. Watch
+  remains continuous by executing the same recipe's canonical path once the
+  trigger phrase ends.
+- Pointer motion writes compositor transforms directly from a cached stage
+  rectangle instead of rendering React state on every move. Failed drops return
+  in 280ms with an on-screen movement curve; successful media resolution uses
+  the existing 420ms deck crossfade.
+- Keyboard arrows move immediately without animation. Enter is an equivalent
+  direct completion path. Reduced-motion preference removes recipe travel and
+  completion transitions rather than merely shortening them.
+- The actual target is at least 44×44px and the draggable is 52×52px at every
+  supported viewport. Pointer capture and `touch-action: none` make the same
+  controller usable for mouse, pen, and touch.
+
 ## 2026-07-11 — M4 Watch and Read-with-me
 
 - `/experience/[storyId]` is now the reusable interactive route. V1 `/read/*`

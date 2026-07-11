@@ -123,16 +123,19 @@ dock the same content into a reading sheet without changing the phrase.
 
 ```ts
 type InteractionBinding = {
-  recipe: "drag-to-guide" | "trace-path" | "tap-reveal";
+  recipe: "drag-to-guide";
+  triggerAfterPhrase: string;
   prompt: string;
-  startRegion?: NormalizedRect;
-  targetRegion?: NormalizedRect;
-  onComplete: CanonicalAction[];
+  startRegion: NormalizedRect;
+  targetRegion: NormalizedRect;
+  path: Point[];
+  completeMediaState: string;
 };
 ```
 
 Initial recipes are finite and engine-owned. Adding a story must not add a new
-React component or runtime module.
+React component or runtime module. The registered recipe derives its interactive
+and deterministic Watch/film paths from the same binding.
 
 ## Asset distinction
 

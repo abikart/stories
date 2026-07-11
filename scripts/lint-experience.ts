@@ -29,7 +29,13 @@ async function main() {
       );
       const assets = new Set<string>([production.stage.backdrop.poster]);
       for (const scene of production.scenes) {
-        createMediaGraph(scene);
+        const graph = createMediaGraph(scene);
+        if (scene.interaction) {
+          if (!scene.phrases.some((phrase) => phrase.id === scene.interaction?.triggerAfterPhrase)) {
+            throw new Error(`${scene.id}: interaction trigger phrase is not in the scene`);
+          }
+          graph.requireState(scene.interaction.completeMediaState);
+        }
         for (const state of scene.media) {
           assets.add(state.src);
           if (state.poster) assets.add(state.poster);

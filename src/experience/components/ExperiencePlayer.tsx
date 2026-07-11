@@ -18,6 +18,7 @@ import {
   type PerformanceClockSnapshot,
 } from "@/experience/performance/PerformanceClock";
 import { flattenPhrases } from "@/experience/performance/timeline";
+import { DragToGuide } from "@/experience/interactions/DragToGuide";
 
 type PlayerMode = "watch" | "read";
 
@@ -65,6 +66,7 @@ export function ExperiencePlayer({ production }: { production: ExperienceProduct
   const [displayPhraseIndex, setDisplayPhraseIndex] = useState(0);
   const [activeSceneIndex, setActiveSceneIndex] = useState(0);
   const [waiting, setWaiting] = useState<SafeStop | null>(null);
+  const [completedInteractions, setCompletedInteractions] = useState<Set<string>>(() => new Set());
   const [playbackError, setPlaybackError] = useState("");
   const [snapshot, setSnapshot] = useState<PerformanceClockSnapshot>({
     time: 0,
@@ -127,6 +129,20 @@ export function ExperiencePlayer({ production }: { production: ExperienceProduct
 
   const phrase = phrases[displayPhraseIndex] ?? phrases[0];
   const scene = production.scenes[activeSceneIndex] ?? production.scenes[0];
+  const interaction = scene.interaction;
+  const interactionTrigger = interaction
+    ? phrases.find((candidate) => candidate.id === interaction.triggerAfterPhrase)
+    : null;
+  const interactionComplete = completedInteractions.has(scene.id);
+  const requiredInteraction = Boolean(
+    interaction && !interactionComplete && mode === "read" && waiting?.id === interaction.triggerAfterPhrase,
+  );
+  const recipeMode = requiredInteraction
+    ? "interactive"
+    : interaction && !interactionComplete && mode === "watch"
+      && snapshot.time >= (interactionTrigger?.end ?? Number.POSITIVE_INFINITY)
+      ? "canonical"
+      : null;
   const media = scene.media[0];
   const focal = media.focalPoint ?? production.stage.defaultFocalPoint;
   const anchor = phrase.overlay.anchor ?? { x: 0.5, y: 0.5 };
@@ -160,6 +176,7 @@ export function ExperiencePlayer({ production }: { production: ExperienceProduct
   }
 
   function togglePlayback() {
+    if (requiredInteraction) return;
     const clock = initializeClock(audioRef.current);
     if (!clock) return;
     if (waiting) {
@@ -184,6 +201,7 @@ export function ExperiencePlayer({ production }: { production: ExperienceProduct
     setWaiting(null);
     setDisplayPhraseIndex(0);
     setActiveSceneIndex(0);
+    setCompletedInteractions(new Set());
     setPlaybackError("");
     void clock.replay().catch(() => {
       setPlaybackError("Your browser blocked narration. Tap play again or open the story in Chrome or Safari.");
@@ -193,7 +211,27 @@ export function ExperiencePlayer({ production }: { production: ExperienceProduct
   function seek(time: number) {
     setWaiting(null);
     setStopCursor(time);
+    setCompletedInteractions((current) => {
+      const next = new Set(current);
+      for (const candidate of production.scenes) {
+        const trigger = candidate.interaction
+          ? phrases.find((phraseCandidate) => phraseCandidate.id === candidate.interaction?.triggerAfterPhrase)
+          : null;
+        if (trigger && time < trigger.end) next.delete(candidate.id);
+      }
+      return next;
+    });
     clockRef.current?.seek(time);
+  }
+
+  async function completeInteraction() {
+    if (!interaction || completedInteractions.has(scene.id)) return;
+    await deckRef.current?.transitionTo(interaction.completeMediaState);
+    setCompletedInteractions((current) => new Set(current).add(scene.id));
+    if (waiting?.id === interaction.triggerAfterPhrase) {
+      setWaiting(null);
+      void play(clockRef.current);
+    }
   }
 
   return (
@@ -224,6 +262,14 @@ export function ExperiencePlayer({ production }: { production: ExperienceProduct
               scene={scene}
               fallbackPoster={production.stage.backdrop.poster}
             />
+            {interaction && recipeMode ? (
+              <DragToGuide
+                key={`${scene.id}-${recipeMode}`}
+                binding={interaction}
+                mode={recipeMode}
+                onComplete={() => void completeInteraction()}
+              />
+            ) : null}
           </div>
 
           <div
@@ -259,7 +305,7 @@ export function ExperiencePlayer({ production }: { production: ExperienceProduct
             </div>
           ) : null}
 
-          {waiting ? (
+          {waiting && !requiredInteraction ? (
             <div className="story-wait-card" role="status">
               <span>Your turn</span>
               <p>Take your time with the words. Pip will wait.</p>
@@ -280,8 +326,8 @@ export function ExperiencePlayer({ production }: { production: ExperienceProduct
           <button className="story-icon-button" type="button" onClick={replay} aria-label="Replay story">
             ↺
           </button>
-          <button className="story-play-button" type="button" onClick={togglePlayback}>
-            {waiting ? "Continue" : snapshot.playing ? "Pause" : snapshot.ended ? "Play again" : "Play"}
+          <button className="story-play-button" type="button" onClick={togglePlayback} disabled={requiredInteraction}>
+            {requiredInteraction ? "Guide Glow above" : waiting ? "Continue" : snapshot.playing ? "Pause" : snapshot.ended ? "Play again" : "Play"}
           </button>
           <div className="story-progress">
             <input
@@ -295,7 +341,7 @@ export function ExperiencePlayer({ production }: { production: ExperienceProduct
             />
             <div>
               <span>{formatTime(snapshot.time)}</span>
-              <span>{mode === "read" ? (waiting ? "waiting for you" : "pauses at safe lines") : "continuous story"}</span>
+              <span>{requiredInteraction ? "help Glow find home" : mode === "read" ? (waiting ? "waiting for you" : "pauses at safe lines") : "continuous story"}</span>
               <span>{formatTime(performance.duration)}</span>
             </div>
           </div>

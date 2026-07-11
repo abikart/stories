@@ -45,6 +45,15 @@ Last updated: 2026-07-10
   and Cinema and docks in Pocket. Both share word-level aligned highlighting.
 - Replay, play/pause, seeking, mode handoff, browser audio failure messaging,
   and reduced-motion behavior are implemented with 44px-minimum controls.
+- M5 reusable `drag-to-guide` is complete and bound to `the-blue-dark` after
+  Glow promises, “Then we will find it together.”
+- Read-with-me holds the safe stop until the child guides Glow; Watch executes
+  the same binding canonically without breaking continuous narration.
+- Pointer/touch uses Pointer Events and capture, failed drops return to origin,
+  Enter offers a direct keyboard equivalent, arrow keys move without animation,
+  and reduced motion resolves without travel animation.
+- `/dev/drag-to-guide` is the focused recipe fixture sourced from the production
+  binding rather than duplicate fixture coordinates.
 
 ## Fixed decisions
 
@@ -57,10 +66,11 @@ Last updated: 2026-07-10
 
 ## Immediate next action
 
-Implement M5: register the reusable `drag-to-guide` recipe, add an interaction
-binding to Pip's signature light-guiding beat, and support pointer, touch,
-keyboard, reduced motion, and deterministic canonical completion without adding
-story-specific runtime code.
+Implement M6: replace the technical placeholder with approved Grok-generated
+key illustrations, motion states, posters, ambience, music, and effects. Use a
+fresh agent inside the authorized `stories.sh` project, preserve character and
+world continuity, validate centered 4:3 action safety, and integrate delivery
+assets into the existing production package and player.
 
 ## Verification baseline
 
@@ -81,6 +91,10 @@ overlays, seeking, replay, and Read-with-me pause at 5.986s for the 5.980s safe
 stop. Continue preserved the performance cadence; switching to Watch from a
 33.747s wait resumed immediately. The five-viewport matrix again has no
 horizontal overflow and all controls remain at least 44px.
+M5 QA confirmed keyboard completion, actual pointer drag completion, failed-drop
+return, media transition to `resolve`, automatic Watch completion, and narration
+resume from the same master. The interaction fixture passed all five viewports
+with no overflow, a 52px draggable, and a target no smaller than 44×44px.
 
 ## Session close protocol
 

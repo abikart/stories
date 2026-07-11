@@ -510,15 +510,60 @@
       "id": "the-blue-dark",
       "media": [
         {
-          "id": "placeholder",
+          "id": "idle",
+          "kind": "poster",
+          "src": "scenes/placeholder.svg",
+          "transitionsTo": [
+            "resolve"
+          ]
+        },
+        {
+          "id": "resolve",
           "kind": "poster",
           "src": "scenes/placeholder.svg",
           "transitionsTo": []
         }
       ],
       "canonicalPath": [
-        "placeholder"
+        "idle",
+        "resolve"
       ],
+      "interaction": {
+        "recipe": "drag-to-guide",
+        "triggerAfterPhrase": "p10",
+        "prompt": "Guide Glow's light home to Pip.",
+        "startRegion": {
+          "x": 0.62,
+          "y": 0.38,
+          "width": 0.1,
+          "height": 0.12
+        },
+        "targetRegion": {
+          "x": 0.28,
+          "y": 0.5,
+          "width": 0.13,
+          "height": 0.16
+        },
+        "path": [
+          {
+            "x": 0.67,
+            "y": 0.44
+          },
+          {
+            "x": 0.56,
+            "y": 0.37
+          },
+          {
+            "x": 0.45,
+            "y": 0.51
+          },
+          {
+            "x": 0.345,
+            "y": 0.58
+          }
+        ],
+        "completeMediaState": "resolve"
+      },
       "phrases": [
         {
           "id": "p08",
