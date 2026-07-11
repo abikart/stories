@@ -92,7 +92,10 @@ result is credible as both a launch demo and a YouTube story.
 - M3 complete: original 77.6-second golden story, four Eleven v3 whole-story
   candidates, selected normalized performance, forced alignment, 18 phrases,
   156 timed words, nine safe stops, and a real-seconds audio clock.
-- M4 next: reusable Watch and Read-with-me modes on the responsive stage.
+- M4 complete: responsive `/experience/[storyId]` player, continuous Watch,
+  safe-stop Read-with-me, narration ribbons, anchored dialogue, aligned words,
+  transport, replay, seeking, and mode handoff.
+- M5 next: reusable drag-to-guide hero interaction and canonical completion.
 
 Do not start Story Studio, migrate old stories, or add more interaction recipes
 before the media state machine and expressive performance timeline are verified.

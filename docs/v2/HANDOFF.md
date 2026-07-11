@@ -37,6 +37,14 @@ Last updated: 2026-07-10
   phrase/word state, seek, pause, and replay from real seconds.
 - `/dev/viewport` is the reusable exact-size same-origin QA harness when a
   browser's viewport override is unavailable.
+- M4 Watch and Read-with-me player is complete at
+  `/experience/pip-and-the-lantern-seed`.
+- Watch is continuous. Read-with-me pauses the same performance only at authored
+  safe stops, holds the completed phrase, and resumes without word splicing.
+- Narration uses a centered ribbon; dialogue uses authored stage anchors in Book
+  and Cinema and docks in Pocket. Both share word-level aligned highlighting.
+- Replay, play/pause, seeking, mode handoff, browser audio failure messaging,
+  and reduced-motion behavior are implemented with 44px-minimum controls.
 
 ## Fixed decisions
 
@@ -49,10 +57,10 @@ Last updated: 2026-07-10
 
 ## Immediate next action
 
-Implement M4: turn the responsive stage and performance clock into the reusable
-Watch / Read-with-me player. Add mode switching, a narration ribbon, dialogue
-bubbles, aligned word highlighting, safe-stop waiting, pause/resume, and replay
-without introducing per-word audio or story-specific runtime code.
+Implement M5: register the reusable `drag-to-guide` recipe, add an interaction
+binding to Pip's signature light-guiding beat, and support pointer, touch,
+keyboard, reduced motion, and deterministic canonical completion without adding
+story-specific runtime code.
 
 ## Verification baseline
 
@@ -68,6 +76,11 @@ M3 Chrome QA confirmed uninterrupted audio playback, pause/resume, exact seek
 to 58.2s (`Glow`), word highlighting, and replay to the opening phrase. The
 390×844, 430×932, 768×1024, 1024×768, and 1440×900 framed matrix has no
 horizontal overflow; every action and seek control is at least 44px high.
+M4 Chrome QA confirmed continuous Watch playback, aligned narration and dialogue
+overlays, seeking, replay, and Read-with-me pause at 5.986s for the 5.980s safe
+stop. Continue preserved the performance cadence; switching to Watch from a
+33.747s wait resumed immediately. The five-viewport matrix again has no
+horizontal overflow and all controls remain at least 44px.
 
 ## Session close protocol
 

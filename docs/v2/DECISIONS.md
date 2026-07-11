@@ -3,6 +3,28 @@
 Newest decisions go first. Record meaningful divergences, tradeoffs, and quality
 gates; do not duplicate routine implementation details.
 
+## 2026-07-11 — M4 Watch and Read-with-me
+
+- `/experience/[storyId]` is now the reusable interactive route. V1 `/read/*`
+  and `/render/*` remain unchanged.
+- Watch and Read-with-me share one `PerformanceClock` and master audio. Read mode
+  pauses within the natural post-phrase gap at authored `safeStopAfter` times;
+  continuing calls `play()` on the same audio element.
+- The safe-stop cursor is recomputed after seeks and mode changes. Past stops do
+  not trap the child, replay resets the cursor, and switching to Watch releases
+  an active wait.
+- During an authored wait the completed phrase remains visible. Between normal
+  phrases the preceding phrase remains until its successor begins, preventing
+  text flicker during expressive pauses.
+- Narration and dialogue are distinct overlay presentations over the same DOM
+  phrase. Dialogue consumes authored normalized anchors in Book/Cinema; Pocket
+  docks every overlay below the 4:3 media crop.
+- Word help remains deferred. When added it must be a separate reading service
+  and UI action; it may not seek, slice, or replace the performance master.
+- The player uses a calm dark-world shell, high-contrast paper overlays,
+  restrained 150–180ms ease-out feedback, and no gratuitous container motion.
+  Reduced-motion mode removes phrase and control animation.
+
 ## 2026-07-11 — M3 expressive performance
 
 - The golden story is **Pip and the Lantern Seed**, a 77.6-second Bramble Hollow
