@@ -3,6 +3,24 @@
 Newest decisions go first. Record meaningful divergences, tradeoffs, and quality
 gates; do not duplicate routine implementation details.
 
+## 2026-07-11 — M6.2 cue restoration and continuous Watch motion
+
+- Poster layers use the selected state's own `src`; the story-level backdrop is
+  only a fallback when a video state has no poster. This prevents one global
+  image from leaking into unrelated sentence cues.
+- Timeline reconciliation and authored graph transitions are different jobs.
+  Clock seeks, Read-with-me navigation, and scene restoration may synchronize
+  directly to any valid state; interactions and canonical playback still obey
+  legal graph edges.
+- Expressive gaps retain the preceding phrase and reading unit, including its
+  completed text and visual state, until the next unit begins.
+- Packages may declare `watchMotion: continuous`. Strict production lint then
+  rejects poster-backed reading units and interaction outcomes. Posters remain
+  video fallbacks; narration-bearing Watch presentation stays alive.
+- The golden story now uses living loops for its village, Pip exception,
+  discovery, resolved Glow, route, cold doorstep, and lit-lantern holds. Action
+  clips remain one-shot so rescue, travel, and lantern bloom never repeat.
+
 ## 2026-07-11 — M6.1 sentence-addressable production and continuity
 
 - Performance phrases and reading display units are separate layers. Phrases

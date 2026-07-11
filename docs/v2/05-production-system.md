@@ -59,6 +59,10 @@ the expressive performance.
 10. Run strict release lint, Read-with-me passage QA, responsive presets, and
     the film path.
 
+For a package that declares continuous Watch motion, every narration-bearing
+reading unit and interaction outcome must use native video. Posters remain
+required as decode/error fallbacks, but they are not an accepted Watch state.
+
 Pure text-to-video generation is acceptable for exploration, not continuity-
 critical final states. Image-to-video or controlled compositing should be the
 default for recurring characters.

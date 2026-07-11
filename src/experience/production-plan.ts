@@ -80,6 +80,12 @@ export function validateProductionPlan(
         if (!stateIds.has(unit.mediaState)) {
           errors.push(`${unit.id}: missing media state ${scene.id}/${unit.mediaState}`);
         }
+        const mediaState = scene.media.find((state) => state.id === unit.mediaState);
+        if (production.productionPlan?.watchMotion === "continuous"
+          && mediaState
+          && mediaState.kind !== "video") {
+          errors.push(`${unit.id}: continuous Watch requires video media state ${scene.id}/${unit.mediaState}`);
+        }
         if (unit.start < phrase.start || unit.end > phrase.end) {
           errors.push(`${unit.id}: timing falls outside performance phrase ${phrase.id}`);
         }
@@ -90,6 +96,12 @@ export function validateProductionPlan(
     }
     if (scene.interaction?.triggerAtReadingUnit && !units.has(scene.interaction.triggerAtReadingUnit)) {
       errors.push(`${scene.id}: missing interaction reading unit ${scene.interaction.triggerAtReadingUnit}`);
+    }
+    if (production.productionPlan?.watchMotion === "continuous" && scene.interaction) {
+      const completeState = scene.media.find((state) => state.id === scene.interaction?.completeMediaState);
+      if (completeState && completeState.kind !== "video") {
+        errors.push(`${scene.id}: continuous Watch requires video interaction outcome ${completeState.id}`);
+      }
     }
   }
 

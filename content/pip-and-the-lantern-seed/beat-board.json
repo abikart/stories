@@ -18,7 +18,7 @@
       "readingUnitIds": ["u02"],
       "scene": "the-cold-lantern",
       "mediaState": "pip-exception",
-      "tier": "keyframe",
+      "tier": "living-illustration",
       "visual": "Reveal Pip's root-cottage door as the single dark exception among the warm neighboring doors.",
       "assetStatus": "approved-generated",
       "continuity": { "lantern": "dark", "glow": "absent", "location": "pip-door" }
@@ -50,7 +50,7 @@
       "mediaState": "tiny-blink",
       "tier": "living-illustration",
       "visual": "A tiny warm blink appears beneath broad moonlit ferns before Pip sees who it is.",
-      "assetStatus": "approved-existing",
+      "assetStatus": "approved-derived",
       "continuity": { "lantern": "dark", "glow": "hidden", "location": "fern-hollow" }
     },
     {
@@ -58,9 +58,9 @@
       "readingUnitIds": ["u06"],
       "scene": "the-tiny-light",
       "mediaState": "trapped",
-      "tier": "keyframe",
+      "tier": "living-illustration",
       "visual": "Pip discovers Glow caught in one readable silver thread under the fern arch.",
-      "assetStatus": "approved-existing",
+      "assetStatus": "approved-derived",
       "continuity": { "lantern": "dark", "glow": "trapped", "location": "fern-hollow" }
     },
     {
@@ -119,7 +119,7 @@
       "readingUnitIds": ["u13"],
       "scene": "the-lantern-blooms",
       "mediaState": "doorstep-cold",
-      "tier": "keyframe",
+      "tier": "living-illustration",
       "visual": "At Pip's doorstep Glow circles the lantern, which is still completely dark.",
       "assetStatus": "approved-generated",
       "continuity": { "lantern": "dark", "glow": "circling", "location": "doorstep" }

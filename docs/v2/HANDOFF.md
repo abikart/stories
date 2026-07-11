@@ -92,6 +92,13 @@ Last updated: 2026-07-11
   its completed state from the destination and cannot overwrite a later cue.
 - `.codex/skills/author-story-film` is the project-owned, validated production
   skill for beat coverage, continuity, generation, integration, and release QA.
+- M6.2 playback correction is complete. Poster cues now render their own asset,
+  arbitrary seeks bypass transition-edge restrictions for clock reconciliation,
+  and expressive gaps retain the preceding sentence and authored visual.
+- The golden package declares continuous Watch motion. Village, Pip exception,
+  discovery, free-Glow, revealed-route, cold-doorstep, and lit-lantern holds are
+  native video states; strict lint rejects future narration or interaction cues
+  that regress to static posters.
 
 ## Fixed decisions
 
@@ -148,6 +155,11 @@ the new travel and bloom sources, a final `lit-hold`, and no console errors.
 At 390×844 the embedded reading navigator is 312×112px with zero horizontal
 overflow. Strict experience lint, typecheck, the optimized production build,
 skill validation, and HTTP `206 Partial Content` media delivery pass.
+M6.2 QA confirmed that all 27 reading units resolve to video, fresh seeks restore
+the exact village, Pip, tiny-light, trapped, free-Glow, travel, doorstep, and
+lit-hold sources, opening motion plays immediately, and the browser console is
+clean. Read-with-me restores the prior and next living states at its first wait.
+The five-viewport matrix passes with no overflow and all buttons at least 44px.
 
 ## Session close protocol
 

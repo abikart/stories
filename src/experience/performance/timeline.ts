@@ -78,9 +78,18 @@ export function sampleReadingUnit(
   units: readonly TimedReadingUnit[],
   time: number,
 ): ReadingUnitSample {
-  const unitIndex = units.findIndex((unit) => time >= unit.start && time <= unit.end);
+  let unitIndex = units.findIndex((unit) => time >= unit.start && time <= unit.end);
+  if (unitIndex < 0) {
+    for (let index = 0; index < units.length; index++) {
+      if (units[index].end < time) unitIndex = index;
+      else break;
+    }
+  }
   if (unitIndex < 0) return { unitIndex: -1, wordIndex: -1 };
   const words = units[unitIndex].words;
+  if (time > units[unitIndex].end) {
+    return { unitIndex, wordIndex: words.length - 1 };
+  }
   let wordIndex = -1;
   for (let index = 0; index < words.length; index++) {
     if (time >= words[index].start) wordIndex = index;
@@ -90,10 +99,19 @@ export function sampleReadingUnit(
 }
 
 export function samplePerformance(phrases: readonly TimedPhrase[], time: number): PerformanceSample {
-  const phraseIndex = phrases.findIndex((phrase) => time >= phrase.start && time <= phrase.end);
+  let phraseIndex = phrases.findIndex((phrase) => time >= phrase.start && time <= phrase.end);
+  if (phraseIndex < 0) {
+    for (let index = 0; index < phrases.length; index++) {
+      if (phrases[index].end < time) phraseIndex = index;
+      else break;
+    }
+  }
   if (phraseIndex < 0) return { phraseIndex: -1, sceneIndex: -1, wordIndex: -1 };
   const phrase = phrases[phraseIndex];
   const words = phrase.words ?? [];
+  if (time > phrase.end) {
+    return { phraseIndex, sceneIndex: phrase.sceneIndex, wordIndex: words.length - 1 };
+  }
   let wordIndex = -1;
   for (let index = 0; index < words.length; index++) {
     if (time >= words[index].start) wordIndex = index;

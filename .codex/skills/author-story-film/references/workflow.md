@@ -44,6 +44,9 @@ If a transformation appears twice, occurs before its authored unit, regresses, o
 - Narrated travel needs visible travel, not a stationary loop.
 - One-shot action duration must cover its narration and settle on a usable final hold.
 - A loop may cover multiple units only when it is a semantically stable living illustration.
+- A story marked for continuous Watch motion may not map a reading unit or
+  interaction outcome to a poster state. Keep the poster only as the video's
+  decode/error fallback or as an explicitly paused Read-mode treatment.
 - Interaction completion changes only the authored state and must hand off cleanly to the next beat.
 - Essential action stays within the centered 4:3 region of the 16:9 master.
 

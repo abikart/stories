@@ -30,6 +30,7 @@ export type MediaDeckSnapshot = {
 
 export type MediaDeckHandle = {
   transitionTo(stateId: string): Promise<boolean>;
+  syncTo(stateId: string): Promise<boolean>;
   runCanonicalPath(): Promise<boolean>;
   setPlaying(playing: boolean): Promise<void>;
 };
@@ -51,8 +52,9 @@ function wait(ms: number) {
 
 function layerStyle(storyId: string, state: MediaState, fallbackPoster: string): LayerStyle {
   const focal = state.focalPoint ?? { x: 0.5, y: 0.5 };
+  const poster = state.kind === "poster" ? state.src : state.poster ?? fallbackPoster;
   return {
-    "--media-poster": `url("${assetUrl(storyId, state.poster ?? fallbackPoster)}")`,
+    "--media-poster": `url("${assetUrl(storyId, poster)}")`,
     "--media-focal-x": `${focal.x * 100}%`,
     "--media-focal-y": `${focal.y * 100}%`,
   };
@@ -128,10 +130,10 @@ export const MediaDeck = forwardRef<MediaDeckHandle, {
     if (pending && pending.slot === slot && pending.stateId === stateId) beginCrossfade(pending);
   }, [beginCrossfade]);
 
-  const transitionTo = useCallback((stateId: string) => {
+  const moveTo = useCallback((stateId: string, requireGraphEdge: boolean) => {
     const from = currentRef.current;
     if (stateId === from) return Promise.resolve(true);
-    if (!graph.canTransition(from, stateId)) return Promise.resolve(false);
+    if (requireGraphEdge && !graph.canTransition(from, stateId)) return Promise.resolve(false);
 
     pendingRef.current?.resolve(false);
     transitionToken.current += 1;
@@ -161,6 +163,16 @@ export const MediaDeck = forwardRef<MediaDeckHandle, {
       if (readyBySlot.current[targetSlot] === stateId) beginCrossfade(pending);
     });
   }, [beginCrossfade, graph, publish]);
+
+  const transitionTo = useCallback(
+    (stateId: string) => moveTo(stateId, true),
+    [moveTo],
+  );
+
+  const syncTo = useCallback(
+    (stateId: string) => moveTo(stateId, false),
+    [moveTo],
+  );
 
   const setPlaying = useCallback(async (playing: boolean) => {
     playingRef.current = playing;
@@ -196,7 +208,11 @@ export const MediaDeck = forwardRef<MediaDeckHandle, {
     return true;
   }, [graph, transitionTo]);
 
-  useImperativeHandle(ref, () => ({ transitionTo, runCanonicalPath, setPlaying }), [runCanonicalPath, setPlaying, transitionTo]);
+  useImperativeHandle(
+    ref,
+    () => ({ transitionTo, syncTo, runCanonicalPath, setPlaying }),
+    [runCanonicalPath, setPlaying, syncTo, transitionTo],
+  );
 
   useEffect(() => {
     slots.forEach((stateId, slot) => {

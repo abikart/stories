@@ -35,16 +35,20 @@
       "media": [
         {
           "id": "village-glow",
-          "kind": "poster",
-          "src": "scenes/the-cold-lantern/village-glow.jpg",
+          "kind": "video",
+          "src": "scenes/the-cold-lantern/village-glow.mp4",
+          "poster": "scenes/the-cold-lantern/village-glow.jpg",
+          "loop": true,
           "transitionsTo": [
             "pip-exception"
           ]
         },
         {
           "id": "pip-exception",
-          "kind": "poster",
-          "src": "scenes/the-cold-lantern/pip-exception.jpg",
+          "kind": "video",
+          "src": "scenes/the-cold-lantern/pip-exception.mp4",
+          "poster": "scenes/the-cold-lantern/pip-exception.jpg",
+          "loop": true,
           "transitionsTo": [
             "pip-cold",
             "village-glow"
@@ -558,16 +562,20 @@
       "media": [
         {
           "id": "tiny-blink",
-          "kind": "poster",
-          "src": "scenes/the-tiny-light/poster.jpg",
+          "kind": "video",
+          "src": "scenes/the-tiny-light/discovery.mp4",
+          "poster": "scenes/the-tiny-light/poster.jpg",
+          "loop": true,
           "transitionsTo": [
             "trapped"
           ]
         },
         {
           "id": "trapped",
-          "kind": "poster",
-          "src": "scenes/the-tiny-light/poster.jpg",
+          "kind": "video",
+          "src": "scenes/the-tiny-light/discovery.mp4",
+          "poster": "scenes/the-tiny-light/poster.jpg",
+          "loop": true,
           "transitionsTo": [
             "rescue",
             "tiny-blink"
@@ -586,8 +594,10 @@
         },
         {
           "id": "free",
-          "kind": "poster",
-          "src": "scenes/the-tiny-light/free.jpg",
+          "kind": "video",
+          "src": "scenes/the-tiny-light/free-hold.mp4",
+          "poster": "scenes/the-tiny-light/free.jpg",
+          "loop": true,
           "transitionsTo": [
             "rescue"
           ]
@@ -1059,8 +1069,10 @@
         },
         {
           "id": "path-revealed",
-          "kind": "poster",
-          "src": "scenes/the-blue-dark/path-revealed.jpg",
+          "kind": "video",
+          "src": "scenes/the-blue-dark/path-revealed.mp4",
+          "poster": "scenes/the-blue-dark/path-revealed.jpg",
+          "loop": true,
           "transitionsTo": [
             "travel",
             "lost"
@@ -1795,8 +1807,10 @@
       "media": [
         {
           "id": "doorstep-cold",
-          "kind": "poster",
-          "src": "scenes/the-lantern-blooms/doorstep-cold.jpg",
+          "kind": "video",
+          "src": "scenes/the-lantern-blooms/doorstep-cold.mp4",
+          "poster": "scenes/the-lantern-blooms/doorstep-cold.jpg",
+          "loop": true,
           "transitionsTo": [
             "bloom"
           ]
@@ -1814,8 +1828,10 @@
         },
         {
           "id": "lit-hold",
-          "kind": "poster",
-          "src": "scenes/the-lantern-blooms/lit-hold.jpg",
+          "kind": "video",
+          "src": "scenes/the-lantern-blooms/lit-hold.mp4",
+          "poster": "scenes/the-lantern-blooms/lit-hold.jpg",
+          "loop": true,
           "transitionsTo": [
             "bloom",
             "doorstep-cold"
@@ -2469,6 +2485,7 @@
   ],
   "productionPlan": {
     "coverage": "reading-unit",
+    "watchMotion": "continuous",
     "beatBoard": "beat-board.json",
     "continuityLedger": "continuity.json"
   }

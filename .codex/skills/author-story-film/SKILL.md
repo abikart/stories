@@ -39,6 +39,9 @@ Do not begin expensive generation while reading units, beat coverage, or continu
 - Treat performance phrases, reading units, visual beats, and safe stops as separate layers.
 - Allow multiple reading units to share a visual state only when the visual meaning is stable.
 - Loop only living holds. Never loop an action whose narrative state changes.
+- When a production declares continuous Watch motion, every narration-bearing
+  reading unit and interaction outcome must resolve to a native video state;
+  posters are decode fallbacks and Read-mode holds, not Watch presentation.
 - Make Read-with-me retain the entire passage since the previous safe stop.
 - Keep previous/next reading controls at least 44×44px and preserve keyboard/touch access.
 - Seek within the same performance master for replay; never reconstruct narration from word clips.

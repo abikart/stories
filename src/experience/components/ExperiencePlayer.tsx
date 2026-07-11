@@ -214,7 +214,7 @@ export function ExperiencePlayer({ production }: { production: ExperienceProduct
 
   useEffect(() => {
     const timer = window.setTimeout(() => {
-      void deckRef.current?.transitionTo(visualState);
+      void deckRef.current?.syncTo(visualState);
     }, 0);
     return () => window.clearTimeout(timer);
   }, [activeSceneIndex, visualState]);

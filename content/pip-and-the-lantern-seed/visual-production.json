@@ -213,6 +213,67 @@
           "status": "approved-integrated"
         }
       ]
+    },
+    {
+      "id": "m6.2-continuous-watch-motion",
+      "generatedAt": "2026-07-11",
+      "reason": "Replace narration-bearing poster states with living motion and prevent the story-level fallback poster from appearing on unrelated cues.",
+      "agentConversation": "642a7309-22d1-4097-9907-283c7d36c9e7",
+      "assets": [
+        {
+          "id": "village-glow-motion",
+          "motionAssetId": "c1d188b6-57a7-4f7f-a96f-73ab1dd3f544",
+          "sourceDownload": "imagine-d631c9de-ecad-404d-a3b5-a99268881529.mp4",
+          "video": "scenes/the-cold-lantern/village-glow.mp4",
+          "motionPrompt": "Locked camera on empty Bramble Hollow. Add only gentle fern, cloud, and window-light motion; no Pip or Glow. Preserve composition and make a seamless living loop.",
+          "status": "approved-integrated"
+        },
+        {
+          "id": "pip-exception-motion",
+          "motionAssetId": "377357c4-dd54-454f-976f-0c0a9b6db829",
+          "sourceDownload": "imagine-bf38c688-0387-43f3-9acf-3a9546379d81.mp4",
+          "video": "scenes/the-cold-lantern/pip-exception.mp4",
+          "motionPrompt": "Locked camera. Pip glances from the glowing village to her dark lantern with subtle breathing and scarf motion. Keep the lantern completely black, omit Glow, and make a seamless living loop.",
+          "status": "approved-integrated"
+        },
+        {
+          "id": "tiny-light-discovery-motion",
+          "derivedFrom": "scenes/the-tiny-light/poster.jpg",
+          "video": "scenes/the-tiny-light/discovery.mp4",
+          "derivation": "Eight-second 24 fps controlled slow push from the approved 16:9 discovery keyframe.",
+          "status": "approved-integrated"
+        },
+        {
+          "id": "glow-free-motion",
+          "derivedFrom": "scenes/the-tiny-light/free.jpg",
+          "video": "scenes/the-tiny-light/free-hold.mp4",
+          "derivation": "Six-second 24 fps controlled slow push from the approved resolved keyframe.",
+          "status": "approved-integrated"
+        },
+        {
+          "id": "path-revealed-motion",
+          "motionAssetId": "2ff38b35-ba9f-4bdd-a4e0-34c1b9758f70",
+          "sourceDownload": "imagine-4f1056fc-ff4b-4918-8444-369924352c4a.mp4",
+          "video": "scenes/the-blue-dark/path-revealed.mp4",
+          "motionPrompt": "Locked camera. Let the dotted route twinkle with subtle creek, Glow, and Pip motion. Keep Pip's lantern completely black and stable; make a seamless living loop.",
+          "status": "approved-integrated"
+        },
+        {
+          "id": "doorstep-cold-motion",
+          "motionAssetId": "bbdfa390-51da-433f-b6ca-a572f1e71007",
+          "sourceDownload": "imagine-9522ef1b-b692-477e-9866-27143168e789.mp4",
+          "video": "scenes/the-lantern-blooms/doorstep-cold.mp4",
+          "motionPrompt": "Locked camera. Glow circles slowly while Pip breathes. Keep the lantern completely black with no spark or bloom; make a seamless living loop.",
+          "status": "approved-integrated"
+        },
+        {
+          "id": "lit-lantern-hold-motion",
+          "derivedFrom": "scenes/the-lantern-blooms/bloom-v2.mp4",
+          "video": "scenes/the-lantern-blooms/lit-hold.mp4",
+          "derivation": "Six-second 24 fps ping-pong loop from the steady fully lit 3.0–6.0 second tail; the bloom action is excluded.",
+          "status": "approved-integrated"
+        }
+      ]
     }
   ]
 }

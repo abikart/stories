@@ -111,6 +111,7 @@ export const ExperienceProductionSchema = z.object({
   performance: PerformanceSchema.optional(),
   productionPlan: z.object({
     coverage: z.literal("reading-unit"),
+    watchMotion: z.literal("continuous").optional(),
     beatBoard: z.string().min(1),
     continuityLedger: z.string().min(1),
   }).optional(),
