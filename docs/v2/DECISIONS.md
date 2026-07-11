@@ -3,6 +3,31 @@
 Newest decisions go first. Record meaningful divergences, tradeoffs, and quality
 gates; do not duplicate routine implementation details.
 
+## 2026-07-11 — M6 golden visual package
+
+- The golden sequence uses one selected 1792×1008 Grok keyframe per story scene
+  plus a matched resolve keyframe for the hero interaction. All were generated
+  from the approved Pip/Glow/Bramble Hollow reference, keep the important action
+  inside the centered 4:3 region, and use no named artist or studio references.
+- Delivery motion is deliberately short and state-shaped: calm loops for the
+  opening, blue-dark idle/resolve, and closing window; one-shot resolved holds
+  for the rescue and lantern bloom. The runtime mutes every visual clip and
+  keeps authored narration, score, ambience, and effects authoritative.
+- Image-to-video prompts lock the camera, character anatomy, painterly paper
+  texture, and start composition. A beginning/middle/end review is an acceptance
+  gate; the first blue-dark resolve animation was rejected because it
+  progressively lit the lantern before the authored bloom scene.
+- Visual provenance belongs beside the story in `visual-production.json`: exact
+  Grok agent URL, selected card IDs, rejected candidates and reasons, source
+  download names, motion prompts, and final package paths. Provider UI labels
+  are recorded as observed even when Grok did not persist the requested names.
+- Production geometry may be corrected after final art selection. The
+  `drag-to-guide` binding now targets Glow and the acorn lantern in the approved
+  composition rather than retaining coordinates authored for the prompt.
+- The one visible Cloudflare challenge was not automated. Restarting Chrome
+  cleared the gate in the existing signed-in session, after which normal
+  user-authorized generation resumed.
+
 ## 2026-07-11 — M6 soundscape and visual reference
 
 - The golden soundscape uses separate narration, music, ambience, and effect

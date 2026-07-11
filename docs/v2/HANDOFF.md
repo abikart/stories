@@ -60,9 +60,17 @@ Last updated: 2026-07-10
   narration after play, pause, and arbitrary seek.
 - The approved 1792×1008 Grok world/character reference is stored at
   `content/pip-and-the-lantern-seed/references/world-reference.jpg`.
-- The Grok agent generated the Scene 01 cold-lantern keyframe on its canvas, then
-  Cloudflare presented a human-verification challenge. The canvas and exact URL
-  are recorded in `visual-production.json`; do not solve the CAPTCHA without Zo.
+- M6 golden visuals are complete and committed in `cd50578`. Six selected
+  1792×1008 keyframes and six 6.041667-second 1280×720 motion states now replace
+  every technical placeholder in the golden experience.
+- `the-blue-dark` has matched idle and resolve videos; the interaction geometry
+  is aligned to the approved Glow and lantern positions in the actual artwork.
+- Grok prompts, selected card IDs, rejected alternatives, source download names,
+  exact agent URL, and the rejected first resolve animation are preserved in
+  `content/pip-and-the-lantern-seed/visual-production.json`.
+- Cloudflare presented one human-verification screen after Scene 01. No challenge
+  was automated; after Chrome restarted, the signed-in session resumed without
+  the gate and production completed normally.
 
 ## Fixed decisions
 
@@ -75,10 +83,10 @@ Last updated: 2026-07-10
 
 ## Immediate next action
 
-Zo must complete the visible Cloudflare human verification in the saved Grok
-agent. Then resume that exact canvas: download Scene 01, generate/download Scenes
-02–05 plus the blue-dark resolve state, animate all six states, integrate videos
-and extracted posters, and run the full continuity/action-safe/phone-speaker QA.
+Start M7 from the existing golden production package: add deterministic
+`/film/[storyId]` playback, drive the interaction canonically, mux the authored
+stems, render a 1080p film, and compare film frames against the interactive route.
+Do not regenerate M6 media unless a documented continuity defect is found.
 
 ## Verification baseline
 
@@ -106,6 +114,13 @@ with no overflow, a 52px draggable, and a target no smaller than 44×44px.
 M6 sound QA confirmed four synchronized audio elements, play/pause parity, 50s
 seek parity, restart drift no greater than 31ms, clean console, -15.77 LUFS mix
 preview, -3.91dB true peak, and effect activity at 25.25s, 47.4s, and 64.2s.
+M6 visual QA inspected beginning/middle/end frames of all six clips and rejected
+one resolve take that progressively over-lit the lantern. Chrome then confirmed
+native playback, four authored audio elements, exactly two mounted videos with
+one active layer, clean console output, keyboard and actual pointer-drag resolve,
+and narration resume. The 390×844, 430×932, 768×1024, 1024×768, and 1440×900
+matrix has no horizontal overflow; all story buttons and the scrubber are at
+least 44px, and the same 16:9 masters preserve the centered action-safe beat.
 
 ## Session close protocol
 
