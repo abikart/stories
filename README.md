@@ -6,6 +6,10 @@ stories.sh is a web-first storybook app for kids learning to read (ages 3–7). 
 
 ## Documents
 
+> **Current direction:** start with [docs/v2/README.md](docs/v2/README.md).
+> The numbered documents below describe the completed first POC and remain as
+> historical architecture and product research.
+
 | Doc | What it covers |
 |---|---|
 | [docs/01-vision.md](docs/01-vision.md) | The evolved concept, the magic loop, brand identity |
@@ -17,6 +21,8 @@ stories.sh is a web-first storybook app for kids learning to read (ages 3–7). 
 | [docs/07-poc-stories.md](docs/07-poc-stories.md) | Page-by-page briefs for the three POC stories |
 | [docs/08-design-system.md](docs/08-design-system.md) | Design tokens, type, motion — modeled on board.fun |
 | [docs/09-video-scenes.md](docs/09-video-scenes.md) | AI-video scene workflow: prompt packs → Grok Imagine → ingest |
+| [docs/v2/README.md](docs/v2/README.md) | **V2 interactive story-film product, runtime, responsive, and production specifications** |
+| [docs/v2/HANDOFF.md](docs/v2/HANDOFF.md) | Current branch status and exact next action for a fresh session |
 
 ## Authoring a story (the terminal is the CMS)
 
@@ -38,4 +44,9 @@ Coded scenes are TS modules in [src/engine/scenes/](src/engine/scenes/) implemen
 
 The POC charter is complete: milestones M0–M8 of [docs/03-poc-requirements.md](docs/03-poc-requirements.md) are implemented and verified. The app includes four playable stories, three reading modes with synchronized narration, coded and frame-based interactive scenes, celebrations and stickers, the terminal-based content pipeline, deterministic YouTube-ready video rendering, and the polished story library landing page.
 
-Post-POC work is focused on replacing procedural or empty scene art with generated video. **The Boat in the Mist** is the first video-ready story: its five-page prompt pack, narration, ingestion tooling, and scene metadata are complete; generated clips can be dropped in and converted to slider-scrubbable frame sequences using the workflow in [docs/09-video-scenes.md](docs/09-video-scenes.md).
+The original POC is preserved as a working reference. Active development is the
+[v2 interactive story-film runtime](docs/v2/README.md): an expressive
+performance-first foundation with responsive cinematic staging, reusable media
+state machines, meaningful interaction recipes, and one production package for
+interactive web plus linear film. Work continues on branch
+`codex/interactive-story-runtime`.
