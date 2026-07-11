@@ -204,8 +204,9 @@ export function ExperiencePlayer({ production }: { production: ExperienceProduct
     : displayUnit.id === liveUnit.id
       ? activeReadingSample.wordIndex
       : displayUnit.words.length - 1;
-  const passagePosition = waiting ? displayUnitIndex - waiting.unitStartIndex + 1 : 1;
-  const passageLength = waiting ? waiting.unitEndIndex - waiting.unitStartIndex + 1 : 1;
+  const passageUnits = waiting
+    ? readingUnits.slice(waiting.unitStartIndex, waiting.unitEndIndex + 1)
+    : [];
 
   useEffect(() => {
     const timer = window.setTimeout(() => {
@@ -282,14 +283,6 @@ export function ExperiencePlayer({ production }: { production: ExperienceProduct
     setCompletedInteractions((current) => new Set(current).add(scene.id));
   }
 
-  function browsePassage(direction: -1 | 1) {
-    if (!waiting) return;
-    setDisplayUnitIndex((current) => Math.max(
-      waiting.unitStartIndex,
-      Math.min(waiting.unitEndIndex, current + direction),
-    ));
-  }
-
   return (
     <main className="story-player" style={stageStyle} data-mode={mode} data-waiting={waiting ? "true" : undefined}>
       <div className="experience-atmosphere" aria-hidden="true" />
@@ -335,47 +328,34 @@ export function ExperiencePlayer({ production }: { production: ExperienceProduct
             data-mobile-policy={displayUnit.overlay.mobilePolicy}
             style={overlayStyle}
           >
-            <div className="story-overlay-content" key={displayUnit.id}>
-              <span className="story-overlay-speaker">{displayUnit.speaker}</span>
-              <p aria-label={displayUnit.text}>
-                {displayUnit.words.map((word, index) => (
-                  <span
-                    aria-hidden="true"
-                    key={`${displayUnit.id}-${index}`}
-                    data-word-state={index < shownWordIndex ? "past" : index === shownWordIndex ? "active" : "future"}
-                  >
-                    {word.text}{" "}
-                  </span>
-                ))}
-              </p>
-            </div>
             {waiting && !requiredInteraction ? (
-              <div className="story-reading-nav" role="group" aria-label="Reading passage">
-                <button
-                  type="button"
-                  aria-label="Previous sentence"
-                  disabled={displayUnitIndex === waiting.unitStartIndex}
-                  onClick={() => browsePassage(-1)}
-                >
-                  ←
-                </button>
-                <div>
-                  <span>Your turn</span>
-                  <strong>Sentence {passagePosition} of {passageLength}</strong>
-                </div>
-                <button
-                  type="button"
-                  aria-label="Next sentence"
-                  disabled={displayUnitIndex === waiting.unitEndIndex}
-                  onClick={() => browsePassage(1)}
-                >
-                  →
-                </button>
-                <button className="story-reading-continue" type="button" onClick={togglePlayback}>
-                  Continue story
-                </button>
+              <div className="story-reading-passage story-overlay-content" role="group" aria-label="Reading passage" key={`passage-${waiting.id}`}>
+                <span className="story-reading-passage-heading">Your turn</span>
+                <ol aria-label="Lines to read">
+                  {passageUnits.map((unit) => (
+                    <li className="story-reading-line" data-reading-line key={unit.id}>
+                      <span>{unit.speaker}</span>
+                      <p>{unit.text}</p>
+                    </li>
+                  ))}
+                </ol>
               </div>
-            ) : null}
+            ) : (
+              <div className="story-overlay-content" key={displayUnit.id}>
+                <span className="story-overlay-speaker">{displayUnit.speaker}</span>
+                <p aria-label={displayUnit.text}>
+                  {displayUnit.words.map((word, index) => (
+                    <span
+                      aria-hidden="true"
+                      key={`${displayUnit.id}-${index}`}
+                      data-word-state={index < shownWordIndex ? "past" : index === shownWordIndex ? "active" : "future"}
+                    >
+                      {word.text}{" "}
+                    </span>
+                  ))}
+                </p>
+              </div>
+            )}
           </div>
 
           {snapshot.time === 0 && !snapshot.playing ? (

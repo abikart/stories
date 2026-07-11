@@ -75,9 +75,9 @@ Last updated: 2026-07-11
   27 sentence-sized reading units mapped across 16 machine-validated visual
   beats. Broad scenes remain location containers; they no longer determine how
   much prose must share one visual state.
-- Read-with-me retains every sentence since the previous safe stop. Previous and
-  next controls restore each sentence's authored visual state, while Continue
-  resumes the untouched performance master from the latest sentence.
+- Read-with-me retains every sentence since the previous safe stop and displays
+  the complete passage as one ordered, comfortably spaced list. One Continue
+  action resumes the untouched performance master from the latest sentence.
 - `beat-board.json` proves every reading unit has one visual beat;
   `continuity.json` proves the lantern remains dark until the single doorstep
   spark. Strict `pnpm lint:experiences -- pip-and-the-lantern-seed` now validates
@@ -103,6 +103,9 @@ Last updated: 2026-07-11
   from one reading unit, and returning to the visible cue cancels any superseded
   standby transition. Reverse scrubbing can no longer send `travel` to the
   `the-lantern-blooms` graph or let an older transition win later.
+- M6.4 simplifies Read-with-me waits: all lines in the current safe-stop passage
+  are visible together with speaker labels and one Continue action. Sentence
+  paging, arrow controls, and the sentence counter are removed.
 
 ## Fixed decisions
 
@@ -168,6 +171,10 @@ M6.3 QA stress-scrubs backward through every reading unit, then plays the final
 8.6 seconds through `Play again`; the exact opening and closing states restore
 with no page error or unhandled rejection. The check is now reusable through
 `pnpm qa:experience -- pip-and-the-lantern-seed` against a clean dev server.
+M6.4 QA confirms the first retained passage has its exact authored lines, no
+previous/next controls, and exactly one Continue action. The longest seven-line
+passage is fully visible without internal or horizontal overflow at 390×844,
+430×932, 768×1024, 1024×768, and 1440×900.
 
 ## Session close protocol
 

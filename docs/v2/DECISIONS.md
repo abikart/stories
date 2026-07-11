@@ -3,6 +3,17 @@
 Newest decisions go first. Record meaningful divergences, tradeoffs, and quality
 gates; do not duplicate routine implementation details.
 
+## 2026-07-11 — M6.4 Read-with-me passage list
+
+- A Read-with-me safe stop presents every retained reading unit together as one
+  ordered passage. Children read naturally from top to bottom; sentence paging,
+  previous/next arrows, and a sentence counter are removed.
+- Each line preserves its speaker label, uses comfortable vertical rhythm and
+  a quiet divider, and shares one Continue action. The latest line's authored
+  visual remains behind the passage so continuing resumes from the correct cue.
+- Waiting passages use a centered, wider surface even when the last line is
+  dialogue; Pocket remains in normal document flow and may grow vertically.
+
 ## 2026-07-11 — M6.3 atomic scrub reconciliation
 
 - The active scene is derived from the same reading unit that supplies the

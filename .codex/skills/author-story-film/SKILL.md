@@ -43,7 +43,8 @@ Do not begin expensive generation while reading units, beat coverage, or continu
   reading unit and interaction outcome must resolve to a native video state;
   posters are decode fallbacks and Read-mode holds, not Watch presentation.
 - Make Read-with-me retain the entire passage since the previous safe stop.
-- Keep previous/next reading controls at least 44×44px and preserve keyboard/touch access.
+- At each Read-with-me wait, show that complete passage as one ordered, well-spaced
+  list with a single 44px-minimum Continue action; do not paginate its lines.
 - Seek within the same performance master for replay; never reconstruct narration from word clips.
 - Make canonical Watch interactions finish before narration advances to their consequence.
 

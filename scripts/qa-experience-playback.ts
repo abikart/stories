@@ -33,6 +33,33 @@ async function main() {
     await page.goto(`${baseUrl}/experience/${storyId}`, { waitUntil: "networkidle" });
     const slider = page.getByLabel("Story position");
 
+    const firstSafeStop = production.scenes.flatMap((scene) => scene.phrases)
+      .find((phrase) => phrase.safeStopAfter);
+    if (firstSafeStop) {
+      const expectedLines = units.filter((unit) => unit.end <= firstSafeStop.end + 0.04);
+      const beforeStop = Math.max(0, Math.floor((firstSafeStop.end - 0.3) * 20) / 20);
+      await page.getByRole("button", { name: "Read with me", exact: true }).click();
+      await slider.fill(String(beforeStop));
+      await page.getByRole("button", { name: "Play", exact: true }).click();
+      await page.waitForTimeout(1500);
+
+      const passage = page.locator(".story-reading-passage");
+      const lines = passage.locator("[data-reading-line] > p");
+      const lineTexts = await lines.allTextContents();
+      const expectedTexts = expectedLines.map((unit) => unit.text);
+      if (JSON.stringify(lineTexts) !== JSON.stringify(expectedTexts)) {
+        failures.push(`reading passage was ${JSON.stringify(lineTexts)}; expected ${JSON.stringify(expectedTexts)}`);
+      }
+      if (await page.getByLabel("Previous sentence").count()) failures.push("reading passage still has a Previous sentence control");
+      if (await page.getByLabel("Next sentence").count()) failures.push("reading passage still has a Next sentence control");
+      const continueActions = page.getByRole("button", { name: "Continue", exact: true });
+      if (await continueActions.count() !== 1 || !await continueActions.isVisible()) {
+        failures.push("reading wait does not have exactly one visible Continue action");
+      }
+
+      await page.goto(`${baseUrl}/experience/${storyId}`, { waitUntil: "networkidle" });
+    }
+
     for (const unit of [...units].reverse()) {
       const seekTime = Math.round(Math.min(production.performance.duration, unit.start) * 20) / 20;
       await slider.fill(String(seekTime));
@@ -71,7 +98,7 @@ async function main() {
     failures.forEach((failure) => console.error(`✗ ${failure}`));
     process.exitCode = 1;
   } else {
-    console.log(`✓ ${storyId} — reverse scrub and ending playback`);
+    console.log(`✓ ${storyId} — passage list, reverse scrub, and ending playback`);
   }
 }
 

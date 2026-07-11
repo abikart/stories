@@ -55,11 +55,10 @@ If a transformation appears twice, occurs before its authored unit, regresses, o
 At each safe stop:
 
 - retain every reading unit since the previous stop;
-- select the latest unit initially;
-- provide previous/next, touch, and keyboard navigation;
-- restore the selected unit's visual beat;
-- keep completed words legible without restarting chopped narration;
-- restore the latest beat before continuing;
+- render the complete retained passage as one ordered, comfortably spaced list;
+- keep speaker labels legible when narration and dialogue share the passage;
+- keep the latest unit's authored visual beat behind the complete passage;
+- use one clear Continue action and do not paginate the retained lines;
 - after a hero interaction, remain in the reading passage until the child chooses Continue.
 
 ## Generation and acceptance
