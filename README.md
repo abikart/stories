@@ -36,4 +36,6 @@ Coded scenes are TS modules in [src/engine/scenes/](src/engine/scenes/) implemen
 
 ## Status
 
-POC in progress via the autonomous build loop — milestones M0–M6 of [docs/03-poc-requirements.md](docs/03-poc-requirements.md) complete: three playable stories (two coded scenes + one procedural frames story), three reading modes with ElevenLabs narration, celebrations/stickers, and the content pipeline above. Remaining: M7 render-to-video, M8 landing + polish.
+The POC charter is complete: milestones M0–M8 of [docs/03-poc-requirements.md](docs/03-poc-requirements.md) are implemented and verified. The app includes four playable stories, three reading modes with synchronized narration, coded and frame-based interactive scenes, celebrations and stickers, the terminal-based content pipeline, deterministic YouTube-ready video rendering, and the polished story library landing page.
+
+Post-POC work is focused on replacing procedural or empty scene art with generated video. **The Boat in the Mist** is the first video-ready story: its five-page prompt pack, narration, ingestion tooling, and scene metadata are complete; generated clips can be dropped in and converted to slider-scrubbable frame sequences using the workflow in [docs/09-video-scenes.md](docs/09-video-scenes.md).
