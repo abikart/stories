@@ -59,6 +59,10 @@ At each safe stop:
 - keep speaker labels legible when narration and dialogue share the passage;
 - keep the latest unit's authored visual beat behind the complete passage;
 - use one clear Continue action and do not paginate the retained lines;
+- pause narration and effects exactly, fade the synchronized score, and keep
+  loopable ambience plus the living visual active during the child's turn;
+- ease into and out of the passage without adding excessive silence, then
+  resynchronize score and effects before the next spoken word;
 - after a hero interaction, remain in the reading passage until the child chooses Continue.
 
 ## Generation and acceptance

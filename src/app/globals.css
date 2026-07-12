@@ -1327,6 +1327,36 @@ html[data-easy-read] .prose-line {
   gap: 12px;
 }
 
+.story-reading-passage.story-overlay-content {
+  animation: none;
+}
+
+.story-player[data-waiting="true"] .story-overlay {
+  transition-property: opacity, translate;
+  transition-duration: 160ms;
+  transition-timing-function: cubic-bezier(0.2, 0, 0, 1);
+}
+
+.story-player[data-waiting="true"] .story-overlay[data-reading-phase="settling"] {
+  animation: story-reading-enter 300ms 100ms cubic-bezier(0.2, 0, 0, 1) both;
+}
+
+.story-player[data-waiting="true"] .story-overlay[data-reading-phase="resuming"] {
+  opacity: 0;
+  translate: 0 -6px;
+}
+
+@keyframes story-reading-enter {
+  from {
+    opacity: 0;
+    translate: 0 8px;
+  }
+  to {
+    opacity: 1;
+    translate: 0 0;
+  }
+}
+
 .story-reading-passage-heading {
   color: #526072;
   font-family: var(--font-display);
@@ -1655,6 +1685,13 @@ html[data-easy-read] .prose-line {
   .story-start-card button,
   .story-wait-card button {
     transition-duration: 0ms;
+  }
+
+  .story-player[data-waiting="true"] .story-overlay[data-reading-phase] {
+    opacity: 1;
+    translate: 0 0;
+    animation: none;
+    transition: none;
   }
 }
 

@@ -106,6 +106,9 @@ Last updated: 2026-07-11
 - M6.4 simplifies Read-with-me waits: all lines in the current safe-stop passage
   are visible together with speaker labels and one Continue action. Sentence
   paging, arrow controls, and the sentence counter are removed.
+- M6.5 makes those waits atmospheric rather than abrupt. Narration and effects
+  pause exactly, the synchronized score fades out, seamless ambience and living
+  video continue, and an adaptive lead-in restores all timed stems on Continue.
 
 ## Fixed decisions
 
@@ -175,6 +178,13 @@ M6.4 QA confirms the first retained passage has its exact authored lines, no
 previous/next controls, and exactly one Continue action. The longest seven-line
 passage is fully visible without internal or horizontal overflow at 390×844,
 430×932, 768×1024, 1024×768, and 1440×900.
+M6.5 QA confirms the waiting performance and effects are paused, score is silent,
+ambience and active video advance throughout the dwell, Continue preserves the
+resume lead-in, and narration, score, ambience, and effects rejoin afterward.
+The interaction-owned safe stop completes and resumes through the same phases
+without page errors or negative-volume interpolation. The seven-line passage,
+living ambience/video dwell, and 44px Continue control pass all five viewports;
+reduced-motion removes entry and exit motion while preserving the audio handoff.
 
 ## Session close protocol
 

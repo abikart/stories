@@ -26,6 +26,12 @@ import { DragToGuide } from "@/experience/interactions/DragToGuide";
 import { Soundscape, type SoundscapeHandle } from "@/experience/audio/Soundscape";
 
 type PlayerMode = "watch" | "read";
+type ReadingPhase = "idle" | "settling" | "reading" | "resuming";
+
+const READING_SETTLE_MS = 420;
+const READING_EXIT_MS = 180;
+const READING_TARGET_LEAD_MS = 500;
+const READING_AUDIO_LEAD_SECONDS = 0.32;
 
 type PlayerStyle = CSSProperties & {
   "--experience-accent": string;
@@ -43,6 +49,8 @@ type SafeStop = {
   id: string;
   phraseIndex: number;
   time: number;
+  resumeTime: number;
+  resumeDelayMs: number;
   unitStartIndex: number;
   unitEndIndex: number;
 };
@@ -54,6 +62,10 @@ function assetUrl(storyId: string, asset: string) {
 function formatTime(seconds: number) {
   const whole = Math.max(0, Math.floor(seconds));
   return `${Math.floor(whole / 60)}:${String(whole % 60).padStart(2, "0")}`;
+}
+
+function wait(ms: number) {
+  return new Promise<void>((resolve) => window.setTimeout(resolve, ms));
 }
 
 export function ExperiencePlayer({ production }: { production: ExperienceProduction }) {
@@ -75,9 +87,17 @@ export function ExperiencePlayer({ production }: { production: ExperienceProduct
         id: phrase.id,
         phraseIndex,
         time: phrase.end,
+        resumeTime: phrase.end,
+        resumeDelayMs: READING_TARGET_LEAD_MS,
         unitStartIndex: previousUnitEnd + 1,
         unitEndIndex,
       };
+      const nextStart = phrases[phraseIndex + 1]?.start;
+      if (nextStart !== undefined) {
+        stop.resumeTime = Math.max(phrase.end, nextStart - READING_AUDIO_LEAD_SECONDS);
+        const remainingAudioLeadMs = Math.max(0, nextStart - stop.resumeTime) * 1000;
+        stop.resumeDelayMs = Math.max(READING_EXIT_MS, READING_TARGET_LEAD_MS - remainingAudioLeadMs);
+      }
       previousUnitEnd = unitEndIndex;
       return [stop];
     });
@@ -88,9 +108,11 @@ export function ExperiencePlayer({ production }: { production: ExperienceProduct
   const unsubscribeRef = useRef<(() => void) | null>(null);
   const deckRef = useRef<MediaDeckHandle>(null);
   const stopCursorRef = useRef(0);
+  const readingTransitionTokenRef = useRef(0);
   const [mode, setMode] = useState<PlayerMode>("watch");
   const [displayUnitIndex, setDisplayUnitIndex] = useState(0);
   const [waiting, setWaiting] = useState<SafeStop | null>(null);
+  const [readingPhase, setReadingPhase] = useState<ReadingPhase>("idle");
   const [completedInteractions, setCompletedInteractions] = useState<Set<string>>(() => new Set());
   const [playbackError, setPlaybackError] = useState("");
   const [snapshot, setSnapshot] = useState<PerformanceClockSnapshot>({
@@ -125,12 +147,15 @@ export function ExperiencePlayer({ production }: { production: ExperienceProduct
     stopCursorRef.current = index < 0 ? safeStops.length : index;
   }, [safeStops]);
 
-  const play = useCallback(async (clock: PerformanceClock | null) => {
+  const play = useCallback(async (clock: PerformanceClock | null, fromReadingPause = false) => {
     if (!clock) return;
     setPlaybackError("");
     try {
       const time = audioRef.current?.currentTime ?? 0;
-      await Promise.all([clock.play(), soundscapeRef.current?.play(time)]);
+      const soundscape = fromReadingPause
+        ? soundscapeRef.current?.resumeFromReadingPause(time)
+        : soundscapeRef.current?.play(time);
+      await Promise.all([clock.play(), soundscape]);
     } catch {
       setPlaybackError("Your browser blocked narration. Tap play again or open the story in Chrome or Safari.");
     }
@@ -147,20 +172,29 @@ export function ExperiencePlayer({ production }: { production: ExperienceProduct
   }, [activeReadingSample.unitIndex, waiting]);
 
   useEffect(() => {
-    void deckRef.current?.setPlaying(snapshot.playing);
-    if (!snapshot.playing) soundscapeRef.current?.pause();
-    soundscapeRef.current?.seek(snapshot.time);
-  }, [activeSceneIndex, snapshot.playing]);
+    const worldShouldMove = snapshot.playing || Boolean(waiting);
+    void deckRef.current?.setPlaying(worldShouldMove);
+    if (!snapshot.playing && !waiting) soundscapeRef.current?.pause();
+    if (!waiting) soundscapeRef.current?.seek(snapshot.time);
+  }, [activeSceneIndex, snapshot.playing, waiting]);
 
   useEffect(() => {
     if (mode !== "read" || waiting || !snapshot.playing) return;
     const stop = safeStops[stopCursorRef.current];
     if (!stop || snapshot.time < stop.time) return;
-    clockRef.current?.pause();
     stopCursorRef.current += 1;
     setDisplayUnitIndex(stop.unitEndIndex);
+    setReadingPhase("settling");
     setWaiting(stop);
+    void soundscapeRef.current?.enterReadingPause(stop.time);
+    clockRef.current?.pause();
   }, [mode, safeStops, snapshot.playing, snapshot.time, waiting]);
+
+  useEffect(() => {
+    if (!waiting || readingPhase !== "settling") return;
+    const timer = window.setTimeout(() => setReadingPhase("reading"), READING_SETTLE_MS);
+    return () => window.clearTimeout(timer);
+  }, [readingPhase, waiting]);
 
   const scene = production.scenes[activeSceneIndex] ?? production.scenes[0];
   const interaction = scene.interaction;
@@ -217,13 +251,36 @@ export function ExperiencePlayer({ production }: { production: ExperienceProduct
 
   function changeMode(nextMode: PlayerMode) {
     if (nextMode === mode) return;
+    const token = readingTransitionTokenRef.current + 1;
+    readingTransitionTokenRef.current = token;
     setMode(nextMode);
     setStopCursor(snapshot.time);
     if (nextMode === "watch" && waiting) {
       setDisplayUnitIndex(waiting.unitEndIndex);
-      setWaiting(null);
-      void play(clockRef.current);
+      clockRef.current?.seek(waiting.resumeTime);
+      setReadingPhase("resuming");
+      void (async () => {
+        await play(clockRef.current, true);
+        if (readingTransitionTokenRef.current !== token) return;
+        setWaiting(null);
+        setReadingPhase("idle");
+      })();
     }
+  }
+
+  async function resumeReading(clock: PerformanceClock) {
+    if (!waiting || readingPhase !== "reading") return;
+    const token = readingTransitionTokenRef.current + 1;
+    readingTransitionTokenRef.current = token;
+    setDisplayUnitIndex(waiting.unitEndIndex);
+    setReadingPhase("resuming");
+    clock.seek(waiting.resumeTime);
+    await wait(waiting.resumeDelayMs);
+    if (readingTransitionTokenRef.current !== token) return;
+    await play(clock, true);
+    if (readingTransitionTokenRef.current !== token) return;
+    setWaiting(null);
+    setReadingPhase("idle");
   }
 
   function togglePlayback() {
@@ -231,9 +288,7 @@ export function ExperiencePlayer({ production }: { production: ExperienceProduct
     const clock = initializeClock(audioRef.current);
     if (!clock) return;
     if (waiting) {
-      setDisplayUnitIndex(waiting.unitEndIndex);
-      setWaiting(null);
-      void play(clock);
+      void resumeReading(clock);
     } else if (snapshot.playing) {
       clock.pause();
     } else if (snapshot.ended || snapshot.time >= performance.duration - 0.05) {
@@ -248,17 +303,33 @@ export function ExperiencePlayer({ production }: { production: ExperienceProduct
   function replay() {
     const clock = initializeClock(audioRef.current);
     if (!clock) return;
+    const token = readingTransitionTokenRef.current + 1;
+    readingTransitionTokenRef.current = token;
+    const wasWaiting = Boolean(waiting);
     stopCursorRef.current = 0;
-    setWaiting(null);
+    setReadingPhase(wasWaiting ? "resuming" : "idle");
     setDisplayUnitIndex(0);
     setCompletedInteractions(new Set());
     setPlaybackError("");
     clock.seek(0);
-    void play(clock);
+    if (wasWaiting) {
+      void (async () => {
+        await play(clock);
+        if (readingTransitionTokenRef.current !== token) return;
+        setWaiting(null);
+        setReadingPhase("idle");
+      })();
+    } else {
+      setWaiting(null);
+      void play(clock);
+    }
   }
 
   function seek(time: number) {
     const clock = initializeClock(audioRef.current);
+    const wasWaiting = Boolean(waiting);
+    readingTransitionTokenRef.current += 1;
+    setReadingPhase("idle");
     setWaiting(null);
     setStopCursor(time);
     setCompletedInteractions((current) => {
@@ -273,6 +344,7 @@ export function ExperiencePlayer({ production }: { production: ExperienceProduct
       }
       return next;
     });
+    if (wasWaiting) soundscapeRef.current?.pause();
     soundscapeRef.current?.seek(time);
     clock?.seek(time);
   }
@@ -280,11 +352,18 @@ export function ExperiencePlayer({ production }: { production: ExperienceProduct
   async function completeInteraction() {
     if (!interaction || completedInteractions.has(scene.id)) return;
     await deckRef.current?.transitionTo(interaction.completeMediaState);
+    if (waiting) setReadingPhase("settling");
     setCompletedInteractions((current) => new Set(current).add(scene.id));
   }
 
   return (
-    <main className="story-player" style={stageStyle} data-mode={mode} data-waiting={waiting ? "true" : undefined}>
+    <main
+      className="story-player"
+      style={stageStyle}
+      data-mode={mode}
+      data-waiting={waiting ? "true" : undefined}
+      data-reading-phase={readingPhase}
+    >
       <div className="experience-atmosphere" aria-hidden="true" />
       <header className="story-player-header">
         <div className="story-player-title">
@@ -326,11 +405,12 @@ export function ExperiencePlayer({ production }: { production: ExperienceProduct
             data-kind={displayUnit.overlay.kind}
             data-placement={displayUnit.overlay.placement ?? "above"}
             data-mobile-policy={displayUnit.overlay.mobilePolicy}
+            data-reading-phase={waiting ? readingPhase : undefined}
             style={overlayStyle}
           >
             {waiting && !requiredInteraction ? (
               <div className="story-reading-passage story-overlay-content" role="group" aria-label="Reading passage" key={`passage-${waiting.id}`}>
-                <span className="story-reading-passage-heading">Your turn</span>
+                <span className="story-reading-passage-heading" aria-live="polite">Your turn</span>
                 <ol aria-label="Lines to read">
                   {passageUnits.map((unit) => (
                     <li className="story-reading-line" data-reading-line key={unit.id}>
@@ -370,6 +450,7 @@ export function ExperiencePlayer({ production }: { production: ExperienceProduct
         </div>
 
         <audio
+          data-performance-audio
           ref={audioRef}
           src={assetUrl(production.id, performance.audio)}
           preload="auto"
@@ -384,7 +465,12 @@ export function ExperiencePlayer({ production }: { production: ExperienceProduct
           <button className="story-icon-button" type="button" onClick={replay} aria-label="Replay story">
             ↺
           </button>
-          <button className="story-play-button" type="button" onClick={togglePlayback} disabled={requiredInteraction}>
+          <button
+            className="story-play-button"
+            type="button"
+            onClick={togglePlayback}
+            disabled={requiredInteraction || Boolean(waiting && readingPhase !== "reading")}
+          >
             {requiredInteraction ? "Guide Glow above" : waiting ? "Continue" : snapshot.playing ? "Pause" : snapshot.ended ? "Play again" : "Play"}
           </button>
           <div className="story-progress">

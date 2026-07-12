@@ -57,6 +57,98 @@ async function main() {
         failures.push("reading wait does not have exactly one visible Continue action");
       }
 
+      if (production.performance.stems) {
+        const waitingMedia = await page.evaluate(() => {
+          const performanceAudio = document.querySelector<HTMLAudioElement>("[data-performance-audio]");
+          const music = document.querySelector<HTMLAudioElement>("[data-soundscape-stem=music]");
+          const ambience = document.querySelector<HTMLAudioElement>("[data-soundscape-stem=ambience]");
+          const effects = document.querySelector<HTMLAudioElement>("[data-soundscape-stem=effects]");
+          const video = document.querySelector<HTMLVideoElement>(".experience-media-layer[data-active] video");
+          return {
+            phase: document.querySelector(".story-player")?.getAttribute("data-reading-phase"),
+            performancePaused: performanceAudio?.paused,
+            musicPaused: music?.paused,
+            musicVolume: music?.volume,
+            ambiencePaused: ambience?.paused,
+            ambienceTime: ambience?.currentTime,
+            effectsPaused: effects?.paused,
+            videoPaused: video?.paused,
+            videoTime: video?.currentTime,
+          };
+        });
+        await page.waitForTimeout(300);
+        const livingTimes = await page.evaluate(() => ({
+          ambience: document.querySelector<HTMLAudioElement>("[data-soundscape-stem=ambience]")?.currentTime,
+          video: document.querySelector<HTMLVideoElement>(".experience-media-layer[data-active] video")?.currentTime,
+        }));
+        if (waitingMedia.phase !== "reading" || !waitingMedia.performancePaused) failures.push("reading pause did not settle with narration paused");
+        if (production.performance.stems.music
+          && (!waitingMedia.musicPaused || (waitingMedia.musicVolume ?? 1) > 0.01)) failures.push("score did not fade out during reading pause");
+        if (production.performance.stems.ambience
+          && (waitingMedia.ambiencePaused || (livingTimes.ambience ?? 0) <= (waitingMedia.ambienceTime ?? 0) + 0.15)) failures.push("ambience did not continue through reading pause");
+        if (production.performance.stems.effects && !waitingMedia.effectsPaused) failures.push("effects did not pause with narration");
+        if (waitingMedia.videoPaused || (livingTimes.video ?? 0) <= (waitingMedia.videoTime ?? 0) + 0.15) failures.push("living video did not continue through reading pause");
+
+        const continueStartedAt = Date.now();
+        await continueActions.click();
+        await page.waitForTimeout(100);
+        const earlyResume = await page.evaluate(() => ({
+          phase: document.querySelector(".story-player")?.getAttribute("data-reading-phase"),
+          performancePaused: document.querySelector<HTMLAudioElement>("[data-performance-audio]")?.paused,
+        }));
+        if (earlyResume.phase !== "resuming" || !earlyResume.performancePaused) failures.push("Continue did not preserve the resume lead-in");
+        await page.waitForTimeout(250);
+        const resumedMedia = await page.evaluate(() => ({
+          phase: document.querySelector(".story-player")?.getAttribute("data-reading-phase"),
+          performancePaused: document.querySelector<HTMLAudioElement>("[data-performance-audio]")?.paused,
+          musicPaused: document.querySelector<HTMLAudioElement>("[data-soundscape-stem=music]")?.paused,
+          musicVolume: document.querySelector<HTMLAudioElement>("[data-soundscape-stem=music]")?.volume,
+          ambiencePaused: document.querySelector<HTMLAudioElement>("[data-soundscape-stem=ambience]")?.paused,
+          effectsPaused: document.querySelector<HTMLAudioElement>("[data-soundscape-stem=effects]")?.paused,
+        }));
+        if (resumedMedia.phase !== "idle" || resumedMedia.performancePaused) failures.push("narration did not resume after the lead-in");
+        if (production.performance.stems.music
+          && (resumedMedia.musicPaused || (resumedMedia.musicVolume ?? 0) <= 0)) failures.push("score did not fade back in with narration");
+        if ((production.performance.stems.ambience && resumedMedia.ambiencePaused)
+          || (production.performance.stems.effects && resumedMedia.effectsPaused)) failures.push("soundscape did not rejoin narration after Continue");
+
+        const nextPhrase = production.scenes.flatMap((scene) => scene.phrases)
+          .find((phrase) => phrase.start > firstSafeStop.end);
+        if (nextPhrase) {
+          await page.waitForFunction((start) => (
+            (document.querySelector<HTMLAudioElement>("[data-performance-audio]")?.currentTime ?? 0) >= start
+          ), nextPhrase.start);
+          const continueLeadMs = Date.now() - continueStartedAt;
+          if (continueLeadMs < 350 || continueLeadMs > 700) {
+            failures.push(`Continue lead-in was ${continueLeadMs}ms; expected a calm 350–700ms handoff`);
+          }
+        }
+      }
+
+      await page.goto(`${baseUrl}/experience/${storyId}`, { waitUntil: "networkidle" });
+      await page.getByRole("button", { name: "Read with me", exact: true }).click();
+      await page.getByLabel("Story position").fill(String(beforeStop));
+      await page.getByRole("button", { name: "Play", exact: true }).click();
+      await page.waitForFunction(() => (
+        document.querySelector(".story-player")?.getAttribute("data-reading-phase") === "settling"
+      ));
+      await page.getByRole("button", { name: "Watch", exact: true }).click();
+      await page.waitForTimeout(500);
+      const interruptedWait = await page.evaluate(() => ({
+        mode: document.querySelector(".story-player")?.getAttribute("data-mode"),
+        waiting: document.querySelector(".story-player")?.getAttribute("data-waiting"),
+        performancePaused: document.querySelector<HTMLAudioElement>("[data-performance-audio]")?.paused,
+        musicPaused: document.querySelector<HTMLAudioElement>("[data-soundscape-stem=music]")?.paused,
+        ambiencePaused: document.querySelector<HTMLAudioElement>("[data-soundscape-stem=ambience]")?.paused,
+      }));
+      if (interruptedWait.mode !== "watch" || interruptedWait.waiting || interruptedWait.performancePaused) {
+        failures.push("switching to Watch did not interrupt the reading transition cleanly");
+      }
+      if ((production.performance.stems?.music && interruptedWait.musicPaused)
+        || (production.performance.stems?.ambience && interruptedWait.ambiencePaused)) {
+        failures.push("soundscape did not survive an interrupted reading transition");
+      }
+
       await page.goto(`${baseUrl}/experience/${storyId}`, { waitUntil: "networkidle" });
     }
 
@@ -98,7 +190,7 @@ async function main() {
     failures.forEach((failure) => console.error(`✗ ${failure}`));
     process.exitCode = 1;
   } else {
-    console.log(`✓ ${storyId} — passage list, reverse scrub, and ending playback`);
+    console.log(`✓ ${storyId} — soft reading pause, passage list, reverse scrub, and ending playback`);
   }
 }
 

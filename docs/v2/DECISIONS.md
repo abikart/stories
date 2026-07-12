@@ -3,6 +3,24 @@
 Newest decisions go first. Record meaningful divergences, tradeoffs, and quality
 gates; do not duplicate routine implementation details.
 
+## 2026-07-11 — M6.5 soft Read-with-me handoff
+
+- A Read-with-me wait pauses narrative time, not the entire world. Narration and
+  timed effects stop at the safe stop; living video and seamless ambience keep
+  moving so the story remains present while the child reads.
+- The story score is synchronized and may not free-run through an arbitrary
+  wait. It fades to silence over 240ms, pauses, re-seeks on Continue, and fades
+  back to its authored gain over 320ms. Ambience lifts slightly during the wait.
+- Passage entry has a 100ms settling beat plus a 300ms ease-out rise. Continue
+  uses a 160ms visual exit. Reduced-motion removes both visual transitions.
+- Resume timing is derived from the next phrase: excess recorded silence may be
+  skipped while retaining up to 320ms of the untouched performance gap. The UI
+  lead adapts so the next spoken word arrives about 500ms after Continue.
+- `settling`, `reading`, and `resuming` are explicit interruptible phases. Seek,
+  replay, mode change, and interaction completion cancel or restart them safely.
+- A reusable series-level reading-bed loop remains a later enhancement; this
+  pass uses the approved seamless ambience and requires no new per-story media.
+
 ## 2026-07-11 — M6.4 Read-with-me passage list
 
 - A Read-with-me safe stop presents every retained reading unit together as one

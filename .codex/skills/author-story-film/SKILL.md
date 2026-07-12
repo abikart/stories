@@ -45,6 +45,10 @@ Do not begin expensive generation while reading units, beat coverage, or continu
 - Make Read-with-me retain the entire passage since the previous safe stop.
 - At each Read-with-me wait, show that complete passage as one ordered, well-spaced
   list with a single 44px-minimum Continue action; do not paginate its lines.
+- Treat a Read-with-me wait as a soft handoff: pause narration and timed effects,
+  fade the synchronized score, but keep loopable ambience and living holds active.
+- Make settling and resuming phases interruptible, resynchronize timed stems
+  before narration returns, and remove visual motion under reduced-motion preference.
 - Seek within the same performance master for replay; never reconstruct narration from word clips.
 - Make canonical Watch interactions finish before narration advances to their consequence.
 

@@ -40,6 +40,12 @@ The 60–90 second golden POC uses roughly one quarter of this budget.
 Instructional word/phoneme audio is a separate system and cannot be cut from
 the expressive performance.
 
+Read-with-me waits separate narrative time from atmosphere. Narration and timed
+effects stop exactly; the synchronized score fades out rather than drifting;
+loopable ambience and living visuals continue. Resume must re-seek timed stems
+before narration returns. A later series-level reading-bed loop may enrich this
+interlude without requiring a new asset per story.
+
 ## Visual workflow
 
 1. Approve the series bible, expressive performance phrases, and sentence-sized
