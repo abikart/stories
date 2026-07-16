@@ -18,7 +18,10 @@ page-normalized scrub timeline is not the foundation for v2.
 5. [Production system](05-production-system.md) — audio/visual workflow and the
    path to a sustainable 12-story first season.
 6. [POC roadmap](06-poc-roadmap.md) — ordered milestones and acceptance gates.
-7. [Session handoff](HANDOFF.md) — current branch, completed work, known facts,
+7. [Aval assessment](07-aval-assessment.md) — deferred evaluation of Aval's
+   compiled motion runtime, applicable paradigms, integration boundaries, and
+   post-M7 experiment gate.
+8. [Session handoff](HANDOFF.md) — current branch, completed work, known facts,
    and the exact next action. Update it at the end of every substantial session.
 
 ## Decision hierarchy

@@ -3,6 +3,26 @@
 Newest decisions go first. Record meaningful divergences, tradeoffs, and quality
 gates; do not duplicate routine implementation details.
 
+## 2026-07-15 — Aval remains an optional post-M7 motion experiment
+
+- Aval is a sophisticated compiled motion format and web runtime, not a story
+  performance system. It does not replace the real-seconds performance clock,
+  word alignment, reading units, semantic continuity, responsive overlays,
+  reverse scrubbing, or deterministic film path.
+- Do not fork, vendor, or depend on the technical-preview runtime during the
+  golden POC. Its public API is state-driven rather than seekable, its release
+  boundary is web desktop, Safari remains pending, and published package
+  provenance is not yet available in the assessed snapshot.
+- Adopt useful paradigms independently: explicit motion-unit roles, bounded
+  handoff policies, latest-intent-wins settlement, compile-time seam/media
+  validation, host-owned accessible fallbacks, and explicit resource ownership.
+- Finish M7 on native seekable video. Afterward, a bounded experiment may test
+  one living hold and one deliberately authored matched interaction transition.
+  Aval may be added only as an optional lazy web renderer for semantic holds or
+  interaction motion if real mobile support and measured benefit justify it.
+- `07-aval-assessment.md` is the detailed capability map, risk analysis, hybrid
+  boundary, experiment plan, and adoption gate.
+
 ## 2026-07-11 — M6.5 soft Read-with-me handoff
 
 - A Read-with-me wait pauses narrative time, not the entire world. Narration and

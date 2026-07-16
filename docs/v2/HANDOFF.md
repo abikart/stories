@@ -1,6 +1,6 @@
 # v2 session handoff
 
-Last updated: 2026-07-11
+Last updated: 2026-07-15
 
 ## Read first
 
@@ -109,6 +109,11 @@ Last updated: 2026-07-11
 - M6.5 makes those waits atmospheric rather than abrupt. Narration and effects
   pause exactly, the synchronized score fades out, seamless ambience and living
   video continue, and an adaptive lead-in restores all timed stems on Continue.
+- Aval was assessed as a possible compiled motion/runtime layer. It is not a
+  replacement for the performance-led, seekable story runtime or film path and
+  will not be integrated during the golden POC. `docs/v2/07-aval-assessment.md`
+  records the complete capability map, reusable paradigms, constraints, and a
+  bounded post-M7 experiment for an optional living-hold/interaction renderer.
 
 ## Fixed decisions
 
