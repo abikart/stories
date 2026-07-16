@@ -7,11 +7,22 @@
   "stage": {
     "masterAspectRatio": "4:3",
     "actionSafe": "full-frame",
-    "defaultFocalPoint": { "x": 0.5, "y": 0.5 },
+    "defaultFocalPoint": {
+      "x": 0.5,
+      "y": 0.5
+    },
     "backdrop": {
       "color": "#FFFFFF",
       "poster": "scenes/planning-placeholder.svg"
     }
+  },
+  "performance": {
+    "audio": "audio/performance.mp3",
+    "alignment": "audio/alignment.json",
+    "duration": 77.089229,
+    "model": "eleven_v3",
+    "selectedCandidate": "george-natural-a",
+    "candidatesManifest": "audio/candidates/manifest.json"
   },
   "productionPlan": {
     "coverage": "reading-unit",
@@ -26,78 +37,360 @@
           "id": "bell-tree-dawn",
           "kind": "poster",
           "src": "scenes/planning-placeholder.svg",
-          "transitionsTo": ["village-waking"]
+          "transitionsTo": [
+            "village-waking"
+          ]
         },
         {
           "id": "village-waking",
           "kind": "poster",
           "src": "scenes/planning-placeholder.svg",
-          "transitionsTo": ["silent-tree", "bell-tree-dawn"]
+          "transitionsTo": [
+            "silent-tree",
+            "bell-tree-dawn"
+          ]
         },
         {
           "id": "silent-tree",
           "kind": "poster",
           "src": "scenes/planning-placeholder.svg",
-          "transitionsTo": ["village-waking"]
+          "transitionsTo": [
+            "village-waking"
+          ]
         }
       ],
-      "canonicalPath": ["bell-tree-dawn", "village-waking", "silent-tree"],
+      "canonicalPath": [
+        "bell-tree-dawn",
+        "village-waking",
+        "silent-tree"
+      ],
       "phrases": [
         {
           "id": "p01",
           "speaker": "Narrator",
           "text": "In Lanternleaf Forest, morning began with seed bells.",
-          "start": 0.4,
-          "end": 4.4,
-          "overlay": { "kind": "narration", "mobilePolicy": "dock" },
+          "start": 0.219,
+          "end": 4.139,
+          "words": [
+            {
+              "text": "In",
+              "start": 0.219,
+              "end": 0.359
+            },
+            {
+              "text": "Lanternleaf",
+              "start": 0.399,
+              "end": 1.1
+            },
+            {
+              "text": "Forest,",
+              "start": 1.199,
+              "end": 1.659
+            },
+            {
+              "text": "morning",
+              "start": 2.119,
+              "end": 2.559
+            },
+            {
+              "text": "began",
+              "start": 2.599,
+              "end": 3.059
+            },
+            {
+              "text": "with",
+              "start": 3.099,
+              "end": 3.24
+            },
+            {
+              "text": "seed",
+              "start": 3.379,
+              "end": 3.599
+            },
+            {
+              "text": "bells.",
+              "start": 3.699,
+              "end": 4.139
+            }
+          ],
           "readingUnits": [
             {
               "id": "u01",
               "speaker": "Narrator",
               "text": "In Lanternleaf Forest, morning began with seed bells.",
-              "start": 0.4,
-              "end": 4.4,
+              "start": 0.219,
+              "end": 4.139,
+              "words": [
+                {
+                  "text": "In",
+                  "start": 0.219,
+                  "end": 0.359
+                },
+                {
+                  "text": "Lanternleaf",
+                  "start": 0.399,
+                  "end": 1.1
+                },
+                {
+                  "text": "Forest,",
+                  "start": 1.199,
+                  "end": 1.659
+                },
+                {
+                  "text": "morning",
+                  "start": 2.119,
+                  "end": 2.559
+                },
+                {
+                  "text": "began",
+                  "start": 2.599,
+                  "end": 3.059
+                },
+                {
+                  "text": "with",
+                  "start": 3.099,
+                  "end": 3.24
+                },
+                {
+                  "text": "seed",
+                  "start": 3.379,
+                  "end": 3.599
+                },
+                {
+                  "text": "bells.",
+                  "start": 3.699,
+                  "end": 4.139
+                }
+              ],
               "mediaState": "bell-tree-dawn"
             }
-          ]
+          ],
+          "overlay": {
+            "kind": "narration",
+            "mobilePolicy": "dock"
+          }
         },
         {
           "id": "p02",
           "speaker": "Narrator",
           "text": "Their bright chime woke every window and warm oven.",
-          "start": 5.1,
-          "end": 9.5,
+          "start": 5.239,
+          "end": 9.22,
           "safeStopAfter": true,
-          "overlay": { "kind": "narration", "mobilePolicy": "dock" },
+          "words": [
+            {
+              "text": "Their",
+              "start": 5.239,
+              "end": 5.42
+            },
+            {
+              "text": "bright",
+              "start": 5.5,
+              "end": 5.839
+            },
+            {
+              "text": "chime",
+              "start": 5.98,
+              "end": 6.48
+            },
+            {
+              "text": "woke",
+              "start": 6.819,
+              "end": 7.079
+            },
+            {
+              "text": "every",
+              "start": 7.179,
+              "end": 7.419
+            },
+            {
+              "text": "window",
+              "start": 7.559,
+              "end": 7.98
+            },
+            {
+              "text": "and",
+              "start": 8.039,
+              "end": 8.139
+            },
+            {
+              "text": "warm",
+              "start": 8.3,
+              "end": 8.739
+            },
+            {
+              "text": "oven.",
+              "start": 8.859,
+              "end": 9.22
+            }
+          ],
           "readingUnits": [
             {
               "id": "u02",
               "speaker": "Narrator",
               "text": "Their bright chime woke every window and warm oven.",
-              "start": 5.1,
-              "end": 9.5,
+              "start": 5.239,
+              "end": 9.22,
+              "words": [
+                {
+                  "text": "Their",
+                  "start": 5.239,
+                  "end": 5.42
+                },
+                {
+                  "text": "bright",
+                  "start": 5.5,
+                  "end": 5.839
+                },
+                {
+                  "text": "chime",
+                  "start": 5.98,
+                  "end": 6.48
+                },
+                {
+                  "text": "woke",
+                  "start": 6.819,
+                  "end": 7.079
+                },
+                {
+                  "text": "every",
+                  "start": 7.179,
+                  "end": 7.419
+                },
+                {
+                  "text": "window",
+                  "start": 7.559,
+                  "end": 7.98
+                },
+                {
+                  "text": "and",
+                  "start": 8.039,
+                  "end": 8.139
+                },
+                {
+                  "text": "warm",
+                  "start": 8.3,
+                  "end": 8.739
+                },
+                {
+                  "text": "oven.",
+                  "start": 8.859,
+                  "end": 9.22
+                }
+              ],
               "mediaState": "village-waking"
             }
-          ]
+          ],
+          "overlay": {
+            "kind": "narration",
+            "mobilePolicy": "dock"
+          }
         },
         {
           "id": "p03",
           "speaker": "Narrator",
           "text": "But one rain-washed morning, the bells were silent.",
-          "start": 10.4,
-          "end": 14.5,
+          "start": 10.399,
+          "end": 13.88,
           "safeStopAfter": true,
-          "overlay": { "kind": "narration", "mobilePolicy": "dock" },
+          "words": [
+            {
+              "text": "But",
+              "start": 10.399,
+              "end": 10.559
+            },
+            {
+              "text": "one",
+              "start": 10.659,
+              "end": 10.92
+            },
+            {
+              "text": "rain-washed",
+              "start": 11.059,
+              "end": 11.759
+            },
+            {
+              "text": "morning,",
+              "start": 11.88,
+              "end": 12.259
+            },
+            {
+              "text": "the",
+              "start": 12.619,
+              "end": 12.659
+            },
+            {
+              "text": "bells",
+              "start": 12.759,
+              "end": 13.059
+            },
+            {
+              "text": "were",
+              "start": 13.119,
+              "end": 13.259
+            },
+            {
+              "text": "silent.",
+              "start": 13.359,
+              "end": 13.88
+            }
+          ],
           "readingUnits": [
             {
               "id": "u03",
               "speaker": "Narrator",
               "text": "But one rain-washed morning, the bells were silent.",
-              "start": 10.4,
-              "end": 14.5,
+              "start": 10.399,
+              "end": 13.88,
+              "words": [
+                {
+                  "text": "But",
+                  "start": 10.399,
+                  "end": 10.559
+                },
+                {
+                  "text": "one",
+                  "start": 10.659,
+                  "end": 10.92
+                },
+                {
+                  "text": "rain-washed",
+                  "start": 11.059,
+                  "end": 11.759
+                },
+                {
+                  "text": "morning,",
+                  "start": 11.88,
+                  "end": 12.259
+                },
+                {
+                  "text": "the",
+                  "start": 12.619,
+                  "end": 12.659
+                },
+                {
+                  "text": "bells",
+                  "start": 12.759,
+                  "end": 13.059
+                },
+                {
+                  "text": "were",
+                  "start": 13.119,
+                  "end": 13.259
+                },
+                {
+                  "text": "silent.",
+                  "start": 13.359,
+                  "end": 13.88
+                }
+              ],
               "mediaState": "silent-tree"
             }
-          ]
+          ],
+          "overlay": {
+            "kind": "narration",
+            "mobilePolicy": "dock"
+          }
         }
       ]
     },
@@ -108,115 +401,601 @@
           "id": "tangled-tree",
           "kind": "poster",
           "src": "scenes/planning-placeholder.svg",
-          "transitionsTo": ["lower-knots-loosened"]
+          "transitionsTo": [
+            "lower-knots-loosened"
+          ]
         },
         {
           "id": "lower-knots-loosened",
           "kind": "poster",
           "src": "scenes/planning-placeholder.svg",
-          "transitionsTo": ["highest-knot", "tangled-tree"]
+          "transitionsTo": [
+            "highest-knot",
+            "tangled-tree"
+          ]
         },
         {
           "id": "highest-knot",
           "kind": "poster",
           "src": "scenes/planning-placeholder.svg",
-          "transitionsTo": ["lower-knots-loosened"]
+          "transitionsTo": [
+            "lower-knots-loosened"
+          ]
         }
       ],
-      "canonicalPath": ["tangled-tree", "lower-knots-loosened", "highest-knot"],
+      "canonicalPath": [
+        "tangled-tree",
+        "lower-knots-loosened",
+        "highest-knot"
+      ],
       "phrases": [
         {
           "id": "p04",
           "speaker": "Narrator",
           "text": "Fern found their ribbons twisted around the bell tree.",
-          "start": 15.4,
-          "end": 19.8,
-          "overlay": { "kind": "narration", "mobilePolicy": "dock" },
+          "start": 14.96,
+          "end": 18.199,
+          "words": [
+            {
+              "text": "Fern",
+              "start": 14.96,
+              "end": 15.38
+            },
+            {
+              "text": "found",
+              "start": 15.439,
+              "end": 15.699
+            },
+            {
+              "text": "their",
+              "start": 15.739,
+              "end": 15.92
+            },
+            {
+              "text": "ribbons",
+              "start": 16,
+              "end": 16.479
+            },
+            {
+              "text": "twisted",
+              "start": 16.559,
+              "end": 16.959
+            },
+            {
+              "text": "around",
+              "start": 17.059,
+              "end": 17.359
+            },
+            {
+              "text": "the",
+              "start": 17.44,
+              "end": 17.5
+            },
+            {
+              "text": "bell",
+              "start": 17.559,
+              "end": 17.779
+            },
+            {
+              "text": "tree.",
+              "start": 17.92,
+              "end": 18.199
+            }
+          ],
           "readingUnits": [
             {
               "id": "u04",
               "speaker": "Narrator",
               "text": "Fern found their ribbons twisted around the bell tree.",
-              "start": 15.4,
-              "end": 19.8,
+              "start": 14.96,
+              "end": 18.199,
+              "words": [
+                {
+                  "text": "Fern",
+                  "start": 14.96,
+                  "end": 15.38
+                },
+                {
+                  "text": "found",
+                  "start": 15.439,
+                  "end": 15.699
+                },
+                {
+                  "text": "their",
+                  "start": 15.739,
+                  "end": 15.92
+                },
+                {
+                  "text": "ribbons",
+                  "start": 16,
+                  "end": 16.479
+                },
+                {
+                  "text": "twisted",
+                  "start": 16.559,
+                  "end": 16.959
+                },
+                {
+                  "text": "around",
+                  "start": 17.059,
+                  "end": 17.359
+                },
+                {
+                  "text": "the",
+                  "start": 17.44,
+                  "end": 17.5
+                },
+                {
+                  "text": "bell",
+                  "start": 17.559,
+                  "end": 17.779
+                },
+                {
+                  "text": "tree.",
+                  "start": 17.92,
+                  "end": 18.199
+                }
+              ],
               "mediaState": "tangled-tree"
             }
-          ]
+          ],
+          "overlay": {
+            "kind": "narration",
+            "mobilePolicy": "dock"
+          }
         },
         {
           "id": "p05",
           "speaker": "Narrator",
           "text": "She loosened the low knots while Pipkin slipped the middle ones free.",
-          "start": 20.5,
-          "end": 25.7,
+          "start": 19.479,
+          "end": 23.979,
           "safeStopAfter": true,
-          "overlay": { "kind": "narration", "mobilePolicy": "dock" },
+          "words": [
+            {
+              "text": "She",
+              "start": 19.479,
+              "end": 19.639
+            },
+            {
+              "text": "loosened",
+              "start": 19.699,
+              "end": 20.079
+            },
+            {
+              "text": "the",
+              "start": 20.139,
+              "end": 20.199
+            },
+            {
+              "text": "low",
+              "start": 20.299,
+              "end": 20.519
+            },
+            {
+              "text": "knots",
+              "start": 20.579,
+              "end": 20.979
+            },
+            {
+              "text": "while",
+              "start": 21.459,
+              "end": 21.6
+            },
+            {
+              "text": "Pipkin",
+              "start": 21.719,
+              "end": 22.26
+            },
+            {
+              "text": "slipped",
+              "start": 22.34,
+              "end": 22.68
+            },
+            {
+              "text": "the",
+              "start": 22.739,
+              "end": 22.819
+            },
+            {
+              "text": "middle",
+              "start": 22.879,
+              "end": 23.1
+            },
+            {
+              "text": "ones",
+              "start": 23.219,
+              "end": 23.479
+            },
+            {
+              "text": "free.",
+              "start": 23.579,
+              "end": 23.979
+            }
+          ],
           "readingUnits": [
             {
               "id": "u05",
               "speaker": "Narrator",
               "text": "She loosened the low knots while Pipkin slipped the middle ones free.",
-              "start": 20.5,
-              "end": 25.7,
+              "start": 19.479,
+              "end": 23.979,
+              "words": [
+                {
+                  "text": "She",
+                  "start": 19.479,
+                  "end": 19.639
+                },
+                {
+                  "text": "loosened",
+                  "start": 19.699,
+                  "end": 20.079
+                },
+                {
+                  "text": "the",
+                  "start": 20.139,
+                  "end": 20.199
+                },
+                {
+                  "text": "low",
+                  "start": 20.299,
+                  "end": 20.519
+                },
+                {
+                  "text": "knots",
+                  "start": 20.579,
+                  "end": 20.979
+                },
+                {
+                  "text": "while",
+                  "start": 21.459,
+                  "end": 21.6
+                },
+                {
+                  "text": "Pipkin",
+                  "start": 21.719,
+                  "end": 22.26
+                },
+                {
+                  "text": "slipped",
+                  "start": 22.34,
+                  "end": 22.68
+                },
+                {
+                  "text": "the",
+                  "start": 22.739,
+                  "end": 22.819
+                },
+                {
+                  "text": "middle",
+                  "start": 22.879,
+                  "end": 23.1
+                },
+                {
+                  "text": "ones",
+                  "start": 23.219,
+                  "end": 23.479
+                },
+                {
+                  "text": "free.",
+                  "start": 23.579,
+                  "end": 23.979
+                }
+              ],
               "mediaState": "lower-knots-loosened"
             }
-          ]
+          ],
+          "overlay": {
+            "kind": "narration",
+            "mobilePolicy": "dock"
+          }
         },
         {
           "id": "p06",
           "speaker": "Narrator",
           "text": "Still, the highest ribbon hugged a thorny branch.",
-          "start": 26.6,
-          "end": 30.9,
+          "start": 25.239,
+          "end": 28.379,
           "safeStopAfter": true,
-          "overlay": { "kind": "narration", "mobilePolicy": "dock" },
+          "words": [
+            {
+              "text": "Still,",
+              "start": 25.239,
+              "end": 25.579
+            },
+            {
+              "text": "the",
+              "start": 25.719,
+              "end": 25.819
+            },
+            {
+              "text": "highest",
+              "start": 25.899,
+              "end": 26.319
+            },
+            {
+              "text": "ribbon",
+              "start": 26.42,
+              "end": 26.739
+            },
+            {
+              "text": "hugged",
+              "start": 26.879,
+              "end": 27.18
+            },
+            {
+              "text": "a",
+              "start": 27.239,
+              "end": 27.319
+            },
+            {
+              "text": "thorny",
+              "start": 27.359,
+              "end": 27.759
+            },
+            {
+              "text": "branch.",
+              "start": 27.819,
+              "end": 28.379
+            }
+          ],
           "readingUnits": [
             {
               "id": "u06",
               "speaker": "Narrator",
               "text": "Still, the highest ribbon hugged a thorny branch.",
-              "start": 26.6,
-              "end": 30.9,
+              "start": 25.239,
+              "end": 28.379,
+              "words": [
+                {
+                  "text": "Still,",
+                  "start": 25.239,
+                  "end": 25.579
+                },
+                {
+                  "text": "the",
+                  "start": 25.719,
+                  "end": 25.819
+                },
+                {
+                  "text": "highest",
+                  "start": 25.899,
+                  "end": 26.319
+                },
+                {
+                  "text": "ribbon",
+                  "start": 26.42,
+                  "end": 26.739
+                },
+                {
+                  "text": "hugged",
+                  "start": 26.879,
+                  "end": 27.18
+                },
+                {
+                  "text": "a",
+                  "start": 27.239,
+                  "end": 27.319
+                },
+                {
+                  "text": "thorny",
+                  "start": 27.359,
+                  "end": 27.759
+                },
+                {
+                  "text": "branch.",
+                  "start": 27.819,
+                  "end": 28.379
+                }
+              ],
               "mediaState": "highest-knot"
             }
-          ]
+          ],
+          "overlay": {
+            "kind": "narration",
+            "mobilePolicy": "dock"
+          }
         },
         {
           "id": "p07",
           "speaker": "Fern",
           "text": "I cannot reach it.",
-          "start": 31.8,
-          "end": 34.1,
-          "overlay": { "kind": "dialogue", "mobilePolicy": "dock" },
+          "start": 29.619,
+          "end": 30.779,
+          "words": [
+            {
+              "text": "I",
+              "start": 29.619,
+              "end": 29.719
+            },
+            {
+              "text": "cannot",
+              "start": 29.779,
+              "end": 30.119
+            },
+            {
+              "text": "reach",
+              "start": 30.219,
+              "end": 30.5
+            },
+            {
+              "text": "it.",
+              "start": 30.599,
+              "end": 30.779
+            }
+          ],
           "readingUnits": [
             {
               "id": "u07",
               "speaker": "Fern",
               "text": "“I cannot reach it.”",
-              "start": 31.8,
-              "end": 34.1,
+              "start": 29.619,
+              "end": 30.779,
+              "words": [
+                {
+                  "text": "I",
+                  "start": 29.619,
+                  "end": 29.719
+                },
+                {
+                  "text": "cannot",
+                  "start": 29.779,
+                  "end": 30.119
+                },
+                {
+                  "text": "reach",
+                  "start": 30.219,
+                  "end": 30.5
+                },
+                {
+                  "text": "it.",
+                  "start": 30.599,
+                  "end": 30.779
+                }
+              ],
               "mediaState": "highest-knot"
             }
-          ]
+          ],
+          "overlay": {
+            "kind": "dialogue",
+            "mobilePolicy": "dock"
+          }
         },
         {
           "id": "p08",
           "speaker": "Pipkin",
           "text": "I can, if you show me a path through the thorns.",
-          "start": 34.8,
-          "end": 39.2,
+          "start": 32.119,
+          "end": 35.38,
           "safeStopAfter": true,
-          "overlay": { "kind": "dialogue", "mobilePolicy": "dock" },
+          "words": [
+            {
+              "text": "I",
+              "start": 32.119,
+              "end": 32.239
+            },
+            {
+              "text": "can,",
+              "start": 32.319,
+              "end": 32.759
+            },
+            {
+              "text": "if",
+              "start": 33.059,
+              "end": 33.159
+            },
+            {
+              "text": "you",
+              "start": 33.2,
+              "end": 33.339
+            },
+            {
+              "text": "show",
+              "start": 33.399,
+              "end": 33.579
+            },
+            {
+              "text": "me",
+              "start": 33.639,
+              "end": 33.7
+            },
+            {
+              "text": "a",
+              "start": 33.779,
+              "end": 33.84
+            },
+            {
+              "text": "path",
+              "start": 33.939,
+              "end": 34.259
+            },
+            {
+              "text": "through",
+              "start": 34.299,
+              "end": 34.5
+            },
+            {
+              "text": "the",
+              "start": 34.559,
+              "end": 34.619
+            },
+            {
+              "text": "thorns.",
+              "start": 34.739,
+              "end": 35.38
+            }
+          ],
           "readingUnits": [
             {
               "id": "u08",
               "speaker": "Pipkin",
               "text": "“I can, if you show me a path through the thorns.”",
-              "start": 34.8,
-              "end": 39.2,
+              "start": 32.119,
+              "end": 35.38,
+              "words": [
+                {
+                  "text": "I",
+                  "start": 32.119,
+                  "end": 32.239
+                },
+                {
+                  "text": "can,",
+                  "start": 32.319,
+                  "end": 32.759
+                },
+                {
+                  "text": "if",
+                  "start": 33.059,
+                  "end": 33.159
+                },
+                {
+                  "text": "you",
+                  "start": 33.2,
+                  "end": 33.339
+                },
+                {
+                  "text": "show",
+                  "start": 33.399,
+                  "end": 33.579
+                },
+                {
+                  "text": "me",
+                  "start": 33.639,
+                  "end": 33.7
+                },
+                {
+                  "text": "a",
+                  "start": 33.779,
+                  "end": 33.84
+                },
+                {
+                  "text": "path",
+                  "start": 33.939,
+                  "end": 34.259
+                },
+                {
+                  "text": "through",
+                  "start": 34.299,
+                  "end": 34.5
+                },
+                {
+                  "text": "the",
+                  "start": 34.559,
+                  "end": 34.619
+                },
+                {
+                  "text": "thorns.",
+                  "start": 34.739,
+                  "end": 35.38
+                }
+              ],
               "mediaState": "highest-knot"
             }
-          ]
+          ],
+          "overlay": {
+            "kind": "dialogue",
+            "mobilePolicy": "dock"
+          }
         }
       ]
     },
@@ -227,78 +1006,330 @@
           "id": "path-traced",
           "kind": "poster",
           "src": "scenes/planning-placeholder.svg",
-          "transitionsTo": ["pipkin-at-knot"]
+          "transitionsTo": [
+            "pipkin-at-knot"
+          ]
         },
         {
           "id": "pipkin-at-knot",
           "kind": "poster",
           "src": "scenes/planning-placeholder.svg",
-          "transitionsTo": ["knot-opening", "path-traced"]
+          "transitionsTo": [
+            "knot-opening",
+            "path-traced"
+          ]
         },
         {
           "id": "knot-opening",
           "kind": "poster",
           "src": "scenes/planning-placeholder.svg",
-          "transitionsTo": ["pipkin-at-knot"]
+          "transitionsTo": [
+            "pipkin-at-knot"
+          ]
         }
       ],
-      "canonicalPath": ["path-traced", "pipkin-at-knot", "knot-opening"],
+      "canonicalPath": [
+        "path-traced",
+        "pipkin-at-knot",
+        "knot-opening"
+      ],
       "phrases": [
         {
           "id": "p09",
           "speaker": "Narrator",
           "text": "Fern traced a silver path through the leaves.",
-          "start": 40.1,
-          "end": 43.7,
+          "start": 36.88,
+          "end": 39.819,
           "safeStopAfter": true,
-          "overlay": { "kind": "narration", "mobilePolicy": "dock" },
+          "words": [
+            {
+              "text": "Fern",
+              "start": 36.88,
+              "end": 37.319
+            },
+            {
+              "text": "traced",
+              "start": 37.38,
+              "end": 37.739
+            },
+            {
+              "text": "a",
+              "start": 37.799,
+              "end": 37.879
+            },
+            {
+              "text": "silver",
+              "start": 37.959,
+              "end": 38.319
+            },
+            {
+              "text": "path",
+              "start": 38.399,
+              "end": 38.819
+            },
+            {
+              "text": "through",
+              "start": 38.86,
+              "end": 39.079
+            },
+            {
+              "text": "the",
+              "start": 39.139,
+              "end": 39.239
+            },
+            {
+              "text": "leaves.",
+              "start": 39.299,
+              "end": 39.819
+            }
+          ],
           "readingUnits": [
             {
               "id": "u09",
               "speaker": "Narrator",
               "text": "Fern traced a silver path through the leaves.",
-              "start": 40.1,
-              "end": 43.7,
+              "start": 36.88,
+              "end": 39.819,
+              "words": [
+                {
+                  "text": "Fern",
+                  "start": 36.88,
+                  "end": 37.319
+                },
+                {
+                  "text": "traced",
+                  "start": 37.38,
+                  "end": 37.739
+                },
+                {
+                  "text": "a",
+                  "start": 37.799,
+                  "end": 37.879
+                },
+                {
+                  "text": "silver",
+                  "start": 37.959,
+                  "end": 38.319
+                },
+                {
+                  "text": "path",
+                  "start": 38.399,
+                  "end": 38.819
+                },
+                {
+                  "text": "through",
+                  "start": 38.86,
+                  "end": 39.079
+                },
+                {
+                  "text": "the",
+                  "start": 39.139,
+                  "end": 39.239
+                },
+                {
+                  "text": "leaves.",
+                  "start": 39.299,
+                  "end": 39.819
+                }
+              ],
               "mediaState": "path-traced"
             }
-          ]
+          ],
+          "overlay": {
+            "kind": "narration",
+            "mobilePolicy": "dock"
+          }
         },
         {
           "id": "p10",
           "speaker": "Narrator",
           "text": "At the top, Pipkin reached the knotted ribbon.",
-          "start": 45.0,
-          "end": 48.6,
-          "overlay": { "kind": "narration", "mobilePolicy": "dock" },
+          "start": 44.239,
+          "end": 47.299,
+          "words": [
+            {
+              "text": "At",
+              "start": 44.239,
+              "end": 44.36
+            },
+            {
+              "text": "the",
+              "start": 44.399,
+              "end": 44.52
+            },
+            {
+              "text": "top,",
+              "start": 44.599,
+              "end": 44.939
+            },
+            {
+              "text": "Pipkin",
+              "start": 45.36,
+              "end": 45.86
+            },
+            {
+              "text": "reached",
+              "start": 45.919,
+              "end": 46.239
+            },
+            {
+              "text": "the",
+              "start": 46.299,
+              "end": 46.379
+            },
+            {
+              "text": "knotted",
+              "start": 46.439,
+              "end": 46.819
+            },
+            {
+              "text": "ribbon.",
+              "start": 46.899,
+              "end": 47.299
+            }
+          ],
           "readingUnits": [
             {
               "id": "u10",
               "speaker": "Narrator",
               "text": "At the top, Pipkin reached the knotted ribbon.",
-              "start": 45.0,
-              "end": 48.6,
+              "start": 44.239,
+              "end": 47.299,
+              "words": [
+                {
+                  "text": "At",
+                  "start": 44.239,
+                  "end": 44.36
+                },
+                {
+                  "text": "the",
+                  "start": 44.399,
+                  "end": 44.52
+                },
+                {
+                  "text": "top,",
+                  "start": 44.599,
+                  "end": 44.939
+                },
+                {
+                  "text": "Pipkin",
+                  "start": 45.36,
+                  "end": 45.86
+                },
+                {
+                  "text": "reached",
+                  "start": 45.919,
+                  "end": 46.239
+                },
+                {
+                  "text": "the",
+                  "start": 46.299,
+                  "end": 46.379
+                },
+                {
+                  "text": "knotted",
+                  "start": 46.439,
+                  "end": 46.819
+                },
+                {
+                  "text": "ribbon.",
+                  "start": 46.899,
+                  "end": 47.299
+                }
+              ],
               "mediaState": "pipkin-at-knot"
             }
-          ]
+          ],
+          "overlay": {
+            "kind": "narration",
+            "mobilePolicy": "dock"
+          }
         },
         {
           "id": "p11",
           "speaker": "Narrator",
           "text": "One careful tug opened the knot.",
-          "start": 49.4,
-          "end": 52.1,
+          "start": 48.819,
+          "end": 51.539,
           "safeStopAfter": true,
-          "overlay": { "kind": "narration", "mobilePolicy": "dock" },
+          "words": [
+            {
+              "text": "One",
+              "start": 48.819,
+              "end": 49.039
+            },
+            {
+              "text": "careful",
+              "start": 49.18,
+              "end": 49.699
+            },
+            {
+              "text": "tug",
+              "start": 49.799,
+              "end": 50.459
+            },
+            {
+              "text": "opened",
+              "start": 50.599,
+              "end": 50.959
+            },
+            {
+              "text": "the",
+              "start": 51.02,
+              "end": 51.079
+            },
+            {
+              "text": "knot.",
+              "start": 51.159,
+              "end": 51.539
+            }
+          ],
           "readingUnits": [
             {
               "id": "u11",
               "speaker": "Narrator",
               "text": "One careful tug opened the knot.",
-              "start": 49.4,
-              "end": 52.1,
+              "start": 48.819,
+              "end": 51.539,
+              "words": [
+                {
+                  "text": "One",
+                  "start": 48.819,
+                  "end": 49.039
+                },
+                {
+                  "text": "careful",
+                  "start": 49.18,
+                  "end": 49.699
+                },
+                {
+                  "text": "tug",
+                  "start": 49.799,
+                  "end": 50.459
+                },
+                {
+                  "text": "opened",
+                  "start": 50.599,
+                  "end": 50.959
+                },
+                {
+                  "text": "the",
+                  "start": 51.02,
+                  "end": 51.079
+                },
+                {
+                  "text": "knot.",
+                  "start": 51.159,
+                  "end": 51.539
+                }
+              ],
               "mediaState": "knot-opening"
             }
-          ]
+          ],
+          "overlay": {
+            "kind": "narration",
+            "mobilePolicy": "dock"
+          }
         }
       ],
       "interaction": {
@@ -306,14 +1337,39 @@
         "triggerAfterPhrase": "p09",
         "triggerAtReadingUnit": "u09",
         "prompt": "Guide Pipkin along Fern's silver path to the high knot.",
-        "startRegion": { "x": 0.2, "y": 0.62, "width": 0.16, "height": 0.2 },
-        "targetRegion": { "x": 0.7, "y": 0.16, "width": 0.16, "height": 0.18 },
+        "startRegion": {
+          "x": 0.2,
+          "y": 0.62,
+          "width": 0.16,
+          "height": 0.2
+        },
+        "targetRegion": {
+          "x": 0.7,
+          "y": 0.16,
+          "width": 0.16,
+          "height": 0.18
+        },
         "path": [
-          { "x": 0.28, "y": 0.7 },
-          { "x": 0.38, "y": 0.56 },
-          { "x": 0.5, "y": 0.47 },
-          { "x": 0.6, "y": 0.34 },
-          { "x": 0.78, "y": 0.24 }
+          {
+            "x": 0.28,
+            "y": 0.7
+          },
+          {
+            "x": 0.38,
+            "y": 0.56
+          },
+          {
+            "x": 0.5,
+            "y": 0.47
+          },
+          {
+            "x": 0.6,
+            "y": 0.34
+          },
+          {
+            "x": 0.78,
+            "y": 0.24
+          }
         ],
         "completeMediaState": "pipkin-at-knot"
       }
@@ -325,134 +1381,650 @@
           "id": "breeze-rush",
           "kind": "poster",
           "src": "scenes/planning-placeholder.svg",
-          "transitionsTo": ["seed-bells-ringing"]
+          "transitionsTo": [
+            "seed-bells-ringing"
+          ]
         },
         {
           "id": "seed-bells-ringing",
           "kind": "poster",
           "src": "scenes/planning-placeholder.svg",
-          "transitionsTo": ["forest-waking", "breeze-rush"]
+          "transitionsTo": [
+            "forest-waking",
+            "breeze-rush"
+          ]
         },
         {
           "id": "forest-waking",
           "kind": "poster",
           "src": "scenes/planning-placeholder.svg",
-          "transitionsTo": ["friends-listen", "seed-bells-ringing"]
+          "transitionsTo": [
+            "friends-listen",
+            "seed-bells-ringing"
+          ]
         },
         {
           "id": "friends-listen",
           "kind": "poster",
           "src": "scenes/planning-placeholder.svg",
-          "transitionsTo": ["shared-morning", "forest-waking"]
+          "transitionsTo": [
+            "shared-morning",
+            "forest-waking"
+          ]
         },
         {
           "id": "shared-morning",
           "kind": "poster",
           "src": "scenes/planning-placeholder.svg",
-          "transitionsTo": ["friends-listen"]
+          "transitionsTo": [
+            "friends-listen"
+          ]
         }
       ],
-      "canonicalPath": ["breeze-rush", "seed-bells-ringing", "forest-waking", "friends-listen", "shared-morning"],
+      "canonicalPath": [
+        "breeze-rush",
+        "seed-bells-ringing",
+        "forest-waking",
+        "friends-listen",
+        "shared-morning"
+      ],
       "phrases": [
         {
           "id": "p12",
           "speaker": "Narrator",
           "text": "The breeze rushed in. The seed bells bobbed and chimed—one, two, three!",
-          "start": 53.0,
-          "end": 60.8,
-          "overlay": { "kind": "narration", "mobilePolicy": "dock" },
+          "start": 52.959,
+          "end": 59.899,
+          "words": [
+            {
+              "text": "The",
+              "start": 52.959,
+              "end": 53.059
+            },
+            {
+              "text": "breeze",
+              "start": 53.139,
+              "end": 53.52
+            },
+            {
+              "text": "rushed",
+              "start": 53.619,
+              "end": 53.919
+            },
+            {
+              "text": "in.",
+              "start": 54.039,
+              "end": 54.279
+            },
+            {
+              "text": "The",
+              "start": 55.439,
+              "end": 55.579
+            },
+            {
+              "text": "seed",
+              "start": 55.659,
+              "end": 55.979
+            },
+            {
+              "text": "bells",
+              "start": 56.039,
+              "end": 56.439
+            },
+            {
+              "text": "bobbed",
+              "start": 56.52,
+              "end": 56.899
+            },
+            {
+              "text": "and",
+              "start": 56.959,
+              "end": 57.139
+            },
+            {
+              "text": "chimed—one,",
+              "start": 57.199,
+              "end": 58.819
+            },
+            {
+              "text": "two,",
+              "start": 58.979,
+              "end": 59.359
+            },
+            {
+              "text": "three!",
+              "start": 59.419,
+              "end": 59.899
+            }
+          ],
           "readingUnits": [
             {
               "id": "u12",
               "speaker": "Narrator",
               "text": "The breeze rushed in.",
-              "start": 53.0,
-              "end": 55.3,
+              "start": 52.959,
+              "end": 54.279,
+              "words": [
+                {
+                  "text": "The",
+                  "start": 52.959,
+                  "end": 53.059
+                },
+                {
+                  "text": "breeze",
+                  "start": 53.139,
+                  "end": 53.52
+                },
+                {
+                  "text": "rushed",
+                  "start": 53.619,
+                  "end": 53.919
+                },
+                {
+                  "text": "in.",
+                  "start": 54.039,
+                  "end": 54.279
+                }
+              ],
               "mediaState": "breeze-rush"
             },
             {
               "id": "u13",
               "speaker": "Narrator",
               "text": "The seed bells bobbed and chimed—one, two, three!",
-              "start": 55.8,
-              "end": 60.8,
+              "start": 55.439,
+              "end": 59.899,
+              "words": [
+                {
+                  "text": "The",
+                  "start": 55.439,
+                  "end": 55.579
+                },
+                {
+                  "text": "seed",
+                  "start": 55.659,
+                  "end": 55.979
+                },
+                {
+                  "text": "bells",
+                  "start": 56.039,
+                  "end": 56.439
+                },
+                {
+                  "text": "bobbed",
+                  "start": 56.52,
+                  "end": 56.899
+                },
+                {
+                  "text": "and",
+                  "start": 56.959,
+                  "end": 57.139
+                },
+                {
+                  "text": "chimed—one,",
+                  "start": 57.199,
+                  "end": 58.819
+                },
+                {
+                  "text": "two,",
+                  "start": 58.979,
+                  "end": 59.359
+                },
+                {
+                  "text": "three!",
+                  "start": 59.419,
+                  "end": 59.899
+                }
+              ],
               "mediaState": "seed-bells-ringing"
             }
-          ]
+          ],
+          "overlay": {
+            "kind": "narration",
+            "mobilePolicy": "dock"
+          }
         },
         {
           "id": "p13",
           "speaker": "Narrator",
           "text": "All at once, the forest morning opened around them.",
-          "start": 61.6,
-          "end": 65.4,
+          "start": 61.739,
+          "end": 65.299,
           "safeStopAfter": true,
-          "overlay": { "kind": "narration", "mobilePolicy": "dock" },
+          "words": [
+            {
+              "text": "All",
+              "start": 61.739,
+              "end": 61.879
+            },
+            {
+              "text": "at",
+              "start": 61.939,
+              "end": 62.079
+            },
+            {
+              "text": "once,",
+              "start": 62.199,
+              "end": 62.52
+            },
+            {
+              "text": "the",
+              "start": 62.979,
+              "end": 63.099
+            },
+            {
+              "text": "forest",
+              "start": 63.18,
+              "end": 63.579
+            },
+            {
+              "text": "morning",
+              "start": 63.68,
+              "end": 64.139
+            },
+            {
+              "text": "opened",
+              "start": 64.26,
+              "end": 64.579
+            },
+            {
+              "text": "around",
+              "start": 64.699,
+              "end": 65.019
+            },
+            {
+              "text": "them.",
+              "start": 65.08,
+              "end": 65.299
+            }
+          ],
           "readingUnits": [
             {
               "id": "u14",
               "speaker": "Narrator",
               "text": "All at once, the forest morning opened around them.",
-              "start": 61.6,
-              "end": 65.4,
+              "start": 61.739,
+              "end": 65.299,
+              "words": [
+                {
+                  "text": "All",
+                  "start": 61.739,
+                  "end": 61.879
+                },
+                {
+                  "text": "at",
+                  "start": 61.939,
+                  "end": 62.079
+                },
+                {
+                  "text": "once,",
+                  "start": 62.199,
+                  "end": 62.52
+                },
+                {
+                  "text": "the",
+                  "start": 62.979,
+                  "end": 63.099
+                },
+                {
+                  "text": "forest",
+                  "start": 63.18,
+                  "end": 63.579
+                },
+                {
+                  "text": "morning",
+                  "start": 63.68,
+                  "end": 64.139
+                },
+                {
+                  "text": "opened",
+                  "start": 64.26,
+                  "end": 64.579
+                },
+                {
+                  "text": "around",
+                  "start": 64.699,
+                  "end": 65.019
+                },
+                {
+                  "text": "them.",
+                  "start": 65.08,
+                  "end": 65.299
+                }
+              ],
               "mediaState": "forest-waking"
             }
-          ]
+          ],
+          "overlay": {
+            "kind": "narration",
+            "mobilePolicy": "dock"
+          }
         },
         {
           "id": "p14",
           "speaker": "Fern",
           "text": "You reached what I could not.",
-          "start": 66.3,
-          "end": 69.4,
-          "overlay": { "kind": "dialogue", "mobilePolicy": "dock" },
+          "start": 66.72,
+          "end": 68.359,
+          "words": [
+            {
+              "text": "You",
+              "start": 66.72,
+              "end": 66.9
+            },
+            {
+              "text": "reached",
+              "start": 66.959,
+              "end": 67.319
+            },
+            {
+              "text": "what",
+              "start": 67.379,
+              "end": 67.499
+            },
+            {
+              "text": "I",
+              "start": 67.639,
+              "end": 67.699
+            },
+            {
+              "text": "could",
+              "start": 67.739,
+              "end": 67.939
+            },
+            {
+              "text": "not.",
+              "start": 68,
+              "end": 68.359
+            }
+          ],
           "readingUnits": [
             {
               "id": "u15",
               "speaker": "Fern",
               "text": "“You reached what I could not.”",
-              "start": 66.3,
-              "end": 69.4,
+              "start": 66.72,
+              "end": 68.359,
+              "words": [
+                {
+                  "text": "You",
+                  "start": 66.72,
+                  "end": 66.9
+                },
+                {
+                  "text": "reached",
+                  "start": 66.959,
+                  "end": 67.319
+                },
+                {
+                  "text": "what",
+                  "start": 67.379,
+                  "end": 67.499
+                },
+                {
+                  "text": "I",
+                  "start": 67.639,
+                  "end": 67.699
+                },
+                {
+                  "text": "could",
+                  "start": 67.739,
+                  "end": 67.939
+                },
+                {
+                  "text": "not.",
+                  "start": 68,
+                  "end": 68.359
+                }
+              ],
               "mediaState": "friends-listen"
             }
-          ]
+          ],
+          "overlay": {
+            "kind": "dialogue",
+            "mobilePolicy": "dock"
+          }
         },
         {
           "id": "p15",
           "speaker": "Pipkin",
           "text": "You saw the way I could not.",
-          "start": 70.2,
-          "end": 73.5,
+          "start": 69.799,
+          "end": 71.639,
           "safeStopAfter": true,
-          "overlay": { "kind": "dialogue", "mobilePolicy": "dock" },
+          "words": [
+            {
+              "text": "You",
+              "start": 69.799,
+              "end": 70
+            },
+            {
+              "text": "saw",
+              "start": 70.08,
+              "end": 70.36
+            },
+            {
+              "text": "the",
+              "start": 70.4,
+              "end": 70.519
+            },
+            {
+              "text": "way",
+              "start": 70.58,
+              "end": 70.739
+            },
+            {
+              "text": "I",
+              "start": 70.879,
+              "end": 70.939
+            },
+            {
+              "text": "could",
+              "start": 71,
+              "end": 71.179
+            },
+            {
+              "text": "not.",
+              "start": 71.26,
+              "end": 71.639
+            }
+          ],
           "readingUnits": [
             {
               "id": "u16",
               "speaker": "Pipkin",
               "text": "“You saw the way I could not.”",
-              "start": 70.2,
-              "end": 73.5,
+              "start": 69.799,
+              "end": 71.639,
+              "words": [
+                {
+                  "text": "You",
+                  "start": 69.799,
+                  "end": 70
+                },
+                {
+                  "text": "saw",
+                  "start": 70.08,
+                  "end": 70.36
+                },
+                {
+                  "text": "the",
+                  "start": 70.4,
+                  "end": 70.519
+                },
+                {
+                  "text": "way",
+                  "start": 70.58,
+                  "end": 70.739
+                },
+                {
+                  "text": "I",
+                  "start": 70.879,
+                  "end": 70.939
+                },
+                {
+                  "text": "could",
+                  "start": 71,
+                  "end": 71.179
+                },
+                {
+                  "text": "not.",
+                  "start": 71.26,
+                  "end": 71.639
+                }
+              ],
               "mediaState": "friends-listen"
             }
-          ]
+          ],
+          "overlay": {
+            "kind": "dialogue",
+            "mobilePolicy": "dock"
+          }
         },
         {
           "id": "p16",
           "speaker": "Narrator",
           "text": "Above them, the bell tree played the morning they had made together.",
-          "start": 74.5,
-          "end": 80.3,
-          "overlay": { "kind": "narration", "mobilePolicy": "dock" },
+          "start": 73.08,
+          "end": 77.019,
+          "words": [
+            {
+              "text": "Above",
+              "start": 73.08,
+              "end": 73.339
+            },
+            {
+              "text": "them,",
+              "start": 73.379,
+              "end": 73.619
+            },
+            {
+              "text": "the",
+              "start": 73.959,
+              "end": 74.059
+            },
+            {
+              "text": "bell",
+              "start": 74.119,
+              "end": 74.439
+            },
+            {
+              "text": "tree",
+              "start": 74.519,
+              "end": 74.839
+            },
+            {
+              "text": "played",
+              "start": 74.9,
+              "end": 75.219
+            },
+            {
+              "text": "the",
+              "start": 75.259,
+              "end": 75.399
+            },
+            {
+              "text": "morning",
+              "start": 75.459,
+              "end": 75.859
+            },
+            {
+              "text": "they",
+              "start": 75.9,
+              "end": 76.019
+            },
+            {
+              "text": "had",
+              "start": 76.059,
+              "end": 76.219
+            },
+            {
+              "text": "made",
+              "start": 76.279,
+              "end": 76.519
+            },
+            {
+              "text": "together.",
+              "start": 76.58,
+              "end": 77.019
+            }
+          ],
           "readingUnits": [
             {
               "id": "u17",
               "speaker": "Narrator",
               "text": "Above them, the bell tree played the morning they had made together.",
-              "start": 74.5,
-              "end": 80.3,
+              "start": 73.08,
+              "end": 77.019,
+              "words": [
+                {
+                  "text": "Above",
+                  "start": 73.08,
+                  "end": 73.339
+                },
+                {
+                  "text": "them,",
+                  "start": 73.379,
+                  "end": 73.619
+                },
+                {
+                  "text": "the",
+                  "start": 73.959,
+                  "end": 74.059
+                },
+                {
+                  "text": "bell",
+                  "start": 74.119,
+                  "end": 74.439
+                },
+                {
+                  "text": "tree",
+                  "start": 74.519,
+                  "end": 74.839
+                },
+                {
+                  "text": "played",
+                  "start": 74.9,
+                  "end": 75.219
+                },
+                {
+                  "text": "the",
+                  "start": 75.259,
+                  "end": 75.399
+                },
+                {
+                  "text": "morning",
+                  "start": 75.459,
+                  "end": 75.859
+                },
+                {
+                  "text": "they",
+                  "start": 75.9,
+                  "end": 76.019
+                },
+                {
+                  "text": "had",
+                  "start": 76.059,
+                  "end": 76.219
+                },
+                {
+                  "text": "made",
+                  "start": 76.279,
+                  "end": 76.519
+                },
+                {
+                  "text": "together.",
+                  "start": 76.58,
+                  "end": 77.019
+                }
+              ],
               "mediaState": "shared-morning"
             }
-          ]
+          ],
+          "overlay": {
+            "kind": "narration",
+            "mobilePolicy": "dock"
+          }
         }
       ]
     }

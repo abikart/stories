@@ -3,6 +3,27 @@
 Newest decisions go first. Record meaningful divergences, tradeoffs, and quality
 gates; do not duplicate routine implementation details.
 
+## 2026-07-16 — Silent Seed Bells performance uses a paced whole-take master
+
+- `george-natural-a` is the selected continuous series-narrator source after
+  comparison with George creative, Bella natural, a pause-tag repair, and a
+  v3 speed-control experiment. Preserve every source take and never reconstruct
+  narration from phrase or word clips.
+- All raw generations landed near 58–62 seconds despite a 74–82 second target.
+  Eleven v3 accepted `speed: 0.8` but rendered that experiment shorter, and
+  repeated pause tags did not create the intended child handoff. Observed audio
+  takes precedence over accepted request parameters or textual model claims.
+- The 77.089-second delivery master derives reversibly from the untouched George
+  natural source with `0.84×` tempo mastering and 3.4 seconds of added silence
+  inside the existing post-`p09` pause. No spoken fragment is cut or assembled.
+- Forced alignment runs against the final mastered audio. Phrase and nested
+  reading-unit timing both derive from its words; `rain-washed` and
+  `chimed—one` remain single provider timing tokens so displayed punctuation and
+  highlighting stay cohesive.
+- Alignment caching is keyed to the final performance hash, not just candidate
+  identity. A new mastering configuration or selected source must never reuse
+  stale timestamps.
+
 ## 2026-07-16 — Replacement POC is Fern and the Silent Seed Bells
 
 - Keep **Pip and the Lantern Seed** unchanged as the runtime and regression

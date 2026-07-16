@@ -148,6 +148,19 @@ Last updated: 2026-07-16
   border-connected matte normalizer. It preserves each provider original and
   converts only neutral near-white pixels reachable from the image border to
   exact `#FFFFFF`; all three derived references passed full-frame visual QA.
+- Five Eleven v3 whole-story candidates are preserved for **Fern and the Silent
+  Seed Bells**. `george-natural-a` is the selected source; a reversible `0.84×`
+  tempo treatment and 3.4-second post-`p09` pause produce the 77.089-second
+  delivery master without reconstructing speech from clips.
+- Final forced alignment covers 137 provider tokens across all 16 phrases and
+  17 reading units at `0.03380775574240403` loss. Every nested reading unit now
+  owns observed word timing, and the hero gap from the end of `p09` to the start
+  of `p10` is 4.42 seconds. Candidate decisions, exact settings, hashes, costs,
+  raw/final alignment loss, and mastering provenance are in the audio manifest.
+- `narrate-performance.ts` now treats internal hyphen/em-dash compounds as the
+  provider does, updates reading units as well as phrases, and keys alignment
+  reuse to the mastered performance hash so a changed selection cannot inherit
+  stale timing.
 
 ## Fixed decisions
 
@@ -161,12 +174,11 @@ Last updated: 2026-07-16
 
 ## Immediate next action
 
-Use `$author-story-film` to generate the three directed Eleven v3 narration
-candidates in `performance-source.json`, select the expressive master, and
-produce forced alignment. Then bind real phrase and safe-stop timing back into
-the package before generating any story motion. The approved canonical visual
-references may be used immediately for beat keyframes, but motion duration must
-follow the selected performance master.
+Use `$create-lanternleaf-scenes` with the approved identity, seed-bell, and
+bell-tree references to generate the 15 native-4:3 beat keyframes in dependency
+and continuity order. Approve interaction start/end geometry and action handoff
+frames before animation. Story motion duration must follow the selected
+77.089-second performance master and observed reading-unit timing.
 
 ## Verification baseline
 
@@ -239,7 +251,10 @@ coverage, continuity, and pending-asset lint. Strict lint fails only because all
 15 visual beats remain deliberately marked `needs-generation`. Canonical visual
 reference QA additionally confirmed native 1600×1200 output, exact white delivery
 mattes, Fern's satchel, Pipkin's four-wing anatomy, twelve-bell continuity-sheet
-coverage, and the location's two-free-ribbon/one-high-knot state.
+coverage, and the location's two-free-ribbon/one-high-knot state. Performance QA
+additionally confirms a 77.089-second mono 44.1kHz/128kbps master, final alignment
+loss `0.03380775574240403`, nonempty word arrays for every phrase and reading
+unit, and a 4.42-second authored hero-interaction handoff.
 
 ## Session close protocol
 

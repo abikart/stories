@@ -1,6 +1,6 @@
 # Directed performance plan
 
-Status: planning-approved; narration has not been generated or aligned.
+Status: performance master approved and force-aligned on 2026-07-16.
 
 ## Voice
 
@@ -37,6 +37,29 @@ subtle intention and placement rather than caricature voices.
 - Select by emotion, phrase shape, and fit to the 74–82 second window.
 - Force-align the untouched winning master, then replace all planning times and
   empty word arrays in `production.json` with observed timings.
+
+## Production result
+
+- Five whole-story sources were preserved in `audio/candidates/`: the planned
+  George natural, George creative, and Bella natural takes, plus two bounded
+  pacing experiments after every initial take missed the 74–82 second window.
+- `george-natural-a` is the editorial source winner. It had the strongest
+  established series-voice fit, natural pause range, and dynamic variation.
+- Eleven v3 accepted a `speed: 0.8` experiment but rendered it shorter; observed
+  audio evidence overrode the nominal setting. Repeated pause tags also failed
+  to create the required interaction breath and raised alignment loss.
+- The untouched selected source remains in `audio/candidates/`. The delivery
+  master applies reversible `0.84×` tempo mastering and inserts 3.4 seconds of
+  silence at the midpoint of the existing post-`p09` pause. No word, phrase, or
+  performance fragment was cut or reconstructed.
+- Final duration is 77.089 seconds. The observed gap between `p09` and `p10` is
+  4.42 seconds, giving Watch, film, and Read-with-me one shared hero handoff.
+- Forced alignment covers 137 provider word tokens across 16 phrases and 17
+  reading units with loss `0.03380775574240403`. The provider correctly treats
+  `rain-washed` and `chimed—one` as one timed token each.
+- Candidate hashes, exact settings, character costs, selection rationale,
+  mastering parameters, raw/final alignment loss, and delivery hashes live in
+  `audio/candidates/manifest.json`.
 
 ## Safe-stop direction
 
