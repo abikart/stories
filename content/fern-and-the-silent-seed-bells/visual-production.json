@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "storyId": "fern-and-the-silent-seed-bells",
-  "status": "closing-keyframes-in-progress",
+  "status": "keyframes-complete",
   "provider": "grok-imagine",
   "project": "stories.sh",
   "format": {
@@ -237,6 +237,32 @@
       "acceptedSha256": "81f2947c59c616ec8d47b734a3a4907d0b33f1dda2570f3f34b7520a96057160",
       "derivation": "Border-connected white normalization followed by a 98% Lanczos scale to 1568x1176 and exact-white padding of 16px horizontally and 12px vertically; this clears the edge-touching neutral wash without erasing pale watercolor atmosphere.",
       "acceptance": "Exactly three bipedal neighbors enter the paths; open rounded shutters and one light oven puff make the communal waking readable; Fern, four-wing Pipkin, three ringing bells, and wet post-rain surfaces remain complete without falling rain."
+    },
+    {
+      "beatIds": ["b14-friends-listen"],
+      "mediaState": "friends-listen",
+      "status": "approved-generated",
+      "promptRef": "BEAT_GENERATION_PROMPTS.md#b14--friends-listen",
+      "providerId": "766e1def-e2ad-4e23-b5ee-46d34395531e",
+      "providerOriginal": "scenes/the-ringing-morning/provider-originals/friends-listen-766e1def-grok.jpg",
+      "accepted": "scenes/the-ringing-morning/friends-listen.png",
+      "dimensions": "1600x1200",
+      "providerSha256": "7f380302a8a61c76469655281b831be2f2af48eec3785b951672bbecfe0bc533",
+      "acceptedSha256": "788f608eac8587693a33c90048a2b982153030d19eecfd1502ea12eb33e5be0a",
+      "acceptance": "Fern and Pipkin meet each other's gaze in a quiet mutual smile beneath all three gently settled bells; Fern retains her satchel and Pipkin has exactly four visible wings after a single anatomy-only repair."
+    },
+    {
+      "beatIds": ["b15-shared-morning"],
+      "mediaState": "shared-morning",
+      "status": "approved-generated",
+      "promptRef": "BEAT_GENERATION_PROMPTS.md#b15--shared-morning",
+      "providerId": "7858e0d2-a55b-4098-b4cd-32d5d78d93ec",
+      "providerOriginal": "scenes/the-ringing-morning/provider-originals/shared-morning-7858e0d2-grok.jpg",
+      "accepted": "scenes/the-ringing-morning/shared-morning.png",
+      "dimensions": "1600x1200",
+      "providerSha256": "9748aaa773334236d015aa9fe02e00ff2c5fafcb6503801445b39854f5818155",
+      "acceptedSha256": "2871e68ebb467308f55baeb0cd042f94bf824e3770c9782aa6d4af829a552fef",
+      "acceptance": "Wide resolved tableau holds one Fern and one four-wing Pipkin beneath three restored bells, the awake rounded cottage openings, exactly three small neighbors, and wet paths without falling rain or a repeated transformation."
     }
   ],
   "candidates": [
@@ -431,6 +457,24 @@
       "providerId": "5bc99993-761f-4439-a844-9584a80daca8",
       "decision": "rejected",
       "notes": "Removed the extra neighbor but introduced oversized floating raindrops after the rain had already stopped; original preserved for audit."
+    },
+    {
+      "reference": "b14-friends-listen",
+      "providerId": "1a9338f5-3338-4ae6-8c92-9a62ab548f5d",
+      "decision": "rejected",
+      "notes": "Quiet mutual-recognition composition passed, but Pipkin showed only two visible wings; original preserved for audit."
+    },
+    {
+      "reference": "b14-friends-listen",
+      "providerId": "766e1def-e2ad-4e23-b5ee-46d34395531e",
+      "decision": "approved-derived",
+      "notes": "Anatomy-only repair restored the canonical two-upper/two-lower four-wing arrangement without changing the emotional hold or three-bell state."
+    },
+    {
+      "reference": "b15-shared-morning",
+      "providerId": "7858e0d2-a55b-4098-b4cd-32d5d78d93ec",
+      "decision": "approved-derived",
+      "notes": "First take passed the resolved wide-tableau gate: complete bell trio, one Fern, one four-wing Pipkin, awake rounded cottage openings, exactly three supporting neighbors, and no new action."
     }
   ],
   "rejections": [
@@ -454,5 +498,5 @@
       "reason": "All ribbons were bundled together, eliminating the authored one-high-knot interaction."
     }
   ],
-  "notes": "Canonical references and the first twelve unique keyframe mappings passed full-frame QA on 2026-07-16, covering thirteen of fifteen beats. Provider originals and rejected variants are preserved; delivery PNGs use exact-white matte normalization with the documented 98% inset only for the edge-touching forest-waking wash. The selected 77.089-second narration master governs motion duration. Complete friends-listen and shared-morning before any motion ingest."
+  "notes": "All fourteen unique keyframe mappings passed full-frame QA on 2026-07-16 and cover all fifteen beats. Provider originals and rejected variants are preserved; delivery PNGs use exact-white matte normalization with the documented 98% inset only for the edge-touching forest-waking wash. The selected 77.089-second narration master governs motion duration. Keyframes are locked; proceed to schema-v2 motion ingest without regenerating accepted art."
 }

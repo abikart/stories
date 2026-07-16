@@ -219,7 +219,7 @@
       "mediaState": "friends-listen",
       "tier": "living-illustration",
       "visual": "Back beneath the tree, Fern and Pipkin listen to the steady restored bells and exchange a quiet smile; no prop state changes during the dialogue.",
-      "assetStatus": "needs-generation",
+      "assetStatus": "approved-generated",
       "continuity": {
         "bells": "ringing-restored",
         "ribbons": "fully-open",
@@ -235,7 +235,7 @@
       "mediaState": "shared-morning",
       "tier": "living-illustration",
       "visual": "A wider resolved view holds Fern and Pipkin beneath the ringing bell tree with the awake village behind them; the image closes on the morning they made together.",
-      "assetStatus": "needs-generation",
+      "assetStatus": "approved-generated",
       "continuity": {
         "bells": "ringing-restored",
         "ribbons": "fully-open",

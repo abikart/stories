@@ -670,3 +670,150 @@ and path; local-color contours; organic pure-white matte. Do not add, remove,
 move, resize, recolor, or redesign any character or prop. No new rain, smoke,
 wind line, chime symbol, text, border, or camera change.
 ```
+
+## b14 — friends-listen
+
+Input: accepted `seed-bells-ringing`. This is a stable listening hold after the
+communal waking action. It returns the camera to the bell-tree-present intimacy
+without undoing the awake village established in b13.
+
+```text
+Create the NEXT matched story keyframe from the attached approved seed-bells-
+ringing image. Use case: illustration-story. Asset type: native 4:3 children's
+story keyframe for ages 5–7.
+
+Story beat: The restoration is complete. Beneath the bell tree, Fern and Pipkin
+listen to the now-steady bells and exchange a quiet, grateful smile during two
+short lines: Fern recognizes that Pipkin reached what she could not, and Pipkin
+recognizes that Fern saw the way he could not. This is mutual recognition, not
+a new action or a triumphant pose.
+
+Reference role: The attached accepted seed-bells-ringing image controls the
+exact native 4:3 bell-tree-present camera, old tree and cottage geometry, all
+three canonical bells, separate fully open ribbons, post-rain surfaces,
+Fern/Pipkin identity and scale, watercolor language, organic white edge, and
+every supporting object. Change only the ringing phase into a gentle settled
+sway and turn the friends toward one another for the quiet shared smile. The
+village remains awake in continuity, but no neighbor needs to enter this close
+bell-tree composition.
+
+Characters: Keep Fern upright at lower left with her unchanged dusty-teal
+satchel. Keep Pipkin beside Fern at lower-middle with exactly four visible warm-
+gold wings. Their eye lines meet. Fern's expression is warm and relieved;
+Pipkin's is softly proud and affectionate. Preserve their canonical relative
+scale and give both complete readable silhouettes.
+
+Continuity now: bells=ringing-restored in a steady gentle sway;
+ribbons=fully-open with ZERO knots, bows, wraps, or tangles; Fern=present;
+PipkinPosition=beside-fern; location=bell-tree-present. The first chime, breeze
+arrival, knot opening, and village waking have already happened and must not be
+replayed.
+
+Required composition: Preserve all three complete bells across the upper tree
+and both friends together in the lower-left/lower-middle of one airy native 4:3
+frame. The emotional focus is the small space between Fern and Pipkin and their
+mutual eye line. Bells remain visible and alive but secondary. Keep restrained
+wet highlights and generous irregular white breathing space.
+
+Medium: Hand-painted hybrid ink and watercolor on solid pure-white #FFFFFF,
+broad calm translucent washes, restrained pooling, locally color-matched fluid
+contours, pale dissolving distance, and irregular organic edges.
+
+Must preserve: exactly one Fern with satchel, exactly one Pipkin with exactly
+four wings, exactly three complete canonical bells, clean separate ribbons,
+post-rain state, old tree, cottages, same camera family, and pure-white organic
+matte.
+
+Avoid: a handshake, hug, high-five, waving, pointing, tool use, new silver path,
+new knot, renewed wind blast, repeated first chime, violent swinging, closed-
+down sadness, crowding, neighbors in the foreground, extra/missing/cropped
+bells, duplicate Fern/Pipkin, extra wings, changed clothing, text, sound marks,
+grain, beige/gray matte, hard rectangle, universal dark outlines, vector, 3D,
+anime, or photorealism.
+```
+
+First b14 candidate rejected because Pipkin had only two visible wings instead
+of the canonical four. Anatomy-only repair:
+
+```text
+Change ONLY Pipkin's wing anatomy in the CURRENT rendered native-4:3 friends-
+listen image. Pipkin currently shows only two large warm-gold wings. Replace
+that pair with exactly FOUR visible warm-gold insect wings in the canonical
+two-upper/two-lower arrangement: two modest upper wings and two slightly
+smaller lower wings, symmetrically attached behind Pipkin's shoulders, all four
+fully readable and separate. Keep Pipkin's current body size, mint-green color,
+face, antennae, pose, location, eye line toward Fern, and softly proud smile.
+
+Preserve absolutely everything else unchanged: exact 4:3 camera and
+composition; one upright Fern with dusty-teal satchel and warm relieved smile;
+their mutual eye line and spacing; exactly three complete bells; all free
+ribbons; old tree, thorn branch, cottages, post-rain droplets, plants, paths,
+organic pure-white matte, and hybrid ink-and-watercolor rendering. Do not add,
+remove, move, resize, recolor, or redesign any other character or prop. No extra
+Pipkin, no more or fewer than four wings, no knot, wind blast, chime symbol,
+gesture, text, border, or camera change.
+```
+
+## b15 — shared-morning
+
+Inputs: accepted `friends-listen` as the character and restored-bell authority
+and accepted `forest-waking` as the awake-village continuity aid. This is the
+final stable resolved keyframe and must feel like a visual period, not another
+event.
+
+```text
+Create the FINAL resolved story keyframe from the two attached approved images.
+Use case: illustration-story. Asset type: native 4:3 children's story keyframe
+for ages 5–7.
+
+Story beat: Above Fern and Pipkin, the restored bell tree plays the morning they
+made together. Widen just enough to hold the complete old tree, the three gently
+ringing seed bells, the two friends together beneath it, and the now-awake root-
+cottage village receding behind them. This is a calm shared morning after all
+transformations are complete. Nothing new opens, arrives, untangles, or begins.
+
+Reference roles: The attached accepted friends-listen image controls exact Fern
+and Pipkin identity, scale, satchel, four-wing anatomy, mutual closeness, three
+canonical bells, fully open ribbons, post-rain color, and the intimate emotional
+truth. The attached accepted forest-waking image controls ONLY the already-
+awake village facts—open rounded shutters, one light settled oven puff, wet
+paths, and small upright neighbors at distant supporting scale. Reconcile them
+into one coherent wider bell-tree-present frame; do not duplicate any character
+or replay the communal waking action.
+
+Characters: Fern remains upright beneath the tree with her dusty-teal satchel.
+Pipkin remains beside her with exactly four warm-gold wings. They face outward
+together now, still close enough to read as partners. The rabbit, hedgehog, and
+frog may remain small and distant on the village paths, looking toward the tree;
+they must not compete with the two friends.
+
+Continuity now: bells=ringing-restored in a modest steady sway;
+ribbons=fully-open with ZERO knots, bows, wraps, or tangles; Fern=present;
+PipkinPosition=beside-fern; location=bell-tree-present with village awake.
+Rounded shutters remain open and exactly one faint oven puff may linger. Rain
+has stopped; retain only small wet highlights on surfaces, never falling drops.
+
+Required composition: Native 4:3 final tableau. The old tree forms a gentle
+protective arc over Fern and Pipkin. Show all three complete bells with distinct
+but modest settled angles, both root cottages with readable open shutters, the
+friends fully in frame, and a pale path leading through the awake village. Use
+layered pale distance and generous irregular pure-white breathing space so the
+image closes softly and remains responsive without cropping.
+
+Medium: Hand-painted hybrid ink and watercolor on solid pure-white #FFFFFF,
+broad calm translucent washes, restrained pooling, locally color-matched fluid
+contours, pale dissolving distance, and organic edges.
+
+Must preserve: exactly one Fern with satchel, exactly one Pipkin with exactly
+four wings, exactly three complete canonical bells, separate open ribbons,
+awake rounded shutters, no more than the established rabbit/hedgehog/frog trio,
+post-rain wetness without falling rain, exactly one light oven puff at most, and
+the pure-white organic matte.
+
+Avoid: a new action beat, reset to silent bells, closed shutters, renewed rain,
+new wind blast, knot/bow/wrap, repeated release or first chime, party/crowd,
+fireworks, sunburst spectacle, glowing magic, oversized neighbors, handshake or
+hug, extra/missing/cropped bells, duplicate Fern/Pipkin, extra wings, text,
+sound marks, grain, beige/gray matte, hard rectangle, universal dark outlines,
+vector, 3D, anime, or photorealism.
+```

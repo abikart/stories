@@ -1410,7 +1410,7 @@
         {
           "id": "friends-listen",
           "kind": "poster",
-          "src": "scenes/planning-placeholder.svg",
+          "src": "scenes/the-ringing-morning/friends-listen.png",
           "transitionsTo": [
             "shared-morning",
             "forest-waking"
@@ -1419,7 +1419,7 @@
         {
           "id": "shared-morning",
           "kind": "poster",
-          "src": "scenes/planning-placeholder.svg",
+          "src": "scenes/the-ringing-morning/shared-morning.png",
           "transitionsTo": [
             "friends-listen"
           ]
