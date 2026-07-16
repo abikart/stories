@@ -1,6 +1,6 @@
 # v2 session handoff
 
-Last updated: 2026-07-15
+Last updated: 2026-07-16
 
 ## Read first
 
@@ -114,6 +114,21 @@ Last updated: 2026-07-15
   will not be integrated during the golden POC. `docs/v2/07-aval-assessment.md`
   records the complete capability map, reusable paradigms, constraints, and a
   bounded post-M7 experiment for an optional living-hold/interaction renderer.
+- The new Lanternleaf universe direction in `docs/universe/` has been reviewed
+  against the project-owned `create-lanternleaf-scenes` skill. The skill still
+  contains legacy visual constraints and has not yet been reconciled; do not use
+  it to produce the replacement POC until that pass is complete.
+- `/dev/lanternleaf-layout` is a focused candidate proof for one native 4:3
+  visual master. Phone and portrait tablet stack art over copy; desktop uses an
+  editorial row; `?film=1` composes the same 4:3 art and DOM copy inside an exact
+  16:9 film frame. Watch and seven-line Read-with-me states are switchable.
+- The proof uses three portrait universe references as intentionally uncropped
+  stand-ins. Production art must be recomposed natively at 4:3, and the shared
+  pure-white matte becomes a release gate so the painted edge dissolves into the
+  page without exposing a rectangular video canvas.
+- `docs/v2/08-lanternleaf-layout-proof.md` records the candidate contract,
+  measured viewport results, limitations, and approval gate. It does not yet
+  supersede `03-responsive-stage.md` or the existing Pip package.
 
 ## Fixed decisions
 
@@ -126,10 +141,11 @@ Last updated: 2026-07-15
 
 ## Immediate next action
 
-Start M7 from the corrected golden production package: add deterministic
-`/film/[storyId]` playback, drive the interaction canonically, mux the authored
-stems, render a 1080p film, and compare film frames against the interactive route.
-Use `$author-story-film` for any further story-package or media revision.
+Review `/dev/lanternleaf-layout` on phone and desktop. If the composition is
+approved, promote the 4:3 candidate into `03-responsive-stage.md` and
+`DECISIONS.md`; then reconcile `create-lanternleaf-scenes` with `docs/universe/`,
+remove deprecated visual rules and references, and author the replacement
+Lanternleaf POC package with `$author-story-film`.
 
 ## Verification baseline
 
@@ -190,6 +206,12 @@ The interaction-owned safe stop completes and resumes through the same phases
 without page errors or negative-volume interpolation. The seven-line passage,
 living ambience/video dwell, and 44px Continue control pass all five viewports;
 reduced-motion removes entry and exit motion while preserving the audio handoff.
+The Lanternleaf layout proof passes typecheck and production build. Browser QA
+at 390×844, 430×932, 768×1024, 1024×768, and 1440×900 confirms a stable 4:3
+artboard, zero horizontal overflow, the intended stack/row switch, and 44px
+controls. The seven-line passage has no nested scroll. The exact 1920×1080 film
+frame contains both the 4:3 art and copy without overflow, reference switching
+works, and the browser console is clean.
 
 ## Session close protocol
 
