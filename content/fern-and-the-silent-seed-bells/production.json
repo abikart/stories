@@ -36,7 +36,7 @@
         {
           "id": "bell-tree-dawn",
           "kind": "poster",
-          "src": "scenes/planning-placeholder.svg",
+          "src": "scenes/the-quiet-morning/bell-tree-dawn.png",
           "transitionsTo": [
             "village-waking"
           ]
@@ -53,7 +53,7 @@
         {
           "id": "silent-tree",
           "kind": "poster",
-          "src": "scenes/planning-placeholder.svg",
+          "src": "scenes/the-quiet-morning/silent-tree.png",
           "transitionsTo": [
             "village-waking"
           ]
@@ -400,7 +400,7 @@
         {
           "id": "tangled-tree",
           "kind": "poster",
-          "src": "scenes/planning-placeholder.svg",
+          "src": "scenes/the-tangled-ribbons/tangled-tree.png",
           "transitionsTo": [
             "lower-knots-loosened"
           ]
@@ -417,7 +417,7 @@
         {
           "id": "highest-knot",
           "kind": "poster",
-          "src": "scenes/planning-placeholder.svg",
+          "src": "scenes/the-tangled-ribbons/highest-knot.png",
           "transitionsTo": [
             "lower-knots-loosened"
           ]

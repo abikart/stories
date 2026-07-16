@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "storyId": "fern-and-the-silent-seed-bells",
-  "status": "canonical-references-approved",
+  "status": "anchor-keyframes-in-progress",
   "provider": "grok-imagine",
   "project": "stories.sh",
   "format": {
@@ -78,6 +78,58 @@
     "The high knot opens once at u11 and the bells resume once at u13."
   ],
   "agentUrl": "https://grok.com/imagine/agent/9cec5754-4140-4140-aa32-ec57cc3eb04e?conversation=3f0cc8dd-7beb-4f6f-a808-e17a3b52bd0d",
+  "keyframeAgentUrl": "https://grok.com/imagine/agent/9cec5754-4140-4140-aa32-ec57cc3eb04e?conversation=826dbe26-00c9-4c91-ac34-15f2a13fe733",
+  "storyKeyframes": [
+    {
+      "beatIds": ["b01-bell-tree-dawn"],
+      "mediaState": "bell-tree-dawn",
+      "status": "approved-generated",
+      "promptRef": "BEAT_GENERATION_PROMPTS.md#b01--bell-tree-dawn",
+      "providerId": "e3429bc2-41d5-4f55-9e0e-119bb0736ec2",
+      "providerOriginal": "scenes/the-quiet-morning/provider-originals/bell-tree-dawn-e3429bc2-grok.jpg",
+      "accepted": "scenes/the-quiet-morning/bell-tree-dawn.png",
+      "dimensions": "1600x1200",
+      "providerSha256": "c8a20d3b1a3f71a0d4941a7ca03b46258178316ecc664d3ec2637cd910fb75ee",
+      "acceptedSha256": "186363128ecf4ff8a6a316fe9d657bc3b082c17b2f7ceab9b91d3bfc31d8c58e",
+      "acceptance": "Dry pre-waking memory; exactly three complete bells; knot-free open ribbons; closed village; Fern and four-wing Pipkin listen together."
+    },
+    {
+      "beatIds": ["b03-silent-tree"],
+      "mediaState": "silent-tree",
+      "status": "approved-generated",
+      "promptRef": "BEAT_GENERATION_PROMPTS.md#b03--silent-tree",
+      "providerId": "6088c4c1-f4b7-4529-a0f3-fffb52dc6e85",
+      "providerOriginal": "scenes/the-quiet-morning/provider-originals/silent-tree-6088c4c1-grok.jpg",
+      "accepted": "scenes/the-quiet-morning/silent-tree.png",
+      "dimensions": "1600x1200",
+      "providerSha256": "e42746e0419b1b59402260e5f99f95c07f1c8fe20c5e0d3fc77dc8616225f2fe",
+      "acceptedSha256": "29f91cda1175d10b6313f9f05bbdce4037dadbcceea0f80fcc04e19ccf5ec419",
+      "acceptance": "Matched rain-washed present; bells still; tangle concealed; village closed; concerned character response."
+    },
+    {
+      "beatIds": ["b04-tangled-tree"],
+      "mediaState": "tangled-tree",
+      "status": "approved-generated",
+      "promptRef": "BEAT_GENERATION_PROMPTS.md#b04--tangled-tree",
+      "providerId": "c3b01baa-77b3-4af0-b1c7-eba7f669bb4a",
+      "providerOriginal": "scenes/the-tangled-ribbons/provider-originals/tangled-tree-c3b01baa-grok.jpg",
+      "accepted": "scenes/the-tangled-ribbons/tangled-tree.png",
+      "dimensions": "1600x1200",
+      "providerSha256": "88fa78af663c428e635448eb9f34f12cef51bcf56bb4e81871ef1803c4ac94db",
+      "acceptedSha256": "6134b79896a70fd581c30e35fbd3e4bc06dae45fbebe7124b311f922111dcf01",
+      "acceptance": "All three complete bells visible; multiple rain-wet low/middle/high caught zones; highest dusty-blue knot readable; no release yet."
+    },
+    {
+      "beatIds": ["b06-highest-knot", "b07-pipkin-offers"],
+      "mediaState": "highest-knot",
+      "status": "approved-derived",
+      "derivedFrom": "references/bell-tree-location.png",
+      "accepted": "scenes/the-tangled-ribbons/highest-knot.png",
+      "dimensions": "1600x1200",
+      "acceptedSha256": "3efc1a70e8fcd1b846889fe63262725476706fc9cb0bec49231641526a78d6e7",
+      "acceptance": "Canonical two-free-ribbon/one-high-knot state supports Fern's limit and Pipkin's unchanged dialogue offer."
+    }
+  ],
   "candidates": [
     {
       "reference": "fern-pipkin-turnaround",
@@ -126,6 +178,48 @@
       "providerId": "ba83b7f8-d624-4d9e-8979-f41850095d8c",
       "decision": "approved-derived",
       "notes": "Targeted repair freed the berry-pink and warm-ochre ribbons and retained exactly one dusty-blue high knot."
+    },
+    {
+      "reference": "b01-bell-tree-dawn",
+      "providerId": null,
+      "decision": "rejected-provider-error",
+      "notes": "First submission ended with a Grok stream-processing error and produced no asset."
+    },
+    {
+      "reference": "b01-bell-tree-dawn",
+      "providerId": "e3429bc2-41d5-4f55-9e0e-119bb0736ec2",
+      "decision": "approved-derived",
+      "notes": "Targeted weather repair removed every copied rain cue while preserving the memory composition."
+    },
+    {
+      "reference": "b03-silent-tree",
+      "providerId": "6088c4c1-f4b7-4529-a0f3-fffb52dc6e85",
+      "decision": "approved-derived",
+      "notes": "Matched present-day variant preserves the location and character composition while changing weather, emotion, silence, and hidden-ribbon state."
+    },
+    {
+      "reference": "b04-tangled-tree",
+      "providerId": "cddf4c06-ef43-4c83-9df7-3f524f66d958",
+      "decision": "rejected",
+      "notes": "Topology edit cropped the dusty-blue bell outside the frame."
+    },
+    {
+      "reference": "b04-tangled-tree",
+      "providerId": "ffccfe7d-3b90-4d03-b4a9-64520865eee7",
+      "decision": "rejected",
+      "notes": "Alternate topology edit removed the bells entirely."
+    },
+    {
+      "reference": "b04-tangled-tree",
+      "providerId": "846ce32e-fd47-4408-8093-2775d595ba79",
+      "decision": "rejected",
+      "notes": "Visually viable candidate downloaded as 1264x1568 portrait despite the provider's native-4:3 claim. Original preserved for audit."
+    },
+    {
+      "reference": "b04-tangled-tree",
+      "providerId": "c3b01baa-77b3-4af0-b1c7-eba7f669bb4a",
+      "decision": "approved-derived",
+      "notes": "Fresh original-reference generation passed actual 1600x1200 dimensions, complete bell count, characters, and caught-ribbon continuity."
     }
   ],
   "rejections": [
@@ -149,5 +243,5 @@
       "reason": "All ribbons were bundled together, eliminating the authored one-high-knot interaction."
     }
   ],
-  "notes": "All three canonical references passed full-frame visual QA on 2026-07-16. Provider originals are preserved; delivery PNGs were derived with the project skill's border-connected matte normalizer. Do not generate story motion until the selected narration master establishes beat durations."
+  "notes": "Canonical references and the first four anchor keyframe mappings passed full-frame QA on 2026-07-16. Provider originals are preserved; delivery PNGs use exact-white border-connected matte normalization. The selected 77.089-second narration master now governs motion duration. Continue keyframes in continuity order; do not animate an action until its start/end states pass."
 }

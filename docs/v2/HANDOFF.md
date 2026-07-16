@@ -161,6 +161,17 @@ Last updated: 2026-07-16
   provider does, updates reading units as well as phrases, and keys alignment
   reuse to the mastered performance hash so a changed selection cannot inherit
   stale timing.
+- First story-keyframe anchors are integrated for **Fern and the Silent Seed
+  Bells**: dry `bell-tree-dawn`, matched rain-washed `silent-tree`, fully visible
+  `tangled-tree`, and the canonical `highest-knot` reused for both Fern's limit
+  and Pipkin's offer. These cover five of 15 beat-board entries; ten remain
+  deliberately pending.
+- The first Grok memory submission ended in a provider stream error. A wet-state
+  leak was repaired before approval. The first tangle edit chain was abandoned
+  after cropping/removing bells; a fresh original-reference generation passed.
+  One otherwise viable tangle candidate was rejected because its downloaded
+  file was 1264×1568 portrait despite the UI claiming native 4:3. Exact prompts,
+  IDs, hashes, decisions, and originals are preserved beside the package.
 
 ## Fixed decisions
 
@@ -174,11 +185,12 @@ Last updated: 2026-07-16
 
 ## Immediate next action
 
-Use `$create-lanternleaf-scenes` with the approved identity, seed-bell, and
-bell-tree references to generate the 15 native-4:3 beat keyframes in dependency
-and continuity order. Approve interaction start/end geometry and action handoff
-frames before animation. Story motion duration must follow the selected
-77.089-second performance master and observed reading-unit timing.
+Continue `$create-lanternleaf-scenes` in continuity order: create the awake-
+village end state for b02, the lower/middle-release end state for b05, then the
+interaction `path-traced` and `pipkin-at-knot` pair before authoring the
+`knot-opening` action. Verify downloaded dimensions rather than trusting Grok's
+ratio description. Story motion duration follows the selected 77.089-second
+performance master and observed reading-unit timing.
 
 ## Verification baseline
 
@@ -254,7 +266,10 @@ mattes, Fern's satchel, Pipkin's four-wing anatomy, twelve-bell continuity-sheet
 coverage, and the location's two-free-ribbon/one-high-knot state. Performance QA
 additionally confirms a 77.089-second mono 44.1kHz/128kbps master, final alignment
 loss `0.03380775574240403`, nonempty word arrays for every phrase and reading
-unit, and a 4.42-second authored hero-interaction handoff.
+unit, and a 4.42-second authored hero-interaction handoff. The first anchor batch
+adds three approved 1600×1200 generated keyframes and one 1600×1200 canonical
+derivation with exact-white corners; pending-asset experience lint remains the
+appropriate gate until the other ten beat entries are produced.
 
 ## Session close protocol
 

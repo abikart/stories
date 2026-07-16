@@ -10,7 +10,7 @@
       "mediaState": "bell-tree-dawn",
       "tier": "living-illustration",
       "visual": "Establish Fern and Pipkin beneath the seed-bell tree in the familiar ringing morning, with root cottages and useful village details dissolving into white.",
-      "assetStatus": "needs-generation",
+      "assetStatus": "approved-generated",
       "continuity": {
         "bells": "ringing-memory",
         "ribbons": "orderly-memory",
@@ -42,7 +42,7 @@
       "mediaState": "silent-tree",
       "tier": "living-illustration",
       "visual": "Return to the rain-washed present: wet seed bells hang completely still while Fern and Pipkin listen to the surprising hush; the tangle is not yet revealed.",
-      "assetStatus": "needs-generation",
+      "assetStatus": "approved-generated",
       "continuity": {
         "bells": "silent",
         "ribbons": "unseen-tangle",
@@ -58,7 +58,7 @@
       "mediaState": "tangled-tree",
       "tier": "living-illustration",
       "visual": "Reveal wet ribbons twisted around low, middle, and high branches of the bell tree; the single highest knot is visible among thorns but not yet isolated.",
-      "assetStatus": "needs-generation",
+      "assetStatus": "approved-generated",
       "continuity": {
         "bells": "silent",
         "ribbons": "tangled-visible",
@@ -90,7 +90,7 @@
       "mediaState": "highest-knot",
       "tier": "living-illustration",
       "visual": "Isolate the one closed high knot among readable thorns while Fern reaches upward and admits the limit; Pipkin waits beside her.",
-      "assetStatus": "needs-generation",
+      "assetStatus": "approved-derived",
       "continuity": {
         "bells": "silent",
         "ribbons": "highest-knot-only",
@@ -106,7 +106,7 @@
       "mediaState": "highest-knot",
       "tier": "living-illustration",
       "visual": "The same high-knot composition holds while Pipkin turns toward Fern with confident readiness to fly; the knot and bells remain unchanged.",
-      "assetStatus": "needs-generation",
+      "assetStatus": "approved-derived",
       "continuity": {
         "bells": "silent",
         "ribbons": "highest-knot-only",
