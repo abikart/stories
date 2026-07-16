@@ -1,0 +1,4 @@
+interface:
+  display_name: "Create Lanternleaf Scenes"
+  short_description: "Create cohesive Lanternleaf watercolor scenes"
+  default_prompt: "Use $create-lanternleaf-scenes to create a new cohesive story scene with Fern and Pipkin."
