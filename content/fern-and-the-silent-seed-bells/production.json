@@ -1384,7 +1384,7 @@
         {
           "id": "breeze-rush",
           "kind": "poster",
-          "src": "scenes/planning-placeholder.svg",
+          "src": "scenes/the-ringing-morning/breeze-rush.png",
           "transitionsTo": [
             "seed-bells-ringing"
           ]
@@ -1392,7 +1392,7 @@
         {
           "id": "seed-bells-ringing",
           "kind": "poster",
-          "src": "scenes/planning-placeholder.svg",
+          "src": "scenes/the-ringing-morning/seed-bells-ringing.png",
           "transitionsTo": [
             "forest-waking",
             "breeze-rush"
@@ -1401,7 +1401,7 @@
         {
           "id": "forest-waking",
           "kind": "poster",
-          "src": "scenes/planning-placeholder.svg",
+          "src": "scenes/the-ringing-morning/forest-waking.png",
           "transitionsTo": [
             "friends-listen",
             "seed-bells-ringing"

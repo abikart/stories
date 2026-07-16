@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "storyId": "fern-and-the-silent-seed-bells",
-  "status": "anchor-keyframes-in-progress",
+  "status": "closing-keyframes-in-progress",
   "provider": "grok-imagine",
   "project": "stories.sh",
   "format": {
@@ -197,6 +197,46 @@
       "providerSha256": "28a44d5091a065d9d812d82dc90f89716b66bf12a5ed289d7bc61b8af19246b4",
       "acceptedSha256": "49a104d9a307e4b433701e78db54828d12cdddf18fe94df42196284ca0eed0a4",
       "acceptance": "Final dusty-blue bundle is gone; three separate free ribbons and complete still bells remain; the silver route has dissolved as post-completion feedback before any breeze or chime."
+    },
+    {
+      "beatIds": ["b11-breeze-rush"],
+      "mediaState": "breeze-rush",
+      "status": "approved-generated",
+      "promptRef": "BEAT_GENERATION_PROMPTS.md#b11--breeze-rush",
+      "providerId": "32b4c886-bd72-4d07-b2d0-5166d41764f6",
+      "providerOriginal": "scenes/the-ringing-morning/provider-originals/breeze-rush-32b4c886-grok.jpg",
+      "accepted": "scenes/the-ringing-morning/breeze-rush.png",
+      "dimensions": "1600x1200",
+      "providerSha256": "8113cd54d981175e4062ccb9b903e16e4ec389aec3e1db2bbccfe2dac7f99169",
+      "acceptedSha256": "0ebf0797c2a022b256db62fda12f5f838f77e3ff976116ceab35c45c5fe8518d",
+      "acceptance": "Three freed bells lift before their first chime while a restrained breeze moves the leaves and ribbons; the approved blue suspension attachment continues from b10 without restoring the removed high-knot bundle."
+    },
+    {
+      "beatIds": ["b12-bells-ring"],
+      "mediaState": "seed-bells-ringing",
+      "status": "approved-generated",
+      "promptRef": "BEAT_GENERATION_PROMPTS.md#b12--seed-bells-ringing",
+      "providerId": "8426d47a-2b7d-48c4-84c5-b2a03edf2e94",
+      "providerOriginal": "scenes/the-ringing-morning/provider-originals/seed-bells-ringing-8426d47a-grok.jpg",
+      "accepted": "scenes/the-ringing-morning/seed-bells-ringing.png",
+      "dimensions": "1600x1200",
+      "providerSha256": "ac62646cb4a4a08c7caa619025180836cdb45f21c51aa928339a7a2b59aec07c",
+      "acceptedSha256": "49b90193a76ed93ee67efd411704dba64cb0105e2230824950c81170996415e6",
+      "acceptance": "Exactly three bells occupy distinct modest ringing phases; one upright Fern and one correctly scaled four-wing Pipkin share the restored chime while the village remains closed."
+    },
+    {
+      "beatIds": ["b13-forest-wakes"],
+      "mediaState": "forest-waking",
+      "status": "approved-generated",
+      "promptRef": "BEAT_GENERATION_PROMPTS.md#b13--forest-waking",
+      "providerId": "71cd7e8d-dfc9-4634-bf5b-a39b22566ce3",
+      "providerOriginal": "scenes/the-ringing-morning/provider-originals/forest-waking-71cd7e8d-grok.jpg",
+      "accepted": "scenes/the-ringing-morning/forest-waking.png",
+      "dimensions": "1600x1200",
+      "providerSha256": "f69fe140815042d862d33c3d86eb721fb094032c19f633fc96b963f4ccabb880",
+      "acceptedSha256": "81f2947c59c616ec8d47b734a3a4907d0b33f1dda2570f3f34b7520a96057160",
+      "derivation": "Border-connected white normalization followed by a 98% Lanczos scale to 1568x1176 and exact-white padding of 16px horizontally and 12px vertically; this clears the edge-touching neutral wash without erasing pale watercolor atmosphere.",
+      "acceptance": "Exactly three bipedal neighbors enter the paths; open rounded shutters and one light oven puff make the communal waking readable; Fern, four-wing Pipkin, three ringing bells, and wet post-rain surfaces remain complete without falling rain."
     }
   ],
   "candidates": [
@@ -349,6 +389,48 @@
       "providerId": "8464caec-5aac-4631-9d0a-a117d38acfd1",
       "decision": "approved-derived",
       "notes": "Targeted repair removed the final encircling bundle, kept three free silent bells, and dissolved the completed guide route."
+    },
+    {
+      "reference": "b11-breeze-rush",
+      "providerId": "32b4c886-bd72-4d07-b2d0-5166d41764f6",
+      "decision": "approved-derived",
+      "notes": "Accepted after direct comparison with b10: the blue element is the existing suspension attachment, not a restored high knot; the frame is the only candidate that preserves coherent bell support, one Fern, one four-wing Pipkin, and restrained pre-chime lift."
+    },
+    {
+      "reference": "b11-breeze-rush",
+      "providerId": "94bea2dc-6f1a-4604-8a74-f8d908fdada6",
+      "decision": "rejected",
+      "notes": "Repair duplicated Pipkin and recolored the lower duplicate, breaking character count and continuity; original preserved for audit."
+    },
+    {
+      "reference": "b11-breeze-rush",
+      "providerId": "2e8b8023-1cf7-48c6-9341-e206ab825ea1",
+      "decision": "rejected",
+      "notes": "Repair physically detached ribbons, grounded and enlarged Pipkin, and exaggerated loose leaves; original preserved for audit."
+    },
+    {
+      "reference": "b12-seed-bells-ringing",
+      "providerId": "8426d47a-2b7d-48c4-84c5-b2a03edf2e94",
+      "decision": "approved-derived",
+      "notes": "First take passed bell count, distinct ringing phases, closed-village state, Fern identity, and Pipkin four-wing anatomy."
+    },
+    {
+      "reference": "b13-forest-waking",
+      "providerId": "71cd7e8d-dfc9-4634-bf5b-a39b22566ce3",
+      "decision": "approved-derived",
+      "notes": "Final targeted repair passed exact three-neighbor count, open shutters, one oven puff, wet post-rain state, and no falling rain; delivery padding restores a pure-white full border."
+    },
+    {
+      "reference": "b13-forest-waking",
+      "providerId": "ba76cedc-24d0-4045-84be-e058db5bd016",
+      "decision": "rejected",
+      "notes": "Added a fourth gray airborne neighbor beyond the authored rabbit, hedgehog, and frog trio; original preserved for audit."
+    },
+    {
+      "reference": "b13-forest-waking",
+      "providerId": "5bc99993-761f-4439-a844-9584a80daca8",
+      "decision": "rejected",
+      "notes": "Removed the extra neighbor but introduced oversized floating raindrops after the rain had already stopped; original preserved for audit."
     }
   ],
   "rejections": [
@@ -372,5 +454,5 @@
       "reason": "All ribbons were bundled together, eliminating the authored one-high-knot interaction."
     }
   ],
-  "notes": "Canonical references and the first nine keyframe mappings passed full-frame QA on 2026-07-16. Provider originals are preserved; delivery PNGs use exact-white border-connected matte normalization. The selected 77.089-second narration master now governs motion duration. Continue with the restoration chain; do not animate an action until its start/end states pass."
+  "notes": "Canonical references and the first twelve unique keyframe mappings passed full-frame QA on 2026-07-16, covering thirteen of fifteen beats. Provider originals and rejected variants are preserved; delivery PNGs use exact-white matte normalization with the documented 98% inset only for the edge-touching forest-waking wash. The selected 77.089-second narration master governs motion duration. Complete friends-listen and shared-morning before any motion ingest."
 }

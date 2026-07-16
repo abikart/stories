@@ -14,14 +14,14 @@ begin only after the owner has played and reviewed that alpha.
 - The 77.089-second expressive performance master, forced alignment, 16
   phrases, 17 reading units, nine safe stops, and hero pause are complete.
 - Canonical Fern/Pipkin, seed-bell, and bell-tree references are approved.
-- Four unique keyframes cover five of 15 beat-board entries:
-  `bell-tree-dawn`, `silent-tree`, `tangled-tree`, and `highest-knot`.
-- Ten media states still use the visible planning placeholder.
+- Twelve unique keyframes cover thirteen of 15 beat-board entries; only
+  `friends-listen` and `shared-morning` remain pending.
+- Two media states still use the visible planning placeholder.
 - All 14 media states are currently posters. The package cannot declare
   continuous Watch motion until each narration-bearing state and interaction
   outcome has an accepted native video.
 - Planning lint and typecheck pass. Strict lint intentionally fails while the
-  ten missing beats remain pending.
+  two closing beats remain pending.
 - The existing `ingest-video.ts` and `generate-soundscape.ts` are golden-story
   tooling: the former targets v1 frame stories and the latter hard-codes the old
   Pip story. They must not be applied unchanged to this package.
@@ -35,7 +35,7 @@ asset truth remains in the story manifests.
 |---|---|
 | Performance and alignment | Complete |
 | Canonical references | 3/3 complete |
-| Keyframe coverage | 9/14 unique media states; 10/15 beats accepted |
+| Keyframe coverage | 12/14 unique media states; 13/15 beats accepted |
 | Schema-v2 motion ingest | Pending |
 | Native Watch video | 0/14 media states |
 | Silent Seed Bells soundscape | Pending |

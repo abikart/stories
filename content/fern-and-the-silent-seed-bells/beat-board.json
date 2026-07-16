@@ -171,7 +171,7 @@
       "mediaState": "breeze-rush",
       "tier": "motion-shot",
       "visual": "A visible but restrained breeze moves through the now-open ribbons and leaves; the bells begin to lift but have not chimed yet.",
-      "assetStatus": "needs-generation",
+      "assetStatus": "approved-generated",
       "continuity": {
         "bells": "ready",
         "ribbons": "fully-open",
@@ -187,7 +187,7 @@
       "mediaState": "seed-bells-ringing",
       "tier": "motion-shot",
       "visual": "The seed bells bob and sound their first restored sequence—one, two, three—without repeating the initial release action.",
-      "assetStatus": "needs-generation",
+      "assetStatus": "approved-generated",
       "continuity": {
         "bells": "ringing-restored",
         "ribbons": "fully-open",
@@ -203,7 +203,7 @@
       "mediaState": "forest-waking",
       "tier": "motion-shot",
       "visual": "The restored chime opens shutters, lifts a small oven puff, and brings bipedal neighbors onto the paths in one communal morning release.",
-      "assetStatus": "needs-generation",
+      "assetStatus": "approved-generated",
       "continuity": {
         "bells": "ringing-restored",
         "ribbons": "fully-open",

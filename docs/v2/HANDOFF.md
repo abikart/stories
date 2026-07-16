@@ -181,6 +181,16 @@ Last updated: 2026-07-16
   keyframe states now cover ten of 15 beats; five remain pending. Selected and
   rejected provider originals, exact repair prompts, IDs, hashes, and normalized
   deliveries are preserved in the story package.
+- The restoration chain is integrated in causal order: `breeze-rush` lifts the
+  three freed bells before their first chime, `seed-bells-ringing` gives each
+  bell a distinct modest ringing phase, and `forest-waking` opens the rounded
+  shutters, adds one oven puff, and brings exactly three bipedal neighbors onto
+  the paths after the rain. Twelve unique media states now cover thirteen of 15
+  beats. Accepted and rejected Grok originals, exact repair prompts, IDs,
+  hashes, and normalization decisions are preserved. The blue element retained
+  in b11 is the approved b10 suspension attachment, not the removed high-knot
+  bundle. The b13 delivery uses a documented 98% inset and pure-white pad to
+  keep its pale wash from touching the frame edge without erasing atmosphere.
 - `docs/v2/09-fern-playable-loop.md` now defines the autonomous route from that
   partial board to a hands-on local alpha: dependency-ordered keyframes, schema-
   v2 motion ingest, 14 native Watch states, story-specific sound, integration,
@@ -207,11 +217,11 @@ Last updated: 2026-07-16
 
 Continue the resumable playable-alpha loop in
 `docs/v2/09-fern-playable-loop.md`. The next production unit is the restoration
-chain: create `breeze-rush` (b11), `seed-bells-ringing` (b12), and
-`forest-waking` (b13) in that causal order. Verify downloaded dimensions rather
-than trusting Grok's ratio description. Continue through the emotional close,
-motion, soundscape, integration, and QA until the local experience is open and
-ready for owner playtesting.
+chain's emotional close: create `friends-listen` (b14) and `shared-morning`
+(b15), preserving the restored three-bell state and returning to a quiet mutual
+smile before the wider awake-village resolution. Then implement schema-v2
+motion ingest and continue through motion, soundscape, integration, and QA until
+the local experience is open and ready for owner playtesting.
 
 ## Verification baseline
 

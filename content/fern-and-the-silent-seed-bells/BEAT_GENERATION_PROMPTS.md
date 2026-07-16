@@ -1,6 +1,7 @@
 # Beat keyframe generation prompts
 
-Status: first visual anchor and early-state batches approved on 2026-07-16.
+Status: first visual anchor, early-state, and hero-handoff batches approved on
+2026-07-16. Restoration-chain prompts are production-ready.
 
 Use `$create-lanternleaf-scenes`. Provider IDs, hashes, paths, acceptance
 decisions, and rejected variants live in `visual-production.json`.
@@ -387,4 +388,285 @@ with exactly four wings, just after release. Preserve Fern, satchel, exact
 camera/cottage/tree, all three complete bells, post-rain watercolor, organic
 white matte, and closed village. All three bells remain still and silent—no
 breeze, swing, bob, ringing, or sound marks.
+```
+
+## b11 — breeze-rush
+
+Input: accepted `knot-opening`. This is the settled end keyframe for the first
+breeze entry. Later motion begins from b10 and ends here; the bells do not chime
+until b12.
+
+```text
+Create the NEXT camera-locked story keyframe from the attached approved knot-
+opening image. Use case: illustration-story. Asset type: native 4:3 children's
+story keyframe for ages 5–7.
+
+Story beat: The high knot is already fully open. Now one fresh forest breeze
+has just rushed into the same rain-washed bell-tree clearing. Show its first
+arrival settled at the instant when the three free ribbons, nearby leaves, and
+Fern's tail all lean together in one coherent direction. The three bells lift
+slightly in response, but their clappers have NOT struck and no bell has chimed.
+This image is about the incoming air, not the ringing.
+
+Reference role: The attached approved knot-opening image controls the exact
+native 4:3 camera, old bell tree, two closed root cottages, paths, plants,
+tools, all three complete canonical bells, fully open ribbon topology, Fern and
+Pipkin identity/scale, post-rain watercolor language, organic edge, and pure-
+white matte. Change only the authored breeze response, Pipkin's return, and the
+friends' gaze.
+
+Characters: Return the single small Pipkin from the upper canopy to hover beside
+Fern at lower-middle with exactly four fully readable warm-gold wings. Remove
+Pipkin completely from the former knot position so exactly one Pipkin exists.
+Fern remains upright at lower left with the unchanged dusty-teal cross-body
+satchel; both friends look upward toward the lifted bells with alert hope.
+
+Continuity now: bells=ready and completely silent; ribbons=fully-open with ZERO
+knots, bows, wraps, or branch tangles; Fern=present; PipkinPosition=beside-fern;
+location=bell-tree-present. The pale silver guide route is already gone. The
+village has not woken: every rounded shutter stays closed, every oven vent stays
+quiet, and no neighbor is outside.
+
+Required composition: Preserve the full airy 4:3 composition and all three
+complete bells inside the frame. Make the shared breeze direction readable at
+thumbnail size through a restrained diagonal lean in ribbons, leaves, and tail;
+do not use drawn wind lines, a vortex, or a storm. Keep the three bell mouths
+separated and the clappers visibly short of contact.
+
+Medium: Hand-painted hybrid ink and watercolor on solid pure-white #FFFFFF,
+broad calm translucent washes, restrained pooling, locally color-matched fluid
+contours, pale dissolving distance, and irregular organic breathing space.
+
+Must preserve: exactly one Fern with satchel, exactly one Pipkin with exactly
+four wings, exactly three complete canonical bells, fully open separate ribbons,
+post-rain droplets, closed cottages, quiet vents, and the same camera/location.
+
+Avoid: any bell chime, clapper contact, drawn sound, glowing bell, repeated knot
+opening, any knot/bow/wrap, silver route, open shutters, oven puff, neighbor,
+extra/missing/cropped bell, duplicate Pipkin, extra wing, camera drift, heavy
+storm, text, grain, beige/gray matte, hard rectangle, universal dark outlines,
+vector, 3D, anime, or photorealism.
+```
+
+First candidate rejected: the dusty-blue ribbon still formed a visible wrap and
+bow around the upper branch. Targeted topology-only repair:
+
+```text
+REJECT the current b11 render because the dusty-blue ribbon is visibly wrapped
+and tied around the upper branch. Regenerate from the ORIGINAL attached approved
+knot-opening source, not from the rejected b11 image. Preserve the exact native
+4:3 camera, two closed cottages, all plants/tools, post-rain droplets, Fern and
+satchel, Pipkin beside Fern with exactly four wings, all three complete bells,
+pure-white organic matte, and restrained first-breeze response.
+
+Change only the dusty-blue ribbon topology: remove the entire blue knot, bow,
+wrap, crossing, loop, and bunch from around the bark. The blue strip must have
+one visibly loose unattached top end separated from the branch by a white gap,
+then descend freely to the dusty-blue bell. The berry-pink and warm-ochre strips
+also remain free, separate, and unknotted. Keep all three bells lifted only
+slightly by the same gentle breeze; clappers have not struck, no bell has chimed,
+all shutters remain closed, vents quiet, and no neighbor appears. Before
+returning, visually inspect the branch and confirm that no ribbon encircles,
+crosses over itself on, or ties to the bark.
+```
+
+Second candidate rejected: the branch topology was repaired, but the edit left
+the original green Pipkin in the canopy and added a second brown Pipkin beside
+Fern. The edit chain was abandoned. Fresh-source prompt using the approved b10
+camera, canonical identity sheet, and canonical bell-state sheet:
+
+```text
+FRESH independent matched generation from the three ORIGINAL attached approved
+references. Do not use either rejected b11 render. Use case: illustration-story.
+Asset type: native 4:3 children's story keyframe for ages 5–7.
+
+Story beat: After the final high knot is already open, one gentle forest breeze
+has just entered the rain-washed bell-tree clearing. The three FREE ribbons,
+nearby leaves, and Fern's tail lean together in one restrained direction. The
+three bells lift slightly, but their clappers remain visibly short of contact:
+no bell has chimed yet.
+
+Reference roles: The approved knot-opening image controls ONLY the exact native
+4:3 camera, old tree, two closed root cottages, paths/plants/tools, post-rain
+state, character scale, and pure-white organic composition. The canonical Fern-
+Pipkin identity sheet controls exact character colors, anatomy, Fern's dusty-
+teal satchel, Pipkin's mint-green body and exactly four warm-gold wings. The
+canonical bell-state sheet controls the three complete dusty-blue, berry-pink,
+and warm-ochre bells and the FREE ribbon topology; use its separate/free states,
+not any tied or wet-tangled example.
+
+Place exactly ONE Fern upright at lower left with her satchel and exactly ONE
+small mint-green Pipkin beside Fern at lower-middle with exactly four wings.
+There is ZERO Pipkin in the canopy and no second character copy. Both look up
+with alert hope.
+
+Every ribbon must have a visibly loose unattached top end separated from every
+branch by clean white space before descending freely to its bell. ZERO ribbon
+touches, loops around, crosses over itself on, encircles, ties to, or hangs from
+the bark. No knots, bows, wraps, bunches, or tangles anywhere. Preserve exactly
+three complete bells fully inside the frame. Keep all shutters closed, oven
+vents quiet, and paths empty. No silver route, neighbor, drawn wind line,
+chime, sound symbol, text, paper grain, beige/gray matte, hard rectangle,
+universal dark outline, vector, 3D, anime, or photorealism.
+```
+
+## b12 — seed-bells-ringing
+
+Input: accepted `breeze-rush`. This is the settled action keyframe for the
+single restored ringing onset. Later motion begins from b11 and performs one
+ordered three-bell sequence before settling here.
+
+```text
+Create the NEXT camera-locked story keyframe from the attached approved breeze-
+rush image. Use case: illustration-story. Asset type: native 4:3 children's
+story keyframe for ages 5–7.
+
+Story beat: The breeze has already arrived. The three freed seed bells now bob
+and sound their FIRST restored sequence—one, two, three. Show the dusty-blue,
+berry-pink, and warm-ochre bells at three clearly different swing phases so the
+ordered chime reads visually without text or sound symbols. Fern and Pipkin
+listen with joyful surprise. Do not repeat the knot opening or breeze arrival.
+
+Reference role: The attached accepted breeze-rush image controls the exact
+native 4:3 camera, tree and cottage geometry, all three canonical bells,
+separate fully open ribbons, post-rain state, Fern/Pipkin identity and scale,
+watercolor language, organic white edge, and every supporting object. Change
+only the bells' first restored ringing response and the friends' expressions.
+
+Characters: Fern stays upright at lower left with her unchanged dusty-teal
+satchel. Pipkin remains beside Fern at lower-middle with exactly four visible
+warm-gold wings. Their bodies remain still enough to read while their faces turn
+up toward the three moving bells.
+
+Continuity now: bells=ringing-restored for the first time; ribbons=fully-open
+with ZERO knots, bows, wraps, or tangles; Fern=present;
+PipkinPosition=beside-fern; location=bell-tree-present. The village has not
+responded yet: shutters remain closed, vents remain quiet, and no neighbor is
+outside.
+
+Required composition: Preserve all three complete bells and both friends in the
+same airy 4:3 frame. Give each bell a distinct, modest swing angle and ribbon
+curve while keeping its shape, bead, fastener, color, and location recognizable.
+The action must read as one three-note onset, not frantic continuous ringing.
+
+Medium: Hand-painted hybrid ink and watercolor on solid pure-white #FFFFFF,
+broad calm translucent washes, restrained pooling, locally color-matched fluid
+contours, pale dissolving distance, and irregular organic breathing space.
+
+Must preserve: exactly one Fern with satchel, exactly one Pipkin with exactly
+four wings, exactly three complete canonical bells, clean free ribbons,
+post-rain droplets, closed cottages, quiet vents, same camera/location, and no
+silver guide.
+
+Avoid: repeated knot release, any knot/bow/wrap, a second breeze event, all
+bells at the same angle, violent swinging, drawn notes/numbers/sound words,
+digital glow, open shutters, smoke, neighbors, extra/missing/cropped bells,
+duplicate Pipkin, extra wings, camera drift, text, grain, beige/gray matte, hard
+rectangle, universal dark outlines, vector, 3D, anime, or photorealism.
+```
+
+## b13 — forest-waking
+
+Inputs: accepted `seed-bells-ringing` as the present-state authority and
+accepted `village-waking` as the remembered response/layout aid only. This is
+the settled end keyframe for the one-time present-day communal waking action.
+
+```text
+Create the NEXT matched story keyframe from the two attached approved images.
+Use case: illustration-story. Asset type: native 4:3 children's story keyframe
+for ages 5–7.
+
+Story beat: The restored chime has already happened. Now the rain-washed forest
+morning opens around Fern and Pipkin in one communal response: rounded shutters
+stand open, one small warm oven vent gives one soft pale puff, and two or three
+small upright bipedal forest neighbors step onto separate paths and look toward
+the bell tree. The neighbors are waking because they hear the restored bells;
+do not replay the breeze entry, knot opening, or first bell strike.
+
+Reference roles: The attached accepted seed-bells-ringing image controls the
+present-day post-rain state, exact Fern/Pipkin identities and scale, three
+ringing-restored canonical bells, fully open ribbons, bell-tree relationship,
+watercolor medium, organic white matte, and causal state. The attached accepted
+village-waking image controls ONLY the readable open-shutter and single-oven-
+puff response plus the familiar cottage/path vocabulary; do not copy its dry
+memory weather or remove the present-day wetness. The canonical world grammar
+controls upright, tool-capable, soft-cute neighbor anatomy.
+
+Characters: Fern remains upright with the unchanged dusty-teal satchel. Pipkin
+remains beside Fern with exactly four warm-gold wings. Add only two or three
+small upright bipedal neighbors at supporting scale—such as a compact rabbit,
+hedgehog, and frog—standing on two legs and emerging calmly onto different
+paths. They remain secondary to Fern, Pipkin, and the bell tree.
+
+Continuity now: bells=ringing-restored; ribbons=fully-open with ZERO knots,
+bows, wraps, or tangles; Fern=present; PipkinPosition=beside-fern;
+location=village-present. Surfaces retain restrained post-rain droplets. The
+single restored ringing onset is complete; the bells may hold a gentle settled
+sway but do not perform a second dramatic strike.
+
+Required composition: Recompose only as much as needed for a slightly wider
+village-present view while preserving the complete bell tree, all three complete
+bells, Fern, and Pipkin inside one native 4:3 frame. Make at least two open round
+shutters, exactly one soft oven puff, and the small upright neighbors readable
+at thumbnail size. Keep the waking response layered around the central friends,
+with pale distance and generous irregular white breathing space.
+
+Medium: Hand-painted hybrid ink and watercolor on solid pure-white #FFFFFF,
+broad calm translucent washes, restrained pooling, locally color-matched fluid
+contours, pale dissolving distance, and organic edges.
+
+Must preserve: one Fern with satchel, one Pipkin with exactly four wings,
+exactly three complete canonical bells, free separate ribbons, post-rain state,
+upright bipedal neighbors, at least two open shutters, and exactly one light
+oven puff.
+
+Avoid: dry-memory lighting, closed shutters, more than one oven puff, heavy
+smoke/fire, quadrupedal neighbors, crowding, repeated knot opening, renewed wind
+blast, repeated first chime, drawn notes or sound words, extra/missing/cropped
+bells, duplicate Fern/Pipkin, extra wings, text, grain, beige/gray matte, hard
+rectangle, universal dark outlines, vector, 3D, anime, or photorealism.
+```
+
+First b13 candidate rejected only for adding a fourth gray airborne neighbor.
+Removal-only repair:
+
+```text
+Change only the extra-neighbor count in the CURRENT rendered native-4:3 forest-
+waking image; preserve every other pixel-level story fact, camera, character,
+prop, weather, and style decision unchanged. Completely remove the fourth gray
+airborne animal at upper-right of the neighbor group and fill its former area
+with the same pale post-rain background wash. Keep exactly THREE supporting
+neighbors: the small upright rabbit, upright hedgehog, and upright frog already
+on the path. Do not move, resize, redesign, duplicate, or add accessories to
+those three.
+
+Preserve exactly one Fern with dusty-teal satchel, exactly one mint-green Pipkin
+with exactly four warm-gold wings, exactly three complete bells and their free
+ribbons, the old tree, both cottages, the open rounded shutters, exactly one
+soft oven puff, wet droplets, all plants/tools/paths, the pure-white organic
+matte, and the same hybrid watercolor rendering. No new character, wing, smoke
+puff, bell, knot, breeze blast, chime action, text, or camera change.
+```
+
+The neighbor removal succeeded, but its fill added oversized free-floating
+raindrops that read as renewed rainfall. Weather-only cleanup:
+
+```text
+Change only the airborne weather marks in the CURRENT repaired native-4:3
+forest-waking image. Completely remove EVERY oversized floating teardrop from
+the open air, white space, and pale background around the tree, bells,
+cottages, characters, and neighbor group. The rain ended before this beat; no
+rain is falling. Retain only small restrained water beads already resting on
+leaves, bark, roof edges, ribbons, bells, path stones, and plants so the world
+still reads as freshly rain-washed. Fill each removed airborne drop with the
+matching pale translucent background wash and clean white breathing space.
+
+Preserve absolutely everything else unchanged: exact native 4:3 camera and
+composition; one Fern with dusty-teal satchel; one mint-green Pipkin with exactly
+four warm-gold wings; exactly three grounded upright neighbors (rabbit,
+hedgehog, frog); three complete restored bells and free ribbons; old tree; both
+cottages; open rounded shutters; exactly one soft oven puff; every plant, tool,
+and path; local-color contours; organic pure-white matte. Do not add, remove,
+move, resize, recolor, or redesign any character or prop. No new rain, smoke,
+wind line, chime symbol, text, border, or camera change.
 ```
