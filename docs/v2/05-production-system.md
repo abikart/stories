@@ -53,7 +53,8 @@ interlude without requiring a new asset per story.
 2. Build a beat board that covers every reading unit exactly once and a
    continuity ledger that names each legal prop, character, and location change.
 3. Create canonical character/location references.
-4. Approve 16:9 key illustrations with the centered 4:3 action-safe overlay.
+4. Approve native 4:3 key illustrations with the complete semantic beat inside
+   the frame and a clean white dissolving matte.
 5. Assign each beat a production tier: living illustration, motion shot, or
    hero interaction.
 6. Run planning lint with pending assets allowed; generate only the missing or

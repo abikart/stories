@@ -3,6 +3,29 @@
 Newest decisions go first. Record meaningful divergences, tradeoffs, and quality
 gates; do not duplicate routine implementation details.
 
+## 2026-07-16 — Native 4:3 Lanternleaf masters and responsive editorial layout
+
+- New story visuals are authored natively at 4:3. The complete semantic beat,
+  continuity-bearing prop, and interaction geometry remain in that frame; new
+  packages use `masterAspectRatio: "4:3"` with `actionSafe: "full-frame"`.
+- Phone and portrait tablet stack the complete illustration over DOM story copy.
+  Wide desktop places the same media and copy in one editorial row. The 16:9
+  film output deterministically composes those two regions side-by-side; it is
+  an output layout, not a separately directed visual master.
+- The page, poster, and video use a calibrated pure-white matte so organic
+  watercolor edges dissolve into the editorial shell without alpha video. Dirty
+  whites, beige paper, compression blocks, or a revealed rectangular canvas are
+  release failures.
+- Existing Pip and Boat packages remain supported as legacy `16:9` +
+  `center-4:3` regression fixtures. Do not migrate or regenerate them solely to
+  match the new Lanternleaf direction.
+- `docs/universe/world-details.md` is the written visual source of truth. Its
+  role-specific reference images do not override the text. The old skill's
+  uniform brown contours, fixed sparse coverage, 16:9 framing, beige/sketchy
+  medium references, and legacy story-state images are removed.
+- `/dev/lanternleaf-layout` and `08-lanternleaf-layout-proof.md` preserve the
+  measured phone, tablet, desktop, Read-with-me, and exact-film rationale.
+
 ## 2026-07-15 — Aval remains an optional post-M7 motion experiment
 
 - Aval is a sophisticated compiled motion format and web runtime, not a story

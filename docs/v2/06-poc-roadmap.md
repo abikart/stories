@@ -19,13 +19,13 @@ reading only `docs/v2/README.md` and `docs/v2/HANDOFF.md`.
 Implement the v2 schema subset, fixture production package, and
 `/dev/experience-stage` with:
 
-- one 16:9 creative master;
+- one native 4:3 creative master;
 - Cinema, Book, and Pocket presets;
-- centered 4:3 crop in Book/Pocket;
+- complete 4:3 media in every preset;
 - focal-point metadata;
 - poster-derived atmosphere;
-- anchored dialogue and Pocket docking;
-- debug safe-area guides and active-preset label;
+- responsive DOM copy: stacked in Book/Pocket and side-by-side in Cinema;
+- debug media-bound, anchor, and interaction guides plus active-preset label;
 - 44px controls and reduced motion.
 
 **Done when:** the single asset composes intentionally at every required test

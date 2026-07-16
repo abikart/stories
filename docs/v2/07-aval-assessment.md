@@ -67,7 +67,7 @@ editorial overlays, or deterministic film export.
 | Text | DOM prose, speaker labels, and aligned highlighting | None |
 | Interaction | Narrative recipe bound to a performance beat | Visual-state trigger and transition |
 | Film | Same package renders a deterministic 1080p path | No film-output system |
-| Responsive behavior | 16:9 master, 4:3 crop, anchors, docking, safe areas | Canvas fit and dimensions |
+| Responsive behavior | 4:3 master, stack/row composition, anchors, docking, safe areas | Canvas fit and dimensions |
 | Continuity | Character, prop, location, and transformation semantics | Pixel and frame-boundary continuity |
 | Target | Mobile, tablet, desktop, and film | Current release boundary is web desktop |
 
@@ -124,8 +124,8 @@ control also prevents it from replacing the primary visual timeline.
 
 ### Responsive composition: retain stories.sh
 
-Aval provides fit and size behavior, not the centered 4:3 action-safe crop,
-focal-point composition, dialogue anchoring, collision rules, Pocket docking,
+Aval provides fit and size behavior, not the editorial stack/row composition,
+full-frame coordinate mapping, dialogue anchoring, collision rules, Pocket docking,
 or reading surfaces. `ResponsiveStage` and DOM overlays remain authoritative.
 
 ### Transparent animation: valuable future option
@@ -297,4 +297,3 @@ The intended order remains:
 2. run the bounded Aval comparison;
 3. record the measurements and a final adopt/reject decision; and
 4. produce the second story against the resulting stable architecture.
-

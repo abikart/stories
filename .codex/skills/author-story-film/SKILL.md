@@ -27,10 +27,13 @@ Read the target story's `production.json`, `beat-board.json`, `continuity.json`,
 4. Record prop, character, and location state on every beat in `continuity.json`.
 5. Run `pnpm lint:experiences -- <story-id> --allow-pending` before generation.
 6. Generate canonical references before continuity-critical keyframes or video.
-7. Prefer matched image-to-video, locked cameras, and authored handoffs.
-8. Inspect beginning, middle, and end frames; reject semantic or continuity drift.
-9. Mark only accepted assets `approved-existing`, `approved-generated`, or `approved-derived`.
-10. Run strict lint, typecheck, build, real-browser playback, and the five viewport matrix before completion.
+7. Author new keyframes and motion masters natively at 4:3 with the complete
+   semantic action in frame; treat existing 16:9 packages as legacy fixtures.
+8. Prefer matched image-to-video, locked cameras, and authored handoffs.
+9. Inspect beginning, middle, and end frames; reject semantic or continuity drift.
+10. Mark only accepted assets `approved-existing`, `approved-generated`, or `approved-derived`.
+11. Run strict lint, typecheck, build, real-browser playback, the five viewport
+    matrix, and the exact 1920×1080 film frame before completion.
 
 Do not begin expensive generation while reading units, beat coverage, or continuity transitions are unresolved.
 

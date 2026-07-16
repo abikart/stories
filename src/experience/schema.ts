@@ -12,15 +12,25 @@ export const NormalizedRectSchema = PointSchema.extend({
   height: NormalizedNumberSchema,
 });
 
-export const StageContractSchema = z.object({
-  masterAspectRatio: z.literal("16:9"),
-  actionSafe: z.literal("center-4:3"),
-  defaultFocalPoint: PointSchema,
-  backdrop: z.object({
-    color: z.string().min(1),
-    poster: z.string().min(1),
-  }),
+const StageBackdropSchema = z.object({
+  color: z.string().min(1),
+  poster: z.string().min(1),
 });
+
+export const StageContractSchema = z.discriminatedUnion("masterAspectRatio", [
+  z.object({
+    masterAspectRatio: z.literal("4:3"),
+    actionSafe: z.literal("full-frame"),
+    defaultFocalPoint: PointSchema,
+    backdrop: StageBackdropSchema,
+  }),
+  z.object({
+    masterAspectRatio: z.literal("16:9"),
+    actionSafe: z.literal("center-4:3"),
+    defaultFocalPoint: PointSchema,
+    backdrop: StageBackdropSchema,
+  }),
+]);
 
 export const OverlayPlacementSchema = z.object({
   kind: z.enum(["narration", "dialogue"]),
@@ -41,7 +51,7 @@ export const ReadingUnitSchema = z.object({
   text: z.string().min(1),
   start: z.number().min(0),
   end: z.number().positive(),
-  words: z.array(WordTimingSchema).min(1),
+  words: z.array(WordTimingSchema).default([]),
   mediaState: z.string().min(1),
   overlay: OverlayPlacementSchema.optional(),
 });

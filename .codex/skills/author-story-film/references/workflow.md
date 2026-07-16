@@ -48,7 +48,8 @@ If a transformation appears twice, occurs before its authored unit, regresses, o
   interaction outcome to a poster state. Keep the poster only as the video's
   decode/error fallback or as an explicitly paused Read-mode treatment.
 - Interaction completion changes only the authored state and must hand off cleanly to the next beat.
-- Essential action stays within the centered 4:3 region of the 16:9 master.
+- New stories use a native 4:3 creative master with the complete action and
+  interaction geometry in frame. Existing 16:9 packages are legacy fixtures.
 
 ## Read-with-me gates
 
@@ -73,7 +74,10 @@ For video, inspect at least start, midpoint, and final frames. Reject camera dri
 
 ## Required browser matrix
 
-Verify 390×844, 430×932, 768×1024, 1024×768, and 1440×900. Check media readiness, crop, overlays, passage history, pointer/touch/keyboard interaction, controls, audio synchronization, seeking, and console errors.
+Verify 390×844, 430×932, 768×1024, 1024×768, 1440×900, and the exact 1920×1080
+film composition. Check media readiness, complete 4:3 presentation, stack/row
+layout, overlays, passage history, pointer/touch/keyboard interaction, controls,
+audio synchronization, seeking, and console errors.
 
 Stress reverse scrubbing across every reading unit and play through the final
 scene. Scene identity and media state must change atomically, superseded loads

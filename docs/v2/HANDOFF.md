@@ -114,11 +114,10 @@ Last updated: 2026-07-16
   will not be integrated during the golden POC. `docs/v2/07-aval-assessment.md`
   records the complete capability map, reusable paradigms, constraints, and a
   bounded post-M7 experiment for an optional living-hold/interaction renderer.
-- The new Lanternleaf universe direction in `docs/universe/` has been reviewed
-  against the project-owned `create-lanternleaf-scenes` skill. The skill still
-  contains legacy visual constraints and has not yet been reconciled; do not use
-  it to produce the replacement POC until that pass is complete.
-- `/dev/lanternleaf-layout` is a focused candidate proof for one native 4:3
+- The new Lanternleaf universe direction in `docs/universe/` is reconciled with
+  the project-owned `create-lanternleaf-scenes` skill. The written world guide
+  is authoritative; role-specific images no longer act as global style masters.
+- `/dev/lanternleaf-layout` is the approved proof for one native 4:3
   visual master. Phone and portrait tablet stack art over copy; desktop uses an
   editorial row; `?film=1` composes the same 4:3 art and DOM copy inside an exact
   16:9 film frame. Watch and seven-line Read-with-me states are switchable.
@@ -126,14 +125,15 @@ Last updated: 2026-07-16
   stand-ins. Production art must be recomposed natively at 4:3, and the shared
   pure-white matte becomes a release gate so the painted edge dissolves into the
   page without exposing a rectangular video canvas.
-- `docs/v2/08-lanternleaf-layout-proof.md` records the candidate contract,
-  measured viewport results, limitations, and approval gate. It does not yet
-  supersede `03-responsive-stage.md` or the existing Pip package.
+- `docs/v2/08-lanternleaf-layout-proof.md` records the measured rationale and
+  `03-responsive-stage.md` now governs the approved layout. Existing Pip and
+  Boat packages remain supported legacy fixtures.
 
 ## Fixed decisions
 
-- One 16:9 creative master per media state; centered 4:3 action safe.
-- Cinema, Book, and Pocket responsive presets.
+- One native 4:3 creative master per new media state; legacy 16:9 packages stay
+  valid only as regression fixtures.
+- Cinema row, Book stack, and Pocket stack responsive presets.
 - Real-seconds expressive performance timeline.
 - Native video for normal playback; frames only for true scrub moments.
 - Standard interaction recipes; no story-specific runtime code.

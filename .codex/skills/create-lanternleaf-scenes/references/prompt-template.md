@@ -1,32 +1,50 @@
 # Prompt template
 
-Use only the fields that help the requested beat.
+Use only fields that clarify the requested beat. Copy continuity descriptions
+verbatim from the story package when they exist.
 
 ```text
 Use case: illustration-story
-Asset type: 16:9 children's story illustration for ages 5–7
-Primary request: <one concrete story beat>
-Input images: Image 1 is the primary Fern/Pipkin identity reference; Image 2 is the nearest story-state reference; medium references control traditional ink-and-watercolor execution.
-Scene/backdrop: <a few selected Lanternleaf motifs; leave the rest unpainted>
-Characters: <state Fern and Pipkin invariants verbatim when present>
-Style/medium: Unmistakably hand-painted ink and watercolor, not digital painting. Use two or three broad transparent washes, visible overlapping glaze edges, soft wet-on-wet shifts, irregular broad blooms, backruns, restrained edge pooling, and loose dry-brush endings in the environment on a smooth bright neutral-white ground. Character fills remain calm and mostly smooth.
-Composition: Compact vignette covering 55–60% of a 16:9 canvas; 40–45% clean white negative space; essential action inside centered 4:3.
-Lighting/mood: <gentle, readable, age-appropriate mood>
-Continuity: <character, prop, location, and transformation state>
-Constraints: Draw each exposed character curve with one long continuous warm-brown brush stroke; break only at real occlusions or rare natural brush lifts. Characters fuller and more saturated; environment loose, pale, and subordinate. Paint rocks with one or two plain uneven washes.
-Avoid: AI-polished digital painting, airbrush, bloom filter, radial glow, rim light, scales, dragon-scale rocks, facets, loops, rosettes, curls, swirls, mosaic, patchwork, stamped dabs, hatching, repeated fill motifs, tiled brush symbols, paper grain, canvas texture, beige paper, dashed/dotted/stitched contours, dense scenery, full-bleed color, text, border, watermark, vector finish, 3D, anime, photorealism.
+Asset type: native 4:3 children's story illustration for ages 5–7
+Story beat: <one concrete action and emotional focus>
+Reference roles: <which universe image controls identity, setting, or anatomy;
+  explicitly limit each role>
+Location: <specific place and a varied set of story-relevant inhabited details>
+Characters: <identity, posture, gesture, expression, clothing, and scale>
+Continuity now: <presence, prop, transformation, lighting, and location states>
+Composition: Complete action inside one airy 4:3 floating vignette; cozy low
+  viewpoint; faces and key action clearest; recognizable supporting forms at
+  several scales; irregular open white breathing space; no hard scene edge.
+Medium: Hand-painted hybrid ink and watercolor on a solid pure-white matte.
+  Broad translucent washes, visible glaze overlaps, restrained pigment pooling,
+  gentle wet-on-wet shifts, calm interiors, and dissolving environmental edges.
+Contours: Thin, fluid, mostly continuous, and locally color-matched to each
+  enclosed fill; clearer on foreground silhouettes, lighter in the environment,
+  absent in distant washes. Never use one universal ink color.
+Lighting: <soft diffuse time-of-day treatment that preserves the white matte>
+Must preserve: <character anatomy, accessories, exact wing count, prop state,
+  and elements that must not transform in this beat>
+Avoid: paper/canvas texture, beige or gray matte, full-bleed scenery, uniform
+  brown/black outlines, quadrupedal land denizens, patterned fills, hatching,
+  stippling, sketch lines, repeated surface marks, digital glow, text, border,
+  watermark, vector finish, glossy 3D, anime, or photorealism.
 ```
 
 ## Editing rule
 
-For a revision, begin with `Change only <requested feature>; preserve <all invariants> unchanged.` Repeat the character, composition, surface, line, and story-state invariants even when the edit seems microscopic.
+Begin a revision with `Change only <requested feature>; preserve <continuity and
+visual invariants> unchanged.` Make one repair per generation call. Do not use a
+defective output as the main identity or medium reference.
 
 ## Acceptance check
 
-- Zoom into Fern's forehead: see smooth orange shading, not a repeated motif.
-- Zoom into Pipkin's belly: see one continuous exposed contour, not a dashed curve.
-- Zoom into all rocks: see one or two irregular washes, not scales, tiles, or facets.
-- Inspect blank corners: see clean neutral white, not paper grain or beige tint.
-- Confirm exactly four Pipkin wings and Fern's teal satchel.
-- Confirm the environment dissolves into white and does not fill the frame.
-- Confirm night lighting comes from reserved white and transparent washes, not an airbrushed glow.
+- Confirm 4:3 dimensions and complete action without reliance on cropping.
+- Confirm every land denizen stands upright and can perform the authored action.
+- Confirm Fern's satchel and Pipkin's four wings when either character appears.
+- Compare every tracked prop and transformation with the continuity ledger.
+- Read the emotional beat at thumbnail size; inspect anatomy and tools close up.
+- Find recognizable setting details at several scales without texture noise.
+- Inspect colored fills for calm washes rather than repeated motifs.
+- Inspect contours for local color matching, hierarchy, and clean continuity.
+- Inspect every outer edge for pure white, no grain, no beige cast, no hard
+  rectangle, and no gray video-compression fringe.

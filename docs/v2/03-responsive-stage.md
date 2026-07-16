@@ -2,84 +2,98 @@
 
 ## Creative master
 
-All motion assets are authored at 16:9. Essential characters, gestures, props,
-and destinations must remain in the centered 4:3 action-safe region. The outer
-12.5% on each horizontal side is atmospheric composition that may be cropped.
+New Lanternleaf motion assets are authored natively at **4:3**. The complete
+character action, prop state, interaction target, and meaningful environment
+must remain inside that frame. Responsive behavior changes the relationship
+between media and DOM content; it does not crop a wider creative master or
+require a separately directed portrait video.
+
+Existing 16:9 Pip and Boat packages remain valid regression fixtures under the
+legacy `16:9` + `center-4:3` schema pair. Do not use that pair for new stories.
 
 ```text
-16:9 master
-┌────────────────────────────────────────┐
-│     ┌────────────────────────────┐     │
-│     │ centered 4:3 action-safe   │     │
-│     │ characters + interaction   │     │
-│     └────────────────────────────┘     │
-└────────────────────────────────────────┘
+phone / portrait tablet          desktop / 16:9 film output
+┌──────────────────────┐         ┌──────────────────────────────┐
+│ complete 4:3 media   │         │ complete 4:3 │ responsive   │
+│                      │         │ media         │ DOM copy     │
+├──────────────────────┤         │               │ and controls │
+│ DOM story copy       │         └──────────────────────────────┘
+│ and controls         │
+└──────────────────────┘
 ```
 
-Authoring validation must preview every shot at all presets before approval.
+Authoring validation must preview every shot at all presets and in the exact
+16:9 film composition before approval.
 
 ## Presets
 
-Preset selection uses the stage container and orientation, not user-agent
-sniffing.
+Preset selection uses the stage container and available height, not user-agent
+sniffing. The breakpoint names describe editorial layouts, not media crops.
 
 ### Cinema
 
-- Typical condition: landscape or container width at least 1024px.
-- Stage: 16:9.
-- Media: full creative master.
-- Dialogue: anchored near characters.
-- Narration: may overlay a quiet region.
-- Controls: compact floating tray within browser safe areas.
+- Typical condition: landscape or container width at least 900px with adequate
+  height.
+- Layout: complete 4:3 media and copy in one editorial row.
+- Dialogue/narration: DOM content in the copy column by default; an anchored
+  overlay is allowed only when it remains clear of action and survives film.
+- Controls: compact tray inside browser safe areas.
+- Film: the deterministic 16:9 output uses this same side-by-side composition.
 
 ### Book
 
-- Typical condition: portrait tablet or container width 600–1023px.
-- Stage: 4:3 center crop from the same 16:9 asset.
-- Dialogue: anchored when collision-free; otherwise lightly docked.
-- Narration: lower portion of stage or immediately below it.
+- Typical condition: portrait tablet or container width 600–899px.
+- Layout: complete 4:3 media above the reading surface.
+- Dialogue/narration: docked below media so the illustration remains intact.
 - Controls: full-width touch tray.
 
 ### Pocket
 
 - Typical condition: portrait container below 600px.
-- Stage: 4:3 center crop.
-- Dialogue/narration: docked reading sheet below the stage by default.
+- Layout: complete 4:3 media above a compact reading sheet.
+- Dialogue/narration: docked below media; text never covers essential action.
 - Controls: sticky bottom tray respecting `env(safe-area-inset-bottom)`.
-- Text: never placed over essential character action.
 
-Landscape phones use Cinema behavior with compact controls.
+Landscape phones may use the row only when the container height can support the
+media, copy, and controls without clipping. Otherwise they retain the stack.
 
 ## Media blending
 
-The stage sits inside a scene atmosphere rather than on a flat page:
+Lanternleaf media floats in the page rather than sitting inside a framed stage:
 
-- A poster-derived backdrop fills the viewport behind the stage.
-- The backdrop is blurred, enlarged, desaturated slightly, and noninteractive.
-- A scene color provides an immediate paint before poster/video decode.
-- Stage edges use a subtle mask or gradient where appropriate, never a heavy
-  ornamental frame.
+- The page matte, poster matte, and encoded video matte are calibrated pure
+  white (`#FFFFFF`).
+- Painted foliage, light washes, and unfinished vignette edges dissolve into
+  that shared matte without an ornamental border or hard rectangle.
+- The source art must not rely on alpha video. Clean white is the portable
+  compositing contract across providers and delivery formats.
 - Posters remain visible until the next video has decoded its first frame.
-- Two video layers crossfade only opacity; never expose black or transparent
-  player chrome.
+- Two video layers crossfade only opacity; never expose black, transparent
+  player chrome, or a gray compression edge.
+- Release QA samples the outer media edge and rejects dirty whites, beige paper,
+  gray blocks, or motion that reveals the source canvas.
+
+Legacy packages may retain their poster-derived atmospheric backdrop. New
+Lanternleaf packages use the white editorial shell.
 
 ## Coordinate mapping
 
-All anchors and regions use normalized master-media coordinates. The runtime
-maps them through the active crop:
+All anchors, focal points, and interaction regions use normalized coordinates
+inside the 4:3 creative master:
 
 ```text
-master point → crop rectangle → rendered media rectangle → viewport point
+4:3 master point → rendered media rectangle → viewport point
 ```
 
-Focal points may shift the 4:3 crop within the 16:9 master, but validation must
-guarantee the full interaction remains visible.
+There is no crop rectangle for new packages. A focal point may inform delivery
+diagnostics or future art direction, but it may not hide required action.
 
 ## Overlay collision rules
 
 1. Preserve essential action and the speaker's face.
-2. Prefer the authored placement around the anchor.
-3. Flip left/right or above/below if the bubble exits the safe rectangle.
+2. Prefer the dedicated copy region in every preset.
+3. When an anchored overlay is deliberately authored, flip around its anchor if
+   it exits the media safe rectangle.
 4. Dock when no anchored placement is safe.
 5. Never reduce reading text below the preset's minimum size.
 
@@ -96,24 +110,25 @@ guarantee the full interaction remains visible.
 
 ## Performance budget for the POC
 
-- Paint backdrop color and poster immediately.
+- Paint the pure-white page and poster immediately.
 - Load only current state plus the most likely next state.
 - Never preload an entire story on entry.
 - Use native video for forward playback.
 - Maintain at most two decoded video layers during a transition.
 - No per-frame React state updates on the performance path.
-- Automatically generate mobile and desktop delivery renditions from one
-  creative master in the later production pipeline.
+- Derive mobile and desktop delivery renditions from the one 4:3 master; do not
+  create independently directed responsive videos.
 
 ## Required test matrix
 
-| Viewport | Expected preset |
+| Viewport | Expected composition |
 |---|---|
-| 390×844 | Pocket |
-| 430×932 | Pocket |
-| 768×1024 | Book |
-| 1024×768 | Cinema |
-| 1440×900 | Cinema |
+| 390×844 | Pocket stack |
+| 430×932 | Pocket stack |
+| 768×1024 | Book stack |
+| 1024×768 | Cinema row |
+| 1440×900 | Cinema row |
+| 1920×1080 | Exact 16:9 film frame |
 
-The development stage must visibly label its active preset and expose safe-area
-guides behind a debug toggle.
+The development stage must label its active composition and expose media bounds,
+anchors, and interaction regions behind a debug toggle.

@@ -50,8 +50,8 @@ type ExperienceProduction = {
 };
 
 type StageContract = {
-  masterAspectRatio: "16:9";
-  actionSafe: "center-4:3";
+  masterAspectRatio: "4:3";
+  actionSafe: "full-frame";
   defaultFocalPoint: Point;
   backdrop: { color: string; poster?: string };
 };
@@ -141,8 +141,10 @@ type OverlayPlacement = {
 };
 ```
 
-Anchors attach dialogue to the world in Cinema and Book presets. Pocket may
-dock the same content into a reading sheet without changing the phrase.
+The dedicated copy region is the default in every new Lanternleaf preset.
+Deliberately authored anchors may attach dialogue to the world in Cinema; Book
+and Pocket dock the same content below the complete media without changing the
+phrase.
 
 ## Interaction binding
 
@@ -165,9 +167,12 @@ and deterministic Watch/film paths from the same binding.
 ## Asset distinction
 
 - A **creative master** is a unique authored visual performance. There is one
-  16:9 creative master per video state.
+  native 4:3 creative master per video state.
 - **Delivery renditions** (for example 540p, 720p, and 1080p encodes) are
   automatically derived from that master and do not count as separate art.
 - Posters are deterministic stills extracted from or designed for a state.
 - Frame sequences are reserved for short moments that require true arbitrary
   scrubbing. Normal playback and state transitions use native video.
+
+The schema also accepts the legacy `16:9` + `center-4:3` stage pair for existing
+Pip and Boat fixtures. New production packages use `4:3` + `full-frame`.

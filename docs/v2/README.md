@@ -21,9 +21,9 @@ page-normalized scrub timeline is not the foundation for v2.
 7. [Aval assessment](07-aval-assessment.md) — deferred evaluation of Aval's
    compiled motion runtime, applicable paradigms, integration boundaries, and
    post-M7 experiment gate.
-8. [Lanternleaf layout proof](08-lanternleaf-layout-proof.md) — candidate 4:3
-   media contract, responsive page/film compositions, and measured QA. This is
-   a review artifact and does not yet supersede the responsive-stage contract.
+8. [Lanternleaf layout proof](08-lanternleaf-layout-proof.md) — approved 4:3
+   media contract, responsive page/film compositions, and measured QA. The
+   result is incorporated into the responsive-stage contract.
 9. [Session handoff](HANDOFF.md) — current branch, completed work, known facts,
    and the exact next action. Update it at the end of every substantial session.
 

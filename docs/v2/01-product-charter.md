@@ -56,8 +56,9 @@ A lighter-text replay mode emphasizing exploration and signature interactions.
   interaction recipes rather than adding engine code.
 - **One package, two outputs.** Interactive web and linear film share final
   audio, media, timing, transitions, and story structure.
-- **Responsive by contract.** One 16:9 creative master per shot works across
-  desktop, tablet, phone, and film through safe framing and adaptive overlays.
+- **Responsive by contract.** One 4:3 creative master per shot remains complete
+  across phone, tablet, desktop, and film while responsive DOM content changes
+  from a stack to an editorial row.
 - **Series over one-offs.** Recurring casts and worlds amortize character,
   location, voice, sound, and motion assets.
 

@@ -6,6 +6,23 @@ This guide is designed for creating scenes in a whimsical, watercolor-storybook 
 
 This document defines the visual vocabulary and possibilities of the world; it is not a checklist of elements that must appear in every image. Build each scene around its specific story beat, location, character action, and emotional focus. Include environmental features when they are established by the scene or naturally enrich its composition. Recurring motifs should make the world feel related across scenes without making every setting look the same.
 
+The written guide controls the world grammar. The images in this directory are
+role-specific references rather than interchangeable style authorities:
+
+- `fern-and-pip.png` controls Fern and Pipkin identity and their relationship to
+  an inhabited Lanternleaf village.
+- `elephant-capybara.png` demonstrates bipedal collaboration, workshop density,
+  and pale atmospheric distance.
+- `hedge-frog.png` demonstrates bipedal tool use, grouped species features,
+  handmade props, and an outdoor craft setting.
+- `dino-reference.png` demonstrates only soft-cute species simplification. Its
+  beige paper, full-bleed setting, and posture do not override this guide.
+
+All land denizens are upright and bipedal. Explicitly flight-capable denizens
+such as Pipkin may hover while retaining the same simple, tool-capable character
+language. Final story media is composed natively at 4:3 even when a reference
+image uses another ratio.
+
 Contextual does not mean minimal or empty. The world should feel abundant, inhabited, handcrafted, and worth exploring. Surround the central action with a varied selection of story-supporting details—plants, tools, vessels, lights, shelves, signs of work, small structures, or other locally meaningful objects—while avoiding the mechanical repetition of the same motif in every scene. Richness comes from the number and variety of recognizable ideas, not from scratchy rendering or microscopic surface marks.
 
 ## Overall Aesthetic & Medium

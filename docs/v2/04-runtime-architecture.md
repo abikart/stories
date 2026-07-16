@@ -54,8 +54,8 @@ A story only names states, assets, and legal transitions.
 
 ## Responsive stage
 
-`ResponsiveStage` owns the 16:9 master coordinate system, crop rectangle,
-preset, backdrop, and normalized coordinate transform. Overlays and interaction
+`ResponsiveStage` owns the 4:3 master coordinate system, responsive editorial
+composition, matte, and normalized coordinate transform. Overlays and interaction
 recipes consume its coordinate transform instead of measuring video elements
 independently.
 
@@ -63,7 +63,8 @@ independently.
 
 The overlay director turns active phrases into narration ribbons or character
 bubbles. It keeps text in the DOM, maps anchors through the stage, applies
-collision policy, and docks content for Pocket when required.
+collision policy, and docks content below media for Book and Pocket. Existing
+16:9 fixtures retain their legacy crop path only for regression coverage.
 
 ## Interaction recipes
 

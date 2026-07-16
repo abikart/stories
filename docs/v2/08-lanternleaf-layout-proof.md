@@ -1,6 +1,6 @@
 # Lanternleaf 4:3 responsive composition proof
 
-Status: **candidate contract, awaiting product review**  
+Status: **approved and promoted on 2026-07-16**
 Proof route: `/dev/lanternleaf-layout`
 
 ## Question this proof answers
@@ -10,10 +10,10 @@ desktop, and a 16:9 film output without a separately directed portrait asset?
 
 The working proof says yes. It deliberately tests the new bright-white,
 edge-dissolving universe references rather than the framed 16:9 Bramble Hollow
-visual language. It does not yet replace the current contract in
-`03-responsive-stage.md`.
+visual language. Its contract now governs new packages through
+`03-responsive-stage.md`; the proof remains the measured rationale.
 
-## Candidate composition contract
+## Approved composition contract
 
 - Author each story visual natively at 4:3. Keep the complete semantic beat in
   that frame; do not rely on a later center crop.
@@ -90,7 +90,6 @@ otherwise a faint rectangular canvas will reappear. Production QA should sample
 the outer edge and reject dirty whites, gray compression blocks, or motion that
 reveals the source rectangle.
 
-The next gate is visual review of this proof. If approved, replace the old
-16:9-master/4:3-crop contract in `03-responsive-stage.md`, record the decision,
-then reconcile the Lanternleaf scene skill before authoring the replacement POC
-story.
+The proof passed product review. The next gate is the replacement POC: reconcile
+the Lanternleaf scene skill, validate its canonical references, and author the
+first native-4:3 story package before expensive media generation.

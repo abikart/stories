@@ -1,72 +1,92 @@
 ---
 name: create-lanternleaf-scenes
-description: Create or revise cohesive Lanternleaf Forest children's story illustrations featuring Fern the fox and Pipkin the moth. Use for new story scenes, character/world explorations, continuity-sensitive scene variants, or fine-tuning this established bright-white sparse watercolor style for ages 5–7.
+description: Create or revise native-4:3 Lanternleaf Forest watercolor scenes, canonical Fern and Pipkin character art, and continuity-sensitive illustrations for other bipedal forest denizens. Use for story keyframes, character or location explorations, matched scene variants, organic white-matte compositions, and repairs to Lanternleaf visual assets for ages 5–7.
 ---
 
 # Create Lanternleaf Scenes
 
-Create 16:9 story illustrations with the built-in image generation tool. Keep Fern, Pipkin, and the Lanternleaf visual language consistent with the bundled canonical scenes.
+Create native-4:3 story illustrations with the image-generation tool. Treat the
+project universe guide as canon and each image reference as a role-specific aid,
+not as authority over the entire style.
 
 ## Required preparation
 
-1. Read `references/visual-bible.md` before writing any image prompt.
-2. Read `references/prompt-template.md` before generating a new scene or editing an existing one.
-3. Inspect all three canonical images in `assets/` when establishing continuity:
-   - `scene-01-village.png`
-   - `scene-02-discovery.png`
-   - `scene-03-lantern-bloom.png`
-4. Inspect both medium references before every new generation:
-   - `medium-reference-loose-ink-watercolor.png`
-   - `medium-reference-simple-character-watercolor.png`
-5. Treat the canonical images as reference inputs, not edit targets, unless the user explicitly asks to revise one of them.
+1. Read `docs/universe/world-details.md` as the visual source of truth.
+2. Read `references/visual-bible.md` and `references/prompt-template.md`.
+3. Inspect `docs/universe/fern-and-pip.png` whenever Fern or Pipkin appears.
+4. Inspect only the additional universe references relevant to the beat:
+   - `elephant-capybara.png` for an inhabited workshop and semantic detail;
+   - `hedge-frog.png` for bipedal tool use, handmade props, and outdoor craft;
+   - `dino-reference.png` for soft-cute species simplification only.
+5. Let the written guide override incidental artifacts in an image reference.
+   In particular, never copy beige paper, full-bleed scenery, non-bipedal land
+   posture, uniform dark outlines, or textured backgrounds.
 
 ## Workflow
 
-1. Translate the requested story moment into one concrete visual beat. Do not invent extra characters, props, or story actions.
-2. Choose the nearest canonical scene for composition and story-state guidance. Include `scene-01-village.png` whenever Fern or Pipkin appears because it is the primary character reference. Include both medium references to control hand-painted execution.
-3. Use a 16:9 composition with essential action inside the centered 4:3 safe area.
-4. Generate one distinct scene per image-tool call. For several scenes, make separate calls with beat-specific prompts.
-5. Preserve the fixed character and style invariants from the visual bible in every prompt.
-6. Inspect the result at full-frame scale and close crop. Reject or repair:
-   - patterned or scale-like painted fills;
-   - beige, textured, or full-bleed paper;
-   - dashed, stitched, dotted, or periodically broken character contours;
-   - changed character anatomy, colors, props, or wing count;
-   - dense environments that erase the white negative space;
-   - essential action outside the centered safe area.
-7. Make only one targeted repair at a time. Restate every invariant during edits.
-8. For project-bound output, copy the accepted image from the generated-images directory into the project before finishing.
+1. Translate the story moment into one concrete visual beat. Include only
+   characters, props, state, and location details established by that beat.
+2. Record the continuity snapshot before prompting: who is present, what each
+   recurring prop looks like now, where the action occurs, and what must not
+   transform yet.
+3. Compose natively at 4:3. Keep the complete semantic action inside the frame;
+   there is no later responsive crop.
+4. Build one clear focal beat, then enrich the setting with varied recognizable
+   objects and plants. Favor semantic detail over texture noise.
+5. Use locally color-matched contours, calm broad washes inside forms, and an
+   organic vignette that dissolves into a calibrated pure-white matte.
+6. Generate one distinct beat per image-tool call. Use 2–3 candidates when
+   selection matters; do not hide unrelated beats inside one prompt.
+7. Inspect the full frame, faces and hands, continuity-bearing props, and all
+   outer edges. Reject or repair:
+   - altered anatomy, accessories, wing count, character scale, or prop state;
+   - quadrupedal land denizens or characters unable to use their authored tool;
+   - flat generic scenery, repeated motif clutter, or texture standing in for
+     meaningful environmental detail;
+   - beige, gray, grainy, or visibly rectangular background mattes;
+   - uniform black/brown outlines instead of locally color-matched contours;
+   - patterned fills, hatching, stippling, sketch-search lines, or digital glow;
+   - missing action, action too small to read, or essential content near an edge.
+8. Make one targeted repair at a time and restate all continuity invariants.
+9. Copy accepted project-bound output into the target story package and preserve
+   the exact prompt, provider ID, candidate status, and rejection reason.
 
 ## Reference hierarchy
 
-Use references by role; do not let one generated image control everything:
+1. `docs/universe/world-details.md` controls world grammar, surface, composition,
+   detail hierarchy, bipedal posture, and contour language.
+2. `fern-and-pip.png` controls Fern and Pipkin identity when they appear.
+3. The most relevant additional universe image controls only its listed role.
+4. The target story's continuity ledger controls character, prop, location, and
+   transformation state.
 
-1. `scene-01-village.png` controls character identity, palette, and white-ground composition.
-2. The nearest canonical scene controls story state and approximate staging only.
-3. `medium-reference-loose-ink-watercolor.png` controls economical environment marks, incomplete ink, glazing, blooms, backruns, and wash edges.
-4. `medium-reference-simple-character-watercolor.png` controls simple hand-painted character forms.
+Do not recursively use a defective generation as the main identity or medium
+reference. Return to this hierarchy when an edit amplifies artifacts.
 
-When an existing generated scene contains dashed contours, patterned fills, faceted rocks, or digital glow, rebuild the scene from the clean reference hierarchy instead of using the defective scene as the primary style source. Recursive editing amplifies those artifacts.
+## Non-negotiable generation contract
 
-## Non-negotiable prompt language
+- Native 4:3 composition; no 16:9 action-safe framing.
+- Solid clean white matte with no paper, canvas, grain, fibers, or beige cast.
+- Broad translucent watercolor washes, organic glaze edges, restrained pigment
+  pooling, and calm fills without repeated internal motifs.
+- Thin, fluid, mostly continuous contours derived from the local fill color of
+  each exact shape; no universal ink color.
+- Foreground faces and actions clearest, supporting objects moderately defined,
+  distant washes pale and dissolving into white.
+- Rich, inhabited settings built from recognizable forms at several scales,
+  never microscopic surface marks.
+- No text, border, watermark, mockup, vector finish, glossy 3D, anime, named
+  living-artist imitation, or photorealism.
 
-Always specify:
+## Character continuity
 
-- smooth bright neutral-white support with no paper, canvas, grain, or texture overlay;
-- broad transparent watercolor washes with overlapping glaze edges and organic tonal variation;
-- mostly smooth character fills without digital airbrushing;
-- no scales, loops, rosettes, curls, mosaics, stamped dabs, patchwork, hatching, or repeated internal motifs;
-- long, thin, confident, continuous warm-brown character contours;
-- contour breaks only at real occlusions or rare natural brush lifts, never along an exposed smooth curve;
-- sparse vignette occupying roughly 55–60% of the canvas with 40–45% clean white negative space;
-- fuller, clearer, more saturated characters over a lighter, looser, subordinate environment;
-- reserved white paper for light; no digital glow, bloom filter, rim light, or radial gradient;
-- no text, border, watermark, mockup, vector finish, glossy 3D shading, anime styling, or photorealism.
-
-## Canonical state rules
-
-- Keep Pipkin's four golden leaf-shaped wings visible whenever the angle permits; never add a fifth or reduce the design to two wings.
-- Keep Fern's teal cross-body satchel unless the story explicitly establishes that Fern has removed it.
-- Keep faces open, gentle, and legible for ages 5–7. Use round deep-brown eyes with one main white catchlight and one tiny secondary highlight.
-- Keep nighttime scenes airy. Use a localized pale blue wash over white rather than a dark full-bleed sky.
-- Show transformations only in their requested story beat. Use the closed lantern-lily from Scene 2 and the open glowing flower from Scene 3 as distinct continuity states.
+- Fern is a small upright rust-orange fox with a cream muzzle, chest, inner
+  ears, and tail tip; round reflective brown eyes, rosy cheeks, and a dusty-teal
+  cross-body satchel.
+- Pipkin is Fern's small floating mint-green moth friend with gold-tipped
+  antennae and exactly four translucent warm-gold wings. Pipkin is the canonical
+  flight-capable exception to the upright land-denizen posture.
+- Land denizens stand on two legs, use tools with their forelimbs, and retain a
+  compact large-head/short-limb silhouette appropriate for ages 5–7.
+- Transformations appear only in their authored beat. Never borrow a resolved
+  prop or lighting state from a later reference.
