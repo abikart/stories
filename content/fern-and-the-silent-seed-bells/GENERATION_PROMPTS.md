@@ -1,6 +1,7 @@
 # Canonical reference generation prompts
 
-Status: ready for generation; no provider job has been submitted.
+Status: canonical references approved on 2026-07-16. Provider attempts,
+decisions, hashes, and local paths are recorded in `visual-production.json`.
 
 Use `$create-lanternleaf-scenes`. Attach only the references named by each
 prompt. Preserve the provider URL, prompt, source ID, output ID, local filename,
@@ -126,3 +127,54 @@ vector, 3D, anime, or photorealism.
 
 Accept only if the path geometry is usable for the normalized interaction, the
 one remaining knot is clearly closed, and the pure-white edge blends cleanly.
+
+## Production attempt notes
+
+The first seed-bell request produced two 3:2, three-state candidates and was
+rejected. A fresh agent received the original references plus this layout-only
+prefix before the unchanged canonical prompt:
+
+```text
+Fresh independent generation from the two ORIGINAL attached references; do not
+use either rejected three-state output as a visual reference. Change the layout
+strategy only: the final image MUST be an exact native 4:3 canvas and MUST
+contain exactly four complete prop groups arranged in a spacious 2-by-2 grid:
+top-left orderly/ringing, top-right rain-wet/fully tangled, bottom-left
+lower-and-middle free with exactly one high knot remaining, bottom-right all
+ribbons open and ready. Show exactly three identical bells in EACH of the four
+groups—twelve bell instances total—without labels, panels, or cropping. Do not
+substitute 3:2. Preserve all constraints below.
+```
+
+That output established the right grid but omitted one dusty-blue bell from
+each left quadrant. The accepted candidate resulted from this targeted repair:
+
+```text
+Repair the CURRENT rendered 4:3 sheet only. Keep the existing pure-white 2-by-2
+layout, watercolor style, scale, spacing, and the two already-correct right-hand
+groups. The image itself currently has only TWO bells in the TOP-LEFT group and
+only TWO bells in the BOTTOM-LEFT group. Add exactly one matching dusty-blue
+bell to TOP-LEFT and exactly one matching dusty-blue bell to BOTTOM-LEFT so that
+EVERY quadrant visibly contains exactly three bells: dusty-blue, berry-pink,
+and warm-ochre. Final total must be visibly twelve bell instances, three per
+quadrant. Do not change the canvas ratio, do not add text or panels, and do not
+alter anything else.
+```
+
+The first bell-tree candidate bundled every ribbon into one knot. The accepted
+location resulted from this topology-only repair:
+
+```text
+Repair ONLY the ribbon topology and interaction geometry in the CURRENT
+rendered native-4:3 location image. Preserve the exact characters, cottages,
+tree, bell shapes and colors, post-rain lighting, organic white matte,
+watercolor style, scale, and composition. The current image incorrectly bundles
+all three ribbons into one large central knot. Remove that large central bundle.
+The berry-pink lower ribbon and warm-ochre middle ribbon must be completely
+untied and hang freely from their bells, with no bow or knot. Keep exactly ONE
+small closed dusty-blue knot around a thorny upper-right branch, visibly higher
+than all three bells and reachable through a small clear gap under one leaf,
+around one twig, and through the thorns. The three silent bells must remain
+separate and unchanged. Do not add a drawn route, wind, ringing, open shutters,
+oven smoke, extra bells, characters, or wings. Do not change anything else.
+```

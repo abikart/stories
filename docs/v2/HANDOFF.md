@@ -137,8 +137,17 @@ Last updated: 2026-07-16
   generation has started.
 - The new package passes `pnpm lint:experiences --
   fern-and-the-silent-seed-bells --allow-pending`. Strict lint intentionally
-  fails on all 15 `needs-generation` beats; no provider job has been submitted
-  and the placeholder is visibly marked as non-production media.
+  fails on all 15 `needs-generation` story beats; the placeholder remains
+  visibly marked as non-production media.
+- The three dependency-ordered canonical references for **Fern and the Silent
+  Seed Bells** are approved: Fern/Pipkin identity, four-state seed-bell sheet,
+  and bell-tree interaction geometry. Grok provider originals, accepted
+  1600×1200 delivery PNGs, exact prompts, targeted repair prompts, provider IDs,
+  hashes, decisions, and rejection reasons are preserved in the story package.
+- The project-owned `create-lanternleaf-scenes` skill now includes a reusable
+  border-connected matte normalizer. It preserves each provider original and
+  converts only neutral near-white pixels reachable from the image border to
+  exact `#FFFFFF`; all three derived references passed full-frame visual QA.
 
 ## Fixed decisions
 
@@ -152,12 +161,12 @@ Last updated: 2026-07-16
 
 ## Immediate next action
 
-Review the manuscript and production plan for **Fern and the Silent Seed Bells**.
-Then use `$create-lanternleaf-scenes` and the exact prompts in
-`content/fern-and-the-silent-seed-bells/GENERATION_PROMPTS.md` to generate and
-approve, in order: the Fern/Pipkin production identity, seed-bell continuity
-sheet, and bell-tree location reference. Do not generate story motion until all
-three canonical references pass.
+Use `$author-story-film` to generate the three directed Eleven v3 narration
+candidates in `performance-source.json`, select the expressive master, and
+produce forced alignment. Then bind real phrase and safe-stop timing back into
+the package before generating any story motion. The approved canonical visual
+references may be used immediately for beat keyframes, but motion duration must
+follow the selected performance master.
 
 ## Verification baseline
 
@@ -227,7 +236,10 @@ works, and the browser console is clean.
 The reconciled scene skill and story-film skill pass the system skill validator.
 The replacement POC planning package passes schema, media-graph, reading-unit
 coverage, continuity, and pending-asset lint. Strict lint fails only because all
-15 visual beats remain deliberately marked `needs-generation`.
+15 visual beats remain deliberately marked `needs-generation`. Canonical visual
+reference QA additionally confirmed native 1600×1200 output, exact white delivery
+mattes, Fern's satchel, Pipkin's four-wing anatomy, twelve-bell continuity-sheet
+coverage, and the location's two-free-ribbon/one-high-knot state.
 
 ## Session close protocol
 

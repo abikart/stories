@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "storyId": "fern-and-the-silent-seed-bells",
-  "status": "planning-approved-generation-not-started",
+  "status": "canonical-references-approved",
   "provider": "grok-imagine",
   "project": "stories.sh",
   "format": {
@@ -27,18 +27,45 @@
   "preflightReferences": [
     {
       "id": "fern-pipkin-turnaround",
-      "status": "needs-generation",
-      "purpose": "Lock recurring character proportions, accessories, local contour colors, and four-wing anatomy."
+      "status": "approved-derived",
+      "purpose": "Lock recurring character proportions, accessories, local contour colors, and four-wing anatomy.",
+      "promptRef": "GENERATION_PROMPTS.md#1-fern-and-pipkin-production-identity",
+      "providerId": "e8041508-158a-4a34-b64f-c12ac7f22a7c",
+      "providerOriginal": "references/provider-originals/fern-pipkin-identity-a-grok.jpg",
+      "accepted": "references/fern-pipkin-identity.png",
+      "dimensions": "1600x1200",
+      "providerSha256": "2c1bcbe7859d8a66c12c05ab1fdaee420799f34cb49314c84d5f2032daebd30a",
+      "acceptedSha256": "ad17fa21e544d722a1a651c1a0ba2b2902bab606823aaa38d752caa57edfa48f",
+      "derivation": "Border-connected neutral near-white matte normalized to exact #FFFFFF; artwork and disconnected highlights preserved.",
+      "acceptance": "Fern is upright with the dusty-teal satchel; Pipkin has two gold-tipped antennae and exactly four warm-gold wings; silhouettes and relative scale are clean."
     },
     {
       "id": "seed-bell-prop-sheet",
-      "status": "needs-generation",
-      "purpose": "Lock orderly, tangled, partially freed, ready, and restored bell/ribbon states."
+      "status": "approved-derived",
+      "purpose": "Lock orderly, tangled, partially freed, and ready bell/ribbon states.",
+      "promptRef": "GENERATION_PROMPTS.md#2-seed-bell-continuity-sheet",
+      "providerId": "fb4ab32b-074a-4153-a053-44d3ff7da840",
+      "providerOriginal": "references/provider-originals/seed-bell-prop-sheet-fb4ab32b-grok.jpg",
+      "accepted": "references/seed-bell-prop-sheet.png",
+      "dimensions": "1600x1200",
+      "providerSha256": "f3233b8d3a84cd4951d019783cdee3365269767be2eee5bd96f5ed2f5e4041f7",
+      "acceptedSha256": "c8aeba3f1d267fd4b7f7df153436eb7cb4c16ba14c048dbff580704d861ac645",
+      "derivation": "Border-connected neutral near-white matte normalized to exact #FFFFFF.",
+      "acceptance": "Native 4:3 two-by-two sheet with exactly four groups and exactly three dusty-blue, berry-pink, and warm-ochre bells per group. Text continuity remains authoritative for which ribbons are open in each state."
     },
     {
       "id": "bell-tree-location",
-      "status": "needs-generation",
-      "purpose": "Lock 4:3 location geometry, high knot, thorn gap, root cottages, and interaction path."
+      "status": "approved-derived",
+      "purpose": "Lock 4:3 location geometry, high knot, thorn gap, root cottages, and interaction path.",
+      "promptRef": "GENERATION_PROMPTS.md#3-bell-tree-location-and-interaction-geometry",
+      "providerId": "ba83b7f8-d624-4d9e-8979-f41850095d8c",
+      "providerOriginal": "references/provider-originals/bell-tree-location-ba83b7f8-grok.jpg",
+      "accepted": "references/bell-tree-location.png",
+      "dimensions": "1600x1200",
+      "providerSha256": "bd13671029873a1517901582d8ff7439af903e5c32fad55e43b0e08ce91f6222",
+      "acceptedSha256": "3efc1a70e8fcd1b846889fe63262725476706fc9cb0bec49231641526a78d6e7",
+      "derivation": "Targeted ribbon-topology repair followed by border-connected neutral near-white normalization to exact #FFFFFF.",
+      "acceptance": "Three separate silent bells, two fully free ribbons, exactly one dusty-blue high knot, a thorny approach gap, upright Fern with satchel, and four-wing Pipkin all read clearly."
     }
   ],
   "globalConstraints": [
@@ -50,8 +77,77 @@
     "Fern stays upright with the dusty-teal satchel; Pipkin has exactly four warm-gold wings.",
     "The high knot opens once at u11 and the bells resume once at u13."
   ],
-  "agentUrl": null,
-  "candidates": [],
-  "rejections": [],
-  "notes": "Do not start paid generation until planning lint passes and the manuscript, reference roles, beat board, continuity ledger, and interaction geometry are reviewed."
+  "agentUrl": "https://grok.com/imagine/agent/9cec5754-4140-4140-aa32-ec57cc3eb04e?conversation=3f0cc8dd-7beb-4f6f-a808-e17a3b52bd0d",
+  "candidates": [
+    {
+      "reference": "fern-pipkin-turnaround",
+      "providerId": "e8041508-158a-4a34-b64f-c12ac7f22a7c",
+      "decision": "approved-derived",
+      "notes": "First rendered identity candidate passed anatomy, satchel, palette, and relative-scale review."
+    },
+    {
+      "reference": "fern-pipkin-turnaround",
+      "providerId": null,
+      "decision": "rejected-no-render",
+      "notes": "The requested independent second candidate returned only text and no distinct rendered asset."
+    },
+    {
+      "reference": "seed-bell-prop-sheet",
+      "providerId": "6684dce3-629c-405d-a6da-5d3c6d192d9f",
+      "decision": "rejected",
+      "notes": "Provider changed the requested native 4:3 sheet to 3:2 and rendered only three state groups."
+    },
+    {
+      "reference": "seed-bell-prop-sheet",
+      "providerId": "925f9c67-b9b6-4d27-9ab5-a671861fc741",
+      "decision": "rejected",
+      "notes": "Alternate 3:2 output also contained only three state groups."
+    },
+    {
+      "reference": "seed-bell-prop-sheet",
+      "providerId": "e475d113-af86-426e-a611-da23b2a96cfc",
+      "decision": "rejected-repair-source",
+      "notes": "Corrected 4:3 two-by-two layout, but the top-left and bottom-left groups each contained only two bells."
+    },
+    {
+      "reference": "seed-bell-prop-sheet",
+      "providerId": "fb4ab32b-074a-4153-a053-44d3ff7da840",
+      "decision": "approved-derived",
+      "notes": "Targeted repair restored one dusty-blue bell to each deficient left quadrant, producing twelve visible bells."
+    },
+    {
+      "reference": "bell-tree-location",
+      "providerId": "a01e5816-b9e5-4cea-bbd0-25dede2c4b53",
+      "decision": "rejected-repair-source",
+      "notes": "Location, identity, count, and matte were strong, but all three ribbons were incorrectly bundled into one central knot."
+    },
+    {
+      "reference": "bell-tree-location",
+      "providerId": "ba83b7f8-d624-4d9e-8979-f41850095d8c",
+      "decision": "approved-derived",
+      "notes": "Targeted repair freed the berry-pink and warm-ochre ribbons and retained exactly one dusty-blue high knot."
+    }
+  ],
+  "rejections": [
+    {
+      "providerIds": [
+        "6684dce3-629c-405d-a6da-5d3c6d192d9f",
+        "925f9c67-b9b6-4d27-9ab5-a671861fc741"
+      ],
+      "reason": "Wrong 3:2 ratio and incomplete three-state coverage."
+    },
+    {
+      "providerIds": [
+        "e475d113-af86-426e-a611-da23b2a96cfc"
+      ],
+      "reason": "Two left quadrants were missing the dusty-blue bell."
+    },
+    {
+      "providerIds": [
+        "a01e5816-b9e5-4cea-bbd0-25dede2c4b53"
+      ],
+      "reason": "All ribbons were bundled together, eliminating the authored one-high-knot interaction."
+    }
+  ],
+  "notes": "All three canonical references passed full-frame visual QA on 2026-07-16. Provider originals are preserved; delivery PNGs were derived with the project skill's border-connected matte normalizer. Do not generate story motion until the selected narration master establishes beat durations."
 }

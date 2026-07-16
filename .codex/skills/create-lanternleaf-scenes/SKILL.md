@@ -50,6 +50,10 @@ not as authority over the entire style.
 8. Make one targeted repair at a time and restate all continuity invariants.
 9. Copy accepted project-bound output into the target story package and preserve
    the exact prompt, provider ID, candidate status, and rejection reason.
+10. Preserve the provider original before any derived cleanup. When an accepted
+    raster has a neutral near-white matte instead of exact `#FFFFFF`, run
+    `scripts/normalize_white_matte.py` to replace only border-connected
+    near-white pixels, then visually inspect the derived PNG at full frame.
 
 ## Reference hierarchy
 
