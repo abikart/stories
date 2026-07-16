@@ -24,8 +24,10 @@ page-normalized scrub timeline is not the foundation for v2.
 8. [Lanternleaf layout proof](08-lanternleaf-layout-proof.md) — approved 4:3
    media contract, responsive page/film compositions, and measured QA. The
    result is incorporated into the responsive-stage contract.
-9. [Session handoff](HANDOFF.md) — current branch, completed work, known facts,
-   and the exact next action. Update it at the end of every substantial session.
+9. [Fern playable loop](09-fern-playable-loop.md) — resumable autonomous
+   production plan and terminal gates for the replacement Lanternleaf POC.
+10. [Session handoff](HANDOFF.md) — current branch, completed work, known facts,
+    and the exact next action. Update it at the end of every substantial session.
 
 ## Decision hierarchy
 

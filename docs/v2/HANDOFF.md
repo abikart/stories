@@ -166,6 +166,11 @@ Last updated: 2026-07-16
   `tangled-tree`, and the canonical `highest-knot` reused for both Fern's limit
   and Pipkin's offer. These cover five of 15 beat-board entries; ten remain
   deliberately pending.
+- `docs/v2/09-fern-playable-loop.md` now defines the autonomous route from that
+  partial board to a hands-on local alpha: dependency-ordered keyframes, schema-
+  v2 motion ingest, 14 native Watch states, story-specific sound, integration,
+  strict validation, responsive/browser QA, bounded retries, blocker policy,
+  and the exact long-running goal prompt. The loop stops before M7 film work.
 - The first Grok memory submission ended in a provider stream error. A wet-state
   leak was repaired before approval. The first tangle edit chain was abandoned
   after cropping/removing bells; a fresh original-reference generation passed.
@@ -185,12 +190,13 @@ Last updated: 2026-07-16
 
 ## Immediate next action
 
-Continue `$create-lanternleaf-scenes` in continuity order: create the awake-
-village end state for b02, the lower/middle-release end state for b05, then the
-interaction `path-traced` and `pipkin-at-knot` pair before authoring the
-`knot-opening` action. Verify downloaded dimensions rather than trusting Grok's
-ratio description. Story motion duration follows the selected 77.089-second
-performance master and observed reading-unit timing.
+Execute the resumable playable-alpha loop in
+`docs/v2/09-fern-playable-loop.md`. Its first production unit continues
+`$create-lanternleaf-scenes` in continuity order: create the awake-village end
+state for b02, then the lower/middle-release end state for b05. Verify downloaded
+dimensions rather than trusting Grok's ratio description. Continue through the
+documented keyframe, motion, soundscape, integration, and QA batches until the
+local experience is open and ready for owner playtesting.
 
 ## Verification baseline
 

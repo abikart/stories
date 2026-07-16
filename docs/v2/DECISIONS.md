@@ -3,6 +3,23 @@
 Newest decisions go first. Record meaningful divergences, tradeoffs, and quality
 gates; do not duplicate routine implementation details.
 
+## 2026-07-16 — Owner-playable Fern alpha precedes the film path
+
+- The next autonomous loop ends at a complete interactive alpha of **Fern and
+  the Silent Seed Bells**, with the dev server running and the real story open
+  for owner playtesting. It does not silently expand into M7 deterministic film
+  rendering or Story Studio.
+- The replacement POC must prove the product in Watch and Read-with-me before
+  film work begins. All 14 sentence-addressable media states therefore need
+  native 4:3 motion, state-specific posters, strict continuity, story-specific
+  sound, responsive QA, and error-free forward/reverse playback.
+- Passing automated and agent-inspected gates means playtest-approved, not final
+  creative approval. The owner's hands-on experience is the final subjective
+  gate before M7.
+- `09-fern-playable-loop.md` is the resumable execution contract, including
+  dependency batches, bounded generation retries, legitimate blockers, terminal
+  conditions, and the reusable long-running goal prompt.
+
 ## 2026-07-16 — Silent Seed Bells performance uses a paced whole-take master
 
 - `george-natural-a` is the selected continuous series-narrator source after
