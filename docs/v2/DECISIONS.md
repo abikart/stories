@@ -3,6 +3,25 @@
 Newest decisions go first. Record meaningful divergences, tradeoffs, and quality
 gates; do not duplicate routine implementation details.
 
+## 2026-07-16 — Replacement POC is Fern and the Silent Seed Bells
+
+- Keep **Pip and the Lantern Seed** unchanged as the runtime and regression
+  fixture. The replacement creative POC is **Fern and the Silent Seed Bells**,
+  the first package authored directly from the approved Lanternleaf universe.
+- The planning timeline targets 80.3 seconds across four scenes, 16 performance
+  phrases, 17 reading units, 15 sentence-addressable visual beats, nine safe
+  stops, and one `drag-to-guide` interaction.
+- The child guides Pipkin through Fern's traced canopy route during an authored
+  silent beat. Watch and film execute the same path canonically. Narration then
+  describes Pipkin already at the knot, avoiding a second mismatched travel beat.
+- Continuity tracks the bells, ribbons, Fern, Pipkin's position, and location.
+  The high knot opens once at `u11`; the bells resume once at `u13`. The release,
+  breeze, ringing, village waking, and dialogue hold are distinct media states.
+- Planning uses one 4:3 SVG placeholder and `needs-generation` statuses. Planning
+  lint must pass and strict lint must fail until approved media replaces every
+  placeholder. Exact character, prop, and location prompts are preserved before
+  provider work begins.
+
 ## 2026-07-16 — Native 4:3 Lanternleaf masters and responsive editorial layout
 
 - New story visuals are authored natively at 4:3. The complete semantic beat,

@@ -128,6 +128,17 @@ Last updated: 2026-07-16
 - `docs/v2/08-lanternleaf-layout-proof.md` records the measured rationale and
   `03-responsive-stage.md` now governs the approved layout. Existing Pip and
   Boat packages remain supported legacy fixtures.
+- The replacement creative POC is **Fern and the Silent Seed Bells** in
+  `content/fern-and-the-silent-seed-bells/`. Its manuscript, directed performance
+  plan, native-4:3 production package, 17 reading units, 15-beat board,
+  continuity ledger, hero interaction, visual direction, and exact canonical
+  reference prompts are complete. `performance-source.json` exactly matches the
+  16 phrase texts and defines three directed Eleven v3 candidates, but no audio
+  generation has started.
+- The new package passes `pnpm lint:experiences --
+  fern-and-the-silent-seed-bells --allow-pending`. Strict lint intentionally
+  fails on all 15 `needs-generation` beats; no provider job has been submitted
+  and the placeholder is visibly marked as non-production media.
 
 ## Fixed decisions
 
@@ -141,11 +152,12 @@ Last updated: 2026-07-16
 
 ## Immediate next action
 
-Review `/dev/lanternleaf-layout` on phone and desktop. If the composition is
-approved, promote the 4:3 candidate into `03-responsive-stage.md` and
-`DECISIONS.md`; then reconcile `create-lanternleaf-scenes` with `docs/universe/`,
-remove deprecated visual rules and references, and author the replacement
-Lanternleaf POC package with `$author-story-film`.
+Review the manuscript and production plan for **Fern and the Silent Seed Bells**.
+Then use `$create-lanternleaf-scenes` and the exact prompts in
+`content/fern-and-the-silent-seed-bells/GENERATION_PROMPTS.md` to generate and
+approve, in order: the Fern/Pipkin production identity, seed-bell continuity
+sheet, and bell-tree location reference. Do not generate story motion until all
+three canonical references pass.
 
 ## Verification baseline
 
@@ -212,6 +224,10 @@ artboard, zero horizontal overflow, the intended stack/row switch, and 44px
 controls. The seven-line passage has no nested scroll. The exact 1920×1080 film
 frame contains both the 4:3 art and copy without overflow, reference switching
 works, and the browser console is clean.
+The reconciled scene skill and story-film skill pass the system skill validator.
+The replacement POC planning package passes schema, media-graph, reading-unit
+coverage, continuity, and pending-asset lint. Strict lint fails only because all
+15 visual beats remain deliberately marked `needs-generation`.
 
 ## Session close protocol
 

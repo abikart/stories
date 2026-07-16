@@ -1,0 +1,460 @@
+{
+  "schemaVersion": 2,
+  "id": "fern-and-the-silent-seed-bells",
+  "title": "Fern and the Silent Seed Bells",
+  "logline": "When the forest's morning bells are tangled silent, Fern and Pipkin use what each can see and reach to wake the day.",
+  "accent": "#708b62",
+  "stage": {
+    "masterAspectRatio": "4:3",
+    "actionSafe": "full-frame",
+    "defaultFocalPoint": { "x": 0.5, "y": 0.5 },
+    "backdrop": {
+      "color": "#FFFFFF",
+      "poster": "scenes/planning-placeholder.svg"
+    }
+  },
+  "productionPlan": {
+    "coverage": "reading-unit",
+    "beatBoard": "beat-board.json",
+    "continuityLedger": "continuity.json"
+  },
+  "scenes": [
+    {
+      "id": "the-quiet-morning",
+      "media": [
+        {
+          "id": "bell-tree-dawn",
+          "kind": "poster",
+          "src": "scenes/planning-placeholder.svg",
+          "transitionsTo": ["village-waking"]
+        },
+        {
+          "id": "village-waking",
+          "kind": "poster",
+          "src": "scenes/planning-placeholder.svg",
+          "transitionsTo": ["silent-tree", "bell-tree-dawn"]
+        },
+        {
+          "id": "silent-tree",
+          "kind": "poster",
+          "src": "scenes/planning-placeholder.svg",
+          "transitionsTo": ["village-waking"]
+        }
+      ],
+      "canonicalPath": ["bell-tree-dawn", "village-waking", "silent-tree"],
+      "phrases": [
+        {
+          "id": "p01",
+          "speaker": "Narrator",
+          "text": "In Lanternleaf Forest, morning began with seed bells.",
+          "start": 0.4,
+          "end": 4.4,
+          "overlay": { "kind": "narration", "mobilePolicy": "dock" },
+          "readingUnits": [
+            {
+              "id": "u01",
+              "speaker": "Narrator",
+              "text": "In Lanternleaf Forest, morning began with seed bells.",
+              "start": 0.4,
+              "end": 4.4,
+              "mediaState": "bell-tree-dawn"
+            }
+          ]
+        },
+        {
+          "id": "p02",
+          "speaker": "Narrator",
+          "text": "Their bright chime woke every window and warm oven.",
+          "start": 5.1,
+          "end": 9.5,
+          "safeStopAfter": true,
+          "overlay": { "kind": "narration", "mobilePolicy": "dock" },
+          "readingUnits": [
+            {
+              "id": "u02",
+              "speaker": "Narrator",
+              "text": "Their bright chime woke every window and warm oven.",
+              "start": 5.1,
+              "end": 9.5,
+              "mediaState": "village-waking"
+            }
+          ]
+        },
+        {
+          "id": "p03",
+          "speaker": "Narrator",
+          "text": "But one rain-washed morning, the bells were silent.",
+          "start": 10.4,
+          "end": 14.5,
+          "safeStopAfter": true,
+          "overlay": { "kind": "narration", "mobilePolicy": "dock" },
+          "readingUnits": [
+            {
+              "id": "u03",
+              "speaker": "Narrator",
+              "text": "But one rain-washed morning, the bells were silent.",
+              "start": 10.4,
+              "end": 14.5,
+              "mediaState": "silent-tree"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "the-tangled-ribbons",
+      "media": [
+        {
+          "id": "tangled-tree",
+          "kind": "poster",
+          "src": "scenes/planning-placeholder.svg",
+          "transitionsTo": ["lower-knots-loosened"]
+        },
+        {
+          "id": "lower-knots-loosened",
+          "kind": "poster",
+          "src": "scenes/planning-placeholder.svg",
+          "transitionsTo": ["highest-knot", "tangled-tree"]
+        },
+        {
+          "id": "highest-knot",
+          "kind": "poster",
+          "src": "scenes/planning-placeholder.svg",
+          "transitionsTo": ["lower-knots-loosened"]
+        }
+      ],
+      "canonicalPath": ["tangled-tree", "lower-knots-loosened", "highest-knot"],
+      "phrases": [
+        {
+          "id": "p04",
+          "speaker": "Narrator",
+          "text": "Fern found their ribbons twisted around the bell tree.",
+          "start": 15.4,
+          "end": 19.8,
+          "overlay": { "kind": "narration", "mobilePolicy": "dock" },
+          "readingUnits": [
+            {
+              "id": "u04",
+              "speaker": "Narrator",
+              "text": "Fern found their ribbons twisted around the bell tree.",
+              "start": 15.4,
+              "end": 19.8,
+              "mediaState": "tangled-tree"
+            }
+          ]
+        },
+        {
+          "id": "p05",
+          "speaker": "Narrator",
+          "text": "She loosened the low knots while Pipkin slipped the middle ones free.",
+          "start": 20.5,
+          "end": 25.7,
+          "safeStopAfter": true,
+          "overlay": { "kind": "narration", "mobilePolicy": "dock" },
+          "readingUnits": [
+            {
+              "id": "u05",
+              "speaker": "Narrator",
+              "text": "She loosened the low knots while Pipkin slipped the middle ones free.",
+              "start": 20.5,
+              "end": 25.7,
+              "mediaState": "lower-knots-loosened"
+            }
+          ]
+        },
+        {
+          "id": "p06",
+          "speaker": "Narrator",
+          "text": "Still, the highest ribbon hugged a thorny branch.",
+          "start": 26.6,
+          "end": 30.9,
+          "safeStopAfter": true,
+          "overlay": { "kind": "narration", "mobilePolicy": "dock" },
+          "readingUnits": [
+            {
+              "id": "u06",
+              "speaker": "Narrator",
+              "text": "Still, the highest ribbon hugged a thorny branch.",
+              "start": 26.6,
+              "end": 30.9,
+              "mediaState": "highest-knot"
+            }
+          ]
+        },
+        {
+          "id": "p07",
+          "speaker": "Fern",
+          "text": "I cannot reach it.",
+          "start": 31.8,
+          "end": 34.1,
+          "overlay": { "kind": "dialogue", "mobilePolicy": "dock" },
+          "readingUnits": [
+            {
+              "id": "u07",
+              "speaker": "Fern",
+              "text": "“I cannot reach it.”",
+              "start": 31.8,
+              "end": 34.1,
+              "mediaState": "highest-knot"
+            }
+          ]
+        },
+        {
+          "id": "p08",
+          "speaker": "Pipkin",
+          "text": "I can, if you show me a path through the thorns.",
+          "start": 34.8,
+          "end": 39.2,
+          "safeStopAfter": true,
+          "overlay": { "kind": "dialogue", "mobilePolicy": "dock" },
+          "readingUnits": [
+            {
+              "id": "u08",
+              "speaker": "Pipkin",
+              "text": "“I can, if you show me a path through the thorns.”",
+              "start": 34.8,
+              "end": 39.2,
+              "mediaState": "highest-knot"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "the-silver-path",
+      "media": [
+        {
+          "id": "path-traced",
+          "kind": "poster",
+          "src": "scenes/planning-placeholder.svg",
+          "transitionsTo": ["pipkin-at-knot"]
+        },
+        {
+          "id": "pipkin-at-knot",
+          "kind": "poster",
+          "src": "scenes/planning-placeholder.svg",
+          "transitionsTo": ["knot-opening", "path-traced"]
+        },
+        {
+          "id": "knot-opening",
+          "kind": "poster",
+          "src": "scenes/planning-placeholder.svg",
+          "transitionsTo": ["pipkin-at-knot"]
+        }
+      ],
+      "canonicalPath": ["path-traced", "pipkin-at-knot", "knot-opening"],
+      "phrases": [
+        {
+          "id": "p09",
+          "speaker": "Narrator",
+          "text": "Fern traced a silver path through the leaves.",
+          "start": 40.1,
+          "end": 43.7,
+          "safeStopAfter": true,
+          "overlay": { "kind": "narration", "mobilePolicy": "dock" },
+          "readingUnits": [
+            {
+              "id": "u09",
+              "speaker": "Narrator",
+              "text": "Fern traced a silver path through the leaves.",
+              "start": 40.1,
+              "end": 43.7,
+              "mediaState": "path-traced"
+            }
+          ]
+        },
+        {
+          "id": "p10",
+          "speaker": "Narrator",
+          "text": "At the top, Pipkin reached the knotted ribbon.",
+          "start": 45.0,
+          "end": 48.6,
+          "overlay": { "kind": "narration", "mobilePolicy": "dock" },
+          "readingUnits": [
+            {
+              "id": "u10",
+              "speaker": "Narrator",
+              "text": "At the top, Pipkin reached the knotted ribbon.",
+              "start": 45.0,
+              "end": 48.6,
+              "mediaState": "pipkin-at-knot"
+            }
+          ]
+        },
+        {
+          "id": "p11",
+          "speaker": "Narrator",
+          "text": "One careful tug opened the knot.",
+          "start": 49.4,
+          "end": 52.1,
+          "safeStopAfter": true,
+          "overlay": { "kind": "narration", "mobilePolicy": "dock" },
+          "readingUnits": [
+            {
+              "id": "u11",
+              "speaker": "Narrator",
+              "text": "One careful tug opened the knot.",
+              "start": 49.4,
+              "end": 52.1,
+              "mediaState": "knot-opening"
+            }
+          ]
+        }
+      ],
+      "interaction": {
+        "recipe": "drag-to-guide",
+        "triggerAfterPhrase": "p09",
+        "triggerAtReadingUnit": "u09",
+        "prompt": "Guide Pipkin along Fern's silver path to the high knot.",
+        "startRegion": { "x": 0.2, "y": 0.62, "width": 0.16, "height": 0.2 },
+        "targetRegion": { "x": 0.7, "y": 0.16, "width": 0.16, "height": 0.18 },
+        "path": [
+          { "x": 0.28, "y": 0.7 },
+          { "x": 0.38, "y": 0.56 },
+          { "x": 0.5, "y": 0.47 },
+          { "x": 0.6, "y": 0.34 },
+          { "x": 0.78, "y": 0.24 }
+        ],
+        "completeMediaState": "pipkin-at-knot"
+      }
+    },
+    {
+      "id": "the-ringing-morning",
+      "media": [
+        {
+          "id": "breeze-rush",
+          "kind": "poster",
+          "src": "scenes/planning-placeholder.svg",
+          "transitionsTo": ["seed-bells-ringing"]
+        },
+        {
+          "id": "seed-bells-ringing",
+          "kind": "poster",
+          "src": "scenes/planning-placeholder.svg",
+          "transitionsTo": ["forest-waking", "breeze-rush"]
+        },
+        {
+          "id": "forest-waking",
+          "kind": "poster",
+          "src": "scenes/planning-placeholder.svg",
+          "transitionsTo": ["friends-listen", "seed-bells-ringing"]
+        },
+        {
+          "id": "friends-listen",
+          "kind": "poster",
+          "src": "scenes/planning-placeholder.svg",
+          "transitionsTo": ["shared-morning", "forest-waking"]
+        },
+        {
+          "id": "shared-morning",
+          "kind": "poster",
+          "src": "scenes/planning-placeholder.svg",
+          "transitionsTo": ["friends-listen"]
+        }
+      ],
+      "canonicalPath": ["breeze-rush", "seed-bells-ringing", "forest-waking", "friends-listen", "shared-morning"],
+      "phrases": [
+        {
+          "id": "p12",
+          "speaker": "Narrator",
+          "text": "The breeze rushed in. The seed bells bobbed and chimed—one, two, three!",
+          "start": 53.0,
+          "end": 60.8,
+          "overlay": { "kind": "narration", "mobilePolicy": "dock" },
+          "readingUnits": [
+            {
+              "id": "u12",
+              "speaker": "Narrator",
+              "text": "The breeze rushed in.",
+              "start": 53.0,
+              "end": 55.3,
+              "mediaState": "breeze-rush"
+            },
+            {
+              "id": "u13",
+              "speaker": "Narrator",
+              "text": "The seed bells bobbed and chimed—one, two, three!",
+              "start": 55.8,
+              "end": 60.8,
+              "mediaState": "seed-bells-ringing"
+            }
+          ]
+        },
+        {
+          "id": "p13",
+          "speaker": "Narrator",
+          "text": "All at once, the forest morning opened around them.",
+          "start": 61.6,
+          "end": 65.4,
+          "safeStopAfter": true,
+          "overlay": { "kind": "narration", "mobilePolicy": "dock" },
+          "readingUnits": [
+            {
+              "id": "u14",
+              "speaker": "Narrator",
+              "text": "All at once, the forest morning opened around them.",
+              "start": 61.6,
+              "end": 65.4,
+              "mediaState": "forest-waking"
+            }
+          ]
+        },
+        {
+          "id": "p14",
+          "speaker": "Fern",
+          "text": "You reached what I could not.",
+          "start": 66.3,
+          "end": 69.4,
+          "overlay": { "kind": "dialogue", "mobilePolicy": "dock" },
+          "readingUnits": [
+            {
+              "id": "u15",
+              "speaker": "Fern",
+              "text": "“You reached what I could not.”",
+              "start": 66.3,
+              "end": 69.4,
+              "mediaState": "friends-listen"
+            }
+          ]
+        },
+        {
+          "id": "p15",
+          "speaker": "Pipkin",
+          "text": "You saw the way I could not.",
+          "start": 70.2,
+          "end": 73.5,
+          "safeStopAfter": true,
+          "overlay": { "kind": "dialogue", "mobilePolicy": "dock" },
+          "readingUnits": [
+            {
+              "id": "u16",
+              "speaker": "Pipkin",
+              "text": "“You saw the way I could not.”",
+              "start": 70.2,
+              "end": 73.5,
+              "mediaState": "friends-listen"
+            }
+          ]
+        },
+        {
+          "id": "p16",
+          "speaker": "Narrator",
+          "text": "Above them, the bell tree played the morning they had made together.",
+          "start": 74.5,
+          "end": 80.3,
+          "overlay": { "kind": "narration", "mobilePolicy": "dock" },
+          "readingUnits": [
+            {
+              "id": "u17",
+              "speaker": "Narrator",
+              "text": "Above them, the bell tree played the morning they had made together.",
+              "start": 74.5,
+              "end": 80.3,
+              "mediaState": "shared-morning"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,55 @@
+{
+  "schemaVersion": 1,
+  "storyId": "fern-and-the-silent-seed-bells",
+  "subjects": {
+    "bells": {
+      "description": "The seed bells ring in the opening memory, remain fully silent throughout the tangle and rescue, become ready only when the high knot opens, and begin their restored ringing exactly once after the breeze arrives.",
+      "initial": "ringing-memory",
+      "transitions": [
+        { "from": "ringing-memory", "to": "silent", "atReadingUnit": "u03" },
+        { "from": "silent", "to": "ready", "atReadingUnit": "u11" },
+        { "from": "ready", "to": "ringing-restored", "atReadingUnit": "u13" }
+      ]
+    },
+    "ribbons": {
+      "description": "The bell ribbons move from orderly memory to hidden tangle, visible tangle, partial release, one remaining high knot, and one final fully open state without regression.",
+      "initial": "orderly-memory",
+      "transitions": [
+        { "from": "orderly-memory", "to": "unseen-tangle", "atReadingUnit": "u03" },
+        { "from": "unseen-tangle", "to": "tangled-visible", "atReadingUnit": "u04" },
+        { "from": "tangled-visible", "to": "lower-and-middle-free", "atReadingUnit": "u05" },
+        { "from": "lower-and-middle-free", "to": "highest-knot-only", "atReadingUnit": "u06" },
+        { "from": "highest-knot-only", "to": "fully-open", "atReadingUnit": "u11" }
+      ]
+    },
+    "fern": {
+      "description": "Fern remains present in every beat, upright, child-scaled, and wearing the same dusty-teal cross-body satchel.",
+      "initial": "present",
+      "transitions": []
+    },
+    "pipkinPosition": {
+      "description": "Pipkin remains a single four-winged character and moves only through the authored work, offer, guided flight, high-knot, and return positions.",
+      "initial": "beside-fern",
+      "transitions": [
+        { "from": "beside-fern", "to": "working-middle-ribbons", "atReadingUnit": "u05" },
+        { "from": "working-middle-ribbons", "to": "beside-fern", "atReadingUnit": "u06" },
+        { "from": "beside-fern", "to": "ready-to-fly", "atReadingUnit": "u08" },
+        { "from": "ready-to-fly", "to": "at-knot", "atReadingUnit": "u09" },
+        { "from": "at-knot", "to": "beside-fern", "atReadingUnit": "u12" }
+      ]
+    },
+    "location": {
+      "description": "Every view change is declared so village waking, bell-tree work, guided canopy travel, and the final return cannot be replaced by an unrelated loop.",
+      "initial": "bell-tree-memory",
+      "transitions": [
+        { "from": "bell-tree-memory", "to": "village-memory", "atReadingUnit": "u02" },
+        { "from": "village-memory", "to": "bell-tree-present", "atReadingUnit": "u03" },
+        { "from": "bell-tree-present", "to": "canopy-route", "atReadingUnit": "u09" },
+        { "from": "canopy-route", "to": "canopy-knot", "atReadingUnit": "u10" },
+        { "from": "canopy-knot", "to": "bell-tree-present", "atReadingUnit": "u12" },
+        { "from": "bell-tree-present", "to": "village-present", "atReadingUnit": "u14" },
+        { "from": "village-present", "to": "bell-tree-present", "atReadingUnit": "u15" }
+      ]
+    }
+  }
+}

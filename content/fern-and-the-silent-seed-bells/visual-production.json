@@ -1,0 +1,57 @@
+{
+  "schemaVersion": 1,
+  "storyId": "fern-and-the-silent-seed-bells",
+  "status": "planning-approved-generation-not-started",
+  "provider": "grok-imagine",
+  "project": "stories.sh",
+  "format": {
+    "creativeAspectRatio": "4:3",
+    "targetKeyframe": "1536x1152-or-provider-equivalent",
+    "deliveryMatte": "#FFFFFF",
+    "responsiveCrop": "none"
+  },
+  "canonicalReferences": [
+    {
+      "path": "../../docs/universe/fern-and-pip.png",
+      "role": "Fern and Pipkin identity, scale, palette, satchel, antennae, and exact four-wing anatomy"
+    },
+    {
+      "path": "../../docs/universe/hedge-frog.png",
+      "role": "seed-bell prop vocabulary, bipedal craft action, and outdoor composition only"
+    },
+    {
+      "path": "../../docs/universe/elephant-capybara.png",
+      "role": "inhabited semantic detail and pale atmospheric distance only"
+    }
+  ],
+  "preflightReferences": [
+    {
+      "id": "fern-pipkin-turnaround",
+      "status": "needs-generation",
+      "purpose": "Lock recurring character proportions, accessories, local contour colors, and four-wing anatomy."
+    },
+    {
+      "id": "seed-bell-prop-sheet",
+      "status": "needs-generation",
+      "purpose": "Lock orderly, tangled, partially freed, ready, and restored bell/ribbon states."
+    },
+    {
+      "id": "bell-tree-location",
+      "status": "needs-generation",
+      "purpose": "Lock 4:3 location geometry, high knot, thorn gap, root cottages, and interaction path."
+    }
+  ],
+  "globalConstraints": [
+    "Use docs/universe/world-details.md as written canon.",
+    "Native 4:3 composition with complete action in frame and no responsive crop.",
+    "Pure #FFFFFF matte; organic watercolor edges must not reveal a rectangle.",
+    "Locally color-matched contours; never one universal brown or black outline.",
+    "Semantic environmental richness without paper grain, hatching, stippling, or repeated surface marks.",
+    "Fern stays upright with the dusty-teal satchel; Pipkin has exactly four warm-gold wings.",
+    "The high knot opens once at u11 and the bells resume once at u13."
+  ],
+  "agentUrl": null,
+  "candidates": [],
+  "rejections": [],
+  "notes": "Do not start paid generation until planning lint passes and the manuscript, reference roles, beat board, continuity ledger, and interaction geometry are reviewed."
+}

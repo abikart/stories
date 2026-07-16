@@ -1,0 +1,248 @@
+{
+  "schemaVersion": 1,
+  "storyId": "fern-and-the-silent-seed-bells",
+  "coverage": "reading-unit",
+  "beats": [
+    {
+      "id": "b01-bell-tree-dawn",
+      "readingUnitIds": ["u01"],
+      "scene": "the-quiet-morning",
+      "mediaState": "bell-tree-dawn",
+      "tier": "living-illustration",
+      "visual": "Establish Fern and Pipkin beneath the seed-bell tree in the familiar ringing morning, with root cottages and useful village details dissolving into white.",
+      "assetStatus": "needs-generation",
+      "continuity": {
+        "bells": "ringing-memory",
+        "ribbons": "orderly-memory",
+        "fern": "present",
+        "pipkinPosition": "beside-fern",
+        "location": "bell-tree-memory"
+      }
+    },
+    {
+      "id": "b02-village-waking",
+      "readingUnitIds": ["u02"],
+      "scene": "the-quiet-morning",
+      "mediaState": "village-waking",
+      "tier": "motion-shot",
+      "visual": "One continuous morning response: round shutters open and a warm oven vent puffs after the seed bells chime; the sequence settles into an awake village.",
+      "assetStatus": "needs-generation",
+      "continuity": {
+        "bells": "ringing-memory",
+        "ribbons": "orderly-memory",
+        "fern": "present",
+        "pipkinPosition": "beside-fern",
+        "location": "village-memory"
+      }
+    },
+    {
+      "id": "b03-silent-tree",
+      "readingUnitIds": ["u03"],
+      "scene": "the-quiet-morning",
+      "mediaState": "silent-tree",
+      "tier": "living-illustration",
+      "visual": "Return to the rain-washed present: wet seed bells hang completely still while Fern and Pipkin listen to the surprising hush; the tangle is not yet revealed.",
+      "assetStatus": "needs-generation",
+      "continuity": {
+        "bells": "silent",
+        "ribbons": "unseen-tangle",
+        "fern": "present",
+        "pipkinPosition": "beside-fern",
+        "location": "bell-tree-present"
+      }
+    },
+    {
+      "id": "b04-tangled-tree",
+      "readingUnitIds": ["u04"],
+      "scene": "the-tangled-ribbons",
+      "mediaState": "tangled-tree",
+      "tier": "living-illustration",
+      "visual": "Reveal wet ribbons twisted around low, middle, and high branches of the bell tree; the single highest knot is visible among thorns but not yet isolated.",
+      "assetStatus": "needs-generation",
+      "continuity": {
+        "bells": "silent",
+        "ribbons": "tangled-visible",
+        "fern": "present",
+        "pipkinPosition": "beside-fern",
+        "location": "bell-tree-present"
+      }
+    },
+    {
+      "id": "b05-lower-knots",
+      "readingUnitIds": ["u05"],
+      "scene": "the-tangled-ribbons",
+      "mediaState": "lower-knots-loosened",
+      "tier": "motion-shot",
+      "visual": "Fern frees the low ribbons while Pipkin slips the middle ribbons loose; both actions happen once and settle with only the highest knot remaining.",
+      "assetStatus": "needs-generation",
+      "continuity": {
+        "bells": "silent",
+        "ribbons": "lower-and-middle-free",
+        "fern": "present",
+        "pipkinPosition": "working-middle-ribbons",
+        "location": "bell-tree-present"
+      }
+    },
+    {
+      "id": "b06-highest-knot",
+      "readingUnitIds": ["u06", "u07"],
+      "scene": "the-tangled-ribbons",
+      "mediaState": "highest-knot",
+      "tier": "living-illustration",
+      "visual": "Isolate the one closed high knot among readable thorns while Fern reaches upward and admits the limit; Pipkin waits beside her.",
+      "assetStatus": "needs-generation",
+      "continuity": {
+        "bells": "silent",
+        "ribbons": "highest-knot-only",
+        "fern": "present",
+        "pipkinPosition": "beside-fern",
+        "location": "bell-tree-present"
+      }
+    },
+    {
+      "id": "b07-pipkin-offers",
+      "readingUnitIds": ["u08"],
+      "scene": "the-tangled-ribbons",
+      "mediaState": "highest-knot",
+      "tier": "living-illustration",
+      "visual": "The same high-knot composition holds while Pipkin turns toward Fern with confident readiness to fly; the knot and bells remain unchanged.",
+      "assetStatus": "needs-generation",
+      "continuity": {
+        "bells": "silent",
+        "ribbons": "highest-knot-only",
+        "fern": "present",
+        "pipkinPosition": "ready-to-fly",
+        "location": "bell-tree-present"
+      }
+    },
+    {
+      "id": "b08-silver-path",
+      "readingUnitIds": ["u09"],
+      "scene": "the-silver-path",
+      "mediaState": "path-traced",
+      "tier": "hero-interaction",
+      "visual": "Fern's paw traces one pale silver route under a leaf, around a twig, and through a small thorn gap; the child guides Pipkin along that exact route to the still-closed knot.",
+      "interactionOutcome": "pipkin-at-knot",
+      "assetStatus": "needs-generation",
+      "continuity": {
+        "bells": "silent",
+        "ribbons": "highest-knot-only",
+        "fern": "present",
+        "pipkinPosition": "at-knot",
+        "location": "canopy-route"
+      }
+    },
+    {
+      "id": "b09-pipkin-at-knot",
+      "readingUnitIds": ["u10"],
+      "scene": "the-silver-path",
+      "mediaState": "pipkin-at-knot",
+      "tier": "resolved-hold",
+      "visual": "Pipkin hovers safely beside the high knot at the top of the traced route; the ribbon remains tied until the next authored action.",
+      "assetStatus": "needs-generation",
+      "continuity": {
+        "bells": "silent",
+        "ribbons": "highest-knot-only",
+        "fern": "present",
+        "pipkinPosition": "at-knot",
+        "location": "canopy-knot"
+      }
+    },
+    {
+      "id": "b10-knot-opens",
+      "readingUnitIds": ["u11"],
+      "scene": "the-silver-path",
+      "mediaState": "knot-opening",
+      "tier": "motion-shot",
+      "visual": "Pipkin gives one careful tug; the highest knot opens exactly once and the freed ribbons settle before any bell rings.",
+      "assetStatus": "needs-generation",
+      "continuity": {
+        "bells": "ready",
+        "ribbons": "fully-open",
+        "fern": "present",
+        "pipkinPosition": "at-knot",
+        "location": "canopy-knot"
+      }
+    },
+    {
+      "id": "b11-breeze-rush",
+      "readingUnitIds": ["u12"],
+      "scene": "the-ringing-morning",
+      "mediaState": "breeze-rush",
+      "tier": "motion-shot",
+      "visual": "A visible but restrained breeze moves through the now-open ribbons and leaves; the bells begin to lift but have not chimed yet.",
+      "assetStatus": "needs-generation",
+      "continuity": {
+        "bells": "ready",
+        "ribbons": "fully-open",
+        "fern": "present",
+        "pipkinPosition": "beside-fern",
+        "location": "bell-tree-present"
+      }
+    },
+    {
+      "id": "b12-bells-ring",
+      "readingUnitIds": ["u13"],
+      "scene": "the-ringing-morning",
+      "mediaState": "seed-bells-ringing",
+      "tier": "motion-shot",
+      "visual": "The seed bells bob and sound their first restored sequence—one, two, three—without repeating the initial release action.",
+      "assetStatus": "needs-generation",
+      "continuity": {
+        "bells": "ringing-restored",
+        "ribbons": "fully-open",
+        "fern": "present",
+        "pipkinPosition": "beside-fern",
+        "location": "bell-tree-present"
+      }
+    },
+    {
+      "id": "b13-forest-wakes",
+      "readingUnitIds": ["u14"],
+      "scene": "the-ringing-morning",
+      "mediaState": "forest-waking",
+      "tier": "motion-shot",
+      "visual": "The restored chime opens shutters, lifts a small oven puff, and brings bipedal neighbors onto the paths in one communal morning release.",
+      "assetStatus": "needs-generation",
+      "continuity": {
+        "bells": "ringing-restored",
+        "ribbons": "fully-open",
+        "fern": "present",
+        "pipkinPosition": "beside-fern",
+        "location": "village-present"
+      }
+    },
+    {
+      "id": "b14-friends-listen",
+      "readingUnitIds": ["u15", "u16"],
+      "scene": "the-ringing-morning",
+      "mediaState": "friends-listen",
+      "tier": "living-illustration",
+      "visual": "Back beneath the tree, Fern and Pipkin listen to the steady restored bells and exchange a quiet smile; no prop state changes during the dialogue.",
+      "assetStatus": "needs-generation",
+      "continuity": {
+        "bells": "ringing-restored",
+        "ribbons": "fully-open",
+        "fern": "present",
+        "pipkinPosition": "beside-fern",
+        "location": "bell-tree-present"
+      }
+    },
+    {
+      "id": "b15-shared-morning",
+      "readingUnitIds": ["u17"],
+      "scene": "the-ringing-morning",
+      "mediaState": "shared-morning",
+      "tier": "living-illustration",
+      "visual": "A wider resolved view holds Fern and Pipkin beneath the ringing bell tree with the awake village behind them; the image closes on the morning they made together.",
+      "assetStatus": "needs-generation",
+      "continuity": {
+        "bells": "ringing-restored",
+        "ribbons": "fully-open",
+        "fern": "present",
+        "pipkinPosition": "beside-fern",
+        "location": "bell-tree-present"
+      }
+    }
+  ]
+}
