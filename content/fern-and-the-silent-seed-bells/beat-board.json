@@ -123,7 +123,7 @@
       "tier": "hero-interaction",
       "visual": "Fern's paw traces one pale silver route under a leaf, around a twig, and through a small thorn gap; the child guides Pipkin along that exact route to the still-closed knot.",
       "interactionOutcome": "pipkin-at-knot",
-      "assetStatus": "needs-generation",
+      "assetStatus": "approved-generated",
       "continuity": {
         "bells": "silent",
         "ribbons": "highest-knot-only",
@@ -139,7 +139,7 @@
       "mediaState": "pipkin-at-knot",
       "tier": "resolved-hold",
       "visual": "Pipkin hovers safely beside the high knot at the top of the traced route; the ribbon remains tied until the next authored action.",
-      "assetStatus": "needs-generation",
+      "assetStatus": "approved-generated",
       "continuity": {
         "bells": "silent",
         "ribbons": "highest-knot-only",
@@ -155,7 +155,7 @@
       "mediaState": "knot-opening",
       "tier": "motion-shot",
       "visual": "Pipkin gives one careful tug; the highest knot opens exactly once and the freed ribbons settle before any bell rings.",
-      "assetStatus": "needs-generation",
+      "assetStatus": "approved-generated",
       "continuity": {
         "bells": "ready",
         "ribbons": "fully-open",

@@ -1005,7 +1005,7 @@
         {
           "id": "path-traced",
           "kind": "poster",
-          "src": "scenes/planning-placeholder.svg",
+          "src": "scenes/the-silver-path/path-traced.png",
           "transitionsTo": [
             "pipkin-at-knot"
           ]
@@ -1013,7 +1013,7 @@
         {
           "id": "pipkin-at-knot",
           "kind": "poster",
-          "src": "scenes/planning-placeholder.svg",
+          "src": "scenes/the-silver-path/pipkin-at-knot.png",
           "transitionsTo": [
             "knot-opening",
             "path-traced"
@@ -1022,7 +1022,7 @@
         {
           "id": "knot-opening",
           "kind": "poster",
-          "src": "scenes/planning-placeholder.svg",
+          "src": "scenes/the-silver-path/knot-opening.png",
           "transitionsTo": [
             "pipkin-at-knot"
           ]
@@ -1338,37 +1338,41 @@
         "triggerAtReadingUnit": "u09",
         "prompt": "Guide Pipkin along Fern's silver path to the high knot.",
         "startRegion": {
-          "x": 0.2,
-          "y": 0.62,
-          "width": 0.16,
+          "x": 0.44,
+          "y": 0.63,
+          "width": 0.14,
           "height": 0.2
         },
         "targetRegion": {
-          "x": 0.7,
-          "y": 0.16,
-          "width": 0.16,
+          "x": 0.56,
+          "y": 0.21,
+          "width": 0.14,
           "height": 0.18
         },
         "path": [
           {
-            "x": 0.28,
+            "x": 0.51,
+            "y": 0.73
+          },
+          {
+            "x": 0.59,
+            "y": 0.84
+          },
+          {
+            "x": 0.64,
             "y": 0.7
           },
           {
-            "x": 0.38,
-            "y": 0.56
+            "x": 0.55,
+            "y": 0.53
           },
           {
-            "x": 0.5,
-            "y": 0.47
+            "x": 0.59,
+            "y": 0.4
           },
           {
-            "x": 0.6,
-            "y": 0.34
-          },
-          {
-            "x": 0.78,
-            "y": 0.24
+            "x": 0.62,
+            "y": 0.3
           }
         ],
         "completeMediaState": "pipkin-at-knot"

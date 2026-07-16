@@ -35,7 +35,7 @@ asset truth remains in the story manifests.
 |---|---|
 | Performance and alignment | Complete |
 | Canonical references | 3/3 complete |
-| Keyframe coverage | 6/14 unique media states; 7/15 beats accepted |
+| Keyframe coverage | 9/14 unique media states; 10/15 beats accepted |
 | Schema-v2 motion ingest | Pending |
 | Native Watch video | 0/14 media states |
 | Silent Seed Bells soundscape | Pending |

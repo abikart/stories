@@ -168,10 +168,19 @@ Last updated: 2026-07-16
 - The first playable-loop production unit is integrated: `village-waking`
   preserves the dry memory with readable open shutters and one oven puff;
   `lower-knots-loosened` preserves the wide tangled-tree camera while freeing
-  the low/middle ribbons and retaining one high knot. Six unique keyframe states
-  now cover seven of 15 beat-board entries; eight remain pending. Both selected
+  the low/middle ribbons and retaining one high knot. Those six unique keyframe
+  states cover seven of 15 beat-board entries. Both selected
   Grok originals, the rejected tighter-camera b05 repair, normalized 1600x1200
   PNGs, exact prompts, IDs, hashes, and decisions are preserved in-package.
+- The hero handoff keyframes are integrated: `path-traced` provides one visible
+  child-followable route, `pipkin-at-knot` clears the start and moves a single
+  source-scale four-wing Pipkin to the canopy endpoint, and `knot-opening`
+  removes the final bundle while the bells remain silent. Interaction start,
+  target, and waypoints are recalibrated to the accepted pixels. The guide route
+  dissolves only in the completed b10 state as success feedback. Nine unique
+  keyframe states now cover ten of 15 beats; five remain pending. Selected and
+  rejected provider originals, exact repair prompts, IDs, hashes, and normalized
+  deliveries are preserved in the story package.
 - `docs/v2/09-fern-playable-loop.md` now defines the autonomous route from that
   partial board to a hands-on local alpha: dependency-ordered keyframes, schema-
   v2 motion ingest, 14 native Watch states, story-specific sound, integration,
@@ -197,13 +206,12 @@ Last updated: 2026-07-16
 ## Immediate next action
 
 Continue the resumable playable-alpha loop in
-`docs/v2/09-fern-playable-loop.md`. The next production unit is the hero
-handoff: create matched `path-traced` (b08), `pipkin-at-knot` (b09), and the
-settled `knot-opening` endpoint (b10), then recalibrate the interaction path and
-regions against the accepted pixels. Verify downloaded dimensions rather than
-trusting Grok's ratio description. Continue through restoration, emotional
-close, motion, soundscape, integration, and QA until the local experience is
-open and ready for owner playtesting.
+`docs/v2/09-fern-playable-loop.md`. The next production unit is the restoration
+chain: create `breeze-rush` (b11), `seed-bells-ringing` (b12), and
+`forest-waking` (b13) in that causal order. Verify downloaded dimensions rather
+than trusting Grok's ratio description. Continue through the emotional close,
+motion, soundscape, integration, and QA until the local experience is open and
+ready for owner playtesting.
 
 ## Verification baseline
 

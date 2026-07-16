@@ -270,3 +270,121 @@ The approved canonical `references/bell-tree-location.png` already satisfies
 both reading beats and is copied unchanged to
 `scenes/the-tangled-ribbons/highest-knot.png`. The continuity ledger and
 dialogue—not a visual transformation—distinguish Pipkin's offer in b07.
+
+## b08 — path-traced
+
+Input: approved `highest-knot`. This is the pre-interaction guide frame; Pipkin
+remains at the route's start beside Fern until the child completes the guide.
+
+```text
+Create a camera-locked edit of the attached approved highest-knot image for a
+native 4:3 children's story interaction frame. Preserve the exact tree,
+cottage, path, tools, plants, three complete rain-wet silent bells, one small
+closed dusty-blue high knot, Fern/Pipkin identity and scale, post-rain light,
+watercolor language, organic edges, and pure-white matte.
+
+Add exactly ONE pale silver guide route beginning at Pipkin's current position
+beside Fern. It must travel visibly under one leaf, curve around one twig, pass
+through one safe small gap between thorns, and end immediately beside the still-
+closed high knot. Make the route a quiet hand-painted silver-blue line with a
+few restrained pearl-like dashes, not neon, glitter, smoke, a road, or text.
+Keep enough open space around the route for a child-sized draggable to follow
+it. Fern extends one paw toward the first segment as if she has just traced it.
+Pipkin remains at the START beside Fern with exactly four wings and looks along
+the route; do not place Pipkin at the knot yet.
+
+Continuity: bells=silent; ribbons=highest-knot-only; Fern=present with unchanged
+satchel; Pipkin=ready-to-fly at route start; location=canopy-route. Preserve
+exactly three complete bells and exactly one closed high knot. Avoid a second
+Pipkin, extra wings, opened ribbon, bell motion, breeze, ringing, smoke, open
+shutters, hard rectangle, beige/gray matte, text, vector, 3D, anime, or
+photorealism.
+```
+
+## b09 — pipkin-at-knot
+
+Input: accepted `path-traced`. This is the resolved interaction hold.
+
+```text
+Create the NEXT camera-locked keyframe from the attached approved path-traced
+image. Preserve the exact native 4:3 crop, tree/cottage geometry, Fern, all
+three complete silent bells, one still-CLOSED dusty-blue high knot, silver
+route, post-rain watercolor treatment, organic edges, and pure-white matte.
+
+Move the single Pipkin from the route start to the route END. Pipkin now hovers
+safely beside—not inside and not beyond—the high knot, with exactly four warm-
+gold wings fully readable and one small hand reaching toward the tied ribbon.
+Remove Pipkin completely from the starting position so exactly one Pipkin
+exists. Fern remains below with the same satchel and looks upward along the
+route. The knot is unchanged and closed; no tug has happened. Bells remain
+still and silent; no breeze or ringing.
+
+Avoid camera drift, duplicated Pipkin, a ghost at the start, extra/missing
+wings, opened knot, moved or cropped bells, silver glow covering a face or
+knot, text, beige/gray matte, hard rectangle, vector, 3D, anime, or
+photorealism.
+```
+
+The first result enlarged Pipkin and obscured the knot. A scale-only repair
+stopped halfway along the route. Accepted coordinate correction:
+
+```text
+REJECT the latest repair: Pipkin is still halfway up the route near the bells,
+not at the high knot. Regenerate from the ORIGINAL attached path-traced image,
+not either failed b09 render. Use normalized 4:3 image coordinates. The closed
+dusty-blue high knot is near x=0.62, y=0.29. Place the CENTER of the single
+small Pipkin at approximately x=0.55, y=0.35—immediately LEFT of and slightly
+BELOW that high knot. Keep a narrow white gap so the complete knot, thorn gap,
+and cord stay visible. Keep Pipkin at the exact small source scale with exactly
+four wings. Completely erase Pipkin from the original start near x=0.51,
+y=0.73 and from every intermediate position. Preserve the exact camera, Fern,
+satchel, three complete silent bells, closed high knot, silver route, tree/
+cottage geometry, post-rain watercolor, organic white matte, and all other
+pixels. No tug, open ribbon, bell motion, breeze, or ringing.
+```
+
+## b10 — knot-opening
+
+Input: accepted `pipkin-at-knot`. This is the settled end keyframe for the one-
+time careful tug; later motion begins from b09 and ends here.
+
+```text
+Create the NEXT camera-locked keyframe from the attached approved pipkin-at-
+knot image. Preserve the exact native 4:3 crop, tree/cottage geometry, Fern,
+Pipkin position and four-wing anatomy, three complete bells, silver route,
+post-rain watercolor language, organic edges, and pure-white matte.
+
+Show the settled instant AFTER Pipkin's one careful tug: the single dusty-blue
+high knot is now fully OPEN and the blue ribbon hangs as one clean free path.
+There must be ZERO knots, bows, wraps, or tangles anywhere. Pipkin has just
+released the ribbon and hovers beside the newly open end; Fern watches from
+below. All three bells are ready but remain completely STILL and SILENT. The
+breeze has not arrived, no bell has begun to swing, and the village has not
+woken. Keep the pale silver guide route restrained and readable.
+
+Avoid a partly closed knot, a second opening, ribbon snap, wind, ringing,
+bobbing bells, drawn sound, missing/cropped/extra bells, duplicated Pipkin,
+extra wings, camera drift, open shutters, smoke, text, beige/gray matte, hard
+rectangle, vector, 3D, anime, or photorealism.
+```
+
+The first result left a visible dusty-blue wrap on the branch. Accepted
+targeted repair removed the final bundle. The silver route dissolves in the
+accepted end frame as quiet interaction-completion feedback; b10 motion must
+fade it only after the knot opens.
+
+```text
+REJECT the current b10 render. The dusty-blue ribbon is still visibly wrapped
+and bunched around the upper branch, so the knot is NOT open. Regenerate fresh
+from the ORIGINAL attached approved pipkin-at-knot source, not from the failed
+b10 output. Fully remove the entire dusty-blue knot, wrap, bow, bunch, and loop
+from the branch. At the settled end there must be ZERO knots, bows, wraps, or
+ribbon loops around any branch. The dusty-blue ribbon must be one smooth free
+strip with its top end visibly loose and separated from the bark, descending
+cleanly to the dusty-blue bell. The berry-pink and warm-ochre ribbons remain
+clean, free, and separate. Keep Pipkin at the same small upper-canopy position
+with exactly four wings, just after release. Preserve Fern, satchel, exact
+camera/cottage/tree, all three complete bells, post-rain watercolor, organic
+white matte, and closed village. All three bells remain still and silent—no
+breeze, swing, bob, ringing, or sound marks.
+```

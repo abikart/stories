@@ -158,6 +158,45 @@
       "dimensions": "1600x1200",
       "acceptedSha256": "3efc1a70e8fcd1b846889fe63262725476706fc9cb0bec49231641526a78d6e7",
       "acceptance": "Canonical two-free-ribbon/one-high-knot state supports Fern's limit and Pipkin's unchanged dialogue offer."
+    },
+    {
+      "beatIds": ["b08-silver-path"],
+      "mediaState": "path-traced",
+      "status": "approved-generated",
+      "promptRef": "BEAT_GENERATION_PROMPTS.md#b08--path-traced",
+      "providerId": "ac7944d4-76a3-48ed-bb73-6b6c8a0c1cb2",
+      "providerOriginal": "scenes/the-silver-path/provider-originals/path-traced-ac7944d4-grok.jpg",
+      "accepted": "scenes/the-silver-path/path-traced.png",
+      "dimensions": "1600x1200",
+      "providerSha256": "0ce8b03f589fb6391684c4ef21ba6ce81efc45b1a3208a35d9c72b3c1ef5d8c5",
+      "acceptedSha256": "a8cca1c65468a98e9b335d255b6fe0b49426835b1690d75615ee5c94c4b08c4c",
+      "acceptance": "Single pale route connects Pipkin's start to the closed high knot through a readable open corridor; all three silent bells and four-wing anatomy remain complete."
+    },
+    {
+      "beatIds": ["b09-pipkin-at-knot"],
+      "mediaState": "pipkin-at-knot",
+      "status": "approved-generated",
+      "promptRef": "BEAT_GENERATION_PROMPTS.md#b09--pipkin-at-knot",
+      "providerId": "1efe8d13-1f36-4222-b04c-701391cadd71",
+      "providerOriginal": "scenes/the-silver-path/provider-originals/pipkin-at-knot-1efe8d13-grok.jpg",
+      "accepted": "scenes/the-silver-path/pipkin-at-knot.png",
+      "dimensions": "1600x1200",
+      "providerSha256": "6227ed3c20c3ae17ee1d31d36bd0ddfd4923548081b7a46e400e51fcf57bbc8e",
+      "acceptedSha256": "ceefd7756740eb97109763f2a3bba456c4adf8879dab9fcd0e377aead2f468ab",
+      "acceptance": "Exactly one small four-wing Pipkin occupies the upper-canopy route endpoint with the start cleared; the complete closed knot, route, Fern, and three bells remain readable."
+    },
+    {
+      "beatIds": ["b10-knot-opens"],
+      "mediaState": "knot-opening",
+      "status": "approved-generated",
+      "promptRef": "BEAT_GENERATION_PROMPTS.md#b10--knot-opening",
+      "providerId": "8464caec-5aac-4631-9d0a-a117d38acfd1",
+      "providerOriginal": "scenes/the-silver-path/provider-originals/knot-opening-8464caec-grok.jpg",
+      "accepted": "scenes/the-silver-path/knot-opening.png",
+      "dimensions": "1600x1200",
+      "providerSha256": "28a44d5091a065d9d812d82dc90f89716b66bf12a5ed289d7bc61b8af19246b4",
+      "acceptedSha256": "49a104d9a307e4b433701e78db54828d12cdddf18fe94df42196284ca0eed0a4",
+      "acceptance": "Final dusty-blue bundle is gone; three separate free ribbons and complete still bells remain; the silver route has dissolved as post-completion feedback before any breeze or chime."
     }
   ],
   "candidates": [
@@ -274,6 +313,42 @@
       "providerId": "b6e92a2a-15ec-4da0-9f12-36be3072aa2d",
       "decision": "approved-derived",
       "notes": "Fresh single-source edit preserved the wide b04 camera and both cottages while freeing the lower/middle ribbons and retaining one small high knot."
+    },
+    {
+      "reference": "b08-silver-path",
+      "providerId": "ac7944d4-76a3-48ed-bb73-6b6c8a0c1cb2",
+      "decision": "approved-derived",
+      "notes": "Camera-locked edit added one readable silver guide route while retaining Pipkin at the start, the closed knot, and all three silent bells."
+    },
+    {
+      "reference": "b09-pipkin-at-knot",
+      "providerId": "88a22775-5ecc-48a8-b5a8-4cdf92373cca",
+      "decision": "rejected",
+      "notes": "First resolved hold enlarged Pipkin and obscured the closed high knot; original preserved for audit."
+    },
+    {
+      "reference": "b09-pipkin-at-knot",
+      "providerId": null,
+      "decision": "rejected-no-export",
+      "notes": "Scale repair stopped Pipkin halfway along the route instead of at the canopy endpoint; no provider original was exported."
+    },
+    {
+      "reference": "b09-pipkin-at-knot",
+      "providerId": "1efe8d13-1f36-4222-b04c-701391cadd71",
+      "decision": "approved-derived",
+      "notes": "Coordinate correction placed one source-scale Pipkin at the upper-canopy endpoint while keeping the full knot and original start clear."
+    },
+    {
+      "reference": "b10-knot-opens",
+      "providerId": "8f8a2d36-d7c8-4e5b-b851-50dfa34d035c",
+      "decision": "rejected",
+      "notes": "First endpoint still showed the dusty-blue ribbon wrapped and bunched around the branch; original preserved for audit."
+    },
+    {
+      "reference": "b10-knot-opens",
+      "providerId": "8464caec-5aac-4631-9d0a-a117d38acfd1",
+      "decision": "approved-derived",
+      "notes": "Targeted repair removed the final encircling bundle, kept three free silent bells, and dissolved the completed guide route."
     }
   ],
   "rejections": [
@@ -297,5 +372,5 @@
       "reason": "All ribbons were bundled together, eliminating the authored one-high-knot interaction."
     }
   ],
-  "notes": "Canonical references and the first six keyframe mappings passed full-frame QA on 2026-07-16. Provider originals are preserved; delivery PNGs use exact-white border-connected matte normalization. The selected 77.089-second narration master now governs motion duration. Continue with the matched hero-handoff keyframes; do not animate an action until its start/end states pass."
+  "notes": "Canonical references and the first nine keyframe mappings passed full-frame QA on 2026-07-16. Provider originals are preserved; delivery PNGs use exact-white border-connected matte normalization. The selected 77.089-second narration master now governs motion duration. Continue with the restoration chain; do not animate an action until its start/end states pass."
 }
