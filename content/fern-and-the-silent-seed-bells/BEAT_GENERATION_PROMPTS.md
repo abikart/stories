@@ -1,6 +1,6 @@
 # Beat keyframe generation prompts
 
-Status: first visual anchor batch approved on 2026-07-16.
+Status: first visual anchor and early-state batches approved on 2026-07-16.
 
 Use `$create-lanternleaf-scenes`. Provider IDs, hashes, paths, acceptance
 decisions, and rejected variants live in `visual-production.json`.
@@ -77,6 +77,46 @@ upright with the dusty-teal satchel; Pipkin retains exactly four wings; the
 three ribbons remain dry, separate, fully open, and knot-free.
 ```
 
+## b02 — village-waking
+
+Input: approved `bell-tree-dawn`. This is the settled end keyframe for the
+single waking action; later motion begins from b01 and ends here.
+
+```text
+Create the NEXT matched story keyframe from the attached approved bell-tree-
+dawn image. Use case: illustration-story. Asset type: native 4:3 children's
+story keyframe for ages 5–7.
+Story beat: The bright seed-bell chime has just woken the remembered village.
+Show one continuous response settled at its end: the same rounded cottage
+shutters are now open and one small warm oven vent gives one soft pale puff.
+Fern and Pipkin remain beneath the tree, looking toward the newly awake
+cottages with familiar quiet delight.
+Reference role: The attached approved bell-tree-dawn image controls the exact
+native 4:3 camera, old bell tree, two root cottages, paths, tools, plants, three
+canonical bell shapes and colors, dry orderly ribbons, Fern and Pipkin identity,
+character scale and placement, watercolor language, organic edge, and pure-
+white matte. Change only the authored village response and the friends' gaze.
+Continuity now: bells=ringing-memory; ribbons=orderly-memory, dry, separate,
+fully open and knot-free; Fern=present upright with unchanged dusty-teal
+satchel; Pipkin=beside-fern with exactly four warm-gold wings;
+location=village-memory. The rain has not happened. No ribbons tangle.
+Required composition: Preserve the complete 4:3 composition and every bell
+inside the frame. Make at least two open round shutters and the single gentle
+oven puff readable at thumbnail size without turning the scene into a close-up.
+Keep the three seed bells visible overhead as the cause of the response.
+Medium: Hand-painted hybrid ink and watercolor on solid pure-white #FFFFFF,
+broad calm translucent washes, restrained pooling, locally color-matched fluid
+contours, pale dissolving distance, and irregular organic breathing space.
+Must preserve: exactly one Fern, one Pipkin, exactly four Pipkin wings, Fern's
+satchel, exactly three complete canonical bells, dry open knot-free ribbons,
+same dawn, same village geometry, and no new denizens.
+Avoid: closed shutters, more than one oven puff, heavy smoke, fire, rain,
+droplets, wet surfaces, tangled ribbon, any knot, wind gust, extra/missing or
+cropped bells, extra characters or wings, changed anatomy or satchel, drawn
+sound, text, grain, beige/gray matte, hard rectangle, universal brown/black
+outlines, vector, 3D, anime, or photorealism.
+```
+
 ## b03 — silent-tree
 
 Input: current approved `bell-tree-dawn` canvas.
@@ -148,6 +188,80 @@ dissolving distance, organic edges. Avoid extra/missing bells, cropped bells,
 straight open ribbons, one giant bundle, extra characters/wings, altered
 satchel, open shutters, smoke, wind, text, grain, beige/gray matte, hard
 rectangle, vector, 3D, anime, or photorealism.
+```
+
+## b05 — lower-knots-loosened
+
+Inputs: approved `tangled-tree` as the camera/start-state authority and approved
+`highest-knot` as the ribbon-topology end-state authority. This is the settled
+end keyframe for the one-time lower/middle release action.
+
+```text
+Fresh matched story keyframe from the two attached APPROVED references. Use
+case: illustration-story. Asset type: native 4:3 children's story keyframe for
+ages 5–7.
+Story beat: Fern has just loosened the low ribbon while Pipkin has just slipped
+the middle ribbon free. Both one-time actions are visibly complete and settled.
+Only the single dusty-blue highest knot still hugs the thorny upper branch; all
+three rain-wet seed bells remain completely silent.
+Reference roles: The approved tangled-tree image controls the exact rain-washed
+bell-tree location, native 4:3 camera, two closed root cottages, all three
+complete bell shapes and colors, Fern/Pipkin identity and scale, watercolor
+language, organic white composition, and the pre-release placement. The
+approved highest-knot image controls ONLY the resulting ribbon topology: the
+berry-pink low ribbon and warm-ochre middle ribbon are fully untied and hang
+free, while exactly one small closed dusty-blue high knot remains among the
+upper thorns. Do not copy a different camera or duplicate characters.
+Characters: Fern stands upright at lower left with the unchanged dusty-teal
+satchel, one paw just released from the free low ribbon. Pipkin hovers beside the
+now-free middle ribbon with exactly four visible warm-gold wings. Their effort
+has settled; both look upward toward the one remaining high knot.
+Continuity now: bells=silent; ribbons=lower-and-middle-free; Fern=present;
+PipkinPosition=working-middle-ribbons; location=bell-tree-present. Shutters stay
+closed; oven vents stay quiet; there is no breeze, chime, silver path, or open
+high knot.
+Required composition: Preserve all three complete bells and both characters
+inside one airy native 4:3 frame. Make the two newly free ribbon paths and the
+one remaining high knot readable at thumbnail size. Keep visible separation
+between the three cords; never bundle them into one bow.
+Medium: Hand-painted hybrid ink and watercolor on solid pure-white #FFFFFF,
+broad calm translucent washes, restrained pooling, locally color-matched fluid
+contours, pale dissolving distance, and organic edges.
+Must preserve: one Fern with satchel, one Pipkin with exactly four wings, three
+complete canonical bells, post-rain wetness, closed cottages, and exactly one
+still-closed dusty-blue high knot.
+Avoid: a second knot; any low or middle tangle; opened high knot; ringing,
+bobbing, wind, dry memory light, open shutters, smoke, missing/cropped/extra
+bells, extra characters or wings, changed anatomy or satchel, one giant ribbon
+bundle, text, paper grain, beige/gray matte, hard rectangle, universal dark
+outlines, vector, 3D, anime, or photorealism.
+```
+
+The first generation omitted every bell. The first targeted repair restored
+the topology but collapsed to the tighter `highest-knot` camera and dropped the
+second cottage. Accepted final single-source edit:
+
+```text
+EDIT the single attached approved tangled-tree keyframe. This is a continuity-
+preserving state edit, NOT a new composition and NOT a reinterpretation.
+
+ABSOLUTE CAMERA LOCK: preserve the exact native 4:3 crop, wide camera, old tree
+silhouette and branch layout, BOTH root cottages, every path/plant/tool, all
+three complete bell positions and sizes, Fern and Pipkin positions/scales/
+identities, pure-white organic matte, post-rain lighting, and watercolor
+handling from the attached image. Do not zoom, crop, pan, simplify, replace, or
+redraw the village. Both cottages must remain fully readable in the same places.
+
+Change ONLY the ribbons to show the settled result after the low and middle
+knots were released: delete the oversized loose blue bow/loop cluster on the
+far upper-left branch; delete every low and middle wrap, bow, and tangle from
+the lower branch; keep exactly ONE small closed dusty-blue practical knot at
+the high upper-right thorny branch; connect it toward the dusty-blue bell; and
+let the berry-pink and warm-ochre ribbons hang free in two separate clean paths.
+Keep all three complete bells still, silent, rain-wet, and unchanged. Fern's
+near paw is just released; Pipkin hovers beside the newly free middle ribbon;
+both look upward. Closed shutters, quiet vents, no breeze, ringing, smoke, or
+silver path. Preserve one Fern with satchel and one Pipkin with four wings.
 ```
 
 ## b06/b07 — highest-knot

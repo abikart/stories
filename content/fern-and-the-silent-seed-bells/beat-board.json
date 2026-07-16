@@ -26,7 +26,7 @@
       "mediaState": "village-waking",
       "tier": "motion-shot",
       "visual": "One continuous morning response: round shutters open and a warm oven vent puffs after the seed bells chime; the sequence settles into an awake village.",
-      "assetStatus": "needs-generation",
+      "assetStatus": "approved-generated",
       "continuity": {
         "bells": "ringing-memory",
         "ribbons": "orderly-memory",
@@ -74,7 +74,7 @@
       "mediaState": "lower-knots-loosened",
       "tier": "motion-shot",
       "visual": "Fern frees the low ribbons while Pipkin slips the middle ribbons loose; both actions happen once and settle with only the highest knot remaining.",
-      "assetStatus": "needs-generation",
+      "assetStatus": "approved-generated",
       "continuity": {
         "bells": "silent",
         "ribbons": "lower-and-middle-free",

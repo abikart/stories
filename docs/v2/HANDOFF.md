@@ -164,8 +164,14 @@ Last updated: 2026-07-16
 - First story-keyframe anchors are integrated for **Fern and the Silent Seed
   Bells**: dry `bell-tree-dawn`, matched rain-washed `silent-tree`, fully visible
   `tangled-tree`, and the canonical `highest-knot` reused for both Fern's limit
-  and Pipkin's offer. These cover five of 15 beat-board entries; ten remain
-  deliberately pending.
+  and Pipkin's offer.
+- The first playable-loop production unit is integrated: `village-waking`
+  preserves the dry memory with readable open shutters and one oven puff;
+  `lower-knots-loosened` preserves the wide tangled-tree camera while freeing
+  the low/middle ribbons and retaining one high knot. Six unique keyframe states
+  now cover seven of 15 beat-board entries; eight remain pending. Both selected
+  Grok originals, the rejected tighter-camera b05 repair, normalized 1600x1200
+  PNGs, exact prompts, IDs, hashes, and decisions are preserved in-package.
 - `docs/v2/09-fern-playable-loop.md` now defines the autonomous route from that
   partial board to a hands-on local alpha: dependency-ordered keyframes, schema-
   v2 motion ingest, 14 native Watch states, story-specific sound, integration,
@@ -190,13 +196,14 @@ Last updated: 2026-07-16
 
 ## Immediate next action
 
-Execute the resumable playable-alpha loop in
-`docs/v2/09-fern-playable-loop.md`. Its first production unit continues
-`$create-lanternleaf-scenes` in continuity order: create the awake-village end
-state for b02, then the lower/middle-release end state for b05. Verify downloaded
-dimensions rather than trusting Grok's ratio description. Continue through the
-documented keyframe, motion, soundscape, integration, and QA batches until the
-local experience is open and ready for owner playtesting.
+Continue the resumable playable-alpha loop in
+`docs/v2/09-fern-playable-loop.md`. The next production unit is the hero
+handoff: create matched `path-traced` (b08), `pipkin-at-knot` (b09), and the
+settled `knot-opening` endpoint (b10), then recalibrate the interaction path and
+regions against the accepted pixels. Verify downloaded dimensions rather than
+trusting Grok's ratio description. Continue through restoration, emotional
+close, motion, soundscape, integration, and QA until the local experience is
+open and ready for owner playtesting.
 
 ## Verification baseline
 

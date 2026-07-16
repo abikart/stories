@@ -44,7 +44,7 @@
         {
           "id": "village-waking",
           "kind": "poster",
-          "src": "scenes/planning-placeholder.svg",
+          "src": "scenes/the-quiet-morning/village-waking.png",
           "transitionsTo": [
             "silent-tree",
             "bell-tree-dawn"
@@ -408,7 +408,7 @@
         {
           "id": "lower-knots-loosened",
           "kind": "poster",
-          "src": "scenes/planning-placeholder.svg",
+          "src": "scenes/the-tangled-ribbons/lower-knots-loosened.png",
           "transitionsTo": [
             "highest-knot",
             "tangled-tree"
