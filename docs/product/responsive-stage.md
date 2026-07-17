@@ -81,6 +81,23 @@ Lanternleaf media floats in the page rather than sitting inside a framed stage:
 Legacy packages may retain explicitly declared compatibility treatment. New
 Lanternleaf packages use the exact solid story matte without runtime treatment.
 
+## Future dark-world compatibility
+
+Lanternleaf remains intentionally light-first; it does not need a cosmetic dark
+mode. The runtime is nevertheless independent of that art direction. A future
+world designed for dark presentation can use the same performance clock,
+responsive stage, interactions, layered renderer, and DOM reading interface by
+declaring a deep solid `stage.backdrop.color` and authoring its keyframes,
+posters, opaque videos, fallbacks, and interface color tokens for that matte.
+
+Transparent actor, prop, foreground, and effect layers can be reused across
+compatible backgrounds. Environment plates should remain art-directed for the
+target world: placing pale light-mode watercolor mechanically over a dark page
+is not an acceptable theme conversion. If one story must switch themes at
+runtime, it will need explicit per-theme plates and opaque fallbacks in addition
+to reusable alpha layers. That is a future schema extension, not a runtime
+architecture change.
+
 ## Coordinate mapping
 
 All anchors, focal points, and interaction regions use normalized coordinates

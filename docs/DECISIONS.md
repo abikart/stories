@@ -19,6 +19,11 @@ gates; do not duplicate routine implementation details.
 - Alpha/layered delivery remains useful for independent motion and interaction,
   but it is not required for an organic scene boundary when the opaque source
   has a genuinely flat, matching matte.
+- Lanternleaf remains light-first, but the architecture is not light-only. A
+  future dark world can declare a deep solid matte and theme-specific plates,
+  fallbacks, and UI tokens while reusing the runtime and compatible alpha
+  layers. Switching one story between themes would require explicit per-theme
+  media; it should not recolor pale watercolor mechanically.
 
 ## 2026-07-16 — The immersive MVP uses compiled alpha over independent plates
 
