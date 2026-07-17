@@ -1,9 +1,9 @@
 {
   "schemaVersion": 1,
   "storyId": "fern-and-the-silent-seed-bells",
-  "status": "in-progress",
+  "status": "complete",
   "expectedStates": 14,
-  "acceptedStates": 10,
+  "acceptedStates": 14,
   "format": {
     "creativeAspectRatio": "4:3",
     "deliveryCodec": "h264",
@@ -339,6 +339,150 @@
     },
     {
       "sceneId": "the-ringing-morning",
+      "mediaState": "breeze-rush",
+      "role": "one-shot",
+      "provider": "grok-imagine",
+      "providerId": "510a13d8-2830-41da-bdfd-536f15a8d780",
+      "providerUrl": "https://grok.com/imagine/agent/local-canvas-28343d27-c1b4-4161-891c-22da5120adb9",
+      "promptRef": "MOTION_GENERATION_PROMPTS.md#breeze-rush--one-shot",
+      "source": "scenes/the-ringing-morning/provider-originals/motion/breeze-rush-510a13d8-2830-41da-bdfd-536f15a8d780.mp4",
+      "sourceSha256": "54d1df018b870fcfd988f587370be4868e727317e6543d346d61314f5c5d203b",
+      "sourceProbe": {
+        "width": 1104,
+        "height": 816,
+        "duration": 6.041667,
+        "frameRate": "24/1",
+        "codec": "h264",
+        "pixelFormat": "yuv420p",
+        "audioStreams": 1
+      },
+      "deliveryTransform": "pure-white vertical pad from 1104x816 to 1104x828; no crop",
+      "delivery": "scenes/the-ringing-morning/breeze-rush.mp4",
+      "deliverySha256": "530aebcf3ad53994bbdd96b687ce8ef631ce91e11f00b9548bb1d7639d232110",
+      "deliveryProbe": {
+        "width": 1104,
+        "height": 828,
+        "duration": 6.041667,
+        "frameRate": "24/1",
+        "codec": "h264",
+        "pixelFormat": "yuv420p",
+        "audioStreams": 0
+      },
+      "poster": "scenes/the-ringing-morning/breeze-rush-motion-poster.png",
+      "posterSha256": "ebd442440690fd9817899d30648fe2eada0b5ddadbc7794d7076e4736fbb7b4a",
+      "posterFrame": "last",
+      "acceptedAt": "2026-07-17T00:42:52.635Z"
+    },
+    {
+      "sceneId": "the-ringing-morning",
+      "mediaState": "seed-bells-ringing",
+      "role": "one-shot",
+      "provider": "grok-imagine",
+      "providerId": "1faf413b-f667-4480-b8ec-b6e95269f77b",
+      "providerUrl": "https://grok.com/imagine/agent/local-canvas-28343d27-c1b4-4161-891c-22da5120adb9",
+      "promptRef": "MOTION_GENERATION_PROMPTS.md#seed-bells-ringing--one-shot",
+      "source": "scenes/the-ringing-morning/provider-originals/motion/seed-bells-ringing-1faf413b-f667-4480-b8ec-b6e95269f77b.mp4",
+      "sourceSha256": "6e866b60eb6a9441114e9d48763b31428c82bdbda50313fa0c265676631ff26c",
+      "sourceProbe": {
+        "width": 1104,
+        "height": 816,
+        "duration": 6.041667,
+        "frameRate": "24/1",
+        "codec": "h264",
+        "pixelFormat": "yuv420p",
+        "audioStreams": 1
+      },
+      "deliveryTransform": "pure-white vertical pad from 1104x816 to 1104x828; no crop",
+      "delivery": "scenes/the-ringing-morning/seed-bells-ringing.mp4",
+      "deliverySha256": "97ba7b2b090530284b3dbde97581abddc86ae50b707c8b40e152ff80e038a65d",
+      "deliveryProbe": {
+        "width": 1104,
+        "height": 828,
+        "duration": 6.041667,
+        "frameRate": "24/1",
+        "codec": "h264",
+        "pixelFormat": "yuv420p",
+        "audioStreams": 0
+      },
+      "poster": "scenes/the-ringing-morning/seed-bells-ringing-motion-poster.png",
+      "posterSha256": "ba3870cbddf8ed396b6c17076275bdefa92bc619b6141cc513737a895012bc77",
+      "posterFrame": "last",
+      "acceptedAt": "2026-07-17T00:48:58.053Z"
+    },
+    {
+      "sceneId": "the-ringing-morning",
+      "mediaState": "forest-waking",
+      "role": "one-shot",
+      "provider": "grok-imagine",
+      "providerId": "5f3b6fa5-326b-4fb6-a84c-398ee3344e41",
+      "providerUrl": "https://grok.com/imagine/agent/local-canvas-28343d27-c1b4-4161-891c-22da5120adb9",
+      "promptRef": "MOTION_GENERATION_PROMPTS.md#forest-waking--one-shot",
+      "source": "scenes/the-ringing-morning/provider-originals/motion/forest-waking-5f3b6fa5-326b-4fb6-a84c-398ee3344e41.mp4",
+      "sourceSha256": "94093fb2790a1d5dbb296a4757e0ca48db9f0c974af2347f83dbb4c1c5a65d4d",
+      "sourceProbe": {
+        "width": 1104,
+        "height": 816,
+        "duration": 6.041667,
+        "frameRate": "24/1",
+        "codec": "h264",
+        "pixelFormat": "yuv420p",
+        "audioStreams": 1
+      },
+      "deliveryTransform": "pure-white vertical pad from 1104x816 to 1104x828; no crop",
+      "delivery": "scenes/the-ringing-morning/forest-waking.mp4",
+      "deliverySha256": "7d5e6e859ed457945e8efc6f5c3a5395ab8d84a519081851c0f2a7c6de103af7",
+      "deliveryProbe": {
+        "width": 1104,
+        "height": 828,
+        "duration": 6.041667,
+        "frameRate": "24/1",
+        "codec": "h264",
+        "pixelFormat": "yuv420p",
+        "audioStreams": 0
+      },
+      "poster": "scenes/the-ringing-morning/forest-waking-motion-poster.png",
+      "posterSha256": "6207ff14f0137cf2e583d03fbd303809efc24276c406a35c9eda03c592e1c3e7",
+      "posterFrame": "last",
+      "acceptedAt": "2026-07-17T00:50:49.075Z"
+    },
+    {
+      "sceneId": "the-ringing-morning",
+      "mediaState": "friends-listen",
+      "role": "living-loop",
+      "provider": "grok-imagine",
+      "providerId": "5e2126c5-7ae9-44ff-bb12-f03d61c0f0e3",
+      "providerUrl": "https://grok.com/imagine/agent/local-canvas-28343d27-c1b4-4161-891c-22da5120adb9",
+      "promptRef": "MOTION_GENERATION_PROMPTS.md#friends-listen--living-loop",
+      "source": "scenes/the-ringing-morning/provider-originals/motion/friends-listen-5e2126c5-7ae9-44ff-bb12-f03d61c0f0e3.mp4",
+      "sourceSha256": "658f5c086b8bc96acda1be6bb453fa22b87bec4b6dc1c16ad2bdfa6d1933d3e9",
+      "sourceProbe": {
+        "width": 1104,
+        "height": 816,
+        "duration": 6.041667,
+        "frameRate": "24/1",
+        "codec": "h264",
+        "pixelFormat": "yuv420p",
+        "audioStreams": 1
+      },
+      "deliveryTransform": "pure-white vertical pad from 1104x816 to 1104x828; no crop",
+      "delivery": "scenes/the-ringing-morning/friends-listen.mp4",
+      "deliverySha256": "098dcf26e92134c0597a1420d027926f08d5ef98e7c9a0cbb65216af301ead2e",
+      "deliveryProbe": {
+        "width": 1104,
+        "height": 828,
+        "duration": 6.041667,
+        "frameRate": "24/1",
+        "codec": "h264",
+        "pixelFormat": "yuv420p",
+        "audioStreams": 0
+      },
+      "poster": "scenes/the-ringing-morning/friends-listen-motion-poster.png",
+      "posterSha256": "23b41eb0d62b8dd5f3398885b87dfc8358c717b8857d2ad186fcc2c7c9a51426",
+      "posterFrame": "first",
+      "acceptedAt": "2026-07-17T00:54:28.934Z"
+    },
+    {
+      "sceneId": "the-ringing-morning",
       "mediaState": "shared-morning",
       "role": "living-loop",
       "provider": "grok-imagine",
@@ -439,6 +583,14 @@
       "sourceSha256": "b1a7f0591734804bb69747abd42f81f408e9c684195881da0bfd549f4ca59a3a",
       "decision": "rejected",
       "reason": "The static-plate repair preserved the open knot but transferred large warm-gold wings onto Fern, an unacceptable character-identity failure."
+    },
+    {
+      "mediaState": "seed-bells-ringing",
+      "providerId": "df3184a6-6fe4-4bcd-b7e1-62125a93ac79",
+      "source": "scenes/the-ringing-morning/provider-originals/motion/rejected-seed-bells-fourth-bell-df3184a6.mp4",
+      "sourceSha256": "a8810c37c3c480552e0dd48c2d676671e26cab39995b1805feaa5e0b2c1c8b42",
+      "decision": "rejected",
+      "reason": "The ordered chime motion created a fourth blue bell during the sequence, breaking the canonical exactly-three bell count."
     }
   ]
 }

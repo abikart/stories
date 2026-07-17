@@ -499,6 +499,30 @@ ribbon, or bell, text, border, background rectangle, digital glow, 3D motion,
 or photorealism. The action reads once as one, two, three.
 ```
 
+The source-led take was rejected because it created a fourth blue bell. Repair
+from accepted `seed-bells-ringing.png`, which already locks the canonical trio:
+
+```text
+Animate this exact native-4:3 watercolor endpoint keyframe as one restrained
+6-second three-note finishing phrase with a completely locked camera. There are
+EXACTLY THREE bells in the accepted first frame—blue on the left, rose in the
+middle, gold on the right—and those same three objects must persist unchanged in
+number, color, size, and attachment. The blue bell makes one tiny bob and stops;
+then the rose bell makes one tiny bob and stops; then the gold bell makes one tiny
+bob and stops. Their existing ribbons follow by only a few pixels. Afterward all
+three return to the accepted gentle-sway pose and hold for the final 1.5 seconds.
+
+Fern and Pipkin remain in place with small delighted expressions. Preserve one
+Fern with dusty-teal satchel, one Pipkin with exactly four visible warm-gold
+wings, the tree, cottage, wet palette, and organic pure-white matte.
+
+ABSOLUTELY NO fourth bell, bell duplication, bell removal, color swap, new
+attachment, frantic swing, loop, reset, shutter, neighbor, camera motion, zoom,
+crop, cut, morphing, extra character, limb, wing, ribbon, or bell, text, number,
+sound symbol, border, background rectangle, digital glow, 3D motion, or
+photorealism. Exactly three bells, one small ordered response each.
+```
+
 ## forest-waking — one shot
 
 Source: accepted `scenes/the-ringing-morning/seed-bells-ringing.png`; accepted
