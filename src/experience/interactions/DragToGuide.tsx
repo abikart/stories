@@ -176,15 +176,15 @@ export function DragToGuide({
       <svg className="drag-guide-path" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
         <path d={path} />
       </svg>
-      <div className="drag-guide-target" aria-hidden="true"><span>Home</span></div>
+      <div className="drag-guide-target" aria-hidden="true"><span>Goal</span></div>
       <p className="drag-guide-prompt" id="drag-guide-instructions">
-        {mode === "interactive" ? binding.prompt : "Glow is finding the way home…"}
+        {mode === "interactive" ? binding.prompt : "The story is following the path…"}
       </p>
       <button
         className="drag-guide-token"
         type="button"
         ref={tokenRef}
-        aria-label="Guide Glow home. Drag toward the Home ring, use arrow keys, or press Enter."
+        aria-label="Guide along the path. Drag toward the Goal ring, use arrow keys, or press Enter."
         aria-describedby="drag-guide-instructions"
         disabled={mode === "canonical" || status === "complete"}
         onPointerDown={pointerDown}
@@ -196,7 +196,7 @@ export function DragToGuide({
         <span aria-hidden="true" />
       </button>
       <output className="drag-guide-status" aria-live="polite">
-        {status === "complete" ? "Glow found Pip." : ""}
+        {status === "complete" ? "Path complete." : ""}
       </output>
     </div>
   );

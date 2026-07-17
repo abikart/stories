@@ -182,6 +182,54 @@ async function main() {
       failures.push(`ending media state was ${endState}; expected ${last.mediaState}`);
     }
 
+    const viewportMatrix = [
+      { width: 390, height: 844 },
+      { width: 430, height: 932 },
+      { width: 768, height: 1024 },
+      { width: 1024, height: 768 },
+      { width: 1440, height: 900 },
+      { width: 1920, height: 1080 },
+    ];
+    for (const viewport of viewportMatrix) {
+      await page.setViewportSize(viewport);
+      await page.goto(`${baseUrl}/experience/${storyId}`, { waitUntil: "networkidle" });
+      const layout = await page.evaluate(() => {
+        const media = document.querySelector(".story-player-media .experience-media")?.getBoundingClientRect();
+        const overlay = document.querySelector(".story-overlay")?.getBoundingClientRect();
+        const shortControls = [...document.querySelectorAll<HTMLElement>(
+          ".story-mode-switch button, .story-start-card button, .story-transport button",
+        )].filter((element) => element.getBoundingClientRect().height < 43.5).map((element) => element.textContent?.trim());
+        return {
+          overflow: document.documentElement.scrollWidth - window.innerWidth,
+          mediaRatio: media ? media.width / media.height : 0,
+          mediaRight: media?.right,
+          mediaBottom: media?.bottom,
+          overlayLeft: overlay?.left,
+          overlayTop: overlay?.top,
+          shortControls,
+        };
+      });
+      const label = `${viewport.width}x${viewport.height}`;
+      if (layout.overflow > 1) failures.push(`${label}: horizontal overflow ${layout.overflow}px`);
+      if (Math.abs(layout.mediaRatio - (4 / 3)) > 0.015) failures.push(`${label}: media ratio was ${layout.mediaRatio.toFixed(3)}, expected complete 4:3 art`);
+      if (layout.shortControls.length) failures.push(`${label}: controls under 44px: ${layout.shortControls.join(", ")}`);
+      if (viewport.width < 600 && (layout.overlayTop ?? 0) < (layout.mediaBottom ?? 0) - 1) {
+        failures.push(`${label}: phone copy did not stack below the illustration`);
+      }
+      if (viewport.width >= 1024 && (layout.overlayLeft ?? 0) < (layout.mediaRight ?? 0) - 1) {
+        failures.push(`${label}: desktop copy did not sit beside the complete illustration`);
+      }
+    }
+
+    await page.emulateMedia({ reducedMotion: "reduce" });
+    await page.setViewportSize({ width: 390, height: 844 });
+    await page.goto(`${baseUrl}/experience/${storyId}`, { waitUntil: "networkidle" });
+    const reducedMotion = await page.locator(".story-overlay-content").evaluate((element) => ({
+      animationDuration: getComputedStyle(element).animationDuration,
+    }));
+    if (reducedMotion.animationDuration !== "0s") failures.push("reduced motion did not remove phrase entry animation");
+    await page.emulateMedia({ reducedMotion: "no-preference" });
+
     const unhandled = await page.evaluate(() => (
       (window as Window & { __experienceUnhandled?: string[] }).__experienceUnhandled ?? []
     ));
@@ -194,7 +242,7 @@ async function main() {
     failures.forEach((failure) => console.error(`✗ ${failure}`));
     process.exitCode = 1;
   } else {
-    console.log(`✓ ${storyId} — soft reading pause, passage list, reverse scrub, and ending playback`);
+    console.log(`✓ ${storyId} — playback, reading pause, reverse scrub, ending, and responsive matrix`);
   }
 }
 

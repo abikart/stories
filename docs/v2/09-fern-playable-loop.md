@@ -9,7 +9,7 @@ loop ends with a complete interactive alpha at
 `/experience/fern-and-the-silent-seed-bells`; deterministic film rendering can
 begin only after the owner has played and reviewed that alpha.
 
-## Starting point
+## Starting point (historical)
 
 - The 77.089-second expressive performance master, forced alignment, 16
   phrases, 17 reading units, nine safe stops, and hero pause are complete.
@@ -36,11 +36,31 @@ asset truth remains in the story manifests.
 | Canonical references | 3/3 complete |
 | Keyframe coverage | 14/14 unique media states; 15/15 beats accepted |
 | Schema-v2 motion ingest | Complete; representative loop and one-shot passed |
-| Native Watch video | 2/14 media states |
-| Silent Seed Bells soundscape | Pending |
-| Strict integration | Pending |
-| Browser and responsive QA | Pending |
-| Owner-ready local handoff | Pending |
+| Native Watch video | 14/14 media states accepted |
+| Silent Seed Bells soundscape | Complete; score, ambience, six effects, preview, provenance |
+| Strict integration | Complete; continuous Watch enabled |
+| Browser and responsive QA | Complete; playback suite and six-size matrix pass |
+| Owner-ready local handoff | Complete; local route left running in Chrome |
+
+## Completion record
+
+Completed 2026-07-16 on `codex/interactive-story-runtime`.
+
+- All 14 media states have accepted muted native video, state-specific fallback
+  posters, and preserved provider/provenance records. Stable beats loop; causal
+  transformations remain one-shots.
+- `soundscape-source.json` now configures the reusable sound generator per
+  story. The 77.089-second mix contains a Lanternleaf morning score, continuous
+  ambience, and aligned ribbon, path, knot, breeze, three-bell, and village cues.
+  The preview measures -15.9 LUFS integrated and -3.3 dB true peak.
+- The generic runtime no longer exposes Pip/Glow-specific entry or interaction
+  copy. Reverse seeks into the opening audio lead restore `bell-tree-dawn`.
+- Desktop presents the complete 4:3 illustration beside the reading panel;
+  phone stacks illustration over copy; tablet preserves the full 4:3 stage.
+- `pnpm qa:experience -- fern-and-the-silent-seed-bells` passes Read-with-me
+  easing, retained passage lists, soundscape behavior, reverse scrub, final
+  playback, reduced motion, and 390×844 through 1920×1080 layouts. Keyboard and
+  real pointer completion both reach `pipkin-at-knot`.
 
 ## Playable-alpha definition of done
 

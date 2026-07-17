@@ -441,7 +441,7 @@ export function ExperiencePlayer({ production }: { production: ExperienceProduct
           {snapshot.time === 0 && !snapshot.playing ? (
             <div className="story-start-card">
               <span>{mode === "watch" ? "Story time" : "Read together"}</span>
-              <p>{mode === "watch" ? "Settle in. Pip's light is about to wake." : "The story will wait after each thought."}</p>
+              <p>{mode === "watch" ? "Settle in. The story is about to begin." : "The story will wait after each thought."}</p>
               <button type="button" onClick={togglePlayback}>
                 Begin story
               </button>
@@ -471,7 +471,7 @@ export function ExperiencePlayer({ production }: { production: ExperienceProduct
             onClick={togglePlayback}
             disabled={requiredInteraction || Boolean(waiting && readingPhase !== "reading")}
           >
-            {requiredInteraction ? "Guide Glow above" : waiting ? "Continue" : snapshot.playing ? "Pause" : snapshot.ended ? "Play again" : "Play"}
+            {requiredInteraction ? "Guide along path" : waiting ? "Continue" : snapshot.playing ? "Pause" : snapshot.ended ? "Play again" : "Play"}
           </button>
           <div className="story-progress">
             <input
@@ -485,7 +485,7 @@ export function ExperiencePlayer({ production }: { production: ExperienceProduct
             />
             <div>
               <span>{formatTime(snapshot.time)}</span>
-              <span>{requiredInteraction ? "help Glow find home" : mode === "read" ? (waiting ? "waiting for you" : "pauses at safe lines") : "continuous story"}</span>
+              <span>{requiredInteraction ? "complete the story action" : mode === "read" ? (waiting ? "waiting for you" : "pauses at safe lines") : "continuous story"}</span>
               <span>{formatTime(performance.duration)}</span>
             </div>
           </div>

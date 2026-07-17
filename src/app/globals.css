@@ -1658,19 +1658,50 @@ html[data-easy-read] .prose-line {
   }
 
   .story-player-stage {
+    display: grid;
+    grid-template-columns: minmax(0, 3fr) minmax(248px, 1fr);
     aspect-ratio: 16 / 9;
+  }
+
+  .story-player-media {
+    position: relative;
+    inset: auto;
+    min-width: 0;
+    height: 100%;
+    aspect-ratio: 4 / 3;
+  }
+
+  .story-player-media .experience-media {
+    border-radius: 26px 0 0 26px;
   }
 
   .story-player-composition {
     min-height: 0;
   }
 
-  .story-overlay[data-kind="narration"] {
-    bottom: 24px;
+  .story-overlay,
+  .story-overlay[data-kind="narration"],
+  .story-overlay[data-kind="dialogue"],
+  .story-player[data-waiting="true"] .story-overlay {
+    position: relative;
+    left: auto;
+    top: auto;
+    bottom: auto;
+    align-self: center;
+    width: auto;
+    max-height: calc(100% - 36px);
+    margin: 18px;
+    overflow-y: auto;
+    transform: none;
   }
 
-  .story-player[data-waiting="true"] .story-overlay {
-    bottom: 24px;
+  .story-overlay[data-kind="dialogue"]::after {
+    display: none;
+  }
+
+  .story-start-card,
+  .story-wait-card {
+    left: 37.5%;
   }
 }
 

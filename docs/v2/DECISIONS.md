@@ -3,6 +3,22 @@
 Newest decisions go first. Record meaningful divergences, tradeoffs, and quality
 gates; do not duplicate routine implementation details.
 
+## 2026-07-16 — Fern alpha keeps sound and responsive composition story-scalable
+
+- Soundscape generation reads `content/<id>/soundscape-source.json` instead of
+  embedding one story's names, duration, prompts, cues, or mix in the script.
+  Performance duration remains authoritative; untouched generations and billed
+  provenance remain beside normalized delivery stems.
+- The reusable player contains no Pip/Glow-specific entry, transport,
+  interaction, accessibility, or completion labels. Story meaning comes from
+  the package prompt; shared controls use neutral path/goal language.
+- Native 4:3 art is never cropped into a desktop 16:9 viewport. Phone stacks
+  art over copy, tablet retains the 4:3 stage, and desktop uses a 3:1 editorial
+  row whose left cell is exactly 4:3 and whose right cell owns the DOM text.
+- QA treats the pre-first-word audio lead as the opening visual, measures the
+  real resume event rather than the next sentence's authored silence, and runs
+  the responsive/reduced-motion matrix as part of the reusable playback gate.
+
 ## 2026-07-16 — Owner-playable Fern alpha precedes the film path
 
 - The next autonomous loop ends at a complete interactive alpha of **Fern and

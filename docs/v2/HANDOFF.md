@@ -132,13 +132,12 @@ Last updated: 2026-07-16
   `content/fern-and-the-silent-seed-bells/`. Its manuscript, directed performance
   plan, native-4:3 production package, 17 reading units, 15-beat board,
   continuity ledger, hero interaction, visual direction, and exact canonical
-  reference prompts are complete. `performance-source.json` exactly matches the
-  16 phrase texts and defines three directed Eleven v3 candidates, but no audio
-  generation has started.
-- The new package passes `pnpm lint:experiences --
-  fern-and-the-silent-seed-bells --allow-pending`. Strict lint intentionally
-  fails on all 15 `needs-generation` story beats; the placeholder remains
-  visibly marked as non-production media.
+  reference prompts are complete. Its selected 77.089-second Eleven v3
+  performance, final alignment, media, and story-specific soundscape are all
+  integrated.
+- The new package passes strict `pnpm lint:experiences --
+  fern-and-the-silent-seed-bells`; every beat is approved and no visible
+  planning placeholder remains.
 - The three dependency-ordered canonical references for **Fern and the Silent
   Seed Bells** are approved: Fern/Pipkin identity, four-state seed-bell sheet,
   and bell-tree interaction geometry. Grok provider originals, accepted
@@ -205,9 +204,19 @@ Last updated: 2026-07-16
   role-correct first/final poster, updates only the named graph state, and keeps
   hashes plus technical provenance in `motion-production.json`.
   `shared-morning` is an accepted restrained living loop; `village-waking` is an
-  accepted settled one-shot after bounded smoke/window retries. Two of 14 native
-  Watch states are integrated. Three rejected waking exports and their exact
-  reasons are preserved.
+  accepted settled one-shot after bounded smoke/window retries. All 14 native
+  Watch states are integrated with role-correct looping and posters. Rejected
+  exports and their exact reasons remain preserved.
+- The owner-playable Fern alpha is complete. `watchMotion: continuous` is on;
+  the story-specific soundscape supplies a sparse morning score, seamless
+  ambience, six restrained aligned effects, untouched sources, cost metadata,
+  normalized stems, and a stereo preview measuring -15.9 LUFS / -3.3 dBTP.
+- Real-browser QA passed continuous Watch, soft Read-with-me waits, retained
+  passage lists, ambience-through-wait, keyboard and pointer hero completion,
+  reverse scrub, final 8.6-second playback, replay, reduced motion, clean
+  unhandled-error capture, and HTTP 206 seeking. The 390×844, 430×932, 768×1024,
+  1024×768, 1440×900, and 1920×1080 layouts preserve complete 4:3 art with 44px
+  controls and no horizontal overflow. Desktop uses the approved art/copy row.
 - `docs/v2/09-fern-playable-loop.md` now defines the autonomous route from that
   partial board to a hands-on local alpha: dependency-ordered keyframes, schema-
   v2 motion ingest, 14 native Watch states, story-specific sound, integration,
@@ -232,14 +241,16 @@ Last updated: 2026-07-16
 
 ## Immediate next action
 
-Continue the resumable playable-alpha loop in
-`docs/v2/09-fern-playable-loop.md`. The next production unit is the restoration
-chain's remaining native motion: produce the other 12 states from their locked
-keyframes, using stable living loops or settled one-shots exactly as classified
-in the playable-loop plan. Ingest each accepted clip through the proven schema-
-v2 path, then enable continuous Watch and continue through soundscape,
-integration, and QA until the local experience is open and ready for owner
-playtesting.
+Owner playtest **Fern and the Silent Seed Bells** at
+`http://localhost:3000/experience/fern-and-the-silent-seed-bells`.
+
+1. Watch once without scrubbing; note any sentence/visual or emotional sound
+   mismatch.
+2. Replay in Read-with-me; linger at a pause to judge the living ambience, then
+   complete the silver-path interaction by dragging Pipkin or pressing Enter.
+3. Try one phone-sized window and one desktop window; judge the stacked and
+   side-by-side reading experiences.
+4. Record creative revisions before beginning M7 deterministic film rendering.
 
 ## Verification baseline
 
