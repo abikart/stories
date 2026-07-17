@@ -32,5 +32,16 @@ pnpm build
 pnpm qa:experience -- fern-and-the-silent-seed-bells
 ```
 
+Native-alpha delivery layers are reproducibly derived from approved white-matte
+motion masters with:
+
+```bash
+pnpm derive:alpha -- --help
+```
+
+The compiler streams frames through memory and records its parameters and
+checksums in the story package; it does not create a second archive of source
+media.
+
 The successful pre-MVP POC is preserved by the local `poc-success` tag. Git
 history, not a parallel archive directory, holds retired POC code and media.

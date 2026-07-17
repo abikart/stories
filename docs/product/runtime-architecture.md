@@ -52,6 +52,34 @@ The runtime owns:
 
 A story only names states, assets, and legal transitions.
 
+## Layered scene composition
+
+A media state may retain its flattened video or declare one provider-neutral
+composition:
+
+```text
+opaque plate
+  + ordered native/packed-alpha motion layers
+  + optional effect and foreground layers
+  + accessible DOM story UI
+```
+
+Each layer carries normalized geometry, z-order, fit, opacity, blend mode,
+delivery renditions, and an opaque fallback. The runtime prefers native-alpha
+WebM when the browser accepts it and otherwise keeps the approved poster and
+H.264 rendition. Generation-provider names and project IDs belong only in
+production provenance.
+
+The deck owns two composition slots: current and likely-next. A transition loads
+the standby slot, bridges with its poster until the first frame is ready,
+crossfades once, then unmounts the superseded slot. Hidden video is paused and a
+new semantic request cancels any older in-flight settlement. This keeps resource
+ownership bounded while preserving reverse-seek correctness.
+
+Reduced motion keeps narration and semantic progression intact but pauses
+nonessential visual motion. Pointer depth remains cosmetic and is never required
+to understand or complete an interaction.
+
 ## Responsive stage
 
 `ResponsiveStage` owns the 4:3 master coordinate system, responsive editorial
@@ -107,7 +135,8 @@ ffmpeg pipeline may be adapted after the browser route is authoritative.
 
 ## Failure behavior
 
-- Failed video: retain poster and allow story progression.
+- Failed native-alpha video: use the state's opaque delivery rendition; retain
+  its poster if video also fails, and allow story progression.
 - Delayed next state: remain in current loop/poster; never show black.
 - Failed music/effect stem: continue with narration.
 - Failed alignment: allow Watch mode but fail Read-with-me validation.

@@ -3,6 +3,26 @@
 Newest decisions go first. Record meaningful divergences, tradeoffs, and quality
 gates; do not duplicate routine implementation details.
 
+## 2026-07-16 — The immersive MVP uses compiled alpha over independent plates
+
+- Eight approved Fern motion masters now have native VP9-alpha deliveries over
+  their matching independent plates: three opening states, three silver-path
+  interaction states, and two closing states. Other beats retain the successful
+  flattened presentation.
+- A connected-border neutral matte removes only near-white pixels reachable
+  from the frame edge. This preserves interior highlights better than a global
+  luma key and gives the watercolor art a genuinely organic page boundary.
+- The runtime contract is rendition- and provider-neutral. It prefers native
+  alpha, keeps the accepted H.264/poster fallback, and owns only current and
+  likely-next compositions. Reduced motion pauses decorative layers without
+  pausing narration or semantic progression.
+- Existing approved Grok media was sufficient, so this run created no new cloud
+  generation and incurred no provider dependency. Seedance remains a later
+  controlled comparison on the silver-path hero beat, gated on a measurable
+  gain in continuity, alpha readiness, interaction states, or production labor.
+- The active checkout is about 103 MB across 139 files, below the 140 MB gate;
+  Git tag `poc-success` remains the complete pre-cleanup archive.
+
 ## 2026-07-16 — The active tree contains one product architecture
 
 - The approved POC is frozen at local tag `poc-success`; the MVP continues on

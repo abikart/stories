@@ -74,6 +74,31 @@ Pure text-to-video generation is acceptable for exploration, not continuity-
 critical final states. Image-to-video or controlled compositing should be the
 default for recurring characters.
 
+## Layer delivery workflow
+
+The MVP accepts an approved white-matte motion master as creative source and
+compiles a transparent delivery rendition with
+`scripts/derive-connected-alpha.py`. For every frame, the compiler identifies
+only near-neutral pixels connected to the frame boundary, feathers that matte,
+and encodes VP9 alpha. Interior whites such as eyes, ribbons, and highlights are
+therefore retained. It streams raw frames through memory rather than writing a
+frame sequence to disk.
+
+Every derived layer must retain:
+
+- the accepted opaque H.264 master and poster as fallbacks;
+- compiler parameters and input/output SHA-256 hashes in
+  `layer-production.json`;
+- a full-frame and alpha-mask inspection for halos, dirty matte, and rectangular
+  remnants; and
+- a browser check that the alpha rendition is selected and moving over an
+  independently rendered plate.
+
+This is a delivery operation, not a license to repair continuity during ingest.
+If a matte cannot be separated cleanly, reject the layer or create a deliberate
+mask/packed-alpha source. Provider originals and rejected candidates remain in
+provider history or Git history after compact provenance has been recorded.
+
 For this repository, `$author-story-film` packages the resumable workflow. The
 runtime contract and validators remain authoritative; the skill tells a fresh
 session which artifacts to update and which acceptance gates must pass.

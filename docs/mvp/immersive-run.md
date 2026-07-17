@@ -1,5 +1,9 @@
 # MVP immersive-experience run
 
+Status: completed locally on 2026-07-16. The frozen POC is at `poc-success` and
+the owner-playable result is on `codex/mvp-immersive-runtime`. See
+`docs/HANDOFF.md` for the playtest checklist and validation record.
+
 This is the autonomous execution contract for moving stories.sh from the
 successful Fern proof of concept to the first maintainable MVP architecture.
 The run has two inseparable outcomes:
