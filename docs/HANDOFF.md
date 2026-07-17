@@ -7,9 +7,9 @@ Last updated: 2026-07-17
 - Branch: `codex/mvp-immersive-runtime`
 - Preserved baseline: annotated local tag `poc-success`
 - Completed MVP contract: `docs/mvp/immersive-run.md`
-- Next feature contract and goal prompt: `docs/mvp/liquid-glass-run.md`
+- Completed liquid-glass contract: `docs/mvp/liquid-glass-run.md`
 - Product index: `docs/README.md`
-- Decision log: `docs/DECISIONS.md`
+- Decision log: `docs/decisions.md`
 
 ## Current state
 
@@ -35,11 +35,11 @@ Last updated: 2026-07-17
   currently use `top-left`; narrated lines have no visible label, Fern/Pipkin
   speech uses canonical watercolor portraits, and constrained layouts dock the
   same copy safely.
-- Title, dialogue, mode, start, and transport surfaces now share the documented
-  Stories fallback glass material. The Watch/Read toggle has a moving CSS lens,
-  but this implementation does not refract pixels. Owner review approved the
-  real WebGL refraction system as the next run; its contract and terminal gates
-  are in `docs/mvp/liquid-glass-run.md`.
+- Title, dialogue, mode, start/continue, and transport/replay now register with
+  one stage-level WebGL2 renderer. It visibly refracts the active layered story
+  media while text, portraits, focus, and controls remain semantic DOM above it.
+  The documented CSS glass material remains the automatic compatibility and
+  context-loss fallback.
 
 ## Liquid-glass run progress
 
@@ -111,38 +111,55 @@ Last updated: 2026-07-17
   worked, playback advanced to 9.3s, and Read-with-me reached a two-line Continue
   wait. `docs/evidence/liquid-glass/checkpoint-6-safari-playback.png` preserves
   the native-browser frame.
-- Earliest remaining gate: checkpoint 7, full release validation, final evidence,
-  architecture/handoff closure, clean checkout, and owner server handoff.
-- The active checkout is 139 files / 103,098,739 bytes. Fern is 84 files /
-  78,864,822 bytes, including eight alpha videos totaling 10,771,186 bytes.
+- Checkpoint 7 is complete. `pnpm evidence:glass` captures the final WebGL
+  fixture, live Fern renderer, and forced-CSS baseline; the indexed release set
+  is in `docs/evidence/liquid-glass/README.md`. Production build, both optical
+  browser engines, full Fern playback, responsive QA, and native Safari
+  inspection are green. The owner playtest server is left at the target route.
+- The active checkout is 166 files / 109,605,016 bytes. Fern is 86 files /
+  79,499,645 bytes, including eight alpha videos totaling 10,771,186 bytes.
 
 ## Owner playtest
 
 Open <http://localhost:3000/experience/fern-and-the-silent-seed-bells>, then:
 
-1. In Watch, play from the beginning and notice the moving watercolor edge has
-   no rectangular video boundary.
-2. Let the story reach the silver path; confirm the guide interaction changes
+1. Before playback, compare the title, mode, start, and transport lenses. The
+   mode lens should stay evident on white without a stage-sized wash.
+2. In Watch, play from the beginning. Lines and watercolor edges crossing the
+   dialogue and control rims should visibly bend, with restrained color
+   separation, while every word remains sharp.
+3. Let the story reach the silver path; confirm the guide interaction changes
    the layered visual state and Watch completes the same action automatically.
-3. Switch to Read-with-me, complete one child passage, and feel the soft
+4. Switch to Read-with-me, complete one child passage, and feel the soft
    ambience/visual wait and resume.
-4. Resize to phone portrait and desktop landscape. Confirm the whole 4:3 art,
+5. Resize to phone portrait and desktop landscape. Confirm the whole 4:3 art,
    dialogue, and controls remain usable without horizontal scrolling.
-5. Replay the ending and drag the hidden test seek control only through the QA
+6. Replay the ending and drag the hidden test seek control only through the QA
    harness if reverse-settlement behavior needs inspection.
 
-Subjective approval should focus on alpha-edge cleanliness, whether the plate
-and motion feel like one illustration, transition softness, and whether the
-silver-path action feels meaningfully more immersive than the flattened beats.
+Subjective approval should focus on whether the displacement is clear but calm,
+the shape-aware rim avoids a neon look, the white-matte targets feel lens-only,
+and the existing alpha compositions still read as one illustration.
 
 ## Validation record
 
+- `pnpm test:glass` — pass; 5 tests covering neutral outside pixels, signed
+  displacement, exact four-fold symmetry, all lens shapes, cache reuse, and
+  map-affecting regeneration
 - `pnpm typecheck` — pass
 - `pnpm lint:experiences` — pass; 55 referenced assets
 - `pnpm build` — pass
+- `pnpm qa:glass --browser=chromium` — pass; 369 objectively displaced grid
+  samples and 6,504 live Fern transport pixels with exactly 2 existing videos
+- `pnpm qa:glass --browser=webkit` — pass; 363 objectively displaced grid
+  samples and 6,504 live Fern transport pixels with exactly 2 existing videos
 - `pnpm qa:experience -- fern-and-the-silent-seed-bells` — pass: Watch,
   Read-with-me, hero completion, reverse scrub, ending, reduced motion, and six
   responsive presets
+- `pnpm evidence:glass` — pass; final fixture, live WebGL Fern, and forced-CSS
+  fallback frames captured and visually inspected
+- Native macOS Safari — pass; WebGL fixture, semantic control tree, mode travel,
+  Watch progression, and a two-line Read-with-me Continue wait inspected
 - Native-alpha files — eight VP9 WebMs with `ALPHA_MODE=1`; representative
   composite and mask inspected against a contrasting plate
 - Browser console — no page error or unhandled rejection during forward state

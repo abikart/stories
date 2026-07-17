@@ -1,8 +1,12 @@
 # Liquid glass feature run
 
-Status: approved next major run
+Status: complete — 2026-07-17
 
 Owner playtest target: `/experience/fern-and-the-silent-seed-bells`
+
+Release proof and the before/after index are preserved in
+[`docs/evidence/liquid-glass`](../evidence/liquid-glass/README.md). The terminal
+validation record is in [`docs/HANDOFF.md`](../HANDOFF.md).
 
 ## Outcome
 
