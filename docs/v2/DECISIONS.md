@@ -3,6 +3,34 @@
 Newest decisions go first. Record meaningful divergences, tradeoffs, and quality
 gates; do not duplicate routine implementation details.
 
+## 2026-07-16 — The successful POC graduates into a layered immersive MVP
+
+- The Fern POC has proved expressive performance, sentence-level synchronization,
+  Read-with-me pacing, continuity, interaction, sound, responsive composition,
+  and robust seeking. The next run may retire V1 and Pip regression surfaces
+  rather than preserving two product architectures indefinitely.
+- Git history is the archive for removed POC code, documents, content, provider
+  originals, and rejected binaries. The active repository should contain the
+  current runtime, one active story, compact provenance, universe references,
+  live documentation, and project skills—not an `archive/` mirror.
+- The MVP visual unit is a layered scene composition: independent plate,
+  state-shaped alpha motion, optional effect/foreground, and accessible DOM UI.
+  The performance clock and semantic story contracts remain authoritative.
+- Native alpha video is the first delivery proof. Existing opaque media remains
+  a fallback and may continue on unconverted beats. Packed alpha/Aval is a
+  bounded later experiment, not a prerequisite for the MVP slice.
+- The first slice must prove three different moments—establishing, hero
+  interaction, and resolution—inside the complete Fern experience. At least one
+  moment must use real moving transparency over an independent plate.
+- Grok remains the available generation provider, but the MVP can derive alpha
+  from approved existing media and must not depend on new cloud output. Runtime
+  schema and code stay provider-neutral. Seedance is evaluated later on the same
+  hero beat only if it measurably improves accepted quality or production labor.
+- `10-mvp-immersive-run.md` is the autonomous execution contract and owner-facing
+  goal prompt. Its terminal condition includes repository cleanup, layered
+  playback, three immersive moments, resource bounds, strict QA, and a local
+  playtest handoff; it explicitly excludes film rendering and Story Studio.
+
 ## 2026-07-16 — The story player is a scene canvas, not a video-player frame
 
 - The native 4:3 media remains complete and uncropped, but its exact-white matte

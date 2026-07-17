@@ -26,7 +26,10 @@ page-normalized scrub timeline is not the foundation for v2.
    result is incorporated into the responsive-stage contract.
 9. [Fern playable loop](09-fern-playable-loop.md) — resumable autonomous
    production plan and terminal gates for the replacement Lanternleaf POC.
-10. [Session handoff](HANDOFF.md) — current branch, completed work, known facts,
+10. [MVP immersive run](10-mvp-immersive-run.md) — repository retirement,
+    layered-scene architecture, alpha-motion proof, Grok production boundary,
+    Seedance gate, and the next autonomous goal prompt.
+11. [Session handoff](HANDOFF.md) — current branch, completed work, known facts,
     and the exact next action. Update it at the end of every substantial session.
 
 ## Decision hierarchy

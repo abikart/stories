@@ -233,6 +233,15 @@ Last updated: 2026-07-16
   One otherwise viable tangle candidate was rejected because its downloaded
   file was 1264×1568 portrait despite the UI claiming native 4:3. Exact prompts,
   IDs, hashes, decisions, and originals are preserved beside the package.
+- The POC is now owner-approved as a foundation. The next major run is the MVP
+  immersive slice, not M7 film rendering. `10-mvp-immersive-run.md` defines the
+  repository cleanup, layered scene contract, connected-matte alpha proof,
+  three required Fern moments, bounded Grok use, provider-neutral Seedance gate,
+  terminal conditions, blocker policy, and overnight goal prompt.
+- The cleanup inventory found 962 tracked files and about 257 MB in the active
+  checkout. Roughly 99 MB is superseded V1/Pip content, 60 MB is duplicated
+  provider-original media, and 24 MB is rejected output. The MVP plan uses Git
+  history as the archive and targets an active tracked tree below 140 MB.
 
 ## Fixed decisions
 
@@ -246,16 +255,11 @@ Last updated: 2026-07-16
 
 ## Immediate next action
 
-Owner playtest **Fern and the Silent Seed Bells** at
-`http://localhost:3000/experience/fern-and-the-silent-seed-bells`.
-
-1. Watch once without scrubbing; note any sentence/visual or emotional sound
-   mismatch.
-2. Replay in Read-with-me; linger at a pause to judge the living ambience, then
-   complete the silver-path interaction by dragging Pipkin or pressing Enter.
-3. Try one phone-sized window and one desktop window; judge the stacked and
-   floating-canvas reading experiences.
-4. Record creative revisions before beginning M7 deterministic film rendering.
+Set the goal prompt in `docs/v2/10-mvp-immersive-run.md`. The run starts by
+tagging the successful POC locally, creating `codex/mvp-immersive-runtime`, and
+validating the baseline before any deletion. It then retires deprecated V1/Pip
+surfaces and produces the owner-playable layered Fern slice. Do not begin M7 or
+request Seedance access during this run.
 
 ## Verification baseline
 
