@@ -68,7 +68,12 @@ At each safe stop:
 
 ## Generation and acceptance
 
-Before generation, approve the beat's visual intent, continuity snapshot, duration, motion tier, start state, and end state. Generate 2–3 candidates when selection matters. Preserve provider, project/agent URL, prompt, source ID, selected output, rejection reason, and local path.
+Before generation, approve the beat's visual intent, continuity snapshot,
+duration, motion tier, start state, and end state. Generate 2–3 candidates when
+selection matters. Retain compact provider, project/agent URL, prompt, source
+ID, selected output, hashes, and rejection reasons. Keep accepted delivery
+assets active; archive redundant provider originals and rejected binaries in
+the run baseline after acceptance.
 
 For video, inspect at least start, midpoint, and final frames. Reject camera drift, redesign, premature transformation, duplicated action, missing travel, text, malformed anatomy, or an unusable final hold.
 

@@ -4,6 +4,10 @@
   "status": "keyframes-complete",
   "provider": "grok-imagine",
   "project": "stories.sh",
+  "binaryArchive": {
+    "tag": "poc-success",
+    "policy": "Provider originals and rejected binaries are retained in Git history, not the active tree. Historical paths, provider IDs, prompts, hashes, decisions, and rejection reasons below remain the compact provenance index."
+  },
   "format": {
     "creativeAspectRatio": "4:3",
     "targetKeyframe": "1536x1152-or-provider-equivalent",

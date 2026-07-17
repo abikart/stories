@@ -40,9 +40,10 @@ subtle intention and placement rather than caricature voices.
 
 ## Production result
 
-- Five whole-story sources were preserved in `audio/candidates/`: the planned
-  George natural, George creative, and Bella natural takes, plus two bounded
-  pacing experiments after every initial take missed the 74–82 second window.
+- Five whole-story candidates are indexed in `audio/candidates/manifest.json`.
+  The selected untouched George source remains active; four rejected binaries
+  are retained at Git tag `poc-success` after every initial take missed the
+  74–82 second window.
 - `george-natural-a` is the editorial source winner. It had the strongest
   established series-voice fit, natural pause range, and dynamic variation.
 - Eleven v3 accepted a `speed: 0.8` experiment but rendered it shorter; observed

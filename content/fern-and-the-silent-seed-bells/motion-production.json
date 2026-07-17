@@ -4,6 +4,10 @@
   "status": "complete",
   "expectedStates": 14,
   "acceptedStates": 14,
+  "binaryArchive": {
+    "tag": "poc-success",
+    "policy": "Source and rejected provider videos are retained in Git history. The active tree keeps accepted muted deliveries and posters; historical source paths and hashes below identify every archived binary."
+  },
   "format": {
     "creativeAspectRatio": "4:3",
     "deliveryCodec": "h264",
