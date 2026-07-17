@@ -107,6 +107,7 @@ export const MediaDeck = forwardRef<MediaDeckHandle, {
   const currentRef = useRef(graph.initial.id);
   const activeSlotRef = useRef(0);
   const playingRef = useRef(true);
+  const reducedMotionRef = useRef(false);
   const pendingRef = useRef<PendingTransition | null>(null);
   const transitionToken = useRef(0);
   const canonicalToken = useRef(0);
@@ -124,7 +125,7 @@ export const MediaDeck = forwardRef<MediaDeckHandle, {
     if (pendingRef.current?.token !== pending.token) return;
     const incoming = [...videoRefs.current[pending.slot].values()];
     incoming.forEach((video) => { video.currentTime = 0; });
-    if (playingRef.current) {
+    if (playingRef.current && !reducedMotionRef.current) {
       incoming.forEach((video) => { void video.play().catch(() => undefined); });
     }
     setEnteringSlot(pending.slot);
@@ -246,7 +247,7 @@ export const MediaDeck = forwardRef<MediaDeckHandle, {
   const setPlaying = useCallback(async (playing: boolean) => {
     playingRef.current = playing;
     const relevant = enteringSlot === null ? [activeSlotRef.current] : [activeSlotRef.current, enteringSlot];
-    if (playing) {
+    if (playing && !reducedMotionRef.current) {
       await Promise.all(relevant.flatMap((slot) =>
         [...videoRefs.current[slot].values()].map((video) => video.play().catch(() => undefined)),
       ));
@@ -298,6 +299,23 @@ export const MediaDeck = forwardRef<MediaDeckHandle, {
     canonicalToken.current += 1;
     pendingRef.current?.resolve(false);
   }, []);
+
+  useEffect(() => {
+    const query = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const reconcile = () => {
+      reducedMotionRef.current = query.matches;
+      const relevant = enteringSlot === null
+        ? [activeSlotRef.current]
+        : [activeSlotRef.current, enteringSlot];
+      relevant.forEach((slot) => videoRefs.current[slot].forEach((video) => {
+        if (query.matches || !playingRef.current) video.pause();
+        else void video.play().catch(() => undefined);
+      }));
+    };
+    reconcile();
+    query.addEventListener("change", reconcile);
+    return () => query.removeEventListener("change", reconcile);
+  }, [enteringSlot]);
 
   function handleError(slot: number, stateId: string) {
     const pending = pendingRef.current;

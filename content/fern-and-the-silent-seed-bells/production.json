@@ -33,7 +33,8 @@
     "coverage": "reading-unit",
     "watchMotion": "continuous",
     "beatBoard": "beat-board.json",
-    "continuityLedger": "continuity.json"
+    "continuityLedger": "continuity.json",
+    "layerManifest": "layer-production.json"
   },
   "scenes": [
     {
@@ -45,6 +46,18 @@
           "src": "scenes/the-quiet-morning/bell-tree-dawn.mp4",
           "poster": "scenes/the-quiet-morning/bell-tree-dawn-motion-poster.png",
           "loop": true,
+          "composition": {
+            "plate": { "kind": "image", "src": "scenes/the-quiet-morning/bell-tree-dawn.png", "fit": "contain" },
+            "layers": [{
+              "id": "watercolor-motion",
+              "role": "motion",
+              "kind": "video",
+              "renditions": [{ "src": "scenes/the-quiet-morning/layers/bell-tree-dawn-alpha.webm", "mimeType": "video/webm; codecs=vp9", "codec": "vp9", "alpha": "native" }],
+              "fallback": { "src": "scenes/the-quiet-morning/bell-tree-dawn.mp4", "mimeType": "video/mp4", "codec": "h264", "alpha": "none" },
+              "loop": true,
+              "fit": "contain"
+            }]
+          },
           "transitionsTo": [
             "village-waking"
           ]
@@ -55,6 +68,18 @@
           "src": "scenes/the-quiet-morning/village-waking.mp4",
           "poster": "scenes/the-quiet-morning/village-waking-motion-poster.png",
           "loop": false,
+          "composition": {
+            "plate": { "kind": "image", "src": "scenes/the-quiet-morning/village-waking.png", "fit": "contain" },
+            "layers": [{
+              "id": "watercolor-motion",
+              "role": "motion",
+              "kind": "video",
+              "renditions": [{ "src": "scenes/the-quiet-morning/layers/village-waking-alpha.webm", "mimeType": "video/webm; codecs=vp9", "codec": "vp9", "alpha": "native" }],
+              "fallback": { "src": "scenes/the-quiet-morning/village-waking.mp4", "mimeType": "video/mp4", "codec": "h264", "alpha": "none" },
+              "loop": false,
+              "fit": "contain"
+            }]
+          },
           "transitionsTo": [
             "silent-tree",
             "bell-tree-dawn"
@@ -66,6 +91,18 @@
           "src": "scenes/the-quiet-morning/silent-tree.mp4",
           "poster": "scenes/the-quiet-morning/silent-tree-motion-poster.png",
           "loop": true,
+          "composition": {
+            "plate": { "kind": "image", "src": "scenes/the-quiet-morning/silent-tree.png", "fit": "contain" },
+            "layers": [{
+              "id": "watercolor-motion",
+              "role": "motion",
+              "kind": "video",
+              "renditions": [{ "src": "scenes/the-quiet-morning/layers/silent-tree-alpha.webm", "mimeType": "video/webm; codecs=vp9", "codec": "vp9", "alpha": "native" }],
+              "fallback": { "src": "scenes/the-quiet-morning/silent-tree.mp4", "mimeType": "video/mp4", "codec": "h264", "alpha": "none" },
+              "loop": true,
+              "fit": "contain"
+            }]
+          },
           "transitionsTo": [
             "village-waking"
           ]
@@ -1026,6 +1063,18 @@
           "src": "scenes/the-silver-path/path-traced.mp4",
           "poster": "scenes/the-silver-path/path-traced-motion-poster.png",
           "loop": true,
+          "composition": {
+            "plate": { "kind": "image", "src": "scenes/the-silver-path/path-traced.png", "fit": "contain" },
+            "layers": [{
+              "id": "watercolor-motion",
+              "role": "motion",
+              "kind": "video",
+              "renditions": [{ "src": "scenes/the-silver-path/layers/path-traced-alpha.webm", "mimeType": "video/webm; codecs=vp9", "codec": "vp9", "alpha": "native" }],
+              "fallback": { "src": "scenes/the-silver-path/path-traced.mp4", "mimeType": "video/mp4", "codec": "h264", "alpha": "none" },
+              "loop": true,
+              "fit": "contain"
+            }]
+          },
           "transitionsTo": [
             "pipkin-at-knot"
           ]
@@ -1036,6 +1085,18 @@
           "src": "scenes/the-silver-path/pipkin-at-knot.mp4",
           "poster": "scenes/the-silver-path/pipkin-at-knot-motion-poster.png",
           "loop": true,
+          "composition": {
+            "plate": { "kind": "image", "src": "scenes/the-silver-path/pipkin-at-knot.png", "fit": "contain" },
+            "layers": [{
+              "id": "watercolor-motion",
+              "role": "motion",
+              "kind": "video",
+              "renditions": [{ "src": "scenes/the-silver-path/layers/pipkin-at-knot-alpha.webm", "mimeType": "video/webm; codecs=vp9", "codec": "vp9", "alpha": "native" }],
+              "fallback": { "src": "scenes/the-silver-path/pipkin-at-knot.mp4", "mimeType": "video/mp4", "codec": "h264", "alpha": "none" },
+              "loop": true,
+              "fit": "contain"
+            }]
+          },
           "transitionsTo": [
             "knot-opening",
             "path-traced"
@@ -1047,6 +1108,18 @@
           "src": "scenes/the-silver-path/knot-opening.mp4",
           "poster": "scenes/the-silver-path/knot-opening-motion-poster.png",
           "loop": false,
+          "composition": {
+            "plate": { "kind": "image", "src": "scenes/the-silver-path/knot-opening.png", "fit": "contain" },
+            "layers": [{
+              "id": "watercolor-motion",
+              "role": "motion",
+              "kind": "video",
+              "renditions": [{ "src": "scenes/the-silver-path/layers/knot-opening-alpha.webm", "mimeType": "video/webm; codecs=vp9", "codec": "vp9", "alpha": "native" }],
+              "fallback": { "src": "scenes/the-silver-path/knot-opening.mp4", "mimeType": "video/mp4", "codec": "h264", "alpha": "none" },
+              "loop": false,
+              "fit": "contain"
+            }]
+          },
           "transitionsTo": [
             "pipkin-at-knot"
           ]
@@ -1443,6 +1516,18 @@
           "src": "scenes/the-ringing-morning/friends-listen.mp4",
           "poster": "scenes/the-ringing-morning/friends-listen-motion-poster.png",
           "loop": true,
+          "composition": {
+            "plate": { "kind": "image", "src": "scenes/the-ringing-morning/friends-listen.png", "fit": "contain" },
+            "layers": [{
+              "id": "watercolor-motion",
+              "role": "motion",
+              "kind": "video",
+              "renditions": [{ "src": "scenes/the-ringing-morning/layers/friends-listen-alpha.webm", "mimeType": "video/webm; codecs=vp9", "codec": "vp9", "alpha": "native" }],
+              "fallback": { "src": "scenes/the-ringing-morning/friends-listen.mp4", "mimeType": "video/mp4", "codec": "h264", "alpha": "none" },
+              "loop": true,
+              "fit": "contain"
+            }]
+          },
           "transitionsTo": [
             "shared-morning",
             "forest-waking"
@@ -1454,6 +1539,18 @@
           "src": "scenes/the-ringing-morning/shared-morning.mp4",
           "poster": "scenes/the-ringing-morning/shared-morning-motion-poster.png",
           "loop": true,
+          "composition": {
+            "plate": { "kind": "image", "src": "scenes/the-ringing-morning/shared-morning.png", "fit": "contain" },
+            "layers": [{
+              "id": "watercolor-motion",
+              "role": "motion",
+              "kind": "video",
+              "renditions": [{ "src": "scenes/the-ringing-morning/layers/shared-morning-alpha.webm", "mimeType": "video/webm; codecs=vp9", "codec": "vp9", "alpha": "native" }],
+              "fallback": { "src": "scenes/the-ringing-morning/shared-morning.mp4", "mimeType": "video/mp4", "codec": "h264", "alpha": "none" },
+              "loop": true,
+              "fit": "contain"
+            }]
+          },
           "transitionsTo": [
             "friends-listen"
           ]

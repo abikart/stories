@@ -233,11 +233,39 @@ async function main() {
     await page.emulateMedia({ reducedMotion: "reduce" });
     await page.setViewportSize({ width: 390, height: 844 });
     await page.goto(`${baseUrl}/experience/${storyId}`, { waitUntil: "networkidle" });
+    await page.getByRole("button", { name: "Begin story", exact: true }).click();
+    await page.waitForFunction(() => (
+      document.querySelector<HTMLAudioElement>("[data-performance-audio]")?.paused === false
+    ));
     const reducedMotion = await page.locator(".story-overlay-content").evaluate((element) => ({
       animationDuration: getComputedStyle(element).animationDuration,
+      activeVideosPaused: [...document.querySelectorAll<HTMLVideoElement>(
+        ".experience-media-layer[data-active] video",
+      )].every((video) => video.paused),
     }));
     if (reducedMotion.animationDuration !== "0s") failures.push("reduced motion did not remove phrase entry animation");
+    if (!reducedMotion.activeVideosPaused) failures.push("reduced motion did not pause decorative scene video");
     await page.emulateMedia({ reducedMotion: "no-preference" });
+    await page.waitForTimeout(250);
+    const motionRestored = await page.evaluate(() => (
+      [...document.querySelectorAll<HTMLVideoElement>(
+        ".experience-media-layer[data-active] video",
+      )].some((video) => !video.paused)
+    ));
+    if (!motionRestored) failures.push("scene motion did not recover after reduced motion was disabled");
+
+    await page.route("**/*-alpha.webm", (route) => route.abort("failed"));
+    await page.goto(`${baseUrl}/experience/${storyId}`, { waitUntil: "networkidle" });
+    const fallbackDelivery = await page.evaluate(() => {
+      const video = document.querySelector<HTMLVideoElement>(
+        ".experience-media-layer[data-active] .layered-scene-motion video",
+      );
+      return { currentSrc: video?.currentSrc ?? "", readyState: video?.readyState ?? 0 };
+    });
+    if (!fallbackDelivery.currentSrc.endsWith(".mp4") || fallbackDelivery.readyState < 2) {
+      failures.push(`native-alpha failure did not select the opaque fallback: ${JSON.stringify(fallbackDelivery)}`);
+    }
+    await page.unroute("**/*-alpha.webm");
 
     const unhandled = await page.evaluate(() => (
       (window as Window & { __experienceUnhandled?: string[] }).__experienceUnhandled ?? []

@@ -164,6 +164,7 @@ export const ExperienceProductionSchema = z.object({
     watchMotion: z.literal("continuous").optional(),
     beatBoard: z.string().min(1),
     continuityLedger: z.string().min(1),
+    layerManifest: z.string().min(1).optional(),
   }).optional(),
   scenes: z.array(ExperienceSceneSchema).min(1),
 });

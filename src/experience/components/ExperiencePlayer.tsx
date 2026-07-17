@@ -390,7 +390,7 @@ export function ExperiencePlayer({ production }: { production: ExperienceProduct
 
           <header className="story-player-header">
             <div className="story-player-title">
-              <span>A Bramble Hollow story</span>
+              <span>A Lanternleaf story</span>
               <h1>{production.title}</h1>
             </div>
             <div className="story-mode-switch" role="group" aria-label="Story mode">

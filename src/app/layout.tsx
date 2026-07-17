@@ -7,9 +7,9 @@ const quicksand = Quicksand({ subsets: ["latin"], variable: "--font-quicksand" }
 const lexend = Lexend({ subsets: ["latin"], variable: "--font-lexend" });
 
 export const metadata: Metadata = {
-  title: "stories.sh — stories you can touch",
+  title: "stories.sh — interactive story films",
   description:
-    "Living storybooks for kids learning to read. Slide under the words to wake the world.",
+    "Expressive illustrated stories that wait for children and let them help the story happen.",
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

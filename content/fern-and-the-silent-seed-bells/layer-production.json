@@ -1,0 +1,42 @@
+{
+  "schemaVersion": 1,
+  "storyId": "fern-and-the-silent-seed-bells",
+  "status": "mvp-approved-derived",
+  "compiler": "scripts/derive-connected-alpha.py",
+  "derivation": {
+    "method": "neutral near-white connected-component flood from every frame boundary",
+    "floor": 238,
+    "chroma": 18,
+    "featherPixels": 2.25,
+    "codec": "vp9",
+    "pixelFormat": "yuva420p",
+    "crf": 30,
+    "alphaMode": 1
+  },
+  "moments": [
+    {
+      "id": "opening",
+      "states": [
+        { "state": "bell-tree-dawn", "inputSha256": "eb9084be9f351d9b745f1285fef880daabf14c56f3e96a2f23bf9163b80e60b1", "outputSha256": "7894db3e39996329a92bb33f4482b4c442171f7ce63eaa33305f22c184713f29" },
+        { "state": "village-waking", "inputSha256": "870f2c4bcf56e112f64928e969000f63a34bef41a0464f1b7e7ee998fbc8a2ef", "outputSha256": "1242e1150682af6990d29b81f17efa81fb26cfbe820033eb8bb3a9454ca5b283" },
+        { "state": "silent-tree", "inputSha256": "3d12dcbd805be63b5811a4514e037f9a488801ef02cb8acb2d09d531bde38378", "outputSha256": "ed06b72f35fd67a35e89730b24d1cf0591fb378fc1a5eccea45ba2169ed4841c" }
+      ]
+    },
+    {
+      "id": "silver-path-hero",
+      "states": [
+        { "state": "path-traced", "inputSha256": "75f13a1137abccd09fdcc5c18a3634c8be1b25fedd6d5bc338277f17e6de41c2", "outputSha256": "8d55c77edb05c9030355dae993f100fb62a55d9564d3f957278119c645fa19db" },
+        { "state": "pipkin-at-knot", "inputSha256": "4e3e782917056c130d4b82c1a1eb4f70b01a05ce1cf36efdc8dd27a72c4829f0", "outputSha256": "95d28f711a18514cb5f7869841376f1a479f85514a3f0d4cb8429dc2d6cb301d" },
+        { "state": "knot-opening", "inputSha256": "d14086b549445b417513df9e2565ffc8eaf87e2c81612b359e320663889fa984", "outputSha256": "ff0cfefc389ed6d760205067f4706058fde0356805d5834ad9a36c46f7498d34" }
+      ]
+    },
+    {
+      "id": "emotional-close",
+      "states": [
+        { "state": "friends-listen", "inputSha256": "098dcf26e92134c0597a1420d027926f08d5ef98e7c9a0cbb65216af301ead2e", "outputSha256": "e7e102515d6eeb96e8f9bf98f16eb3622757ee35faa5b924e4987e02c310ecb6" },
+        { "state": "shared-morning", "inputSha256": "57da01bae7e5c214c88a58dc4ec31c10a67a9fd53a6abe66d3f4d9a2eba28dc5", "outputSha256": "d4441f294a21eb89e2188d4883d5d73b16c62f6531dc770aa2f30540e926d8d6" }
+      ]
+    }
+  ],
+  "fallback": "Every layered state retains its accepted H.264 source and poster as a browser fallback."
+}

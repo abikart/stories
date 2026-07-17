@@ -45,6 +45,9 @@ async function main() {
       if (production.productionPlan) {
         assets.add(production.productionPlan.beatBoard);
         assets.add(production.productionPlan.continuityLedger);
+        if (production.productionPlan.layerManifest) {
+          assets.add(production.productionPlan.layerManifest);
+        }
         const beatBoard = BeatBoardSchema.parse(JSON.parse(await fs.readFile(
           path.join(CONTENT, id, production.productionPlan.beatBoard),
           "utf8",

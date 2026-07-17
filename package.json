@@ -9,6 +9,7 @@
     "typecheck": "tsc --noEmit",
     "narrate:performance": "tsx scripts/narrate-performance.ts",
     "soundscape": "tsx scripts/generate-soundscape.ts",
+    "derive:alpha": "uv run --with numpy --with scipy python scripts/derive-connected-alpha.py",
     "lint:experiences": "tsx scripts/lint-experience.ts",
     "qa:experience": "tsx scripts/qa-experience-playback.ts",
     "ingest:experience-video": "tsx scripts/ingest-experience-video.ts"
