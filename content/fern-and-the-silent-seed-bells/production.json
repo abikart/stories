@@ -43,12 +43,14 @@
         },
         {
           "id": "village-waking",
-          "kind": "poster",
-          "src": "scenes/the-quiet-morning/village-waking.png",
+          "kind": "video",
+          "src": "scenes/the-quiet-morning/village-waking.mp4",
           "transitionsTo": [
             "silent-tree",
             "bell-tree-dawn"
-          ]
+          ],
+          "poster": "scenes/the-quiet-morning/village-waking-motion-poster.png",
+          "loop": false
         },
         {
           "id": "silent-tree",
@@ -1418,11 +1420,13 @@
         },
         {
           "id": "shared-morning",
-          "kind": "poster",
-          "src": "scenes/the-ringing-morning/shared-morning.png",
+          "kind": "video",
+          "src": "scenes/the-ringing-morning/shared-morning.mp4",
           "transitionsTo": [
             "friends-listen"
-          ]
+          ],
+          "poster": "scenes/the-ringing-morning/shared-morning-motion-poster.png",
+          "loop": true
         }
       ],
       "canonicalPath": [

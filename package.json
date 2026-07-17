@@ -18,6 +18,7 @@
     "new-story": "tsx scripts/new-story.ts",
     "render": "tsx scripts/render-video.ts",
     "ingest-video": "tsx scripts/ingest-video.ts",
+    "ingest:experience-video": "tsx scripts/ingest-experience-video.ts",
     "video-prompts": "tsx scripts/video-prompts.ts"
   },
   "dependencies": {

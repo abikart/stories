@@ -1,0 +1,116 @@
+{
+  "schemaVersion": 1,
+  "storyId": "fern-and-the-silent-seed-bells",
+  "status": "in-progress",
+  "expectedStates": 14,
+  "acceptedStates": 2,
+  "format": {
+    "creativeAspectRatio": "4:3",
+    "deliveryCodec": "h264",
+    "pixelFormat": "yuv420p",
+    "audio": "muted",
+    "responsiveCrop": "none"
+  },
+  "states": [
+    {
+      "sceneId": "the-quiet-morning",
+      "mediaState": "village-waking",
+      "role": "one-shot",
+      "provider": "grok-imagine",
+      "providerId": "13d6e717-e559-429e-a4f5-5138633dbd57",
+      "providerUrl": "https://grok.com/imagine/agent/9cec5754-4140-4140-aa32-ec57cc3eb04e?conversation=826dbe26-00c9-4c91-ac34-15f2a13fe733",
+      "promptRef": "MOTION_GENERATION_PROMPTS.md#village-waking--one-shot",
+      "source": "scenes/the-quiet-morning/provider-originals/motion/village-waking-13d6e717-e559-429e-a4f5-5138633dbd57.mp4",
+      "sourceSha256": "9fa57487527fe127ab6fe6a60bdf75e7faf9eed3586e40959452c28a427317ac",
+      "sourceProbe": {
+        "width": 1104,
+        "height": 816,
+        "duration": 6.041667,
+        "frameRate": "24/1",
+        "codec": "h264",
+        "pixelFormat": "yuv420p",
+        "audioStreams": 1
+      },
+      "deliveryTransform": "pure-white vertical pad from 1104x816 to 1104x828; no crop",
+      "delivery": "scenes/the-quiet-morning/village-waking.mp4",
+      "deliverySha256": "870f2c4bcf56e112f64928e969000f63a34bef41a0464f1b7e7ee998fbc8a2ef",
+      "deliveryProbe": {
+        "width": 1104,
+        "height": 828,
+        "duration": 6.041667,
+        "frameRate": "24/1",
+        "codec": "h264",
+        "pixelFormat": "yuv420p",
+        "audioStreams": 0
+      },
+      "poster": "scenes/the-quiet-morning/village-waking-motion-poster.png",
+      "posterSha256": "f2fd30d178065d42cd9272094910b191ddb739e23ecbbbfe60dc69b869689d96",
+      "posterFrame": "last",
+      "acceptedAt": "2026-07-16T23:58:49.885Z",
+      "acceptance": "Best continuity-preserving bounded take: one coordinated bell response, one rounded main-cottage opening, and one narrow pale oven breath; camera, characters, four-wing anatomy, three-bell count, and dry memory state remain stable."
+    },
+    {
+      "sceneId": "the-ringing-morning",
+      "mediaState": "shared-morning",
+      "role": "living-loop",
+      "provider": "grok-imagine",
+      "providerId": "b63e832d-03a9-4271-9e4c-b2fabc21a245",
+      "providerUrl": "https://grok.com/imagine/agent/9cec5754-4140-4140-aa32-ec57cc3eb04e?conversation=826dbe26-00c9-4c91-ac34-15f2a13fe733",
+      "promptRef": "MOTION_GENERATION_PROMPTS.md#shared-morning--living-loop",
+      "source": "scenes/the-ringing-morning/provider-originals/motion/shared-morning-b63e832d-03a9-4271-9e4c-b2fabc21a245.mp4",
+      "sourceSha256": "fddd4f922510715e351afcb694cddaa9884dbda5c251c0340a19798792824dde",
+      "sourceProbe": {
+        "width": 1104,
+        "height": 816,
+        "duration": 6.041667,
+        "frameRate": "24/1",
+        "codec": "h264",
+        "pixelFormat": "yuv420p",
+        "audioStreams": 1
+      },
+      "deliveryTransform": "pure-white vertical pad from 1104x816 to 1104x828; no crop",
+      "delivery": "scenes/the-ringing-morning/shared-morning.mp4",
+      "deliverySha256": "57da01bae7e5c214c88a58dc4ec31c10a67a9fd53a6abe66d3f4d9a2eba28dc5",
+      "deliveryProbe": {
+        "width": 1104,
+        "height": 828,
+        "duration": 6.041667,
+        "frameRate": "24/1",
+        "codec": "h264",
+        "pixelFormat": "yuv420p",
+        "audioStreams": 0
+      },
+      "poster": "scenes/the-ringing-morning/shared-morning-motion-poster.png",
+      "posterSha256": "0f1df5eb5bb37267b648f8ed227ab1d8164580f85f64ca411a168767ec2c1ff9",
+      "posterFrame": "first",
+      "acceptedAt": "2026-07-16T23:40:59.119Z",
+      "acceptance": "Six-second restrained living loop preserves the complete final tableau, four-wing Pipkin, three neighbors, and three bells; movement stays limited to gentle bell/ribbon sway and character micro-life."
+    }
+  ],
+  "candidates": [
+    {
+      "mediaState": "village-waking",
+      "providerId": "7a1b3fbc-cc0b-4b1c-b46a-6d5cc3df06c9",
+      "source": "scenes/the-quiet-morning/provider-originals/motion/rejected-village-waking-wrong-source-7a1b3fbc.mp4",
+      "sourceSha256": "93e7d3a482256931f706b798bc551f511733933bb1c689017096de3e25ef3fbc",
+      "decision": "rejected",
+      "reason": "Canvas connection targeted the already-resolved shared-morning image instead of bell-tree-dawn, so the source state was causally wrong."
+    },
+    {
+      "mediaState": "village-waking",
+      "providerId": "c18390ba-cc5d-4490-a500-6c60d5dbd724",
+      "source": "scenes/the-quiet-morning/provider-originals/motion/rejected-village-waking-large-smoke-c18390ba.mp4",
+      "sourceSha256": "7a5cb003afeaa143a68d9353647b4bd39b4713dd9b0129a041952bc55de7384a",
+      "decision": "rejected",
+      "reason": "Correct source and readable waking action, but the single oven puff inflated into a large sustained smoke cloud."
+    },
+    {
+      "mediaState": "village-waking",
+      "providerId": "0fd54ffe-a7b6-4f24-8ad2-9356a0b0d443",
+      "source": "scenes/the-quiet-morning/provider-originals/motion/rejected-village-waking-geometry-plume-0fd54ffe.mp4",
+      "sourceSha256": "d431ee077685264912af1ca00685aa1d3fd59f1372a143a87b6d06015118f1e4",
+      "decision": "rejected",
+      "reason": "Window-focused strategy separated and redesigned the right cottage, changed the camera composition, and still produced a large plume."
+    }
+  ]
+}

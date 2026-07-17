@@ -198,6 +198,16 @@ Last updated: 2026-07-16
   All 14 unique media states now cover all 15 beats, with no planning
   placeholder remaining. Exact prompts, the rejected two-wing b14 take,
   provider originals, hashes, and normalized 1600x1200 deliveries are preserved.
+- Schema-v2 motion ingest is implemented and proven on both motion roles. It
+  probes source metadata, refuses non-near-4:3 inputs, restores Grok's 1104x816
+  “4:3” export to exact 1104x828 with six white pixels above and below (never a
+  crop), strips audio, encodes H.264/yuv420p/faststart delivery, extracts the
+  role-correct first/final poster, updates only the named graph state, and keeps
+  hashes plus technical provenance in `motion-production.json`.
+  `shared-morning` is an accepted restrained living loop; `village-waking` is an
+  accepted settled one-shot after bounded smoke/window retries. Two of 14 native
+  Watch states are integrated. Three rejected waking exports and their exact
+  reasons are preserved.
 - `docs/v2/09-fern-playable-loop.md` now defines the autonomous route from that
   partial board to a hands-on local alpha: dependency-ordered keyframes, schema-
   v2 motion ingest, 14 native Watch states, story-specific sound, integration,
@@ -224,11 +234,12 @@ Last updated: 2026-07-16
 
 Continue the resumable playable-alpha loop in
 `docs/v2/09-fern-playable-loop.md`. The next production unit is the restoration
-chain's schema-v2 motion ingest: generalize the existing video-ingest workflow
-for this production package, validate one stable living loop and one causal one-
-shot end to end, then produce the remaining accepted motion states. Continue
-through soundscape, integration, and QA until the local experience is open and
-ready for owner playtesting.
+chain's remaining native motion: produce the other 12 states from their locked
+keyframes, using stable living loops or settled one-shots exactly as classified
+in the playable-loop plan. Ingest each accepted clip through the proven schema-
+v2 path, then enable continuous Watch and continue through soundscape,
+integration, and QA until the local experience is open and ready for owner
+playtesting.
 
 ## Verification baseline
 
