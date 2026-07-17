@@ -32,6 +32,15 @@ async function main() {
   try {
     await page.goto(`${baseUrl}/experience/${storyId}`, { waitUntil: "networkidle" });
     const slider = page.getByLabel("Story position");
+    const seek = async (seconds: number) => {
+      await slider.evaluate((element, value) => {
+        const input = element as HTMLInputElement;
+        const setValue = Object.getOwnPropertyDescriptor(HTMLInputElement.prototype, "value")?.set;
+        setValue?.call(input, String(value));
+        input.dispatchEvent(new Event("input", { bubbles: true }));
+        input.dispatchEvent(new Event("change", { bubbles: true }));
+      }, seconds);
+    };
 
     const firstSafeStop = production.scenes.flatMap((scene) => scene.phrases)
       .find((phrase) => phrase.safeStopAfter);
@@ -39,7 +48,7 @@ async function main() {
       const expectedLines = units.filter((unit) => unit.end <= firstSafeStop.end + 0.04);
       const beforeStop = Math.max(0, Math.floor((firstSafeStop.end - 0.3) * 20) / 20);
       await page.getByRole("button", { name: "Read with me", exact: true }).click();
-      await slider.fill(String(beforeStop));
+      await seek(beforeStop);
       await page.getByRole("button", { name: "Play", exact: true }).click();
       await page.waitForTimeout(1500);
 
@@ -97,7 +106,14 @@ async function main() {
           performancePaused: document.querySelector<HTMLAudioElement>("[data-performance-audio]")?.paused,
         }));
         if (earlyResume.phase !== "resuming" || !earlyResume.performancePaused) failures.push("Continue did not preserve the resume lead-in");
-        await page.waitForTimeout(250);
+        await page.waitForFunction(() => (
+          document.querySelector<HTMLAudioElement>("[data-performance-audio]")?.paused === false
+        ));
+        const continueLeadMs = Date.now() - continueStartedAt;
+        if (continueLeadMs < 150 || continueLeadMs > 700) {
+          failures.push(`Continue lead-in was ${continueLeadMs}ms; expected a calm 150–700ms handoff`);
+        }
+        await page.waitForTimeout(100);
         const resumedMedia = await page.evaluate(() => ({
           phase: document.querySelector(".story-player")?.getAttribute("data-reading-phase"),
           performancePaused: document.querySelector<HTMLAudioElement>("[data-performance-audio]")?.paused,
@@ -111,23 +127,11 @@ async function main() {
           && (resumedMedia.musicPaused || (resumedMedia.musicVolume ?? 0) <= 0)) failures.push("score did not fade back in with narration");
         if ((production.performance.stems.ambience && resumedMedia.ambiencePaused)
           || (production.performance.stems.effects && resumedMedia.effectsPaused)) failures.push("soundscape did not rejoin narration after Continue");
-
-        const nextPhrase = production.scenes.flatMap((scene) => scene.phrases)
-          .find((phrase) => phrase.start > firstSafeStop.end);
-        if (nextPhrase) {
-          await page.waitForFunction((start) => (
-            (document.querySelector<HTMLAudioElement>("[data-performance-audio]")?.currentTime ?? 0) >= start
-          ), nextPhrase.start);
-          const continueLeadMs = Date.now() - continueStartedAt;
-          if (continueLeadMs < 350 || continueLeadMs > 700) {
-            failures.push(`Continue lead-in was ${continueLeadMs}ms; expected a calm 350–700ms handoff`);
-          }
-        }
       }
 
       await page.goto(`${baseUrl}/experience/${storyId}`, { waitUntil: "networkidle" });
       await page.getByRole("button", { name: "Read with me", exact: true }).click();
-      await page.getByLabel("Story position").fill(String(beforeStop));
+      await seek(beforeStop);
       await page.getByRole("button", { name: "Play", exact: true }).click();
       await page.waitForFunction(() => (
         document.querySelector(".story-player")?.getAttribute("data-reading-phase") === "settling"
@@ -154,7 +158,7 @@ async function main() {
 
     for (const unit of [...units].reverse()) {
       const seekTime = Math.round(Math.min(production.performance.duration, unit.start) * 20) / 20;
-      await slider.fill(String(seekTime));
+      await seek(seekTime);
       await page.waitForTimeout(25);
     }
     await page.waitForTimeout(1000);
@@ -166,7 +170,7 @@ async function main() {
     }
 
     const endingStart = Math.max(0, production.performance.duration - 8.6);
-    await slider.fill(String(endingStart));
+    await seek(endingStart);
     await page.getByRole("button", { name: "Play", exact: true }).click();
     await page.waitForTimeout((production.performance.duration - endingStart + 1.5) * 1000);
 

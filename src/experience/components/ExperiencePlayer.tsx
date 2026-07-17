@@ -129,7 +129,7 @@ export function ExperiencePlayer({ production }: { production: ExperienceProduct
     [readingUnits, snapshot.time],
   );
   const displayUnit = readingUnits[displayUnitIndex] ?? readingUnits[0];
-  const liveUnit = readingUnits[activeReadingSample.unitIndex] ?? displayUnit;
+  const liveUnit = readingUnits[activeReadingSample.unitIndex] ?? readingUnits[0] ?? displayUnit;
   const visualUnit = waiting ? displayUnit : liveUnit;
   const activeSceneIndex = visualUnit.sceneIndex;
 
