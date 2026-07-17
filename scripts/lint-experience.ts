@@ -67,6 +67,19 @@ async function main() {
         for (const state of scene.media) {
           assets.add(state.src);
           if (state.poster) assets.add(state.poster);
+          if (state.composition) {
+            assets.add(state.composition.plate.src);
+            if (state.composition.plate.poster) assets.add(state.composition.plate.poster);
+            if (state.composition.fallback) {
+              assets.add(state.composition.fallback.src);
+              if (state.composition.fallback.poster) assets.add(state.composition.fallback.poster);
+            }
+            for (const layer of state.composition.layers) {
+              layer.renditions.forEach((rendition) => assets.add(rendition.src));
+              if (layer.fallback) assets.add(layer.fallback.src);
+              if (layer.poster) assets.add(layer.poster);
+            }
+          }
         }
       }
       for (const asset of assets) {

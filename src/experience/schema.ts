@@ -82,6 +82,45 @@ export const PerformanceSchema = z.object({
   }).optional(),
 });
 
+export const SceneRenditionSchema = z.object({
+  src: z.string().min(1),
+  mimeType: z.string().min(1),
+  codec: z.string().min(1).optional(),
+  alpha: z.enum(["none", "native", "packed"]).default("none"),
+});
+
+export const ScenePlateSchema = z.object({
+  kind: z.enum(["image", "video"]),
+  src: z.string().min(1),
+  poster: z.string().min(1).optional(),
+  loop: z.boolean().optional(),
+  fit: z.enum(["contain", "cover"]).default("contain"),
+});
+
+export const SceneMotionLayerSchema = z.object({
+  id: z.string().min(1),
+  role: z.enum(["motion", "effect", "foreground"]),
+  kind: z.enum(["image", "video"]),
+  renditions: z.array(SceneRenditionSchema).min(1),
+  fallback: SceneRenditionSchema.optional(),
+  poster: z.string().min(1).optional(),
+  loop: z.boolean().optional(),
+  fit: z.enum(["contain", "cover"]).default("contain"),
+  anchor: PointSchema.default({ x: 0.5, y: 0.5 }),
+  scale: z.number().positive().default(1),
+  opacity: NormalizedNumberSchema.default(1),
+  blendMode: z.enum(["normal", "multiply", "screen", "overlay"]).default("normal"),
+});
+
+export const LayeredSceneCompositionSchema = z.object({
+  plate: ScenePlateSchema,
+  layers: z.array(SceneMotionLayerSchema).min(1),
+  fallback: z.object({
+    src: z.string().min(1),
+    poster: z.string().min(1).optional(),
+  }).optional(),
+});
+
 export const MediaStateSchema = z.object({
   id: z.string().min(1),
   kind: z.enum(["poster", "video", "living-illustration"]),
@@ -90,6 +129,7 @@ export const MediaStateSchema = z.object({
   loop: z.boolean().optional(),
   focalPoint: PointSchema.optional(),
   transitionsTo: z.array(z.string().min(1)).optional(),
+  composition: LayeredSceneCompositionSchema.optional(),
 });
 
 export const InteractionBindingSchema = z.object({
@@ -136,6 +176,10 @@ export type WordTiming = z.infer<typeof WordTimingSchema>;
 export type ReadingUnit = z.infer<typeof ReadingUnitSchema>;
 export type ExperiencePhrase = z.infer<typeof PhraseSchema>;
 export type Performance = z.infer<typeof PerformanceSchema>;
+export type SceneRendition = z.infer<typeof SceneRenditionSchema>;
+export type ScenePlate = z.infer<typeof ScenePlateSchema>;
+export type SceneMotionLayer = z.infer<typeof SceneMotionLayerSchema>;
+export type LayeredSceneComposition = z.infer<typeof LayeredSceneCompositionSchema>;
 export type MediaState = z.infer<typeof MediaStateSchema>;
 export type InteractionBinding = z.infer<typeof InteractionBindingSchema>;
 export type ExperienceScene = z.infer<typeof ExperienceSceneSchema>;

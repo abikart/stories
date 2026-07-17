@@ -649,6 +649,60 @@ html[data-easy-read] .prose-line {
   object-position: var(--media-focal-x) var(--media-focal-y);
 }
 
+.layered-scene {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  isolation: isolate;
+  background: transparent;
+}
+
+.layered-scene-plate,
+.layered-scene-motion,
+.layered-scene-motion > img,
+.layered-scene-motion > video {
+  position: absolute;
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.layered-scene-plate {
+  z-index: 0;
+  inset: 0;
+}
+
+.layered-scene-motion {
+  z-index: 1;
+  left: var(--layer-anchor-x);
+  top: var(--layer-anchor-y);
+  transform: translate(-50%, -50%) scale(var(--layer-scale));
+  transform-origin: center;
+  pointer-events: none;
+}
+
+.layered-scene-motion[data-role="effect"] {
+  z-index: 2;
+}
+
+.layered-scene-motion[data-role="foreground"] {
+  z-index: 3;
+}
+
+.layered-scene-motion > img,
+.layered-scene-motion > video {
+  inset: 0;
+  background: transparent;
+}
+
+.layered-scene [data-fit="contain"] {
+  object-fit: contain;
+}
+
+.layered-scene [data-fit="cover"] {
+  object-fit: cover;
+}
+
 .experience-vignette {
   position: absolute;
   z-index: 3;
