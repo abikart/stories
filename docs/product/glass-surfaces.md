@@ -13,9 +13,9 @@ Aave separates the portable displacement map from the renderer: ordinary DOM
 can use an SVG filter, while live video in Safari needs WebGL. That distinction
 matters here because most Stories glass sits over moving video.
 
-## Current material contract
+## Current fallback contract
 
-The shared `.story-glass` primitive uses progressive CSS enhancement:
+The shared `.story-glass` primitive is the accessible CSS fallback:
 
 - a translucent neutral fill that preserves the story matte;
 - `backdrop-filter` blur and restrained saturation over live art;
@@ -41,18 +41,19 @@ between options with one 220ms ease-in-out transform; it does not animate layout
 Reduced-motion removes that transition. Buttons retain their semantic DOM,
 keyboard behavior, and minimum touch size.
 
-## Why this version does not displace pixels
+## Current limitation and approved next run
 
 Applying `feDisplacementMap` to the dialogue's own DOM would distort the words,
 not the video behind them. Applying an SVG filter to a live `<video>` backdrop
-is not a dependable Safari path. The MVP therefore keeps the readable CSS glass
-as the universal baseline rather than maintaining a Chromium-only effect.
+is not a dependable Safari path. The current CSS therefore remains the
+universal compatibility baseline, but it is not the finished liquid-glass
+effect: it does not displace the scene's pixels.
 
-If playtesting proves that true refraction materially improves immersion, add a
-renderer-owned WebGL pass that samples the active video once and draws the small
-control lenses. Keep the existing DOM above that canvas for text, input,
-accessibility, and the CSS fallback. The surface classes and component markup do
-not need to change.
+Owner review approved a real renderer as the next feature run. The authoritative
+execution contract is [Liquid glass feature run](../mvp/liquid-glass-run.md).
+It adds one stage-level WebGL pass that reuses `MediaDeck` sources and draws
+registered lens regions while keeping text, input, accessibility, and fallback
+CSS in the DOM above it.
 
 ## Acceptance rules
 

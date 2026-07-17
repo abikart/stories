@@ -6,7 +6,8 @@ Last updated: 2026-07-17
 
 - Branch: `codex/mvp-immersive-runtime`
 - Preserved baseline: annotated local tag `poc-success`
-- Execution contract: `docs/mvp/immersive-run.md`
+- Completed MVP contract: `docs/mvp/immersive-run.md`
+- Next feature contract and goal prompt: `docs/mvp/liquid-glass-run.md`
 - Product index: `docs/README.md`
 - Decision log: `docs/DECISIONS.md`
 
@@ -35,9 +36,10 @@ Last updated: 2026-07-17
   speech uses canonical watercolor portraits, and constrained layouts dock the
   same copy safely.
 - Title, dialogue, mode, start, and transport surfaces now share the documented
-  Stories glass material. The Watch/Read toggle has a moving glass lens; CSS is
-  the accessible cross-browser baseline and WebGL video refraction remains a
-  gated future enhancement.
+  Stories fallback glass material. The Watch/Read toggle has a moving CSS lens,
+  but this implementation does not refract pixels. Owner review approved the
+  real WebGL refraction system as the next run; its contract and terminal gates
+  are in `docs/mvp/liquid-glass-run.md`.
 - The active checkout is 139 files / 103,098,739 bytes. Fern is 84 files /
   78,864,822 bytes, including eight alpha videos totaling 10,771,186 bytes.
 

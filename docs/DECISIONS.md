@@ -3,6 +3,21 @@
 Newest decisions go first. Record meaningful divergences, tradeoffs, and quality
 gates; do not duplicate routine implementation details.
 
+## 2026-07-17 — Real liquid glass is the next feature run
+
+- The current `.story-glass` treatment is retained as the accessible fallback,
+  not accepted as the finished liquid-glass look.
+- Finished glass must visibly displace the active story pixels and add
+  restrained chromatic separation plus a shape-aware specular edge. Blur,
+  translucency, borders, and shadows alone do not meet the gate.
+- Use one stage-level WebGL2 renderer that reuses `MediaDeck`'s already-decoded
+  scene sources. Do not allocate a renderer or video decoder per surface.
+- Keep words, portraits, controls, focus, and accessibility as semantic DOM
+  above the refracted shell. Reading text must never be distorted.
+- White-matte stories may author a lens-only `refractionTarget`; the system must
+  not add a visible stage rectangle or atmosphere just to demonstrate glass.
+- The approved execution contract is `docs/mvp/liquid-glass-run.md`.
+
 ## 2026-07-17 — Stories glass is readable CSS first, refraction second
 
 - Dialogue, title, mode, transport, and temporary reading surfaces now share a
