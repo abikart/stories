@@ -8,6 +8,7 @@
     "start": "next start",
     "typecheck": "tsc --noEmit",
     "test:glass": "tsx --test src/experience/glass/*.test.ts",
+    "qa:glass": "tsx scripts/qa-glass.ts",
     "narrate:performance": "tsx scripts/narrate-performance.ts",
     "soundscape": "tsx scripts/generate-soundscape.ts",
     "derive:alpha": "uv run --with numpy --with scipy python scripts/derive-connected-alpha.py",

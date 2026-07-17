@@ -52,13 +52,25 @@ Last updated: 2026-07-17
   plus map-affecting optics rather than position.
 - `/dev/glass` exposes the principal optical controls, all three map shapes, a
   high-contrast crossing-line source, cache diagnostics, and a moving same-shape
-  case. It is currently a map/fixture checkpoint; the visible lens preview is
-  not yet the WebGL displacement proof and must not be accepted as final glass.
+  case. It now runs the real stage WebGL2 path over a grid, still image, and one
+  playing Fern video. The line crossing the pill visibly bends and the other
+  shapes refract their media; this is the objective optics proof.
 - `pnpm test:glass` covers neutral pixels, signed range/direction, symmetry,
   shapes, cache identity, and regeneration. Chromium hydration/error inspection
   passes, and moving the pill leaves the generation count unchanged.
-- Earliest remaining gate: checkpoint 3, the one-canvas WebGL2 renderer, source
-  composition, bounded sleeping loop, instrumentation, and context recovery.
+- Checkpoint 3 uses one transparent WebGL2 canvas and one context. It composites
+  existing same-origin canvas/image/video sources into an offscreen texture,
+  draws only scissored lens rectangles, caps DPR at 2, uploads one live video
+  frame without creating another decoder, and sleeps when the video pauses.
+  Context loss selects CSS and restoration rebuilds GPU resources without
+  remounting. WebKit restoration deliberately abandons invalid lost-context
+  handles instead of deleting them through the restored context.
+- `pnpm qa:glass --browser=chromium` and `--browser=webkit` both pass the one-
+  canvas/video checks, objective in/out pixel checks, map-reuse assertion,
+  failure fallback, context recovery, and sleeping-loop gate. Chromium measured
+  369 displaced samples; WebKit measured 363.
+- Earliest remaining gate: checkpoint 4, reusable stage/surface registration
+  and one live Fern transport lens using `MediaDeck`'s mounted elements.
 - The active checkout is 139 files / 103,098,739 bytes. Fern is 84 files /
   78,864,822 bytes, including eight alpha videos totaling 10,771,186 bytes.
 

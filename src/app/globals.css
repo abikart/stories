@@ -410,26 +410,76 @@ body {
 .glass-fixture-grid {
   position: absolute;
   inset: 0;
-  background:
-    linear-gradient(90deg, transparent 48%, #ff314f 48% 52%, transparent 52%),
-    linear-gradient(0deg, transparent 48%, #175cff 48% 52%, transparent 52%),
-    repeating-linear-gradient(90deg, #17201a 0 2px, transparent 2px 40px),
-    repeating-linear-gradient(0deg, #17201a 0 2px, transparent 2px 40px),
-    #fff;
+  width: 100%;
+  height: 100%;
+}
+
+.glass-fixture-still,
+.glass-fixture-video {
+  position: absolute;
+  z-index: 1;
+  right: 4%;
+  width: 24%;
+  aspect-ratio: 4 / 3;
+  border: 4px solid #fff;
+  border-radius: 22px;
+  object-fit: cover;
+  box-shadow: 0 10px 34px rgb(17 32 22 / 0.22);
+}
+
+.glass-fixture-still {
+  top: 6%;
+}
+
+.glass-fixture-video {
+  bottom: 6%;
+}
+
+.glass-stage-canvas {
+  position: absolute;
+  z-index: 2;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
 }
 
 .glass-fixture-lens-preview {
   position: absolute;
+  z-index: 3;
   top: 38%;
   left: var(--fixture-lens-x);
+  pointer-events: none;
+}
+
+.glass-fixture-stage[data-glass-renderer="css"] .glass-fixture-lens-preview {
   border: 2px solid rgb(255 255 255 / 0.9);
-  background: rgb(255 255 255 / 0.18);
+  background: rgb(255 255 255 / 0.28);
   box-shadow: inset 0 0 18px rgb(255 255 255 / 0.8), 0 12px 34px rgb(20 35 26 / 0.2);
-  transition: left 80ms linear;
+}
+
+.glass-fixture-lens-preview--rounded {
+  top: 8%;
+  right: 3%;
+  left: auto;
+  width: 25%;
+  height: 30%;
+  border-radius: 34px;
+}
+
+.glass-fixture-lens-preview--circle {
+  top: auto;
+  right: 9%;
+  bottom: 7%;
+  left: auto;
+  width: 13%;
+  aspect-ratio: 1;
+  border-radius: 50%;
 }
 
 .glass-fixture-travel {
   position: absolute;
+  z-index: 4;
   right: 18px;
   bottom: 16px;
   left: 18px;
@@ -458,8 +508,27 @@ body {
   background: #e8eee9;
 }
 
-.glass-fixture-diagnostics > div:last-child {
+.glass-fixture-diagnostic-wide,
+.glass-fixture-recovery {
   grid-column: 1 / -1;
+}
+
+.glass-fixture-recovery {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.glass-fixture-recovery span {
+  margin-right: auto;
+}
+
+.glass-fixture-recovery button {
+  min-height: 44px;
+  padding: 8px 14px;
+  border-radius: 999px;
+  background: #fff;
+  font-weight: 700;
 }
 
 .glass-fixture-diagnostics span,
