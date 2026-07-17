@@ -24,6 +24,8 @@ import {
 } from "@/experience/performance/timeline";
 import { DragToGuide } from "@/experience/interactions/DragToGuide";
 import { Soundscape, type SoundscapeHandle } from "@/experience/audio/Soundscape";
+import { GlassStage } from "@/experience/glass/GlassStage";
+import { GlassSurface } from "@/experience/glass/GlassSurface";
 
 type PlayerMode = "watch" | "read";
 type ReadingPhase = "idle" | "settling" | "reading" | "resuming";
@@ -360,7 +362,7 @@ export function ExperiencePlayer({ production }: { production: ExperienceProduct
       data-at-start={snapshot.time === 0 && !snapshot.playing ? "true" : undefined}
     >
       <section className="story-player-composition" aria-label="Interactive story player">
-        <div className="story-player-stage">
+        <GlassStage className="story-player-stage" matte={production.stage.backdrop.color}>
           <div className="story-player-media">
             <MediaDeck
               key={scene.id}
@@ -380,22 +382,39 @@ export function ExperiencePlayer({ production }: { production: ExperienceProduct
           </div>
 
           <header className="story-player-header">
-            <div className="story-player-title story-glass story-glass--quiet">
+            <GlassSurface
+              glassId="story-title"
+              className="story-player-title story-glass story-glass--quiet"
+              optics={{ ior: 1.11, thickness: 7, chromaticAberration: 0.008, roughness: 0.08 }}
+            >
               <span>A Lanternleaf story</span>
               <h1>{production.title}</h1>
-            </div>
+            </GlassSurface>
             <div className="story-mode-switch story-glass story-glass--control" data-active-mode={mode} role="group" aria-label="Story mode">
-              <span className="story-mode-lens" aria-hidden="true" />
-              <button type="button" aria-pressed={mode === "watch"} onClick={() => changeMode("watch")}>
+              <GlassSurface
+                glassId="mode-lens"
+                shape="pill"
+                motionKey={mode}
+                motionDuration={220}
+                optics={{ ior: 1.2, thickness: 17, chromaticAberration: 0.026, roughness: 0.025, distortion: 0.012 }}
+                refractionTarget={{ color: production.accent, opacity: 0.42 }}
+                className="story-mode-lens"
+                aria-hidden="true"
+              />
+              <button data-glass-press-target="mode-lens" type="button" aria-pressed={mode === "watch"} onClick={() => changeMode("watch")}>
                 Watch
               </button>
-              <button type="button" aria-pressed={mode === "read"} onClick={() => changeMode("read")}>
+              <button data-glass-press-target="mode-lens" type="button" aria-pressed={mode === "read"} onClick={() => changeMode("read")}>
                 Read with me
               </button>
             </div>
           </header>
 
-          <div
+          <GlassSurface
+            glassId="dialogue"
+            motionKey={displayUnit.id}
+            motionDuration={200}
+            optics={{ ior: 1.13, thickness: 10, chromaticAberration: 0.012, roughness: 0.075, distortion: 0.008 }}
             className="story-overlay story-glass story-glass--reading"
             data-kind={displayUnit.overlay.kind}
             data-placement={displayUnit.overlay.placement ?? scene.overlayPlacement}
@@ -446,24 +465,35 @@ export function ExperiencePlayer({ production }: { production: ExperienceProduct
                 </p>
               </div>
             )}
-          </div>
+          </GlassSurface>
 
           {snapshot.time === 0 && !snapshot.playing ? (
-            <div className="story-start-card story-glass story-glass--reading">
+            <GlassSurface
+              glassId="start-card"
+              className="story-start-card story-glass story-glass--reading"
+              optics={{ ior: 1.16, thickness: 13, chromaticAberration: 0.018, roughness: 0.055 }}
+            >
               <span>{mode === "watch" ? "Story time" : "Read together"}</span>
               <p>{mode === "watch" ? "Settle in. The story is about to begin." : "The story will wait after each thought."}</p>
-              <button type="button" onClick={togglePlayback}>
+              <button data-glass-press-target="start-card" type="button" onClick={togglePlayback}>
                 Begin story
               </button>
-            </div>
+            </GlassSurface>
           ) : null}
 
-          <div className="story-transport story-glass story-glass--control" aria-label="Story controls">
-            <button className="story-icon-button" type="button" onClick={replay} aria-label="Replay story">
+          <GlassSurface
+            glassId="transport"
+            shape="pill"
+            className="story-transport story-glass story-glass--control"
+            optics={{ ior: 1.16, thickness: 11, chromaticAberration: 0.014, roughness: 0.045 }}
+            aria-label="Story controls"
+          >
+            <button data-glass-press-target="transport" className="story-icon-button" type="button" onClick={replay} aria-label="Replay story">
               ↺
             </button>
             <button
               className="story-play-button"
+              data-glass-press-target="transport"
               type="button"
               onClick={togglePlayback}
               disabled={requiredInteraction || Boolean(waiting && readingPhase !== "reading")}
@@ -486,8 +516,8 @@ export function ExperiencePlayer({ production }: { production: ExperienceProduct
                 <span>{formatTime(performance.duration)}</span>
               </div>
             </div>
-          </div>
-        </div>
+          </GlassSurface>
+        </GlassStage>
 
         <audio
           data-performance-audio

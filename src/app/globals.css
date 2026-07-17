@@ -191,6 +191,215 @@ body {
    video refraction remains a renderer concern; this primitive provides the
    shared material, rim, highlight, and control motion contract. */
 
+.glass-stage-canvas {
+  position: absolute !important;
+  z-index: 5;
+  inset: 0;
+  width: 100% !important;
+  height: 100% !important;
+  pointer-events: none !important;
+}
+
+[data-glass-renderer="webgl"] [data-glass-surface].story-glass,
+[data-glass-renderer="webgl"] [data-glass-surface].story-glass.story-transport {
+  background: rgb(255 255 255 / 0.14);
+  box-shadow: none;
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
+}
+
+[data-glass-renderer="webgl"] [data-glass-surface].story-glass--reading {
+  background: rgb(255 255 255 / 0.3);
+}
+
+[data-glass-renderer="webgl"] [data-glass-surface].story-glass::before {
+  opacity: 0.18;
+}
+
+[data-glass-renderer="webgl"] .story-mode-switch.story-glass {
+  background: rgb(255 255 255 / 0.08);
+  box-shadow: none;
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
+}
+
+[data-glass-renderer="webgl"] .story-mode-lens[data-glass-surface] {
+  background: transparent;
+  box-shadow: none;
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
+}
+
+.transmission-fixture-shell {
+  min-height: 100dvh;
+  padding: 48px clamp(20px, 5vw, 80px) 72px;
+  color: #15231b;
+  background: #f4f7f4;
+}
+
+.transmission-fixture-header,
+.transmission-fixture-controls,
+.transmission-fixture-stage {
+  width: min(1180px, 100%);
+  margin-inline: auto;
+}
+
+.transmission-fixture-header > p {
+  margin: 0 0 8px;
+  color: #2f7051;
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.transmission-fixture-header h1 {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(2.5rem, 6vw, 5rem);
+  font-weight: 500;
+  line-height: 0.96;
+  text-wrap: balance;
+}
+
+.transmission-fixture-header > span {
+  display: block;
+  max-width: 760px;
+  margin-top: 18px;
+  color: #53655a;
+  line-height: 1.6;
+  text-wrap: pretty;
+}
+
+.transmission-fixture-controls {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 16px;
+  margin-top: 28px;
+  padding: 20px;
+  border-radius: 24px;
+  background: rgb(255 255 255 / 0.86);
+  box-shadow: 0 18px 50px rgb(33 58 43 / 0.09);
+}
+
+.transmission-fixture-range {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 8px 12px;
+  font-size: 0.78rem;
+  font-weight: 750;
+}
+
+.transmission-fixture-range input {
+  grid-column: 1 / -1;
+  width: 100%;
+}
+
+.transmission-fixture-range output {
+  font-variant-numeric: tabular-nums;
+}
+
+.transmission-fixture-stage {
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 16 / 9;
+  margin-top: 24px;
+  border-radius: 30px;
+  background: #f8faf8;
+  box-shadow: 0 24px 70px rgb(24 43 31 / 0.14);
+}
+
+.transmission-fixture-grid {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.transmission-fixture-still,
+.transmission-fixture-video {
+  position: absolute;
+  z-index: 1;
+  right: 4%;
+  width: 24%;
+  border-radius: 24px;
+  background: #fff;
+  box-shadow: 0 14px 32px rgb(26 42 33 / 0.18);
+}
+
+.transmission-fixture-still {
+  top: 6%;
+}
+
+.transmission-fixture-video {
+  bottom: 6%;
+}
+
+.transmission-fixture-lens {
+  position: absolute;
+  z-index: 7;
+  pointer-events: none;
+}
+
+.transmission-fixture-lens--pill {
+  top: 39%;
+  width: 31%;
+  height: 19%;
+  border-radius: 999px;
+}
+
+.transmission-fixture-lens--rounded {
+  top: 9%;
+  left: 31%;
+  width: 24%;
+  height: 25%;
+  border-radius: 28px;
+}
+
+.transmission-fixture-lens--circle {
+  right: 28%;
+  bottom: 10%;
+  width: 18%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+}
+
+.transmission-fixture-travel {
+  position: absolute;
+  z-index: 8;
+  right: 18px;
+  bottom: 18px;
+  left: 18px;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: center;
+  gap: 16px;
+  min-height: 44px;
+  padding: 10px 16px;
+  border-radius: 18px;
+  background: rgb(255 255 255 / 0.88);
+  box-shadow: 0 8px 28px rgb(27 48 35 / 0.14);
+  font-weight: 750;
+}
+
+.transmission-fixture-travel input {
+  width: 100%;
+}
+
+@media (max-width: 760px) {
+  .transmission-fixture-shell {
+    padding-inline: 14px;
+  }
+
+  .transmission-fixture-controls {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .transmission-fixture-stage {
+    aspect-ratio: 4 / 3;
+  }
+}
+
 .story-glass {
   --story-glass-fill: rgb(255 255 255 / 0.58);
   --story-glass-top-light: rgb(255 255 255 / 0.78);
