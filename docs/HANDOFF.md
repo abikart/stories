@@ -34,6 +34,10 @@ Last updated: 2026-07-17
   currently use `top-left`; narrated lines have no visible label, Fern/Pipkin
   speech uses canonical watercolor portraits, and constrained layouts dock the
   same copy safely.
+- Title, dialogue, mode, start, and transport surfaces now share the documented
+  Stories glass material. The Watch/Read toggle has a moving glass lens; CSS is
+  the accessible cross-browser baseline and WebGL video refraction remains a
+  gated future enhancement.
 - The active checkout is 139 files / 103,098,739 bytes. Fern is 84 files /
   78,864,822 bytes, including eight alpha videos totaling 10,771,186 bytes.
 

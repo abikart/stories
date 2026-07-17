@@ -3,6 +3,19 @@
 Newest decisions go first. Record meaningful divergences, tradeoffs, and quality
 gates; do not duplicate routine implementation details.
 
+## 2026-07-17 — Stories glass is readable CSS first, refraction second
+
+- Dialogue, title, mode, transport, and temporary reading surfaces now share a
+  `story-glass` material with quiet, reading, and control variants.
+- The baseline uses translucent fill, live backdrop blur, rim/specular light,
+  restrained chromatic edges, and layered depth. It stays usable when backdrop
+  filtering is unavailable and preserves the story's solid matte contract.
+- Watch/Read-with-me uses a real moving selection lens. It transforms for 220ms
+  with ease-in-out and stops moving under `prefers-reduced-motion`.
+- Do not apply DOM displacement to readable copy or ship a Chromium-only
+  backdrop trick. If true video refraction earns its complexity in playtesting,
+  add one renderer-owned WebGL pass beneath the unchanged accessible DOM.
+
 ## 2026-07-17 — Dialogue identity and placement are authored content
 
 - Narrated lines are label-free. A visible `Narrator` tag adds interface chrome

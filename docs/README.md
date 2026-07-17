@@ -8,12 +8,13 @@ This is the authoritative documentation index for the active product.
 2. [Experience format](product/experience-format.md)
 3. [Responsive stage](product/responsive-stage.md)
 4. [Runtime architecture](product/runtime-architecture.md)
-5. [Production system](product/production-system.md)
-6. [Immersive MVP run](mvp/immersive-run.md)
-7. [Aval assessment](research/aval.md)
-8. [Universe guide](universe/world-details.md)
-9. [Decision log](DECISIONS.md)
-10. [Session handoff](HANDOFF.md)
+5. [Glass surfaces](product/glass-surfaces.md)
+6. [Production system](product/production-system.md)
+7. [Immersive MVP run](mvp/immersive-run.md)
+8. [Aval assessment](research/aval.md)
+9. [Universe guide](universe/world-details.md)
+10. [Decision log](DECISIONS.md)
+11. [Session handoff](HANDOFF.md)
 
 ## Decision hierarchy
 
