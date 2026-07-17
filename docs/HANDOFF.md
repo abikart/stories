@@ -90,8 +90,29 @@ Last updated: 2026-07-17
   only bounds. Chromium and WebKit assert that its GPU map-upload count does not
   change. Browser QA also selects the full dialogue string from DOM to prove the
   renderer does not rasterize or distort reading text.
-- Earliest remaining gate: checkpoint 6, tune press/touch/focus/reduced-motion,
-  responsive composition, transition sampling, and resource performance.
+- Checkpoint 6 adds renderer-uniform press deformation: pointer, touch, Space,
+  and Enter compress lens scale to 0.96 and optical depth to 0.72, then return
+  over a short cubic ease-out without bounce or map upload. Reduced motion keeps
+  the static refracted state but removes travel and press deformation.
+- Target textures now repaint/upload only when their version or responsive
+  geometry changes. Advancing deck video remains the only per-frame source
+  upload; hidden/offscreen and paused stages sleep, while offscreen suspension
+  does not pause narration. A deviceScaleFactor-3 probe confirms the DPR-2 cap.
+- The glass QA matrix passes 390×844, 430×932, 768×1024, 1024×768,
+  1440×900, and 1920×1080 in Chromium and WebKit with no horizontal overflow,
+  aligned stage/canvas bounds, all visible lenses, and 44px controls. Warm
+  measured frames were 0.2ms or below in the automated run.
+- Existing `pnpm qa:experience -- fern-and-the-silent-seed-bells` passes after
+  replacing its obsolete active-CSS-blur assertion with the one-canvas
+  registered-WebGL contract. Playback, Read-with-me, reverse settlement, ending,
+  reduced motion, and the established responsive matrix remain green.
+- Native macOS Safari was also inspected through its real app: `/dev/glass`
+  exposed `webgl`, Fern exposed its complete semantic control tree, mode change
+  worked, playback advanced to 9.3s, and Read-with-me reached a two-line Continue
+  wait. `docs/evidence/liquid-glass/checkpoint-6-safari-playback.png` preserves
+  the native-browser frame.
+- Earliest remaining gate: checkpoint 7, full release validation, final evidence,
+  architecture/handoff closure, clean checkout, and owner server handoff.
 - The active checkout is 139 files / 103,098,739 bytes. Fern is 84 files /
   78,864,822 bytes, including eight alpha videos totaling 10,771,186 bytes.
 

@@ -71,9 +71,10 @@ export class GlassRenderer {
   private mapTextures = new Map<string, WebGLTexture>();
   private sources: readonly GlassSource[] = [];
   private sourceResolver: (() => readonly GlassSource[]) | null = null;
-  private lenses: readonly (RegisteredGlassLens & { map: LensMap })[] = [];
+  private lenses: (RegisteredGlassLens & { map: LensMap; lensScale: number; depthScale: number })[] = [];
   private targets: readonly GlassRefractionTarget[] = [];
   private targetTextures = new Map<string, WebGLTexture>();
+  private targetSignatures = new Map<string, string>();
   private observedVideos = new Set<HTMLVideoElement>();
   private cssWidth = 1;
   private cssHeight = 1;
@@ -169,6 +170,7 @@ export class GlassRenderer {
     for (const compositor of this.targetCompositors.values()) {
       compositor.resize(pixelWidth, pixelHeight, this.cssWidth, this.cssHeight);
     }
+    this.targetSignatures.clear();
     this.wake();
   }
 
@@ -195,9 +197,12 @@ export class GlassRenderer {
   }
 
   setLenses(lenses: readonly RegisteredGlassLens[]) {
+    const previousById = new Map(this.lenses.map((lens) => [lens.id, lens]));
     this.lenses = lenses.map((lens) => ({
       ...lens,
       map: getCachedLensMap(lens.bounds, lens.optics),
+      lensScale: previousById.get(lens.id)?.lensScale ?? 1,
+      depthScale: previousById.get(lens.id)?.depthScale ?? 1,
     }));
     this.diagnostics.activeLenses = lenses.length;
     this.wake();
@@ -207,6 +212,15 @@ export class GlassRenderer {
     const lens = this.lenses.find((candidate) => candidate.id === id);
     if (!lens || (lens.bounds.x === x && lens.bounds.y === y)) return;
     lens.bounds = { ...lens.bounds, x, y };
+    this.wake();
+  }
+
+  updateLensDeformation(id: string, amount: number) {
+    const lens = this.lenses.find((candidate) => candidate.id === id);
+    if (!lens) return;
+    const clamped = Math.min(1, Math.max(0, amount));
+    lens.lensScale = 1 - clamped * 0.04;
+    lens.depthScale = 1 - clamped * 0.28;
     this.wake();
   }
 
@@ -284,6 +298,7 @@ export class GlassRenderer {
       compositor.destroy();
       this.targetCompositors.delete(id);
       this.targetTextures.delete(id);
+      this.targetSignatures.delete(id);
     }
     for (const target of this.targets) {
       let compositor = this.targetCompositors.get(target.id);
@@ -292,10 +307,23 @@ export class GlassRenderer {
         compositor.resize(this.canvas.width, this.canvas.height, this.cssWidth, this.cssHeight);
         this.targetCompositors.set(target.id, compositor);
       }
+      const signature = JSON.stringify({
+        background: target.background ?? this.matte,
+        sources: target.sources.map((source) => [
+          source.x,
+          source.y,
+          source.width,
+          source.height,
+          source.opacity,
+          source.version,
+        ]),
+      });
+      if (this.targetSignatures.get(target.id) === signature && this.targetTextures.has(target.id)) continue;
       this.targetTextures.set(
         target.id,
         compositor.compose(target.sources, target.background ?? this.matte, this.diagnostics),
       );
+      this.targetSignatures.set(target.id, signature);
     }
   }
 
@@ -348,6 +376,8 @@ export class GlassRenderer {
         gl.uniform1f(gl.getUniformLocation(program, "uSpecularDirection"), optics.specularDirection);
         gl.uniform1f(gl.getUniformLocation(program, "uSpecularWidth"), optics.specularWidth);
         gl.uniform1f(gl.getUniformLocation(program, "uSpecularIntensity"), optics.specularIntensity);
+        gl.uniform1f(gl.getUniformLocation(program, "uLensScale"), lens.lensScale);
+        gl.uniform1f(gl.getUniformLocation(program, "uDepthScale"), lens.depthScale);
         gl.uniform4f(gl.getUniformLocation(program, "uTint"), ...optics.tint);
         const dpr = this.diagnostics.dpr;
         const scissorX = Math.max(0, Math.floor(bounds.x * dpr));
@@ -411,6 +441,20 @@ export class GlassRenderer {
     return { ...this.diagnostics };
   }
 
+  getLensDiagnostics(id: string) {
+    const lens = this.lenses.find((candidate) => candidate.id === id);
+    if (!lens) return null;
+    return {
+      x: lens.bounds.x,
+      y: lens.bounds.y,
+      width: lens.bounds.width,
+      height: lens.bounds.height,
+      lensScale: lens.lensScale,
+      depthScale: lens.depthScale,
+      mapKey: lens.map.key,
+    };
+  }
+
   readPixelsForDiagnostics(x: number, y: number, width: number, height: number) {
     const { gl } = this;
     if (!gl || this.status !== "webgl") return null;
@@ -448,6 +492,7 @@ export class GlassRenderer {
     }
     this.mapTextures.clear();
     this.targetTextures.clear();
+    this.targetSignatures.clear();
     this.program = null;
     this.vertexBuffer = null;
     this.vertexArray = null;
@@ -458,6 +503,7 @@ export class GlassRenderer {
     this.targetCompositors.clear();
     this.mapTextures.clear();
     this.targetTextures.clear();
+    this.targetSignatures.clear();
     this.program = null;
     this.vertexBuffer = null;
     this.vertexArray = null;

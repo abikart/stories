@@ -475,10 +475,10 @@ export function ExperiencePlayer({ production }: { production: ExperienceProduct
                 className="story-mode-lens"
                 aria-hidden="true"
               />
-              <button type="button" aria-pressed={mode === "watch"} onClick={() => changeMode("watch")}>
+              <button type="button" data-glass-press-target="mode" aria-pressed={mode === "watch"} onClick={() => changeMode("watch")}>
                 Watch
               </button>
-              <button type="button" aria-pressed={mode === "read"} onClick={() => changeMode("read")}>
+              <button type="button" data-glass-press-target="mode" aria-pressed={mode === "read"} onClick={() => changeMode("read")}>
                 Read with me
               </button>
             </div>

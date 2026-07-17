@@ -2780,6 +2780,13 @@ html[data-easy-read] .prose-line {
   .story-wait-card button {
     transition: none;
   }
+
+  .story-mode-switch button:active,
+  .story-transport button:active,
+  .story-start-card button:active,
+  .story-wait-card button:active {
+    scale: 1;
+  }
 }
 
 /* ---------- reusable drag-to-guide recipe ---------- */

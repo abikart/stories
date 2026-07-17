@@ -16,7 +16,9 @@ framebuffer stays transparent outside registered shapes so the original media
 continues to render normally.
 
 The canvas DPR is capped at 2. Static images and maps upload once; advancing
-video uploads on rendered frames. The loop remains awake for advancing video,
+video uploads on rendered frames. Authored refraction-target framebuffers are
+versioned and reused until content or responsive geometry changes. The loop
+remains awake for advancing video,
 deck transitions, or moving/deforming lenses, then renders one settled frame
 and sleeps. Visibility and intersection suspend the loop. Renderer diagnostics
 are throttled and the runtime does not update React state per animation frame.

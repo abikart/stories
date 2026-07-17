@@ -39,6 +39,8 @@ uniform float uChroma;
 uniform float uSpecularDirection;
 uniform float uSpecularWidth;
 uniform float uSpecularIntensity;
+uniform float uLensScale;
+uniform float uDepthScale;
 uniform vec4 uTint;
 in vec2 vLocal;
 out vec4 outColor;
@@ -48,14 +50,16 @@ vec3 sourceAt(vec2 topLeftUV) {
 }
 
 void main() {
-  vec4 field = texture(uMap, vec2(vLocal.x, vLocal.y));
+  vec2 mapUV = (vLocal - 0.5) / uLensScale + 0.5;
+  if (any(lessThan(mapUV, vec2(0.0))) || any(greaterThan(mapUV, vec2(1.0)))) discard;
+  vec4 field = texture(uMap, mapUV);
   float mask = field.a;
   if (mask <= 0.002) discard;
 
   vec2 bend = field.rg * 2.0 - 1.0;
   float thickness = field.b;
   vec2 stageUV = uRect.xy + vLocal * uRect.zw;
-  vec2 baseOffset = bend * (uStrength / uStageSize);
+  vec2 baseOffset = bend * (uStrength * uDepthScale / uStageSize);
   vec2 chromaOffset = bend * (uChroma * thickness / uStageSize);
   vec3 redSample = sourceAt(stageUV + baseOffset + chromaOffset);
   vec3 greenSample = sourceAt(stageUV + baseOffset);
@@ -67,7 +71,7 @@ void main() {
   float facing = max(dot(outward, lightDirection), 0.0);
   float rim = smoothstep(0.3, 0.92, thickness);
   float focus = pow(facing, mix(18.0, 2.5, clamp(uSpecularWidth, 0.0, 1.0)));
-  float specular = rim * (0.16 + focus * 0.84) * uSpecularIntensity;
+  float specular = rim * (0.16 + focus * 0.84) * uSpecularIntensity * mix(0.82, 1.0, uDepthScale);
   vec3 tinted = mix(refracted, uTint.rgb, uTint.a);
   vec3 lit = tinted + vec3(specular);
 

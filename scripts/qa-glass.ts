@@ -81,6 +81,10 @@ async function runWebGLPath(browserType: BrowserType, browserName: BrowserName, 
   assert.deepEqual(proof.outside, [0, 0, 0, 0], "pixels outside lenses stay transparent");
   assert.ok(proof.opaquePixels > 100, "lens must draw opaque replacement pixels");
   assert.ok(proof.displacedPixels > 40, "grid pixels inside the lens must objectively differ");
+  const warmFrameTime = await page.evaluate(() => (window as typeof window & {
+    __storiesGlassFixture?: { getDiagnostics(): { frameTimeMs: number } };
+  }).__storiesGlassFixture?.getDiagnostics().frameTimeMs ?? Infinity);
+  assert.ok(warmFrameTime < 16, `${browserName} warm fixture frame stays inside 16ms (${warmFrameTime.toFixed(2)}ms)`);
 
   const generationsBefore = Number(await diagnostic(page, "Map generations").textContent());
   await page.locator(".glass-fixture-travel input").fill("62");
@@ -101,7 +105,7 @@ async function runWebGLPath(browserType: BrowserType, browserName: BrowserName, 
   assert.equal(await diagnostic(page, "Loop").textContent(), "rendering", "playing video must wake the renderer");
   assert.deepEqual(errors, [], `${browserName} fixture emitted browser errors`);
   await browser.close();
-  return proof;
+  return { ...proof, warmFrameTime };
 }
 
 async function runFallbackPath(browserType: BrowserType, baseUrl: string) {
@@ -181,6 +185,30 @@ async function runFernTransportPath(browserType: BrowserType, browserName: Brows
   }
   assert.deepEqual(pixels.outside, [0, 0, 0, 0], "Fern canvas remains transparent outside lenses");
 
+  const pressMapUploads = await page.evaluate(() => (window as typeof window & {
+    __storiesGlassStage?: { getDiagnostics(): { mapUploads: number } };
+  }).__storiesGlassStage?.getDiagnostics().mapUploads);
+  await page.getByRole("button", { name: "Replay story" }).dispatchEvent("pointerdown", {
+    pointerId: 7,
+    pointerType: "touch",
+    isPrimary: true,
+  });
+  await page.waitForTimeout(90);
+  const pressedLens = await page.evaluate(() => (window as typeof window & {
+    __storiesGlassStage?: { getLensDiagnostics(id: string): { lensScale: number; depthScale: number } | null };
+  }).__storiesGlassStage?.getLensDiagnostics("transport"));
+  assert.ok(pressedLens && pressedLens.lensScale <= 0.965 && pressedLens.depthScale <= 0.73, "touch press compresses optical scale and depth");
+  await page.evaluate(() => window.dispatchEvent(new PointerEvent("pointerup", { pointerId: 7, pointerType: "touch" })));
+  await page.waitForTimeout(160);
+  const releasedLens = await page.evaluate(() => (window as typeof window & {
+    __storiesGlassStage?: { getLensDiagnostics(id: string): { lensScale: number; depthScale: number } | null };
+  }).__storiesGlassStage?.getLensDiagnostics("transport"));
+  const pressMapUploadsAfter = await page.evaluate(() => (window as typeof window & {
+    __storiesGlassStage?: { getDiagnostics(): { mapUploads: number } };
+  }).__storiesGlassStage?.getDiagnostics().mapUploads);
+  assert.equal(releasedLens?.lensScale, 1, "released lens returns without bounce");
+  assert.equal(pressMapUploadsAfter, pressMapUploads, "press deformation does not upload a new map");
+
   const modeBefore = await page.locator("[data-glass-surface=mode]").boundingBox();
   const mapUploadsBefore = await page.evaluate(() => (window as typeof window & {
     __storiesGlassStage?: { getDiagnostics(): { mapUploads: number } };
@@ -196,6 +224,10 @@ async function runFernTransportPath(browserType: BrowserType, browserName: Brows
 
   await page.getByRole("button", { name: "Begin story" }).click();
   await page.waitForTimeout(650);
+  const storyFrameTime = await page.evaluate(() => (window as typeof window & {
+    __storiesGlassStage?: { getDiagnostics(): { frameTimeMs: number } };
+  }).__storiesGlassStage?.getDiagnostics().frameTimeMs ?? Infinity);
+  assert.ok(storyFrameTime < 20, `${browserName} warm Fern frame stays inside 20ms (${storyFrameTime.toFixed(2)}ms)`);
   assert.equal(await page.locator(".story-start-card").count(), 0, "start lens retires after playback begins");
   assert.equal(await page.locator("[data-glass-surface=dialogue]").count(), 1, "dialogue lens replaces start lens");
   const selectedDialogue = await page.locator(".story-overlay p").evaluate((paragraph) => {
@@ -207,6 +239,24 @@ async function runFernTransportPath(browserType: BrowserType, browserName: Brows
     return selection?.toString() ?? "";
   });
   assert.ok(selectedDialogue.includes("Lanternleaf Forest"), "dialogue remains selectable semantic DOM");
+  await page.evaluate(() => {
+    const spacer = document.createElement("div");
+    spacer.dataset.glassOffscreenProbe = "true";
+    spacer.style.height = "1800px";
+    document.body.prepend(spacer);
+  });
+  await page.waitForFunction(() => (window as typeof window & {
+    __storiesGlassStage?: { getDiagnostics(): { sleeping: boolean } };
+  }).__storiesGlassStage?.getDiagnostics().sleeping === true);
+  assert.equal(
+    await page.locator("audio[data-performance-audio]").evaluate((audio: HTMLAudioElement) => audio.paused),
+    false,
+    "offscreen suspension does not pause story narration",
+  );
+  await page.evaluate(() => document.querySelector("[data-glass-offscreen-probe]")?.remove());
+  await page.waitForFunction(() => (window as typeof window & {
+    __storiesGlassStage?: { getDiagnostics(): { sleeping: boolean } };
+  }).__storiesGlassStage?.getDiagnostics().sleeping === false);
   const timeBefore = await page.locator("audio[data-performance-audio]").evaluate((audio: HTMLAudioElement) => audio.currentTime);
   await page.getByRole("button", { name: "Replay story" }).focus();
   await page.evaluate(() => (window as typeof window & { __storiesGlassStage?: { simulateContextLoss(): void } }).__storiesGlassStage?.simulateContextLoss());
@@ -217,6 +267,17 @@ async function runFernTransportPath(browserType: BrowserType, browserName: Brows
   await page.waitForTimeout(250);
   const timeAfter = await page.locator("audio[data-performance-audio]").evaluate((audio: HTMLAudioElement) => audio.currentTime);
   assert.ok(timeAfter >= timeBefore, "context recovery must not restart story time");
+  await page.getByRole("button", { name: "Pause" }).click();
+  await page.waitForFunction(() => (window as typeof window & {
+    __storiesGlassStage?: { getDiagnostics(): { sleeping: boolean } };
+  }).__storiesGlassStage?.getDiagnostics().sleeping === true);
+  assert.equal(
+    await page.evaluate(() => (window as typeof window & {
+      __storiesGlassStage?: { getDiagnostics(): { sleeping: boolean } };
+    }).__storiesGlassStage?.getDiagnostics().sleeping),
+    true,
+    "paused Fern settles the renderer to sleep",
+  );
 
   const fallbackPage = await browser.newPage({ viewport: { width: 1280, height: 900 } });
   await fallbackPage.addInitScript(() => {
@@ -231,9 +292,85 @@ async function runFernTransportPath(browserType: BrowserType, browserName: Brows
   const fallbackVideoCount = await fallbackPage.locator(".story-player-media video").count();
   assert.equal(webglVideoCount, fallbackVideoCount, "WebGL path must not add media decoders");
   assert.equal(await fallbackPage.getByRole("button", { name: "Begin story" }).isEnabled(), true, "Fern CSS fallback remains playable");
+
+  const reducedPage = await browser.newPage({ viewport: { width: 900, height: 760 }, reducedMotion: "reduce" });
+  await reducedPage.goto(`${baseUrl}${storyPath}`);
+  await reducedPage.waitForFunction(() => document.querySelector(".story-player-stage")?.getAttribute("data-glass-renderer") === "webgl");
+  const reducedModeBefore = await reducedPage.locator("[data-glass-surface=mode]").boundingBox();
+  await reducedPage.getByRole("button", { name: "Read with me" }).click();
+  await reducedPage.waitForTimeout(30);
+  const reducedModeAfter = await reducedPage.locator("[data-glass-surface=mode]").boundingBox();
+  assert.ok(reducedModeBefore && reducedModeAfter && reducedModeAfter.x > reducedModeBefore.x + 20, "reduced motion applies mode state immediately");
+  assert.equal(
+    await reducedPage.locator("[data-glass-surface=mode]").evaluate((element) => getComputedStyle(element).transitionDuration),
+    "0s",
+    "reduced motion removes mode travel transition",
+  );
+  await reducedPage.getByRole("button", { name: "Replay story" }).dispatchEvent("pointerdown", { pointerId: 9, pointerType: "touch" });
+  await reducedPage.waitForTimeout(100);
+  const reducedPress = await reducedPage.evaluate(() => (window as typeof window & {
+    __storiesGlassStage?: { getLensDiagnostics(id: string): { lensScale: number; depthScale: number } | null };
+  }).__storiesGlassStage?.getLensDiagnostics("transport"));
+  assert.equal(reducedPress?.lensScale, 1, "reduced motion removes optical press deformation");
+  assert.equal(reducedPress?.depthScale, 1, "reduced motion keeps static optical depth");
   assert.deepEqual(errors, [], `${browserName} Fern path emitted browser errors`);
   await browser.close();
-  return { webglVideoCount, opaquePixels: pixels.opaqueById.transport };
+  return { webglVideoCount, opaquePixels: pixels.opaqueById.transport, storyFrameTime };
+}
+
+async function runResponsiveMatrix(browserType: BrowserType, baseUrl: string) {
+  const presets = [
+    [390, 844],
+    [430, 932],
+    [768, 1024],
+    [1024, 768],
+    [1440, 900],
+    [1920, 1080],
+  ] as const;
+  const browser = await browserType.launch();
+  const page = await browser.newPage();
+  for (const [width, height] of presets) {
+    await page.setViewportSize({ width, height });
+    await page.goto(`${baseUrl}/experience/fern-and-the-silent-seed-bells`);
+    await page.waitForFunction(() => document.querySelector(".story-player-stage")?.getAttribute("data-glass-renderer") === "webgl");
+    await page.waitForTimeout(120);
+    const layout = await page.evaluate(() => {
+      const stage = document.querySelector<HTMLElement>(".story-player-stage");
+      const canvas = document.querySelector<HTMLCanvasElement>("canvas[data-glass-canvas]");
+      const visibleButtons = [...document.querySelectorAll<HTMLElement>(".story-player-stage button")]
+        .filter((button) => button.getClientRects().length > 0 && getComputedStyle(button).visibility !== "hidden")
+        .map((button) => ({ width: button.getBoundingClientRect().width, height: button.getBoundingClientRect().height }));
+      if (!stage || !canvas) throw new Error("responsive glass stage missing");
+      const stageRect = stage.getBoundingClientRect();
+      const canvasRect = canvas.getBoundingClientRect();
+      return {
+        overflow: document.documentElement.scrollWidth - window.innerWidth,
+        stageRect: { x: stageRect.x, y: stageRect.y, width: stageRect.width, height: stageRect.height },
+        canvasRect: { x: canvasRect.x, y: canvasRect.y, width: canvasRect.width, height: canvasRect.height },
+        renderedDpr: canvas.width / canvasRect.width,
+        visibleButtons,
+        lenses: stage.dataset.glassLenses,
+      };
+    });
+    assert.ok(layout.overflow <= 1, `${width}x${height} has no horizontal overflow`);
+    assert.ok(Math.abs(layout.stageRect.width - layout.canvasRect.width) < 0.5, `${width}x${height} canvas width follows stage`);
+    assert.ok(Math.abs(layout.stageRect.height - layout.canvasRect.height) < 0.5, `${width}x${height} canvas height follows stage`);
+    assert.ok(layout.renderedDpr <= 2.01, `${width}x${height} renderer respects DPR cap`);
+    assert.equal(layout.lenses, "4", `${width}x${height} keeps all visible start-state lenses`);
+    for (const button of layout.visibleButtons) {
+      assert.ok(button.width >= 43.5 && button.height >= 43.5, `${width}x${height} preserves 44px hit targets`);
+    }
+  }
+  const highDprPage = await browser.newPage({ viewport: { width: 900, height: 700 }, deviceScaleFactor: 3 });
+  await highDprPage.goto(`${baseUrl}/experience/fern-and-the-silent-seed-bells`);
+  await highDprPage.waitForFunction(() => document.querySelector(".story-player-stage")?.getAttribute("data-glass-renderer") === "webgl");
+  const highDpr = await highDprPage.evaluate(() => {
+    const canvas = document.querySelector<HTMLCanvasElement>("canvas[data-glass-canvas]");
+    if (!canvas) return Infinity;
+    return canvas.width / canvas.getBoundingClientRect().width;
+  });
+  assert.ok(highDpr <= 2.01, "deviceScaleFactor 3 is capped to renderer DPR 2");
+  await browser.close();
 }
 
 async function main() {
@@ -244,7 +381,8 @@ async function main() {
   const proof = await runWebGLPath(browserType, browserName, baseUrl);
   await runFallbackPath(browserType, baseUrl);
   const fern = await runFernTransportPath(browserType, browserName, baseUrl);
-  console.log(`glass QA passed (${browserName}): ${proof.displacedPixels} displaced grid samples; Fern ${fern.opaquePixels} transport pixels, ${fern.webglVideoCount} existing videos`);
+  await runResponsiveMatrix(browserType, baseUrl);
+  console.log(`glass QA passed (${browserName}): ${proof.displacedPixels} displaced grid samples at ${proof.warmFrameTime.toFixed(2)}ms; Fern ${fern.opaquePixels} transport pixels at ${fern.storyFrameTime.toFixed(2)}ms, ${fern.webglVideoCount} existing videos`);
 }
 
 void main();

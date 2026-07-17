@@ -80,6 +80,24 @@ or zero-area DOM does not produce a lens. This prevents the pre-play dialogue
 surface from refracting behind the start card, then permits the same registered
 surface to resume when playback exposes it.
 
+## Interaction and motion
+
+Position and deformation are renderer uniforms. The 220ms mode transform is
+measured during its CSS travel and updates only lens bounds. Pointer, touch,
+Space, and Enter press the owning surface (mode buttons explicitly target the
+mode lens), interpolate its optical scale to 0.96 and depth to 0.72, then return
+with a short ease-out. Neither path rebuilds or uploads the displacement map.
+
+Reduced motion applies selection immediately and removes optical press
+deformation while retaining a static refracted lens. Hover-only DOM polish
+remains inside the fine-pointer media query. Focus rings, labels, buttons, and
+44px hit targets remain ordinary semantic DOM above the renderer.
+
+The stage suspends its renderer when hidden or offscreen without touching story
+audio or state. Static and paused stages draw a final frame and sleep. Authored
+target framebuffers are cached by version instead of being recomposited while a
+video advances.
+
 ## Portable lens field
 
 The first renderer-independent layer lives in `src/experience/glass`. A lens

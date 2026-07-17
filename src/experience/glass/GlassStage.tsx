@@ -87,6 +87,9 @@ export function GlassStage({
   const targetCanvasesRef = useRef(new Map<string, { canvas: HTMLCanvasElement; version: number }>());
   const resizeObserversRef = useRef(new Map<string, ResizeObserver>());
   const surfaceAnimationsRef = useRef(new Map<string, number>());
+  const pressAnimationsRef = useRef(new Map<string, number>());
+  const pressAmountsRef = useRef(new Map<string, number>());
+  const pressedIdsRef = useRef(new Set<string>());
   const intersectingRef = useRef(true);
   const [status, setStatus] = useState<GlassRendererStatus>("css");
 
@@ -242,6 +245,32 @@ export function GlassStage({
     surfaceAnimationsRef.current.set(id, requestAnimationFrame(step));
   }, [refresh]);
 
+  const animatePress = useCallback((id: string, pressed: boolean) => {
+    const renderer = rendererRef.current;
+    if (!renderer) return;
+    const existing = pressAnimationsRef.current.get(id);
+    if (existing !== undefined) cancelAnimationFrame(existing);
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      pressAmountsRef.current.set(id, 0);
+      renderer.updateLensDeformation(id, 0);
+      return;
+    }
+    const from = pressAmountsRef.current.get(id) ?? 0;
+    const to = pressed ? 1 : 0;
+    const duration = pressed ? 80 : 140;
+    const started = performance.now();
+    const step = (time: number) => {
+      const progress = Math.min(1, Math.max(0, (time - started) / duration));
+      const eased = 1 - Math.pow(1 - progress, 3);
+      const amount = from + (to - from) * eased;
+      pressAmountsRef.current.set(id, amount);
+      rendererRef.current?.updateLensDeformation(id, amount);
+      if (progress < 1) pressAnimationsRef.current.set(id, requestAnimationFrame(step));
+      else pressAnimationsRef.current.delete(id);
+    };
+    pressAnimationsRef.current.set(id, requestAnimationFrame(step));
+  }, []);
+
   useEffect(() => {
     const stage = stageRef.current;
     const canvas = canvasRef.current;
@@ -276,10 +305,41 @@ export function GlassStage({
     });
     intersectionObserver.observe(stage);
     const visibility = () => renderer.setVisible(intersectingRef.current && !document.hidden);
+    const pressId = (target: EventTarget | null) => {
+      if (!(target instanceof Element) || !target.closest("button, [role=button]")) return null;
+      const explicit = target.closest<HTMLElement>("[data-glass-press-target]")?.dataset.glassPressTarget;
+      return explicit ?? target.closest<HTMLElement>("[data-glass-surface]")?.dataset.glassSurface ?? null;
+    };
+    const press = (event: Event) => {
+      const id = pressId(event.target);
+      if (!id) return;
+      pressedIdsRef.current.add(id);
+      animatePress(id, true);
+    };
+    const release = () => {
+      for (const id of pressedIdsRef.current) animatePress(id, false);
+      pressedIdsRef.current.clear();
+    };
+    const keyPress = (event: KeyboardEvent) => {
+      if (event.repeat || (event.key !== " " && event.key !== "Enter")) return;
+      press(event);
+    };
     document.addEventListener("visibilitychange", visibility);
+    stage.addEventListener("pointerdown", press, true);
+    stage.addEventListener("keydown", keyPress, true);
+    window.addEventListener("pointerup", release, true);
+    window.addEventListener("pointercancel", release, true);
+    window.addEventListener("keyup", release, true);
+    window.addEventListener("blur", release);
     refresh();
     return () => {
       document.removeEventListener("visibilitychange", visibility);
+      stage.removeEventListener("pointerdown", press, true);
+      stage.removeEventListener("keydown", keyPress, true);
+      window.removeEventListener("pointerup", release, true);
+      window.removeEventListener("pointercancel", release, true);
+      window.removeEventListener("keyup", release, true);
+      window.removeEventListener("blur", release);
       intersectionObserver.disconnect();
       mutationObserver.disconnect();
       resizeObserver.disconnect();
@@ -287,11 +347,13 @@ export function GlassStage({
       resizeObserversRef.current.clear();
       for (const frame of surfaceAnimationsRef.current.values()) cancelAnimationFrame(frame);
       surfaceAnimationsRef.current.clear();
+      for (const frame of pressAnimationsRef.current.values()) cancelAnimationFrame(frame);
+      pressAnimationsRef.current.clear();
       renderer.destroy();
       rendererRef.current = null;
       if (diagnosticWindow.__storiesGlassStage === renderer) delete diagnosticWindow.__storiesGlassStage;
     };
-  }, [collectSources, matte, refresh]);
+  }, [animatePress, collectSources, matte, refresh]);
 
   const context = useMemo<GlassStageContextValue>(() => ({
     register,
