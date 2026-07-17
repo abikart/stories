@@ -11,10 +11,10 @@ Build story packages whose expressive audio, readable text, visual beats, intera
 
 Read these before making story decisions:
 
-1. `docs/v2/README.md`
-2. `docs/v2/HANDOFF.md`
-3. `docs/v2/05-production-system.md`
-4. `docs/v2/DECISIONS.md`
+1. `docs/README.md`
+2. `docs/HANDOFF.md`
+3. `docs/product/production-system.md`
+4. `docs/DECISIONS.md`
 5. `references/workflow.md` in this skill
 
 Read the target story's `production.json`, `beat-board.json`, `continuity.json`, and provider provenance before revising it.
@@ -67,7 +67,6 @@ Release pass:
 
 ```bash
 pnpm typecheck
-pnpm lint:stories
 pnpm lint:experiences
 pnpm build
 ```
@@ -80,4 +79,8 @@ Strict lint must fail while any beat is `needs-generation`, `derived-pending`, o
 
 ## Handoff
 
-Update `docs/v2/HANDOFF.md`, record meaningful tradeoffs in `docs/v2/DECISIONS.md`, preserve exact prompts and rejected candidates beside the story, and commit each substantial validated unit locally. Never push unless explicitly asked.
+Update `docs/HANDOFF.md`, record meaningful tradeoffs in `docs/DECISIONS.md`,
+and retain compact provenance for exact prompts, provider IDs/URLs, hashes,
+selection decisions, and rejection reasons. Delivery assets belong in the active
+tree; redundant provider originals and rejected binaries belong in Git history.
+Commit each substantial validated unit locally. Never push unless explicitly asked.

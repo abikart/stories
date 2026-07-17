@@ -6,7 +6,7 @@ import { flattenReadingUnits } from "@/experience/performance/timeline";
 
 async function main() {
   const storyId = process.argv.slice(2).find((argument) => argument !== "--" && !argument.startsWith("-"))
-    ?? "pip-and-the-lantern-seed";
+    ?? "fern-and-the-silent-seed-bells";
   const baseUrl = process.env.EXPERIENCE_BASE_URL ?? "http://localhost:3000";
   const productionPath = path.join(process.cwd(), "content", storyId, "production.json");
   const production = ExperienceProductionSchema.parse(JSON.parse(await fs.readFile(productionPath, "utf8")));

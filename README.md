@@ -1,54 +1,36 @@
 # stories.sh
 
-**Stories you can touch. Words that wake worlds.**
+An expressive, interactive story-film experience for children. A continuous
+narration performance drives word highlighting, living illustrations, sound,
+responsive composition, and child-paced Read-with-me pauses.
 
-stories.sh is a web-first storybook app for kids learning to read (ages 3–7). Every story is a living, animated world — but the world only comes alive when the child reads. One gesture — sliding a finger under the words — simultaneously decodes the text (grapheme-by-grapheme highlighting), speaks it, and drives the illustration's animation timeline. Reading *is* the game controller.
-
-## Documents
-
-> **Current direction:** start with [docs/v2/README.md](docs/v2/README.md).
-> The numbered documents below describe the completed first POC and remain as
-> historical architecture and product research.
-
-| Doc | What it covers |
-|---|---|
-| [docs/01-vision.md](docs/01-vision.md) | The evolved concept, the magic loop, brand identity |
-| [docs/02-product.md](docs/02-product.md) | Feature set, reading modes, pedagogy, delight, monetization |
-| [docs/03-poc-requirements.md](docs/03-poc-requirements.md) | **POC scope, milestones M0–M8, acceptance criteria, guardrails — the charter for the build loop** |
-| [docs/04-architecture.md](docs/04-architecture.md) | Tech stack, reader engine, timeline model, Scene Contract |
-| [docs/05-story-format.md](docs/05-story-format.md) | The Storyspec schema — how a story is described as data |
-| [docs/06-content-pipeline.md](docs/06-content-pipeline.md) | AI authoring workflow, decodability linter, TTS, video render, YouTube |
-| [docs/07-poc-stories.md](docs/07-poc-stories.md) | Page-by-page briefs for the three POC stories |
-| [docs/08-design-system.md](docs/08-design-system.md) | Design tokens, type, motion — modeled on board.fun |
-| [docs/09-video-scenes.md](docs/09-video-scenes.md) | AI-video scene workflow: prompt packs → Grok Imagine → ingest |
-| [docs/v2/README.md](docs/v2/README.md) | **V2 interactive story-film product, runtime, responsive, and production specifications** |
-| [docs/v2/HANDOFF.md](docs/v2/HANDOFF.md) | Current branch status and exact next action for a fresh session |
-
-## Authoring a story (the terminal is the CMS)
+The active story is **Fern and the Silent Seed Bells**.
 
 ```bash
-pnpm new-story my-story --title "The ..." --level 1   # scaffold with the level's phonics scope
-# edit content/my-story/story.json: pages, texts, tokens ({w, punct?, sight?}), cues, scenes
-pnpm segment my-story        # fills tokens[].g from the scope (greedy, longest-first, case-preserving)
-pnpm lint:stories my-story   # decodability gate — fix until ✓ (suggests in-scope words)
-pnpm narrate my-story        # ElevenLabs (or say fallback) → audio + word timestamps
-pnpm gen-frames my-story     # only for frames-backend pages (procedural renderer)
-pnpm video-prompts my-story --style ghibli   # prompt pack for AI video (Grok Imagine etc.)
-pnpm ingest-video my-story   # explode delivered clips in video-drops/ into scrub scenes
-pnpm dev                     # read it end-to-end in the browser
+pnpm install
+pnpm dev
 ```
 
-Coded scenes are TS modules in [src/engine/scenes/](src/engine/scenes/) implementing the Scene contract, registered in [scene.ts](src/engine/scene.ts). The linter is the pedagogical authority: every word must be decodable within the story's declared `phonicsScope` or listed as a sight word.
+Open [http://localhost:3000](http://localhost:3000), or go directly to
+`/experience/fern-and-the-silent-seed-bells`.
 
-## Status
+## Working map
 
-The POC charter is complete: milestones M0–M8 of [docs/03-poc-requirements.md](docs/03-poc-requirements.md) are implemented and verified. The app includes four playable stories, three reading modes with synchronized narration, coded and frame-based interactive scenes, celebrations and stickers, the terminal-based content pipeline, deterministic YouTube-ready video rendering, and the polished story library landing page.
+- `content/fern-and-the-silent-seed-bells/` — the active production package
+- `src/experience/` — reusable performance-led runtime
+- `docs/README.md` — product and architecture index
+- `docs/HANDOFF.md` — current state and next action
+- `docs/mvp/immersive-run.md` — active MVP execution contract
+- `.codex/skills/` — project-owned story and visual production workflows
 
-The original POC is preserved as a working reference. Active development is the
-[v2 interactive story-film runtime](docs/v2/README.md): an expressive
-performance-first foundation with responsive cinematic staging, reusable media
-state machines, meaningful interaction recipes, and one production package for
-interactive web plus linear film. Work continues on branch
-`codex/interactive-story-runtime`. The golden story now uses sentence-sized
-reading units, machine-checked beat/continuity plans, navigable Read-with-me
-passages, and the project-owned `$author-story-film` production skill.
+## Validation
+
+```bash
+pnpm typecheck
+pnpm lint:experiences
+pnpm build
+pnpm qa:experience -- fern-and-the-silent-seed-bells
+```
+
+The successful pre-MVP POC is preserved by the local `poc-success` tag. Git
+history, not a parallel archive directory, holds retired POC code and media.

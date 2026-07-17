@@ -3,7 +3,7 @@
 Status: planning-approved; generation has not started.
 
 Use `$create-lanternleaf-scenes`. `docs/universe/world-details.md` is the written
-source of truth and `docs/v2/03-responsive-stage.md` is the composition contract.
+source of truth and `docs/product/responsive-stage.md` is the composition contract.
 
 ## Reference roles
 

@@ -16,16 +16,18 @@ export default async function ViewportPage({ searchParams }: ViewportPageProps) 
   const params = await searchParams;
   const width = dimension(params.width, 390, 1920);
   const height = dimension(params.height, 844, 1200);
-  const requestedPath = params.path?.startsWith("/") ? params.path : "/dev/performance";
+  const requestedPath = params.path?.startsWith("/")
+    ? params.path
+    : "/experience/fern-and-the-silent-seed-bells";
 
   return (
-    <main style={{ minWidth: "max-content", padding: 24, background: "#141a28" }}>
+    <main style={{ minWidth: "max-content", padding: 24, background: "#f7f8f2" }}>
       <iframe
         title={`${width} by ${height} viewport`}
         src={requestedPath}
         width={width}
         height={height}
-        style={{ display: "block", border: 0, background: "#20335c" }}
+        style={{ display: "block", border: 0, background: "#ffffff" }}
       />
     </main>
   );
