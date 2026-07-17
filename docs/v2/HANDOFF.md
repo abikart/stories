@@ -216,7 +216,12 @@ Last updated: 2026-07-16
   reverse scrub, final 8.6-second playback, replay, reduced motion, clean
   unhandled-error capture, and HTTP 206 seeking. The 390×844, 430×932, 768×1024,
   1024×768, 1440×900, and 1920×1080 layouts preserve complete 4:3 art with 44px
-  controls and no horizontal overflow. Desktop uses the approved art/copy row.
+  controls and no horizontal overflow.
+- The owner-facing player now presents the 4:3 watercolor as a freeform canvas:
+  title, mode, narration, and transport controls float over the scene; the seek
+  input remains fully wired but visually hidden. Each active poster also drives
+  a restrained blurred atmosphere behind the exact-white matte, so scene and
+  page blend without revealing a rectangular media frame.
 - `docs/v2/09-fern-playable-loop.md` now defines the autonomous route from that
   partial board to a hands-on local alpha: dependency-ordered keyframes, schema-
   v2 motion ingest, 14 native Watch states, story-specific sound, integration,
@@ -233,7 +238,7 @@ Last updated: 2026-07-16
 
 - One native 4:3 creative master per new media state; legacy 16:9 packages stay
   valid only as regression fixtures.
-- Cinema row, Book stack, and Pocket stack responsive presets.
+- One responsive 4:3 scene canvas with floating, reflowing DOM controls.
 - Real-seconds expressive performance timeline.
 - Native video for normal playback; frames only for true scrub moments.
 - Standard interaction recipes; no story-specific runtime code.
@@ -249,7 +254,7 @@ Owner playtest **Fern and the Silent Seed Bells** at
 2. Replay in Read-with-me; linger at a pause to judge the living ambience, then
    complete the silver-path interaction by dragging Pipkin or pressing Enter.
 3. Try one phone-sized window and one desktop window; judge the stacked and
-   side-by-side reading experiences.
+   floating-canvas reading experiences.
 4. Record creative revisions before beginning M7 deterministic film rendering.
 
 ## Verification baseline

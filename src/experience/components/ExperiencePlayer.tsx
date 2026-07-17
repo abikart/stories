@@ -218,14 +218,16 @@ export function ExperiencePlayer({ production }: { production: ExperienceProduct
     ? interaction.completeMediaState
     : visualUnit.mediaState;
   const media = scene.media.find((state) => state.id === visualState) ?? scene.media[0];
+  const atmosphereAsset = media.kind === "poster"
+    ? media.src
+    : media.poster ?? production.stage.backdrop.poster;
   const focal = media.focalPoint ?? production.stage.defaultFocalPoint;
   const anchor = displayUnit.overlay.anchor ?? { x: 0.5, y: 0.5 };
   const stageStyle: PlayerStyle = {
     "--experience-accent": production.accent,
-    "--experience-backdrop": `url("${assetUrl(production.id, production.stage.backdrop.poster)}")`,
+    "--experience-backdrop": `url("${assetUrl(production.id, atmosphereAsset)}")`,
     "--focal-x": `${focal.x * 100}%`,
     "--focal-y": `${focal.y * 100}%`,
-    backgroundColor: production.stage.backdrop.color,
   };
   const overlayStyle: OverlayStyle = {
     "--phrase-anchor-x": `${anchor.x * 100}%`,
@@ -363,23 +365,9 @@ export function ExperiencePlayer({ production }: { production: ExperienceProduct
       data-mode={mode}
       data-waiting={waiting ? "true" : undefined}
       data-reading-phase={readingPhase}
+      data-at-start={snapshot.time === 0 && !snapshot.playing ? "true" : undefined}
     >
       <div className="experience-atmosphere" aria-hidden="true" />
-      <header className="story-player-header">
-        <div className="story-player-title">
-          <span>A Bramble Hollow story</span>
-          <h1>{production.title}</h1>
-        </div>
-        <div className="story-mode-switch" role="group" aria-label="Story mode">
-          <button type="button" aria-pressed={mode === "watch"} onClick={() => changeMode("watch")}>
-            Watch
-          </button>
-          <button type="button" aria-pressed={mode === "read"} onClick={() => changeMode("read")}>
-            Read with me
-          </button>
-        </div>
-      </header>
-
       <section className="story-player-composition" aria-label="Interactive story player">
         <div className="story-player-stage">
           <div className="story-player-media">
@@ -399,6 +387,21 @@ export function ExperiencePlayer({ production }: { production: ExperienceProduct
               />
             ) : null}
           </div>
+
+          <header className="story-player-header">
+            <div className="story-player-title">
+              <span>A Bramble Hollow story</span>
+              <h1>{production.title}</h1>
+            </div>
+            <div className="story-mode-switch" role="group" aria-label="Story mode">
+              <button type="button" aria-pressed={mode === "watch"} onClick={() => changeMode("watch")}>
+                Watch
+              </button>
+              <button type="button" aria-pressed={mode === "read"} onClick={() => changeMode("read")}>
+                Read with me
+              </button>
+            </div>
+          </header>
 
           <div
             className="story-overlay"
@@ -447,6 +450,36 @@ export function ExperiencePlayer({ production }: { production: ExperienceProduct
               </button>
             </div>
           ) : null}
+
+          <div className="story-transport" aria-label="Story controls">
+            <button className="story-icon-button" type="button" onClick={replay} aria-label="Replay story">
+              ↺
+            </button>
+            <button
+              className="story-play-button"
+              type="button"
+              onClick={togglePlayback}
+              disabled={requiredInteraction || Boolean(waiting && readingPhase !== "reading")}
+            >
+              {requiredInteraction ? "Guide along path" : waiting ? "Continue" : snapshot.playing ? "Pause" : snapshot.ended ? "Play again" : "Play"}
+            </button>
+            <div className="story-progress">
+              <input
+                type="range"
+                min="0"
+                max={performance.duration}
+                step="0.05"
+                value={snapshot.time}
+                aria-label="Story position"
+                onInput={(event) => seek(Number(event.currentTarget.value))}
+              />
+              <div>
+                <span>{formatTime(snapshot.time)}</span>
+                <span>{requiredInteraction ? "complete the story action" : mode === "read" ? (waiting ? "waiting for you" : "pauses at safe lines") : "continuous story"}</span>
+                <span>{formatTime(performance.duration)}</span>
+              </div>
+            </div>
+          </div>
         </div>
 
         <audio
@@ -460,36 +493,6 @@ export function ExperiencePlayer({ production }: { production: ExperienceProduct
         {performance.stems ? (
           <Soundscape ref={soundscapeRef} storyId={production.id} stems={performance.stems} />
         ) : null}
-
-        <div className="story-transport" aria-label="Story controls">
-          <button className="story-icon-button" type="button" onClick={replay} aria-label="Replay story">
-            ↺
-          </button>
-          <button
-            className="story-play-button"
-            type="button"
-            onClick={togglePlayback}
-            disabled={requiredInteraction || Boolean(waiting && readingPhase !== "reading")}
-          >
-            {requiredInteraction ? "Guide along path" : waiting ? "Continue" : snapshot.playing ? "Pause" : snapshot.ended ? "Play again" : "Play"}
-          </button>
-          <div className="story-progress">
-            <input
-              type="range"
-              min="0"
-              max={performance.duration}
-              step="0.05"
-              value={snapshot.time}
-              aria-label="Story position"
-              onInput={(event) => seek(Number(event.currentTarget.value))}
-            />
-            <div>
-              <span>{formatTime(snapshot.time)}</span>
-              <span>{requiredInteraction ? "complete the story action" : mode === "read" ? (waiting ? "waiting for you" : "pauses at safe lines") : "continuous story"}</span>
-              <span>{formatTime(performance.duration)}</span>
-            </div>
-          </div>
-        </div>
         {playbackError ? <p className="story-player-error" role="alert">{playbackError}</p> : null}
       </section>
     </main>

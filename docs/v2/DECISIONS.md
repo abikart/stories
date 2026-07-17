@@ -3,6 +3,22 @@
 Newest decisions go first. Record meaningful divergences, tradeoffs, and quality
 gates; do not duplicate routine implementation details.
 
+## 2026-07-16 — The story player is a scene canvas, not a video-player frame
+
+- The native 4:3 media remains complete and uncropped, but its exact-white matte
+  now dissolves directly into the page. Do not add a visible stage border,
+  vignette, dark player well, or hard rectangular background around new
+  Lanternleaf art.
+- The active state's poster supplies a blurred, desaturated atmosphere behind
+  the canvas. This is responsive page treatment, not a separately authored
+  device asset, and it changes with semantic scene state.
+- Title, Watch/Read-with-me mode, narration, and play/pause/replay controls are
+  independent floating islands. Narration reads as a speech bubble rather than
+  a player caption panel.
+- Timeline seeking remains part of runtime and QA, including reverse-scrub
+  reconciliation, but the range input is visually clipped until an intentional
+  child-friendly navigation pattern replaces the conventional media scrubber.
+
 ## 2026-07-16 — Fern alpha keeps sound and responsive composition story-scalable
 
 - Soundscape generation reads `content/<id>/soundscape-source.json` instead of

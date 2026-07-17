@@ -195,29 +195,38 @@ async function main() {
       await page.goto(`${baseUrl}/experience/${storyId}`, { waitUntil: "networkidle" });
       const layout = await page.evaluate(() => {
         const media = document.querySelector(".story-player-media .experience-media")?.getBoundingClientRect();
+        const stage = document.querySelector(".story-player-stage")?.getBoundingClientRect();
         const overlay = document.querySelector(".story-overlay")?.getBoundingClientRect();
+        const progress = document.querySelector(".story-progress")?.getBoundingClientRect();
         const shortControls = [...document.querySelectorAll<HTMLElement>(
           ".story-mode-switch button, .story-start-card button, .story-transport button",
         )].filter((element) => element.getBoundingClientRect().height < 43.5).map((element) => element.textContent?.trim());
         return {
           overflow: document.documentElement.scrollWidth - window.innerWidth,
           mediaRatio: media ? media.width / media.height : 0,
+          stageRatio: stage ? stage.width / stage.height : 0,
+          stage: stage ? { left: stage.left, top: stage.top, right: stage.right, bottom: stage.bottom } : null,
+          overlay: overlay ? { left: overlay.left, top: overlay.top, right: overlay.right, bottom: overlay.bottom } : null,
+          progress: progress ? { width: progress.width, height: progress.height } : null,
           mediaRight: media?.right,
           mediaBottom: media?.bottom,
-          overlayLeft: overlay?.left,
-          overlayTop: overlay?.top,
           shortControls,
         };
       });
       const label = `${viewport.width}x${viewport.height}`;
       if (layout.overflow > 1) failures.push(`${label}: horizontal overflow ${layout.overflow}px`);
       if (Math.abs(layout.mediaRatio - (4 / 3)) > 0.015) failures.push(`${label}: media ratio was ${layout.mediaRatio.toFixed(3)}, expected complete 4:3 art`);
+      if (Math.abs(layout.stageRatio - (4 / 3)) > 0.015) failures.push(`${label}: story canvas ratio was ${layout.stageRatio.toFixed(3)}, expected 4:3`);
       if (layout.shortControls.length) failures.push(`${label}: controls under 44px: ${layout.shortControls.join(", ")}`);
-      if (viewport.width < 600 && (layout.overlayTop ?? 0) < (layout.mediaBottom ?? 0) - 1) {
-        failures.push(`${label}: phone copy did not stack below the illustration`);
+      if (!layout.progress || layout.progress.width > 1.5 || layout.progress.height > 1.5) {
+        failures.push(`${label}: seek control is visually exposed`);
       }
-      if (viewport.width >= 1024 && (layout.overlayLeft ?? 0) < (layout.mediaRight ?? 0) - 1) {
-        failures.push(`${label}: desktop copy did not sit beside the complete illustration`);
+      if (!layout.stage || !layout.overlay
+        || layout.overlay.left < layout.stage.left - 1
+        || layout.overlay.right > layout.stage.right + 1
+        || layout.overlay.top < layout.stage.top - 1
+        || layout.overlay.bottom > layout.stage.bottom + 1) {
+        failures.push(`${label}: dialogue bubble escaped the story canvas`);
       }
     }
 
