@@ -36,10 +36,27 @@ export const StageContractSchema = z.discriminatedUnion("masterAspectRatio", [
   }),
 ]);
 
+export const DialoguePlacementTokenSchema = z.enum([
+  "top-left",
+  "top",
+  "top-right",
+  "center-left",
+  "center",
+  "center-right",
+  "bottom-left",
+  "bottom",
+  "bottom-right",
+]);
+
+export const CastMemberSchema = z.object({
+  name: z.string().min(1),
+  portrait: z.string().min(1),
+  portraitAlt: z.string().min(1),
+});
+
 export const OverlayPlacementSchema = z.object({
   kind: z.enum(["narration", "dialogue"]),
-  anchor: PointSchema.optional(),
-  placement: z.enum(["above", "above-left", "above-right", "below"]).optional(),
+  placement: DialoguePlacementTokenSchema.optional(),
   mobilePolicy: z.enum(["anchor", "dock"]),
 });
 
@@ -149,6 +166,7 @@ export const InteractionBindingSchema = z.object({
 
 export const ExperienceSceneSchema = z.object({
   id: z.string().min(1),
+  overlayPlacement: DialoguePlacementTokenSchema.default("bottom"),
   media: z.array(MediaStateSchema).min(1),
   canonicalPath: z.array(z.string().min(1)).min(1).optional(),
   phrases: z.array(PhraseSchema).default([]),
@@ -161,6 +179,7 @@ export const ExperienceProductionSchema = z.object({
   title: z.string().min(1),
   logline: z.string().min(1),
   accent: z.string().min(1),
+  cast: z.array(CastMemberSchema).default([]),
   stage: StageContractSchema,
   performance: PerformanceSchema.optional(),
   productionPlan: z.object({
@@ -176,6 +195,8 @@ export const ExperienceProductionSchema = z.object({
 export type Point = z.infer<typeof PointSchema>;
 export type NormalizedRect = z.infer<typeof NormalizedRectSchema>;
 export type StageContract = z.infer<typeof StageContractSchema>;
+export type DialoguePlacementToken = z.infer<typeof DialoguePlacementTokenSchema>;
+export type CastMember = z.infer<typeof CastMemberSchema>;
 export type OverlayPlacement = z.infer<typeof OverlayPlacementSchema>;
 export type WordTiming = z.infer<typeof WordTimingSchema>;
 export type ReadingUnit = z.infer<typeof ReadingUnitSchema>;

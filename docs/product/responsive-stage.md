@@ -113,11 +113,16 @@ diagnostics or future art direction, but it may not hide required action.
 ## Overlay collision rules
 
 1. Preserve essential action and the speaker's face.
-2. Prefer the dedicated copy region in every preset.
-3. When an anchored overlay is deliberately authored, flip around its anchor if
-   it exits the media safe rectangle.
-4. Dock when no anchored placement is safe.
+2. Assign every scene a nine-position `overlayPlacement` after inspecting its
+   focus areas; use a phrase override only when the focus changes materially.
+3. Keep character portraits with their speech bubble and inside the stage safe
+   edge.
+4. Dock on Pocket and other constrained layouts when `mobilePolicy` is `dock`.
 5. Never reduce reading text below the preset's minimum size.
+
+Narration has no visible speaker label. Character dialogue uses the cast
+portrait instead of a repeated name label; accessible alt text still identifies
+the speaker.
 
 ## Accessibility and input
 

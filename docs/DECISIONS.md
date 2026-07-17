@@ -3,6 +3,21 @@
 Newest decisions go first. Record meaningful divergences, tradeoffs, and quality
 gates; do not duplicate routine implementation details.
 
+## 2026-07-17 — Dialogue identity and placement are authored content
+
+- Narrated lines are label-free. A visible `Narrator` tag adds interface chrome
+  without helping comprehension.
+- Spoken character lines use compact circular cast portraits in both live
+  playback and Read-with-me passages. Portraits are package assets referenced
+  through the provider-neutral production schema, not hard-coded UI art.
+- Bubbles have no directional tail: placement avoids the scene focus but does
+  not pretend the panel is physically anchored to a point in the illustration.
+- Every scene declares one of nine tooltip-like dialogue positions. A phrase may
+  override it when the visual focus changes, while Pocket layouts continue to
+  dock copy safely.
+- Placement is intentionally authored rather than inferred from computer vision:
+  it is predictable, cheap to review, and scales with the beat-board workflow.
+
 ## 2026-07-17 — Solid story matte is the default blending contract
 
 - The cleanest Fern playtest came from removing the poster-derived atmosphere,

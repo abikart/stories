@@ -56,15 +56,18 @@ interlude without requiring a new asset per story.
 4. Approve native 4:3 key illustrations with the complete semantic beat inside
    the frame and one exact solid dissolving matte matching
    `stage.backdrop.color` (`#FFFFFF` by default).
-5. Assign each beat a production tier: living illustration, motion shot, or
+5. Mark the least obstructive dialogue position for each scene and approve one
+   small cast portrait for every speaking character; narration remains
+   label-free.
+6. Assign each beat a production tier: living illustration, motion shot, or
    hero interaction.
-6. Run planning lint with pending assets allowed; generate only the missing or
+7. Run planning lint with pending assets allowed; generate only the missing or
    rejected beats.
-7. For state transitions, approve handoff keyframes before animation.
-8. Generate or animate from those references, then review start, middle, and end
+8. For state transitions, approve handoff keyframes before animation.
+9. Generate or animate from those references, then review start, middle, and end
    frames against the continuity ledger.
-9. Ingest creative masters, extract posters, and create delivery renditions.
-10. Run strict release lint, Read-with-me passage QA, responsive presets, and
+10. Ingest creative masters, extract posters, and create delivery renditions.
+11. Run strict release lint, Read-with-me passage QA, responsive presets, and
     the film path.
 
 For a package that declares continuous Watch motion, every narration-bearing

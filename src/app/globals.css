@@ -1213,7 +1213,6 @@ html[data-easy-read] .prose-line {
 }
 
 .story-player-title span,
-.story-overlay-speaker,
 .story-start-card > span,
 .story-wait-card > span {
   font-family: var(--font-display);
@@ -1321,10 +1320,6 @@ html[data-easy-read] .prose-line {
 @keyframes story-phrase-enter {
   from { opacity: 0; transform: translateY(5px); }
   to { opacity: 1; transform: translateY(0); }
-}
-
-.story-overlay-speaker {
-  color: color-mix(in srgb, var(--experience-accent), #6c5313 58%);
 }
 
 .story-overlay p {
@@ -1628,39 +1623,6 @@ html[data-easy-read] .prose-line {
     transform: translateX(-50%);
   }
 
-  .story-overlay[data-kind="dialogue"] {
-    left: var(--phrase-anchor-x);
-    top: var(--phrase-anchor-y);
-    width: min(330px, 42%);
-  }
-
-  .story-overlay[data-kind="dialogue"][data-placement="above"] {
-    transform: translate(-50%, calc(-100% - 14px));
-  }
-
-  .story-overlay[data-kind="dialogue"][data-placement="above-left"] {
-    transform: translate(-100%, calc(-100% - 14px));
-  }
-
-  .story-overlay[data-kind="dialogue"][data-placement="above-right"] {
-    transform: translate(0, calc(-100% - 14px));
-  }
-
-  .story-overlay[data-kind="dialogue"][data-placement="below"] {
-    transform: translate(-50%, 14px);
-  }
-
-  .story-overlay[data-kind="dialogue"]::after {
-    content: "";
-    position: absolute;
-    left: 50%;
-    bottom: -8px;
-    width: 16px;
-    height: 16px;
-    background: inherit;
-    transform: translateX(-50%) rotate(45deg);
-  }
-
   .story-reading-line {
     grid-template-columns: 70px minmax(0, 1fr);
     align-items: baseline;
@@ -1677,9 +1639,6 @@ html[data-easy-read] .prose-line {
     transform: translateX(-50%);
   }
 
-  .story-player[data-waiting="true"] .story-overlay[data-kind="dialogue"]::after {
-    display: none;
-  }
 }
 
 @media (min-width: 1024px), (orientation: landscape) and (max-height: 600px) {
@@ -1881,22 +1840,20 @@ html[data-easy-read] .prose-line {
 .story-player[data-waiting="true"] .story-overlay {
   position: absolute;
   z-index: 7;
-  left: 50%;
-  top: auto;
-  bottom: clamp(72px, 9%, 104px);
+  inset: auto;
   width: min(620px, calc(100% - clamp(38px, 9vw, 150px)));
   min-height: 0;
   max-height: calc(100% - 150px);
   margin: 0;
   padding: clamp(13px, 1.7vw, 18px) clamp(16px, 2.2vw, 23px);
-  overflow-y: auto;
+  overflow: visible;
   border-radius: clamp(22px, 3vw, 30px);
   background: rgb(255 255 255 / 0.91);
   color: #293a31;
   box-shadow:
     0 0 0 1px rgb(0 0 0 / 0.04),
     0 12px 34px rgb(38 54 45 / 0.13);
-  transform: translateX(-50%);
+  transform: none;
   backdrop-filter: blur(14px);
   transition-property: opacity, translate;
   transition-duration: 160ms;
@@ -1905,40 +1862,73 @@ html[data-easy-read] .prose-line {
 
 .story-overlay::after,
 .story-overlay[data-kind="dialogue"]::after {
-  content: "";
-  position: absolute;
-  left: 50%;
-  top: auto;
-  bottom: -8px;
-  width: 18px;
-  height: 18px;
-  display: block;
-  background: inherit;
-  box-shadow: 2px 2px 3px rgb(38 54 45 / 0.04);
-  transform: translateX(-50%) rotate(45deg);
+  display: none;
 }
 
 .story-overlay[data-kind="dialogue"] {
-  left: var(--phrase-anchor-x);
-  top: var(--phrase-anchor-y);
-  bottom: auto;
-  width: min(390px, 42%);
+  width: min(430px, calc(100% - clamp(74px, 11vw, 132px)));
 }
 
-.story-overlay[data-kind="dialogue"][data-placement="above"] {
-  transform: translate(-50%, calc(-100% - 16px));
+.story-overlay[data-placement="top-left"] {
+  top: clamp(108px, 18%, 150px);
+  left: clamp(22px, 5%, 56px);
 }
 
-.story-overlay[data-kind="dialogue"][data-placement="above-left"] {
-  transform: translate(-100%, calc(-100% - 16px));
+.story-overlay[data-has-portrait="true"][data-placement="top-left"],
+.story-overlay[data-has-portrait="true"][data-placement="center-left"],
+.story-overlay[data-has-portrait="true"][data-placement="bottom-left"] {
+  left: clamp(70px, 8%, 92px);
 }
 
-.story-overlay[data-kind="dialogue"][data-placement="above-right"] {
-  transform: translate(0, calc(-100% - 16px));
+.story-overlay[data-placement="top"] {
+  top: clamp(108px, 18%, 150px);
+  left: 50%;
+  transform: translateX(-50%);
 }
 
-.story-overlay[data-kind="dialogue"][data-placement="below"] {
-  transform: translate(-50%, 16px);
+.story-overlay[data-placement="top-right"] {
+  top: clamp(108px, 18%, 150px);
+  right: clamp(22px, 5%, 56px);
+}
+
+.story-overlay[data-has-portrait="true"][data-placement="top-right"],
+.story-overlay[data-has-portrait="true"][data-placement="center-right"],
+.story-overlay[data-has-portrait="true"][data-placement="bottom-right"] {
+  right: clamp(70px, 8%, 92px);
+}
+
+.story-overlay[data-placement="center-left"] {
+  top: 50%;
+  left: clamp(22px, 5%, 56px);
+  transform: translateY(-50%);
+}
+
+.story-overlay[data-placement="center"] {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.story-overlay[data-placement="center-right"] {
+  top: 50%;
+  right: clamp(22px, 5%, 56px);
+  transform: translateY(-50%);
+}
+
+.story-overlay[data-placement="bottom-left"] {
+  bottom: clamp(72px, 9%, 104px);
+  left: clamp(22px, 5%, 56px);
+}
+
+.story-overlay[data-placement="bottom"] {
+  bottom: clamp(72px, 9%, 104px);
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.story-overlay[data-placement="bottom-right"] {
+  right: clamp(22px, 5%, 56px);
+  bottom: clamp(72px, 9%, 104px);
 }
 
 .story-player[data-at-start="true"] .story-overlay {
@@ -1961,12 +1951,34 @@ html[data-easy-read] .prose-line {
   }
 }
 
-.story-overlay-speaker {
-  color: color-mix(in srgb, var(--experience-accent), #4b5c4e 48%);
+.story-overlay-portrait,
+.story-reading-portrait {
+  display: block;
+  border: 3px solid rgb(255 255 255 / 0.94);
+  border-radius: 50%;
+  background: var(--experience-matte, #fff);
+  object-fit: cover;
+  box-shadow:
+    0 0 0 1px rgb(38 54 45 / 0.09),
+    0 8px 22px rgb(38 54 45 / 0.14);
+}
+
+.story-overlay-portrait {
+  position: absolute;
+  top: 50%;
+  left: -62px;
+  width: 50px;
+  height: 50px;
+  transform: translateY(-50%);
+}
+
+.story-overlay[data-placement$="right"] .story-overlay-portrait {
+  right: -62px;
+  left: auto;
 }
 
 .story-overlay p {
-  margin-top: 5px;
+  margin-top: 0;
   font-size: clamp(1rem, 2vw, 1.34rem);
   line-height: 1.42;
 }
@@ -1986,8 +1998,13 @@ html[data-easy-read] .prose-line {
 }
 
 .story-player[data-waiting="true"] .story-overlay {
+  top: auto;
+  right: auto;
   bottom: clamp(76px, 10%, 112px);
+  left: 50%;
   width: min(720px, calc(100% - clamp(32px, 7vw, 110px)));
+  overflow-y: auto;
+  transform: translateX(-50%);
 }
 
 .story-reading-passage {
@@ -1995,10 +2012,19 @@ html[data-easy-read] .prose-line {
 }
 
 .story-reading-line {
-  grid-template-columns: 76px minmax(0, 1fr);
-  align-items: baseline;
+  grid-template-columns: minmax(0, 1fr);
+  align-items: center;
   gap: 14px;
   padding-block: 8px;
+}
+
+.story-reading-line[data-has-portrait="true"] {
+  grid-template-columns: 44px minmax(0, 1fr);
+}
+
+.story-reading-portrait {
+  width: 42px;
+  height: 42px;
 }
 
 .story-reading-line > p {
@@ -2185,6 +2211,7 @@ html[data-easy-read] .prose-line {
   .story-overlay[data-kind="dialogue"],
   .story-player[data-waiting="true"] .story-overlay {
     left: 50%;
+    right: auto;
     top: auto;
     bottom: 62px;
     width: calc(100% - 18px);
@@ -2194,15 +2221,24 @@ html[data-easy-read] .prose-line {
     transform: translateX(-50%);
   }
 
+  .story-overlay[data-has-portrait="true"] {
+    padding-left: 61px;
+  }
+
+  .story-overlay-portrait,
+  .story-overlay[data-placement$="right"] .story-overlay-portrait {
+    top: 50%;
+    right: auto;
+    left: 10px;
+    width: 40px;
+    height: 40px;
+  }
+
   .story-overlay[data-kind="dialogue"]::after,
   .story-overlay::after {
     width: 14px;
     height: 14px;
     bottom: -6px;
-  }
-
-  .story-overlay-speaker {
-    font-size: 0.52rem;
   }
 
   .story-overlay p {
@@ -2219,6 +2255,17 @@ html[data-easy-read] .prose-line {
     grid-template-columns: 1fr;
     gap: 2px;
     padding-block: 5px;
+  }
+
+  .story-reading-line[data-has-portrait="true"] {
+    grid-template-columns: 36px minmax(0, 1fr);
+    gap: 8px;
+  }
+
+  .story-reading-portrait {
+    width: 34px;
+    height: 34px;
+    border-width: 2px;
   }
 
   .story-reading-line > span {

@@ -4,6 +4,18 @@
   "title": "Fern and the Silent Seed Bells",
   "logline": "When the forest's morning bells are tangled silent, Fern and Pipkin use what each can see and reach to wake the day.",
   "accent": "#708b62",
+  "cast": [
+    {
+      "name": "Fern",
+      "portrait": "portraits/fern.png",
+      "portraitAlt": "Fern the fox speaking"
+    },
+    {
+      "name": "Pipkin",
+      "portrait": "portraits/pipkin.png",
+      "portraitAlt": "Pipkin the moth speaking"
+    }
+  ],
   "stage": {
     "masterAspectRatio": "4:3",
     "actionSafe": "full-frame",
@@ -39,6 +51,7 @@
   "scenes": [
     {
       "id": "the-quiet-morning",
+      "overlayPlacement": "top-left",
       "media": [
         {
           "id": "bell-tree-dawn",
@@ -445,6 +458,7 @@
     },
     {
       "id": "the-tangled-ribbons",
+      "overlayPlacement": "top-left",
       "media": [
         {
           "id": "tangled-tree",
@@ -1056,6 +1070,7 @@
     },
     {
       "id": "the-silver-path",
+      "overlayPlacement": "top-left",
       "media": [
         {
           "id": "path-traced",
@@ -1477,6 +1492,7 @@
     },
     {
       "id": "the-ringing-morning",
+      "overlayPlacement": "top-left",
       "media": [
         {
           "id": "breeze-rush",

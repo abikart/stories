@@ -83,6 +83,41 @@ async function main() {
       }, seconds);
     };
 
+    const openingOverlay = page.locator(".story-overlay");
+    if (await openingOverlay.getByText("Narrator", { exact: true }).count()) {
+      failures.push("narration still exposes a Narrator label");
+    }
+    if (await openingOverlay.locator(".story-overlay-portrait").count()) {
+      failures.push("narration incorrectly shows a character portrait");
+    }
+    const openingTailDisplay = await openingOverlay.evaluate((element) => getComputedStyle(element, "::after").display);
+    if (openingTailDisplay !== "none") failures.push("dialogue bubble still renders a directional tail");
+    const firstScenePlacement = production.scenes[0]?.overlayPlacement;
+    if (await openingOverlay.getAttribute("data-placement") !== firstScenePlacement) {
+      failures.push(`opening dialogue placement did not resolve to scene default ${firstScenePlacement}`);
+    }
+
+    const firstDialogue = units.find((unit) => unit.overlay.kind === "dialogue");
+    if (firstDialogue) {
+      await seek(firstDialogue.start + 0.05);
+      await page.waitForTimeout(80);
+      const dialoguePortrait = openingOverlay.locator(".story-overlay-portrait");
+      if (await dialoguePortrait.count() !== 1 || !await dialoguePortrait.isVisible()) {
+        failures.push("character dialogue does not show exactly one visible portrait");
+      }
+      const expectedPortraitAlt = production.cast.find(
+        (member) => member.name.toLocaleLowerCase() === firstDialogue.speaker.toLocaleLowerCase(),
+      )?.portraitAlt;
+      if (await dialoguePortrait.getAttribute("alt") !== expectedPortraitAlt) {
+        failures.push(`dialogue portrait alt did not identify ${firstDialogue.speaker}`);
+      }
+      const dialogueScenePlacement = production.scenes[firstDialogue.sceneIndex]?.overlayPlacement;
+      if (await openingOverlay.getAttribute("data-placement") !== dialogueScenePlacement) {
+        failures.push(`dialogue placement did not resolve to scene default ${dialogueScenePlacement}`);
+      }
+      await page.goto(`${baseUrl}/experience/${storyId}`, { waitUntil: "networkidle" });
+    }
+
     const firstSafeStop = production.scenes.flatMap((scene) => scene.phrases)
       .find((phrase) => phrase.safeStopAfter);
     if (firstSafeStop) {
@@ -99,6 +134,9 @@ async function main() {
       const expectedTexts = expectedLines.map((unit) => unit.text);
       if (JSON.stringify(lineTexts) !== JSON.stringify(expectedTexts)) {
         failures.push(`reading passage was ${JSON.stringify(lineTexts)}; expected ${JSON.stringify(expectedTexts)}`);
+      }
+      if (await passage.getByText("Narrator", { exact: true }).count()) {
+        failures.push("Read-with-me narration still exposes a Narrator label");
       }
       if (await page.getByLabel("Previous sentence").count()) failures.push("reading passage still has a Previous sentence control");
       if (await page.getByLabel("Next sentence").count()) failures.push("reading passage still has a Next sentence control");

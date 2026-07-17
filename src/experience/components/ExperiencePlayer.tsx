@@ -40,11 +40,6 @@ type PlayerStyle = CSSProperties & {
   "--focal-y": string;
 };
 
-type OverlayStyle = CSSProperties & {
-  "--phrase-anchor-x": string;
-  "--phrase-anchor-y": string;
-};
-
 type SafeStop = {
   id: string;
   phraseIndex: number;
@@ -74,6 +69,10 @@ export function ExperiencePlayer({ production }: { production: ExperienceProduct
   const performance = production.performance;
   const phrases = useMemo(() => flattenPhrases(production), [production]);
   const readingUnits = useMemo(() => flattenReadingUnits(production), [production]);
+  const castByName = useMemo(
+    () => new Map(production.cast.map((member) => [member.name.toLocaleLowerCase(), member])),
+    [production.cast],
+  );
   const safeStops = useMemo<SafeStop[]>(() => {
     let previousUnitEnd = -1;
     return phrases.flatMap((phrase, phraseIndex) => {
@@ -197,6 +196,7 @@ export function ExperiencePlayer({ production }: { production: ExperienceProduct
   }, [readingPhase, waiting]);
 
   const scene = production.scenes[activeSceneIndex] ?? production.scenes[0];
+  const speaker = castByName.get(displayUnit.speaker.toLocaleLowerCase());
   const interaction = scene.interaction;
   const interactionTrigger = interaction
     ? phrases.find((candidate) => candidate.id === interaction.triggerAfterPhrase)
@@ -219,16 +219,11 @@ export function ExperiencePlayer({ production }: { production: ExperienceProduct
     : visualUnit.mediaState;
   const media = scene.media.find((state) => state.id === visualState) ?? scene.media[0];
   const focal = media.focalPoint ?? production.stage.defaultFocalPoint;
-  const anchor = displayUnit.overlay.anchor ?? { x: 0.5, y: 0.5 };
   const stageStyle: PlayerStyle = {
     "--experience-accent": production.accent,
     "--experience-matte": production.stage.backdrop.color,
     "--focal-x": `${focal.x * 100}%`,
     "--focal-y": `${focal.y * 100}%`,
-  };
-  const overlayStyle: OverlayStyle = {
-    "--phrase-anchor-x": `${anchor.x * 100}%`,
-    "--phrase-anchor-y": `${anchor.y * 100}%`,
   };
   const shownWordIndex = snapshot.time === 0 && !snapshot.playing
     ? -1
@@ -402,26 +397,41 @@ export function ExperiencePlayer({ production }: { production: ExperienceProduct
           <div
             className="story-overlay"
             data-kind={displayUnit.overlay.kind}
-            data-placement={displayUnit.overlay.placement ?? "above"}
+            data-placement={displayUnit.overlay.placement ?? scene.overlayPlacement}
+            data-has-portrait={speaker ? "true" : undefined}
             data-mobile-policy={displayUnit.overlay.mobilePolicy}
             data-reading-phase={waiting ? readingPhase : undefined}
-            style={overlayStyle}
           >
             {waiting && !requiredInteraction ? (
               <div className="story-reading-passage story-overlay-content" role="group" aria-label="Reading passage" key={`passage-${waiting.id}`}>
                 <span className="story-reading-passage-heading" aria-live="polite">Your turn</span>
                 <ol aria-label="Lines to read">
-                  {passageUnits.map((unit) => (
-                    <li className="story-reading-line" data-reading-line key={unit.id}>
-                      <span>{unit.speaker}</span>
-                      <p>{unit.text}</p>
-                    </li>
-                  ))}
+                  {passageUnits.map((unit) => {
+                    const passageSpeaker = castByName.get(unit.speaker.toLocaleLowerCase());
+                    return (
+                      <li className="story-reading-line" data-has-portrait={passageSpeaker ? "true" : undefined} data-reading-line key={unit.id}>
+                        {passageSpeaker ? (
+                          <img
+                            className="story-reading-portrait"
+                            src={assetUrl(production.id, passageSpeaker.portrait)}
+                            alt={passageSpeaker.portraitAlt}
+                          />
+                        ) : null}
+                        <p>{unit.text}</p>
+                      </li>
+                    );
+                  })}
                 </ol>
               </div>
             ) : (
               <div className="story-overlay-content" key={displayUnit.id}>
-                <span className="story-overlay-speaker">{displayUnit.speaker}</span>
+                {speaker ? (
+                  <img
+                    className="story-overlay-portrait"
+                    src={assetUrl(production.id, speaker.portrait)}
+                    alt={speaker.portraitAlt}
+                  />
+                ) : null}
                 <p aria-label={displayUnit.text}>
                   {displayUnit.words.map((word, index) => (
                     <span

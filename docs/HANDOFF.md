@@ -30,6 +30,10 @@ Last updated: 2026-07-17
   exact solid `stage.backdrop.color` shared by source media and the page. Fern
   uses `#FFFFFF`; the poster atmosphere, accent gradient, blur, and opacity wash
   have been removed from the standard runtime path.
+- Dialogue identity and placement are now package content. Fern's four scenes
+  currently use `top-left`; narrated lines have no visible label, Fern/Pipkin
+  speech uses canonical watercolor portraits, and constrained layouts dock the
+  same copy safely.
 - The active checkout is 139 files / 103,098,739 bytes. Fern is 84 files /
   78,864,822 bytes, including eight alpha videos totaling 10,771,186 bytes.
 
@@ -55,7 +59,7 @@ silver-path action feels meaningfully more immersive than the flattened beats.
 ## Validation record
 
 - `pnpm typecheck` — pass
-- `pnpm lint:experiences` — pass; 53 referenced assets
+- `pnpm lint:experiences` — pass; 55 referenced assets
 - `pnpm build` — pass
 - `pnpm qa:experience -- fern-and-the-silent-seed-bells` — pass: Watch,
   Read-with-me, hero completion, reverse scrub, ending, reduced motion, and six

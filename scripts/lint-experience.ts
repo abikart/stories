@@ -34,6 +34,7 @@ async function main() {
         JSON.parse(await fs.readFile(productionPath, "utf8")),
       );
       const assets = new Set<string>([production.stage.backdrop.poster]);
+      production.cast.forEach((member) => assets.add(member.portrait));
       if (production.performance) {
         assets.add(production.performance.audio);
         assets.add(production.performance.alignment);

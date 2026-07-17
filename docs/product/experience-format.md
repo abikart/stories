@@ -49,6 +49,12 @@ type ExperienceProduction = {
   canonicalPath: CanonicalAction[];
 };
 
+type CastMember = {
+  name: string;
+  portrait: string;
+  portraitAlt: string;
+};
+
 type StageContract = {
   masterAspectRatio: "4:3";
   actionSafe: "full-frame";
@@ -89,6 +95,7 @@ type ReadingUnit = {
 
 type Scene = {
   id: string;
+  overlayPlacement: DialoguePlacement;
   start: number;
   end: number;
   media: MediaState[];
@@ -138,18 +145,28 @@ a starting point for a runtime gradient. `#FFFFFF` is the default.
 ## Overlay placement
 
 ```ts
+type DialoguePlacement =
+  | "top-left" | "top" | "top-right"
+  | "center-left" | "center" | "center-right"
+  | "bottom-left" | "bottom" | "bottom-right";
+
 type OverlayPlacement = {
   kind: "narration" | "dialogue";
-  anchor?: Point;
-  placement?: "above" | "above-left" | "above-right" | "below";
+  placement?: DialoguePlacement;
   mobilePolicy: "anchor" | "dock";
 };
 ```
 
-The dedicated copy region is the default in every new Lanternleaf preset.
-Deliberately authored anchors may attach dialogue to the world in Cinema; Book
-and Pocket dock the same content below the complete media without changing the
-phrase.
+Each scene chooses one of nine tooltip-like positions that keeps copy away from
+its important faces, props, and actions. A phrase may override that scene
+default for an exceptional composition. Book and Pocket ignore the canvas
+position when `mobilePolicy` is `dock`, preserving the complete media and safe
+reading surface.
+
+Narrated copy is visually label-free. A line spoken by a cast member resolves
+its circular portrait from `cast`; the image alt identifies the speaker. The
+same rule applies inside Read-with-me passages. This keeps narrator chrome out
+of the illustration while making character speech immediately recognizable.
 
 ## Interaction binding
 
