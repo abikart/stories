@@ -3,6 +3,18 @@
 Newest decisions go first. Record meaningful divergences, tradeoffs, and quality
 gates; do not duplicate routine implementation details.
 
+## 2026-07-17 — White-matte glass uses lens-only authored targets
+
+- Refraction cannot reveal detail that is absent from the story matte. The mode
+  selector therefore samples a cached authored target containing its selected-
+  state accent and fine geometry; the DOM labels are never copied or distorted.
+- Target sources exist only as renderer inputs and are visible only through a
+  named lens. They do not add a DOM background, atmospheric rectangle, video,
+  or second WebGL context.
+- The quiet title may use the same mechanism for a single restrained line when
+  its opening position is entirely white. Dialogue and start surfaces continue
+  to refract the actual layered illustration beneath them.
+
 ## 2026-07-17 — Liquid glass composites mounted story media once per stage
 
 - The WebGL2 path builds one premultiplied offscreen source texture from the

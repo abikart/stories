@@ -77,8 +77,21 @@ Last updated: 2026-07-17
 - Chromium and WebKit each measure 6,504 opaque refracted transport pixels and
   exactly two existing MediaDeck videos in both WebGL and forced-CSS modes.
   Live-story context loss/restoration preserves focus and story time.
-- Earliest remaining gate: checkpoint 5, the mode `refractionTarget` and real
-  dialogue, start/continue, and title lenses.
+- Checkpoint 5 registers every required family: quiet title, moving mode lens,
+  reading dialogue, start/continue, and tactile transport/replay. Hidden DOM
+  surfaces are excluded from drawing, so the opacity-zero dialogue cannot ghost
+  behind the start card; it takes over after playback begins.
+- The mode and quiet title use authored lens-only refraction targets over low-
+  detail white areas. The target canvases are cached source textures, never
+  mounted backgrounds, and add no visible stage rectangle or media decoder.
+  The mode target contains a restrained selected-state accent and fine lines;
+  labels remain sharp DOM while those pixels bend underneath.
+- Mode travel follows the existing interruptible 220ms CSS transform and updates
+  only bounds. Chromium and WebKit assert that its GPU map-upload count does not
+  change. Browser QA also selects the full dialogue string from DOM to prove the
+  renderer does not rasterize or distort reading text.
+- Earliest remaining gate: checkpoint 6, tune press/touch/focus/reduced-motion,
+  responsive composition, transition sampling, and resource performance.
 - The active checkout is 139 files / 103,098,739 bytes. Fern is 84 files /
   78,864,822 bytes, including eight alpha videos totaling 10,771,186 bytes.
 

@@ -203,6 +203,13 @@ export class GlassRenderer {
     this.wake();
   }
 
+  updateLensPosition(id: string, x: number, y: number) {
+    const lens = this.lenses.find((candidate) => candidate.id === id);
+    if (!lens || (lens.bounds.x === x && lens.bounds.y === y)) return;
+    lens.bounds = { ...lens.bounds, x, y };
+    this.wake();
+  }
+
   setRefractionTargets(targets: readonly GlassRefractionTarget[]) {
     this.targets = targets;
     this.wake();

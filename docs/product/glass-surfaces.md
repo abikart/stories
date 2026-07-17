@@ -61,11 +61,24 @@ the source resolver follows live opacity without allocating React state. All
 semantic UI remains above the canvas and the existing `.story-glass` material
 becomes visible automatically whenever the renderer reports CSS fallback.
 
-The Fern transport is the first live registered surface. Browser QA compares
-the media-element count with WebGL forced off, asserts one stage canvas, reads
-opaque pixels inside the transport lens, and checks that context recovery does
-not reset playback or focus. Dialogue, title, start, and the authored mode target
-remain the next integration checkpoint.
+Fern now registers the complete family. Browser QA compares the media-element
+count with WebGL forced off, asserts one stage canvas, reads opaque pixels inside
+each visible lens, and checks that context recovery does not reset playback or
+focus. It also selects dialogue text directly from the DOM.
+
+`GlassRefractionTarget` registers an authored paint callback with the stage. The
+stage maintains one cached 2D source per target and versions it only when the
+target or responsive geometry changes. It is uploaded to a target framebuffer
+and sampled only by lenses that name it; it is never mounted as a visible stage
+layer. Fern uses this for the moving mode accent and a very quiet title line over
+white matte. The mode canvas paints detail across the whole selector plus a
+selected-state pill, so the moving lens remains evident throughout travel while
+the actual labels stay untouched above it.
+
+Surface visibility is part of registration. Zero-opacity, hidden, display-none,
+or zero-area DOM does not produce a lens. This prevents the pre-play dialogue
+surface from refracting behind the start card, then permits the same registered
+surface to resume when playback exposes it.
 
 ## Portable lens field
 

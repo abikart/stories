@@ -24,8 +24,9 @@ import {
 } from "@/experience/performance/timeline";
 import { DragToGuide } from "@/experience/interactions/DragToGuide";
 import { Soundscape, type SoundscapeHandle } from "@/experience/audio/Soundscape";
-import { GlassStage } from "@/experience/glass/GlassStage";
+import { GlassStage, type GlassTargetPaintContext } from "@/experience/glass/GlassStage";
 import { GlassSurface } from "@/experience/glass/GlassSurface";
+import { GlassRefractionTarget } from "@/experience/glass/GlassRefractionTarget";
 
 type PlayerMode = "watch" | "read";
 type ReadingPhase = "idle" | "settling" | "reading" | "resuming";
@@ -125,6 +126,68 @@ export function ExperiencePlayer({ production }: { production: ExperienceProduct
     sceneIndex: -1,
     wordIndex: -1,
   });
+  const paintModeTarget = useCallback(({ context, stage }: GlassTargetPaintContext) => {
+    const switchElement = stage.querySelector<HTMLElement>(".story-mode-switch");
+    if (!switchElement) return;
+    const stageRect = stage.getBoundingClientRect();
+    const switchRect = switchElement.getBoundingClientRect();
+    const x = switchRect.left - stageRect.left;
+    const y = switchRect.top - stageRect.top;
+    const width = switchRect.width;
+    const height = switchRect.height;
+    const inset = 3;
+    const gap = 3;
+    const optionWidth = (width - inset * 2 - gap) / 2;
+    const selectedX = x + inset + (mode === "read" ? optionWidth + gap : 0);
+    context.save();
+    context.beginPath();
+    context.roundRect(x, y, width, height, height / 2);
+    context.clip();
+    context.fillStyle = "rgba(226, 239, 228, 0.78)";
+    context.fillRect(x, y, width, height);
+    context.strokeStyle = "rgba(82, 125, 96, 0.22)";
+    context.lineWidth = 1;
+    for (let lineX = x - height; lineX < x + width + height; lineX += 9) {
+      context.beginPath();
+      context.moveTo(lineX, y + height);
+      context.lineTo(lineX + height, y);
+      context.stroke();
+    }
+    context.fillStyle = "rgba(127, 169, 134, 0.42)";
+    context.beginPath();
+    context.roundRect(selectedX, y + inset, optionWidth, height - inset * 2, (height - inset * 2) / 2);
+    context.fill();
+    context.strokeStyle = "rgba(255, 255, 255, 0.82)";
+    context.lineWidth = 2;
+    context.stroke();
+    context.restore();
+  }, [mode]);
+  const paintTitleTarget = useCallback(({ context, stage }: GlassTargetPaintContext) => {
+    const title = stage.querySelector<HTMLElement>("[data-glass-surface=title]");
+    if (!title) return;
+    const stageRect = stage.getBoundingClientRect();
+    const rect = title.getBoundingClientRect();
+    const x = rect.left - stageRect.left;
+    const y = rect.top - stageRect.top;
+    context.save();
+    context.beginPath();
+    context.roundRect(x, y, rect.width, rect.height, 18);
+    context.clip();
+    context.strokeStyle = "rgba(86, 126, 96, 0.2)";
+    context.lineWidth = 1.2;
+    context.beginPath();
+    context.moveTo(x - 8, y + rect.height * 0.7);
+    context.bezierCurveTo(
+      x + rect.width * 0.28,
+      y + rect.height * 0.42,
+      x + rect.width * 0.7,
+      y + rect.height * 0.9,
+      x + rect.width + 8,
+      y + rect.height * 0.55,
+    );
+    context.stroke();
+    context.restore();
+  }, []);
   const activeReadingSample = useMemo(
     () => sampleReadingUnit(readingUnits, snapshot.time),
     [readingUnits, snapshot.time],
@@ -363,6 +426,8 @@ export function ExperiencePlayer({ production }: { production: ExperienceProduct
     >
       <section className="story-player-composition" aria-label="Interactive story player">
         <GlassStage className="story-player-stage" matte={production.stage.backdrop.color}>
+          <GlassRefractionTarget id="mode-accent" paint={paintModeTarget} />
+          <GlassRefractionTarget id="title-accent" paint={paintTitleTarget} />
           <div className="story-player-media">
             <MediaDeck
               key={scene.id}
@@ -382,12 +447,34 @@ export function ExperiencePlayer({ production }: { production: ExperienceProduct
           </div>
 
           <header className="story-player-header">
-            <div className="story-player-title story-glass story-glass--quiet">
+            <GlassSurface
+              glassId="title"
+              refractionTarget="title-accent"
+              optics={{
+                displacementStrength: 4,
+                curvature: 3,
+                splay: 0.22,
+                depth: 0.68,
+                centerScale: 0.025,
+                chromaticFringe: 0.42,
+                specularIntensity: 0.28,
+              }}
+              className="story-player-title story-glass story-glass--quiet"
+            >
               <span>A Lanternleaf story</span>
               <h1>{production.title}</h1>
-            </div>
+            </GlassSurface>
             <div className="story-mode-switch story-glass story-glass--control" data-active-mode={mode} role="group" aria-label="Story mode">
-              <span className="story-mode-lens" aria-hidden="true" />
+              <GlassSurface
+                glassId="mode"
+                shape="pill"
+                refractionTarget="mode-accent"
+                motionKey={mode}
+                motionDuration={220}
+                optics={{ displacementStrength: 12, splay: 0.42, chromaticFringe: 0.9, specularIntensity: 0.48 }}
+                className="story-mode-lens"
+                aria-hidden="true"
+              />
               <button type="button" aria-pressed={mode === "watch"} onClick={() => changeMode("watch")}>
                 Watch
               </button>
@@ -397,8 +484,18 @@ export function ExperiencePlayer({ production }: { production: ExperienceProduct
             </div>
           </header>
 
-          <div
+          <GlassSurface
+            glassId="dialogue"
             className="story-overlay story-glass story-glass--reading"
+            optics={{
+              displacementStrength: 5,
+              curvature: 3,
+              splay: 0.24,
+              depth: 0.72,
+              centerScale: 0.03,
+              chromaticFringe: 0.5,
+              specularIntensity: 0.32,
+            }}
             data-kind={displayUnit.overlay.kind}
             data-placement={displayUnit.overlay.placement ?? scene.overlayPlacement}
             data-has-portrait={speaker ? "true" : undefined}
@@ -448,16 +545,28 @@ export function ExperiencePlayer({ production }: { production: ExperienceProduct
                 </p>
               </div>
             )}
-          </div>
+          </GlassSurface>
 
           {snapshot.time === 0 && !snapshot.playing ? (
-            <div className="story-start-card story-glass story-glass--reading">
+            <GlassSurface
+              glassId="start"
+              optics={{
+                displacementStrength: 6,
+                curvature: 2.8,
+                splay: 0.3,
+                depth: 0.75,
+                centerScale: 0.035,
+                chromaticFringe: 0.58,
+                specularIntensity: 0.36,
+              }}
+              className="story-start-card story-glass story-glass--reading"
+            >
               <span>{mode === "watch" ? "Story time" : "Read together"}</span>
               <p>{mode === "watch" ? "Settle in. The story is about to begin." : "The story will wait after each thought."}</p>
               <button type="button" onClick={togglePlayback}>
                 Begin story
               </button>
-            </div>
+            </GlassSurface>
           ) : null}
 
           <GlassSurface

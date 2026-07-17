@@ -131,8 +131,12 @@ async function runFernTransportPath(browserType: BrowserType, browserName: Brows
   await page.waitForFunction(() => document.querySelector(".story-player-stage")?.getAttribute("data-glass-renderer") === "webgl");
   await page.waitForTimeout(500);
   assert.equal(await page.locator("canvas[data-glass-canvas]").count(), 1, "Fern uses one stage glass canvas");
-  assert.equal(await page.locator("[data-glass-surface=transport]").count(), 1, "Fern registers one transport lens at checkpoint 4");
-  assert.equal(await page.locator(".story-player-stage").getAttribute("data-glass-lenses"), "1");
+  assert.deepEqual(
+    (await page.locator("[data-glass-surface]").evaluateAll((elements) => elements.map((element) => element.getAttribute("data-glass-surface")).sort())),
+    ["dialogue", "mode", "start", "title", "transport"],
+    "Fern exposes every required semantic glass surface",
+  );
+  assert.equal(await page.locator(".story-player-stage").getAttribute("data-glass-lenses"), "4", "hidden dialogue lens does not ghost behind start");
   const webglVideoCount = await page.locator(".story-player-media video").count();
 
   const pixels = await page.evaluate(() => {
@@ -145,32 +149,64 @@ async function runFernTransportPath(browserType: BrowserType, browserName: Brows
     };
     const renderer = diagnosticWindow.__storiesGlassStage;
     const canvas = document.querySelector("canvas[data-glass-canvas]");
-    const surface = document.querySelector("[data-glass-surface=transport]");
-    if (!renderer || !(canvas instanceof HTMLCanvasElement) || !(surface instanceof HTMLElement)) {
+    const surfaces = [...document.querySelectorAll<HTMLElement>("[data-glass-surface]")];
+    if (!renderer || !(canvas instanceof HTMLCanvasElement)) {
       throw new Error("Fern glass diagnostics unavailable");
     }
     const canvasRect = canvas.getBoundingClientRect();
-    const surfaceRect = surface.getBoundingClientRect();
     const dpr = canvas.width / canvasRect.width;
-    const result = renderer.readPixelsForDiagnostics(
-      (surfaceRect.left - canvasRect.left) * dpr,
-      (surfaceRect.top - canvasRect.top) * dpr,
-      surfaceRect.width * dpr,
-      surfaceRect.height * dpr,
-    );
-    const outside = renderer.readPixelsForDiagnostics(4, 4, 1, 1);
-    if (!result || !outside) throw new Error("Fern glass pixels unavailable");
-    let opaque = 0;
-    for (let index = 3; index < result.pixels.length; index += 4) {
-      if (result.pixels[index] > 180) opaque += 1;
+    const opaqueById: Record<string, number> = {};
+    for (const surface of surfaces) {
+      if (Number.parseFloat(getComputedStyle(surface).opacity) <= 0.01) continue;
+      const surfaceRect = surface.getBoundingClientRect();
+      const result = renderer.readPixelsForDiagnostics(
+        (surfaceRect.left - canvasRect.left) * dpr,
+        (surfaceRect.top - canvasRect.top) * dpr,
+        surfaceRect.width * dpr,
+        surfaceRect.height * dpr,
+      );
+      if (!result) throw new Error(`Missing ${surface.dataset.glassSurface} pixels`);
+      let opaque = 0;
+      for (let index = 3; index < result.pixels.length; index += 4) {
+        if (result.pixels[index] > 180) opaque += 1;
+      }
+      opaqueById[surface.dataset.glassSurface ?? "unknown"] = opaque;
     }
-    return { opaque, outside: [...outside.pixels] };
+    const outside = renderer.readPixelsForDiagnostics(4, 4, 1, 1);
+    if (!outside) throw new Error("Fern glass pixels unavailable");
+    return { opaqueById, outside: [...outside.pixels] };
   });
-  assert.ok(pixels.opaque > 100, "live Fern transport lens draws refracted replacement pixels");
+  for (const id of ["title", "mode", "start", "transport"]) {
+    assert.ok(pixels.opaqueById[id] > 100, `live Fern ${id} lens draws refracted replacement pixels`);
+  }
   assert.deepEqual(pixels.outside, [0, 0, 0, 0], "Fern canvas remains transparent outside lenses");
+
+  const modeBefore = await page.locator("[data-glass-surface=mode]").boundingBox();
+  const mapUploadsBefore = await page.evaluate(() => (window as typeof window & {
+    __storiesGlassStage?: { getDiagnostics(): { mapUploads: number } };
+  }).__storiesGlassStage?.getDiagnostics().mapUploads);
+  await page.getByRole("button", { name: "Read with me" }).click();
+  await page.waitForTimeout(300);
+  const modeAfter = await page.locator("[data-glass-surface=mode]").boundingBox();
+  const mapUploadsAfter = await page.evaluate(() => (window as typeof window & {
+    __storiesGlassStage?: { getDiagnostics(): { mapUploads: number } };
+  }).__storiesGlassStage?.getDiagnostics().mapUploads);
+  assert.ok(modeBefore && modeAfter && modeAfter.x > modeBefore.x + 30, "mode lens travels to selected option");
+  assert.equal(mapUploadsAfter, mapUploadsBefore, "mode travel does not upload or rebuild its lens map");
 
   await page.getByRole("button", { name: "Begin story" }).click();
   await page.waitForTimeout(650);
+  assert.equal(await page.locator(".story-start-card").count(), 0, "start lens retires after playback begins");
+  assert.equal(await page.locator("[data-glass-surface=dialogue]").count(), 1, "dialogue lens replaces start lens");
+  const selectedDialogue = await page.locator(".story-overlay p").evaluate((paragraph) => {
+    const selection = window.getSelection();
+    const range = document.createRange();
+    range.selectNodeContents(paragraph);
+    selection?.removeAllRanges();
+    selection?.addRange(range);
+    return selection?.toString() ?? "";
+  });
+  assert.ok(selectedDialogue.includes("Lanternleaf Forest"), "dialogue remains selectable semantic DOM");
   const timeBefore = await page.locator("audio[data-performance-audio]").evaluate((audio: HTMLAudioElement) => audio.currentTime);
   await page.getByRole("button", { name: "Replay story" }).focus();
   await page.evaluate(() => (window as typeof window & { __storiesGlassStage?: { simulateContextLoss(): void } }).__storiesGlassStage?.simulateContextLoss());
@@ -197,7 +233,7 @@ async function runFernTransportPath(browserType: BrowserType, browserName: Brows
   assert.equal(await fallbackPage.getByRole("button", { name: "Begin story" }).isEnabled(), true, "Fern CSS fallback remains playable");
   assert.deepEqual(errors, [], `${browserName} Fern path emitted browser errors`);
   await browser.close();
-  return { webglVideoCount, opaquePixels: pixels.opaque };
+  return { webglVideoCount, opaquePixels: pixels.opaqueById.transport };
 }
 
 async function main() {

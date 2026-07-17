@@ -14,11 +14,13 @@ import {
 import {
   GlassRenderer,
   type GlassRendererDiagnostics,
+  type GlassRefractionTarget,
   type GlassRendererStatus,
   type RegisteredGlassLens,
 } from "@/experience/glass/GlassRenderer";
 import { measureGlassSource, type GlassSourceElement } from "@/experience/glass/source-compositor";
 import { DEFAULT_LENS_OPTICS, type LensOptics, type LensShape } from "@/experience/glass/types";
+import { getLensMapCacheStats } from "@/experience/glass/lens-map";
 
 export type GlassSurfaceRegistration = {
   id: string;
@@ -28,8 +30,23 @@ export type GlassSurfaceRegistration = {
   refractionTarget?: string;
 };
 
+export type GlassTargetPaintContext = {
+  context: CanvasRenderingContext2D;
+  stage: HTMLElement;
+  width: number;
+  height: number;
+  dpr: number;
+};
+
+export type GlassTargetRegistration = {
+  id: string;
+  paint(target: GlassTargetPaintContext): void;
+};
+
 type GlassStageContextValue = {
   register(surface: GlassSurfaceRegistration): () => void;
+  registerTarget(target: GlassTargetRegistration): () => void;
+  animateSurface(id: string, durationMs: number): void;
   refresh(): void;
   status: GlassRendererStatus;
 };
@@ -66,7 +83,10 @@ export function GlassStage({
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const rendererRef = useRef<GlassRenderer | null>(null);
   const registrationsRef = useRef(new Map<string, GlassSurfaceRegistration>());
+  const targetsRef = useRef(new Map<string, GlassTargetRegistration>());
+  const targetCanvasesRef = useRef(new Map<string, { canvas: HTMLCanvasElement; version: number }>());
   const resizeObserversRef = useRef(new Map<string, ResizeObserver>());
+  const surfaceAnimationsRef = useRef(new Map<string, number>());
   const intersectingRef = useRef(true);
   const [status, setStatus] = useState<GlassRendererStatus>("css");
 
@@ -82,6 +102,50 @@ export function GlassStage({
     ));
   }, []);
 
+  const paintTargets = useCallback((stageRect: DOMRect, renderer: GlassRenderer) => {
+    const stage = stageRef.current;
+    if (!stage) return;
+    const dpr = Math.min(2, Math.max(1, window.devicePixelRatio || 1));
+    const targets: GlassRefractionTarget[] = [];
+    const activeIds = new Set(targetsRef.current.keys());
+    for (const id of targetCanvasesRef.current.keys()) {
+      if (!activeIds.has(id)) targetCanvasesRef.current.delete(id);
+    }
+    for (const target of targetsRef.current.values()) {
+      let record = targetCanvasesRef.current.get(target.id);
+      if (!record) {
+        record = { canvas: document.createElement("canvas"), version: 0 };
+        targetCanvasesRef.current.set(target.id, record);
+      }
+      const pixelWidth = Math.max(1, Math.round(stageRect.width * dpr));
+      const pixelHeight = Math.max(1, Math.round(stageRect.height * dpr));
+      if (record.canvas.width !== pixelWidth || record.canvas.height !== pixelHeight) {
+        record.canvas.width = pixelWidth;
+        record.canvas.height = pixelHeight;
+      }
+      const context = record.canvas.getContext("2d");
+      if (!context) continue;
+      context.setTransform(1, 0, 0, 1, 0, 0);
+      context.clearRect(0, 0, pixelWidth, pixelHeight);
+      context.scale(dpr, dpr);
+      target.paint({ context, stage, width: stageRect.width, height: stageRect.height, dpr });
+      record.version += 1;
+      targets.push({
+        id: target.id,
+        sources: [{
+          element: record.canvas,
+          x: 0,
+          y: 0,
+          width: stageRect.width,
+          height: stageRect.height,
+          opacity: 1,
+          version: record.version,
+        }],
+      });
+    }
+    renderer.setRefractionTargets(targets);
+  }, []);
+
   const refresh = useCallback(() => {
     const stage = stageRef.current;
     const renderer = rendererRef.current;
@@ -93,6 +157,13 @@ export function GlassStage({
     for (const surface of registrationsRef.current.values()) {
       const rect = surface.element.getBoundingClientRect();
       const computed = getComputedStyle(surface.element);
+      if (
+        rect.width <= 0
+        || rect.height <= 0
+        || computed.display === "none"
+        || computed.visibility === "hidden"
+        || Number.parseFloat(computed.opacity) <= 0.01
+      ) continue;
       const width = rect.width;
       const height = rect.height;
       const cornerRadius = surface.shape === "rounded-rect"
@@ -113,11 +184,12 @@ export function GlassStage({
       });
     }
     renderer.setLenses(lenses);
+    paintTargets(stageRect, renderer);
     renderer.setTransitionActive(
       stage.querySelector(".experience-media")?.getAttribute("data-media-phase") === "transitioning",
     );
     renderer.requestRender();
-  }, [collectSources]);
+  }, [collectSources, paintTargets]);
 
   const register = useCallback((surface: GlassSurfaceRegistration) => {
     registrationsRef.current.set(surface.id, surface);
@@ -134,6 +206,42 @@ export function GlassStage({
     };
   }, [refresh]);
 
+  const registerTarget = useCallback((target: GlassTargetRegistration) => {
+    targetsRef.current.set(target.id, target);
+    refresh();
+    return () => {
+      targetsRef.current.delete(target.id);
+      targetCanvasesRef.current.delete(target.id);
+      refresh();
+    };
+  }, [refresh]);
+
+  const animateSurface = useCallback((id: string, durationMs: number) => {
+    const existing = surfaceAnimationsRef.current.get(id);
+    if (existing !== undefined) cancelAnimationFrame(existing);
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches || durationMs <= 0) {
+      refresh();
+      return;
+    }
+    const started = performance.now();
+    const step = (time: number) => {
+      const stage = stageRef.current;
+      const renderer = rendererRef.current;
+      const surface = registrationsRef.current.get(id);
+      if (!stage || !renderer || !surface) return;
+      const stageRect = stage.getBoundingClientRect();
+      const rect = surface.element.getBoundingClientRect();
+      renderer.updateLensPosition(id, rect.left - stageRect.left, rect.top - stageRect.top);
+      if (time - started < durationMs) {
+        surfaceAnimationsRef.current.set(id, requestAnimationFrame(step));
+      } else {
+        surfaceAnimationsRef.current.delete(id);
+        refresh();
+      }
+    };
+    surfaceAnimationsRef.current.set(id, requestAnimationFrame(step));
+  }, [refresh]);
+
   useEffect(() => {
     const stage = stageRef.current;
     const canvas = canvasRef.current;
@@ -146,6 +254,7 @@ export function GlassStage({
         stage.dataset.glassUploads = String(diagnostics.sourceUploads);
         stage.dataset.glassLenses = String(diagnostics.activeLenses);
         stage.dataset.glassSleeping = String(diagnostics.sleeping);
+        stage.dataset.glassMapGenerations = String(getLensMapCacheStats().generations);
       },
     }, matteTuple(matte));
     rendererRef.current = renderer;
@@ -176,13 +285,21 @@ export function GlassStage({
       resizeObserver.disconnect();
       for (const observer of resizeObserversRef.current.values()) observer.disconnect();
       resizeObserversRef.current.clear();
+      for (const frame of surfaceAnimationsRef.current.values()) cancelAnimationFrame(frame);
+      surfaceAnimationsRef.current.clear();
       renderer.destroy();
       rendererRef.current = null;
       if (diagnosticWindow.__storiesGlassStage === renderer) delete diagnosticWindow.__storiesGlassStage;
     };
   }, [collectSources, matte, refresh]);
 
-  const context = useMemo<GlassStageContextValue>(() => ({ register, refresh, status }), [refresh, register, status]);
+  const context = useMemo<GlassStageContextValue>(() => ({
+    register,
+    registerTarget,
+    animateSurface,
+    refresh,
+    status,
+  }), [animateSurface, refresh, register, registerTarget, status]);
   const stageStyle = { ...style, "--glass-stage-status": status } as CSSProperties;
 
   return (

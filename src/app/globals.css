@@ -456,6 +456,24 @@ body {
   opacity: 0.26;
 }
 
+[data-glass-renderer="webgl"] [data-glass-surface].story-glass--reading {
+  background: rgb(255 255 255 / 0.34);
+}
+
+[data-glass-renderer="webgl"] .story-mode-switch.story-glass {
+  background: rgb(255 255 255 / 0.12);
+  box-shadow: none;
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
+}
+
+[data-glass-renderer="webgl"] .story-mode-lens[data-glass-surface] {
+  background: transparent;
+  box-shadow: none;
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
+}
+
 .glass-fixture-lens-preview {
   position: absolute;
   z-index: 3;

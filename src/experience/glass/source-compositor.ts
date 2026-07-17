@@ -10,6 +10,7 @@ export type GlassSource = {
   height: number;
   opacity: number;
   dynamic?: boolean;
+  version?: number | string;
 };
 
 export type CompositorDiagnostics = {
@@ -21,6 +22,7 @@ type TextureRecord = {
   width: number;
   height: number;
   source: string;
+  version?: number | string;
   uploaded: boolean;
 };
 
@@ -146,7 +148,7 @@ export class SourceCompositor {
     if (!record) {
       const texture = gl.createTexture();
       if (!texture) throw new Error("Unable to allocate glass source texture");
-      record = { texture, width: 0, height: 0, source: "", uploaded: false };
+      record = { texture, width: 0, height: 0, source: "", version: undefined, uploaded: false };
       this.textures.set(source.element, record);
     }
     const shouldUpload = source.dynamic
@@ -154,7 +156,8 @@ export class SourceCompositor {
       || !record.uploaded
       || record.width !== width
       || record.height !== height
-      || record.source !== sourceIdentity;
+      || record.source !== sourceIdentity
+      || record.version !== source.version;
     gl.bindTexture(gl.TEXTURE_2D, record.texture);
     gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.LINEAR);
     gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.LINEAR);
@@ -167,6 +170,7 @@ export class SourceCompositor {
       record.width = width;
       record.height = height;
       record.source = sourceIdentity;
+      record.version = source.version;
       record.uploaded = true;
       diagnostics.sourceUploads += 1;
     }
