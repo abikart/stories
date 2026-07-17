@@ -41,7 +41,7 @@ between options with one 220ms ease-in-out transform; it does not animate layout
 Reduced-motion removes that transition. Buttons retain their semantic DOM,
 keyboard behavior, and minimum touch size.
 
-## Current limitation and approved next run
+## Progressive renderer boundary
 
 Applying `feDisplacementMap` to the dialogue's own DOM would distort the words,
 not the video behind them. Applying an SVG filter to a live `<video>` backdrop
@@ -49,11 +49,23 @@ is not a dependable Safari path. The current CSS therefore remains the
 universal compatibility baseline, but it is not the finished liquid-glass
 effect: it does not displace the scene's pixels.
 
-Owner review approved a real renderer as the next feature run. The authoritative
-execution contract is [Liquid glass feature run](../mvp/liquid-glass-run.md).
-It adds one stage-level WebGL pass that reuses `MediaDeck` sources and draws
-registered lens regions while keeping text, input, accessibility, and fallback
-CSS in the DOM above it.
+The real renderer is a progressive layer governed by the authoritative
+[Liquid glass feature run](../mvp/liquid-glass-run.md). One `GlassStage` owns the
+canvas, context, source collection, recovery, and diagnostics. A `GlassSurface`
+registers one DOM element's bounds and lens model without exposing WebGL to the
+story component.
+
+The stage reads only image/video elements already mounted by `MediaDeck` and
+measures their rendered geometry and ancestor opacity. During a deck crossfade,
+the source resolver follows live opacity without allocating React state. All
+semantic UI remains above the canvas and the existing `.story-glass` material
+becomes visible automatically whenever the renderer reports CSS fallback.
+
+The Fern transport is the first live registered surface. Browser QA compares
+the media-element count with WebGL forced off, asserts one stage canvas, reads
+opaque pixels inside the transport lens, and checks that context recovery does
+not reset playback or focus. Dialogue, title, start, and the authored mode target
+remain the next integration checkpoint.
 
 ## Portable lens field
 

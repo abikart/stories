@@ -24,6 +24,8 @@ import {
 } from "@/experience/performance/timeline";
 import { DragToGuide } from "@/experience/interactions/DragToGuide";
 import { Soundscape, type SoundscapeHandle } from "@/experience/audio/Soundscape";
+import { GlassStage } from "@/experience/glass/GlassStage";
+import { GlassSurface } from "@/experience/glass/GlassSurface";
 
 type PlayerMode = "watch" | "read";
 type ReadingPhase = "idle" | "settling" | "reading" | "resuming";
@@ -360,7 +362,7 @@ export function ExperiencePlayer({ production }: { production: ExperienceProduct
       data-at-start={snapshot.time === 0 && !snapshot.playing ? "true" : undefined}
     >
       <section className="story-player-composition" aria-label="Interactive story player">
-        <div className="story-player-stage">
+        <GlassStage className="story-player-stage" matte={production.stage.backdrop.color}>
           <div className="story-player-media">
             <MediaDeck
               key={scene.id}
@@ -458,7 +460,17 @@ export function ExperiencePlayer({ production }: { production: ExperienceProduct
             </div>
           ) : null}
 
-          <div className="story-transport story-glass story-glass--control" aria-label="Story controls">
+          <GlassSurface
+            glassId="transport"
+            shape="pill"
+            optics={{
+              displacementStrength: 15,
+              chromaticFringe: 1.05,
+              specularIntensity: 0.5,
+            }}
+            className="story-transport story-glass story-glass--control"
+            aria-label="Story controls"
+          >
             <button className="story-icon-button" type="button" onClick={replay} aria-label="Replay story">
               ↺
             </button>
@@ -486,8 +498,8 @@ export function ExperiencePlayer({ production }: { production: ExperienceProduct
                 <span>{formatTime(performance.duration)}</span>
               </div>
             </div>
-          </div>
-        </div>
+          </GlassSurface>
+        </GlassStage>
 
         <audio
           data-performance-audio

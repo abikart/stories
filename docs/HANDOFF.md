@@ -69,8 +69,16 @@ Last updated: 2026-07-17
   canvas/video checks, objective in/out pixel checks, map-reuse assertion,
   failure fallback, context recovery, and sleeping-loop gate. Chromium measured
   369 displaced samples; WebKit measured 363.
-- Earliest remaining gate: checkpoint 4, reusable stage/surface registration
-  and one live Fern transport lens using `MediaDeck`'s mounted elements.
+- Checkpoint 4 adds `GlassStage` and `GlassSurface`. The stage owns the only
+  renderer/context, collects the existing `MediaDeck` image/video elements,
+  tracks deck mutation/resize/intersection/visibility, and measures registered
+  surfaces outside the hot path. The live Fern transport is the first reusable
+  surface; its replay/play DOM, focus, labels, and hit targets remain unchanged.
+- Chromium and WebKit each measure 6,504 opaque refracted transport pixels and
+  exactly two existing MediaDeck videos in both WebGL and forced-CSS modes.
+  Live-story context loss/restoration preserves focus and story time.
+- Earliest remaining gate: checkpoint 5, the mode `refractionTarget` and real
+  dialogue, start/continue, and title lenses.
 - The active checkout is 139 files / 103,098,739 bytes. Fern is 84 files /
   78,864,822 bytes, including eight alpha videos totaling 10,771,186 bytes.
 

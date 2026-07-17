@@ -120,6 +120,86 @@ async function runFallbackPath(browserType: BrowserType, baseUrl: string) {
   await browser.close();
 }
 
+async function runFernTransportPath(browserType: BrowserType, browserName: BrowserName, baseUrl: string) {
+  const storyPath = "/experience/fern-and-the-silent-seed-bells";
+  const browser = await browserType.launch();
+  const page = await browser.newPage({ viewport: { width: 1280, height: 900 }, deviceScaleFactor: 1 });
+  const errors: string[] = [];
+  page.on("pageerror", (error) => errors.push(error.message));
+  page.on("console", (message) => { if (message.type() === "error") errors.push(message.text()); });
+  await page.goto(`${baseUrl}${storyPath}`);
+  await page.waitForFunction(() => document.querySelector(".story-player-stage")?.getAttribute("data-glass-renderer") === "webgl");
+  await page.waitForTimeout(500);
+  assert.equal(await page.locator("canvas[data-glass-canvas]").count(), 1, "Fern uses one stage glass canvas");
+  assert.equal(await page.locator("[data-glass-surface=transport]").count(), 1, "Fern registers one transport lens at checkpoint 4");
+  assert.equal(await page.locator(".story-player-stage").getAttribute("data-glass-lenses"), "1");
+  const webglVideoCount = await page.locator(".story-player-media video").count();
+
+  const pixels = await page.evaluate(() => {
+    const diagnosticWindow = window as typeof window & {
+      __storiesGlassStage?: {
+        readPixelsForDiagnostics(x: number, y: number, width: number, height: number): {
+          pixels: Uint8Array;
+        } | null;
+      };
+    };
+    const renderer = diagnosticWindow.__storiesGlassStage;
+    const canvas = document.querySelector("canvas[data-glass-canvas]");
+    const surface = document.querySelector("[data-glass-surface=transport]");
+    if (!renderer || !(canvas instanceof HTMLCanvasElement) || !(surface instanceof HTMLElement)) {
+      throw new Error("Fern glass diagnostics unavailable");
+    }
+    const canvasRect = canvas.getBoundingClientRect();
+    const surfaceRect = surface.getBoundingClientRect();
+    const dpr = canvas.width / canvasRect.width;
+    const result = renderer.readPixelsForDiagnostics(
+      (surfaceRect.left - canvasRect.left) * dpr,
+      (surfaceRect.top - canvasRect.top) * dpr,
+      surfaceRect.width * dpr,
+      surfaceRect.height * dpr,
+    );
+    const outside = renderer.readPixelsForDiagnostics(4, 4, 1, 1);
+    if (!result || !outside) throw new Error("Fern glass pixels unavailable");
+    let opaque = 0;
+    for (let index = 3; index < result.pixels.length; index += 4) {
+      if (result.pixels[index] > 180) opaque += 1;
+    }
+    return { opaque, outside: [...outside.pixels] };
+  });
+  assert.ok(pixels.opaque > 100, "live Fern transport lens draws refracted replacement pixels");
+  assert.deepEqual(pixels.outside, [0, 0, 0, 0], "Fern canvas remains transparent outside lenses");
+
+  await page.getByRole("button", { name: "Begin story" }).click();
+  await page.waitForTimeout(650);
+  const timeBefore = await page.locator("audio[data-performance-audio]").evaluate((audio: HTMLAudioElement) => audio.currentTime);
+  await page.getByRole("button", { name: "Replay story" }).focus();
+  await page.evaluate(() => (window as typeof window & { __storiesGlassStage?: { simulateContextLoss(): void } }).__storiesGlassStage?.simulateContextLoss());
+  await page.waitForFunction(() => document.querySelector(".story-player-stage")?.getAttribute("data-glass-renderer") === "css");
+  assert.equal(await page.evaluate(() => (document.activeElement as HTMLElement | null)?.getAttribute("aria-label")), "Replay story", "context loss preserves focus");
+  await page.evaluate(() => (window as typeof window & { __storiesGlassStage?: { simulateContextRestore(): void } }).__storiesGlassStage?.simulateContextRestore());
+  await page.waitForFunction(() => document.querySelector(".story-player-stage")?.getAttribute("data-glass-renderer") === "webgl");
+  await page.waitForTimeout(250);
+  const timeAfter = await page.locator("audio[data-performance-audio]").evaluate((audio: HTMLAudioElement) => audio.currentTime);
+  assert.ok(timeAfter >= timeBefore, "context recovery must not restart story time");
+
+  const fallbackPage = await browser.newPage({ viewport: { width: 1280, height: 900 } });
+  await fallbackPage.addInitScript(() => {
+    const getContext = HTMLCanvasElement.prototype.getContext;
+    HTMLCanvasElement.prototype.getContext = function patched(this: HTMLCanvasElement, type: string, ...options: unknown[]) {
+      if (type === "webgl2") return null;
+      return getContext.call(this, type, ...options as []) as RenderingContext | null;
+    } as typeof HTMLCanvasElement.prototype.getContext;
+  });
+  await fallbackPage.goto(`${baseUrl}${storyPath}`);
+  await fallbackPage.waitForFunction(() => document.querySelector(".story-player-stage")?.getAttribute("data-glass-renderer") === "css");
+  const fallbackVideoCount = await fallbackPage.locator(".story-player-media video").count();
+  assert.equal(webglVideoCount, fallbackVideoCount, "WebGL path must not add media decoders");
+  assert.equal(await fallbackPage.getByRole("button", { name: "Begin story" }).isEnabled(), true, "Fern CSS fallback remains playable");
+  assert.deepEqual(errors, [], `${browserName} Fern path emitted browser errors`);
+  await browser.close();
+  return { webglVideoCount, opaquePixels: pixels.opaque };
+}
+
 async function main() {
   const browserName = argument("browser", "chromium") as BrowserName;
   assert.ok(browserName === "chromium" || browserName === "webkit", `Unsupported browser ${browserName}`);
@@ -127,7 +207,8 @@ async function main() {
   const browserType = browserName === "webkit" ? webkit : chromium;
   const proof = await runWebGLPath(browserType, browserName, baseUrl);
   await runFallbackPath(browserType, baseUrl);
-  console.log(`glass QA passed (${browserName}): ${proof.displacedPixels} displaced samples, ${proof.opaquePixels} in-lens samples`);
+  const fern = await runFernTransportPath(browserType, browserName, baseUrl);
+  console.log(`glass QA passed (${browserName}): ${proof.displacedPixels} displaced grid samples; Fern ${fern.opaquePixels} transport pixels, ${fern.webglVideoCount} existing videos`);
 }
 
 void main();

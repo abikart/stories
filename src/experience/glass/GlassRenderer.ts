@@ -70,6 +70,7 @@ export class GlassRenderer {
   private targetCompositors = new Map<string, SourceCompositor>();
   private mapTextures = new Map<string, WebGLTexture>();
   private sources: readonly GlassSource[] = [];
+  private sourceResolver: (() => readonly GlassSource[]) | null = null;
   private lenses: readonly (RegisteredGlassLens & { map: LensMap })[] = [];
   private targets: readonly GlassRefractionTarget[] = [];
   private targetTextures = new Map<string, WebGLTexture>();
@@ -189,6 +190,10 @@ export class GlassRenderer {
     this.wake();
   }
 
+  setSourceResolver(resolver: (() => readonly GlassSource[]) | null) {
+    this.sourceResolver = resolver;
+  }
+
   setLenses(lenses: readonly RegisteredGlassLens[]) {
     this.lenses = lenses.map((lens) => ({
       ...lens,
@@ -296,6 +301,7 @@ export class GlassRenderer {
     }
     const started = performance.now();
     try {
+      if (this.transitionActive && this.sourceResolver) this.setSources(this.sourceResolver());
       const sceneTexture = compositor.compose(this.sources, this.matte, this.diagnostics);
       this.composeTargets();
       gl.bindFramebuffer(gl.FRAMEBUFFER, null);
