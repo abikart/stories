@@ -3,7 +3,7 @@
   "storyId": "fern-and-the-silent-seed-bells",
   "status": "in-progress",
   "expectedStates": 14,
-  "acceptedStates": 6,
+  "acceptedStates": 10,
   "format": {
     "creativeAspectRatio": "4:3",
     "deliveryCodec": "h264",
@@ -194,6 +194,150 @@
       "acceptedAt": "2026-07-17T00:19:54.159Z"
     },
     {
+      "sceneId": "the-tangled-ribbons",
+      "mediaState": "highest-knot",
+      "role": "living-loop",
+      "provider": "grok-imagine",
+      "providerId": "2578926b-f237-4728-a804-f233fe7778de",
+      "providerUrl": "https://grok.com/imagine/agent/local-canvas-28343d27-c1b4-4161-891c-22da5120adb9",
+      "promptRef": "MOTION_GENERATION_PROMPTS.md#highest-knot--living-loop",
+      "source": "scenes/the-tangled-ribbons/provider-originals/motion/highest-knot-2578926b-f237-4728-a804-f233fe7778de.mp4",
+      "sourceSha256": "e52138342a6a829e5b11bb54d0bac9ef1c1fea66351fef4d04a41736b8e24d1a",
+      "sourceProbe": {
+        "width": 1104,
+        "height": 816,
+        "duration": 6.041667,
+        "frameRate": "24/1",
+        "codec": "h264",
+        "pixelFormat": "yuv420p",
+        "audioStreams": 1
+      },
+      "deliveryTransform": "pure-white vertical pad from 1104x816 to 1104x828; no crop",
+      "delivery": "scenes/the-tangled-ribbons/highest-knot.mp4",
+      "deliverySha256": "60ce40f8ef427fb06afb66f3538481afb4cadb59394fae59c9ff0e921b4a3a0d",
+      "deliveryProbe": {
+        "width": 1104,
+        "height": 828,
+        "duration": 6.041667,
+        "frameRate": "24/1",
+        "codec": "h264",
+        "pixelFormat": "yuv420p",
+        "audioStreams": 0
+      },
+      "poster": "scenes/the-tangled-ribbons/highest-knot-motion-poster.png",
+      "posterSha256": "b8a24665d1c53259b6b1bab189abcb38dea19a5ab6b3da177f283f4d9c66f6b8",
+      "posterFrame": "first",
+      "acceptedAt": "2026-07-17T00:22:19.160Z"
+    },
+    {
+      "sceneId": "the-silver-path",
+      "mediaState": "path-traced",
+      "role": "living-loop",
+      "provider": "grok-imagine",
+      "providerId": "16920911-40fb-4060-9e59-bb2e410829e1",
+      "providerUrl": "https://grok.com/imagine/agent/local-canvas-28343d27-c1b4-4161-891c-22da5120adb9",
+      "promptRef": "MOTION_GENERATION_PROMPTS.md#path-traced--living-loop",
+      "source": "scenes/the-silver-path/provider-originals/motion/path-traced-16920911-40fb-4060-9e59-bb2e410829e1.mp4",
+      "sourceSha256": "0f6bbb0173bbecb73aaf0b1ba60965899da015c84ad6e1d8f45f5372abdc050a",
+      "sourceProbe": {
+        "width": 1104,
+        "height": 816,
+        "duration": 6.041667,
+        "frameRate": "24/1",
+        "codec": "h264",
+        "pixelFormat": "yuv420p",
+        "audioStreams": 1
+      },
+      "deliveryTransform": "pure-white vertical pad from 1104x816 to 1104x828; no crop",
+      "delivery": "scenes/the-silver-path/path-traced.mp4",
+      "deliverySha256": "75f13a1137abccd09fdcc5c18a3634c8be1b25fedd6d5bc338277f17e6de41c2",
+      "deliveryProbe": {
+        "width": 1104,
+        "height": 828,
+        "duration": 6.041667,
+        "frameRate": "24/1",
+        "codec": "h264",
+        "pixelFormat": "yuv420p",
+        "audioStreams": 0
+      },
+      "poster": "scenes/the-silver-path/path-traced-motion-poster.png",
+      "posterSha256": "a498173d89c8e6f996bd5d9f1adeb9f628b4348ff63ce09284a8b29eb89ff941",
+      "posterFrame": "first",
+      "acceptedAt": "2026-07-17T00:27:10.603Z"
+    },
+    {
+      "sceneId": "the-silver-path",
+      "mediaState": "pipkin-at-knot",
+      "role": "living-loop",
+      "provider": "grok-imagine",
+      "providerId": "74f2f749-a066-4bb7-87e1-e35ea63e80c1",
+      "providerUrl": "https://grok.com/imagine/agent/local-canvas-28343d27-c1b4-4161-891c-22da5120adb9",
+      "promptRef": "MOTION_GENERATION_PROMPTS.md#pipkin-at-knot--living-loop",
+      "source": "scenes/the-silver-path/provider-originals/motion/pipkin-at-knot-74f2f749-a066-4bb7-87e1-e35ea63e80c1.mp4",
+      "sourceSha256": "767e1b21e9d31790909b1a989116cc4c04f83ea03154b15243a37ff0f44f3418",
+      "sourceProbe": {
+        "width": 1104,
+        "height": 816,
+        "duration": 6.041667,
+        "frameRate": "24/1",
+        "codec": "h264",
+        "pixelFormat": "yuv420p",
+        "audioStreams": 1
+      },
+      "deliveryTransform": "pure-white vertical pad from 1104x816 to 1104x828; no crop",
+      "delivery": "scenes/the-silver-path/pipkin-at-knot.mp4",
+      "deliverySha256": "4e3e782917056c130d4b82c1a1eb4f70b01a05ce1cf36efdc8dd27a72c4829f0",
+      "deliveryProbe": {
+        "width": 1104,
+        "height": 828,
+        "duration": 6.041667,
+        "frameRate": "24/1",
+        "codec": "h264",
+        "pixelFormat": "yuv420p",
+        "audioStreams": 0
+      },
+      "poster": "scenes/the-silver-path/pipkin-at-knot-motion-poster.png",
+      "posterSha256": "c796f4746ba70cddaec31db4ce4eeaf4dd048013fcfc62e4dac4d94c5c1013a3",
+      "posterFrame": "first",
+      "acceptedAt": "2026-07-17T00:29:10.026Z"
+    },
+    {
+      "sceneId": "the-silver-path",
+      "mediaState": "knot-opening",
+      "role": "one-shot",
+      "provider": "grok-imagine",
+      "providerId": "a56a1850-9937-479a-87c0-27fa0b632211",
+      "providerUrl": "https://grok.com/imagine/agent/local-canvas-28343d27-c1b4-4161-891c-22da5120adb9",
+      "promptRef": "MOTION_GENERATION_PROMPTS.md#knot-opening--one-shot",
+      "source": "scenes/the-silver-path/provider-originals/motion/knot-opening-a56a1850-9937-479a-87c0-27fa0b632211.mp4",
+      "sourceSha256": "eead8d83aead302172331fc050bcf143d2a7c732b64cd85671499a8d3323c46c",
+      "sourceProbe": {
+        "width": 1104,
+        "height": 816,
+        "duration": 6.041667,
+        "frameRate": "24/1",
+        "codec": "h264",
+        "pixelFormat": "yuv420p",
+        "audioStreams": 1
+      },
+      "deliveryTransform": "pure-white vertical pad from 1104x816 to 1104x828; no crop",
+      "delivery": "scenes/the-silver-path/knot-opening.mp4",
+      "deliverySha256": "d14086b549445b417513df9e2565ffc8eaf87e2c81612b359e320663889fa984",
+      "deliveryProbe": {
+        "width": 1104,
+        "height": 828,
+        "duration": 6.041667,
+        "frameRate": "24/1",
+        "codec": "h264",
+        "pixelFormat": "yuv420p",
+        "audioStreams": 0
+      },
+      "poster": "scenes/the-silver-path/knot-opening-motion-poster.png",
+      "posterSha256": "c764d069c12aa258d79f42e8e51d0f92d45435af89a0e2843f0b581ae425ff0a",
+      "posterFrame": "last",
+      "acceptedAt": "2026-07-17T00:38:36.024Z"
+    },
+    {
       "sceneId": "the-ringing-morning",
       "mediaState": "shared-morning",
       "role": "living-loop",
@@ -271,6 +415,30 @@
       "sourceSha256": "28abbf8bb183eb89c1e2c5ac1d6631c016e836e5db7b7ac935df90c0ba054741",
       "decision": "rejected",
       "reason": "The two-character source-led transformation duplicated Pipkin and detached long ribbons into the characters' paws, breaking identity and topology continuity."
+    },
+    {
+      "mediaState": "path-traced",
+      "providerId": "9cb82f04-f6c4-45be-a841-d3879f3833c0",
+      "source": "scenes/the-silver-path/provider-originals/motion/rejected-path-traced-new-branch-9cb82f04.mp4",
+      "sourceSha256": "93ec86ab84fd5b99d39a340ba38f8de5ef723f76bfd66a4daf974d0b0e2e9bd0",
+      "decision": "rejected",
+      "reason": "A new brown thorn branch grew across the silver route mid-clip, invalidating the deterministic hero-interaction geometry."
+    },
+    {
+      "mediaState": "knot-opening",
+      "providerId": "a2370f72-fe8e-4ee4-833d-975f590242da",
+      "source": "scenes/the-silver-path/provider-originals/motion/rejected-knot-opening-route-cords-a2370f72.mp4",
+      "sourceSha256": "905568ea5eb6501023a5d60886e22f7e4d73228f59eaa5ab5be25783caf0e591",
+      "decision": "rejected",
+      "reason": "The knot opened, but the silver interaction route detached into several long dangling cords, breaking the authored guide and ribbon topology."
+    },
+    {
+      "mediaState": "knot-opening",
+      "providerId": "c4877b66-316c-4fe8-977a-d69a6d51fff7",
+      "source": "scenes/the-silver-path/provider-originals/motion/rejected-knot-opening-winged-fern-c4877b66.mp4",
+      "sourceSha256": "b1a7f0591734804bb69747abd42f81f408e9c684195881da0bfd549f4ca59a3a",
+      "decision": "rejected",
+      "reason": "The static-plate repair preserved the open knot but transferred large warm-gold wings onto Fern, an unacceptable character-identity failure."
     }
   ]
 }

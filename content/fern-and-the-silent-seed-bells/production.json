@@ -426,11 +426,13 @@
         },
         {
           "id": "highest-knot",
-          "kind": "poster",
-          "src": "scenes/the-tangled-ribbons/highest-knot.png",
+          "kind": "video",
+          "src": "scenes/the-tangled-ribbons/highest-knot.mp4",
           "transitionsTo": [
             "lower-knots-loosened"
-          ]
+          ],
+          "poster": "scenes/the-tangled-ribbons/highest-knot-motion-poster.png",
+          "loop": true
         }
       ],
       "canonicalPath": [
@@ -1014,28 +1016,34 @@
       "media": [
         {
           "id": "path-traced",
-          "kind": "poster",
-          "src": "scenes/the-silver-path/path-traced.png",
+          "kind": "video",
+          "src": "scenes/the-silver-path/path-traced.mp4",
           "transitionsTo": [
             "pipkin-at-knot"
-          ]
+          ],
+          "poster": "scenes/the-silver-path/path-traced-motion-poster.png",
+          "loop": true
         },
         {
           "id": "pipkin-at-knot",
-          "kind": "poster",
-          "src": "scenes/the-silver-path/pipkin-at-knot.png",
+          "kind": "video",
+          "src": "scenes/the-silver-path/pipkin-at-knot.mp4",
           "transitionsTo": [
             "knot-opening",
             "path-traced"
-          ]
+          ],
+          "poster": "scenes/the-silver-path/pipkin-at-knot-motion-poster.png",
+          "loop": true
         },
         {
           "id": "knot-opening",
-          "kind": "poster",
-          "src": "scenes/the-silver-path/knot-opening.png",
+          "kind": "video",
+          "src": "scenes/the-silver-path/knot-opening.mp4",
           "transitionsTo": [
             "pipkin-at-knot"
-          ]
+          ],
+          "poster": "scenes/the-silver-path/knot-opening-motion-poster.png",
+          "loop": false
         }
       ],
       "canonicalPath": [

@@ -331,6 +331,31 @@ sound symbols, border, background rectangle, neon or digital glow, 3D motion,
 or photorealism.
 ```
 
+The first take was rejected because a new brown thorn branch grew across the
+silver route mid-clip. Repair from the same accepted source:
+
+```text
+Animate this exact native-4:3 watercolor interaction keyframe as a restrained
+6-second SEAMLESS living portrait with a completely locked camera. Treat the
+entire tree, every branch, thorn, leaf, bell, ribbon, knot, and the complete pale
+silver route as ONE PIXEL-LOCKED STATIC BACKGROUND PLATE. Do not redraw, pulse,
+move, cover, erase, or add to the route or tree. The route remains exactly under
+the existing leaf, around the existing twig, through the existing thorn gap,
+and ends at the still-closed knot. Fern and Pipkin remain at the route start and
+may show only subtle breathing and one slow blink each. First and last frames
+must match exactly.
+
+Preserve exactly one Fern with dusty-teal satchel, one grounded Pipkin with
+exactly four visible warm-gold wings, exactly three bells, every route coordinate,
+the wet palette, and the organic pure-white matte.
+
+ABSOLUTELY NO new branch, twig, thorn, leaf, line, route, or obstacle; no flight,
+cursor, hand, path tracing, knot opening, breeze, ringing, camera motion, zoom,
+crop, cut, morphing, duplicate anatomy, extra character, wing, ribbon, knot,
+or bell, text, sound symbols, border, background rectangle, glow, 3D motion, or
+photorealism. This shot preserves a deterministic interaction map.
+```
+
 ## pipkin-at-knot — living loop
 
 Source: accepted `scenes/the-silver-path/pipkin-at-knot.png`.
@@ -376,6 +401,52 @@ No loop or reset, no repeated tug, no snapping ribbon, no bell movement, breeze,
 chime, camera motion, zoom, crop, cut, morphing, branch growth, duplicate
 character, extra limb, wing, route, ribbon, knot, or bell, text, sound symbols,
 border, background rectangle, digital glow, 3D motion, or photorealism.
+```
+
+The source-led take was rejected because it turned the silver route into several
+long dangling cords. Continuity-first repair from accepted `knot-opening.png`:
+
+```text
+Animate this exact native-4:3 watercolor ENDPOINT keyframe as one restrained
+6-second finishing moment with a completely locked camera. The highest knot is
+already correctly open in this accepted image; preserve that exact topology.
+Pipkin hovers beside the two existing free ribbon ends, opens both paws in one
+tiny release gesture, and eases backward only a few pixels. The two free ribbon
+ends relax by a few pixels and become still. Fern watches below. The silver path
+remains one unchanged painted guide and all three bells remain silent and still.
+Hold the resolved open-knot state for the final 2 seconds.
+
+Preserve exactly one Fern with dusty-teal satchel, one Pipkin with exactly four
+visible warm-gold wings, exactly three bells, the accepted open ribbon ends,
+route, branch and thorn geometry, wet palette, and organic pure-white matte.
+
+No new cord or strand, no route detachment, no closed knot, no new tug, no bell
+motion, breeze, chime, camera motion, zoom, crop, cut, morphing, duplicate
+character, extra limb, wing, route, ribbon, knot, or bell, text, sound symbols,
+border, background rectangle, digital glow, 3D motion, or photorealism.
+```
+
+The first endpoint repair was rejected because it invented a broad gray road in
+the white interaction area. Final repair from the same accepted endpoint:
+
+```text
+Animate this exact native-4:3 watercolor endpoint keyframe as a restrained
+6-second living hold with a completely locked camera. Treat the ENTIRE image
+except Pipkin's face, paws, and four wings as a PIXEL-LOCKED STATIC PLATE. The
+open blue ribbon ends, branch, thorns, exactly three bells, Fern, cottage, and
+all pure-white negative space must remain identical to the first frame. Pipkin
+makes one tiny blink, opens both paws by only a few pixels, and returns to the
+same hover pose. Exactly four wings make only tiny hovering motion. Hold the
+unchanged resolved state for the final 2 seconds.
+
+Preserve exactly one Fern with dusty-teal satchel and exactly one Pipkin with
+four visible warm-gold wings. Preserve the organic pure-white matte exactly.
+
+ABSOLUTELY NO new line, road, path, cord, strand, puddle, shadow, mark, object,
+or color in any white area; no ribbon movement, knot, tug, bell movement, breeze,
+chime, camera motion, zoom, crop, cut, morphing, duplicate character, extra limb,
+wing, ribbon, knot, or bell, text, sound symbol, border, background rectangle,
+digital glow, 3D motion, or photorealism.
 ```
 
 ## breeze-rush — one shot
