@@ -3,50 +3,6 @@
 Newest decisions go first. Record meaningful divergences, tradeoffs, and quality
 gates; do not duplicate routine implementation details.
 
-## 2026-07-17 — White-matte glass uses lens-only authored targets
-
-- Refraction cannot reveal detail that is absent from the story matte. The mode
-  selector therefore samples a cached authored target containing its selected-
-  state accent and fine geometry; the DOM labels are never copied or distorted.
-- Target sources exist only as renderer inputs and are visible only through a
-  named lens. They do not add a DOM background, atmospheric rectangle, video,
-  or second WebGL context.
-- The quiet title may use the same mechanism for a single restrained line when
-  its opening position is entirely white. Dialogue and start surfaces continue
-  to refract the actual layered illustration beneath them.
-
-## 2026-07-17 — Liquid glass composites mounted story media once per stage
-
-- The WebGL2 path builds one premultiplied offscreen source texture from the
-  image, canvas, and video elements already mounted by the story. Registered
-  lenses sample that texture; the system creates no hidden media or decoder.
-- The portable RG displacement map remains independent from the renderer.
-  Strength, chroma, tint, and specular lighting are uniforms, so movement and
-  press deformation do not regenerate the map.
-- Transparent output outside scissored lens rectangles lets the normal story
-  media remain the presentation source. Semantic DOM stays above the canvas.
-- Context loss immediately exposes the CSS fallback. Restoration rebuilds on
-  the same canvas; invalid WebKit lost-context handles are abandoned rather than
-  passed to a newly restored context for deletion.
-- `/dev/glass` and `scripts/qa-glass.ts` are the objective optics contract. They
-  measure changed in-lens grid pixels rather than treating blur or rim styling
-  as proof.
-
-## 2026-07-17 — Real liquid glass is the next feature run
-
-- The current `.story-glass` treatment is retained as the accessible fallback,
-  not accepted as the finished liquid-glass look.
-- Finished glass must visibly displace the active story pixels and add
-  restrained chromatic separation plus a shape-aware specular edge. Blur,
-  translucency, borders, and shadows alone do not meet the gate.
-- Use one stage-level WebGL2 renderer that reuses `MediaDeck`'s already-decoded
-  scene sources. Do not allocate a renderer or video decoder per surface.
-- Keep words, portraits, controls, focus, and accessibility as semantic DOM
-  above the refracted shell. Reading text must never be distorted.
-- White-matte stories may author a lens-only `refractionTarget`; the system must
-  not add a visible stage rectangle or atmosphere just to demonstrate glass.
-- The approved execution contract is `docs/mvp/liquid-glass-run.md`.
-
 ## 2026-07-17 — Stories glass is readable CSS first, refraction second
 
 - Dialogue, title, mode, transport, and temporary reading surfaces now share a

@@ -6,10 +6,9 @@ Last updated: 2026-07-17
 
 - Branch: `codex/mvp-immersive-runtime`
 - Preserved baseline: annotated local tag `poc-success`
-- Completed MVP contract: `docs/mvp/immersive-run.md`
-- Completed liquid-glass contract: `docs/mvp/liquid-glass-run.md`
+- Execution contract: `docs/mvp/immersive-run.md`
 - Product index: `docs/README.md`
-- Decision log: `docs/decisions.md`
+- Decision log: `docs/DECISIONS.md`
 
 ## Current state
 
@@ -35,131 +34,40 @@ Last updated: 2026-07-17
   currently use `top-left`; narrated lines have no visible label, Fern/Pipkin
   speech uses canonical watercolor portraits, and constrained layouts dock the
   same copy safely.
-- Title, dialogue, mode, start/continue, and transport/replay now register with
-  one stage-level WebGL2 renderer. It visibly refracts the active layered story
-  media while text, portraits, focus, and controls remain semantic DOM above it.
-  The documented CSS glass material remains the automatic compatibility and
-  context-loss fallback.
-
-## Liquid-glass run progress
-
-- Checkpoint 1 is preserved in `983b41b`: the real-refraction contract is
-  authoritative and the existing CSS surface is explicitly the fallback.
-- Checkpoint 2 now has a renderer-independent signed RG displacement field in
-  `src/experience/glass`. It supports pills, rounded rectangles, and circles,
-  computes one quadrant with exact four-fold sign symmetry, stays neutral and
-  transparent outside the lens, caps map resolution, and caches by geometry
-  plus map-affecting optics rather than position.
-- `/dev/glass` exposes the principal optical controls, all three map shapes, a
-  high-contrast crossing-line source, cache diagnostics, and a moving same-shape
-  case. It now runs the real stage WebGL2 path over a grid, still image, and one
-  playing Fern video. The line crossing the pill visibly bends and the other
-  shapes refract their media; this is the objective optics proof.
-- `pnpm test:glass` covers neutral pixels, signed range/direction, symmetry,
-  shapes, cache identity, and regeneration. Chromium hydration/error inspection
-  passes, and moving the pill leaves the generation count unchanged.
-- Checkpoint 3 uses one transparent WebGL2 canvas and one context. It composites
-  existing same-origin canvas/image/video sources into an offscreen texture,
-  draws only scissored lens rectangles, caps DPR at 2, uploads one live video
-  frame without creating another decoder, and sleeps when the video pauses.
-  Context loss selects CSS and restoration rebuilds GPU resources without
-  remounting. WebKit restoration deliberately abandons invalid lost-context
-  handles instead of deleting them through the restored context.
-- `pnpm qa:glass --browser=chromium` and `--browser=webkit` both pass the one-
-  canvas/video checks, objective in/out pixel checks, map-reuse assertion,
-  failure fallback, context recovery, and sleeping-loop gate. Chromium measured
-  369 displaced samples; WebKit measured 363.
-- Checkpoint 4 adds `GlassStage` and `GlassSurface`. The stage owns the only
-  renderer/context, collects the existing `MediaDeck` image/video elements,
-  tracks deck mutation/resize/intersection/visibility, and measures registered
-  surfaces outside the hot path. The live Fern transport is the first reusable
-  surface; its replay/play DOM, focus, labels, and hit targets remain unchanged.
-- Chromium and WebKit each measure 6,504 opaque refracted transport pixels and
-  exactly two existing MediaDeck videos in both WebGL and forced-CSS modes.
-  Live-story context loss/restoration preserves focus and story time.
-- Checkpoint 5 registers every required family: quiet title, moving mode lens,
-  reading dialogue, start/continue, and tactile transport/replay. Hidden DOM
-  surfaces are excluded from drawing, so the opacity-zero dialogue cannot ghost
-  behind the start card; it takes over after playback begins.
-- The mode and quiet title use authored lens-only refraction targets over low-
-  detail white areas. The target canvases are cached source textures, never
-  mounted backgrounds, and add no visible stage rectangle or media decoder.
-  The mode target contains a restrained selected-state accent and fine lines;
-  labels remain sharp DOM while those pixels bend underneath.
-- Mode travel follows the existing interruptible 220ms CSS transform and updates
-  only bounds. Chromium and WebKit assert that its GPU map-upload count does not
-  change. Browser QA also selects the full dialogue string from DOM to prove the
-  renderer does not rasterize or distort reading text.
-- Checkpoint 6 adds renderer-uniform press deformation: pointer, touch, Space,
-  and Enter compress lens scale to 0.96 and optical depth to 0.72, then return
-  over a short cubic ease-out without bounce or map upload. Reduced motion keeps
-  the static refracted state but removes travel and press deformation.
-- Target textures now repaint/upload only when their version or responsive
-  geometry changes. Advancing deck video remains the only per-frame source
-  upload; hidden/offscreen and paused stages sleep, while offscreen suspension
-  does not pause narration. A deviceScaleFactor-3 probe confirms the DPR-2 cap.
-- The glass QA matrix passes 390×844, 430×932, 768×1024, 1024×768,
-  1440×900, and 1920×1080 in Chromium and WebKit with no horizontal overflow,
-  aligned stage/canvas bounds, all visible lenses, and 44px controls. Warm
-  measured frames were 0.2ms or below in the automated run.
-- Existing `pnpm qa:experience -- fern-and-the-silent-seed-bells` passes after
-  replacing its obsolete active-CSS-blur assertion with the one-canvas
-  registered-WebGL contract. Playback, Read-with-me, reverse settlement, ending,
-  reduced motion, and the established responsive matrix remain green.
-- Native macOS Safari was also inspected through its real app: `/dev/glass`
-  exposed `webgl`, Fern exposed its complete semantic control tree, mode change
-  worked, playback advanced to 9.3s, and Read-with-me reached a two-line Continue
-  wait. `docs/evidence/liquid-glass/checkpoint-6-safari-playback.png` preserves
-  the native-browser frame.
-- Checkpoint 7 is complete. `pnpm evidence:glass` captures the final WebGL
-  fixture, live Fern renderer, and forced-CSS baseline; the indexed release set
-  is in `docs/evidence/liquid-glass/README.md`. Production build, both optical
-  browser engines, full Fern playback, responsive QA, and native Safari
-  inspection are green. The owner playtest server is left at the target route.
-- The active checkout is 166 files / 109,605,016 bytes. Fern is 86 files /
-  79,499,645 bytes, including eight alpha videos totaling 10,771,186 bytes.
+- Title, dialogue, mode, start, and transport surfaces now share the documented
+  Stories glass material. The Watch/Read toggle has a moving glass lens; CSS is
+  the accessible cross-browser baseline and WebGL video refraction remains a
+  gated future enhancement.
+- The active checkout is 139 files / 103,098,739 bytes. Fern is 84 files /
+  78,864,822 bytes, including eight alpha videos totaling 10,771,186 bytes.
 
 ## Owner playtest
 
 Open <http://localhost:3000/experience/fern-and-the-silent-seed-bells>, then:
 
-1. Before playback, compare the title, mode, start, and transport lenses. The
-   mode lens should stay evident on white without a stage-sized wash.
-2. In Watch, play from the beginning. Lines and watercolor edges crossing the
-   dialogue and control rims should visibly bend, with restrained color
-   separation, while every word remains sharp.
-3. Let the story reach the silver path; confirm the guide interaction changes
+1. In Watch, play from the beginning and notice the moving watercolor edge has
+   no rectangular video boundary.
+2. Let the story reach the silver path; confirm the guide interaction changes
    the layered visual state and Watch completes the same action automatically.
-4. Switch to Read-with-me, complete one child passage, and feel the soft
+3. Switch to Read-with-me, complete one child passage, and feel the soft
    ambience/visual wait and resume.
-5. Resize to phone portrait and desktop landscape. Confirm the whole 4:3 art,
+4. Resize to phone portrait and desktop landscape. Confirm the whole 4:3 art,
    dialogue, and controls remain usable without horizontal scrolling.
-6. Replay the ending and drag the hidden test seek control only through the QA
+5. Replay the ending and drag the hidden test seek control only through the QA
    harness if reverse-settlement behavior needs inspection.
 
-Subjective approval should focus on whether the displacement is clear but calm,
-the shape-aware rim avoids a neon look, the white-matte targets feel lens-only,
-and the existing alpha compositions still read as one illustration.
+Subjective approval should focus on alpha-edge cleanliness, whether the plate
+and motion feel like one illustration, transition softness, and whether the
+silver-path action feels meaningfully more immersive than the flattened beats.
 
 ## Validation record
 
-- `pnpm test:glass` — pass; 5 tests covering neutral outside pixels, signed
-  displacement, exact four-fold symmetry, all lens shapes, cache reuse, and
-  map-affecting regeneration
 - `pnpm typecheck` — pass
 - `pnpm lint:experiences` — pass; 55 referenced assets
 - `pnpm build` — pass
-- `pnpm qa:glass --browser=chromium` — pass; 369 objectively displaced grid
-  samples and 6,504 live Fern transport pixels with exactly 2 existing videos
-- `pnpm qa:glass --browser=webkit` — pass; 363 objectively displaced grid
-  samples and 6,504 live Fern transport pixels with exactly 2 existing videos
 - `pnpm qa:experience -- fern-and-the-silent-seed-bells` — pass: Watch,
   Read-with-me, hero completion, reverse scrub, ending, reduced motion, and six
   responsive presets
-- `pnpm evidence:glass` — pass; final fixture, live WebGL Fern, and forced-CSS
-  fallback frames captured and visually inspected
-- Native macOS Safari — pass; WebGL fixture, semantic control tree, mode travel,
-  Watch progression, and a two-line Read-with-me Continue wait inspected
 - Native-alpha files — eight VP9 WebMs with `ALPHA_MODE=1`; representative
   composite and mask inspected against a contrasting plate
 - Browser console — no page error or unhandled rejection during forward state

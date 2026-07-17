@@ -13,9 +13,9 @@ Aave separates the portable displacement map from the renderer: ordinary DOM
 can use an SVG filter, while live video in Safari needs WebGL. That distinction
 matters here because most Stories glass sits over moving video.
 
-## Current fallback contract
+## Current material contract
 
-The shared `.story-glass` primitive is the accessible CSS fallback:
+The shared `.story-glass` primitive uses progressive CSS enhancement:
 
 - a translucent neutral fill that preserves the story matte;
 - `backdrop-filter` blur and restrained saturation over live art;
@@ -41,77 +41,18 @@ between options with one 220ms ease-in-out transform; it does not animate layout
 Reduced-motion removes that transition. Buttons retain their semantic DOM,
 keyboard behavior, and minimum touch size.
 
-## Progressive renderer boundary
+## Why this version does not displace pixels
 
 Applying `feDisplacementMap` to the dialogue's own DOM would distort the words,
 not the video behind them. Applying an SVG filter to a live `<video>` backdrop
-is not a dependable Safari path. The current CSS therefore remains the
-universal compatibility baseline, but it is not the finished liquid-glass
-effect: it does not displace the scene's pixels.
+is not a dependable Safari path. The MVP therefore keeps the readable CSS glass
+as the universal baseline rather than maintaining a Chromium-only effect.
 
-The real renderer is a progressive layer governed by the authoritative
-[Liquid glass feature run](../mvp/liquid-glass-run.md). One `GlassStage` owns the
-canvas, context, source collection, recovery, and diagnostics. A `GlassSurface`
-registers one DOM element's bounds and lens model without exposing WebGL to the
-story component.
-
-The stage reads only image/video elements already mounted by `MediaDeck` and
-measures their rendered geometry and ancestor opacity. During a deck crossfade,
-the source resolver follows live opacity without allocating React state. All
-semantic UI remains above the canvas and the existing `.story-glass` material
-becomes visible automatically whenever the renderer reports CSS fallback.
-
-Fern now registers the complete family. Browser QA compares the media-element
-count with WebGL forced off, asserts one stage canvas, reads opaque pixels inside
-each visible lens, and checks that context recovery does not reset playback or
-focus. It also selects dialogue text directly from the DOM.
-
-`GlassRefractionTarget` registers an authored paint callback with the stage. The
-stage maintains one cached 2D source per target and versions it only when the
-target or responsive geometry changes. It is uploaded to a target framebuffer
-and sampled only by lenses that name it; it is never mounted as a visible stage
-layer. Fern uses this for the moving mode accent and a very quiet title line over
-white matte. The mode canvas paints detail across the whole selector plus a
-selected-state pill, so the moving lens remains evident throughout travel while
-the actual labels stay untouched above it.
-
-Surface visibility is part of registration. Zero-opacity, hidden, display-none,
-or zero-area DOM does not produce a lens. This prevents the pre-play dialogue
-surface from refracting behind the start card, then permits the same registered
-surface to resume when playback exposes it.
-
-## Interaction and motion
-
-Position and deformation are renderer uniforms. The 220ms mode transform is
-measured during its CSS travel and updates only lens bounds. Pointer, touch,
-Space, and Enter press the owning surface (mode buttons explicitly target the
-mode lens), interpolate its optical scale to 0.96 and depth to 0.72, then return
-with a short ease-out. Neither path rebuilds or uploads the displacement map.
-
-Reduced motion applies selection immediately and removes optical press
-deformation while retaining a static refracted lens. Hover-only DOM polish
-remains inside the fine-pointer media query. Focus rings, labels, buttons, and
-44px hit targets remain ordinary semantic DOM above the renderer.
-
-The stage suspends its renderer when hidden or offscreen without touching story
-audio or state. Static and paused stages draw a final frame and sleep. Authored
-target framebuffers are cached by version instead of being recomposited while a
-video advances.
-
-## Portable lens field
-
-The first renderer-independent layer lives in `src/experience/glass`. A lens
-map stores signed horizontal and vertical displacement in red and green,
-edge/thickness in blue, and the exact shape mask in alpha. Pixels outside the
-lens are neutral RG with zero thickness and alpha. Pills, rounded rectangles,
-and circles share one geometry contract.
-
-Map generation computes one quadrant and mirrors it with the correct sign into
-the other three. The cache key includes rounded geometry and map-affecting
-curvature, splay, depth, and center scale; screen position, displacement scale,
-chroma, and specular lighting remain renderer uniforms. Moving a lens therefore
-does not rebuild its map. The longest map edge is capped at 512 pixels so a
-large responsive reading surface cannot create an unbounded texture.
+If playtesting proves that true refraction materially improves immersion, add a
+renderer-owned WebGL pass that samples the active video once and draws the small
+control lenses. Keep the existing DOM above that canvas for text, input,
+accessibility, and the CSS fallback. The surface classes and component markup do
+not need to change.
 
 ## Acceptance rules
 

@@ -92,20 +92,10 @@ async function main() {
       return {
         overlayBackdrop: overlay ? getComputedStyle(overlay).backdropFilter : "missing",
         lensTransform: lens ? getComputedStyle(lens).transform : "missing",
-        renderer: document.querySelector(".story-player-stage")?.getAttribute("data-glass-renderer"),
-        canvasCount: document.querySelectorAll("canvas[data-glass-canvas]").length,
-        dialogueSurface: overlay?.getAttribute("data-glass-surface"),
       };
     });
-    if (glassContract.renderer === "webgl") {
-      if (glassContract.canvasCount !== 1 || glassContract.dialogueSurface !== "dialogue") {
-        failures.push(`real reading glass was not registered: ${JSON.stringify(glassContract)}`);
-      }
-      if (glassContract.overlayBackdrop !== "none") {
-        failures.push("WebGL reading glass still pays for CSS backdrop blur");
-      }
-    } else if (glassContract.overlayBackdrop === "none" || glassContract.overlayBackdrop === "missing") {
-      failures.push("CSS reading-glass fallback does not sample the live backdrop");
+    if (glassContract.overlayBackdrop === "none" || glassContract.overlayBackdrop === "missing") {
+      failures.push("reading glass does not sample the live backdrop");
     }
     if (await openingOverlay.getByText("Narrator", { exact: true }).count()) {
       failures.push("narration still exposes a Narrator label");

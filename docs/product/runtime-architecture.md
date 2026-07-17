@@ -1,34 +1,5 @@
 # Interactive story runtime
 
-## Stage liquid-glass pass
-
-Liquid glass is a progressive stage pass, not a second player. One transparent
-WebGL2 canvas sits above the existing media deck and below semantic UI. The
-renderer uploads the deck's already-mounted image and video elements into one
-offscreen source texture, including element geometry, ancestor opacity, alpha,
-and transition overlap. It never creates media elements or decoders.
-
-Each registered lens owns DOM-measured bounds, a portable cached displacement
-map, and optical uniforms. The renderer scissors work to those bounds, samples
-the composited source three times for restrained chromatic separation, and
-derives a directional specular rim from the signed lens field. The default
-framebuffer stays transparent outside registered shapes so the original media
-continues to render normally.
-
-The canvas DPR is capped at 2. Static images and maps upload once; advancing
-video uploads on rendered frames. Authored refraction-target framebuffers are
-versioned and reused until content or responsive geometry changes. The loop
-remains awake for advancing video,
-deck transitions, or moving/deforming lenses, then renders one settled frame
-and sleeps. Visibility and intersection suspend the loop. Renderer diagnostics
-are throttled and the runtime does not update React state per animation frame.
-
-Initialization or sampling failure selects the unchanged CSS glass path.
-`webglcontextlost` also selects CSS; restoration recreates programs, buffers,
-maps, and source textures on the same canvas without remounting story state.
-Lost WebKit objects are abandoned because the restored context does not own
-their handles; ordinary teardown still deletes live resources explicitly.
-
 ## Runtime boundaries
 
 The active runtime lives in `src/experience/`. It owns validated content
