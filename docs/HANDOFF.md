@@ -1,6 +1,6 @@
 # Session handoff
 
-Last updated: 2026-07-16
+Last updated: 2026-07-17
 
 ## Read first
 
@@ -26,6 +26,10 @@ Last updated: 2026-07-16
 - Three story moments use real moving transparency: the opening, the complete
   silver-path hero interaction, and the emotional close. Eight alpha renditions
   were compiled from approved media; no new Grok generation was necessary.
+- Owner playtesting established the standard scene-blending treatment: one
+  exact solid `stage.backdrop.color` shared by source media and the page. Fern
+  uses `#FFFFFF`; the poster atmosphere, accent gradient, blur, and opacity wash
+  have been removed from the standard runtime path.
 - The active checkout is 139 files / 103,098,739 bytes. Fern is 84 files /
   78,864,822 bytes, including eight alpha videos totaling 10,771,186 bytes.
 
@@ -60,6 +64,9 @@ silver-path action feels meaningfully more immersive than the flattened beats.
   composite and mask inspected against a contrasting plate
 - Browser console — no page error or unhandled rejection during forward state
   settlement
+- Solid-matte regression — computed page, stage, media, and active-layer colors
+  all equal `stage.backdrop.color`; no runtime background image, filter, opacity
+  wash, pseudo-atmosphere, or atmosphere DOM element
 
 ## Seedance gate
 

@@ -506,18 +506,6 @@ html[data-easy-read] .prose-line {
   background: #bfdedb;
 }
 
-.experience-atmosphere {
-  position: absolute;
-  z-index: -2;
-  inset: -36px;
-  background-image: var(--experience-backdrop);
-  background-position: var(--focal-x) var(--focal-y);
-  background-size: cover;
-  filter: blur(26px) saturate(0.85);
-  opacity: 0.52;
-  transform: scale(1.06);
-}
-
 .experience-shell::after {
   content: "";
   position: absolute;
@@ -956,11 +944,6 @@ html[data-easy-read] .prose-line {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .experience-atmosphere {
-    filter: blur(26px) saturate(0.75);
-    transform: none;
-  }
-
   .experience-controls button {
     transition-duration: 0ms;
   }
@@ -1211,12 +1194,6 @@ html[data-easy-read] .prose-line {
     linear-gradient(180deg, rgb(19 28 54 / 0.08), rgb(10 18 28 / 0.46)),
     radial-gradient(circle at 50% 20%, transparent 28%, rgb(5 12 21 / 0.28));
   pointer-events: none;
-}
-
-.story-player .experience-atmosphere {
-  position: fixed;
-  opacity: 0.78;
-  filter: blur(32px) brightness(0.72) saturate(0.9);
 }
 
 .story-player-header,
@@ -1786,24 +1763,12 @@ html[data-easy-read] .prose-line {
   display: grid;
   place-items: start center;
   padding: clamp(10px, 2vw, 24px);
-  background: color-mix(in srgb, var(--experience-accent), #fff 96%);
+  background: var(--experience-matte, #fff);
   color: #26372f;
 }
 
 .story-player::after {
-  background:
-    linear-gradient(180deg, rgb(255 255 255 / 0.62), rgb(255 254 249 / 0.8)),
-    radial-gradient(circle at 50% 42%, transparent 18%, rgb(255 255 255 / 0.34) 78%);
-}
-
-.story-player .experience-atmosphere {
-  inset: -36px;
-  opacity: 0.24;
-  filter: blur(36px) brightness(1.14) saturate(0.62);
-  transform: scale(1.08);
-  transition-property: opacity;
-  transition-duration: 220ms;
-  transition-timing-function: ease-in-out;
+  display: none;
 }
 
 .story-player-composition {
@@ -1825,7 +1790,7 @@ html[data-easy-read] .prose-line {
   overflow: visible;
   aspect-ratio: 4 / 3;
   border-radius: 0;
-  background: transparent;
+  background: var(--experience-matte, #fff);
   box-shadow: none;
 }
 
@@ -1841,7 +1806,7 @@ html[data-easy-read] .prose-line {
 .story-player .experience-media,
 .story-player-media .experience-media {
   border-radius: 0;
-  background: #fff;
+  background: var(--experience-matte, #fff);
   box-shadow: none;
 }
 
@@ -1850,7 +1815,7 @@ html[data-easy-read] .prose-line {
 }
 
 .story-player .experience-media-layer {
-  background-color: #fff;
+  background-color: var(--experience-matte, #fff);
 }
 
 .story-player-header {
@@ -2323,7 +2288,6 @@ html[data-easy-read] .prose-line {
   }
 
   .story-overlay,
-  .story-player .experience-atmosphere,
   .story-mode-switch button,
   .story-icon-button,
   .story-play-button,

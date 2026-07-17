@@ -50,6 +50,9 @@ If a transformation appears twice, occurs before its authored unit, regresses, o
 - Interaction completion changes only the authored state and must hand off cleanly to the next beat.
 - New stories use a native 4:3 creative master with the complete action and
   interaction geometry in frame. Existing 16:9 packages are legacy fixtures.
+- Keyframes, posters, opaque video, delivery padding, and the page use the same
+  six-digit `stage.backdrop.color`. Default to `#FFFFFF`. Reject gradients,
+  filters, translucent atmosphere, or compression drift used to conceal a seam.
 
 ## Read-with-me gates
 
@@ -75,7 +78,10 @@ ID, selected output, hashes, and rejection reasons. Keep accepted delivery
 assets active; archive redundant provider originals and rejected binaries in
 the run baseline after acceptance.
 
-For video, inspect at least start, midpoint, and final frames. Reject camera drift, redesign, premature transformation, duplicated action, missing travel, text, malformed anatomy, or an unusable final hold.
+For video, inspect at least start, midpoint, and final frames. Sample the outer
+matte in all three. Reject camera drift, redesign, premature transformation,
+duplicated action, missing travel, text, malformed anatomy, an unusable final
+hold, or a matte that changes across time.
 
 ## Required browser matrix
 

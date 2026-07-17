@@ -3,6 +3,23 @@
 Newest decisions go first. Record meaningful divergences, tradeoffs, and quality
 gates; do not duplicate routine implementation details.
 
+## 2026-07-17 — Solid story matte is the default blending contract
+
+- The cleanest Fern playtest came from removing the poster-derived atmosphere,
+  accent gradient, blur, saturation, and opacity treatment, then painting both
+  the page and media surface pure `#FFFFFF`.
+- `stage.backdrop.color` is now literal and authoritative. The same six-digit
+  color must be used for source keyframes, posters, opaque videos, delivery
+  padding, media layers, stage, and page. New stories default to `#FFFFFF`;
+  another color is a deliberate package-level art-direction decision.
+- Do not use CSS treatment to disguise a dirty or varying media background.
+  Reject or normalize the asset instead. Release QA checks computed shell/media
+  colors and forbids a gradient, filter, translucent atmosphere, or hidden
+  poster backdrop in the standard path.
+- Alpha/layered delivery remains useful for independent motion and interaction,
+  but it is not required for an organic scene boundary when the opaque source
+  has a genuinely flat, matching matte.
+
 ## 2026-07-16 — The immersive MVP uses compiled alpha over independent plates
 
 - Eight approved Fern motion masters now have native VP9-alpha deliveries over

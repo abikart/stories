@@ -54,7 +54,8 @@ interlude without requiring a new asset per story.
    continuity ledger that names each legal prop, character, and location change.
 3. Create canonical character/location references.
 4. Approve native 4:3 key illustrations with the complete semantic beat inside
-   the frame and a clean white dissolving matte.
+   the frame and one exact solid dissolving matte matching
+   `stage.backdrop.color` (`#FFFFFF` by default).
 5. Assign each beat a production tier: living illustration, motion shot, or
    hero interaction.
 6. Run planning lint with pending assets allowed; generate only the missing or
@@ -98,6 +99,13 @@ This is a delivery operation, not a license to repair continuity during ingest.
 If a matte cannot be separated cleanly, reject the layer or create a deliberate
 mask/packed-alpha source. Provider originals and rejected candidates remain in
 provider history or Git history after compact provenance has been recorded.
+
+Opaque delivery is still a first-class path. For it, the solid matte is authored
+into the image/video and repeated exactly by the page; the runtime must not add
+poster-derived gradients, filters, or opacity treatments. Before acceptance,
+sample the outer edge at the beginning, middle, and end of every video. Reject a
+clip whose background varies spatially, drifts over time, or compresses far
+enough from the declared matte to expose the frame.
 
 For this repository, `$author-story-film` packages the resumable workflow. The
 runtime contract and validators remain authoritative; the skill tells a fresh

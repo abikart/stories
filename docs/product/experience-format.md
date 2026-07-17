@@ -53,7 +53,7 @@ type StageContract = {
   masterAspectRatio: "4:3";
   actionSafe: "full-frame";
   defaultFocalPoint: Point;
-  backdrop: { color: string; poster?: string };
+  backdrop: { color: `#${string}`; poster: string };
 };
 
 type Performance = {
@@ -111,6 +111,11 @@ type MediaState = {
 
 The actual Zod schema in `src/experience/schema.ts` is authoritative once
 implemented. This document defines intent.
+
+`stage.backdrop.color` is the exact solid story matte, expressed as six-digit
+hex. It is shared by keyframes, posters, opaque video backgrounds, delivery
+padding, the stage, and the page shell. It is not an approximate theme color or
+a starting point for a runtime gradient. `#FFFFFF` is the default.
 
 ## Story graph rules
 

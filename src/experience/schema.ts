@@ -1,6 +1,10 @@
 import { z } from "zod";
 
 const NormalizedNumberSchema = z.number().min(0).max(1);
+const SolidMatteColorSchema = z.string().regex(
+  /^#[0-9a-fA-F]{6}$/,
+  "solid matte colors must use six-digit hex notation",
+);
 
 export const PointSchema = z.object({
   x: NormalizedNumberSchema,
@@ -13,7 +17,7 @@ export const NormalizedRectSchema = PointSchema.extend({
 });
 
 const StageBackdropSchema = z.object({
-  color: z.string().min(1),
+  color: SolidMatteColorSchema,
   poster: z.string().min(1),
 });
 

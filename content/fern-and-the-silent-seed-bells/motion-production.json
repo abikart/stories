@@ -12,6 +12,7 @@
     "creativeAspectRatio": "4:3",
     "deliveryCodec": "h264",
     "pixelFormat": "yuv420p",
+    "deliveryMatte": "#FFFFFF",
     "audio": "muted",
     "responsiveCrop": "none"
   },

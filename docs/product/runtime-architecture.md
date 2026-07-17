@@ -87,6 +87,11 @@ composition, matte, and normalized coordinate transform. Overlays and interactio
 recipes consume its coordinate transform instead of measuring video elements
 independently.
 
+The stage treats `stage.backdrop.color` as a literal solid color. The player,
+stage, media deck, and inactive/entering layers all paint that same value. No
+poster atmosphere, gradient, filter, or opacity overlay is allowed in the normal
+Lanternleaf path; visual atmosphere belongs inside the illustration.
+
 ## Overlay director
 
 The overlay director turns active phrases into narration ribbons or character

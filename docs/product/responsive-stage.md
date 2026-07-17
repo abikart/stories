@@ -61,20 +61,25 @@ media, copy, and controls without clipping. Otherwise they retain the stack.
 
 Lanternleaf media floats in the page rather than sitting inside a framed stage:
 
-- The page matte, poster matte, and encoded video matte are calibrated pure
-  white (`#FFFFFF`).
+- The page, keyframe, poster, encoded video, delivery padding, and media-layer
+  backgrounds use the exact solid `stage.backdrop.color`. New packages default
+  to pure white (`#FFFFFF`); another six-digit color requires deliberate story
+  art direction and remains fixed across the package.
 - Painted foliage, light washes, and unfinished vignette edges dissolve into
   that shared matte without an ornamental border or hard rectangle.
-- The source art must not rely on alpha video. Clean white is the portable
-  compositing contract across providers and delivery formats.
+- The source art must not rely on alpha video. A stable solid matte is the
+  portable compositing contract across providers and delivery formats.
+- Do not place a poster-derived atmosphere, gradient, blur, saturation filter,
+  opacity wash, or vignette behind the scene to disguise a mismatch. These
+  treatments change the perceived matte and reveal the encoded rectangle.
 - Posters remain visible until the next video has decoded its first frame.
 - Two video layers crossfade only opacity; never expose black, transparent
   player chrome, or a gray compression edge.
 - Release QA samples the outer media edge and rejects dirty whites, beige paper,
   gray blocks, or motion that reveals the source canvas.
 
-Legacy packages may retain their poster-derived atmospheric backdrop. New
-Lanternleaf packages use the white editorial shell.
+Legacy packages may retain explicitly declared compatibility treatment. New
+Lanternleaf packages use the exact solid story matte without runtime treatment.
 
 ## Coordinate mapping
 
@@ -110,7 +115,7 @@ diagnostics or future art direction, but it may not hide required action.
 
 ## Performance budget for the POC
 
-- Paint the pure-white page and poster immediately.
+- Paint the declared solid page matte and poster immediately.
 - Load only current state plus the most likely next state.
 - Never preload an entire story on entry.
 - Use native video for forward playback.

@@ -28,7 +28,8 @@ Read the target story's `production.json`, `beat-board.json`, `continuity.json`,
 5. Run `pnpm lint:experiences -- <story-id> --allow-pending` before generation.
 6. Generate canonical references before continuity-critical keyframes or video.
 7. Author new keyframes and motion masters natively at 4:3 with the complete
-   semantic action in frame; treat existing 16:9 packages as legacy fixtures.
+   semantic action in frame and one exact solid matte matching
+   `stage.backdrop.color`; treat existing 16:9 packages as legacy fixtures.
 8. Prefer matched image-to-video, locked cameras, and authored handoffs.
 9. Inspect beginning, middle, and end frames; reject semantic or continuity drift.
 10. Mark only accepted assets `approved-existing`, `approved-generated`, or `approved-derived`.

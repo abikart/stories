@@ -31,6 +31,47 @@ async function main() {
 
   try {
     await page.goto(`${baseUrl}/experience/${storyId}`, { waitUntil: "networkidle" });
+    const matteContract = await page.evaluate((declaredMatte) => {
+      const probe = document.createElement("span");
+      probe.style.color = declaredMatte;
+      document.body.append(probe);
+      const expected = getComputedStyle(probe).color;
+      probe.remove();
+
+      const player = document.querySelector<HTMLElement>(".story-player");
+      const stage = document.querySelector<HTMLElement>(".story-player-stage");
+      const media = document.querySelector<HTMLElement>(".experience-media");
+      const layer = document.querySelector<HTMLElement>(".experience-media-layer[data-active]");
+      return {
+        expected,
+        playerBackground: player ? getComputedStyle(player).backgroundColor : "missing",
+        stageBackground: stage ? getComputedStyle(stage).backgroundColor : "missing",
+        mediaBackground: media ? getComputedStyle(media).backgroundColor : "missing",
+        layerBackground: layer ? getComputedStyle(layer).backgroundColor : "missing",
+        playerBackgroundImage: player ? getComputedStyle(player).backgroundImage : "missing",
+        playerFilter: player ? getComputedStyle(player).filter : "missing",
+        playerOpacity: player ? getComputedStyle(player).opacity : "missing",
+        atmosphereCount: document.querySelectorAll(".experience-atmosphere").length,
+        afterDisplay: player ? getComputedStyle(player, "::after").display : "missing",
+      };
+    }, production.stage.backdrop.color);
+    for (const [surface, color] of Object.entries({
+      player: matteContract.playerBackground,
+      stage: matteContract.stageBackground,
+      media: matteContract.mediaBackground,
+      layer: matteContract.layerBackground,
+    })) {
+      if (color !== matteContract.expected) {
+        failures.push(`${surface} matte was ${color}; expected ${matteContract.expected}`);
+      }
+    }
+    if (matteContract.playerBackgroundImage !== "none"
+      || matteContract.playerFilter !== "none"
+      || matteContract.playerOpacity !== "1"
+      || matteContract.atmosphereCount !== 0
+      || matteContract.afterDisplay !== "none") {
+      failures.push(`solid matte shell was altered: ${JSON.stringify(matteContract)}`);
+    }
     const slider = page.getByLabel("Story position");
     const seek = async (seconds: number) => {
       await slider.evaluate((element, value) => {

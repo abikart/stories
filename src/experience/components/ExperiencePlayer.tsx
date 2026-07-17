@@ -35,7 +35,7 @@ const READING_AUDIO_LEAD_SECONDS = 0.32;
 
 type PlayerStyle = CSSProperties & {
   "--experience-accent": string;
-  "--experience-backdrop": string;
+  "--experience-matte": string;
   "--focal-x": string;
   "--focal-y": string;
 };
@@ -218,14 +218,11 @@ export function ExperiencePlayer({ production }: { production: ExperienceProduct
     ? interaction.completeMediaState
     : visualUnit.mediaState;
   const media = scene.media.find((state) => state.id === visualState) ?? scene.media[0];
-  const atmosphereAsset = media.kind === "poster"
-    ? media.src
-    : media.poster ?? production.stage.backdrop.poster;
   const focal = media.focalPoint ?? production.stage.defaultFocalPoint;
   const anchor = displayUnit.overlay.anchor ?? { x: 0.5, y: 0.5 };
   const stageStyle: PlayerStyle = {
     "--experience-accent": production.accent,
-    "--experience-backdrop": `url("${assetUrl(production.id, atmosphereAsset)}")`,
+    "--experience-matte": production.stage.backdrop.color,
     "--focal-x": `${focal.x * 100}%`,
     "--focal-y": `${focal.y * 100}%`,
   };
@@ -367,7 +364,6 @@ export function ExperiencePlayer({ production }: { production: ExperienceProduct
       data-reading-phase={readingPhase}
       data-at-start={snapshot.time === 0 && !snapshot.playing ? "true" : undefined}
     >
-      <div className="experience-atmosphere" aria-hidden="true" />
       <section className="story-player-composition" aria-label="Interactive story player">
         <div className="story-player-stage">
           <div className="story-player-media">

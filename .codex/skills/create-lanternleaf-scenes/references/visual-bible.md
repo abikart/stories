@@ -53,21 +53,26 @@ image prompt must preserve and adds continuity for Fern and Pipkin.
 - Build abundance from distinct plants, useful objects, terrain, and signs of
   work at several scales. Do not repeat one motif as a generic world stamp.
 - Keep faces, gestures, and the key prop clearest. Paint architecture and plants
-  with broader, softer, lower-contrast shapes; let distance dissolve into white.
+  with broader, softer, lower-contrast shapes; let distance dissolve into the
+  story matte.
 - Semantic detail is welcome. Hatching, stippling, fibers, fur strokes, moss
   flecks, and marks with no story meaning are not.
 
 ## Medium and matte
 
-- Use hybrid ink and watercolor on a solid pure-white output matte.
+- Use hybrid ink and watercolor on one exact solid output matte declared by the
+  story package. Default to `#FFFFFF`; choose another color only at the series or
+  story art-direction level, never per scene.
 - Show transparent layering through broad washes, overlapping glaze edges,
   restrained pooling, wet-on-wet transitions, and loose dissolving endings.
 - Keep each filled form calm and uninterrupted. Never tile a small brush symbol
   or simulate paper texture across it.
-- Do not use beige paper, tooth, grain, fibers, speckles, canvas weave, pencil
-  shading, colored pencil, or digital airbrush.
-- Encode poster and video mattes against the same `#FFFFFF` page white. Inspect
-  the outer edge for gray compression blocks or a visible source rectangle.
+- Do not use a gradient, atmospheric color wash, beige paper, tooth, grain,
+  fibers, speckles, canvas weave, pencil shading, colored pencil, or digital
+  airbrush in the matte.
+- Encode keyframe, poster, video, delivery padding, and page surfaces against the
+  exact same `stage.backdrop.color`. Inspect the outer edge for color drift,
+  compression blocks, or a visible source rectangle.
 
 ## Contour language
 
@@ -88,7 +93,7 @@ image prompt must preserve and adds continuity for Fern and Pipkin.
 - Author natively at 4:3 with the complete action and interaction geometry in
   frame. Do not compose for a hidden 16:9 canvas or later center crop.
 - Use a cozy, slightly low viewpoint and an airy floating vignette.
-- Preserve noticeable, irregular white breathing space around the vignette and
+- Preserve noticeable, irregular matte breathing space around the vignette and
   in pale distant layers, but do not enforce a fixed painted-area percentage.
 - Let the story beat determine density. Inhabited locations should feel rich,
   useful, and lived in without becoming enclosed or noisy.
@@ -100,9 +105,10 @@ image prompt must preserve and adds continuity for Fern and Pipkin.
 - Anchor the world in moss and forest greens, warm cream, terracotta/rust,
   dusty blue, pale pink, and restrained yellow.
 - Use soft, warm, diffuse light with transparent shadows.
-- Night remains high-key: localized pale indigo washes over white plus selected
-  warm light. Reserve white for brightness; avoid radial glow, bloom filters,
-  rim light, and dark full-bleed skies.
+- Night remains high-key: localized pale indigo washes inside the illustration
+  plus selected warm light, while the outer matte remains unchanged. Reserve
+  white for brightness; avoid radial glow, bloom filters, rim light, and dark
+  full-bleed skies.
 
 ## Reference roles
 

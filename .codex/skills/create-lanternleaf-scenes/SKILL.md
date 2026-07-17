@@ -1,6 +1,6 @@
 ---
 name: create-lanternleaf-scenes
-description: Create or revise native-4:3 Lanternleaf Forest watercolor scenes, canonical Fern and Pipkin character art, and continuity-sensitive illustrations for other bipedal forest denizens. Use for story keyframes, character or location explorations, matched scene variants, organic white-matte compositions, and repairs to Lanternleaf visual assets for ages 5–7.
+description: Create or revise native-4:3 Lanternleaf Forest watercolor scenes, canonical Fern and Pipkin character art, and continuity-sensitive illustrations for other bipedal forest denizens. Use for story keyframes, character or location explorations, matched scene variants, organic solid-matte compositions, and repairs to Lanternleaf visual assets for ages 5–7.
 ---
 
 # Create Lanternleaf Scenes
@@ -21,6 +21,10 @@ not as authority over the entire style.
 5. Let the written guide override incidental artifacts in an image reference.
    In particular, never copy beige paper, full-bleed scenery, non-bipedal land
    posture, uniform dark outlines, or textured backgrounds.
+6. For a story package, read `stage.backdrop.color` from its `production.json`.
+   That six-digit hex color is the exact matte for every keyframe, poster, video,
+   delivery pad, and runtime surface in the story. Use `#FFFFFF` when planning a
+   new package unless another solid matte has been deliberately approved.
 
 ## Workflow
 
@@ -34,7 +38,7 @@ not as authority over the entire style.
 4. Build one clear focal beat, then enrich the setting with varied recognizable
    objects and plants. Favor semantic detail over texture noise.
 5. Use locally color-matched contours, calm broad washes inside forms, and an
-   organic vignette that dissolves into a calibrated pure-white matte.
+   organic vignette that dissolves into the package's calibrated solid matte.
 6. Generate one distinct beat per image-tool call. Use 2–3 candidates when
    selection matters; do not hide unrelated beats inside one prompt.
 7. Inspect the full frame, faces and hands, continuity-bearing props, and all
@@ -43,7 +47,8 @@ not as authority over the entire style.
    - quadrupedal land denizens or characters unable to use their authored tool;
    - flat generic scenery, repeated motif clutter, or texture standing in for
      meaningful environmental detail;
-   - beige, gray, grainy, or visibly rectangular background mattes;
+   - gradients, texture, grain, or a background that differs from the declared
+     solid story matte;
    - uniform black/brown outlines instead of locally color-matched contours;
    - patterned fills, hatching, stippling, sketch-search lines, or digital glow;
    - missing action, action too small to read, or essential content near an edge.
@@ -53,10 +58,10 @@ not as authority over the entire style.
 10. Keep the provider original through derivation and acceptance. Record its
     provider ID, historical path, and hash in compact provenance, then archive
     redundant originals and rejected binaries in the run's Git baseline rather
-    than the active tree. When an accepted raster has a neutral near-white matte
-    instead of exact `#FFFFFF`, run
-    `scripts/normalize_white_matte.py` to replace only border-connected
-    near-white pixels, then visually inspect the derived PNG at full frame.
+    than the active tree. When an accepted raster is close to but not exactly the
+    declared matte, run `scripts/normalize_solid_matte.py --matte-color <#RRGGBB>`
+    to replace only border-connected near-matte pixels, then visually inspect the
+    derived PNG at full frame.
 
 ## Reference hierarchy
 
@@ -73,13 +78,14 @@ reference. Return to this hierarchy when an edit amplifies artifacts.
 ## Non-negotiable generation contract
 
 - Native 4:3 composition; no 16:9 action-safe framing.
-- Solid clean white matte with no paper, canvas, grain, fibers, or beige cast.
+- One exact solid story matte, normally `#FFFFFF`, with no gradient, paper,
+  canvas, grain, fibers, or color variation. Match `stage.backdrop.color`.
 - Broad translucent watercolor washes, organic glaze edges, restrained pigment
   pooling, and calm fills without repeated internal motifs.
 - Thin, fluid, mostly continuous contours derived from the local fill color of
   each exact shape; no universal ink color.
 - Foreground faces and actions clearest, supporting objects moderately defined,
-  distant washes pale and dissolving into white.
+  distant washes pale and dissolving into the solid story matte.
 - Rich, inhabited settings built from recognizable forms at several scales,
   never microscopic surface marks.
 - No text, border, watermark, mockup, vector finish, glossy 3D, anime, named
