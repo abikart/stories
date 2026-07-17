@@ -1,0 +1,139 @@
+{
+  "generatedAt": "2026-07-17T00:57:20.424Z",
+  "provider": "ElevenLabs",
+  "durationSeconds": 77.089229,
+  "knownCharacterCost": 550,
+  "records": [
+    {
+      "id": "music-source",
+      "endpoint": "/v1/music",
+      "prompt": "Instrumental watercolor picture-book underscore for an original morning story in Lanternleaf Forest, exactly 77.089 seconds. Sparse felt piano, breathy wooden flute, soft viola harmonics, tiny seed-bell colors, and warm bowed textures. No vocals, no choir, no lyrics, no heavy percussion, no trailer rise, no dramatic hits. Leave generous space for expressive spoken narration. Emotional arc: gentle morning ritual; a real hush from 10 seconds; nimble cooperation from 19 seconds; patient uncertainty near 29 seconds; precise silver-path wonder around 37 seconds; suspended anticipation from 40 to 48 seconds; one careful release at 50 seconds; breeze and three distinct joyful bell colors from 53 to 60 seconds; the forest opening warmly from 61 seconds; intimate gratitude from 66 seconds; a quiet, luminous, fully resolved final page. Organic, child-safe, never sugary, ending cleanly.",
+      "durationSeconds": 77.089229,
+      "loop": false,
+      "file": "audio/sources/music-source.mp3",
+      "characterCost": null,
+      "requestId": null,
+      "songId": "vkoSx8VH3B7UEvobBWvF",
+      "generatedAt": "2026-07-17T00:57:02.279Z"
+    },
+    {
+      "id": "forest-morning-ambience-source",
+      "endpoint": "/v1/sound-generation",
+      "prompt": "Seamless light forest morning ambience for a gentle watercolor picture book: soft damp leaves, a far quiet creek, faint breeze through branches, occasional distant small birds without a melody, subtle village garden life, calm and intimate, no footsteps, no voices, no music, no sudden sounds. It must remain pleasant when narration pauses.",
+      "durationSeconds": 30,
+      "loop": true,
+      "file": "audio/sources/forest-morning-ambience-source.mp3",
+      "characterCost": 330,
+      "requestId": null,
+      "songId": null,
+      "generatedAt": "2026-07-17T00:57:09.062Z"
+    },
+    {
+      "id": "ribbon-release",
+      "endpoint": "/v1/sound-generation",
+      "prompt": "Several soft cloth ribbons and small seed-bell knots gently slip free from damp branches: two delicate fiber plucks, a tiny wooden tick, restrained watercolor picture-book scale, no metal bell ring, no cartoon boing, no voice, clean short tail.",
+      "durationSeconds": 3,
+      "loop": false,
+      "file": "audio/sources/ribbon-release.mp3",
+      "characterCost": 33,
+      "requestId": null,
+      "songId": null,
+      "generatedAt": "2026-07-17T00:57:10.959Z"
+    },
+    {
+      "id": "silver-path",
+      "endpoint": "/v1/sound-generation",
+      "prompt": "A tiny fox traces a silver path through wet leaves: a soft fingertip rustle followed by a delicate traveling silvery shimmer, precise and subtle, magical watercolor picture-book scale, no harsh whoosh, no voice.",
+      "durationSeconds": 4,
+      "loop": false,
+      "file": "audio/sources/silver-path.mp3",
+      "characterCost": 44,
+      "requestId": null,
+      "songId": null,
+      "generatedAt": "2026-07-17T00:57:12.772Z"
+    },
+    {
+      "id": "knot-opening",
+      "endpoint": "/v1/sound-generation",
+      "prompt": "One careful tug opens a single stubborn ribbon knot: quiet cloth tension, one exact soft release pluck, then stillness, intimate and natural, no bell ring, no cartoon sound, no voice.",
+      "durationSeconds": 2,
+      "loop": false,
+      "file": "audio/sources/knot-opening.mp3",
+      "characterCost": 22,
+      "requestId": null,
+      "songId": null,
+      "generatedAt": "2026-07-17T00:57:14.410Z"
+    },
+    {
+      "id": "breeze-entry",
+      "endpoint": "/v1/sound-generation",
+      "prompt": "A fresh gentle morning breeze rushes into a leafy bell tree after being held back: soft rising leaves and ribbons, airy and joyful but restrained, no storm, no impact, no voice, clean short tail.",
+      "durationSeconds": 3,
+      "loop": false,
+      "file": "audio/sources/breeze-entry.mp3",
+      "characterCost": 33,
+      "requestId": null,
+      "songId": null,
+      "generatedAt": "2026-07-17T00:57:16.522Z"
+    },
+    {
+      "id": "three-seed-bells",
+      "endpoint": "/v1/sound-generation",
+      "prompt": "Exactly three distinct small seed bells chime one after another with clear space between them: first a low blue wooden-metal bell, second a warm rose middle bell, third a bright amber bell. Gentle organic picture-book sound, musical but not a melody, no fourth bell, no voice, short natural decay.",
+      "durationSeconds": 4,
+      "loop": false,
+      "file": "audio/sources/three-seed-bells.mp3",
+      "characterCost": 44,
+      "requestId": null,
+      "songId": null,
+      "generatedAt": "2026-07-17T00:57:18.472Z"
+    },
+    {
+      "id": "village-waking",
+      "endpoint": "/v1/sound-generation",
+      "prompt": "A tiny woodland village warmly wakes after morning bells: one far oven door, a faint garden gate, leaves lifting and two very distant birds, soft communal exhale, subtle and intimate, no crowd, no voices, no music, no bell ring.",
+      "durationSeconds": 4,
+      "loop": false,
+      "file": "audio/sources/village-waking.mp3",
+      "characterCost": 44,
+      "requestId": null,
+      "songId": null,
+      "generatedAt": "2026-07-17T00:57:20.424Z"
+    }
+  ],
+  "cues": [
+    {
+      "id": "ribbon-release",
+      "at": 21.9
+    },
+    {
+      "id": "silver-path",
+      "at": 37.4
+    },
+    {
+      "id": "knot-opening",
+      "at": 49.9
+    },
+    {
+      "id": "breeze-entry",
+      "at": 53.3
+    },
+    {
+      "id": "three-seed-bells",
+      "at": 56.2
+    },
+    {
+      "id": "village-waking",
+      "at": 62.1
+    }
+  ],
+  "mix": {
+    "narration": 1,
+    "music": 0.22,
+    "ambience": 0.28,
+    "effects": 0.68,
+    "narrationTargetLufs": -16,
+    "musicTargetLufs": -24,
+    "ambienceTargetLufs": -32
+  }
+}

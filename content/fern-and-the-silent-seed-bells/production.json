@@ -22,10 +22,16 @@
     "duration": 77.089229,
     "model": "eleven_v3",
     "selectedCandidate": "george-natural-a",
-    "candidatesManifest": "audio/candidates/manifest.json"
+    "candidatesManifest": "audio/candidates/manifest.json",
+    "stems": {
+      "music": "audio/music.mp3",
+      "ambience": "audio/ambience.mp3",
+      "effects": "audio/effects.mp3"
+    }
   },
   "productionPlan": {
     "coverage": "reading-unit",
+    "watchMotion": "continuous",
     "beatBoard": "beat-board.json",
     "continuityLedger": "continuity.json"
   },
@@ -37,32 +43,32 @@
           "id": "bell-tree-dawn",
           "kind": "video",
           "src": "scenes/the-quiet-morning/bell-tree-dawn.mp4",
+          "poster": "scenes/the-quiet-morning/bell-tree-dawn-motion-poster.png",
+          "loop": true,
           "transitionsTo": [
             "village-waking"
-          ],
-          "poster": "scenes/the-quiet-morning/bell-tree-dawn-motion-poster.png",
-          "loop": true
+          ]
         },
         {
           "id": "village-waking",
           "kind": "video",
           "src": "scenes/the-quiet-morning/village-waking.mp4",
+          "poster": "scenes/the-quiet-morning/village-waking-motion-poster.png",
+          "loop": false,
           "transitionsTo": [
             "silent-tree",
             "bell-tree-dawn"
-          ],
-          "poster": "scenes/the-quiet-morning/village-waking-motion-poster.png",
-          "loop": false
+          ]
         },
         {
           "id": "silent-tree",
           "kind": "video",
           "src": "scenes/the-quiet-morning/silent-tree.mp4",
+          "poster": "scenes/the-quiet-morning/silent-tree-motion-poster.png",
+          "loop": true,
           "transitionsTo": [
             "village-waking"
-          ],
-          "poster": "scenes/the-quiet-morning/silent-tree-motion-poster.png",
-          "loop": true
+          ]
         }
       ],
       "canonicalPath": [
@@ -407,32 +413,32 @@
           "id": "tangled-tree",
           "kind": "video",
           "src": "scenes/the-tangled-ribbons/tangled-tree.mp4",
+          "poster": "scenes/the-tangled-ribbons/tangled-tree-motion-poster.png",
+          "loop": true,
           "transitionsTo": [
             "lower-knots-loosened"
-          ],
-          "poster": "scenes/the-tangled-ribbons/tangled-tree-motion-poster.png",
-          "loop": true
+          ]
         },
         {
           "id": "lower-knots-loosened",
           "kind": "video",
           "src": "scenes/the-tangled-ribbons/lower-knots-loosened.mp4",
+          "poster": "scenes/the-tangled-ribbons/lower-knots-loosened-motion-poster.png",
+          "loop": false,
           "transitionsTo": [
             "highest-knot",
             "tangled-tree"
-          ],
-          "poster": "scenes/the-tangled-ribbons/lower-knots-loosened-motion-poster.png",
-          "loop": false
+          ]
         },
         {
           "id": "highest-knot",
           "kind": "video",
           "src": "scenes/the-tangled-ribbons/highest-knot.mp4",
+          "poster": "scenes/the-tangled-ribbons/highest-knot-motion-poster.png",
+          "loop": true,
           "transitionsTo": [
             "lower-knots-loosened"
-          ],
-          "poster": "scenes/the-tangled-ribbons/highest-knot-motion-poster.png",
-          "loop": true
+          ]
         }
       ],
       "canonicalPath": [
@@ -1018,32 +1024,32 @@
           "id": "path-traced",
           "kind": "video",
           "src": "scenes/the-silver-path/path-traced.mp4",
+          "poster": "scenes/the-silver-path/path-traced-motion-poster.png",
+          "loop": true,
           "transitionsTo": [
             "pipkin-at-knot"
-          ],
-          "poster": "scenes/the-silver-path/path-traced-motion-poster.png",
-          "loop": true
+          ]
         },
         {
           "id": "pipkin-at-knot",
           "kind": "video",
           "src": "scenes/the-silver-path/pipkin-at-knot.mp4",
+          "poster": "scenes/the-silver-path/pipkin-at-knot-motion-poster.png",
+          "loop": true,
           "transitionsTo": [
             "knot-opening",
             "path-traced"
-          ],
-          "poster": "scenes/the-silver-path/pipkin-at-knot-motion-poster.png",
-          "loop": true
+          ]
         },
         {
           "id": "knot-opening",
           "kind": "video",
           "src": "scenes/the-silver-path/knot-opening.mp4",
+          "poster": "scenes/the-silver-path/knot-opening-motion-poster.png",
+          "loop": false,
           "transitionsTo": [
             "pipkin-at-knot"
-          ],
-          "poster": "scenes/the-silver-path/knot-opening-motion-poster.png",
-          "loop": false
+          ]
         }
       ],
       "canonicalPath": [
@@ -1401,16 +1407,20 @@
       "media": [
         {
           "id": "breeze-rush",
-          "kind": "poster",
-          "src": "scenes/the-ringing-morning/breeze-rush.png",
+          "kind": "video",
+          "src": "scenes/the-ringing-morning/breeze-rush.mp4",
+          "poster": "scenes/the-ringing-morning/breeze-rush-motion-poster.png",
+          "loop": false,
           "transitionsTo": [
             "seed-bells-ringing"
           ]
         },
         {
           "id": "seed-bells-ringing",
-          "kind": "poster",
-          "src": "scenes/the-ringing-morning/seed-bells-ringing.png",
+          "kind": "video",
+          "src": "scenes/the-ringing-morning/seed-bells-ringing.mp4",
+          "poster": "scenes/the-ringing-morning/seed-bells-ringing-motion-poster.png",
+          "loop": false,
           "transitionsTo": [
             "forest-waking",
             "breeze-rush"
@@ -1418,8 +1428,10 @@
         },
         {
           "id": "forest-waking",
-          "kind": "poster",
-          "src": "scenes/the-ringing-morning/forest-waking.png",
+          "kind": "video",
+          "src": "scenes/the-ringing-morning/forest-waking.mp4",
+          "poster": "scenes/the-ringing-morning/forest-waking-motion-poster.png",
+          "loop": false,
           "transitionsTo": [
             "friends-listen",
             "seed-bells-ringing"
@@ -1427,8 +1439,10 @@
         },
         {
           "id": "friends-listen",
-          "kind": "poster",
-          "src": "scenes/the-ringing-morning/friends-listen.png",
+          "kind": "video",
+          "src": "scenes/the-ringing-morning/friends-listen.mp4",
+          "poster": "scenes/the-ringing-morning/friends-listen-motion-poster.png",
+          "loop": true,
           "transitionsTo": [
             "shared-morning",
             "forest-waking"
@@ -1438,11 +1452,11 @@
           "id": "shared-morning",
           "kind": "video",
           "src": "scenes/the-ringing-morning/shared-morning.mp4",
+          "poster": "scenes/the-ringing-morning/shared-morning-motion-poster.png",
+          "loop": true,
           "transitionsTo": [
             "friends-listen"
-          ],
-          "poster": "scenes/the-ringing-morning/shared-morning-motion-poster.png",
-          "loop": true
+          ]
         }
       ],
       "canonicalPath": [
