@@ -40,6 +40,25 @@ Last updated: 2026-07-17
   but this implementation does not refract pixels. Owner review approved the
   real WebGL refraction system as the next run; its contract and terminal gates
   are in `docs/mvp/liquid-glass-run.md`.
+
+## Liquid-glass run progress
+
+- Checkpoint 1 is preserved in `983b41b`: the real-refraction contract is
+  authoritative and the existing CSS surface is explicitly the fallback.
+- Checkpoint 2 now has a renderer-independent signed RG displacement field in
+  `src/experience/glass`. It supports pills, rounded rectangles, and circles,
+  computes one quadrant with exact four-fold sign symmetry, stays neutral and
+  transparent outside the lens, caps map resolution, and caches by geometry
+  plus map-affecting optics rather than position.
+- `/dev/glass` exposes the principal optical controls, all three map shapes, a
+  high-contrast crossing-line source, cache diagnostics, and a moving same-shape
+  case. It is currently a map/fixture checkpoint; the visible lens preview is
+  not yet the WebGL displacement proof and must not be accepted as final glass.
+- `pnpm test:glass` covers neutral pixels, signed range/direction, symmetry,
+  shapes, cache identity, and regeneration. Chromium hydration/error inspection
+  passes, and moving the pill leaves the generation count unchanged.
+- Earliest remaining gate: checkpoint 3, the one-canvas WebGL2 renderer, source
+  composition, bounded sleeping loop, instrumentation, and context recovery.
 - The active checkout is 139 files / 103,098,739 bytes. Fern is 84 files /
   78,864,822 bytes, including eight alpha videos totaling 10,771,186 bytes.
 

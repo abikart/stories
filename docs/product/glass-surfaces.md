@@ -55,6 +55,21 @@ It adds one stage-level WebGL pass that reuses `MediaDeck` sources and draws
 registered lens regions while keeping text, input, accessibility, and fallback
 CSS in the DOM above it.
 
+## Portable lens field
+
+The first renderer-independent layer lives in `src/experience/glass`. A lens
+map stores signed horizontal and vertical displacement in red and green,
+edge/thickness in blue, and the exact shape mask in alpha. Pixels outside the
+lens are neutral RG with zero thickness and alpha. Pills, rounded rectangles,
+and circles share one geometry contract.
+
+Map generation computes one quadrant and mirrors it with the correct sign into
+the other three. The cache key includes rounded geometry and map-affecting
+curvature, splay, depth, and center scale; screen position, displacement scale,
+chroma, and specular lighting remain renderer uniforms. Moving a lens therefore
+does not rebuild its map. The longest map edge is capped at 512 pixels so a
+large responsive reading surface cannot create an unbounded texture.
+
 ## Acceptance rules
 
 - Text contrast wins over refraction strength.
