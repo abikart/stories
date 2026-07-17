@@ -3,6 +3,25 @@
 Newest decisions go first. Record meaningful divergences, tradeoffs, and quality
 gates; do not duplicate routine implementation details.
 
+## 2026-07-17 — Physical transmission replaces the rejected mask optics
+
+- The first custom displacement-mask pass was reverted because its mint,
+  pixelated surface did not resemble liquid glass. The CSS material remains the
+  compatibility fallback.
+- The accepted renderer adapts React Bits Fluid Glass: extruded lens geometry,
+  physical transmission, IOR/thickness, restrained chromatic separation, and
+  bevel-driven specular light. It samples MediaDeck's mounted elements rather
+  than rebuilding the illustration or rasterizing the interface.
+- One stage canvas and source target serve five semantic DOM surfaces. Cached
+  signed lens profiles shape refraction; movement never regenerates them.
+- Fern's white-matte mode selector uses a source-only accent target. No visible
+  atmospheric rectangle or stage gradient was added.
+- Browser proof is split deliberately: Chromium and Playwright WebKit must pass
+  real displaced-pixel/recovery tests. Native Safari is inspected separately
+  and may select the documented CSS fallback if its local WebGL context is
+  unavailable; start/dialogue animation is pinned visible on WebKit so fallback
+  cannot hide semantic content.
+
 ## 2026-07-17 — Stories glass is readable CSS first, refraction second
 
 - Dialogue, title, mode, transport, and temporary reading surfaces now share a

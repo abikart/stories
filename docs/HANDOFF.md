@@ -34,10 +34,10 @@ Last updated: 2026-07-17
   currently use `top-left`; narrated lines have no visible label, Fern/Pipkin
   speech uses canonical watercolor portraits, and constrained layouts dock the
   same copy safely.
-- Title, dialogue, mode, start, and transport surfaces now share the documented
-  Stories glass material. The Watch/Read toggle has a moving glass lens; CSS is
-  the accessible cross-browser baseline and WebGL video refraction remains a
-  gated future enhancement.
+- Title, dialogue, mode, start, and transport surfaces now use one stage-level
+  physical transmission renderer over MediaDeck's already-decoded layered
+  sources. CSS remains the automatic initialization/context-loss fallback.
+  `/dev/glass` is the high-contrast optics and diagnostics fixture.
 - The active checkout is 139 files / 103,098,739 bytes. Fern is 84 files /
   78,864,822 bytes, including eight alpha videos totaling 10,771,186 bytes.
 
@@ -59,12 +59,18 @@ Open <http://localhost:3000/experience/fern-and-the-silent-seed-bells>, then:
 Subjective approval should focus on alpha-edge cleanliness, whether the plate
 and motion feel like one illustration, transition softness, and whether the
 silver-path action feels meaningfully more immersive than the flattened beats.
+For glass specifically, compare a bell/ribbon/branch crossing a lens edge,
+confirm the Watch/Read lens remains present over white, and verify that words,
+portraits, and focus rings remain crisp DOM above the refraction.
 
 ## Validation record
 
 - `pnpm typecheck` — pass
 - `pnpm lint:experiences` — pass; 55 referenced assets
 - `pnpm build` — pass
+- `pnpm test:glass` — pass: three shapes, signed map symmetry/range, cache reuse
+- `pnpm qa:glass` — pass in Chromium and Playwright WebKit: displaced pixels,
+  one context, transparent exterior, travel cache, loss/restoration, live Fern
 - `pnpm qa:experience -- fern-and-the-silent-seed-bells` — pass: Watch,
   Read-with-me, hero completion, reverse scrub, ending, reduced motion, and six
   responsive presets
@@ -72,6 +78,8 @@ silver-path action feels meaningfully more immersive than the flattened beats.
   composite and mask inspected against a contrasting plate
 - Browser console — no page error or unhandled rejection during forward state
   settlement
+- Native Safari — inspected: semantic start/play/dialogue remained visible and
+  usable; the local session exercised CSS fallback when WebGL was unavailable
 - Solid-matte regression — computed page, stage, media, and active-layer colors
   all equal `stage.backdrop.color`; no runtime background image, filter, opacity
   wash, pseudo-atmosphere, or atmosphere DOM element

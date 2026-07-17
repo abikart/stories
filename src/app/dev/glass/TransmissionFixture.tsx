@@ -62,8 +62,22 @@ export function TransmissionFixture() {
   const gridRef = useRef<HTMLCanvasElement>(null);
   const [position, setPosition] = useState(13);
   const [optics, setOptics] = useState<GlassOptics>({ ...DEFAULT_GLASS_OPTICS });
+  const [diagnostics, setDiagnostics] = useState("Renderer starting");
   useEffect(() => {
     if (gridRef.current) drawProofGrid(gridRef.current);
+    const updateDiagnostics = () => {
+      const stage = document.querySelector<HTMLElement>(".transmission-fixture-stage");
+      const diagnostic = window.__storiesGlassStage;
+      setDiagnostics([
+        `Renderer ${stage?.dataset.glassRenderer ?? "starting"}`,
+        diagnostic ? `${diagnostic.surfaceCount} lenses` : "",
+        diagnostic ? `${diagnostic.sourceCount} sources` : "",
+        diagnostic?.lastError ? `error: ${diagnostic.lastError}` : "",
+      ].filter(Boolean).join(" · "));
+    };
+    updateDiagnostics();
+    const interval = window.setInterval(updateDiagnostics, 500);
+    return () => window.clearInterval(interval);
   }, []);
 
   const update = (key: keyof GlassOptics, value: number) => {
@@ -86,6 +100,7 @@ export function TransmissionFixture() {
       </section>
 
       <GlassStage className="transmission-fixture-stage" matte="#f8faf8" aria-label="High contrast transmission proof">
+        <output className="transmission-fixture-diagnostics" aria-live="polite">{diagnostics}</output>
         <canvas ref={gridRef} data-glass-source className="transmission-fixture-grid" aria-hidden="true" />
         <img
           data-glass-source
