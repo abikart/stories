@@ -3,7 +3,7 @@
   "storyId": "fern-and-the-silent-seed-bells",
   "status": "in-progress",
   "expectedStates": 14,
-  "acceptedStates": 2,
+  "acceptedStates": 6,
   "format": {
     "creativeAspectRatio": "4:3",
     "deliveryCodec": "h264",
@@ -12,6 +12,42 @@
     "responsiveCrop": "none"
   },
   "states": [
+    {
+      "sceneId": "the-quiet-morning",
+      "mediaState": "bell-tree-dawn",
+      "role": "living-loop",
+      "provider": "grok-imagine",
+      "providerId": "1513801c-c9ee-412a-9785-1c4c85f63544",
+      "providerUrl": "https://grok.com/imagine/agent/local-canvas-28343d27-c1b4-4161-891c-22da5120adb9",
+      "promptRef": "MOTION_GENERATION_PROMPTS.md#bell-tree-dawn--living-loop",
+      "source": "scenes/the-quiet-morning/provider-originals/motion/bell-tree-dawn-1513801c-c9ee-412a-9785-1c4c85f63544.mp4",
+      "sourceSha256": "b0e04af478b0533c5af2bb957509f4f4577b9d6fd16309539edb5759b0c38bd3",
+      "sourceProbe": {
+        "width": 1104,
+        "height": 816,
+        "duration": 6.041667,
+        "frameRate": "24/1",
+        "codec": "h264",
+        "pixelFormat": "yuv420p",
+        "audioStreams": 1
+      },
+      "deliveryTransform": "pure-white vertical pad from 1104x816 to 1104x828; no crop",
+      "delivery": "scenes/the-quiet-morning/bell-tree-dawn.mp4",
+      "deliverySha256": "eb9084be9f351d9b745f1285fef880daabf14c56f3e96a2f23bf9163b80e60b1",
+      "deliveryProbe": {
+        "width": 1104,
+        "height": 828,
+        "duration": 6.041667,
+        "frameRate": "24/1",
+        "codec": "h264",
+        "pixelFormat": "yuv420p",
+        "audioStreams": 0
+      },
+      "poster": "scenes/the-quiet-morning/bell-tree-dawn-motion-poster.png",
+      "posterSha256": "c0ae615c4ef4365e7038dd96696579ca6e3a924cb731168a2978d0f2dd4e117e",
+      "posterFrame": "first",
+      "acceptedAt": "2026-07-17T00:08:21.609Z"
+    },
     {
       "sceneId": "the-quiet-morning",
       "mediaState": "village-waking",
@@ -48,6 +84,114 @@
       "posterFrame": "last",
       "acceptedAt": "2026-07-16T23:58:49.885Z",
       "acceptance": "Best continuity-preserving bounded take: one coordinated bell response, one rounded main-cottage opening, and one narrow pale oven breath; camera, characters, four-wing anatomy, three-bell count, and dry memory state remain stable."
+    },
+    {
+      "sceneId": "the-quiet-morning",
+      "mediaState": "silent-tree",
+      "role": "living-loop",
+      "provider": "grok-imagine",
+      "providerId": "cac14563-8d1d-4509-96c7-d572d1a3095f",
+      "providerUrl": "https://grok.com/imagine/agent/local-canvas-28343d27-c1b4-4161-891c-22da5120adb9",
+      "promptRef": "MOTION_GENERATION_PROMPTS.md#silent-tree--living-loop",
+      "source": "scenes/the-quiet-morning/provider-originals/motion/silent-tree-cac14563-8d1d-4509-96c7-d572d1a3095f.mp4",
+      "sourceSha256": "965b93258fafe0d6a9cb57a3004f0bc26cbc35031cb7aec848e881f29252a0e1",
+      "sourceProbe": {
+        "width": 1104,
+        "height": 816,
+        "duration": 6.041667,
+        "frameRate": "24/1",
+        "codec": "h264",
+        "pixelFormat": "yuv420p",
+        "audioStreams": 1
+      },
+      "deliveryTransform": "pure-white vertical pad from 1104x816 to 1104x828; no crop",
+      "delivery": "scenes/the-quiet-morning/silent-tree.mp4",
+      "deliverySha256": "3d12dcbd805be63b5811a4514e037f9a488801ef02cb8acb2d09d531bde38378",
+      "deliveryProbe": {
+        "width": 1104,
+        "height": 828,
+        "duration": 6.041667,
+        "frameRate": "24/1",
+        "codec": "h264",
+        "pixelFormat": "yuv420p",
+        "audioStreams": 0
+      },
+      "poster": "scenes/the-quiet-morning/silent-tree-motion-poster.png",
+      "posterSha256": "c429e019221f181e4cec79def0792caa762445b579cf54f712aaea2a9055d9a1",
+      "posterFrame": "first",
+      "acceptedAt": "2026-07-17T00:13:56.173Z"
+    },
+    {
+      "sceneId": "the-tangled-ribbons",
+      "mediaState": "tangled-tree",
+      "role": "living-loop",
+      "provider": "grok-imagine",
+      "providerId": "04cbb50f-435c-45b9-b6bd-9236cbf9a22f",
+      "providerUrl": "https://grok.com/imagine/agent/local-canvas-28343d27-c1b4-4161-891c-22da5120adb9",
+      "promptRef": "MOTION_GENERATION_PROMPTS.md#tangled-tree--living-loop",
+      "source": "scenes/the-tangled-ribbons/provider-originals/motion/tangled-tree-04cbb50f-435c-45b9-b6bd-9236cbf9a22f.mp4",
+      "sourceSha256": "acb10fd07e28eaedfba542a509cdf339839feabbea0620bfad2bac29f2140648",
+      "sourceProbe": {
+        "width": 1104,
+        "height": 816,
+        "duration": 6.041667,
+        "frameRate": "24/1",
+        "codec": "h264",
+        "pixelFormat": "yuv420p",
+        "audioStreams": 1
+      },
+      "deliveryTransform": "pure-white vertical pad from 1104x816 to 1104x828; no crop",
+      "delivery": "scenes/the-tangled-ribbons/tangled-tree.mp4",
+      "deliverySha256": "cc6234ec3c77c6612d5bcf02596eb17a76b8b56060eae8db56143fdd12e13e7b",
+      "deliveryProbe": {
+        "width": 1104,
+        "height": 828,
+        "duration": 6.041667,
+        "frameRate": "24/1",
+        "codec": "h264",
+        "pixelFormat": "yuv420p",
+        "audioStreams": 0
+      },
+      "poster": "scenes/the-tangled-ribbons/tangled-tree-motion-poster.png",
+      "posterSha256": "2eb808edbdf5edb577d6d514baeeac816ea3639640e1de5e9bfd85994933ea76",
+      "posterFrame": "first",
+      "acceptedAt": "2026-07-17T00:15:43.324Z"
+    },
+    {
+      "sceneId": "the-tangled-ribbons",
+      "mediaState": "lower-knots-loosened",
+      "role": "one-shot",
+      "provider": "grok-imagine",
+      "providerId": "c1402d21-fe3a-4b3c-a962-cad20c01a896",
+      "providerUrl": "https://grok.com/imagine/agent/local-canvas-28343d27-c1b4-4161-891c-22da5120adb9",
+      "promptRef": "MOTION_GENERATION_PROMPTS.md#lower-knots-loosened--one-shot",
+      "source": "scenes/the-tangled-ribbons/provider-originals/motion/lower-knots-loosened-c1402d21-fe3a-4b3c-a962-cad20c01a896.mp4",
+      "sourceSha256": "1d7410a1983fc8678b4535585aba980ff244fd4a849f9c8672b6b9337ce64075",
+      "sourceProbe": {
+        "width": 1104,
+        "height": 816,
+        "duration": 6.041667,
+        "frameRate": "24/1",
+        "codec": "h264",
+        "pixelFormat": "yuv420p",
+        "audioStreams": 1
+      },
+      "deliveryTransform": "pure-white vertical pad from 1104x816 to 1104x828; no crop",
+      "delivery": "scenes/the-tangled-ribbons/lower-knots-loosened.mp4",
+      "deliverySha256": "f38b4b333c3368703b61673a6566414facb3ef05a4107d31d8a652d84d765d58",
+      "deliveryProbe": {
+        "width": 1104,
+        "height": 828,
+        "duration": 6.041667,
+        "frameRate": "24/1",
+        "codec": "h264",
+        "pixelFormat": "yuv420p",
+        "audioStreams": 0
+      },
+      "poster": "scenes/the-tangled-ribbons/lower-knots-loosened-motion-poster.png",
+      "posterSha256": "3a1952afce34e965bf654b5f8ab21e2d8b71b29fb8fa6a4d3202bfd5ad76a237",
+      "posterFrame": "last",
+      "acceptedAt": "2026-07-17T00:19:54.159Z"
     },
     {
       "sceneId": "the-ringing-morning",
@@ -111,6 +255,22 @@
       "sourceSha256": "d431ee077685264912af1ca00685aa1d3fd59f1372a143a87b6d06015118f1e4",
       "decision": "rejected",
       "reason": "Window-focused strategy separated and redesigned the right cottage, changed the camera composition, and still produced a large plume."
+    },
+    {
+      "mediaState": "silent-tree",
+      "providerId": "034cf2aa-d2cf-462a-b7c4-4815d590bf4f",
+      "source": "scenes/the-quiet-morning/provider-originals/motion/rejected-silent-tree-swinging-bells-034cf2aa.mp4",
+      "sourceSha256": "4ae64d0f5432b4e1cfa5fb8a88b90779a41da05a3b7408f12edfa20b04667813",
+      "decision": "rejected",
+      "reason": "All three bells and ribbons made large visible swings, contradicting the authored silent and motionless present-day state."
+    },
+    {
+      "mediaState": "lower-knots-loosened",
+      "providerId": "a759ea1b-da48-4464-857f-be735734af8f",
+      "source": "scenes/the-tangled-ribbons/provider-originals/motion/rejected-lower-knots-duplicate-pipkin-a759ea1b.mp4",
+      "sourceSha256": "28abbf8bb183eb89c1e2c5ac1d6631c016e836e5db7b7ac935df90c0ba054741",
+      "decision": "rejected",
+      "reason": "The two-character source-led transformation duplicated Pipkin and detached long ribbons into the characters' paws, breaking identity and topology continuity."
     }
   ]
 }

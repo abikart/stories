@@ -35,11 +35,13 @@
       "media": [
         {
           "id": "bell-tree-dawn",
-          "kind": "poster",
-          "src": "scenes/the-quiet-morning/bell-tree-dawn.png",
+          "kind": "video",
+          "src": "scenes/the-quiet-morning/bell-tree-dawn.mp4",
           "transitionsTo": [
             "village-waking"
-          ]
+          ],
+          "poster": "scenes/the-quiet-morning/bell-tree-dawn-motion-poster.png",
+          "loop": true
         },
         {
           "id": "village-waking",
@@ -54,11 +56,13 @@
         },
         {
           "id": "silent-tree",
-          "kind": "poster",
-          "src": "scenes/the-quiet-morning/silent-tree.png",
+          "kind": "video",
+          "src": "scenes/the-quiet-morning/silent-tree.mp4",
           "transitionsTo": [
             "village-waking"
-          ]
+          ],
+          "poster": "scenes/the-quiet-morning/silent-tree-motion-poster.png",
+          "loop": true
         }
       ],
       "canonicalPath": [
@@ -401,20 +405,24 @@
       "media": [
         {
           "id": "tangled-tree",
-          "kind": "poster",
-          "src": "scenes/the-tangled-ribbons/tangled-tree.png",
+          "kind": "video",
+          "src": "scenes/the-tangled-ribbons/tangled-tree.mp4",
           "transitionsTo": [
             "lower-knots-loosened"
-          ]
+          ],
+          "poster": "scenes/the-tangled-ribbons/tangled-tree-motion-poster.png",
+          "loop": true
         },
         {
           "id": "lower-knots-loosened",
-          "kind": "poster",
-          "src": "scenes/the-tangled-ribbons/lower-knots-loosened.png",
+          "kind": "video",
+          "src": "scenes/the-tangled-ribbons/lower-knots-loosened.mp4",
           "transitionsTo": [
             "highest-knot",
             "tangled-tree"
-          ]
+          ],
+          "poster": "scenes/the-tangled-ribbons/lower-knots-loosened-motion-poster.png",
+          "loop": false
         },
         {
           "id": "highest-knot",
