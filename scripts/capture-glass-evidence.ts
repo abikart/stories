@@ -40,7 +40,7 @@ async function main() {
   const output = path.join(process.cwd(), "docs", "evidence", "liquid-glass");
   await fs.mkdir(output, { recursive: true });
   if (process.env.GLASS_BEFORE) {
-    await fs.copyFile(process.env.GLASS_BEFORE, path.join(output, "before-rejected.png"));
+    await fs.copyFile(process.env.GLASS_BEFORE, path.join(output, "before-rejected-physical.png"));
   }
   await captureFixture(baseUrl, output);
   await captureFern(baseUrl, output);

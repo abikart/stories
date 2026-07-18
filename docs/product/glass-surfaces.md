@@ -1,14 +1,16 @@
-# Stories transmission glass
+# Stories live displacement glass
 
 ## Purpose
 
 Stories uses one stage-level renderer to bend the live illustration beneath
 dialogue, title, mode, start, and transport surfaces. The accessible interface
-remains normal DOM above that renderer. The result follows the physical
-transmission material demonstrated by
-[React Bits Fluid Glass](https://reactbits.dev/components/fluid-glass) and the
-portable lens principles in Aave's
+remains normal DOM above that renderer. The result follows the portable lens
+and WebGL video-control technique in Aave's
 [Building Glass for the Web](https://aave.com/design/building-glass-for-the-web).
+The earlier extruded-mesh experiment borrowed the material from
+[React Bits Fluid Glass](https://reactbits.dev/components/fluid-glass), but was
+rejected in owner review: over broad, shallow interface shapes it exposed dark
+bevels and normal seams instead of reading as clear liquid glass.
 
 ## Runtime boundary
 
@@ -20,16 +22,19 @@ second media element or decoder. Source rectangles, ancestor opacity, alpha,
 and deck crossfades are recomputed from the mounted scene.
 
 Every `GlassSurface` supplies live DOM bounds, one of `pill`, `rounded-rect`, or
-`circle`, and a small optical recipe. Geometry and the signed normal/
-displacement profile are cached by shape and material values. Moving a lens
-changes only its transform. A source-only `refractionTarget` plane lets the
-Watch/Read lens remain visible over Fern's white matte without adding any
-visible stage background or distorting its labels.
+`circle`, and a small optical recipe. `lens-model.ts` generates a portable RG
+signed displacement map plus antialiased shape coverage. Maps are cached by
+shape, aspect ratio, radius, IOR, and thickness; moving a lens changes only its
+plane transform.
 
-The React Bits ingredients are physical IOR, thickness, transmission,
-anisotropic blur, restrained chromatic aberration, and bevel normals. The
-cached Stories lens profile is also supplied as the material normal map so the
-edge bend and highlight follow the actual lens shape.
+Each transparent plane runs the same small shader. It samples the shared live
+source target inward along the map normal, magnifying and bending pixels at the
+lens edge. Three-channel offsets add restrained chromatic separation, symmetric
+multitaps provide optional roughness, and the signed normal drives a
+shape-aware top-left specular rim. There is no opaque mesh, bevel geometry,
+lighting environment, rectangular stage treatment, or CSS blur in the WebGL
+result. A source-only `refractionTarget` plane lets the Watch/Read lens remain
+visible over Fern's white matte without distorting its labels.
 
 ## Rendering and recovery
 
@@ -47,7 +52,7 @@ edge bend and highlight follow the actual lens shape.
 Development diagnostics live at `window.__storiesGlassStage` and report status,
 frames, source/surface counts, sleeping state, DPR, frame time, map-cache
 hits/misses, and the last boundary error. `/dev/glass` shows the active renderer
-and proves transmission across a grid, still, and playing video.
+and proves displacement across a grid, still, and playing video.
 
 ## Accessibility and acceptance
 

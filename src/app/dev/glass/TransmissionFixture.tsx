@@ -88,8 +88,8 @@ export function TransmissionFixture() {
     <main className="transmission-fixture-shell">
       <header className="transmission-fixture-header">
         <p>Stories optics laboratory</p>
-        <h1>Physical transmission glass</h1>
-        <span>React Bits–informed IOR, thickness, bevel normals, chromatic aberration, and live-media sampling.</span>
+        <h1>Live displacement glass</h1>
+        <span>Portable lens displacement, restrained chromatic separation, shape-aware rim light, and live-media sampling.</span>
       </header>
 
       <section className="transmission-fixture-controls" aria-label="Transmission parameters">
@@ -140,7 +140,7 @@ export function TransmissionFixture() {
           aria-hidden="true"
         />
         <label className="transmission-fixture-travel">
-          Move the same physical lens
+          Move the same refractive lens
           <input type="range" min={4} max={52} value={position} onChange={(event) => setPosition(Number(event.currentTarget.value))} />
         </label>
       </GlassStage>

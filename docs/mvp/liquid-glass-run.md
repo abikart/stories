@@ -6,7 +6,9 @@ Owner target: `/experience/fern-and-the-silent-seed-bells`
 
 ## Delivered
 
-- React Bits–informed physical transmission over MediaDeck's live layered media.
+- Aave-style portable displacement refraction over MediaDeck's live layered
+  media; the rejected extruded React Bits material experiment remains in Git
+  history only.
 - One stage WebGL context, no duplicate video elements, cached portable lens
   profiles, source-only refraction targets, DPR cap, and demand rendering.
 - Reusable title, dialogue, mode, start, and transport surfaces with semantic

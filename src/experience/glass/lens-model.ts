@@ -58,6 +58,10 @@ export function getLensMap(
     : Math.min(halfWidth, halfHeight);
   const edgeDepth = Math.max(0.18, Math.min(halfWidth, halfHeight) * 0.52);
   const epsilon = 0.002;
+  const antialiasWidth = Math.max(
+    halfWidth * 2 / dimensions.width,
+    halfHeight * 2 / dimensions.height,
+  ) * 1.35;
 
   for (let py = 0; py < dimensions.height; py += 1) {
     for (let px = 0; px < dimensions.width; px += 1) {
@@ -65,8 +69,9 @@ export function getLensMap(
       const y = ((py + 0.5) / dimensions.height * 2 - 1) * halfHeight;
       const distance = roundedBoxDistance(x, y, halfWidth, halfHeight, normalizedRadius);
       const offset = (py * dimensions.width + px) * 4;
-      if (distance > 0) {
-        data.set([128, 128, 255, 255], offset);
+      const coverage = 1 - smoothstep(-antialiasWidth, antialiasWidth, distance);
+      if (distance > antialiasWidth) {
+        data.set([128, 128, 255, 0], offset);
         continue;
       }
       const gx = roundedBoxDistance(x + epsilon, y, halfWidth, halfHeight, normalizedRadius)
@@ -82,7 +87,7 @@ export function getLensMap(
       data[offset] = Math.round((nx * 0.5 + 0.5) * 255);
       data[offset + 1] = Math.round((-ny * 0.5 + 0.5) * 255);
       data[offset + 2] = Math.round(nz * 255);
-      data[offset + 3] = 255;
+      data[offset + 3] = Math.round(coverage * 255);
     }
   }
 

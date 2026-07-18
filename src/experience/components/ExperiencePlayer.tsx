@@ -385,7 +385,7 @@ export function ExperiencePlayer({ production }: { production: ExperienceProduct
             <GlassSurface
               glassId="story-title"
               className="story-player-title story-glass story-glass--quiet"
-              optics={{ ior: 1.11, thickness: 7, chromaticAberration: 0.008, roughness: 0.08 }}
+              optics={{ ior: 1.12, thickness: 2.6, chromaticAberration: 0.025, roughness: 0.015 }}
             >
               <span>A Lanternleaf story</span>
               <h1>{production.title}</h1>
@@ -396,7 +396,7 @@ export function ExperiencePlayer({ production }: { production: ExperienceProduct
                 shape="pill"
                 motionKey={mode}
                 motionDuration={220}
-                optics={{ ior: 1.2, thickness: 17, chromaticAberration: 0.026, roughness: 0.025, distortion: 0.012 }}
+                optics={{ ior: 1.15, thickness: 4.5, chromaticAberration: 0.045, roughness: 0 }}
                 refractionTarget={{ color: production.accent, opacity: 0.42 }}
                 className="story-mode-lens"
                 aria-hidden="true"
@@ -414,7 +414,7 @@ export function ExperiencePlayer({ production }: { production: ExperienceProduct
             glassId="dialogue"
             motionKey={displayUnit.id}
             motionDuration={200}
-            optics={{ ior: 1.13, thickness: 10, chromaticAberration: 0.012, roughness: 0.075, distortion: 0.008 }}
+            optics={{ ior: 1.13, thickness: 3.2, chromaticAberration: 0.03, roughness: 0.02 }}
             className="story-overlay story-glass story-glass--reading"
             data-kind={displayUnit.overlay.kind}
             data-placement={displayUnit.overlay.placement ?? scene.overlayPlacement}
@@ -471,7 +471,7 @@ export function ExperiencePlayer({ production }: { production: ExperienceProduct
             <GlassSurface
               glassId="start-card"
               className="story-start-card story-glass story-glass--reading"
-              optics={{ ior: 1.16, thickness: 13, chromaticAberration: 0.018, roughness: 0.055 }}
+              optics={{ ior: 1.14, thickness: 3.8, chromaticAberration: 0.035, roughness: 0.015 }}
             >
               <span>{mode === "watch" ? "Story time" : "Read together"}</span>
               <p>{mode === "watch" ? "Settle in. The story is about to begin." : "The story will wait after each thought."}</p>
@@ -485,7 +485,7 @@ export function ExperiencePlayer({ production }: { production: ExperienceProduct
             glassId="transport"
             shape="pill"
             className="story-transport story-glass story-glass--control"
-            optics={{ ior: 1.16, thickness: 11, chromaticAberration: 0.014, roughness: 0.045 }}
+            optics={{ ior: 1.15, thickness: 4, chromaticAberration: 0.035, roughness: 0.01 }}
             aria-label="Story controls"
           >
             <button data-glass-press-target="transport" className="story-icon-button" type="button" onClick={replay} aria-label="Replay story">

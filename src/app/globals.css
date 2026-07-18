@@ -202,22 +202,22 @@ body {
 
 [data-glass-renderer="webgl"] [data-glass-surface].story-glass,
 [data-glass-renderer="webgl"] [data-glass-surface].story-glass.story-transport {
-  background: rgb(255 255 255 / 0.14);
+  background: rgb(255 255 255 / 0.07);
   box-shadow: none;
   -webkit-backdrop-filter: none;
   backdrop-filter: none;
 }
 
 [data-glass-renderer="webgl"] [data-glass-surface].story-glass--reading {
-  background: rgb(255 255 255 / 0.3);
+  background: rgb(255 255 255 / 0.12);
 }
 
 [data-glass-renderer="webgl"] [data-glass-surface].story-glass::before {
-  opacity: 0.18;
+  opacity: 0.1;
 }
 
 [data-glass-renderer="webgl"] .story-mode-switch.story-glass {
-  background: rgb(255 255 255 / 0.08);
+  background: rgb(255 255 255 / 0.04);
   box-shadow: none;
   -webkit-backdrop-filter: none;
   backdrop-filter: none;

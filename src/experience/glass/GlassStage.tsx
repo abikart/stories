@@ -14,7 +14,7 @@ import {
   type ReactNode,
 } from "react";
 import { Canvas, useFrame, useThree } from "@react-three/fiber";
-import { Environment, Lightformer, MeshTransmissionMaterial, useFBO } from "@react-three/drei";
+import { useFBO } from "@react-three/drei";
 import * as THREE from "three";
 import { GlassSourceScene, type GlassSourceElement } from "@/experience/glass/source-scene";
 import { type GlassOptics, type GlassRefractionTarget, type GlassShape } from "@/experience/glass/types";
@@ -63,45 +63,77 @@ function numericRadius(element: HTMLElement, shape: GlassShape) {
   return Math.min(Number.isFinite(radius) ? radius : 0, rect.width / 2, rect.height / 2);
 }
 
-function makeLensGeometry(width: number, height: number, radius: number, shape: GlassShape) {
-  const depth = Math.max(6, Math.min(13, height * 0.2));
-  const bevel = Math.max(1.5, Math.min(4, depth * 0.32, radius * 0.22));
-  const shapeWidth = Math.max(1, width - bevel * 2);
-  const shapeHeight = Math.max(1, height - bevel * 2);
-  const shapeRadius = Math.max(0, Math.min(radius - bevel, shapeWidth / 2, shapeHeight / 2));
-  const lens = new THREE.Shape();
+function makeLensGeometry(width: number, height: number) {
+  return new THREE.PlaneGeometry(Math.max(1, width), Math.max(1, height));
+}
 
-  if (shape === "circle") {
-    lens.absarc(0, 0, Math.max(1, Math.min(shapeWidth, shapeHeight) / 2), 0, Math.PI * 2, false);
-  } else {
-    const left = -shapeWidth / 2;
-    const right = shapeWidth / 2;
-    const bottom = -shapeHeight / 2;
-    const top = shapeHeight / 2;
-    lens.moveTo(left + shapeRadius, bottom);
-    lens.lineTo(right - shapeRadius, bottom);
-    lens.quadraticCurveTo(right, bottom, right, bottom + shapeRadius);
-    lens.lineTo(right, top - shapeRadius);
-    lens.quadraticCurveTo(right, top, right - shapeRadius, top);
-    lens.lineTo(left + shapeRadius, top);
-    lens.quadraticCurveTo(left, top, left, top - shapeRadius);
-    lens.lineTo(left, bottom + shapeRadius);
-    lens.quadraticCurveTo(left, bottom, left + shapeRadius, bottom);
+const lensVertexShader = /* glsl */ `
+  varying vec2 vLensUv;
+  varying vec2 vScreenUv;
+
+  void main() {
+    vLensUv = uv;
+    vec4 clip = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
+    vScreenUv = clip.xy / clip.w * 0.5 + 0.5;
+    gl_Position = clip;
+  }
+`;
+
+const lensFragmentShader = /* glsl */ `
+  uniform sampler2D uScene;
+  uniform sampler2D uLensMap;
+  uniform vec2 uStageSize;
+  uniform float uDisplacement;
+  uniform float uChroma;
+  uniform float uRoughness;
+  uniform float uSpecular;
+  varying vec2 vLensUv;
+  varying vec2 vScreenUv;
+
+  vec3 sampleRefracted(vec2 sceneUv, vec2 chroma) {
+    return vec3(
+      texture2D(uScene, sceneUv + chroma).r,
+      texture2D(uScene, sceneUv).g,
+      texture2D(uScene, sceneUv - chroma).b
+    );
   }
 
-  const geometry = new THREE.ExtrudeGeometry(lens, {
-    depth,
-    steps: 1,
-    curveSegments: 24,
-    bevelEnabled: true,
-    bevelSegments: 8,
-    bevelSize: bevel,
-    bevelThickness: depth * 0.42,
-  });
-  geometry.center();
-  geometry.computeVertexNormals();
-  return geometry;
-}
+  void main() {
+    vec4 lens = texture2D(uLensMap, vLensUv);
+    float coverage = smoothstep(0.02, 0.98, lens.a);
+    if (coverage < 0.002) discard;
+
+    // Maps use byte value 128 as the exact neutral point. A conventional
+    // signed-normal decode would turn it into a small offset and visibly
+    // soften every high-contrast line even in the lens center.
+    vec2 normal = (lens.rg * 255.0 - 128.0) / 127.0;
+    normal.y *= -1.0;
+    float edge = smoothstep(0.012, 0.13, length(normal));
+    vec2 refractedUv = clamp(
+      vScreenUv - normal * uDisplacement / uStageSize,
+      vec2(0.001),
+      vec2(0.999)
+    );
+
+    vec2 direction = length(normal) > 0.0001 ? normalize(normal) : vec2(0.0);
+    vec2 chroma = direction * edge * uChroma / uStageSize;
+    vec2 blur = vec2(uRoughness) / uStageSize;
+    vec3 refracted = sampleRefracted(refractedUv, chroma) * 0.6;
+    refracted += sampleRefracted(refractedUv + blur, chroma) * 0.2;
+    refracted += sampleRefracted(refractedUv - blur, chroma) * 0.2;
+
+    vec2 lightDirection = normalize(vec2(-0.58, 0.82));
+    float lightFacing = max(dot(direction, lightDirection), 0.0);
+    float shadeFacing = max(dot(direction, -lightDirection), 0.0);
+    float highlight = edge * pow(lightFacing, 3.0) * uSpecular;
+    float hairline = edge * 0.055;
+    refracted = mix(refracted, vec3(1.0), min(0.48, highlight + hairline));
+    refracted *= 1.0 - shadeFacing * edge * 0.035;
+
+    gl_FragColor = vec4(refracted, coverage);
+    #include <colorspace_fragment>
+  }
+`;
 
 function LensMesh({
   registration,
@@ -118,10 +150,10 @@ function LensMesh({
   const initial = registration.element.getBoundingClientRect();
   const radius = numericRadius(registration.element, registration.shape);
   const geometry = useMemo(
-    () => makeLensGeometry(initial.width, initial.height, radius, registration.shape),
+    () => makeLensGeometry(initial.width, initial.height),
     // The revision deliberately rebuilds geometry only after layout changes, not during travel.
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    [initial.width, initial.height, radius, registration.shape, revision],
+    [initial.width, initial.height, revision],
   );
   const lensMap = useMemo(
     () => getLensMap(
@@ -133,9 +165,26 @@ function LensMesh({
     ),
     [initial.height, initial.width, radius, registration.optics.ior, registration.optics.thickness, registration.shape],
   );
-  const normalScale = useMemo(() => new THREE.Vector2(0.42, 0.42), []);
+  const material = useMemo(() => new THREE.ShaderMaterial({
+    vertexShader: lensVertexShader,
+    fragmentShader: lensFragmentShader,
+    uniforms: {
+      uScene: { value: buffer },
+      uLensMap: { value: lensMap.texture },
+      uStageSize: { value: new THREE.Vector2(1, 1) },
+      uDisplacement: { value: 60 },
+      uChroma: { value: 1 },
+      uRoughness: { value: 0 },
+      uSpecular: { value: 0.52 },
+    },
+    transparent: true,
+    depthTest: false,
+    depthWrite: false,
+    toneMapped: false,
+  }), [buffer, lensMap.texture]);
 
   useEffect(() => () => geometry.dispose(), [geometry]);
+  useEffect(() => () => material.dispose(), [material]);
 
   useFrame((_, delta) => {
     const mesh = meshRef.current;
@@ -157,37 +206,14 @@ function LensMesh({
     const targetScale = 1 - registration.pressAmount * 0.04;
     const nextScale = THREE.MathUtils.damp(mesh.scale.x, targetScale, 18, delta);
     mesh.scale.setScalar(nextScale);
+    material.uniforms.uStageSize.value.set(stageRect.width, stageRect.height);
+    material.uniforms.uDisplacement.value = 58 + registration.optics.thickness * 3;
+    material.uniforms.uChroma.value = registration.optics.chromaticAberration * 16;
+    material.uniforms.uRoughness.value = registration.optics.roughness * 8;
   });
 
-  const optics = registration.optics;
   return (
-    <mesh ref={meshRef} geometry={geometry} frustumCulled={false} renderOrder={20}>
-      <MeshTransmissionMaterial
-        buffer={buffer}
-        samples={3}
-        transmission={1}
-        roughness={optics.roughness}
-        thickness={optics.thickness}
-        ior={optics.ior}
-        chromaticAberration={optics.chromaticAberration}
-        anisotropicBlur={optics.anisotropicBlur}
-        distortion={optics.distortion}
-        distortionScale={optics.distortionScale}
-        temporalDistortion={0}
-        color="#ffffff"
-        attenuationColor={optics.attenuationColor}
-        attenuationDistance={optics.attenuationDistance}
-        clearcoat={optics.clearcoat}
-        clearcoatRoughness={optics.clearcoatRoughness}
-        specularIntensity={optics.specularIntensity}
-        specularColor="#ffffff"
-        envMapIntensity={0.35}
-        normalMap={lensMap.texture}
-        normalScale={normalScale}
-        depthWrite={false}
-        toneMapped={false}
-      />
-    </mesh>
+    <mesh ref={meshRef} geometry={geometry} material={material} frustumCulled={false} renderOrder={20} />
   );
 }
 
@@ -253,13 +279,6 @@ function GlassWorld({
 
   return (
     <>
-      <ambientLight intensity={0.9} />
-      <directionalLight position={[-180, 220, 260]} intensity={2.2} color="#ffffff" />
-      <directionalLight position={[240, -120, 180]} intensity={0.55} color="#dff6e5" />
-      <Environment resolution={64} frames={1}>
-        <Lightformer form="rect" intensity={3.6} color="#ffffff" position={[-3, 4, -5]} scale={[7, 3, 1]} />
-        <Lightformer form="rect" intensity={2.1} color="#effff6" position={[4, -2, -4]} scale={[5, 2, 1]} />
-      </Environment>
       {registrations.map((registration) => (
         <LensMesh
           key={registration.id}

@@ -69,6 +69,8 @@ async function inspectBrowser(name: string, browserType: BrowserType) {
     await glassLayer.evaluate((element) => { (element as HTMLElement).style.visibility = ""; });
     let maxDelta = 0;
     let changedPixels = 0;
+    let centerDeltaTotal = 0;
+    let centerSamples = 0;
     const lensLeft = Math.round(lensBox.x - stageBox.x);
     const lensCenterY = Math.round(lensBox.y - stageBox.y + lensBox.height / 2);
     for (let y = lensCenterY - 10; y <= lensCenterY + 10; y += 2) {
@@ -81,6 +83,17 @@ async function inspectBrowser(name: string, browserType: BrowserType) {
         if (delta > 18) changedPixels += 1;
       }
     }
+    const lensCenterX = Math.round(lensLeft + lensBox.width / 2);
+    for (let y = lensCenterY - 8; y <= lensCenterY + 8; y += 4) {
+      for (let x = lensCenterX - 16; x <= lensCenterX + 16; x += 4) {
+        const offset = (y * withGlass.width + x) * 4;
+        centerDeltaTotal += Math.abs(withGlass.data[offset] - withoutGlass.data[offset])
+          + Math.abs(withGlass.data[offset + 1] - withoutGlass.data[offset + 1])
+          + Math.abs(withGlass.data[offset + 2] - withoutGlass.data[offset + 2]);
+        centerSamples += 1;
+      }
+    }
+    const centerMeanDelta = centerDeltaTotal / centerSamples;
     assert.equal(proof.renderer, "webgl", `${name}: fixture did not use WebGL`);
     assert.equal(proof.canvasCount, 1, `${name}: fixture created multiple glass canvases`);
     assert.equal(proof.contextCount, 1, `${name}: fixture created multiple WebGL contexts`);
@@ -88,10 +101,11 @@ async function inspectBrowser(name: string, browserType: BrowserType) {
     assert.equal(proof.surfaceCount, 3, `${name}: fixture did not register all shapes`);
     assert.equal(proof.outsideAlpha, 0, `${name}: pixels outside lenses were not transparent`);
     assert(changedPixels > 12 && maxDelta > 24, `${name}: grid pixels were not optically displaced (${changedPixels} changed, max Δ ${maxDelta})`);
+    assert(centerMeanDelta < 8, `${name}: lens center was tinted or opaque (mean Δ ${centerMeanDelta.toFixed(2)})`);
     assert(proof.diagnostic && proof.diagnostic.dpr <= 2, `${name}: diagnostics/DPR cap are missing`);
 
     const missesBefore = proof.diagnostic?.mapCache.misses ?? -1;
-    await page.getByLabel("Move the same physical lens").evaluate((element) => {
+    await page.getByLabel("Move the same refractive lens").evaluate((element) => {
       const input = element as HTMLInputElement;
       input.value = "42";
       input.dispatchEvent(new Event("input", { bubbles: true }));
