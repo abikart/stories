@@ -3,43 +3,6 @@
 Newest decisions go first. Record meaningful divergences, tradeoffs, and quality
 gates; do not duplicate routine implementation details.
 
-## 2026-07-17 — Portable displacement replaces the rejected transmission mesh
-
-- Owner inspection rejected the extruded `MeshTransmissionMaterial` pass. Its
-  broad shallow meshes produced gray fill, dark bevel outlines, and visible
-  central normal seams; objective displacement alone was not sufficient.
-- React Bits Fluid Glass remains useful provenance for a contained 3D lens, but
-  its GLB mesh over a Three scene is not copied into stage-sized story panels.
-  Stories now follows Aave's WebGL video-control boundary: one renderer samples
-  the already-playing media through cached portable displacement maps.
-- The accepted shader draws antialiased transparent planes, samples inward for
-  edge magnification, separates RGB by less than a CSS pixel at default values,
-  and derives highlight/shade from the shape normal. It adds no opaque bevel,
-  lighting environment, atmospheric rectangle, or rasterized interface text.
-- The source target, one-context rule, decoder reuse, `refractionTarget`, CSS
-  fallback, recovery, sleeping loop, and semantic DOM boundary are unchanged.
-
-## 2026-07-17 — Rejected physical-transmission experiment
-
-- The first custom displacement-mask pass was reverted because its mint,
-  pixelated surface did not resemble liquid glass. The CSS material remains the
-  compatibility fallback.
-- The next experiment adapted React Bits Fluid Glass: extruded lens geometry,
-  physical transmission, IOR/thickness, restrained chromatic separation, and
-  bevel-driven specular light. It samples MediaDeck's mounted elements rather
-  than rebuilding the illustration or rasterizing the interface.
-- One stage canvas and source target served five semantic DOM surfaces. Cached
-  signed lens profiles shape refraction; movement never regenerates them.
-- Fern's white-matte mode selector used a source-only accent target. No visible
-  atmospheric rectangle or stage gradient was added.
-- This experiment passed the objective browser proof but failed owner visual
-  review and was superseded by the portable displacement decision above. The
-  browser proof remains split deliberately: Chromium and Playwright WebKit pass
-  real displaced-pixel/recovery tests. Native Safari is inspected separately
-  and may select the documented CSS fallback if its local WebGL context is
-  unavailable; start/dialogue animation is pinned visible on WebKit so fallback
-  cannot hide semantic content.
-
 ## 2026-07-17 — Stories glass is readable CSS first, refraction second
 
 - Dialogue, title, mode, transport, and temporary reading surfaces now share a

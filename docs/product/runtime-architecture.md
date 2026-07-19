@@ -99,18 +99,6 @@ bubbles. It keeps text in the DOM, maps anchors through the stage, applies
 collision policy, and docks content below media for Book and Pocket. Existing
 16:9 fixtures retain their legacy crop path only for regression coverage.
 
-## Live displacement glass
-
-`GlassStage` is a progressive stage compositor above `MediaDeck` and below the
-semantic overlay director. It reads the media deck's existing decoded elements
-as textures, composites the active/entering alpha layers into one source target,
-then draws every registered lens through one WebGL context. Cached signed maps
-drive edge magnification, restrained RGB separation, roughness, antialiased
-shape coverage, and the specular rim. No 3D bevel, lighting scene, or opaque
-surface is part of this pass. It does not own media lifecycle and cannot add a
-video decoder. Context failure or loss exposes the unchanged CSS glass path;
-story state and the performance clock remain owned by `ExperiencePlayer`.
-
 ## Interaction recipes
 
 Recipes are registered, reusable controllers with a consistent interface:

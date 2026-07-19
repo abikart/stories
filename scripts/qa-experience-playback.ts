@@ -90,19 +90,12 @@ async function main() {
       const overlay = document.querySelector<HTMLElement>(".story-overlay");
       const lens = document.querySelector<HTMLElement>(".story-mode-lens");
       return {
-        renderer: document.querySelector(".story-player-stage")?.getAttribute("data-glass-renderer"),
-        canvasCount: document.querySelectorAll("[data-glass-canvas]").length,
-        registeredSurfaces: document.querySelectorAll("[data-glass-surface]").length,
         overlayBackdrop: overlay ? getComputedStyle(overlay).backdropFilter : "missing",
         lensTransform: lens ? getComputedStyle(lens).transform : "missing",
       };
     });
-    if (glassContract.renderer === "webgl") {
-      if (glassContract.canvasCount !== 1 || glassContract.registeredSurfaces < 5) {
-        failures.push(`physical glass registration failed: ${JSON.stringify(glassContract)}`);
-      }
-    } else if (glassContract.overlayBackdrop === "none" || glassContract.overlayBackdrop === "missing") {
-      failures.push("CSS fallback glass does not sample the live backdrop");
+    if (glassContract.overlayBackdrop === "none" || glassContract.overlayBackdrop === "missing") {
+      failures.push("reading glass does not sample the live backdrop");
     }
     if (await openingOverlay.getByText("Narrator", { exact: true }).count()) {
       failures.push("narration still exposes a Narrator label");
@@ -217,7 +210,7 @@ async function main() {
         if (continueLeadMs < 150 || continueLeadMs > 700) {
           failures.push(`Continue lead-in was ${continueLeadMs}ms; expected a calm 150–700ms handoff`);
         }
-        await page.waitForTimeout(350);
+        await page.waitForTimeout(100);
         const resumedMedia = await page.evaluate(() => ({
           phase: document.querySelector(".story-player")?.getAttribute("data-reading-phase"),
           performancePaused: document.querySelector<HTMLAudioElement>("[data-performance-audio]")?.paused,
