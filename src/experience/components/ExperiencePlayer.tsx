@@ -501,7 +501,7 @@ export function ExperiencePlayer({ production }: { production: ExperienceProduct
         {performance.stems ? (
           <Soundscape ref={soundscapeRef} storyId={production.id} stems={performance.stems} />
         ) : null}
-        {playbackError ? <p className="story-player-error" role="alert">{playbackError}</p> : null}
+        {playbackError ? <p className={`story-player-error ${treatmentClassNames.surfaceSolid}`} role="alert">{playbackError}</p> : null}
       </section>
     </main>
   );

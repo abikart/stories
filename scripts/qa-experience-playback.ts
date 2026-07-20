@@ -1,12 +1,13 @@
 import fs from "node:fs/promises";
 import path from "node:path";
-import { chromium } from "playwright";
+import { chromium, webkit } from "playwright";
 import { ExperienceProductionSchema } from "@/experience/schema";
 import { flattenReadingUnits } from "@/experience/performance/timeline";
 
 async function main() {
   const storyId = process.argv.slice(2).find((argument) => argument !== "--" && !argument.startsWith("-"))
     ?? "fern-and-the-silent-seed-bells";
+  const browserName = process.argv.includes("--browser=webkit") ? "webkit" : "chromium";
   const baseUrl = process.env.EXPERIENCE_BASE_URL ?? "http://localhost:3000";
   const productionPath = path.join(process.cwd(), "content", storyId, "production.json");
   const production = ExperienceProductionSchema.parse(JSON.parse(await fs.readFile(productionPath, "utf8")));
@@ -14,7 +15,7 @@ async function main() {
   if (!production.performance) throw new Error(`${storyId}: performance metadata is required`);
 
   const units = flattenReadingUnits(production);
-  const browser = await chromium.launch({ headless: true });
+  const browser = await (browserName === "webkit" ? webkit : chromium).launch({ headless: true });
   const page = await browser.newPage({ viewport: { width: 1440, height: 900 } });
   const failures: string[] = [];
 
@@ -272,6 +273,51 @@ async function main() {
       await page.goto(`${baseUrl}/experience/${storyId}`, { waitUntil: "networkidle" });
     }
 
+    const interactionScene = production.scenes.find((candidate) => candidate.interaction);
+    const interaction = interactionScene?.interaction;
+    const interactionTrigger = interaction
+      ? production.scenes.flatMap((candidate) => candidate.phrases)
+        .find((phrase) => phrase.id === interaction.triggerAfterPhrase)
+      : null;
+    if (interaction && interactionTrigger) {
+      await page.getByRole("button", { name: "Read with me", exact: true }).click();
+      await seek(Math.max(0, interactionTrigger.end - 0.3));
+      await page.getByRole("button", { name: "Play", exact: true }).click();
+      const token = page.locator(".drag-guide-token");
+      await token.waitFor({ state: "visible", timeout: 5000 });
+      const guideContract = await page.evaluate(() => {
+        const target = document.querySelector<HTMLElement>(".drag-guide-target");
+        const tokenElement = document.querySelector<HTMLElement>(".drag-guide-token");
+        const container = document.querySelector<HTMLElement>(".drag-guide");
+        const targetRect = target?.getBoundingClientRect();
+        const tokenRect = tokenElement?.getBoundingClientRect();
+        const spotlight = target ? getComputedStyle(target, "::before") : null;
+        return {
+          spotlightBackground: spotlight?.backgroundImage ?? "none",
+          spotlightFilter: spotlight?.filter ?? "none",
+          targetSize: targetRect ? [targetRect.width, targetRect.height] : [0, 0],
+          tokenSize: tokenRect ? [tokenRect.width, tokenRect.height] : [0, 0],
+          tokenTouchAction: tokenElement ? getComputedStyle(tokenElement).touchAction : "missing",
+          containerTouchAction: container ? getComputedStyle(container).touchAction : "missing",
+        };
+      });
+      if (guideContract.spotlightBackground === "none" || guideContract.spotlightFilter !== "blur(18px)") {
+        failures.push(`${browserName} drag goal did not render the Spotlight Glow treatment: ${JSON.stringify(guideContract)}`);
+      }
+      if (guideContract.targetSize.some((size) => size < 43.5)
+        || guideContract.tokenSize.some((size) => size < 51.5)
+        || guideContract.tokenTouchAction !== "none"
+        || guideContract.containerTouchAction !== "none") {
+        failures.push(`${browserName} drag interaction lost touch-safe geometry: ${JSON.stringify(guideContract)}`);
+      }
+      await token.focus();
+      await token.press("Enter");
+      await page.waitForFunction((stateId) => (
+        document.querySelector(".experience-media")?.getAttribute("data-media-state") === stateId
+      ), interaction.completeMediaState);
+      await page.goto(`${baseUrl}/experience/${storyId}`, { waitUntil: "networkidle" });
+    }
+
     for (const unit of [...units].reverse()) {
       const seekTime = Math.round(Math.min(production.performance.duration, unit.start) * 20) / 20;
       await seek(seekTime);
@@ -399,7 +445,7 @@ async function main() {
     failures.forEach((failure) => console.error(`✗ ${failure}`));
     process.exitCode = 1;
   } else {
-    console.log(`✓ ${storyId} — playback, reading pause, reverse scrub, ending, and responsive matrix`);
+    console.log(`✓ ${storyId} (${browserName}) — playback, reading pause, guide interaction, reverse scrub, ending, and responsive matrix`);
   }
 }
 

@@ -13,6 +13,8 @@
     "lint:experiences": "tsx scripts/lint-experience.ts",
     "qa:design-system": "tsx scripts/qa-design-system.ts",
     "qa:experience": "tsx scripts/qa-experience-playback.ts",
+    "qa:experience:webkit": "tsx scripts/qa-experience-playback.ts --browser=webkit",
+    "evidence:design-system": "tsx scripts/capture-design-system-evidence.ts",
     "ingest:experience-video": "tsx scripts/ingest-experience-video.ts"
   },
   "dependencies": {

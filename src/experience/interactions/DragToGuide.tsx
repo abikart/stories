@@ -10,6 +10,7 @@ import {
   type PointerEvent,
 } from "react";
 import type { InteractionBinding, Point } from "@/experience/schema";
+import { treatmentClassNames } from "@/design-system/treatments";
 
 type GuideStyle = CSSProperties & {
   "--guide-target-x": string;
@@ -176,8 +177,8 @@ export function DragToGuide({
       <svg className="drag-guide-path" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
         <path d={path} />
       </svg>
-      <div className="drag-guide-target" aria-hidden="true"><span>Goal</span></div>
-      <p className="drag-guide-prompt" id="drag-guide-instructions">
+      <div className={`drag-guide-target ${treatmentClassNames.glowSpotlight}`} aria-hidden="true"><span>Goal</span></div>
+      <p className={`drag-guide-prompt ${treatmentClassNames.surfaceSolid}`} id="drag-guide-instructions">
         {mode === "interactive" ? binding.prompt : "The story is following the path…"}
       </p>
       <button

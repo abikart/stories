@@ -15,6 +15,12 @@ component merely to add an effect. Product markup keeps its native buttons,
 headings, groups, labels, focus order, and assistive text, then opts into one
 class-backed treatment.
 
+Every registry entry exposes both maturity (`stable` or `provisional`) and
+recipe fidelity (`exact-source`, `source-guided`, or `stories-native`). Light
+Glass is the sole exact-source effect. Glow and sheen remain source-guided and
+provisional; the stable solid surface is explicitly a Stories-native primitive,
+not a claim of Figma pixel parity.
+
 ## Figma source audit
 
 The treatment model comes from Cisco's
@@ -70,6 +76,14 @@ those primitives to a world palette only when the semantic role remains clear.
 Fern deliberately uses none of them as stage atmosphere because its solid
 `#FFFFFF` matte is an authored media contract.
 
+The source establishes the glow semantics, spectrum, light/dark strength, and
+relative atmospheric/spotlight hierarchy. The portable blur radii and field
+geometry are still `provisional`, because the detailed source frames were not
+available after the Figma Starter inspection limit was reached. Fern maps the
+Spotlight Glow colors to its authored gold guide target while retaining the
+single-target, local-field contract; this is source-guided adaptation, not a
+pixel-exact Figma recipe.
+
 ### Sheen patterns
 
 Sheen communicates movement, progression, transformation, direction, priority,
@@ -93,7 +107,17 @@ pixel parity for their speed or edge thickness until those nodes are audited.
 | Story title | Solid surface | Persistent identity, not temporary elevation. |
 | Watch / Read-with-me switch | Solid surface + solid active selection | Persistent navigation; glass would weaken affordance. |
 | Replay / transport | Solid surface | Persistent controls and buttons must remain unambiguous. |
+| Silver-path goal | Spotlight Glow | One local target needs directional guidance; the world-authored gold palette replaces the portable spectrum. |
 | Stage background | None | The exact solid story matte remains authoritative. |
+
+The complete route-and-feature inventory lives in
+[Treatment audit](treatment-audit.md). It records the negative decisions as
+carefully as the applied effects so later work does not gradually decorate
+every surface.
+
+The checked-in [before/after evidence](../evidence/design-system/README.md)
+preserves the rejected universal-glass direction beside Chromium and WebKit
+captures of the current catalog, story, guide target, and phone layout.
 
 ## Accessibility and motion
 

@@ -6,6 +6,7 @@ const showcasedTreatments: TreatmentName[] = [
   "glowSpotlight",
   "sheenStatic",
   "sheenAnimated",
+  "surfaceSolid",
 ];
 
 export default function DesignSystemPage() {
@@ -32,10 +33,22 @@ export default function DesignSystemPage() {
               <p>One temporary elevated layer over live content.</p>
             </div>
           </article>
+          <article className="ds-catalog__sample ds-catalog__sample--contrast">
+            <div className={`${treatmentClassNames.glassLight} ds-glass-light--fallback ds-catalog__surface`}>
+              <h3>Light Glass fallback</h3>
+              <p>Opaque, readable separation when backdrop filtering is unavailable.</p>
+            </div>
+          </article>
           <article className="ds-catalog__sample ds-catalog__sample--dark">
             <div className={`${treatmentClassNames.glowAtmospheric} ds-catalog__surface ds-catalog__surface--dark`}>
               <h3>Atmospheric Glow</h3>
               <p>Large, diffused, and tied to one first-look region.</p>
+            </div>
+          </article>
+          <article className="ds-catalog__sample ds-catalog__sample--contrast">
+            <div className={`${treatmentClassNames.surfaceSolid} ds-catalog__surface`}>
+              <h3>Solid Surface</h3>
+              <p>Durable chrome without temporary elevation or backdrop blur.</p>
             </div>
           </article>
           <article className="ds-catalog__sample">
@@ -69,6 +82,7 @@ export default function DesignSystemPage() {
             const guideline = treatmentGuidelines[name];
             return (
               <article className="ds-catalog__note" key={name}>
+                <span className="ds-catalog__status">{guideline.status} · {guideline.fidelity}</span>
                 <h3>{guideline.label}</h3>
                 <p>{guideline.purpose}</p>
                 <ul>

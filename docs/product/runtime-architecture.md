@@ -80,6 +80,22 @@ Reduced motion keeps narration and semantic progression intact but pauses
 nonessential visual motion. Pointer depth remains cosmetic and is never required
 to understand or complete an interaction.
 
+## Surface-treatment boundary
+
+The code-first design system lives in `src/design-system/` and owns portable
+material tokens, treatment classes, and semantic selection contracts. It does
+not own story structure or introduce wrapper components. `ExperiencePlayer`
+keeps headings, passages, buttons, portraits, focus order, and live regions in
+semantic DOM, then applies a treatment class only to the outer surface whose
+product purpose matches the contract.
+
+Light Glass is a temporary overlay material. Persistent title, mode, and
+transport chrome is solid. Spotlight Glow may sit behind one interaction target
+but cannot replace its visible ring or focus outline. Media, stage matte,
+portraits, and synchronized words stay outside the treatment renderer. This
+boundary also means backdrop-filter failure changes only the material fallback;
+it cannot affect story state, decoded media ownership, or the performance clock.
+
 ## Responsive stage
 
 `ResponsiveStage` owns the 4:3 master coordinate system, responsive editorial
@@ -121,6 +137,7 @@ reduced-motion paths.
 
 - `/experience/[storyId]` — interactive runtime.
 - `/dev/viewport` — exact-size same-origin responsive QA harness.
+- `/dev/design-system` — portable treatment, status, and fallback catalog.
 
 The later `/film/[storyId]` route will execute the same semantic story package
 without interactive chrome; it is outside the immersive MVP run.

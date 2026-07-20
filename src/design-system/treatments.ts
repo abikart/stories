@@ -16,6 +16,7 @@ export type TreatmentGuideline = {
   avoidWhen: readonly string[];
   sourceNode: string;
   status: "stable" | "provisional";
+  fidelity: "exact-source" | "source-guided" | "stories-native";
 };
 
 export const treatmentGuidelines: Record<TreatmentName, TreatmentGuideline> = {
@@ -35,6 +36,7 @@ export const treatmentGuidelines: Record<TreatmentName, TreatmentGuideline> = {
     ],
     sourceNode: "313:50940",
     status: "stable",
+    fidelity: "exact-source",
   },
   glowAtmospheric: {
     label: "Atmospheric Glow",
@@ -49,7 +51,8 @@ export const treatmentGuidelines: Record<TreatmentName, TreatmentGuideline> = {
       "the treatment reduces text contrast or adds ambient noise",
     ],
     sourceNode: "313:50941",
-    status: "stable",
+    status: "provisional",
+    fidelity: "source-guided",
   },
   glowSpotlight: {
     label: "Spotlight Glow",
@@ -65,7 +68,8 @@ export const treatmentGuidelines: Record<TreatmentName, TreatmentGuideline> = {
       "it adds more noise than clarity",
     ],
     sourceNode: "313:51099",
-    status: "stable",
+    status: "provisional",
+    fidelity: "source-guided",
   },
   sheenStatic: {
     label: "Static Sheen",
@@ -81,6 +85,7 @@ export const treatmentGuidelines: Record<TreatmentName, TreatmentGuideline> = {
     ],
     sourceNode: "313:51033",
     status: "provisional",
+    fidelity: "source-guided",
   },
   sheenAnimated: {
     label: "Animated Sheen",
@@ -96,6 +101,7 @@ export const treatmentGuidelines: Record<TreatmentName, TreatmentGuideline> = {
     ],
     sourceNode: "313:50994",
     status: "provisional",
+    fidelity: "source-guided",
   },
   surfaceSolid: {
     label: "Solid Surface",
@@ -104,5 +110,6 @@ export const treatmentGuidelines: Record<TreatmentName, TreatmentGuideline> = {
     avoidWhen: ["a temporary overlay genuinely needs separation from live media"],
     sourceNode: "313:51583",
     status: "stable",
+    fidelity: "stories-native",
   },
 };

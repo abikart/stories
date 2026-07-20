@@ -52,6 +52,9 @@
   --ds-glow-x: 50%;
   --ds-glow-y: 100%;
   --ds-glow-opacity: 0.4;
+  --ds-glow-spotlight-core: rgb(255 144 0 / 0.72);
+  --ds-glow-spotlight-middle: rgb(255 0 127 / 0.48);
+  --ds-glow-spotlight-edge: rgb(2 200 255 / 0.42);
 }
 
 .ds-glow-atmospheric::before,
@@ -78,13 +81,21 @@
   inset: -24%;
   background: radial-gradient(
     ellipse 34% 26% at var(--ds-glow-x) var(--ds-glow-y),
-    rgb(255 144 0 / 0.72),
-    rgb(255 0 127 / 0.48) 34%,
-    rgb(2 200 255 / 0.42) 56%,
+    var(--ds-glow-spotlight-core),
+    var(--ds-glow-spotlight-middle) 34%,
+    var(--ds-glow-spotlight-edge) 56%,
     transparent 76%
   );
   filter: blur(18px);
   opacity: 0.74;
+}
+
+/* Catalog/diagnostic representation of the no-backdrop-filter branch. */
+.ds-glass-light--fallback {
+  --ds-glass-light-fill: rgb(255 255 255 / 0.94);
+  --ds-glass-light-border: rgb(45 64 53 / 0.1);
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
 }
 
 .ds-sheen {
@@ -175,12 +186,14 @@
   font-size: clamp(2.2rem, 6vw, 4.8rem);
   line-height: 0.98;
   letter-spacing: -0.04em;
+  text-wrap: balance;
 }
 
 .ds-catalog__lede {
   max-width: 66ch;
   color: #53645b;
   line-height: 1.55;
+  text-wrap: pretty;
 }
 
 .ds-catalog__section {
@@ -231,10 +244,27 @@
   color: #f7fbf9;
 }
 
+.ds-catalog__surface--dark.ds-glow-atmospheric {
+  --ds-glow-opacity: 1;
+  background: rgb(7 16 25 / 0.66);
+}
+
 .ds-catalog__surface p {
   color: inherit;
   opacity: 0.72;
   line-height: 1.45;
+}
+
+.ds-catalog__status {
+  width: fit-content;
+  padding: 4px 8px;
+  border-radius: 999px;
+  background: rgb(45 64 53 / 0.07);
+  color: #52635a;
+  font-size: 0.68rem;
+  font-weight: 750;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
 }
 
 .ds-catalog__notes {
