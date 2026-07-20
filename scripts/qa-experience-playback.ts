@@ -84,18 +84,37 @@ async function main() {
     };
 
     const openingOverlay = page.locator(".story-overlay");
-    const glassSurfaces = page.locator(".story-glass");
-    if (await glassSurfaces.count() < 5) failures.push("shared glass material is missing from story surfaces");
+    const glassSurfaces = page.locator(".ds-glass-light");
+    if (await glassSurfaces.count() !== 2) failures.push("Light Glass must be limited to dialogue and the temporary start decision");
+    const solidSurfaces = page.locator(".ds-surface-solid");
+    if (await solidSurfaces.count() !== 3) failures.push("title, mode, and transport must use solid surfaces");
+    if (await page.locator("button.ds-glass-light, .ds-glass-light .ds-glass-light").count()) {
+      failures.push("glass was applied to a button or nested inside glass");
+    }
     const glassContract = await page.evaluate(() => {
       const overlay = document.querySelector<HTMLElement>(".story-overlay");
-      const lens = document.querySelector<HTMLElement>(".story-mode-lens");
+      const indicator = document.querySelector<HTMLElement>(".story-mode-indicator");
+      const persistent = [".story-player-title", ".story-mode-switch", ".story-transport"]
+        .map((selector) => document.querySelector<HTMLElement>(selector))
+        .filter((element): element is HTMLElement => Boolean(element));
+      const overlayStyle = overlay ? getComputedStyle(overlay) : null;
       return {
-        overlayBackdrop: overlay ? getComputedStyle(overlay).backdropFilter : "missing",
-        lensTransform: lens ? getComputedStyle(lens).transform : "missing",
+        overlayBackdrop: overlayStyle?.backdropFilter ?? "missing",
+        overlayBackground: overlayStyle?.backgroundColor ?? "missing",
+        overlayBorder: overlayStyle?.borderTopColor ?? "missing",
+        overlayShadow: overlayStyle?.boxShadow ?? "missing",
+        selectionTransform: indicator ? getComputedStyle(indicator).transform : "missing",
+        persistentBackdrops: persistent.map((element) => getComputedStyle(element).backdropFilter),
       };
     });
-    if (glassContract.overlayBackdrop === "none" || glassContract.overlayBackdrop === "missing") {
-      failures.push("reading glass does not sample the live backdrop");
+    if (glassContract.overlayBackdrop !== "blur(10px)"
+      || glassContract.overlayBackground !== "rgba(255, 255, 255, 0.6)"
+      || glassContract.overlayBorder !== "rgba(255, 255, 255, 0.6)"
+      || !glassContract.overlayShadow.includes("24px 1px inset")) {
+      failures.push(`Light Glass recipe drifted: ${JSON.stringify(glassContract)}`);
+    }
+    if (glassContract.persistentBackdrops.some((value) => value !== "none")) {
+      failures.push(`persistent chrome still uses backdrop blur: ${JSON.stringify(glassContract.persistentBackdrops)}`);
     }
     if (await openingOverlay.getByText("Narrator", { exact: true }).count()) {
       failures.push("narration still exposes a Narrator label");
@@ -111,8 +130,8 @@ async function main() {
     }
     await page.getByRole("button", { name: "Read with me", exact: true }).click();
     await page.waitForTimeout(260);
-    const movedLensTransform = await page.locator(".story-mode-lens").evaluate((element) => getComputedStyle(element).transform);
-    if (movedLensTransform === glassContract.lensTransform) failures.push("story mode glass lens did not move with selection");
+    const movedSelectionTransform = await page.locator(".story-mode-indicator").evaluate((element) => getComputedStyle(element).transform);
+    if (movedSelectionTransform === glassContract.selectionTransform) failures.push("story mode selection did not move with selection");
     await page.getByRole("button", { name: "Watch", exact: true }).click();
 
     const firstDialogue = units.find((unit) => unit.overlay.kind === "dialogue");
@@ -336,15 +355,14 @@ async function main() {
     ));
     const reducedMotion = await page.locator(".story-overlay-content").evaluate((element) => ({
       animationDuration: getComputedStyle(element).animationDuration,
-      lensTransitionDuration: getComputedStyle(document.querySelector<HTMLElement>(".story-mode-lens")!).transitionDuration,
-      glassHighlightTransitionDuration: getComputedStyle(document.querySelector<HTMLElement>(".story-overlay")!, "::before").transitionDuration,
+      selectionTransitionDuration: getComputedStyle(document.querySelector<HTMLElement>(".story-mode-indicator")!).transitionDuration,
       activeVideosPaused: [...document.querySelectorAll<HTMLVideoElement>(
         ".experience-media-layer[data-active] video",
       )].every((video) => video.paused),
     }));
     if (reducedMotion.animationDuration !== "0s") failures.push("reduced motion did not remove phrase entry animation");
-    if (reducedMotion.lensTransitionDuration !== "0s" || reducedMotion.glassHighlightTransitionDuration !== "0s") {
-      failures.push("reduced motion did not remove glass transitions");
+    if (reducedMotion.selectionTransitionDuration !== "0s") {
+      failures.push("reduced motion did not remove mode-selection motion");
     }
     if (!reducedMotion.activeVideosPaused) failures.push("reduced motion did not pause decorative scene video");
     await page.emulateMedia({ reducedMotion: "no-preference" });

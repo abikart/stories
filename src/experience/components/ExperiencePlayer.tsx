@@ -24,6 +24,7 @@ import {
 } from "@/experience/performance/timeline";
 import { DragToGuide } from "@/experience/interactions/DragToGuide";
 import { Soundscape, type SoundscapeHandle } from "@/experience/audio/Soundscape";
+import { treatmentClassNames } from "@/design-system/treatments";
 
 type PlayerMode = "watch" | "read";
 type ReadingPhase = "idle" | "settling" | "reading" | "resuming";
@@ -380,12 +381,12 @@ export function ExperiencePlayer({ production }: { production: ExperienceProduct
           </div>
 
           <header className="story-player-header">
-            <div className="story-player-title story-glass story-glass--quiet">
+            <div className={`story-player-title ${treatmentClassNames.surfaceSolid}`}>
               <span>A Lanternleaf story</span>
               <h1>{production.title}</h1>
             </div>
-            <div className="story-mode-switch story-glass story-glass--control" data-active-mode={mode} role="group" aria-label="Story mode">
-              <span className="story-mode-lens" aria-hidden="true" />
+            <div className={`story-mode-switch ${treatmentClassNames.surfaceSolid}`} data-active-mode={mode} role="group" aria-label="Story mode">
+              <span className="story-mode-indicator" aria-hidden="true" />
               <button type="button" aria-pressed={mode === "watch"} onClick={() => changeMode("watch")}>
                 Watch
               </button>
@@ -396,7 +397,7 @@ export function ExperiencePlayer({ production }: { production: ExperienceProduct
           </header>
 
           <div
-            className="story-overlay story-glass story-glass--reading"
+            className={`story-overlay ${treatmentClassNames.glassLight}`}
             data-kind={displayUnit.overlay.kind}
             data-placement={displayUnit.overlay.placement ?? scene.overlayPlacement}
             data-has-portrait={speaker ? "true" : undefined}
@@ -449,7 +450,7 @@ export function ExperiencePlayer({ production }: { production: ExperienceProduct
           </div>
 
           {snapshot.time === 0 && !snapshot.playing ? (
-            <div className="story-start-card story-glass story-glass--reading">
+            <div className={`story-start-card ${treatmentClassNames.glassLight}`}>
               <span>{mode === "watch" ? "Story time" : "Read together"}</span>
               <p>{mode === "watch" ? "Settle in. The story is about to begin." : "The story will wait after each thought."}</p>
               <button type="button" onClick={togglePlayback}>
@@ -458,7 +459,7 @@ export function ExperiencePlayer({ production }: { production: ExperienceProduct
             </div>
           ) : null}
 
-          <div className="story-transport story-glass story-glass--control" aria-label="Story controls">
+          <div className={`story-transport ${treatmentClassNames.surfaceSolid}`} aria-label="Story controls">
             <button className="story-icon-button" type="button" onClick={replay} aria-label="Replay story">
               ↺
             </button>

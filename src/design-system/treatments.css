@@ -1,0 +1,258 @@
+:root {
+  /* Figma 1D Guardrails / Light Glass — node 313:50940. */
+  --ds-glass-light-fill: rgb(255 255 255 / 0.6);
+  --ds-glass-light-border: rgb(255 255 255 / 0.6);
+  --ds-glass-light-blur: 10px;
+  --ds-glass-light-inner-highlight: rgb(255 255 255 / 0.8);
+  --ds-glass-light-shadow:
+    inset 0 0 24px 1px var(--ds-glass-light-inner-highlight),
+    0 1px 2px rgb(0 0 0 / 0.04),
+    0 4px 16px rgb(0 0 0 / 0.04);
+
+  --ds-surface-solid-fill: rgb(255 255 255 / 0.96);
+  --ds-surface-solid-border: rgb(45 64 53 / 0.08);
+  --ds-surface-solid-shadow: 0 4px 16px rgb(38 54 45 / 0.08);
+
+  /* Portable treatment spectrum derived from the source gradient line. */
+  --ds-treatment-blue: #0a60ff;
+  --ds-treatment-cyan: #02c8ff;
+  --ds-treatment-magenta: #ff007f;
+  --ds-treatment-orange: #ff9000;
+  --ds-treatment-spectrum: linear-gradient(
+    90deg,
+    var(--ds-treatment-blue) 5%,
+    var(--ds-treatment-cyan) 35%,
+    var(--ds-treatment-cyan) 45%,
+    var(--ds-treatment-magenta) 75%,
+    var(--ds-treatment-orange) 95%
+  );
+}
+
+.ds-treatment {
+  position: relative;
+  isolation: isolate;
+}
+
+.ds-glass-light {
+  border: 1px solid var(--ds-glass-light-border);
+  background: var(--ds-glass-light-fill);
+  box-shadow: var(--ds-glass-light-shadow);
+  -webkit-backdrop-filter: blur(var(--ds-glass-light-blur));
+  backdrop-filter: blur(var(--ds-glass-light-blur));
+}
+
+.ds-surface-solid {
+  border: 1px solid var(--ds-surface-solid-border);
+  background: var(--ds-surface-solid-fill);
+  box-shadow: var(--ds-surface-solid-shadow);
+}
+
+.ds-glow-atmospheric,
+.ds-glow-spotlight {
+  --ds-glow-x: 50%;
+  --ds-glow-y: 100%;
+  --ds-glow-opacity: 0.4;
+}
+
+.ds-glow-atmospheric::before,
+.ds-glow-spotlight::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  pointer-events: none;
+}
+
+.ds-glow-atmospheric::before {
+  inset: -36%;
+  background: radial-gradient(
+    ellipse 48% 34% at var(--ds-glow-x) var(--ds-glow-y),
+    rgb(2 200 255 / 0.9),
+    rgb(10 96 255 / 0.56) 42%,
+    transparent 76%
+  );
+  filter: blur(28px);
+  opacity: var(--ds-glow-opacity);
+}
+
+.ds-glow-spotlight::before {
+  inset: -24%;
+  background: radial-gradient(
+    ellipse 34% 26% at var(--ds-glow-x) var(--ds-glow-y),
+    rgb(255 144 0 / 0.72),
+    rgb(255 0 127 / 0.48) 34%,
+    rgb(2 200 255 / 0.42) 56%,
+    transparent 76%
+  );
+  filter: blur(18px);
+  opacity: 0.74;
+}
+
+.ds-sheen {
+  --ds-sheen-width: 2px;
+  position: relative;
+  isolation: isolate;
+}
+
+.ds-sheen::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  padding: var(--ds-sheen-width);
+  border-radius: inherit;
+  background: var(--ds-treatment-spectrum);
+  background-size: 180% 100%;
+  pointer-events: none;
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+}
+
+.ds-sheen--static::before {
+  background-position: 50% 50%;
+}
+
+.ds-sheen--animated::before {
+  animation: ds-sheen-travel 1.8s cubic-bezier(0.2, 0, 0, 1) both;
+}
+
+@keyframes ds-sheen-travel {
+  from { background-position: 100% 50%; }
+  to { background-position: 0 50%; }
+}
+
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  .ds-glass-light {
+    --ds-glass-light-fill: rgb(255 255 255 / 0.94);
+    --ds-glass-light-border: rgb(45 64 53 / 0.1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ds-sheen--animated::before {
+    animation: none;
+    background-position: 50% 50%;
+  }
+}
+
+/* Development catalog. */
+.ds-catalog {
+  min-height: 100dvh;
+  padding: clamp(24px, 5vw, 72px);
+  background: #f6f8f6;
+  color: #1f3028;
+}
+
+.ds-catalog__header,
+.ds-catalog__section {
+  width: min(1120px, 100%);
+  margin-inline: auto;
+}
+
+.ds-catalog__header {
+  display: grid;
+  gap: 10px;
+  margin-bottom: 42px;
+}
+
+.ds-catalog__eyebrow {
+  color: #607168;
+  font-size: 0.72rem;
+  font-weight: 750;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.ds-catalog h1,
+.ds-catalog h2,
+.ds-catalog h3,
+.ds-catalog p {
+  margin: 0;
+}
+
+.ds-catalog h1 {
+  font-family: var(--font-display);
+  font-size: clamp(2.2rem, 6vw, 4.8rem);
+  line-height: 0.98;
+  letter-spacing: -0.04em;
+}
+
+.ds-catalog__lede {
+  max-width: 66ch;
+  color: #53645b;
+  line-height: 1.55;
+}
+
+.ds-catalog__section {
+  display: grid;
+  gap: 18px;
+  margin-top: 46px;
+}
+
+.ds-catalog__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
+  gap: 18px;
+}
+
+.ds-catalog__sample {
+  min-height: 260px;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  border: 1px solid rgb(45 64 53 / 0.08);
+  border-radius: 28px;
+  background: #fff;
+}
+
+.ds-catalog__sample--contrast {
+  background:
+    linear-gradient(118deg, transparent 44%, #182b24 45% 47%, transparent 48%),
+    repeating-linear-gradient(90deg, #f3b447 0 34px, #446c88 34px 68px, #d96d68 68px 102px);
+}
+
+.ds-catalog__sample--dark {
+  background: #071019;
+}
+
+.ds-catalog__surface {
+  width: min(78%, 320px);
+  min-height: 130px;
+  display: grid;
+  align-content: center;
+  gap: 8px;
+  padding: 22px;
+  border-radius: 24px;
+  color: #21352b;
+}
+
+.ds-catalog__surface--dark {
+  background: rgb(7 16 25 / 0.88);
+  color: #f7fbf9;
+}
+
+.ds-catalog__surface p {
+  color: inherit;
+  opacity: 0.72;
+  line-height: 1.45;
+}
+
+.ds-catalog__notes {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr));
+  gap: 12px;
+}
+
+.ds-catalog__note {
+  padding: 18px;
+  border: 1px solid rgb(45 64 53 / 0.08);
+  border-radius: 20px;
+  background: #fff;
+}
+
+.ds-catalog__note ul {
+  margin: 10px 0 0;
+  padding-left: 1.2rem;
+  color: #5c6b63;
+  line-height: 1.45;
+}

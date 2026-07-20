@@ -3,6 +3,25 @@
 Newest decisions go first. Record meaningful divergences, tradeoffs, and quality
 gates; do not duplicate routine implementation details.
 
+## 2026-07-19 — Surface treatments express function, not a universal style
+
+- This decision supersedes the 2026-07-17 "shared glass" scope below. Figma 1D
+  Guardrails defines glass as temporary elevation and focus, and explicitly
+  advises against persistent panels, every container, nested actions, or visual
+  layering without purpose.
+- Fern dialogue, retained Read-with-me passages, and the start interruption use
+  the exact Light Glass material: 60% white fill and border, 10px backdrop blur,
+  an 80% white inset highlight, and restrained 4% elevation shadows.
+- Title, Watch/Read-with-me, and transport are persistent chrome and therefore
+  use solid surfaces. The mode selection is a solid moving indicator, not a
+  glass lens.
+- Atmospheric glow, spotlight glow, static sheen, and animated sheen are
+  reusable opt-in design-system treatments with semantic usage contracts.
+  Fern's stage uses none of them as atmosphere; its exact solid matte remains
+  the media blending contract.
+- The live `/dev/design-system` catalog is the visual fixture. CSS fallbacks,
+  reduced motion, semantic markup, and explicit focus styles are mandatory.
+
 ## 2026-07-17 — Stories glass is readable CSS first, refraction second
 
 - Dialogue, title, mode, transport, and temporary reading surfaces now share a

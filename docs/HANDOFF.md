@@ -1,6 +1,6 @@
 # Session handoff
 
-Last updated: 2026-07-17
+Last updated: 2026-07-19
 
 ## Read first
 
@@ -34,26 +34,33 @@ Last updated: 2026-07-17
   currently use `top-left`; narrated lines have no visible label, Fern/Pipkin
   speech uses canonical watercolor portraits, and constrained layouts dock the
   same copy safely.
-- Title, dialogue, mode, start, and transport surfaces now share the documented
-  Stories glass material. The Watch/Read toggle has a moving glass lens; CSS is
-  the accessible cross-browser baseline and WebGL video refraction remains a
-  gated future enhancement.
+- Stories now has a code-first surface-treatment design system and a live
+  `/dev/design-system` catalog. Figma 1D Guardrails Light Glass is reserved for
+  dialogue, retained Read-with-me passages, and the temporary start decision.
+  Persistent title, mode, and transport chrome is solid; the mode selection is
+  no longer presented as a glass lens. Glow and sheen are available as opt-in
+  treatments but do not alter Fern's exact solid stage matte.
 - The active checkout is 139 files / 103,098,739 bytes. Fern is 84 files /
   78,864,822 bytes, including eight alpha videos totaling 10,771,186 bytes.
 
 ## Owner playtest
 
+Open <http://localhost:3000/dev/design-system> first to inspect the source-backed
+Light Glass fixture and the opt-in glow/sheen catalog.
+
 Open <http://localhost:3000/experience/fern-and-the-silent-seed-bells>, then:
 
-1. In Watch, play from the beginning and notice the moving watercolor edge has
+1. Confirm dialogue and the start interruption use a restrained Light Glass
+   layer while title, mode, and transport remain solid and unambiguous.
+2. In Watch, play from the beginning and notice the moving watercolor edge has
    no rectangular video boundary.
-2. Let the story reach the silver path; confirm the guide interaction changes
+3. Let the story reach the silver path; confirm the guide interaction changes
    the layered visual state and Watch completes the same action automatically.
-3. Switch to Read-with-me, complete one child passage, and feel the soft
+4. Switch to Read-with-me, complete one child passage, and feel the soft
    ambience/visual wait and resume.
-4. Resize to phone portrait and desktop landscape. Confirm the whole 4:3 art,
+5. Resize to phone portrait and desktop landscape. Confirm the whole 4:3 art,
    dialogue, and controls remain usable without horizontal scrolling.
-5. Replay the ending and drag the hidden test seek control only through the QA
+6. Replay the ending and drag the hidden test seek control only through the QA
    harness if reverse-settlement behavior needs inspection.
 
 Subjective approval should focus on alpha-edge cleanliness, whether the plate
@@ -65,9 +72,14 @@ silver-path action feels meaningfully more immersive than the flattened beats.
 - `pnpm typecheck` — pass
 - `pnpm lint:experiences` — pass; 55 referenced assets
 - `pnpm build` — pass
+- `pnpm qa:design-system` — pass: exact Light Glass computed recipe, portable
+  fixture, responsive catalog, and reduced-motion sheen behavior
 - `pnpm qa:experience -- fern-and-the-silent-seed-bells` — pass: Watch,
   Read-with-me, hero completion, reverse scrub, ending, reduced motion, and six
   responsive presets
+- Browser inspection — exact 60% fill/border and 10px blur confirmed over live
+  Fern media; persistent chrome has no backdrop filter; 390×844 has no overflow,
+  keeps 44px controls, and leaves a 7px overlay/transport gap; no console errors
 - Native-alpha files — eight VP9 WebMs with `ALPHA_MODE=1`; representative
   composite and mask inspected against a contrasting plate
 - Browser console — no page error or unhandled rejection during forward state
