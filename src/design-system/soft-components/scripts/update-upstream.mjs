@@ -155,6 +155,21 @@ function manifestDeclarations(path) {
     .filter((declaration) => declaration.customElement && declaration.tagName);
 }
 
+function stabilizeManifestOrder(path, previousPath) {
+  const manifest = readJson(path);
+  const previous = readJson(previousPath);
+  const previousOrder = new Map(previous.modules.map((module, index) => [module.path, index]));
+  manifest.modules.sort((left, right) => {
+    const leftIndex = previousOrder.get(left.path);
+    const rightIndex = previousOrder.get(right.path);
+    if (leftIndex !== undefined && rightIndex !== undefined) return leftIndex - rightIndex;
+    if (leftIndex !== undefined) return -1;
+    if (rightIndex !== undefined) return 1;
+    return left.path.localeCompare(right.path);
+  });
+  writeJson(path, manifest);
+}
+
 export function publicTokens(declaration) {
   const tokens = [];
   for (const attribute of declaration.attributes ?? []) {
@@ -272,7 +287,7 @@ load either this local implementation or the hosted implementation, never both.
 - Pinned commit: \`${baseline.commit}\`
 - Package version: \`${baseline.version}\`
 - Retrieved: ${baseline.retrievedAt} (America/Los_Angeles)
-- Author metadata: ${upstreamPackage.author ?? "Not specified"}
+- Author metadata: \`${upstreamPackage.author ?? "Not specified"}\`
 - License: ${upstreamPackage.license}${licenseCopyright ? `, \`${licenseCopyright}\`` : ""}
 
 The updater verified a clean detached checkout with the upstream typecheck,
@@ -410,6 +425,13 @@ function prepareCandidate({ candidate, checkout, upstreamPackage, commit, option
   cpSync(join(checkout, "package-lock.json"), join(candidate, "package-lock.json"));
   cpSync(join(checkout, "package.js"), join(candidate, "upstream", "package.js"));
   cpSync(join(checkout, "custom-elements.json"), join(candidate, "upstream", "custom-elements.json"));
+  // CEM glob traversal order varies by filesystem. Retain the prior order for
+  // existing modules and append genuinely new modules deterministically, so a
+  // forced re-audit of the same commit stays byte-for-byte idempotent.
+  stabilizeManifestOrder(
+    join(candidate, "upstream", "custom-elements.json"),
+    join(packageRoot, "upstream", "custom-elements.json"),
+  );
   cpSync(join(checkout, "docs", "content", "data.js"), join(candidate, "upstream", "api-data.js"));
   cpSync(join(checkout, "dist", "jelly.d.ts"), join(candidate, "upstream", "jelly.d.ts"));
 

@@ -1,6 +1,6 @@
 # Third-party notices
 
-## Jelly UI v1.1.0
+## Jelly UI 1.1.0
 
 This package incorporates and adapts Jelly UI from
 <https://github.com/jelly-org/ui> at commit
