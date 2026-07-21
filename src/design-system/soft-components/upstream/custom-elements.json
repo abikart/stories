@@ -309,6 +309,100 @@
     },
     {
       "kind": "javascript-module",
+      "path": "src/components/breadcrumbs/index.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "A breadcrumb trail built from light-DOM `<a>` / `<span>` children.",
+          "name": "JellyBreadcrumbs",
+          "slots": [
+            {
+              "description": "The trail items (the last one is the current page).",
+              "name": ""
+            }
+          ],
+          "members": [
+            {
+              "kind": "field",
+              "name": "built",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "kind": "field",
+              "name": "mutationObserver",
+              "type": {
+                "text": "MutationObserver | null"
+              },
+              "default": "null"
+            },
+            {
+              "kind": "method",
+              "name": "render",
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              }
+            },
+            {
+              "kind": "method",
+              "name": "focus",
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              },
+              "parameters": [
+                {
+                  "name": "options",
+                  "optional": true,
+                  "type": {
+                    "text": "FocusOptions"
+                  }
+                }
+              ]
+            }
+          ],
+          "attributes": [
+            {
+              "name": "size",
+              "type": {
+                "text": "\"small\"|\"medium\"|\"large\""
+              },
+              "description": "Typography scale."
+            }
+          ],
+          "superclass": {
+            "name": "HTMLElement"
+          },
+          "tagName": "jelly-breadcrumbs",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "JellyBreadcrumbs",
+          "declaration": {
+            "name": "JellyBreadcrumbs",
+            "module": "src/components/breadcrumbs/index.ts"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "jelly-breadcrumbs",
+          "declaration": {
+            "name": "JellyBreadcrumbs",
+            "module": "src/components/breadcrumbs/index.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "src/components/badge/index.ts",
       "declarations": [
         {
@@ -496,371 +590,6 @@
           "declaration": {
             "name": "JellyBadge",
             "module": "src/components/badge/index.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/components/breadcrumbs/index.ts",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "A breadcrumb trail built from light-DOM `<a>` / `<span>` children.",
-          "name": "JellyBreadcrumbs",
-          "slots": [
-            {
-              "description": "The trail items (the last one is the current page).",
-              "name": ""
-            }
-          ],
-          "members": [
-            {
-              "kind": "field",
-              "name": "built",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false"
-            },
-            {
-              "kind": "field",
-              "name": "mutationObserver",
-              "type": {
-                "text": "MutationObserver | null"
-              },
-              "default": "null"
-            },
-            {
-              "kind": "method",
-              "name": "render",
-              "return": {
-                "type": {
-                  "text": "void"
-                }
-              }
-            },
-            {
-              "kind": "method",
-              "name": "focus",
-              "return": {
-                "type": {
-                  "text": "void"
-                }
-              },
-              "parameters": [
-                {
-                  "name": "options",
-                  "optional": true,
-                  "type": {
-                    "text": "FocusOptions"
-                  }
-                }
-              ]
-            }
-          ],
-          "attributes": [
-            {
-              "name": "size",
-              "type": {
-                "text": "\"small\"|\"medium\"|\"large\""
-              },
-              "description": "Typography scale."
-            }
-          ],
-          "superclass": {
-            "name": "HTMLElement"
-          },
-          "tagName": "jelly-breadcrumbs",
-          "customElement": true
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "JellyBreadcrumbs",
-          "declaration": {
-            "name": "JellyBreadcrumbs",
-            "module": "src/components/breadcrumbs/index.ts"
-          }
-        },
-        {
-          "kind": "custom-element-definition",
-          "name": "jelly-breadcrumbs",
-          "declaration": {
-            "name": "JellyBreadcrumbs",
-            "module": "src/components/breadcrumbs/index.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/components/button/index.ts",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "A capsule-shaped jelly button with soft-body physics.",
-          "name": "JellyButton",
-          "cssProperties": [
-            {
-              "description": "Control height.",
-              "name": "--jelly-button-height",
-              "default": "62px"
-            },
-            {
-              "description": "Corner radius of the painted surface.",
-              "name": "--jelly-button-radius",
-              "default": "999px"
-            },
-            {
-              "description": "Surface fill color (usually set by `variant`).",
-              "name": "--jelly-fill"
-            },
-            {
-              "description": "Label color.",
-              "name": "--jelly-label"
-            }
-          ],
-          "cssParts": [
-            {
-              "description": "The inner native <button>.",
-              "name": "button"
-            },
-            {
-              "description": "The canvas the soft body is painted on.",
-              "name": "jelly"
-            }
-          ],
-          "slots": [
-            {
-              "description": "The button's label content (text, icons).",
-              "name": ""
-            }
-          ],
-          "members": [
-            {
-              "kind": "field",
-              "name": "button",
-              "type": {
-                "text": "HTMLButtonElement"
-              }
-            },
-            {
-              "kind": "field",
-              "name": "activationPointerId",
-              "type": {
-                "text": "number | null"
-              },
-              "default": "null"
-            },
-            {
-              "kind": "field",
-              "name": "cancelPointerClick",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false"
-            },
-            {
-              "kind": "method",
-              "name": "styles",
-              "return": {
-                "type": {
-                  "text": "string"
-                }
-              }
-            },
-            {
-              "kind": "method",
-              "name": "content",
-              "return": {
-                "type": {
-                  "text": "string"
-                }
-              }
-            },
-            {
-              "kind": "method",
-              "name": "shape",
-              "return": {
-                "type": {
-                  "text": "Shape"
-                }
-              },
-              "parameters": [
-                {
-                  "name": "width",
-                  "type": {
-                    "text": "number"
-                  }
-                },
-                {
-                  "name": "height",
-                  "type": {
-                    "text": "number"
-                  }
-                }
-              ]
-            },
-            {
-              "kind": "method",
-              "name": "onBuilt",
-              "return": {
-                "type": {
-                  "text": "void"
-                }
-              }
-            },
-            {
-              "kind": "method",
-              "name": "preventReleaseOutsideActivation",
-              "return": {
-                "type": {
-                  "text": "void"
-                }
-              }
-            },
-            {
-              "kind": "method",
-              "name": "sync",
-              "return": {
-                "type": {
-                  "text": "void"
-                }
-              },
-              "parameters": [
-                {
-                  "name": "name",
-                  "type": {
-                    "text": "string"
-                  }
-                }
-              ]
-            },
-            {
-              "kind": "method",
-              "name": "driveForm",
-              "return": {
-                "type": {
-                  "text": "void"
-                }
-              }
-            },
-            {
-              "kind": "method",
-              "name": "focus",
-              "return": {
-                "type": {
-                  "text": "void"
-                }
-              },
-              "parameters": [
-                {
-                  "name": "options",
-                  "optional": true,
-                  "type": {
-                    "text": "FocusOptions"
-                  }
-                }
-              ]
-            }
-          ],
-          "events": [
-            {
-              "description": "When the button is activated (native event, bubbles composed).",
-              "name": "click"
-            }
-          ],
-          "attributes": [
-            {
-              "name": "disabled",
-              "type": {
-                "text": "boolean"
-              },
-              "description": "Disables the button and removes it from the tab order."
-            },
-            {
-              "name": "label",
-              "type": {
-                "text": "string"
-              },
-              "description": "Accessible name used when the button has no text label."
-            },
-            {
-              "name": "type",
-              "type": {
-                "text": "\"button\"|\"submit\"|\"reset\""
-              },
-              "description": "Native button behavior; submit / reset drive the closest form."
-            },
-            {
-              "name": "shape",
-              "type": {
-                "text": "\"pill\"|\"square\""
-              },
-              "description": "Full pill (default) or rounded-square silhouette."
-            },
-            {
-              "name": "aria-current"
-            },
-            {
-              "name": "aria-expanded"
-            },
-            {
-              "name": "aria-haspopup"
-            },
-            {
-              "name": "aria-controls"
-            },
-            {
-              "name": "aria-pressed"
-            },
-            {
-              "type": {
-                "text": "boolean"
-              },
-              "description": "Stretch the button to the full width of its container.",
-              "name": "block"
-            },
-            {
-              "type": {
-                "text": "\"small\"|\"medium\"|\"large\""
-              },
-              "description": "Control size (sm / md / lg aliases accepted).",
-              "name": "size"
-            },
-            {
-              "type": {
-                "text": "\"white\"|\"rose\"|\"amber\"|\"azure\"|\"mint\"|\"platinum\"|\"graphite\""
-              },
-              "description": "Fill / label color pair.",
-              "name": "variant"
-            }
-          ],
-          "superclass": {
-            "name": "JellyElement",
-            "module": "/src/element/index.js"
-          },
-          "tagName": "jelly-button",
-          "customElement": true
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "JellyButton",
-          "declaration": {
-            "name": "JellyButton",
-            "module": "src/components/button/index.ts"
-          }
-        },
-        {
-          "kind": "custom-element-definition",
-          "name": "jelly-button",
-          "declaration": {
-            "name": "JellyButton",
-            "module": "src/components/button/index.ts"
           }
         }
       ]
@@ -1811,6 +1540,277 @@
           "declaration": {
             "name": "JellyCollapsible",
             "module": "src/components/collapsible/index.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/button/index.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "A capsule-shaped jelly button with soft-body physics.",
+          "name": "JellyButton",
+          "cssProperties": [
+            {
+              "description": "Control height.",
+              "name": "--jelly-button-height",
+              "default": "62px"
+            },
+            {
+              "description": "Corner radius of the painted surface.",
+              "name": "--jelly-button-radius",
+              "default": "999px"
+            },
+            {
+              "description": "Surface fill color (usually set by `variant`).",
+              "name": "--jelly-fill"
+            },
+            {
+              "description": "Label color.",
+              "name": "--jelly-label"
+            }
+          ],
+          "cssParts": [
+            {
+              "description": "The inner native <button>.",
+              "name": "button"
+            },
+            {
+              "description": "The canvas the soft body is painted on.",
+              "name": "jelly"
+            }
+          ],
+          "slots": [
+            {
+              "description": "The button's label content (text, icons).",
+              "name": ""
+            }
+          ],
+          "members": [
+            {
+              "kind": "field",
+              "name": "button",
+              "type": {
+                "text": "HTMLButtonElement"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "activationPointerId",
+              "type": {
+                "text": "number | null"
+              },
+              "default": "null"
+            },
+            {
+              "kind": "field",
+              "name": "cancelPointerClick",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "kind": "method",
+              "name": "styles",
+              "return": {
+                "type": {
+                  "text": "string"
+                }
+              }
+            },
+            {
+              "kind": "method",
+              "name": "content",
+              "return": {
+                "type": {
+                  "text": "string"
+                }
+              }
+            },
+            {
+              "kind": "method",
+              "name": "shape",
+              "return": {
+                "type": {
+                  "text": "Shape"
+                }
+              },
+              "parameters": [
+                {
+                  "name": "width",
+                  "type": {
+                    "text": "number"
+                  }
+                },
+                {
+                  "name": "height",
+                  "type": {
+                    "text": "number"
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "onBuilt",
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              }
+            },
+            {
+              "kind": "method",
+              "name": "preventReleaseOutsideActivation",
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              }
+            },
+            {
+              "kind": "method",
+              "name": "sync",
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              },
+              "parameters": [
+                {
+                  "name": "name",
+                  "type": {
+                    "text": "string"
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "driveForm",
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              }
+            },
+            {
+              "kind": "method",
+              "name": "focus",
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              },
+              "parameters": [
+                {
+                  "name": "options",
+                  "optional": true,
+                  "type": {
+                    "text": "FocusOptions"
+                  }
+                }
+              ]
+            }
+          ],
+          "events": [
+            {
+              "description": "When the button is activated (native event, bubbles composed).",
+              "name": "click"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "disabled",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Disables the button and removes it from the tab order."
+            },
+            {
+              "name": "label",
+              "type": {
+                "text": "string"
+              },
+              "description": "Accessible name used when the button has no text label."
+            },
+            {
+              "name": "type",
+              "type": {
+                "text": "\"button\"|\"submit\"|\"reset\""
+              },
+              "description": "Native button behavior; submit / reset drive the closest form."
+            },
+            {
+              "name": "shape",
+              "type": {
+                "text": "\"pill\"|\"square\""
+              },
+              "description": "Full pill (default) or rounded-square silhouette."
+            },
+            {
+              "name": "aria-current"
+            },
+            {
+              "name": "aria-expanded"
+            },
+            {
+              "name": "aria-haspopup"
+            },
+            {
+              "name": "aria-controls"
+            },
+            {
+              "name": "aria-pressed"
+            },
+            {
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Stretch the button to the full width of its container.",
+              "name": "block"
+            },
+            {
+              "type": {
+                "text": "\"small\"|\"medium\"|\"large\""
+              },
+              "description": "Control size (sm / md / lg aliases accepted).",
+              "name": "size"
+            },
+            {
+              "type": {
+                "text": "\"white\"|\"rose\"|\"amber\"|\"azure\"|\"mint\"|\"platinum\"|\"graphite\""
+              },
+              "description": "Fill / label color pair.",
+              "name": "variant"
+            }
+          ],
+          "superclass": {
+            "name": "JellyElement",
+            "module": "/src/element/index.js"
+          },
+          "tagName": "jelly-button",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "JellyButton",
+          "declaration": {
+            "name": "JellyButton",
+            "module": "src/components/button/index.ts"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "jelly-button",
+          "declaration": {
+            "name": "JellyButton",
+            "module": "src/components/button/index.ts"
           }
         }
       ]
@@ -4414,461 +4414,6 @@
     },
     {
       "kind": "javascript-module",
-      "path": "src/components/progress/index.ts",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "A progress bar with a wobbling jelly fill, or a travelling blob when\nindeterminate.",
-          "name": "JellyProgress",
-          "cssProperties": [
-            {
-              "description": "Fill color.",
-              "name": "--jelly-accent"
-            },
-            {
-              "description": "Empty-track color.",
-              "name": "--jelly-track"
-            }
-          ],
-          "members": [
-            {
-              "kind": "field",
-              "name": "fraction",
-              "type": {
-                "text": "number"
-              },
-              "default": "0"
-            },
-            {
-              "kind": "field",
-              "name": "shownFrac",
-              "type": {
-                "text": "number"
-              },
-              "default": "0"
-            },
-            {
-              "kind": "field",
-              "name": "phase",
-              "type": {
-                "text": "number"
-              },
-              "default": "0"
-            },
-            {
-              "kind": "field",
-              "name": "trackW",
-              "type": {
-                "text": "number"
-              },
-              "default": "0"
-            },
-            {
-              "kind": "field",
-              "name": "trackH",
-              "type": {
-                "text": "number"
-              },
-              "default": "0"
-            },
-            {
-              "kind": "field",
-              "name": "blob",
-              "type": {
-                "text": "JellyBody | null"
-              },
-              "default": "null"
-            },
-            {
-              "kind": "field",
-              "name": "blobW",
-              "type": {
-                "text": "number"
-              },
-              "default": "0"
-            },
-            {
-              "kind": "field",
-              "name": "blobH",
-              "type": {
-                "text": "number"
-              },
-              "default": "0"
-            },
-            {
-              "kind": "field",
-              "name": "wall",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false"
-            },
-            {
-              "kind": "field",
-              "name": "rip",
-              "type": {
-                "text": "number"
-              },
-              "default": "0"
-            },
-            {
-              "kind": "method",
-              "name": "styles",
-              "return": {
-                "type": {
-                  "text": "string"
-                }
-              }
-            },
-            {
-              "kind": "method",
-              "name": "content",
-              "return": {
-                "type": {
-                  "text": "string"
-                }
-              }
-            },
-            {
-              "kind": "method",
-              "name": "shape",
-              "return": {
-                "type": {
-                  "text": "Shape"
-                }
-              },
-              "parameters": [
-                {
-                  "name": "width",
-                  "type": {
-                    "text": "number"
-                  }
-                },
-                {
-                  "name": "height",
-                  "type": {
-                    "text": "number"
-                  }
-                }
-              ]
-            },
-            {
-              "kind": "field",
-              "name": "sizeConfig",
-              "type": {
-                "text": "ProgressSize"
-              },
-              "readonly": true
-            },
-            {
-              "kind": "method",
-              "name": "onBuilt",
-              "return": {
-                "type": {
-                  "text": "void"
-                }
-              }
-            },
-            {
-              "kind": "method",
-              "name": "onShape",
-              "return": {
-                "type": {
-                  "text": "void"
-                }
-              }
-            },
-            {
-              "kind": "field",
-              "name": "indeterminate",
-              "type": {
-                "text": "boolean"
-              }
-            },
-            {
-              "kind": "method",
-              "name": "readValue",
-              "return": {
-                "type": {
-                  "text": "void"
-                }
-              }
-            },
-            {
-              "kind": "method",
-              "name": "roundedClip",
-              "return": {
-                "type": {
-                  "text": "void"
-                }
-              },
-              "parameters": [
-                {
-                  "name": "ctx",
-                  "type": {
-                    "text": "CanvasRenderingContext2D"
-                  }
-                },
-                {
-                  "name": "x",
-                  "type": {
-                    "text": "number"
-                  }
-                },
-                {
-                  "name": "y",
-                  "type": {
-                    "text": "number"
-                  }
-                },
-                {
-                  "name": "w",
-                  "type": {
-                    "text": "number"
-                  }
-                },
-                {
-                  "name": "h",
-                  "type": {
-                    "text": "number"
-                  }
-                },
-                {
-                  "name": "r",
-                  "type": {
-                    "text": "number"
-                  }
-                }
-              ]
-            },
-            {
-              "kind": "method",
-              "name": "frame",
-              "return": {
-                "type": {
-                  "text": "boolean"
-                }
-              },
-              "parameters": [
-                {
-                  "name": "dt",
-                  "type": {
-                    "text": "number"
-                  }
-                }
-              ]
-            },
-            {
-              "kind": "field",
-              "name": "value",
-              "type": {
-                "text": "number"
-              }
-            }
-          ],
-          "attributes": [
-            {
-              "name": "value",
-              "type": {
-                "text": "number"
-              },
-              "description": "Current value."
-            },
-            {
-              "name": "max",
-              "type": {
-                "text": "number"
-              },
-              "description": "Maximum value (defaults to 100)."
-            },
-            {
-              "name": "indeterminate",
-              "type": {
-                "text": "boolean"
-              },
-              "description": "Show a busy blob instead of a value."
-            },
-            {
-              "name": "size",
-              "type": {
-                "text": "\"small\"|\"medium\"|\"large\""
-              },
-              "description": "Bar size."
-            },
-            {
-              "name": "label",
-              "type": {
-                "text": "string"
-              },
-              "description": "Accessible name for the bar."
-            },
-            {
-              "type": {
-                "text": "\"white\"|\"rose\"|\"amber\"|\"azure\"|\"mint\"|\"platinum\"|\"graphite\""
-              },
-              "description": "Fill hue.",
-              "name": "variant"
-            }
-          ],
-          "superclass": {
-            "name": "JellyElement",
-            "module": "/src/element/index.js"
-          },
-          "tagName": "jelly-progress",
-          "customElement": true
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "JellyProgress",
-          "declaration": {
-            "name": "JellyProgress",
-            "module": "src/components/progress/index.ts"
-          }
-        },
-        {
-          "kind": "custom-element-definition",
-          "name": "jelly-progress",
-          "declaration": {
-            "name": "JellyProgress",
-            "module": "src/components/progress/index.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/components/radio-group/index.ts",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "A labelled container that gives its `<jelly-radio>` children radiogroup\nsemantics, a legend and shared sizing.",
-          "name": "JellyRadioGroup",
-          "cssParts": [
-            {
-              "description": "The legend text.",
-              "name": "legend"
-            },
-            {
-              "description": "The radiogroup container.",
-              "name": "items"
-            }
-          ],
-          "slots": [
-            {
-              "description": "The `<jelly-radio>` items.",
-              "name": ""
-            }
-          ],
-          "members": [
-            {
-              "kind": "field",
-              "name": "built",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false"
-            },
-            {
-              "kind": "field",
-              "name": "legendId",
-              "type": {
-                "text": "string"
-              },
-              "default": "''"
-            },
-            {
-              "kind": "field",
-              "name": "legend",
-              "type": {
-                "text": "HTMLElement"
-              }
-            },
-            {
-              "kind": "field",
-              "name": "items",
-              "type": {
-                "text": "HTMLElement"
-              }
-            },
-            {
-              "kind": "field",
-              "name": "slotEl",
-              "type": {
-                "text": "HTMLSlotElement"
-              }
-            },
-            {
-              "kind": "method",
-              "name": "build",
-              "return": {
-                "type": {
-                  "text": "void"
-                }
-              }
-            },
-            {
-              "kind": "method",
-              "name": "syncLabel",
-              "return": {
-                "type": {
-                  "text": "void"
-                }
-              }
-            }
-          ],
-          "attributes": [
-            {
-              "name": "label",
-              "type": {
-                "text": "string"
-              },
-              "description": "The group's legend / accessible name."
-            },
-            {
-              "name": "direction",
-              "type": {
-                "text": "\"horizontal\"|\"vertical\""
-              },
-              "description": "Item flow direction."
-            },
-            {
-              "name": "size",
-              "type": {
-                "text": "\"small\"|\"medium\"|\"large\""
-              },
-              "description": "Size propagated to the radios."
-            }
-          ],
-          "superclass": {
-            "name": "HTMLElement"
-          },
-          "tagName": "jelly-radio-group",
-          "customElement": true
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "JellyRadioGroup",
-          "declaration": {
-            "name": "JellyRadioGroup",
-            "module": "src/components/radio-group/index.ts"
-          }
-        },
-        {
-          "kind": "custom-element-definition",
-          "name": "jelly-radio-group",
-          "declaration": {
-            "name": "JellyRadioGroup",
-            "module": "src/components/radio-group/index.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
       "path": "src/components/radio/index.ts",
       "declarations": [
         {
@@ -5241,150 +4786,32 @@
     },
     {
       "kind": "javascript-module",
-      "path": "src/components/range/index.ts",
+      "path": "src/components/radio-group/index.ts",
       "declarations": [
         {
           "kind": "class",
-          "description": "A dual-thumb range slider that picks a low / high interval.",
-          "name": "JellyRange",
-          "cssProperties": [
-            {
-              "description": "Selected-interval fill and thumb color.",
-              "name": "--jelly-accent"
-            },
-            {
-              "description": "Empty-track color.",
-              "name": "--jelly-track"
-            }
-          ],
+          "description": "A labelled container that gives its `<jelly-radio>` children radiogroup\nsemantics, a legend and shared sizing.",
+          "name": "JellyRadioGroup",
           "cssParts": [
             {
-              "description": "The positioning wrapper.",
-              "name": "wrap"
+              "description": "The legend text.",
+              "name": "legend"
             },
             {
-              "description": "The track surface.",
-              "name": "track"
-            },
+              "description": "The radiogroup container.",
+              "name": "items"
+            }
+          ],
+          "slots": [
             {
-              "description": "Each draggable knob.",
-              "name": "knob"
+              "description": "The `<jelly-radio>` items.",
+              "name": ""
             }
           ],
           "members": [
             {
               "kind": "field",
-              "name": "formAssociated",
-              "type": {
-                "text": "boolean"
-              },
-              "static": true,
-              "default": "true"
-            },
-            {
-              "kind": "field",
-              "name": "internals",
-              "type": {
-                "text": "ElementInternals"
-              }
-            },
-            {
-              "kind": "field",
-              "name": "track",
-              "type": {
-                "text": "HTMLElement"
-              }
-            },
-            {
-              "kind": "field",
-              "name": "knobs",
-              "type": {
-                "text": "HTMLElement[]"
-              }
-            },
-            {
-              "kind": "field",
-              "name": "thumbs",
-              "type": {
-                "text": "JellyBody[] | null"
-              },
-              "default": "null"
-            },
-            {
-              "kind": "field",
-              "name": "val",
-              "type": {
-                "text": "number[]"
-              },
-              "default": "[]"
-            },
-            {
-              "kind": "field",
-              "name": "x",
-              "type": {
-                "text": "array"
-              },
-              "default": "[0, 0]"
-            },
-            {
-              "kind": "field",
-              "name": "xVelocity",
-              "type": {
-                "text": "array"
-              },
-              "default": "[0, 0]"
-            },
-            {
-              "kind": "field",
-              "name": "target",
-              "type": {
-                "text": "array"
-              },
-              "default": "[0, 0]"
-            },
-            {
-              "kind": "field",
-              "name": "pressScale",
-              "type": {
-                "text": "array"
-              },
-              "default": "[1, 1]"
-            },
-            {
-              "kind": "field",
-              "name": "pressScaleVelocity",
-              "type": {
-                "text": "array"
-              },
-              "default": "[0, 0]"
-            },
-            {
-              "kind": "field",
-              "name": "active",
-              "type": {
-                "text": "number"
-              },
-              "default": "1"
-            },
-            {
-              "kind": "field",
-              "name": "drag",
-              "type": {
-                "text": "number | null"
-              },
-              "default": "null"
-            },
-            {
-              "kind": "field",
-              "name": "pointerId",
-              "type": {
-                "text": "number | null"
-              },
-              "default": "null"
-            },
-            {
-              "kind": "field",
-              "name": "windowBound",
+              "name": "built",
               "type": {
                 "text": "boolean"
               },
@@ -5392,608 +4819,97 @@
             },
             {
               "kind": "field",
-              "name": "trackW",
-              "type": {
-                "text": "number"
-              },
-              "default": "0"
-            },
-            {
-              "kind": "field",
-              "name": "trackH",
-              "type": {
-                "text": "number"
-              },
-              "default": "0"
-            },
-            {
-              "kind": "method",
-              "name": "styles",
-              "return": {
-                "type": {
-                  "text": "string"
-                }
-              }
-            },
-            {
-              "kind": "method",
-              "name": "content",
-              "return": {
-                "type": {
-                  "text": "string"
-                }
-              }
-            },
-            {
-              "kind": "method",
-              "name": "shape",
-              "return": {
-                "type": {
-                  "text": "Shape"
-                }
-              },
-              "parameters": [
-                {
-                  "name": "width",
-                  "type": {
-                    "text": "number"
-                  }
-                },
-                {
-                  "name": "height",
-                  "type": {
-                    "text": "number"
-                  }
-                }
-              ]
-            },
-            {
-              "kind": "field",
-              "name": "sizeKey",
-              "type": {
-                "text": "Size"
-              },
-              "readonly": true
-            },
-            {
-              "kind": "field",
-              "name": "sizeConfig",
-              "type": {
-                "text": "RangeSize"
-              },
-              "readonly": true
-            },
-            {
-              "kind": "field",
-              "name": "min",
-              "type": {
-                "text": "number"
-              },
-              "readonly": true
-            },
-            {
-              "kind": "field",
-              "name": "max",
-              "type": {
-                "text": "number"
-              },
-              "readonly": true
-            },
-            {
-              "kind": "field",
-              "name": "step",
-              "type": {
-                "text": "number"
-              },
-              "readonly": true
-            },
-            {
-              "kind": "field",
-              "name": "travel",
-              "type": {
-                "text": "number"
-              },
-              "readonly": true
-            },
-            {
-              "kind": "method",
-              "name": "onBuilt",
-              "return": {
-                "type": {
-                  "text": "void"
-                }
-              }
-            },
-            {
-              "kind": "method",
-              "name": "handleEvent",
-              "return": {
-                "type": {
-                  "text": "void"
-                }
-              },
-              "parameters": [
-                {
-                  "name": "event",
-                  "type": {
-                    "text": "Event"
-                  }
-                }
-              ]
-            },
-            {
-              "kind": "method",
-              "name": "knobIndex",
-              "return": {
-                "type": {
-                  "text": "number | null"
-                }
-              },
-              "parameters": [
-                {
-                  "name": "event",
-                  "type": {
-                    "text": "Event"
-                  }
-                }
-              ]
-            },
-            {
-              "kind": "method",
-              "name": "onShape",
-              "return": {
-                "type": {
-                  "text": "void"
-                }
-              }
-            },
-            {
-              "kind": "method",
-              "name": "fraction",
-              "return": {
-                "type": {
-                  "text": "number"
-                }
-              },
-              "parameters": [
-                {
-                  "name": "value",
-                  "type": {
-                    "text": "number"
-                  }
-                }
-              ]
-            },
-            {
-              "kind": "method",
-              "name": "logicalX",
-              "return": {
-                "type": {
-                  "text": "number"
-                }
-              },
-              "parameters": [
-                {
-                  "name": "value",
-                  "type": {
-                    "text": "number"
-                  }
-                }
-              ]
-            },
-            {
-              "kind": "method",
-              "name": "valToX",
-              "return": {
-                "type": {
-                  "text": "number"
-                }
-              },
-              "parameters": [
-                {
-                  "name": "value",
-                  "type": {
-                    "text": "number"
-                  }
-                }
-              ]
-            },
-            {
-              "kind": "method",
-              "name": "xToVal",
-              "return": {
-                "type": {
-                  "text": "number"
-                }
-              },
-              "parameters": [
-                {
-                  "name": "x",
-                  "type": {
-                    "text": "number"
-                  }
-                }
-              ]
-            },
-            {
-              "kind": "method",
-              "name": "normalizeValues",
-              "return": {
-                "type": {
-                  "text": "void"
-                }
-              }
-            },
-            {
-              "kind": "method",
-              "name": "syncValueState",
-              "return": {
-                "type": {
-                  "text": "void"
-                }
-              }
-            },
-            {
-              "kind": "method",
-              "name": "setVal",
-              "return": {
-                "type": {
-                  "text": "void"
-                }
-              },
-              "parameters": [
-                {
-                  "name": "i",
-                  "type": {
-                    "text": "number"
-                  }
-                },
-                {
-                  "name": "value",
-                  "type": {
-                    "text": "number"
-                  }
-                },
-                {
-                  "name": "fromUser",
-                  "default": "false"
-                }
-              ]
-            },
-            {
-              "kind": "method",
-              "name": "reflectKnobs",
-              "return": {
-                "type": {
-                  "text": "void"
-                }
-              }
-            },
-            {
-              "kind": "method",
-              "name": "syncA11y",
-              "return": {
-                "type": {
-                  "text": "void"
-                }
-              }
-            },
-            {
-              "kind": "method",
-              "name": "syncFormValue",
-              "return": {
-                "type": {
-                  "text": "void"
-                }
-              }
-            },
-            {
-              "kind": "method",
-              "name": "nearest",
-              "return": {
-                "type": {
-                  "text": "number"
-                }
-              },
-              "parameters": [
-                {
-                  "name": "x",
-                  "type": {
-                    "text": "number"
-                  }
-                }
-              ]
-            },
-            {
-              "kind": "method",
-              "name": "bindWindow",
-              "return": {
-                "type": {
-                  "text": "void"
-                }
-              }
-            },
-            {
-              "kind": "method",
-              "name": "unbindWindow",
-              "return": {
-                "type": {
-                  "text": "void"
-                }
-              }
-            },
-            {
-              "kind": "method",
-              "name": "down",
-              "return": {
-                "type": {
-                  "text": "void"
-                }
-              },
-              "parameters": [
-                {
-                  "name": "event",
-                  "type": {
-                    "text": "PointerEvent"
-                  }
-                },
-                {
-                  "name": "forced",
-                  "type": {
-                    "text": "number | null"
-                  }
-                }
-              ]
-            },
-            {
-              "kind": "method",
-              "name": "move",
-              "return": {
-                "type": {
-                  "text": "void"
-                }
-              },
-              "parameters": [
-                {
-                  "name": "event",
-                  "type": {
-                    "text": "PointerEvent"
-                  }
-                }
-              ]
-            },
-            {
-              "kind": "method",
-              "name": "up",
-              "return": {
-                "type": {
-                  "text": "void"
-                }
-              },
-              "parameters": [
-                {
-                  "name": "event",
-                  "type": {
-                    "text": "PointerEvent"
-                  }
-                }
-              ]
-            },
-            {
-              "kind": "method",
-              "name": "key",
-              "return": {
-                "type": {
-                  "text": "void"
-                }
-              },
-              "parameters": [
-                {
-                  "name": "event",
-                  "type": {
-                    "text": "KeyboardEvent"
-                  }
-                },
-                {
-                  "name": "i",
-                  "type": {
-                    "text": "number | null"
-                  }
-                }
-              ]
-            },
-            {
-              "kind": "method",
-              "name": "focusKnob",
-              "return": {
-                "type": {
-                  "text": "void"
-                }
-              },
-              "parameters": [
-                {
-                  "name": "event",
-                  "type": {
-                    "text": "FocusEvent"
-                  }
-                }
-              ]
-            },
-            {
-              "kind": "method",
-              "name": "blurKnob",
-              "return": {
-                "type": {
-                  "text": "void"
-                }
-              }
-            },
-            {
-              "kind": "method",
-              "name": "frame",
-              "return": {
-                "type": {
-                  "text": "boolean"
-                }
-              },
-              "parameters": [
-                {
-                  "name": "dt",
-                  "type": {
-                    "text": "number"
-                  }
-                }
-              ]
-            },
-            {
-              "kind": "method",
-              "name": "sync",
-              "return": {
-                "type": {
-                  "text": "void"
-                }
-              },
-              "parameters": [
-                {
-                  "name": "name",
-                  "type": {
-                    "text": "string"
-                  }
-                }
-              ]
-            },
-            {
-              "kind": "field",
-              "name": "value",
+              "name": "legendId",
               "type": {
                 "text": "string"
               },
-              "readonly": true
+              "default": "''"
+            },
+            {
+              "kind": "field",
+              "name": "legend",
+              "type": {
+                "text": "HTMLElement"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "items",
+              "type": {
+                "text": "HTMLElement"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "slotEl",
+              "type": {
+                "text": "HTMLSlotElement"
+              }
             },
             {
               "kind": "method",
-              "name": "focus",
+              "name": "build",
               "return": {
                 "type": {
                   "text": "void"
                 }
-              },
-              "parameters": [
-                {
-                  "name": "options",
-                  "optional": true,
-                  "type": {
-                    "text": "FocusOptions"
-                  }
-                }
-              ]
-            }
-          ],
-          "events": [
-            {
-              "description": "Continuously as a bound changes.",
-              "name": "input"
+              }
             },
             {
-              "description": "When a bound is committed.",
-              "name": "change"
+              "kind": "method",
+              "name": "syncLabel",
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              }
             }
           ],
           "attributes": [
-            {
-              "name": "min",
-              "type": {
-                "text": "number"
-              },
-              "description": "Minimum value (defaults to 0)."
-            },
-            {
-              "name": "max",
-              "type": {
-                "text": "number"
-              },
-              "description": "Maximum value (defaults to 100)."
-            },
-            {
-              "name": "step",
-              "type": {
-                "text": "number"
-              },
-              "description": "Step increment (defaults to 1)."
-            },
-            {
-              "name": "low",
-              "type": {
-                "text": "number"
-              },
-              "description": "Lower bound of the selection."
-            },
-            {
-              "name": "high",
-              "type": {
-                "text": "number"
-              },
-              "description": "Upper bound of the selection."
-            },
             {
               "name": "label",
               "type": {
                 "text": "string"
               },
-              "description": "Accessible name for the control."
+              "description": "The group's legend / accessible name."
             },
             {
-              "name": "disabled",
+              "name": "direction",
               "type": {
-                "text": "boolean"
+                "text": "\"horizontal\"|\"vertical\""
               },
-              "description": "Disable the control and remove it from the tab order."
+              "description": "Item flow direction."
             },
             {
               "name": "size",
               "type": {
                 "text": "\"small\"|\"medium\"|\"large\""
               },
-              "description": "Control size."
-            },
-            {
-              "type": {
-                "text": "string"
-              },
-              "description": "Form field name submitted with the value.",
-              "name": "name"
-            },
-            {
-              "type": {
-                "text": "\"white\"|\"rose\"|\"amber\"|\"azure\"|\"mint\"|\"platinum\"|\"graphite\""
-              },
-              "description": "Accent fill hue.",
-              "name": "variant"
+              "description": "Size propagated to the radios."
             }
           ],
           "superclass": {
-            "name": "JellyElement",
-            "module": "/src/element/index.js"
+            "name": "HTMLElement"
           },
-          "tagName": "jelly-range",
+          "tagName": "jelly-radio-group",
           "customElement": true
         }
       ],
       "exports": [
         {
           "kind": "js",
-          "name": "JellyRange",
+          "name": "JellyRadioGroup",
           "declaration": {
-            "name": "JellyRange",
-            "module": "src/components/range/index.ts"
+            "name": "JellyRadioGroup",
+            "module": "src/components/radio-group/index.ts"
           }
         },
         {
           "kind": "custom-element-definition",
-          "name": "jelly-range",
+          "name": "jelly-radio-group",
           "declaration": {
-            "name": "JellyRange",
-            "module": "src/components/range/index.ts"
+            "name": "JellyRadioGroup",
+            "module": "src/components/radio-group/index.ts"
           }
         }
       ]
@@ -7646,38 +6562,102 @@
     },
     {
       "kind": "javascript-module",
-      "path": "src/components/skeleton/index.ts",
+      "path": "src/components/progress/index.ts",
       "declarations": [
         {
           "kind": "class",
-          "description": "A soft loading placeholder that gently breathes.",
-          "name": "JellySkeleton",
+          "description": "A progress bar with a wobbling jelly fill, or a travelling blob when\nindeterminate.",
+          "name": "JellyProgress",
           "cssProperties": [
             {
-              "description": "Placeholder fill color.",
-              "name": "--jelly-fill"
+              "description": "Fill color.",
+              "name": "--jelly-accent"
+            },
+            {
+              "description": "Empty-track color.",
+              "name": "--jelly-track"
             }
           ],
           "members": [
             {
               "kind": "field",
-              "name": "phase"
+              "name": "fraction",
+              "type": {
+                "text": "number"
+              },
+              "default": "0"
             },
             {
               "kind": "field",
-              "name": "timeAccumulator"
+              "name": "shownFrac",
+              "type": {
+                "text": "number"
+              },
+              "default": "0"
             },
             {
               "kind": "field",
-              "name": "breath"
+              "name": "phase",
+              "type": {
+                "text": "number"
+              },
+              "default": "0"
             },
             {
               "kind": "field",
-              "name": "sweepSpeed"
+              "name": "trackW",
+              "type": {
+                "text": "number"
+              },
+              "default": "0"
             },
             {
               "kind": "field",
-              "name": "breathEvery"
+              "name": "trackH",
+              "type": {
+                "text": "number"
+              },
+              "default": "0"
+            },
+            {
+              "kind": "field",
+              "name": "blob",
+              "type": {
+                "text": "JellyBody | null"
+              },
+              "default": "null"
+            },
+            {
+              "kind": "field",
+              "name": "blobW",
+              "type": {
+                "text": "number"
+              },
+              "default": "0"
+            },
+            {
+              "kind": "field",
+              "name": "blobH",
+              "type": {
+                "text": "number"
+              },
+              "default": "0"
+            },
+            {
+              "kind": "field",
+              "name": "wall",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "kind": "field",
+              "name": "rip",
+              "type": {
+                "text": "number"
+              },
+              "default": "0"
             },
             {
               "kind": "method",
@@ -7721,8 +6701,773 @@
               ]
             },
             {
+              "kind": "field",
+              "name": "sizeConfig",
+              "type": {
+                "text": "ProgressSize"
+              },
+              "readonly": true
+            },
+            {
               "kind": "method",
               "name": "onBuilt",
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              }
+            },
+            {
+              "kind": "method",
+              "name": "onShape",
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              }
+            },
+            {
+              "kind": "field",
+              "name": "indeterminate",
+              "type": {
+                "text": "boolean"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "readValue",
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              }
+            },
+            {
+              "kind": "method",
+              "name": "roundedClip",
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              },
+              "parameters": [
+                {
+                  "name": "ctx",
+                  "type": {
+                    "text": "CanvasRenderingContext2D"
+                  }
+                },
+                {
+                  "name": "x",
+                  "type": {
+                    "text": "number"
+                  }
+                },
+                {
+                  "name": "y",
+                  "type": {
+                    "text": "number"
+                  }
+                },
+                {
+                  "name": "w",
+                  "type": {
+                    "text": "number"
+                  }
+                },
+                {
+                  "name": "h",
+                  "type": {
+                    "text": "number"
+                  }
+                },
+                {
+                  "name": "r",
+                  "type": {
+                    "text": "number"
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "frame",
+              "return": {
+                "type": {
+                  "text": "boolean"
+                }
+              },
+              "parameters": [
+                {
+                  "name": "dt",
+                  "type": {
+                    "text": "number"
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "field",
+              "name": "value",
+              "type": {
+                "text": "number"
+              }
+            }
+          ],
+          "attributes": [
+            {
+              "name": "value",
+              "type": {
+                "text": "number"
+              },
+              "description": "Current value."
+            },
+            {
+              "name": "max",
+              "type": {
+                "text": "number"
+              },
+              "description": "Maximum value (defaults to 100)."
+            },
+            {
+              "name": "indeterminate",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Show a busy blob instead of a value."
+            },
+            {
+              "name": "size",
+              "type": {
+                "text": "\"small\"|\"medium\"|\"large\""
+              },
+              "description": "Bar size."
+            },
+            {
+              "name": "label",
+              "type": {
+                "text": "string"
+              },
+              "description": "Accessible name for the bar."
+            },
+            {
+              "type": {
+                "text": "\"white\"|\"rose\"|\"amber\"|\"azure\"|\"mint\"|\"platinum\"|\"graphite\""
+              },
+              "description": "Fill hue.",
+              "name": "variant"
+            }
+          ],
+          "superclass": {
+            "name": "JellyElement",
+            "module": "/src/element/index.js"
+          },
+          "tagName": "jelly-progress",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "JellyProgress",
+          "declaration": {
+            "name": "JellyProgress",
+            "module": "src/components/progress/index.ts"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "jelly-progress",
+          "declaration": {
+            "name": "JellyProgress",
+            "module": "src/components/progress/index.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/range/index.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "A dual-thumb range slider that picks a low / high interval.",
+          "name": "JellyRange",
+          "cssProperties": [
+            {
+              "description": "Selected-interval fill and thumb color.",
+              "name": "--jelly-accent"
+            },
+            {
+              "description": "Empty-track color.",
+              "name": "--jelly-track"
+            }
+          ],
+          "cssParts": [
+            {
+              "description": "The positioning wrapper.",
+              "name": "wrap"
+            },
+            {
+              "description": "The track surface.",
+              "name": "track"
+            },
+            {
+              "description": "Each draggable knob.",
+              "name": "knob"
+            }
+          ],
+          "members": [
+            {
+              "kind": "field",
+              "name": "formAssociated",
+              "type": {
+                "text": "boolean"
+              },
+              "static": true,
+              "default": "true"
+            },
+            {
+              "kind": "field",
+              "name": "internals",
+              "type": {
+                "text": "ElementInternals"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "track",
+              "type": {
+                "text": "HTMLElement"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "knobs",
+              "type": {
+                "text": "HTMLElement[]"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "thumbs",
+              "type": {
+                "text": "JellyBody[] | null"
+              },
+              "default": "null"
+            },
+            {
+              "kind": "field",
+              "name": "val",
+              "type": {
+                "text": "number[]"
+              },
+              "default": "[]"
+            },
+            {
+              "kind": "field",
+              "name": "x",
+              "type": {
+                "text": "array"
+              },
+              "default": "[0, 0]"
+            },
+            {
+              "kind": "field",
+              "name": "xVelocity",
+              "type": {
+                "text": "array"
+              },
+              "default": "[0, 0]"
+            },
+            {
+              "kind": "field",
+              "name": "target",
+              "type": {
+                "text": "array"
+              },
+              "default": "[0, 0]"
+            },
+            {
+              "kind": "field",
+              "name": "pressScale",
+              "type": {
+                "text": "array"
+              },
+              "default": "[1, 1]"
+            },
+            {
+              "kind": "field",
+              "name": "pressScaleVelocity",
+              "type": {
+                "text": "array"
+              },
+              "default": "[0, 0]"
+            },
+            {
+              "kind": "field",
+              "name": "active",
+              "type": {
+                "text": "number"
+              },
+              "default": "1"
+            },
+            {
+              "kind": "field",
+              "name": "drag",
+              "type": {
+                "text": "number | null"
+              },
+              "default": "null"
+            },
+            {
+              "kind": "field",
+              "name": "pointerId",
+              "type": {
+                "text": "number | null"
+              },
+              "default": "null"
+            },
+            {
+              "kind": "field",
+              "name": "windowBound",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "kind": "field",
+              "name": "trackW",
+              "type": {
+                "text": "number"
+              },
+              "default": "0"
+            },
+            {
+              "kind": "field",
+              "name": "trackH",
+              "type": {
+                "text": "number"
+              },
+              "default": "0"
+            },
+            {
+              "kind": "method",
+              "name": "styles",
+              "return": {
+                "type": {
+                  "text": "string"
+                }
+              }
+            },
+            {
+              "kind": "method",
+              "name": "content",
+              "return": {
+                "type": {
+                  "text": "string"
+                }
+              }
+            },
+            {
+              "kind": "method",
+              "name": "shape",
+              "return": {
+                "type": {
+                  "text": "Shape"
+                }
+              },
+              "parameters": [
+                {
+                  "name": "width",
+                  "type": {
+                    "text": "number"
+                  }
+                },
+                {
+                  "name": "height",
+                  "type": {
+                    "text": "number"
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "field",
+              "name": "sizeKey",
+              "type": {
+                "text": "Size"
+              },
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "sizeConfig",
+              "type": {
+                "text": "RangeSize"
+              },
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "min",
+              "type": {
+                "text": "number"
+              },
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "max",
+              "type": {
+                "text": "number"
+              },
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "step",
+              "type": {
+                "text": "number"
+              },
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "travel",
+              "type": {
+                "text": "number"
+              },
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "onBuilt",
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              }
+            },
+            {
+              "kind": "method",
+              "name": "handleEvent",
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              },
+              "parameters": [
+                {
+                  "name": "event",
+                  "type": {
+                    "text": "Event"
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "knobIndex",
+              "return": {
+                "type": {
+                  "text": "number | null"
+                }
+              },
+              "parameters": [
+                {
+                  "name": "event",
+                  "type": {
+                    "text": "Event"
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "onShape",
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              }
+            },
+            {
+              "kind": "method",
+              "name": "fraction",
+              "return": {
+                "type": {
+                  "text": "number"
+                }
+              },
+              "parameters": [
+                {
+                  "name": "value",
+                  "type": {
+                    "text": "number"
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "logicalX",
+              "return": {
+                "type": {
+                  "text": "number"
+                }
+              },
+              "parameters": [
+                {
+                  "name": "value",
+                  "type": {
+                    "text": "number"
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "valToX",
+              "return": {
+                "type": {
+                  "text": "number"
+                }
+              },
+              "parameters": [
+                {
+                  "name": "value",
+                  "type": {
+                    "text": "number"
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "xToVal",
+              "return": {
+                "type": {
+                  "text": "number"
+                }
+              },
+              "parameters": [
+                {
+                  "name": "x",
+                  "type": {
+                    "text": "number"
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "normalizeValues",
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              }
+            },
+            {
+              "kind": "method",
+              "name": "syncValueState",
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              }
+            },
+            {
+              "kind": "method",
+              "name": "setVal",
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              },
+              "parameters": [
+                {
+                  "name": "i",
+                  "type": {
+                    "text": "number"
+                  }
+                },
+                {
+                  "name": "value",
+                  "type": {
+                    "text": "number"
+                  }
+                },
+                {
+                  "name": "fromUser",
+                  "default": "false"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "reflectKnobs",
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              }
+            },
+            {
+              "kind": "method",
+              "name": "syncA11y",
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              }
+            },
+            {
+              "kind": "method",
+              "name": "syncFormValue",
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              }
+            },
+            {
+              "kind": "method",
+              "name": "nearest",
+              "return": {
+                "type": {
+                  "text": "number"
+                }
+              },
+              "parameters": [
+                {
+                  "name": "x",
+                  "type": {
+                    "text": "number"
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "bindWindow",
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              }
+            },
+            {
+              "kind": "method",
+              "name": "unbindWindow",
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              }
+            },
+            {
+              "kind": "method",
+              "name": "down",
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              },
+              "parameters": [
+                {
+                  "name": "event",
+                  "type": {
+                    "text": "PointerEvent"
+                  }
+                },
+                {
+                  "name": "forced",
+                  "type": {
+                    "text": "number | null"
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "move",
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              },
+              "parameters": [
+                {
+                  "name": "event",
+                  "type": {
+                    "text": "PointerEvent"
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "up",
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              },
+              "parameters": [
+                {
+                  "name": "event",
+                  "type": {
+                    "text": "PointerEvent"
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "key",
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              },
+              "parameters": [
+                {
+                  "name": "event",
+                  "type": {
+                    "text": "KeyboardEvent"
+                  }
+                },
+                {
+                  "name": "i",
+                  "type": {
+                    "text": "number | null"
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "focusKnob",
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              },
+              "parameters": [
+                {
+                  "name": "event",
+                  "type": {
+                    "text": "FocusEvent"
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "blurKnob",
               "return": {
                 "type": {
                   "text": "void"
@@ -7745,40 +7490,156 @@
                   }
                 }
               ]
+            },
+            {
+              "kind": "method",
+              "name": "sync",
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              },
+              "parameters": [
+                {
+                  "name": "name",
+                  "type": {
+                    "text": "string"
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "field",
+              "name": "value",
+              "type": {
+                "text": "string"
+              },
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "focus",
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              },
+              "parameters": [
+                {
+                  "name": "options",
+                  "optional": true,
+                  "type": {
+                    "text": "FocusOptions"
+                  }
+                }
+              ]
+            }
+          ],
+          "events": [
+            {
+              "description": "Continuously as a bound changes.",
+              "name": "input"
+            },
+            {
+              "description": "When a bound is committed.",
+              "name": "change"
             }
           ],
           "attributes": [
             {
-              "name": "shape",
+              "name": "min",
               "type": {
-                "text": "\"line\"|\"rect\"|\"square\"|\"circle\""
+                "text": "number"
               },
-              "description": "Placeholder silhouette preset."
+              "description": "Minimum value (defaults to 0)."
+            },
+            {
+              "name": "max",
+              "type": {
+                "text": "number"
+              },
+              "description": "Maximum value (defaults to 100)."
+            },
+            {
+              "name": "step",
+              "type": {
+                "text": "number"
+              },
+              "description": "Step increment (defaults to 1)."
+            },
+            {
+              "name": "low",
+              "type": {
+                "text": "number"
+              },
+              "description": "Lower bound of the selection."
+            },
+            {
+              "name": "high",
+              "type": {
+                "text": "number"
+              },
+              "description": "Upper bound of the selection."
+            },
+            {
+              "name": "label",
+              "type": {
+                "text": "string"
+              },
+              "description": "Accessible name for the control."
+            },
+            {
+              "name": "disabled",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Disable the control and remove it from the tab order."
+            },
+            {
+              "name": "size",
+              "type": {
+                "text": "\"small\"|\"medium\"|\"large\""
+              },
+              "description": "Control size."
+            },
+            {
+              "type": {
+                "text": "string"
+              },
+              "description": "Form field name submitted with the value.",
+              "name": "name"
+            },
+            {
+              "type": {
+                "text": "\"white\"|\"rose\"|\"amber\"|\"azure\"|\"mint\"|\"platinum\"|\"graphite\""
+              },
+              "description": "Accent fill hue.",
+              "name": "variant"
             }
           ],
           "superclass": {
             "name": "JellyElement",
             "module": "/src/element/index.js"
           },
-          "tagName": "jelly-skeleton",
+          "tagName": "jelly-range",
           "customElement": true
         }
       ],
       "exports": [
         {
           "kind": "js",
-          "name": "JellySkeleton",
+          "name": "JellyRange",
           "declaration": {
-            "name": "JellySkeleton",
-            "module": "src/components/skeleton/index.ts"
+            "name": "JellyRange",
+            "module": "src/components/range/index.ts"
           }
         },
         {
           "kind": "custom-element-definition",
-          "name": "jelly-skeleton",
+          "name": "jelly-range",
           "declaration": {
-            "name": "JellySkeleton",
-            "module": "src/components/skeleton/index.ts"
+            "name": "JellyRange",
+            "module": "src/components/range/index.ts"
           }
         }
       ]
@@ -8347,54 +8208,38 @@
     },
     {
       "kind": "javascript-module",
-      "path": "src/components/spinner/index.ts",
+      "path": "src/components/skeleton/index.ts",
       "declarations": [
         {
           "kind": "class",
-          "description": "A loading spinner: gooey travelling dots (default) or a morphing blob.",
-          "name": "JellySpinner",
+          "description": "A soft loading placeholder that gently breathes.",
+          "name": "JellySkeleton",
           "cssProperties": [
             {
-              "description": "Dot / blob color.",
+              "description": "Placeholder fill color.",
               "name": "--jelly-fill"
             }
           ],
           "members": [
             {
               "kind": "field",
-              "name": "timeAccumulator",
-              "type": {
-                "text": "number"
-              },
-              "default": "0"
+              "name": "phase"
             },
             {
               "kind": "field",
-              "name": "idx",
-              "type": {
-                "text": "number"
-              },
-              "default": "0"
+              "name": "timeAccumulator"
             },
             {
               "kind": "field",
-              "name": "angle",
-              "type": {
-                "text": "number"
-              },
-              "default": "0"
+              "name": "breath"
             },
             {
               "kind": "field",
-              "name": "instanceId"
+              "name": "sweepSpeed"
             },
             {
               "kind": "field",
-              "name": "type",
-              "type": {
-                "text": "string"
-              },
-              "readonly": true
+              "name": "breathEvery"
             },
             {
               "kind": "method",
@@ -8466,57 +8311,36 @@
           ],
           "attributes": [
             {
-              "name": "type",
+              "name": "shape",
               "type": {
-                "text": "\"dots\"|\"blob\""
+                "text": "\"line\"|\"rect\"|\"square\"|\"circle\""
               },
-              "description": "Spinner flavor."
-            },
-            {
-              "name": "variant",
-              "type": {
-                "text": "\"white\"|\"rose\"|\"amber\"|\"azure\"|\"mint\"|\"platinum\"|\"graphite\""
-              },
-              "description": "Fill hue."
-            },
-            {
-              "name": "size",
-              "type": {
-                "text": "\"small\"|\"medium\"|\"large\""
-              },
-              "description": "Spinner size."
-            },
-            {
-              "name": "label",
-              "type": {
-                "text": "string"
-              },
-              "description": "Accessible loading label (defaults to \"Loading\")."
+              "description": "Placeholder silhouette preset."
             }
           ],
           "superclass": {
             "name": "JellyElement",
             "module": "/src/element/index.js"
           },
-          "tagName": "jelly-spinner",
+          "tagName": "jelly-skeleton",
           "customElement": true
         }
       ],
       "exports": [
         {
           "kind": "js",
-          "name": "JellySpinner",
+          "name": "JellySkeleton",
           "declaration": {
-            "name": "JellySpinner",
-            "module": "src/components/spinner/index.ts"
+            "name": "JellySkeleton",
+            "module": "src/components/skeleton/index.ts"
           }
         },
         {
           "kind": "custom-element-definition",
-          "name": "jelly-spinner",
+          "name": "jelly-skeleton",
           "declaration": {
-            "name": "JellySpinner",
-            "module": "src/components/spinner/index.ts"
+            "name": "JellySkeleton",
+            "module": "src/components/skeleton/index.ts"
           }
         }
       ]
@@ -9012,277 +8836,6 @@
     },
     {
       "kind": "javascript-module",
-      "path": "src/components/tabs/index.ts",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "One tab panel: shown when its tab is active, hidden otherwise.",
-          "name": "JellyTabPanel",
-          "slots": [
-            {
-              "description": "The panel content.",
-              "name": ""
-            }
-          ],
-          "members": [
-            {
-              "kind": "field",
-              "name": "label",
-              "type": {
-                "text": "string"
-              },
-              "readonly": true
-            }
-          ],
-          "attributes": [
-            {
-              "type": {
-                "text": "string"
-              },
-              "description": "The tab label shown in the tab bar.",
-              "name": "label"
-            },
-            {
-              "type": {
-                "text": "string"
-              },
-              "description": "The panel's value (defaults to its index).",
-              "name": "value"
-            },
-            {
-              "type": {
-                "text": "boolean"
-              },
-              "description": "Whether this panel is initially active.",
-              "name": "active"
-            }
-          ],
-          "superclass": {
-            "name": "HTMLElement"
-          },
-          "tagName": "jelly-tab-panel",
-          "customElement": true
-        },
-        {
-          "kind": "class",
-          "description": "A tabbed view whose bar is a sliding jelly segmented control.",
-          "name": "JellyTabs",
-          "cssParts": [
-            {
-              "description": "The inner segmented tab bar.",
-              "name": "tabs"
-            }
-          ],
-          "slots": [
-            {
-              "description": "The `<jelly-tab-panel>` panels.",
-              "name": ""
-            }
-          ],
-          "members": [
-            {
-              "kind": "field",
-              "name": "built",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false"
-            },
-            {
-              "kind": "field",
-              "name": "segmented",
-              "type": {
-                "text": "TabBar | null"
-              },
-              "default": "null"
-            },
-            {
-              "kind": "field",
-              "name": "current",
-              "type": {
-                "text": "string | null"
-              },
-              "default": "null"
-            },
-            {
-              "kind": "method",
-              "name": "syncValue",
-              "return": {
-                "type": {
-                  "text": "void"
-                }
-              }
-            },
-            {
-              "kind": "method",
-              "name": "syncSize",
-              "return": {
-                "type": {
-                  "text": "void"
-                }
-              }
-            },
-            {
-              "kind": "method",
-              "name": "panelValue",
-              "return": {
-                "type": {
-                  "text": "string"
-                }
-              },
-              "parameters": [
-                {
-                  "name": "panel",
-                  "type": {
-                    "text": "JellyTabPanel"
-                  }
-                },
-                {
-                  "name": "index",
-                  "type": {
-                    "text": "number"
-                  }
-                }
-              ]
-            },
-            {
-              "kind": "method",
-              "name": "panelLabel",
-              "return": {
-                "type": {
-                  "text": "string"
-                }
-              },
-              "parameters": [
-                {
-                  "name": "panel",
-                  "type": {
-                    "text": "JellyTabPanel"
-                  }
-                },
-                {
-                  "name": "index",
-                  "type": {
-                    "text": "number"
-                  }
-                }
-              ]
-            },
-            {
-              "kind": "method",
-              "name": "activate",
-              "return": {
-                "type": {
-                  "text": "void"
-                }
-              },
-              "parameters": [
-                {
-                  "name": "value",
-                  "type": {
-                    "text": "string"
-                  }
-                },
-                {
-                  "name": "animate",
-                  "type": {
-                    "text": "boolean"
-                  }
-                }
-              ]
-            },
-            {
-              "kind": "field",
-              "name": "value",
-              "type": {
-                "text": "string | undefined"
-              }
-            },
-            {
-              "kind": "method",
-              "name": "focus",
-              "return": {
-                "type": {
-                  "text": "void"
-                }
-              },
-              "parameters": [
-                {
-                  "name": "options",
-                  "optional": true,
-                  "type": {
-                    "text": "FocusOptions"
-                  }
-                }
-              ]
-            }
-          ],
-          "events": [
-            {
-              "description": "With `detail.value` when the active tab changes.",
-              "name": "change"
-            }
-          ],
-          "attributes": [
-            {
-              "name": "size",
-              "type": {
-                "text": "\"small\"|\"medium\"|\"large\""
-              },
-              "description": "Tab-bar size."
-            },
-            {
-              "name": "value",
-              "type": {
-                "text": "string"
-              },
-              "description": "The active panel's value."
-            }
-          ],
-          "superclass": {
-            "name": "HTMLElement"
-          },
-          "tagName": "jelly-tabs",
-          "customElement": true
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "JellyTabPanel",
-          "declaration": {
-            "name": "JellyTabPanel",
-            "module": "src/components/tabs/index.ts"
-          }
-        },
-        {
-          "kind": "js",
-          "name": "JellyTabs",
-          "declaration": {
-            "name": "JellyTabs",
-            "module": "src/components/tabs/index.ts"
-          }
-        },
-        {
-          "kind": "custom-element-definition",
-          "name": "jelly-tab-panel",
-          "declaration": {
-            "name": "JellyTabPanel",
-            "module": "src/components/tabs/index.ts"
-          }
-        },
-        {
-          "kind": "custom-element-definition",
-          "name": "jelly-tabs",
-          "declaration": {
-            "name": "JellyTabs",
-            "module": "src/components/tabs/index.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
       "path": "src/components/textarea/index.ts",
       "declarations": [
         {
@@ -9651,6 +9204,182 @@
     },
     {
       "kind": "javascript-module",
+      "path": "src/components/spinner/index.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "A loading spinner: gooey travelling dots (default) or a morphing blob.",
+          "name": "JellySpinner",
+          "cssProperties": [
+            {
+              "description": "Dot / blob color.",
+              "name": "--jelly-fill"
+            }
+          ],
+          "members": [
+            {
+              "kind": "field",
+              "name": "timeAccumulator",
+              "type": {
+                "text": "number"
+              },
+              "default": "0"
+            },
+            {
+              "kind": "field",
+              "name": "idx",
+              "type": {
+                "text": "number"
+              },
+              "default": "0"
+            },
+            {
+              "kind": "field",
+              "name": "angle",
+              "type": {
+                "text": "number"
+              },
+              "default": "0"
+            },
+            {
+              "kind": "field",
+              "name": "instanceId"
+            },
+            {
+              "kind": "field",
+              "name": "type",
+              "type": {
+                "text": "string"
+              },
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "styles",
+              "return": {
+                "type": {
+                  "text": "string"
+                }
+              }
+            },
+            {
+              "kind": "method",
+              "name": "content",
+              "return": {
+                "type": {
+                  "text": "string"
+                }
+              }
+            },
+            {
+              "kind": "method",
+              "name": "shape",
+              "return": {
+                "type": {
+                  "text": "Shape"
+                }
+              },
+              "parameters": [
+                {
+                  "name": "width",
+                  "type": {
+                    "text": "number"
+                  }
+                },
+                {
+                  "name": "height",
+                  "type": {
+                    "text": "number"
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "onBuilt",
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              }
+            },
+            {
+              "kind": "method",
+              "name": "frame",
+              "return": {
+                "type": {
+                  "text": "boolean"
+                }
+              },
+              "parameters": [
+                {
+                  "name": "dt",
+                  "type": {
+                    "text": "number"
+                  }
+                }
+              ]
+            }
+          ],
+          "attributes": [
+            {
+              "name": "type",
+              "type": {
+                "text": "\"dots\"|\"blob\""
+              },
+              "description": "Spinner flavor."
+            },
+            {
+              "name": "variant",
+              "type": {
+                "text": "\"white\"|\"rose\"|\"amber\"|\"azure\"|\"mint\"|\"platinum\"|\"graphite\""
+              },
+              "description": "Fill hue."
+            },
+            {
+              "name": "size",
+              "type": {
+                "text": "\"small\"|\"medium\"|\"large\""
+              },
+              "description": "Spinner size."
+            },
+            {
+              "name": "label",
+              "type": {
+                "text": "string"
+              },
+              "description": "Accessible loading label (defaults to \"Loading\")."
+            }
+          ],
+          "superclass": {
+            "name": "JellyElement",
+            "module": "/src/element/index.js"
+          },
+          "tagName": "jelly-spinner",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "JellySpinner",
+          "declaration": {
+            "name": "JellySpinner",
+            "module": "src/components/spinner/index.ts"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "jelly-spinner",
+          "declaration": {
+            "name": "JellySpinner",
+            "module": "src/components/spinner/index.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "src/components/theme/index.ts",
       "declarations": [
         {
@@ -9904,6 +9633,277 @@
           "declaration": {
             "name": "jellyToast",
             "module": "src/components/toast/index.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/tabs/index.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "One tab panel: shown when its tab is active, hidden otherwise.",
+          "name": "JellyTabPanel",
+          "slots": [
+            {
+              "description": "The panel content.",
+              "name": ""
+            }
+          ],
+          "members": [
+            {
+              "kind": "field",
+              "name": "label",
+              "type": {
+                "text": "string"
+              },
+              "readonly": true
+            }
+          ],
+          "attributes": [
+            {
+              "type": {
+                "text": "string"
+              },
+              "description": "The tab label shown in the tab bar.",
+              "name": "label"
+            },
+            {
+              "type": {
+                "text": "string"
+              },
+              "description": "The panel's value (defaults to its index).",
+              "name": "value"
+            },
+            {
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Whether this panel is initially active.",
+              "name": "active"
+            }
+          ],
+          "superclass": {
+            "name": "HTMLElement"
+          },
+          "tagName": "jelly-tab-panel",
+          "customElement": true
+        },
+        {
+          "kind": "class",
+          "description": "A tabbed view whose bar is a sliding jelly segmented control.",
+          "name": "JellyTabs",
+          "cssParts": [
+            {
+              "description": "The inner segmented tab bar.",
+              "name": "tabs"
+            }
+          ],
+          "slots": [
+            {
+              "description": "The `<jelly-tab-panel>` panels.",
+              "name": ""
+            }
+          ],
+          "members": [
+            {
+              "kind": "field",
+              "name": "built",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "kind": "field",
+              "name": "segmented",
+              "type": {
+                "text": "TabBar | null"
+              },
+              "default": "null"
+            },
+            {
+              "kind": "field",
+              "name": "current",
+              "type": {
+                "text": "string | null"
+              },
+              "default": "null"
+            },
+            {
+              "kind": "method",
+              "name": "syncValue",
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              }
+            },
+            {
+              "kind": "method",
+              "name": "syncSize",
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              }
+            },
+            {
+              "kind": "method",
+              "name": "panelValue",
+              "return": {
+                "type": {
+                  "text": "string"
+                }
+              },
+              "parameters": [
+                {
+                  "name": "panel",
+                  "type": {
+                    "text": "JellyTabPanel"
+                  }
+                },
+                {
+                  "name": "index",
+                  "type": {
+                    "text": "number"
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "panelLabel",
+              "return": {
+                "type": {
+                  "text": "string"
+                }
+              },
+              "parameters": [
+                {
+                  "name": "panel",
+                  "type": {
+                    "text": "JellyTabPanel"
+                  }
+                },
+                {
+                  "name": "index",
+                  "type": {
+                    "text": "number"
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "activate",
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              },
+              "parameters": [
+                {
+                  "name": "value",
+                  "type": {
+                    "text": "string"
+                  }
+                },
+                {
+                  "name": "animate",
+                  "type": {
+                    "text": "boolean"
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "field",
+              "name": "value",
+              "type": {
+                "text": "string | undefined"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "focus",
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              },
+              "parameters": [
+                {
+                  "name": "options",
+                  "optional": true,
+                  "type": {
+                    "text": "FocusOptions"
+                  }
+                }
+              ]
+            }
+          ],
+          "events": [
+            {
+              "description": "With `detail.value` when the active tab changes.",
+              "name": "change"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "size",
+              "type": {
+                "text": "\"small\"|\"medium\"|\"large\""
+              },
+              "description": "Tab-bar size."
+            },
+            {
+              "name": "value",
+              "type": {
+                "text": "string"
+              },
+              "description": "The active panel's value."
+            }
+          ],
+          "superclass": {
+            "name": "HTMLElement"
+          },
+          "tagName": "jelly-tabs",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "JellyTabPanel",
+          "declaration": {
+            "name": "JellyTabPanel",
+            "module": "src/components/tabs/index.ts"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "JellyTabs",
+          "declaration": {
+            "name": "JellyTabs",
+            "module": "src/components/tabs/index.ts"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "jelly-tab-panel",
+          "declaration": {
+            "name": "JellyTabPanel",
+            "module": "src/components/tabs/index.ts"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "jelly-tabs",
+          "declaration": {
+            "name": "JellyTabs",
+            "module": "src/components/tabs/index.ts"
           }
         }
       ]

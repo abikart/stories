@@ -1,9 +1,8 @@
 /*
  * GENERATED FILE — do not edit by hand.
  *
- * Built by scripts/build-docs-data.mjs from contracts/content.js, reconciled
- * against contracts/custom-elements.json. Edit contracts/content.js and run
- * `npm run contracts`.
+ * Built by scripts/build-docs-data.mjs from docs/content/content.js, reconciled
+ * against custom-elements.json. Edit docs/content/content.js and run `npm run docs`.
  */
 
 // The order component groups appear in the sidebar and on the page

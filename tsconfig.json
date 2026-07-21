@@ -17,5 +17,10 @@
     "paths": { "@/*": ["./src/*"] }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
-  "exclude": ["node_modules"]
+  "exclude": [
+    "node_modules",
+    "src/design-system/soft-components/src",
+    "src/design-system/soft-components/vite.config.ts",
+    "src/design-system/soft-components/vitest.config.ts"
+  ]
 }

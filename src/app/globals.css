@@ -1,5 +1,7 @@
 @import "tailwindcss";
 @import "../design-system/treatments.css";
+@import "../design-system/soft-components/preset/stories.css";
+@import "../design-system/soft-components-catalog.css";
 
 /* Design tokens — docs/product/design-system.md ("Warm paper & candy").
    `static` so every token is emitted as a :root CSS variable even when no

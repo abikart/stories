@@ -7,7 +7,7 @@
 export default {
   globs: ['src/components/**/*.ts'],
   exclude: ['src/**/*.test.ts'],
-  outdir: '.',
+  outdir: 'contracts',
   litelement: false,
   dev: false,
 };

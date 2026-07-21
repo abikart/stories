@@ -24,11 +24,11 @@ import { readFileSync, writeFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { dirname, resolve } from 'node:path';
 
-import { GROUP_ORDER, COMPONENTS } from '../docs/content/content.js';
+import { GROUP_ORDER, COMPONENTS } from '../contracts/content.js';
 
 const root         = resolve(dirname(fileURLToPath(import.meta.url)), '..');
-const manifestPath = resolve(root, 'custom-elements.json');
-const outputPath   = resolve(root, 'docs/content/data.js');
+const manifestPath = resolve(root, 'contracts/custom-elements.json');
+const outputPath   = resolve(root, 'contracts/api-data.js');
 
 // ---- Load the manifest, indexed by tag name --------------------------------
 
@@ -215,13 +215,14 @@ for (const tag of elements.keys()) {
   }
 }
 
-// ---- Emit docs/content/data.js -----------------------------------------------------
+// ---- Emit contracts/api-data.js ---------------------------------------------------
 
 const header = `/*
  * GENERATED FILE — do not edit by hand.
  *
- * Built by scripts/build-docs-data.mjs from docs/content/content.js, reconciled
- * against custom-elements.json. Edit docs/content/content.js and run \`npm run docs\`.
+ * Built by scripts/build-docs-data.mjs from contracts/content.js, reconciled
+ * against contracts/custom-elements.json. Edit contracts/content.js and run
+ * \`npm run contracts\`.
  */
 
 // The order component groups appear in the sidebar and on the page
@@ -242,4 +243,4 @@ if (warnings.length) {
   console.warn('');
 }
 
-console.log(`✓ Wrote docs/content/data.js — ${built.length} components from the manifest.`);
+console.log(`✓ Wrote contracts/api-data.js — ${built.length} components from the manifest.`);

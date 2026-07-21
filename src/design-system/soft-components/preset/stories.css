@@ -1,0 +1,120 @@
+/*
+ * Stories preset — a child-focused token layer for ages 5–7.
+ *
+ * The selector is deliberately opt-in. Without it, every component retains
+ * the upstream Jelly UI v1.1 presentation and behavior. Keep product-specific
+ * choices here instead of forking the portable component implementation.
+ */
+
+[data-jelly-preset="stories"] {
+  --jelly-font-display: var(--font-quicksand, ui-rounded, "SF Pro Rounded", system-ui, sans-serif);
+  --jelly-font-text: var(--font-lexend, system-ui, sans-serif);
+  --jelly-font-mono: ui-monospace, "SF Mono", Menlo, monospace;
+
+  --jelly-color-background-default: #fffef1;
+  --jelly-color-background-surface: #fffef8;
+  --jelly-color-background-muted: #f8f6e8;
+  --jelly-color-background-neutral: #e4e1d3;
+  --jelly-color-background-neutral-emphasis: #56584f;
+  --jelly-color-background-white: #ffffff;
+  --jelly-color-background-rose: #c51f35;
+  --jelly-color-background-amber: #a84f00;
+  --jelly-color-background-azure: #2455d6;
+  --jelly-color-background-mint: #14754d;
+  --jelly-color-background-accent: #681fd1;
+
+  --jelly-color-foreground-default: #272831;
+  --jelly-color-foreground-muted: #62645c;
+  --jelly-color-foreground-on-emphasis: #ffffff;
+  --jelly-color-foreground-on-neutral: #272831;
+  --jelly-color-foreground-on-white: #272831;
+  --jelly-color-foreground-on-accent: #ffffff;
+
+  --jelly-color-border-default: #dedbce;
+  --jelly-color-border-focus: #2455d6;
+  --jelly-color-shadow: 39, 40, 49;
+  --jelly-shadow-raised:
+    0 0 0 1px rgb(39 40 49 / 0.06),
+    0 2px 4px -1px rgb(39 40 49 / 0.07),
+    0 10px 28px -16px rgb(39 40 49 / 0.2);
+  --jelly-shadow-overlay:
+    0 0 0 1px rgb(39 40 49 / 0.07),
+    0 8px 24px -12px rgb(39 40 49 / 0.2),
+    0 24px 54px -28px rgb(39 40 49 / 0.24);
+}
+
+/* Small controls keep a 44px child-friendly target in the Stories preset. */
+[data-jelly-preset="stories"] jelly-icon-button[size="small"],
+[data-jelly-preset="stories"] jelly-icon-button[size="sm"] {
+  --jelly-icon-button-size: 44px;
+  --jelly-icon-button-radius: 15px;
+}
+
+[data-jelly-preset="stories"] jelly-button {
+  --jelly-button-font-size: 17px;
+}
+
+[data-jelly-preset="stories"] jelly-button[size="small"],
+[data-jelly-preset="stories"] jelly-button[size="sm"] {
+  --jelly-button-height: 44px;
+  --jelly-button-font-size: 15px;
+}
+
+[data-jelly-preset="stories"] jelly-checkbox,
+[data-jelly-preset="stories"] jelly-radio {
+  --jelly-checkbox-size: 34px;
+  --jelly-radio-size: 34px;
+}
+
+[data-jelly-preset="stories"] jelly-switch {
+  --jelly-switch-width: 64px;
+  --jelly-switch-height: 36px;
+  --jelly-switch-font-size: 16px;
+}
+
+[data-jelly-preset="stories"] jelly-menu {
+  --jelly-menu-item-height: 44px;
+  --jelly-menu-item-radius: 11px;
+}
+
+[data-jelly-preset="stories"] jelly-collapsible {
+  --jelly-collapsible-header-font: 16px;
+  --jelly-collapsible-body-font: 15px;
+  --jelly-collapsible-radius: 14px;
+}
+
+[data-jelly-preset="stories"] :is(jelly-progress, jelly-slider, jelly-range) {
+  font-variant-numeric: tabular-nums;
+}
+
+@media (prefers-color-scheme: dark) {
+  [data-jelly-preset="stories"] {
+    --jelly-color-background-default: #1f211f;
+    --jelly-color-background-surface: #292b29;
+    --jelly-color-background-muted: #30332f;
+    --jelly-color-background-neutral: #3e423d;
+    --jelly-color-background-neutral-emphasis: #666b63;
+    --jelly-color-background-white: #f4f2e8;
+    --jelly-color-background-rose: #dc5464;
+    --jelly-color-background-amber: #e08a3f;
+    --jelly-color-background-azure: #77a0ff;
+    --jelly-color-background-mint: #68c895;
+    --jelly-color-background-accent: #ae86f4;
+    --jelly-color-foreground-default: #f8f6ed;
+    --jelly-color-foreground-muted: #c6c8be;
+    --jelly-color-foreground-on-emphasis: #20221f;
+    --jelly-color-foreground-on-neutral: #f8f6ed;
+    --jelly-color-foreground-on-white: #272831;
+    --jelly-color-foreground-on-accent: #20221f;
+    --jelly-color-border-default: #484c46;
+    --jelly-color-border-focus: #8aabff;
+    --jelly-color-shadow: 0, 0, 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  [data-jelly-preset="stories"] * {
+    animation: none;
+    transition: none;
+  }
+}

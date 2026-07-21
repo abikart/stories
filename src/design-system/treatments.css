@@ -149,6 +149,7 @@
 /* Development catalog. */
 .ds-catalog {
   min-height: 100dvh;
+  overflow-x: clip;
   padding: clamp(24px, 5vw, 72px);
   background: #f6f8f6;
   color: #1f3028;

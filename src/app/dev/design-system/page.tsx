@@ -1,4 +1,5 @@
 import { treatmentClassNames, treatmentGuidelines, type TreatmentName } from "@/design-system/treatments";
+import { SoftComponentsCatalog } from "@/design-system/SoftComponentsCatalog";
 
 const showcasedTreatments: TreatmentName[] = [
   "glassLight",
@@ -94,6 +95,8 @@ export default function DesignSystemPage() {
           })}
         </div>
       </section>
+
+      <SoftComponentsCatalog />
     </main>
   );
 }

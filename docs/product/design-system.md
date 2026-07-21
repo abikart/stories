@@ -2,11 +2,14 @@
 
 ## Scope
 
-Stories now has a small code-first design system for product tokens and
-purposeful surface treatments. The source of truth is:
+Stories has a code-first design system with two portable layers: semantic
+surface treatments and a complete soft Web Components package. The source of
+truth is:
 
 - CSS tokens and portable classes in `src/design-system/treatments.css`;
 - typed class names and usage contracts in `src/design-system/treatments.ts`;
+- the dependency-free component package in `src/design-system/soft-components`;
+- the child-focused preset in `src/design-system/soft-components/preset/stories.css`;
 - the live catalog at `/dev/design-system`; and
 - this document for selection rules and provenance.
 
@@ -20,6 +23,48 @@ recipe fidelity (`exact-source`, `source-guided`, or `stories-native`). Light
 Glass is the sole exact-source effect. Glow and sheen remain source-guided and
 provisional; the stable solid surface is explicitly a Stories-native primitive,
 not a claim of Figma pixel parity.
+
+## Soft component package
+
+The local package preserves Jelly UI v1.1.0 at pinned upstream commit
+`8e39a8e61b5a43a562ae85e4b01191d333d5b121`. Its 40 `jelly-*` custom elements,
+public utilities, declarations, browser tests, generated API data, source map,
+and MIT notice live together under `src/design-system/soft-components` so the
+directory can be copied into another TypeScript web project intact.
+
+The compatibility namespace is intentionally retained. This keeps markup,
+events, examples, and API comparison mechanical; a document must never load
+the local bundle and hosted Jelly UI together. The app performs no hosted
+runtime fetch. `register.ts` defers the browser registration side effect until
+client mount through the synchronized local `/design-system/jelly.js` asset,
+and the React integration remains outside the portable core in
+`soft-components-react.tsx` and `soft-components-elements.d.ts`.
+
+The upstream-compatible presentation remains the default. Product code opts
+into `data-jelly-preset="stories"` for warm-paper colors, Quicksand/Lexend type,
+44px small targets, restrained depth, and higher reading clarity. This preset
+is CSS-only: it does not fork control logic, forms, events, keyboard behavior,
+overlay behavior, or soft-body physics.
+
+The catalog mounts every element and exposes upstream/Stories and motion
+controls. The package-level verifier proves all 40 tags register once and that
+attributes, properties, methods, events, slots, parts, CSS properties, types,
+and named exports retain the pinned contract. The application QA additionally
+checks registration, nested overlays, modal semantics, RTL fixtures,
+responsive overflow, and browser consoles in Chromium, WebKit, and Firefox.
+
+Run the relevant checks against a local server:
+
+```sh
+npm --prefix src/design-system/soft-components run verify
+EXPERIENCE_BASE_URL=http://localhost:3000 npm run qa:soft-components
+EXPERIENCE_BASE_URL=http://localhost:3000 npm run evidence:soft-components
+```
+
+Exact provenance, artifact hashes, licensing, development, React use, API
+access, and extraction instructions live in the package
+[`README.md`](../../src/design-system/soft-components/README.md) and
+[`PROVENANCE.md`](../../src/design-system/soft-components/PROVENANCE.md).
 
 ## Figma source audit
 

@@ -1,0 +1,52 @@
+{
+  "name": "@stories/soft-components",
+  "version": "1.1.0-stories.0",
+  "private": true,
+  "description": "Portable, locally maintained Jelly UI-compatible Web Components for Stories.",
+  "type": "module",
+  "license": "MIT",
+  "author": "Baldvin Mar Smarason <bmson@bmson.com>",
+  "files": [
+    "dist",
+    "src",
+    "contracts",
+    "preset",
+    "LICENSE",
+    "PROVENANCE.md",
+    "THIRD_PARTY_NOTICES.md"
+  ],
+  "main": "./dist/jelly.js",
+  "module": "./dist/jelly.js",
+  "types": "./dist/jelly.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/jelly.d.ts",
+      "import": "./dist/jelly.js"
+    },
+    "./dist/*": "./dist/*",
+    "./register": "./register.ts",
+    "./preset/stories.css": "./preset/stories.css"
+  },
+  "scripts": {
+    "build": "vite build",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "manifest": "cem analyze && node scripts/normalize-manifest.mjs",
+    "docs:data": "node scripts/build-docs-data.mjs",
+    "contracts": "npm run manifest && npm run docs:data",
+    "verify:contracts": "node scripts/verify-contracts.mjs",
+    "verify": "npm run typecheck && npm run test && npm run build && npm run contracts && npm run verify:contracts"
+  },
+  "devDependencies": {
+    "@custom-elements-manifest/analyzer": "^0.10.3",
+    "@types/node": "^22.10.0",
+    "@vitest/browser": "^2.1.8",
+    "playwright": "^1.49.0",
+    "typescript": "^5.7.2",
+    "vite": "^6.0.0",
+    "vite-plugin-dts": "^4.3.0",
+    "vitest": "^2.1.8"
+  },
+  "customElements": "contracts/custom-elements.json"
+}

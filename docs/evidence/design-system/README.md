@@ -1,6 +1,6 @@
 # Design-system rollout evidence
 
-Captured: 2026-07-19
+Captured: 2026-07-19; soft-component catalog added 2026-07-20.
 
 The owner-provided “before” frames show the rejected universal-glass direction.
 The “after” frames are reproducible with
@@ -25,3 +25,18 @@ Playwright WebKit (Safari’s browser engine).
 | Catalog | Phone |
 | --- | --- |
 | ![All portable treatments, fallback state, and recipe maturity labels](after-catalog-chromium.png) | ![Phone-width Fern composition with complete art and 44 pixel controls](after-fern-phone-chromium.png) |
+
+## Soft component compatibility and Stories preset
+
+The complete component catalog is reproducible with
+`npm run evidence:soft-components`. The checked-in captures cover the
+upstream-compatible and child-focused presets, Chromium and WebKit, and a
+390px phone viewport.
+
+| Stories preset | Upstream-compatible preset |
+| --- | --- |
+| ![Complete 40-component Stories preset catalog in Chromium](soft-components/stories-desktop-chromium.png) | ![Complete upstream-compatible catalog in Chromium](soft-components/upstream-desktop-chromium.png) |
+
+| Phone | WebKit |
+| --- | --- |
+| ![Complete Stories preset catalog at 390px without horizontal overflow](soft-components/stories-phone-chromium.png) | ![Complete Stories preset catalog in WebKit](soft-components/stories-desktop-webkit.png) |
