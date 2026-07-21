@@ -166,7 +166,7 @@ function ensureUpstreamCommit(checkout, repository, commit) {
  *
  * Clean changes apply automatically. A conflicting upstream edit stops the
  * candidate before the worktree is touched, which is safer than either
- * silently dropping the gel/performance layer or freezing whole source files.
+ * silently dropping the Stories performance layer or freezing whole files.
  */
 export function mergeStoriesSource({ candidate, checkout, baseline, temporaryRoot, currentRoot = packageRoot }) {
   ensureUpstreamCommit(checkout, baseline.repository, baseline.commit);

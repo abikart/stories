@@ -62,10 +62,9 @@ for (const [path, expected] of Object.entries(baseline.artifacts)) {
 
 assert(JSON.stringify(apiContract("contracts/api-data.js")) === JSON.stringify(apiContract("upstream/api-data.js")), `generated API data differs from the pinned ${baseline.version} API`);
 assert(JSON.stringify(manifestContract("contracts/custom-elements.json")) === JSON.stringify(manifestContract("upstream/custom-elements.json")), `generated manifest public surface differs from the pinned ${baseline.version} manifest`);
-// The active bundle and declarations may contain Stories extensions (for
-// example the gel material painter). Compatibility is enforced at the custom
-// element manifest/API level while the untouched upstream declarations remain
-// pinned under upstream/ for update comparison.
+// The active bundle and declarations may contain Stories extensions.
+// Compatibility is enforced at the custom-element manifest/API level while
+// untouched upstream declarations remain pinned for update comparison.
 
 const manifest = JSON.parse(read("contracts/custom-elements.json").toString("utf8"));
 const manifestTags = manifest.modules.flatMap((module) => module.declarations ?? [])

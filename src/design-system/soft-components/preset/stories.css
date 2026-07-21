@@ -41,17 +41,6 @@
     0 0 0 1px rgb(39 40 49 / 0.07),
     0 8px 24px -12px rgb(39 40 49 / 0.2),
     0 24px 54px -28px rgb(39 40 49 / 0.24);
-
-  /* Canvas material: translucent candy gel with a responsive lit rim. */
-  --jelly-material: gel;
-  --jelly-gel-opacity: 0.76;
-  --jelly-gel-highlight-strength: 0.3;
-  --jelly-gel-rim-strength: 0.38;
-  --jelly-gel-inner-shadow-strength: 0.16;
-  --jelly-gel-contact-shadow-strength: 0.19;
-  --jelly-gel-thickness: 1.4;
-  --jelly-gel-highlight-color: #ffffff;
-  --jelly-gel-shadow-color: #20172f;
 }
 
 /* Small controls keep a 44px child-friendly target in the Stories preset. */
@@ -121,13 +110,6 @@
   --jelly-color-border-default: #484c46;
   --jelly-color-border-focus: #8aabff;
   --jelly-color-shadow: 0, 0, 0;
-  --jelly-gel-opacity: 0.68;
-  --jelly-gel-highlight-strength: 0.36;
-  --jelly-gel-rim-strength: 0.46;
-  --jelly-gel-inner-shadow-strength: 0.22;
-  --jelly-gel-contact-shadow-strength: 0.28;
-  --jelly-gel-highlight-color: #fffdf4;
-  --jelly-gel-shadow-color: #070911;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -152,13 +134,6 @@
     --jelly-color-border-default: #484c46;
     --jelly-color-border-focus: #8aabff;
     --jelly-color-shadow: 0, 0, 0;
-    --jelly-gel-opacity: 0.68;
-    --jelly-gel-highlight-strength: 0.36;
-    --jelly-gel-rim-strength: 0.46;
-    --jelly-gel-inner-shadow-strength: 0.22;
-    --jelly-gel-contact-shadow-strength: 0.28;
-    --jelly-gel-highlight-color: #fffdf4;
-    --jelly-gel-shadow-color: #070911;
   }
 }
 

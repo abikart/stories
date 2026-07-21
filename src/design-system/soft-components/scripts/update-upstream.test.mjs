@@ -100,7 +100,7 @@ test("Stories source extensions three-way merge over a newer upstream", () => {
     run("add", path);
     run("commit", "--quiet", "-m", "upstream update");
 
-    writeFileSync(join(current, path), "export const material = 'gel';\n\n// upstream tuning\nexport const samples = 240;\n");
+    writeFileSync(join(current, path), "export const material = 'stories';\n\n// upstream tuning\nexport const samples = 240;\n");
     writeFileSync(join(candidate, path), readFileSync(join(checkout, path)));
 
     const applied = mergeStoriesSource({
@@ -114,7 +114,7 @@ test("Stories source extensions three-way merge over a newer upstream", () => {
     assert.deepEqual(applied, [path]);
     assert.equal(
       readFileSync(join(candidate, path), "utf8"),
-      "export const material = 'gel';\n\n// upstream tuning\nexport const samples = 180;\n",
+      "export const material = 'stories';\n\n// upstream tuning\nexport const samples = 180;\n",
     );
   } finally {
     rmSync(root, { recursive: true, force: true });

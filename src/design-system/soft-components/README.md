@@ -111,25 +111,8 @@ The optional Stories preset is a pure CSS layer:
 ```
 
 It supplies the Stories font stacks, warm-paper surfaces, contrast-safe candy
-colors, 44px small targets, and an opt-in translucent Canvas 2D gel material.
-The upstream-compatible surface stays flat outside the preset. Gel rendering
-is portable CSS configuration rather than a component fork:
-
-```css
-[data-jelly-preset="custom"] {
-  --jelly-material: gel;
-  --jelly-gel-opacity: 0.76;
-  --jelly-gel-highlight-strength: 0.3;
-  --jelly-gel-rim-strength: 0.38;
-  --jelly-gel-inner-shadow-strength: 0.16;
-  --jelly-gel-contact-shadow-strength: 0.19;
-  --jelly-gel-thickness: 1.4;
-  --jelly-gel-highlight-color: #fff;
-  --jelly-gel-shadow-color: #20172f;
-}
-```
-
-It does not alter component classes or remove upstream states. For
+colors, quieter shadows, and 44px small targets. It does not alter component
+classes, the original flat Canvas surface renderer, or upstream states. For
 reading-heavy contexts, set
 `data-jelly-motion="reduce"` on `<html>`; the same reduction happens
 automatically for the operating-system `prefers-reduced-motion` preference.
