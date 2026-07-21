@@ -7,18 +7,6 @@
   "retrievedAt": "2026-07-20",
   "license": "MIT",
   "artifacts": {
-    "dist/jelly.js": {
-      "bytes": 318426,
-      "sha256": "68af6000710c7b8bd22d3ed8e337308fb20d767511483d1458f27288d34950ef"
-    },
-    "dist/jelly.js.map": {
-      "bytes": 629418,
-      "sha256": "51c23050586f52fc55f1108b681c154a28e0355a11f8cba887b36f74ee64df7c"
-    },
-    "dist/jelly.d.ts": {
-      "bytes": 14181,
-      "sha256": "1004cad04d5548661ffb9ad1eb29e59bc7627e948281222cb48fa0904093a22a"
-    },
     "upstream/api-data.js": {
       "bytes": 143800,
       "sha256": "c7a6e72a9c943465371045a1fb67d4ffe3dc19802d720c6be0aeb86729865e99"

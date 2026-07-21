@@ -6,6 +6,7 @@ import {
   existsSync,
   mkdirSync,
   mkdtempSync,
+  readdirSync,
   readFileSync,
   rmSync,
   statSync,
@@ -128,6 +129,119 @@ function replacePath(source, destination, allowedRoot) {
   assertInside(allowedRoot, destination);
   if (existsSync(destination)) rmSync(destination, { recursive: true, force: true });
   cpSync(source, destination, { recursive: true });
+}
+
+function filesBelow(directory) {
+  if (!existsSync(directory)) return [];
+  return readdirSync(directory, { withFileTypes: true }).flatMap((entry) => {
+    const path = join(directory, entry.name);
+    return entry.isDirectory() ? filesBelow(path) : [path];
+  });
+}
+
+function gitObjectExists(checkout, object) {
+  return spawnSync("git", ["cat-file", "-e", object], { cwd: checkout, stdio: "ignore" }).status === 0;
+}
+
+function gitBlob(checkout, commit, path) {
+  const result = spawnSync("git", ["show", `${commit}:${path}`], { cwd: checkout, encoding: null });
+  if (result.status !== 0) throw new Error(`could not read ${path} from upstream baseline ${commit}`);
+  return result.stdout;
+}
+
+function ensureUpstreamCommit(checkout, repository, commit) {
+  if (gitObjectExists(checkout, `${commit}^{commit}`)) return;
+  run("git", ["fetch", "--quiet", "--depth=1", "origin", commit], { cwd: checkout });
+  if (!gitObjectExists(checkout, `${commit}^{commit}`)) {
+    throw new Error(`could not fetch pinned upstream baseline ${commit} from ${repository}`);
+  }
+}
+
+/*
+ * Carry Stories source extensions across an upstream refresh with a real
+ * three-way merge:
+ *   base    = source at the previously pinned upstream commit
+ *   current = the checked-in Stories source
+ *   next    = source at the requested upstream commit
+ *
+ * Clean changes apply automatically. A conflicting upstream edit stops the
+ * candidate before the worktree is touched, which is safer than either
+ * silently dropping the gel/performance layer or freezing whole source files.
+ */
+export function mergeStoriesSource({ candidate, checkout, baseline, temporaryRoot, currentRoot = packageRoot }) {
+  ensureUpstreamCommit(checkout, baseline.repository, baseline.commit);
+
+  const sourceRoot = join(currentRoot, "src");
+  const currentFiles = filesBelow(sourceRoot).map((path) => relative(currentRoot, path));
+  const baselineFiles = run(
+    "git",
+    ["ls-tree", "-r", "--name-only", baseline.commit, "--", "src"],
+    { cwd: checkout, capture: true },
+  ).split("\n").filter(Boolean);
+  const paths = [...new Set([...baselineFiles, ...currentFiles])].sort();
+  const applied = [];
+
+  for (const path of paths) {
+    const currentPath = join(currentRoot, path);
+    const nextPath = join(candidate, path);
+    const baseExists = baselineFiles.includes(path);
+    const currentExists = existsSync(currentPath);
+    const nextExists = existsSync(nextPath);
+
+    if (!baseExists && currentExists) {
+      if (nextExists && !readFileSync(currentPath).equals(readFileSync(nextPath))) {
+        throw new Error(`Stories-added source now collides with upstream: ${path}`);
+      }
+      if (!nextExists) {
+        mkdirSync(resolve(nextPath, ".."), { recursive: true });
+        cpSync(currentPath, nextPath);
+        applied.push(path);
+      }
+      continue;
+    }
+
+    if (!baseExists) continue;
+    const base = gitBlob(checkout, baseline.commit, path);
+
+    if (!currentExists) {
+      if (nextExists && !base.equals(readFileSync(nextPath))) {
+        throw new Error(`Stories deleted ${path}, but upstream changed it; manual merge required`);
+      }
+      if (nextExists) rmSync(nextPath);
+      applied.push(path);
+      continue;
+    }
+
+    const current = readFileSync(currentPath);
+    if (current.equals(base)) continue;
+    if (!nextExists) throw new Error(`Upstream deleted Stories-modified source: ${path}`);
+
+    const next = readFileSync(nextPath);
+    if (next.equals(base)) {
+      cpSync(currentPath, nextPath);
+      applied.push(path);
+      continue;
+    }
+
+    const mergeRoot = mkdtempSync(join(temporaryRoot, "source-merge-"));
+    const ours = join(mergeRoot, "current");
+    const ancestor = join(mergeRoot, "baseline");
+    const theirs = join(mergeRoot, "upstream");
+    writeFileSync(ours, current);
+    writeFileSync(ancestor, base);
+    writeFileSync(theirs, next);
+
+    const merge = spawnSync("git", ["merge-file", "-p", ours, ancestor, theirs], { encoding: null });
+    if (merge.status !== 0) {
+      throw new Error(`upstream source conflicts with Stories changes: ${path}`);
+    }
+
+    writeFileSync(nextPath, merge.stdout);
+    applied.push(path);
+  }
+
+  console.log(`✓ reapplied ${applied.length} Stories source extension${applied.length === 1 ? "" : "s"} with three-way merge`);
+  return applied;
 }
 
 function sha256(path) {
@@ -257,12 +371,12 @@ function reportMarkdown({ previousBaseline, nextBaseline, apiDiff }) {
     "",
     "- Clean, detached checkout of the requested ref",
     "- Upstream dependency install, typecheck, browser tests, build, and docs generation",
+    "- Three-way merge of Stories source extensions over the requested upstream source",
     "- Stories candidate dependency install, typecheck, browser tests, build, and contract generation",
-    "- Byte-for-byte distribution parity with the upstream build",
-    "- Manifest, API-data, declaration, and registration parity",
+    "- Upstream manifest, API-data, declaration, and registration compatibility",
     "- No hosted Jelly UI runtime dependency",
     "",
-    "Stories-owned presets and integration modules were preserved.",
+    "Stories-owned presets and integration modules were preserved; source extensions merged cleanly.",
     "",
   );
   return lines.join("\n");
@@ -291,9 +405,9 @@ load either this local implementation or the hosted implementation, never both.
 - License: ${upstreamPackage.license}${licenseCopyright ? `, \`${licenseCopyright}\`` : ""}
 
 The updater verified a clean detached checkout with the upstream typecheck,
-browser tests, build, and documentation generation. The Stories candidate was
-then rebuilt independently and matched the pinned distribution, manifest, API
-data, and declarations before any project files were replaced.
+browser tests, build, and documentation generation. Stories source extensions
+were then three-way merged over that checkout and the candidate was rebuilt and
+verified before any project files were replaced.
 
 ## Pinned artifact snapshot
 
@@ -309,8 +423,10 @@ The most recent public-surface comparison is in
 
 Run \`npm run update:soft-components -- --ref <tag-or-commit>\`. Public API
 changes require \`--accept-api-changes\`; the updater otherwise stops without
-touching the worktree. Stories-authored presets and integration modules remain
-separate and are never replaced. Review and commit the resulting Git diff.
+touching the worktree. Stories-authored source changes are reapplied with a
+three-way merge. A conflict stops the update for manual review instead of
+discarding either side. Presets and integration modules remain separate and
+are never replaced. Review and commit the resulting Git diff.
 
 Do not remove the upstream MIT notice when copying or extracting this package.
 `;
@@ -402,7 +518,7 @@ function verifyUpstream(checkout, upstreamPackage) {
   ], "verified upstream build");
 }
 
-function prepareCandidate({ candidate, checkout, upstreamPackage, commit, options, temporaryRoot }) {
+function prepareCandidate({ candidate, checkout, upstreamPackage, commit, options, previousBaseline, temporaryRoot }) {
   console.log("\n→ Preparing isolated Stories candidate");
   cpSync(packageRoot, candidate, {
     recursive: true,
@@ -412,6 +528,8 @@ function prepareCandidate({ candidate, checkout, upstreamPackage, commit, option
   for (const entry of ["src", "tsconfig.json", "vite.config.ts", "vitest.config.ts"]) {
     replacePath(join(checkout, entry), join(candidate, entry), temporaryRoot);
   }
+
+  mergeStoriesSource({ candidate, checkout, baseline: previousBaseline, temporaryRoot });
 
   const manifestConfigSource = readFileSync(join(checkout, "custom-elements-manifest.config.mjs"), "utf8");
   const manifestConfig = manifestConfigSource.replace(/outdir:\s*['"]\.['"]/, "outdir: 'contracts'");
@@ -459,9 +577,6 @@ function prepareCandidate({ candidate, checkout, upstreamPackage, commit, option
 
   const retrievedAt = pacificDate();
   const artifactSources = {
-    "dist/jelly.js": join(checkout, "dist", "jelly.js"),
-    "dist/jelly.js.map": join(checkout, "dist", "jelly.js.map"),
-    "dist/jelly.d.ts": join(checkout, "dist", "jelly.d.ts"),
     "upstream/api-data.js": join(candidate, "upstream", "api-data.js"),
     "upstream/custom-elements.json": join(candidate, "upstream", "custom-elements.json"),
     "upstream/jelly.d.ts": join(candidate, "upstream", "jelly.d.ts"),
@@ -540,7 +655,7 @@ async function main() {
     }
 
     verifyUpstream(checkout, upstreamPackage);
-    const nextBaseline = prepareCandidate({ candidate, checkout, upstreamPackage, commit, options, temporaryRoot });
+    const nextBaseline = prepareCandidate({ candidate, checkout, upstreamPackage, commit, options, previousBaseline, temporaryRoot });
     const apiDiff = compareManifests(
       join(packageRoot, "upstream", "custom-elements.json"),
       join(candidate, "upstream", "custom-elements.json"),

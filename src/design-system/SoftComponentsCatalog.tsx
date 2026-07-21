@@ -5,6 +5,7 @@ import { registerSoftComponents } from "./soft-components/register";
 import { SoftComponentsLoader } from "./soft-components-react";
 
 type Preset = "stories" | "upstream";
+type ThemeMode = "auto" | "light" | "dark";
 
 function ShowcaseCard({ tag, title, children, wide = false }: {
   tag: string;
@@ -45,9 +46,34 @@ function Family({ eyebrow, title, description, children }: {
 
 export function SoftComponentsCatalog() {
   const [preset, setPreset] = useState<Preset>("stories");
+  const [themeMode, setThemeMode] = useState<ThemeMode>("auto");
+  const [themeReady, setThemeReady] = useState(false);
   const [reducedMotion, setReducedMotion] = useState(false);
   const [eventMessage, setEventMessage] = useState("Interact with a component to inspect its event contract.");
   const catalogRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const value = document.documentElement.getAttribute("data-jelly-mode");
+    const initialMode: ThemeMode = value === "light" || value === "dark" ? value : "auto";
+
+    setThemeMode(initialMode);
+    setThemeReady(true);
+
+    return () => {
+      void registerSoftComponents().then((api) => api?.setThemeMode(initialMode));
+    };
+  }, []);
+
+  useEffect(() => {
+    if (!themeReady) return;
+    void registerSoftComponents().then((api) => api?.setThemeMode(themeMode));
+  }, [themeMode, themeReady]);
+
+  useEffect(() => {
+    // Presets are scoped on an ancestor, so wake parked canvases after that
+    // inherited material/token layer changes.
+    window.dispatchEvent(new CustomEvent("jelly-theme-change"));
+  }, [preset]);
 
   useEffect(() => {
     const root = catalogRef.current;
@@ -98,6 +124,18 @@ export function SoftComponentsCatalog() {
             </p>
           </div>
           <div className="soft-catalog__controls" aria-label="Catalog preferences">
+            <div className="soft-catalog__theme" role="group" aria-label="Color theme">
+              {(["auto", "light", "dark"] as const).map((mode) => (
+                <button
+                  key={mode}
+                  type="button"
+                  aria-pressed={themeMode === mode}
+                  onClick={() => setThemeMode(mode)}
+                >
+                  {mode[0].toUpperCase() + mode.slice(1)}
+                </button>
+              ))}
+            </div>
             <div className="soft-catalog__preset" role="group" aria-label="Visual preset">
               <button type="button" aria-pressed={preset === "stories"} onClick={() => setPreset("stories")}>Stories preset</button>
               <button type="button" aria-pressed={preset === "upstream"} onClick={() => setPreset("upstream")}>Upstream</button>

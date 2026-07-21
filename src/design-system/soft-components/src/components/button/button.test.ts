@@ -50,6 +50,23 @@ test('variant="mint" paints the mint fill on the canvas', async () => {
   host.remove();
 });
 
+test('gel material keeps content opaque while the canvas body is translucent', async () => {
+  const host = mount('<jelly-button style="--jelly-material: gel; --jelly-gel-opacity: 0.55">Gel</jelly-button>');
+  const el = host.querySelector('jelly-button') as JellyButton;
+
+  await settle(20);
+
+  const canvas = el.shadowRoot!.querySelector('canvas') as HTMLCanvasElement;
+  const pixel = canvas.getContext('2d')!.getImageData(canvas.width / 2, canvas.height / 2, 1, 1).data;
+  const label = el.shadowRoot!.querySelector('button') as HTMLButtonElement;
+
+  expect(pixel[3]).toBeGreaterThan(80);
+  expect(pixel[3]).toBeLessThan(250);
+  expect(getComputedStyle(label).opacity).toBe('1');
+
+  host.remove();
+});
+
 test('type="submit" drives the closest light-DOM form', async () => {
   const host = mount('<form><jelly-button type="submit">Save</jelly-button></form>');
   const el = host.querySelector('jelly-button') as JellyButton;

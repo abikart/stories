@@ -27,15 +27,49 @@ import { PALETTE }              from '../theme/index.js';
 
 import baseStyles               from '../styles/base.css?inline';
 
+import { paintGelContactShadow } from './material.js';
+import { paintGelSurface }       from './material.js';
+
 import type { RGBA }             from './types.js';
 import type { Shape }            from './types.js';
 import type { Ring }             from './types.js';
 import type { Border }           from './types.js';
+import type { GelMaterialOptions } from './types.js';
+import type { JellyMaterial }     from './types.js';
 import type { PaintOptions }     from './types.js';
 import type { WirePressOptions } from './types.js';
 
 // Re-export the shape / paint / wiring types so consumers import them from here
-export type { RGBA, Shape, Ring, Border, PaintOptions, WirePressOptions } from './types.js';
+export type { RGBA, Shape, Ring, Border, GelMaterialOptions, JellyMaterial, PaintOptions, WirePressOptions } from './types.js';
+
+const connectedElements = new Set<JellyElement>();
+let viewportObserver: IntersectionObserver | null = null;
+let documentVisibilityListening = false;
+
+function sharedViewportObserver (): IntersectionObserver | null {
+  if (typeof IntersectionObserver === 'undefined') return null;
+
+  viewportObserver ??= new IntersectionObserver((entries) => {
+    for (const entry of entries) {
+      (entry.target as JellyElement).setViewportVisibility(entry.isIntersecting);
+    }
+  }, { rootMargin: '96px' });
+
+  return viewportObserver;
+}
+
+function onDocumentVisibilityChange (): void {
+  for (const element of connectedElements) {
+    element.setDocumentVisibility(!document.hidden);
+  }
+}
+
+function ensureDocumentVisibilityListener (): void {
+  if (documentVisibilityListening) return;
+
+  document.addEventListener('visibilitychange', onDocumentVisibilityChange);
+  documentVisibilityListening = true;
+}
 
 export class JellyElement extends HTMLElement implements JellyComponent {
 
@@ -67,6 +101,8 @@ export class JellyElement extends HTMLElement implements JellyComponent {
   hostFocusHandler?: (event: FocusEvent) => void;
   pressPointerId: number | null = null;
   keyboardActive = false;
+  viewportVisible = true;
+  documentVisible = typeof document === 'undefined' ? true : !document.hidden;
 
   /*
    * Base-class listeners are bound as fields so subclasses keep handleEvent to
@@ -144,6 +180,10 @@ export class JellyElement extends HTMLElement implements JellyComponent {
     }
 
     this.observeResize();
+    connectedElements.add(this);
+    ensureDocumentVisibilityListener();
+    sharedViewportObserver()?.observe(this);
+    this.documentVisible = !document.hidden;
 
     // Many components style themselves entirely from host attributes the
     // subclass doesn't observe (variant → --jelly-fill via CSS, inline
@@ -167,6 +207,8 @@ export class JellyElement extends HTMLElement implements JellyComponent {
   // Lifecycle method: Called automatically when the element leaves the DOM
   disconnectedCallback (): void {
     engine.drop(this);
+    connectedElements.delete(this);
+    sharedViewportObserver()?.unobserve(this);
 
     window.removeEventListener('jelly-theme-change', this.onThemeChange);
     window.removeEventListener('jelly-motion-change', this.onMotionChange);
@@ -373,6 +415,7 @@ export class JellyElement extends HTMLElement implements JellyComponent {
       // pass a distinct easeKey per body so their colours don't share a track.
       ease    = true,
       easeKey = 'body',
+      material = this.surfaceMaterial(),
     } = options;
 
     // Ease the surface colour; ring / border stay exact (structural)
@@ -393,6 +436,13 @@ export class JellyElement extends HTMLElement implements JellyComponent {
       ctx.scale(scaleX, scaleY);
     }
 
+    const points = body.getSurfacePoints().map(project);
+    const gel = material === 'gel' ? this.gelMaterial() : null;
+
+    if (gel) {
+      paintGelContactShadow(ctx, points, body.height, gel);
+    }
+
     // Focus ring: the same deformed surface pushed outward, so it jiggles too
     if (ring) {
       const ringPoints = body.getSurfacePoints(ring.gap + ring.width / 2).map(project);
@@ -404,11 +454,15 @@ export class JellyElement extends HTMLElement implements JellyComponent {
       ctx.stroke();
     }
 
-    const points = body.getSurfacePoints().map(project);
+    if (gel) {
+      const color = this.eased[easeKey] ?? this.rgbaTuple(surface);
 
-    traceSmoothPath(ctx, points);
-    ctx.fillStyle = surface;
-    ctx.fill();
+      paintGelSurface(ctx, points, color, body.width, body.height, gel);
+    } else {
+      traceSmoothPath(ctx, points);
+      ctx.fillStyle = surface;
+      ctx.fill();
+    }
 
     if (border) {
       traceSmoothPath(ctx, points);
@@ -419,6 +473,34 @@ export class JellyElement extends HTMLElement implements JellyComponent {
     }
 
     ctx.restore();
+  }
+
+  // The upstream renderer remains the default. Product presets opt into gel
+  // by publishing --jelly-material: gel on an ancestor.
+  surfaceMaterial (): JellyMaterial {
+    return getComputedStyle(this).getPropertyValue('--jelly-material').trim() === 'gel' ? 'gel' : 'flat';
+  }
+
+  // Resolve bounded numeric material tokens once per paint. Keeping these as
+  // CSS properties makes the visual layer portable and themeable without
+  // coupling it to component attributes or application code.
+  gelMaterial (): GelMaterialOptions {
+    const styles = getComputedStyle(this);
+    const number = (name: string, fallback: number, min = 0, max = 1): number => {
+      const parsed = Number.parseFloat(styles.getPropertyValue(name));
+      return Number.isFinite(parsed) ? Math.max(min, Math.min(max, parsed)) : fallback;
+    };
+
+    return {
+      opacity: number('--jelly-gel-opacity', 0.8),
+      highlightStrength: number('--jelly-gel-highlight-strength', 0.26),
+      rimStrength: number('--jelly-gel-rim-strength', 0.34),
+      innerShadowStrength: number('--jelly-gel-inner-shadow-strength', 0.16),
+      contactShadowStrength: number('--jelly-gel-contact-shadow-strength', 0.2),
+      thickness: number('--jelly-gel-thickness', 1.35, 0.5, 4),
+      highlightColor: this.rgbaTuple(styles.getPropertyValue('--jelly-gel-highlight-color').trim() || '#ffffff'),
+      shadowColor: this.rgbaTuple(styles.getPropertyValue('--jelly-gel-shadow-color').trim() || '#20182e'),
+    };
   }
 
   // The standard frame: advance physics, repaint, sleep when at rest
@@ -644,7 +726,28 @@ export class JellyElement extends HTMLElement implements JellyComponent {
 
   // Ask the shared engine for animation frames until the body rests
   requestFrame (): void {
-    engine.wake(this);
+    if (this.viewportVisible && this.documentVisible && this.isConnected) {
+      engine.wake(this);
+    }
+  }
+
+  // Continuous indicators are parked outside the viewport or in a hidden tab.
+  // Re-entry wakes them and repaints any theme/state changes accumulated while
+  // they were dormant.
+  setViewportVisibility (visible: boolean): void {
+    if (this.viewportVisible === visible) return;
+    this.viewportVisible = visible;
+
+    if (visible && this.documentVisible) this.requestFrame();
+    else engine.drop(this);
+  }
+
+  setDocumentVisibility (visible: boolean): void {
+    if (this.documentVisible === visible) return;
+    this.documentVisible = visible;
+
+    if (visible && this.viewportVisible) this.requestFrame();
+    else engine.drop(this);
   }
 
   // Convert client coords into the body's local (shape-centered) frame

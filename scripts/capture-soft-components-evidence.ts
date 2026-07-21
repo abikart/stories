@@ -23,6 +23,10 @@ async function main() {
     await ready(desktop, baseUrl);
     await desktop.locator(".soft-catalog").screenshot({ path: path.join(evidenceDirectory, "stories-desktop-chromium.png") });
 
+    await desktop.getByRole("button", { name: "Dark", exact: true }).click();
+    await desktop.locator(".soft-catalog").screenshot({ path: path.join(evidenceDirectory, "stories-dark-desktop-chromium.png") });
+    await desktop.getByRole("button", { name: "Light", exact: true }).click();
+
     await desktop.getByRole("button", { name: "Upstream", exact: true }).click();
     await desktop.locator(".soft-catalog").screenshot({ path: path.join(evidenceDirectory, "upstream-desktop-chromium.png") });
 

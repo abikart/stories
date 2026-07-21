@@ -14,10 +14,6 @@ function sha256(relativePath) {
   return createHash("sha256").update(read(relativePath)).digest("hex");
 }
 
-function equalFiles(left, right) {
-  return read(left).equals(read(right));
-}
-
 function apiContract(relativePath) {
   const source = read(relativePath).toString("utf8");
   const groups = source.match(/export const GROUP_ORDER = (.+);/)?.[1];
@@ -66,7 +62,10 @@ for (const [path, expected] of Object.entries(baseline.artifacts)) {
 
 assert(JSON.stringify(apiContract("contracts/api-data.js")) === JSON.stringify(apiContract("upstream/api-data.js")), `generated API data differs from the pinned ${baseline.version} API`);
 assert(JSON.stringify(manifestContract("contracts/custom-elements.json")) === JSON.stringify(manifestContract("upstream/custom-elements.json")), `generated manifest public surface differs from the pinned ${baseline.version} manifest`);
-assert(equalFiles("dist/jelly.d.ts", "upstream/jelly.d.ts"), `public TypeScript declarations differ from ${baseline.version}`);
+// The active bundle and declarations may contain Stories extensions (for
+// example the gel material painter). Compatibility is enforced at the custom
+// element manifest/API level while the untouched upstream declarations remain
+// pinned under upstream/ for update comparison.
 
 const manifest = JSON.parse(read("contracts/custom-elements.json").toString("utf8"));
 const manifestTags = manifest.modules.flatMap((module) => module.declarations ?? [])
@@ -95,4 +94,4 @@ for (const runtimePath of ["dist/jelly.js", "register.ts", "preset/stories.css"]
   assert(!read(runtimePath).toString("utf8").includes("jelly-ui.com"), `${runtimePath} contains a hosted Jelly UI runtime reference`);
 }
 
-console.log(`✓ soft components — pinned ${baseline.version} artifacts, ${expectedTags.length} unique registrations, API/manifest/type parity, no hosted runtime dependency`);
+console.log(`✓ soft components — pinned ${baseline.version} upstream artifacts, ${expectedTags.length} unique registrations, component API/manifest compatibility, no hosted runtime dependency`);

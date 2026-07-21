@@ -50,9 +50,12 @@ npm run update:soft-components -- --ref <tag-or-commit>
 The updater uses a clean detached checkout in a temporary directory. It runs
 the upstream install, typecheck, browser tests, build, and docs generation,
 then repeats the package verification against an isolated Stories candidate.
-Only a candidate with byte-for-byte build parity and API/manifest/type parity
-can replace the pinned core. Stories-owned presets, loaders, integration code,
-and catalog styling are never copied from upstream.
+Stories source extensions are three-way merged over the requested upstream
+source; clean merges proceed, while conflicts stop before touching the
+worktree. Only a candidate with component API/manifest compatibility and a
+passing local build/test suite can replace the pinned core. Stories-owned
+presets, loaders, integration code, and catalog styling are never copied from
+upstream.
 
 If attributes, events, slots, parts, CSS properties, methods, or component tags
 change, the updater stops without touching the worktree. Review its report and
@@ -108,8 +111,26 @@ The optional Stories preset is a pure CSS layer:
 ```
 
 It supplies the Stories font stacks, warm-paper surfaces, contrast-safe candy
-colors, quieter shadows, and 44px small targets. It does not alter component
-classes or remove upstream states. For reading-heavy contexts, set
+colors, 44px small targets, and an opt-in translucent Canvas 2D gel material.
+The upstream-compatible surface stays flat outside the preset. Gel rendering
+is portable CSS configuration rather than a component fork:
+
+```css
+[data-jelly-preset="custom"] {
+  --jelly-material: gel;
+  --jelly-gel-opacity: 0.76;
+  --jelly-gel-highlight-strength: 0.3;
+  --jelly-gel-rim-strength: 0.38;
+  --jelly-gel-inner-shadow-strength: 0.16;
+  --jelly-gel-contact-shadow-strength: 0.19;
+  --jelly-gel-thickness: 1.4;
+  --jelly-gel-highlight-color: #fff;
+  --jelly-gel-shadow-color: #20172f;
+}
+```
+
+It does not alter component classes or remove upstream states. For
+reading-heavy contexts, set
 `data-jelly-motion="reduce"` on `<html>`; the same reduction happens
 automatically for the operating-system `prefers-reduced-motion` preference.
 
@@ -159,7 +180,9 @@ Custom Elements, open Shadow DOM, Canvas 2D, ResizeObserver, Web Animations,
 CSS custom properties, and `ElementInternals`. It preserves native focus and
 form controls, keyboard maps, visible focus rings, forced-colors fallbacks,
 RTL interaction, modal focus restoration/background inerting, live regions,
-and reduced soft-body/overlay motion.
+and reduced soft-body/overlay motion. Canvas animation loops park while their
+component is outside the viewport or the document is hidden, then repaint on
+re-entry.
 
 The co-located browser tests cover every component. Run `npm run verify` to
 execute the pinned suite, rebuild the distribution, regenerate both API

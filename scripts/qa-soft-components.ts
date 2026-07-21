@@ -78,6 +78,37 @@ async function main() {
       }
       await page.getByRole("button", { name: "Stories preset", exact: true }).click();
 
+      await page.getByRole("button", { name: "Dark", exact: true }).click();
+      const darkTheme = await page.evaluate(() => {
+        const catalog = document.querySelector<HTMLElement>(".ds-catalog");
+        const scope = document.querySelector<HTMLElement>("[data-testid='soft-components-catalog']");
+        return {
+          mode: document.documentElement.getAttribute("data-jelly-mode"),
+          page: catalog ? getComputedStyle(catalog).getPropertyValue("--ds-catalog-page").trim() : "",
+          surface: catalog ? getComputedStyle(catalog).getPropertyValue("--ds-catalog-surface").trim() : "",
+          foreground: scope ? getComputedStyle(scope).getPropertyValue("--jelly-color-foreground-default").trim() : "",
+        };
+      });
+      if (
+        darkTheme.mode !== "dark" ||
+        darkTheme.page !== "#15171c" ||
+        darkTheme.surface !== "#202329" ||
+        darkTheme.foreground !== "#f8f6ed"
+      ) {
+        failures.push(`${engine.name}: explicit dark catalog theme failed ${JSON.stringify(darkTheme)}`);
+      }
+
+      await page.getByRole("button", { name: "Light", exact: true }).click();
+      const lightTheme = await page.evaluate(() => ({
+        mode: document.documentElement.getAttribute("data-jelly-mode"),
+        surface: getComputedStyle(document.querySelector<HTMLElement>(".ds-catalog")!).getPropertyValue("--ds-catalog-surface").trim(),
+      }));
+      if (lightTheme.mode !== "light" || lightTheme.surface !== "#ffffff") {
+        failures.push(`${engine.name}: explicit light catalog theme failed ${JSON.stringify(lightTheme)}`);
+      }
+
+      await page.getByRole("button", { name: "Auto", exact: true }).click();
+
       await page.getByLabel("Reduce motion", { exact: true }).check();
       const motion = await page.evaluate(() => {
         const firstButton = document.querySelector("jelly-button") as (HTMLElement & { reducedMotion?: boolean }) | null;
@@ -158,7 +189,7 @@ async function main() {
     return;
   }
 
-  console.log(`✓ soft components — ${tags.length} definitions/catalog cards, Stories/upstream presets, reduced motion, nested overlays, responsive layout, clean consoles in Chromium/WebKit/Firefox`);
+  console.log(`✓ soft components — ${tags.length} definitions/catalog cards, Stories/upstream presets, auto/light/dark themes, reduced motion, nested overlays, responsive layout, clean consoles in Chromium/WebKit/Firefox`);
 }
 
 void main().catch((error: unknown) => {

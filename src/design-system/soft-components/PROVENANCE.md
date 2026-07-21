@@ -16,17 +16,14 @@ load either this local implementation or the hosted implementation, never both.
 - License: MIT, `Copyright (c) 2026 bmson`
 
 The updater verified a clean detached checkout with the upstream typecheck,
-browser tests, build, and documentation generation. The Stories candidate was
-then rebuilt independently and matched the pinned distribution, manifest, API
-data, and declarations before any project files were replaced.
+browser tests, build, and documentation generation. Stories source extensions
+were then three-way merged over that checkout and the candidate was rebuilt and
+verified before any project files were replaced.
 
 ## Pinned artifact snapshot
 
 | Artifact | Bytes | SHA-256 |
 | --- | ---: | --- |
-| `dist/jelly.js` | 318426 | `68af6000710c7b8bd22d3ed8e337308fb20d767511483d1458f27288d34950ef` |
-| `dist/jelly.js.map` | 629418 | `51c23050586f52fc55f1108b681c154a28e0355a11f8cba887b36f74ee64df7c` |
-| `dist/jelly.d.ts` | 14181 | `1004cad04d5548661ffb9ad1eb29e59bc7627e948281222cb48fa0904093a22a` |
 | `upstream/api-data.js` | 143800 | `c7a6e72a9c943465371045a1fb67d4ffe3dc19802d720c6be0aeb86729865e99` |
 | `upstream/custom-elements.json` | 260859 | `df1a8a133fd3e5f767c669d497c9f525cd187a5e8c4d97a1a35e7c54f07c8134` |
 | `upstream/jelly.d.ts` | 14181 | `1004cad04d5548661ffb9ad1eb29e59bc7627e948281222cb48fa0904093a22a` |
@@ -40,7 +37,9 @@ The most recent public-surface comparison is in
 
 Run `npm run update:soft-components -- --ref <tag-or-commit>`. Public API
 changes require `--accept-api-changes`; the updater otherwise stops without
-touching the worktree. Stories-authored presets and integration modules remain
-separate and are never replaced. Review and commit the resulting Git diff.
+touching the worktree. Stories-authored source changes are reapplied with a
+three-way merge. A conflict stops the update for manual review instead of
+discarding either side. Presets and integration modules remain separate and
+are never replaced. Review and commit the resulting Git diff.
 
 Do not remove the upstream MIT notice when copying or extracting this package.

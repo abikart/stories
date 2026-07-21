@@ -27,6 +27,23 @@ export interface Border {
   color: string;
 }
 
+// Surface material selected through --jelly-material or per-paint override.
+// "flat" preserves the upstream renderer; "gel" adds translucent volume.
+export type JellyMaterial = 'flat' | 'gel';
+
+// Resolved gel painter controls. CSS custom properties are read by
+// JellyElement so the painter stays independent from the DOM and theme layer.
+export interface GelMaterialOptions {
+  opacity: number;
+  highlightStrength: number;
+  rimStrength: number;
+  innerShadowStrength: number;
+  contactShadowStrength: number;
+  thickness: number;
+  highlightColor: RGBA;
+  shadowColor: RGBA;
+}
+
 // Options for paintBody
 export interface PaintOptions {
   fill?: string;
@@ -43,6 +60,7 @@ export interface PaintOptions {
   warp?: ((point: SurfacePoint) => SurfacePoint) | null;
   ease?: boolean;
   easeKey?: string;
+  material?: JellyMaterial;
 }
 
 // Options for wirePress

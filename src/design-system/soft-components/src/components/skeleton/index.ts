@@ -9,6 +9,8 @@ import type { Shape }   from '../../element/index.js';
 
 import skeletonStyles    from './skeleton.css?inline';
 
+const paintAccumulators = new WeakMap<JellySkeleton, number>();
+
 /**
  * A soft loading placeholder that gently breathes.
  *
@@ -88,13 +90,27 @@ export class JellySkeleton extends JellyElement {
       return false;
     }
 
+    // The breathing placeholder changes slowly enough that 30 physics/paint
+    // updates per second are visually continuous. The shared engine may be
+    // servicing faster interactive controls, so skip this component's heavier
+    // membrane work between its own ticks instead of lowering global cadence.
+    const paintAccumulator = (paintAccumulators.get(this) ?? 1 / 30) + dt;
+
+    if (dt > 0 && paintAccumulator < 1 / 30) {
+      paintAccumulators.set(this, paintAccumulator);
+      return true;
+    }
+
+    const step = paintAccumulator;
+    paintAccumulators.set(this, 0);
+
     const w = body.width;
     const h = body.height;
 
     // A soft ripple sweeps across - a jelly take on a loading shimmer -
     // then rests briefly before the next sweep
-    this.phase           = (this.phase + dt * this.sweepSpeed) % 1.5;
-    this.timeAccumulator += dt;
+    this.phase           = (this.phase + step * this.sweepSpeed) % 1.5;
+    this.timeAccumulator += step;
 
     if (this.timeAccumulator > 0.08 && this.phase <= 1) {
       this.timeAccumulator = 0;
@@ -106,7 +122,7 @@ export class JellySkeleton extends JellyElement {
     }
 
     // A slow breath keeps the parts between sweeps soft, never frozen
-    this.breath += dt;
+    this.breath += step;
 
     if (this.breath > this.breathEvery) {
       this.breath      = 0;
@@ -115,7 +131,7 @@ export class JellySkeleton extends JellyElement {
       body.centerPop(0.16);
     }
 
-    body.update(dt);
+    body.update(step);
     this.clearCanvas();
     this.paintBody(body, { fill: this.fill(), alpha: 0.82 });
 

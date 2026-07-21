@@ -1,9 +1,10 @@
 import assert from "node:assert/strict";
-import { mkdtempSync, rmSync, writeFileSync } from "node:fs";
+import { mkdirSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
+import { spawnSync } from "node:child_process";
 import test from "node:test";
-import { compareManifests } from "./update-upstream.mjs";
+import { compareManifests, mergeStoriesSource } from "./update-upstream.mjs";
 
 function manifest(declarations) {
   return { schemaVersion: "1.0.0", modules: [{ kind: "javascript-module", path: "src/example.ts", declarations }] };
@@ -67,4 +68,55 @@ test("manifest comparison reports removed elements", () => {
   const result = compare([element("jelly-card")], []);
   assert.deepEqual(result.removedTags, ["jelly-card"]);
   assert.equal(result.hasChanges, true);
+});
+
+test("Stories source extensions three-way merge over a newer upstream", () => {
+  const root = mkdtempSync(join(tmpdir(), "jelly-source-merge-test-"));
+  const checkout = join(root, "checkout");
+  const current = join(root, "current");
+  const candidate = join(root, "candidate");
+  const path = join("src", "example.ts");
+  const run = (...args) => {
+    const result = spawnSync("git", args, { cwd: checkout, encoding: "utf8" });
+    assert.equal(result.status, 0, result.stderr);
+    return result.stdout.trim();
+  };
+
+  try {
+    mkdirSync(join(checkout, "src"), { recursive: true });
+    mkdirSync(join(current, "src"), { recursive: true });
+    mkdirSync(join(candidate, "src"), { recursive: true });
+    run("init", "--quiet");
+    run("config", "user.email", "test@example.com");
+    run("config", "user.name", "Test");
+
+    const baselineSource = "export const material = 'flat';\n\n// upstream tuning\nexport const samples = 240;\n";
+    writeFileSync(join(checkout, path), baselineSource);
+    run("add", path);
+    run("commit", "--quiet", "-m", "baseline");
+    const baselineCommit = run("rev-parse", "HEAD");
+
+    writeFileSync(join(checkout, path), "export const material = 'flat';\n\n// upstream tuning\nexport const samples = 180;\n");
+    run("add", path);
+    run("commit", "--quiet", "-m", "upstream update");
+
+    writeFileSync(join(current, path), "export const material = 'gel';\n\n// upstream tuning\nexport const samples = 240;\n");
+    writeFileSync(join(candidate, path), readFileSync(join(checkout, path)));
+
+    const applied = mergeStoriesSource({
+      candidate,
+      checkout,
+      currentRoot: current,
+      baseline: { commit: baselineCommit, repository: "fixture" },
+      temporaryRoot: root,
+    });
+
+    assert.deepEqual(applied, [path]);
+    assert.equal(
+      readFileSync(join(candidate, path), "utf8"),
+      "export const material = 'gel';\n\n// upstream tuning\nexport const samples = 180;\n",
+    );
+  } finally {
+    rmSync(root, { recursive: true, force: true });
+  }
 });

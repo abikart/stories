@@ -83,6 +83,17 @@ export declare const FOCUS_RING: {
 
 export declare const FONT_STACK = "ui-rounded, 'SF Pro Rounded', system-ui, -apple-system, 'Segoe UI', sans-serif";
 
+declare interface GelMaterialOptions {
+    opacity: number;
+    highlightStrength: number;
+    rimStrength: number;
+    innerShadowStrength: number;
+    contactShadowStrength: number;
+    thickness: number;
+    highlightColor: RGBA;
+    shadowColor: RGBA;
+}
+
 export declare function getThemeMode(): ThemeMode;
 
 export declare function horizontalStep(key: string, rtl?: boolean): number;
@@ -203,6 +214,8 @@ export declare class JellyElement extends HTMLElement implements JellyComponent 
     hostFocusHandler?: (event: FocusEvent) => void;
     pressPointerId: number | null;
     keyboardActive: boolean;
+    viewportVisible: boolean;
+    documentVisible: boolean;
     onThemeChange: () => void;
     onMotionChange: () => void;
     onWindowResize: () => void;
@@ -231,6 +244,8 @@ export declare class JellyElement extends HTMLElement implements JellyComponent 
     reshapeMembrane(): void;
     clearCanvas(): void;
     paintBody(body: JellyBody, options?: PaintOptions): void;
+    surfaceMaterial(): JellyMaterial;
+    gelMaterial(): GelMaterialOptions;
     defaultFrame(dt: number): boolean;
     surfaceBorder(): Border | null;
     focusRing(): Ring | null;
@@ -247,6 +262,8 @@ export declare class JellyElement extends HTMLElement implements JellyComponent 
     useHostFocusTarget(el: HTMLElement | null): void;
     syncHostFocusTarget(): void;
     requestFrame(): void;
+    setViewportVisibility(visible: boolean): void;
+    setDocumentVisibility(visible: boolean): void;
     toLocal(clientX: number, clientY: number, body?: JellyBody | null): {
         x: number;
         y: number;
@@ -270,6 +287,8 @@ declare class JellyEngine {
 }
 
 export declare function jellyIcon(name: IconName, { size, label }?: IconOptions): string;
+
+declare type JellyMaterial = 'flat' | 'gel';
 
 declare interface JellyState {
     clickDepth: number;
@@ -350,6 +369,7 @@ declare interface PaintOptions {
     warp?: ((point: SurfacePoint) => SurfacePoint) | null;
     ease?: boolean;
     easeKey?: string;
+    material?: JellyMaterial;
 }
 
 export declare const PALETTE: TokenMap;
