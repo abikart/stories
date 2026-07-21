@@ -20,6 +20,7 @@
     "evidence:design-system": "tsx scripts/capture-design-system-evidence.ts",
     "evidence:soft-components": "tsx scripts/capture-soft-components-evidence.ts",
     "sync:soft-components": "node scripts/sync-soft-components-dist.mjs",
+    "update:soft-components": "npm --prefix src/design-system/soft-components run update:upstream --",
     "ingest:experience-video": "tsx scripts/ingest-experience-video.ts"
   },
   "dependencies": {

@@ -53,6 +53,15 @@ and named exports retain the pinned contract. The application QA additionally
 checks registration, nested overlays, modal semantics, RTL fixtures,
 responsive overflow, and browser consoles in Chromium, WebKit, and Firefox.
 
+The upstream baseline is updateable without mixing project customizations into
+the recovered core. `npm run update:soft-components -- --ref <ref> --dry-run`
+fetches and fully verifies a detached Jelly UI checkout and reports API changes
+without writing. Removing `--dry-run` applies a verified candidate; any public
+API delta requires the explicit `--accept-api-changes` flag. The updater keeps
+the Stories preset and loaders intact, regenerates React intrinsic-element
+declarations, updates the public browser bundle, records exact hashes and
+provenance, and leaves the resulting Git diff uncommitted for review.
+
 Run the relevant checks against a local server:
 
 ```sh

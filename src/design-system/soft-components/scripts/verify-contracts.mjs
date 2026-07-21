@@ -1,28 +1,10 @@
 import { createHash } from "node:crypto";
-import { readFileSync, readdirSync } from "node:fs";
+import { readFileSync, readdirSync, statSync } from "node:fs";
 import { join, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 
 const root = resolve(fileURLToPath(new URL("..", import.meta.url)));
-const expectedTags = [
-  "jelly-accordion", "jelly-alert", "jelly-badge", "jelly-breadcrumbs", "jelly-button",
-  "jelly-card", "jelly-checkbox", "jelly-chip", "jelly-collapsible", "jelly-dialog",
-  "jelly-divider", "jelly-drawer", "jelly-icon-button", "jelly-input", "jelly-kbd",
-  "jelly-label", "jelly-menu", "jelly-menu-item", "jelly-option", "jelly-otp",
-  "jelly-pagination", "jelly-popover", "jelly-progress", "jelly-radio", "jelly-radio-group",
-  "jelly-range", "jelly-resizable", "jelly-segment", "jelly-segmented", "jelly-select",
-  "jelly-skeleton", "jelly-slider", "jelly-spinner", "jelly-switch", "jelly-tab-panel",
-  "jelly-tabs", "jelly-textarea", "jelly-theme", "jelly-toaster", "jelly-tooltip",
-].sort();
-
-const expectedHashes = {
-  "dist/jelly.js": "68af6000710c7b8bd22d3ed8e337308fb20d767511483d1458f27288d34950ef",
-  "dist/jelly.js.map": "51c23050586f52fc55f1108b681c154a28e0355a11f8cba887b36f74ee64df7c",
-  "dist/jelly.d.ts": "1004cad04d5548661ffb9ad1eb29e59bc7627e948281222cb48fa0904093a22a",
-  "upstream/api-data.js": "c7a6e72a9c943465371045a1fb67d4ffe3dc19802d720c6be0aeb86729865e99",
-  "upstream/custom-elements.json": "df1a8a133fd3e5f767c669d497c9f525cd187a5e8c4d97a1a35e7c54f07c8134",
-  "upstream/jelly.d.ts": "1004cad04d5548661ffb9ad1eb29e59bc7627e948281222cb48fa0904093a22a",
-};
+const baseline = JSON.parse(readFileSync(join(root, "upstream", "baseline.json"), "utf8"));
 
 function read(relativePath) {
   return readFileSync(join(root, relativePath));
@@ -69,17 +51,30 @@ function assert(condition, message) {
   if (!condition) throw new Error(message);
 }
 
-for (const [path, expected] of Object.entries(expectedHashes)) {
+assert(baseline.schemaVersion === 1, `unsupported upstream baseline schema: ${baseline.schemaVersion}`);
+assert(/^[0-9a-f]{40}$/.test(baseline.commit), `invalid pinned upstream commit: ${baseline.commit}`);
+const upstreamPackage = JSON.parse(read("package.upstream.json").toString("utf8"));
+assert(upstreamPackage.version === baseline.version, `package snapshot version ${upstreamPackage.version} differs from baseline ${baseline.version}`);
+assert(upstreamPackage.license === baseline.license, `package snapshot license ${upstreamPackage.license} differs from baseline ${baseline.license}`);
+
+for (const [path, expected] of Object.entries(baseline.artifacts)) {
+  assert(!path.startsWith("/") && !path.split(/[\\/]/).includes(".."), `invalid artifact path in baseline: ${path}`);
   const actual = sha256(path);
-  assert(actual === expected, `${path} drifted: expected ${expected}, received ${actual}`);
+  assert(actual === expected.sha256, `${path} drifted: expected ${expected.sha256}, received ${actual}`);
+  assert(statSync(join(root, path)).size === expected.bytes, `${path} byte length drifted from the pinned baseline`);
 }
 
-assert(JSON.stringify(apiContract("contracts/api-data.js")) === JSON.stringify(apiContract("upstream/api-data.js")), "generated API data differs from the pinned v1.1 API");
-assert(JSON.stringify(manifestContract("contracts/custom-elements.json")) === JSON.stringify(manifestContract("upstream/custom-elements.json")), "generated manifest public surface differs from the pinned v1.1 manifest");
-assert(equalFiles("dist/jelly.d.ts", "upstream/jelly.d.ts"), "public TypeScript declarations differ from v1.1");
+assert(JSON.stringify(apiContract("contracts/api-data.js")) === JSON.stringify(apiContract("upstream/api-data.js")), `generated API data differs from the pinned ${baseline.version} API`);
+assert(JSON.stringify(manifestContract("contracts/custom-elements.json")) === JSON.stringify(manifestContract("upstream/custom-elements.json")), `generated manifest public surface differs from the pinned ${baseline.version} manifest`);
+assert(equalFiles("dist/jelly.d.ts", "upstream/jelly.d.ts"), `public TypeScript declarations differ from ${baseline.version}`);
 
 const manifest = JSON.parse(read("contracts/custom-elements.json").toString("utf8"));
 const manifestTags = manifest.modules.flatMap((module) => module.declarations ?? [])
+  .filter((declaration) => declaration.customElement && declaration.tagName)
+  .map((declaration) => declaration.tagName)
+  .sort();
+const expectedTags = JSON.parse(read("upstream/custom-elements.json").toString("utf8")).modules
+  .flatMap((module) => module.declarations ?? [])
   .filter((declaration) => declaration.customElement && declaration.tagName)
   .map((declaration) => declaration.tagName)
   .sort();
@@ -100,4 +95,4 @@ for (const runtimePath of ["dist/jelly.js", "register.ts", "preset/stories.css"]
   assert(!read(runtimePath).toString("utf8").includes("jelly-ui.com"), `${runtimePath} contains a hosted Jelly UI runtime reference`);
 }
 
-console.log("✓ soft components — exact v1.1 artifacts, 40 unique registrations, API/manifest/type parity, no hosted runtime dependency");
+console.log(`✓ soft components — pinned ${baseline.version} artifacts, ${expectedTags.length} unique registrations, API/manifest/type parity, no hosted runtime dependency`);

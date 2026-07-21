@@ -31,12 +31,14 @@
     "build": "vite build",
     "typecheck": "tsc --noEmit",
     "test": "vitest run",
+    "test:updater": "node --test scripts/update-upstream.test.mjs",
     "test:watch": "vitest",
     "manifest": "cem analyze && node scripts/normalize-manifest.mjs",
     "docs:data": "node scripts/build-docs-data.mjs",
     "contracts": "npm run manifest && npm run docs:data",
+    "update:upstream": "node scripts/update-upstream.mjs",
     "verify:contracts": "node scripts/verify-contracts.mjs",
-    "verify": "npm run typecheck && npm run test && npm run build && npm run contracts && npm run verify:contracts"
+    "verify": "npm run typecheck && npm run test:updater && npm run test && npm run build && npm run contracts && npm run verify:contracts"
   },
   "devDependencies": {
     "@custom-elements-manifest/analyzer": "^0.10.3",

@@ -3,16 +3,16 @@ import { readFileSync } from "node:fs";
 import path from "node:path";
 import { chromium, firefox, webkit, type BrowserType } from "playwright";
 
-const tags = [
-  "jelly-accordion", "jelly-alert", "jelly-badge", "jelly-breadcrumbs", "jelly-button",
-  "jelly-card", "jelly-checkbox", "jelly-chip", "jelly-collapsible", "jelly-dialog",
-  "jelly-divider", "jelly-drawer", "jelly-icon-button", "jelly-input", "jelly-kbd",
-  "jelly-label", "jelly-menu", "jelly-menu-item", "jelly-option", "jelly-otp",
-  "jelly-pagination", "jelly-popover", "jelly-progress", "jelly-radio", "jelly-radio-group",
-  "jelly-range", "jelly-resizable", "jelly-segment", "jelly-segmented", "jelly-select",
-  "jelly-skeleton", "jelly-slider", "jelly-spinner", "jelly-switch", "jelly-tab-panel",
-  "jelly-tabs", "jelly-textarea", "jelly-theme", "jelly-toaster", "jelly-tooltip",
-] as const;
+const manifest = JSON.parse(readFileSync(path.join(
+  process.cwd(),
+  "src", "design-system", "soft-components", "contracts", "custom-elements.json",
+), "utf8")) as {
+  modules: Array<{ declarations?: Array<{ customElement?: boolean; tagName?: string }> }>;
+};
+const tags = manifest.modules.flatMap((module) => module.declarations ?? [])
+  .filter((declaration) => declaration.customElement && declaration.tagName)
+  .map((declaration) => declaration.tagName as string)
+  .sort();
 
 const engines: Array<{ name: string; type: BrowserType }> = [
   { name: "chromium", type: chromium },
@@ -63,7 +63,7 @@ async function main() {
       if (contract.missingDefinitions.length) failures.push(`${engine.name}: missing definitions ${contract.missingDefinitions.join(", ")}`);
       if (contract.missingCatalogCards.length) failures.push(`${engine.name}: missing catalog cards ${contract.missingCatalogCards.join(", ")}`);
       if (contract.duplicateDefinitions.length) failures.push(`${engine.name}: duplicate/missing catalog cards ${contract.duplicateDefinitions.join(", ")}`);
-      if (contract.upgradedCount < 40) failures.push(`${engine.name}: only ${contract.upgradedCount} upgraded elements found`);
+      if (contract.upgradedCount < tags.length) failures.push(`${engine.name}: only ${contract.upgradedCount} upgraded elements found`);
       if (contract.desktopOverflow > 1) failures.push(`${engine.name}: desktop overflow ${contract.desktopOverflow}px`);
       if (contract.storiesAccent !== "#681fd1" && contract.storiesAccent !== "rgb(104, 31, 209)") {
         failures.push(`${engine.name}: Stories preset accent did not apply (${contract.storiesAccent})`);
@@ -158,7 +158,7 @@ async function main() {
     return;
   }
 
-  console.log("✓ soft components — 40 definitions/catalog cards, Stories/upstream presets, reduced motion, nested overlays, responsive layout, clean consoles in Chromium/WebKit/Firefox");
+  console.log(`✓ soft components — ${tags.length} definitions/catalog cards, Stories/upstream presets, reduced motion, nested overlays, responsive layout, clean consoles in Chromium/WebKit/Firefox`);
 }
 
 void main().catch((error: unknown) => {

@@ -35,6 +35,32 @@ Vite only inlines authored CSS and SVG files into one ESM bundle. Consumers do
 not need Vite. Tests execute in a real browser through Vitest and Playwright.
 The manifest and API data in `contracts/` are generated compatibility checks.
 
+## Updating from Jelly UI
+
+Pin every update to an explicit upstream tag, branch, or commit:
+
+```sh
+# Fetch, build, test, and report without changing the worktree.
+npm run update:soft-components -- --ref main --dry-run
+
+# Apply an update whose public custom-element API is unchanged.
+npm run update:soft-components -- --ref <tag-or-commit>
+```
+
+The updater uses a clean detached checkout in a temporary directory. It runs
+the upstream install, typecheck, browser tests, build, and docs generation,
+then repeats the package verification against an isolated Stories candidate.
+Only a candidate with byte-for-byte build parity and API/manifest/type parity
+can replace the pinned core. Stories-owned presets, loaders, integration code,
+and catalog styling are never copied from upstream.
+
+If attributes, events, slots, parts, CSS properties, methods, or component tags
+change, the updater stops without touching the worktree. Review its report and
+rerun with `--accept-api-changes` to apply intentionally. The applied package
+records the exact commit and hashes in `upstream/baseline.json` and writes the
+public-surface comparison to `upstream/UPDATE_REPORT.md`. It does not create a
+Git commit; review the resulting diff first.
+
 ## Porting
 
 Copy this whole directory. Keep `LICENSE`, `THIRD_PARTY_NOTICES.md`, and
@@ -136,5 +162,6 @@ RTL interaction, modal focus restoration/background inerting, live regions,
 and reduced soft-body/overlay motion.
 
 The co-located browser tests cover every component. Run `npm run verify` to
-execute 114 real-browser tests, rebuild the distribution, regenerate both API
-contracts, and compare the public surface with the pinned v1.1 baseline.
+execute the pinned suite, rebuild the distribution, regenerate both API
+contracts, and compare the public surface with the machine-readable upstream
+baseline.
