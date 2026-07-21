@@ -1,0 +1,133 @@
+:host {
+  display:  block;
+  position: relative;
+
+  --jelly-alert-padding-block:  15px;
+  --jelly-alert-padding-inline: 16px;
+  --jelly-alert-gap:            12px;
+  --jelly-alert-font-size:      14.5px;
+  --jelly-alert-icon:           22px;
+  --jelly-alert-close:          24px;
+  --jelly-alert-radius:         16px;
+
+  --tone: var(--jelly-color-background-azure);
+
+  /* Filled, not outlined: the surface carries a soft wash of the tone,
+     with a slightly stronger tone edge - both track --tone, so every
+     tone (and dark mode) tints automatically. */
+  --jelly-fill:         color-mix(in srgb, var(--tone) 15%, var(--jelly-color-background-surface));
+  --jelly-alert-border: color-mix(in srgb, var(--tone) 34%, var(--jelly-color-background-surface));
+
+  font:  500 var(--jelly-alert-font-size)/1.5 var(--jelly-font-text);
+  color: var(--jelly-color-foreground-default);
+}
+
+:host([size="small"]) {
+  --jelly-alert-padding-block:  12px;
+  --jelly-alert-padding-inline: 13px;
+  --jelly-alert-gap:            9px;
+  --jelly-alert-font-size:      13px;
+  --jelly-alert-icon:           19px;
+  --jelly-alert-close:          22px;
+  --jelly-alert-radius:         14px;
+}
+
+:host([size="large"]) {
+  --jelly-alert-padding-block:  18px;
+  --jelly-alert-padding-inline: 20px;
+  --jelly-alert-gap:            14px;
+  --jelly-alert-font-size:      16px;
+  --jelly-alert-icon:           26px;
+  --jelly-alert-close:          28px;
+  --jelly-alert-radius:         18px;
+}
+
+:host([tone="success"]) { --tone: var(--jelly-color-background-mint); }
+:host([tone="warning"]) { --tone: var(--jelly-color-background-amber); }
+:host([tone="danger"])  { --tone: var(--jelly-color-background-rose); }
+
+.box {
+  position:       relative;
+  box-sizing:     border-box;
+  display:        flex;
+  gap:            var(--jelly-alert-gap);
+  align-items:    flex-start;
+  padding-block:  var(--jelly-alert-padding-block);
+  padding-inline: var(--jelly-alert-padding-inline);
+}
+
+/* The tone icon (Fluent) renders directly in the tone colour - the
+   glyphs carry their own circle / triangle outline */
+.icon {
+  flex:            0 0 auto;
+  width:           var(--jelly-alert-icon);
+  height:          var(--jelly-alert-icon);
+  color:           var(--tone);
+  display:         inline-flex;
+  align-items:     center;
+  justify-content: center;
+  margin-top:      1px;
+}
+
+.icon svg {
+  width:  100%;
+  height: 100%;
+  fill:   currentColor;
+}
+
+.body {
+  flex:      1;
+  min-width: 0;
+}
+
+.body ::slotted(strong) {
+  font-weight: 750;
+}
+
+.close {
+  flex:            0 0 auto;
+  appearance:      none;
+  border:          0;
+  background:      transparent;
+  cursor:          pointer;
+  touch-action:    manipulation;
+  color:           var(--jelly-color-foreground-muted);
+  width:           var(--jelly-alert-close);
+  height:          var(--jelly-alert-close);
+  /* Never smaller than the 24px WCAG 2.5.8 target (the small size is 22px) */
+  min-width:       24px;
+  min-height:      24px;
+  border-radius:   8px;
+  display:         inline-flex;
+  align-items:     center;
+  justify-content: center;
+  transition:      background-color 0.12s ease, color 0.12s ease;
+}
+
+.close svg {
+  fill: currentColor;
+}
+
+.close:hover {
+  background: var(--jelly-alert-border);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :host-context(html:not([data-jelly-motion="no-preference"])) .close { transition: none; }
+}
+
+:host-context([data-jelly-motion="reduce"]) .close { transition: none; }
+
+.close:focus-visible {
+  outline:        2px solid var(--jelly-ring-color);
+  outline-offset: 1px;
+}
+
+:host(:not([dismissible])) .close {
+  display: none;
+}
+
+@media (forced-colors: active) {
+  .box   { border: 1px solid CanvasText; border-radius: var(--jelly-alert-radius); }
+  .close:focus-visible { outline-color: Highlight; }
+}

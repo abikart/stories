@@ -1,0 +1,12 @@
+:host {
+  display: inline-block;
+  width:   200px;
+  height:  16px;
+
+  --jelly-fill: var(--jelly-color-background-neutral);
+}
+
+:host([shape="line"])   { width: 220px; height: 16px; }
+:host([shape="rect"]),
+:host([shape="square"]) { width: 220px; height: 88px; }
+:host([shape="circle"]) { width: 52px;  height: 52px; }

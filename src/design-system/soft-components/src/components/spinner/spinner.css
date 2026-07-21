@@ -1,0 +1,47 @@
+:host {
+  display: inline-block;
+  width:   42px;
+  height:  18px;
+}
+
+:host([type="blob"])   { width: 44px; height: 44px; }
+
+:host([size="small"])  { width: 34px; height: 14px; }
+:host([size="large"])  { width: 54px; height: 22px; }
+
+:host([type="blob"][size="small"]) { width: 32px; height: 32px; }
+:host([type="blob"][size="large"]) { width: 56px; height: 56px; }
+
+.dots {
+  display:  block;
+  width:    100%;
+  height:   100%;
+  overflow: visible;
+}
+
+.dots g {
+  fill: var(--jelly-fill);
+}
+
+/* The rover glides between the three fixed dots; the goo filter melts it
+   into whichever dot it's nearest, so it reads as one blob travelling */
+.rover {
+  animation: sp-rove 1.5s cubic-bezier(.55, 0, .45, 1) infinite;
+}
+
+@keyframes sp-rove {
+  0%, 100% { transform: translateX(0); }
+  25%      { transform: translateX(12px); }
+  50%      { transform: translateX(24px); }
+  75%      { transform: translateX(12px); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :host-context(html:not([data-jelly-motion="no-preference"])) .rover { animation: none; }
+}
+
+:host-context([data-jelly-motion="reduce"]) .rover { animation: none; }
+
+@media (forced-colors: active) {
+  .dots g { fill: CanvasText; }
+}

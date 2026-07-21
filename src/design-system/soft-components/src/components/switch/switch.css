@@ -1,0 +1,117 @@
+:host {
+  display: inline-flex;
+
+  --jelly-switch-width:     62px;
+  --jelly-switch-height:    34px;
+  --jelly-switch-gap:       12px;
+  --jelly-switch-font-size: 15.5px;
+
+  --jelly-off:              var(--jelly-color-background-neutral);
+  --jelly-on:               var(--jelly-color-background-accent);
+  --jelly-switch-thumb-off: var(--jelly-color-background-white);
+  --jelly-switch-thumb-on:  var(--jelly-color-background-white);
+  --jelly-ring:             var(--jelly-on, var(--jelly-color-border-focus));
+  --jelly-label:            var(--jelly-color-foreground-muted);
+
+  font: 600 var(--jelly-switch-font-size)/1.2 var(--jelly-font-display);
+}
+
+:host([size="small"]),
+:host([size="sm"]) {
+  --jelly-switch-width:     50px;
+  --jelly-switch-height:    28px;
+  --jelly-switch-gap:       10px;
+  --jelly-switch-font-size: 14px;
+}
+
+:host([size="medium"]),
+:host([size="md"]) {
+  --jelly-switch-width:     62px;
+  --jelly-switch-height:    34px;
+  --jelly-switch-gap:       12px;
+  --jelly-switch-font-size: 15.5px;
+}
+
+:host([size="large"]),
+:host([size="lg"]) {
+  --jelly-switch-width:     74px;
+  --jelly-switch-height:    40px;
+  --jelly-switch-gap:       14px;
+  --jelly-switch-font-size: 16.5px;
+}
+
+:host([disabled]) {
+  opacity:        0.5;
+  pointer-events: none;
+}
+
+.wrap {
+  display:      inline-flex;
+  align-items:  center;
+  gap:          var(--jelly-switch-gap);
+  cursor:       pointer;
+  position:     relative;
+  touch-action: manipulation;
+}
+
+input {
+  position:           absolute;
+  inset-inline-start: 0;
+  top:                50%;
+  width:              var(--jelly-switch-width);
+  height:             var(--jelly-switch-height);
+  transform:          translateY(-50%);
+  margin:             0;
+  opacity:            0;
+  pointer-events:     none;
+}
+
+/* The track is a drag surface: the thumb follows the finger, so the
+   browser must not claim the gesture for scrolling. */
+.track {
+  position:     relative;
+  width:        var(--jelly-switch-width);
+  height:       var(--jelly-switch-height);
+  flex:         0 0 auto;
+  touch-action: none;
+  /* Glide between size steps instead of snapping */
+  transition:
+    width 0.42s cubic-bezier(0.4, 0, 0.2, 1),
+    height 0.42s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :host-context(html:not([data-jelly-motion="no-preference"])) .track { transition: none; }
+}
+
+:host-context([data-jelly-motion="reduce"]) .track { transition: none; }
+
+/* The focus ring is painted on the canvas so it follows the jiggle;
+   this ::after is only for forced-colors mode, where canvas is ignored. */
+.track::after {
+  content:        "";
+  position:       absolute;
+  inset:          -2px;
+  border:         var(--jelly-ring-width) solid transparent;
+  border-radius:  999px;
+  pointer-events: none;
+}
+
+.label {
+  color: var(--jelly-label);
+}
+
+.label:empty {
+  display: none;
+}
+
+@media (forced-colors: active) {
+  .track {
+    border:        1px solid ButtonBorder;
+    border-radius: 999px;
+  }
+
+  input:focus-visible + .track::after {
+    border-color: Highlight;
+  }
+}

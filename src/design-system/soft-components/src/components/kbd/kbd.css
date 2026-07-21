@@ -1,0 +1,60 @@
+:host {
+  display: inline-flex;
+  height:  28px;
+
+  --jelly-fill:  var(--jelly-color-background-neutral);
+  --jelly-label: var(--jelly-color-foreground-on-neutral);
+
+  font:    640 12px/1 var(--jelly-font-mono);
+  cursor:  pointer;
+  outline: none;
+}
+
+:host([size="small"]) {
+  height:    24px;
+  font-size: 11px;
+}
+
+:host([size="large"]) {
+  height:    34px;
+  font-size: 13px;
+}
+
+.cap {
+  display:         inline-flex;
+  align-items:     center;
+  justify-content: center;
+  height:          100%;
+  min-width:       16px;
+  padding-inline:  8px;
+  position:        relative;
+  color:           var(--jelly-label);
+  transition:      transform 0.09s ease;
+  touch-action:    manipulation;
+}
+
+:host([size="small"]) .cap {
+  min-width:      14px;
+  padding-inline: 7px;
+}
+
+:host([size="large"]) .cap {
+  min-width:      20px;
+  padding-inline: 10px;
+}
+
+/* A real key travels down when held */
+:host(.pressed) .cap {
+  transform: translateY(2px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :host-context(html:not([data-jelly-motion="no-preference"])) .cap { transition: none; }
+}
+
+:host-context([data-jelly-motion="reduce"]) .cap { transition: none; }
+
+@media (forced-colors: active) {
+  .cap { border: 1px solid ButtonText; border-radius: 6px; }
+  :host(:focus-visible) .cap { outline: 2px solid Highlight; }
+}

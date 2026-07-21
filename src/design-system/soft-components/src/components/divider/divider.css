@@ -1,0 +1,81 @@
+:host {
+  display: block;
+
+  /* Inside a flex row a horizontal divider must still claim its
+     width, or the hairline collapses to nothing */
+  flex:       1 1 100%;
+  align-self: center;
+
+  --jelly-divider:           var(--jelly-color-border-default);
+  --jelly-divider-font-size: 12px;
+  --jelly-divider-gap:       14px;
+}
+
+:host([size="small"]) {
+  --jelly-divider-font-size: 11px;
+  --jelly-divider-gap:       10px;
+}
+
+:host([size="large"]) {
+  --jelly-divider-font-size: 13.5px;
+  --jelly-divider-gap:       18px;
+}
+
+:host([direction="vertical"]) {
+  display:    inline-block;
+  flex:       0 0 auto;
+  align-self: stretch;
+  width:      auto;
+  min-height: 1em;
+}
+
+:host([direction="vertical"]:not(:empty)),
+:host([direction="vertical"][content]) {
+  min-width: calc(var(--jelly-divider-font-size) + 2px);
+}
+
+.line {
+  height:     1px;
+  background: var(--jelly-divider);
+}
+
+:host([direction="vertical"]) .line {
+  width:  1px;
+  height: 100%;
+}
+
+.labelled {
+  display:        flex;
+  align-items:    center;
+  gap:            var(--jelly-divider-gap);
+  color:          var(--jelly-color-foreground-muted);
+  font:           600 var(--jelly-divider-font-size)/1 var(--jelly-font-display);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  white-space:    nowrap;
+}
+
+.labelled::before,
+.labelled::after {
+  content:    "";
+  flex:       1;
+  height:     1px;
+  background: var(--jelly-divider);
+}
+
+.labelled.vertical {
+  height:          100%;
+  flex-direction:  column;
+  justify-content: center;
+}
+
+.labelled.vertical::before,
+.labelled.vertical::after {
+  width:  1px;
+  height: auto;
+}
+
+.labelled.vertical .label {
+  writing-mode:     vertical-rl;
+  text-orientation: mixed;
+}

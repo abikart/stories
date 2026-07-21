@@ -1,0 +1,98 @@
+:host {
+  --jelly-icon-button-size:      48px;
+  --jelly-icon-button-radius:    16px;
+  --jelly-icon-button-font-size: 18px;
+  --jelly-icon-button-icon-size: 20px;
+
+  /* The ring tracks the button's own fill (see jelly-button) */
+  --jelly-ring: var(--jelly-fill, var(--jelly-color-border-focus));
+}
+
+:host([disabled]) {
+  opacity:        0.55;
+  pointer-events: none;
+}
+
+:host([size="small"]),
+:host([size="sm"]) {
+  --jelly-icon-button-size:      40px;
+  --jelly-icon-button-radius:    13px;
+  --jelly-icon-button-font-size: 16px;
+  --jelly-icon-button-icon-size: 18px;
+}
+
+:host([size="medium"]),
+:host([size="md"]) {
+  --jelly-icon-button-size:      48px;
+  --jelly-icon-button-radius:    16px;
+  --jelly-icon-button-font-size: 18px;
+  --jelly-icon-button-icon-size: 20px;
+}
+
+:host([size="large"]),
+:host([size="lg"]) {
+  --jelly-icon-button-size:      56px;
+  --jelly-icon-button-radius:    18px;
+  --jelly-icon-button-font-size: 20px;
+  --jelly-icon-button-icon-size: 23px;
+}
+
+button {
+  appearance:         none;
+  -webkit-appearance: none;
+  border:             0;
+  margin:             0;
+  padding:            0;
+  background:         transparent;
+  color:              var(--jelly-label);
+  width:              var(--jelly-icon-button-size);
+  height:             var(--jelly-icon-button-size);
+  display:            inline-flex;
+  align-items:        center;
+  justify-content:    center;
+  font:               600 var(--jelly-icon-button-font-size)/1 var(--jelly-font-display);
+  position:           relative;
+  cursor:             pointer;
+  border-radius:      var(--jelly-icon-button-radius);
+  touch-action:       manipulation;
+  /* Glide between size steps instead of snapping */
+  transition:
+    width 0.42s cubic-bezier(0.4, 0, 0.2, 1),
+    height 0.42s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :host-context(html:not([data-jelly-motion="no-preference"])) button { transition: none; }
+}
+
+:host-context([data-jelly-motion="reduce"]) button { transition: none; }
+
+button:focus-visible {
+  outline: none;
+}
+
+/* The focus ring is painted on the canvas so it follows the jiggle;
+   this ::after is only for forced-colors mode, where canvas is ignored. */
+button::after {
+  content:        "";
+  position:       absolute;
+  inset:          -2px;
+  border:         var(--jelly-ring-width) solid transparent;
+  border-radius:  calc(var(--jelly-icon-button-radius) + 2px);
+  pointer-events: none;
+}
+
+::slotted(svg) {
+  width:  var(--jelly-icon-button-icon-size);
+  height: var(--jelly-icon-button-icon-size);
+}
+
+@media (forced-colors: active) {
+  button {
+    color: ButtonText;
+  }
+
+  button:focus-visible::after {
+    border-color: Highlight;
+  }
+}

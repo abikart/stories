@@ -1,0 +1,31 @@
+/* Styles shared by every jelly canvas host (imported by element.ts as a string). */
+
+:host {
+  display:                     inline-block;
+  position:                    relative;
+  box-sizing:                  border-box;
+  vertical-align:              middle;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-user-select:         none;
+  user-select:                 none;
+}
+
+:host([hidden]) {
+  display: none;
+}
+
+.jelly-canvas {
+  position:       absolute;
+  left:           50%;
+  top:            50%;
+  transform:      translate(-50%, -50%);
+  pointer-events: none;
+  z-index:        0;
+}
+
+.jelly-content {
+  position: relative;
+  z-index:  1;
+  width:    100%;
+  height:   100%;
+}

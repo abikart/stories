@@ -1,0 +1,95 @@
+:host {
+  position: fixed;
+  inset:    0;
+  z-index:  10001;
+  display:  none;
+}
+
+:host([open]) {
+  display: block;
+}
+
+.backdrop {
+  position:   absolute;
+  inset:      0;
+  background: color-mix(in srgb, var(--jelly-color-foreground-default) 42%, transparent);
+  -webkit-backdrop-filter: blur(1.5px);
+  backdrop-filter: blur(1.5px);
+  opacity:    0;
+  transition: opacity .34s ease;
+}
+
+:host([open]) .backdrop {
+  opacity: 1;
+}
+
+/* Flex layer centers the dialog, so its own transform is free for the
+   spring-pop (translate(-50%) centering would fight the animation) */
+.wrap {
+  position:        absolute;
+  inset:           0;
+  display:         flex;
+  align-items:     center;
+  justify-content: center;
+  box-sizing:      border-box;
+  padding:         calc(24px + env(safe-area-inset-top, 0px))
+                   calc(24px + env(safe-area-inset-right, 0px))
+                   calc(24px + env(safe-area-inset-bottom, 0px))
+                   calc(24px + env(safe-area-inset-left, 0px));
+}
+
+.dialog {
+  position:      relative;
+  width:         var(--jelly-dialog-width, min(460px, 100%));
+  max-height:    calc(100vh - 48px);
+  max-height:    calc(100dvh - 48px);
+  overflow:      auto;
+  background:    var(--jelly-color-background-surface);
+  border-radius: var(--jelly-dialog-radius, 24px);
+  padding:       var(--jelly-dialog-padding, 26px);
+  color:         var(--jelly-color-foreground-default);
+  font:          400 15px/1.55 var(--jelly-font-text);
+  box-shadow:    var(--jelly-shadow-overlay);
+  will-change:   transform, opacity;
+}
+
+.close {
+  position:         absolute;
+  top:              16px;
+  inset-inline-end: 16px;
+  width:            30px;
+  height:           30px;
+  border:           0;
+  background:       transparent;
+  border-radius:    50%;
+  cursor:           pointer;
+  touch-action:     manipulation;
+  color:            var(--jelly-color-foreground-muted);
+  font-size:        16px;
+  transition:       background-color 0.12s ease, color 0.12s ease;
+}
+
+.close:hover {
+  background: var(--jelly-color-background-neutral);
+  color:      var(--jelly-color-foreground-on-neutral);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :host-context(html:not([data-jelly-motion="no-preference"])) .close { transition: none; }
+}
+
+:host-context([data-jelly-motion="reduce"]) .close { transition: none; }
+
+.close:focus-visible {
+  outline:        2px solid var(--jelly-ring-color);
+  outline-offset: 1px;
+}
+
+::slotted(:first-child) {
+  margin-top: 0;
+}
+
+@media (forced-colors: active) {
+  .dialog { border: 1px solid CanvasText; }
+  .close:focus-visible { outline-color: Highlight; }
+}

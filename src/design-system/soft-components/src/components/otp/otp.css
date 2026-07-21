@@ -1,0 +1,77 @@
+:host {
+  display: inline-flex;
+
+  --jelly-otp-width:     44px;
+  --jelly-otp-height:    52px;
+  --jelly-otp-gap:       9px;
+  --jelly-otp-font-size: 22px;
+  --jelly-otp-radius:    14px;
+
+  --jelly-ring:       var(--jelly-color-border-focus);
+  --jelly-otp-accent: var(--jelly-color-background-accent);
+}
+
+:host([size="small"]) {
+  --jelly-otp-width:     36px;
+  --jelly-otp-height:    44px;
+  --jelly-otp-gap:       7px;
+  --jelly-otp-font-size: 18px;
+  --jelly-otp-radius:    12px;
+}
+
+:host([size="large"]) {
+  --jelly-otp-width:     54px;
+  --jelly-otp-height:    62px;
+  --jelly-otp-gap:       11px;
+  --jelly-otp-font-size: 26px;
+  --jelly-otp-radius:    17px;
+}
+
+/* One-time codes read left-to-right in every locale, so the digit
+   row is pinned LTR - which also keeps the physical arrow-key
+   navigation below correct on RTL pages */
+.row {
+  display:   inline-flex;
+  gap:       var(--jelly-otp-gap);
+  direction: ltr;
+}
+
+input {
+  width:          var(--jelly-otp-width);
+  height:         var(--jelly-otp-height);
+  box-sizing:     border-box;
+  text-align:     center;
+
+  border:         1px solid var(--jelly-color-background-neutral);
+  border-radius:  var(--jelly-otp-radius);
+  background:     var(--jelly-color-background-muted);
+  color:          var(--jelly-color-foreground-default);
+
+  font:           640 var(--jelly-otp-font-size)/1 var(--jelly-font-display);
+  caret-color:    var(--jelly-otp-accent);
+  touch-action:   manipulation;
+
+  outline:        var(--jelly-ring-width) solid transparent;
+  outline-offset: var(--jelly-ring-gap);
+  transition:     background .15s;
+}
+
+input:focus {
+  background:    var(--jelly-color-background-surface);
+  border-color:  var(--jelly-ring);
+  outline-color: var(--jelly-ring-color);
+}
+
+:host([disabled]) {
+  opacity:        .55;
+  pointer-events: none;
+}
+
+:host([disabled]) input {
+  background: var(--jelly-color-background-neutral);
+}
+
+@media (forced-colors: active) {
+  input        { border-color: ButtonText; }
+  input:focus  { outline-color: Highlight; }
+}

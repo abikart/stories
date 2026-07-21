@@ -1,0 +1,153 @@
+:host {
+  display: block;
+
+  --jelly-resizable-line:          var(--jelly-color-border-default);
+  --jelly-resizable-handle:        var(--jelly-color-background-neutral);
+  --jelly-resizable-handle-active: var(--jelly-color-background-accent);
+}
+
+.container {
+  display:        flex;
+  flex-direction: row;
+  width:          100%;
+  height:         100%;
+}
+
+:host([direction="vertical"]) .container {
+  flex-direction: column;
+}
+
+:host([direction="both"]) .container {
+  display: grid;
+  grid-template-columns:
+    minmax(0, var(--jelly-resizable-col-a, 1fr))
+    14px
+    minmax(0, var(--jelly-resizable-col-b, 1fr));
+  grid-template-rows:
+    minmax(0, var(--jelly-resizable-row-a, 1fr))
+    14px
+    minmax(0, var(--jelly-resizable-row-b, 1fr));
+}
+
+/* In the 2×2 grid the slots must generate real boxes: a slot's default
+   display is "contents", which produces no box at all - the grid-area
+   placements would be ignored and the panes would auto-place into the
+   wrong tracks and overflow the host. Each slot becomes a flex box
+   pinned to its cell that its pane fills, clipped to the cell so a
+   fully collapsed track never spills its content outside the bounds. */
+:host([direction="both"]) slot {
+  display:    flex;
+  min-width:  0;
+  min-height: 0;
+  overflow:   hidden;
+}
+
+:host([direction="both"]) slot[name="p0"] { grid-area: 1 / 1; }
+:host([direction="both"]) slot[name="p1"] { grid-area: 1 / 3; }
+:host([direction="both"]) slot[name="p2"] { grid-area: 3 / 1; }
+:host([direction="both"]) slot[name="p3"] { grid-area: 3 / 3; }
+:host([direction="both"]) slot:nth-of-type(n + 5) { display: none; }
+
+.divider {
+  position:        relative;
+  flex:            0 0 auto;
+  display:         flex;
+  align-items:     center;
+  justify-content: center;
+  width:           14px;
+  cursor:          col-resize;
+  touch-action:    none;
+  outline:         none;
+  border-radius:   999px;
+}
+
+/* A hairline seam runs the full length of every divider so the panes
+   read as separated even at rest - the grabber pill sits on top of it.
+   Default (vertical divider between a row of panes): a full-height rule. */
+.divider::before {
+  content:    "";
+  position:   absolute;
+  background: var(--jelly-resizable-line);
+  inset:      0 50%;
+  width:      1px;
+  transform:  translateX(-50%);
+}
+
+:host([direction="vertical"]) .divider::before,
+:host([direction="both"]) .divider-y::before {
+  inset:     50% 0;
+  width:     auto;
+  height:    1px;
+  transform: translateY(-50%);
+}
+
+:host([direction="vertical"]) .divider {
+  width:  auto;
+  height: 14px;
+  cursor: row-resize;
+}
+
+:host([direction="both"]) .divider   { width: auto; height: auto; }
+:host([direction="both"]) .divider-x { grid-area: 1 / 2 / 4 / 3; cursor: col-resize; }
+:host([direction="both"]) .divider-y { grid-area: 2 / 1 / 3 / 4; cursor: row-resize; }
+
+.divider b {
+  display:       block;
+  background:    var(--jelly-resizable-handle);
+  border-radius: 999px;
+  transition:    width .18s cubic-bezier(.34, 1.7, .5, 1), height .18s cubic-bezier(.34, 1.7, .5, 1), background .15s;
+  width:         5px;
+  height:        42px;
+}
+
+:host([direction="vertical"]) .divider b,
+:host([direction="both"]) .divider-y b {
+  width:  42px;
+  height: 5px;
+}
+
+:host([direction="both"]) .divider-x b {
+  width:  5px;
+  height: 42px;
+}
+
+.divider:hover b,
+.divider:focus-visible b {
+  background: var(--jelly-resizable-handle-active);
+  width:      10px;
+}
+
+:host([direction="vertical"]) .divider:hover b,
+:host([direction="vertical"]) .divider:focus-visible b,
+:host([direction="both"]) .divider-y:hover b,
+:host([direction="both"]) .divider-y:focus-visible b {
+  width:  42px;
+  height: 10px;
+}
+
+:host([direction="both"]) .divider-x:hover b,
+:host([direction="both"]) .divider-x:focus-visible b {
+  width:  10px;
+  height: 42px;
+}
+
+.divider.drag b {
+  background: var(--jelly-resizable-handle-active);
+  width:      12px;
+}
+
+:host([direction="vertical"]) .divider.drag b,
+:host([direction="both"]) .divider-y.drag b {
+  width:  42px;
+  height: 12px;
+}
+
+:host([direction="both"]) .divider-x.drag b {
+  width:  12px;
+  height: 42px;
+}
+
+@media (forced-colors: active) {
+  .divider b { background: ButtonText; }
+  .divider:focus-visible { outline: 2px solid Highlight; }
+}

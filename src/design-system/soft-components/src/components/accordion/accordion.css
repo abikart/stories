@@ -1,0 +1,13 @@
+:host {
+  display: block;
+}
+
+::slotted(jelly-collapsible) {
+  display:       block;
+  border-radius: var(--jelly-accordion-radius, 12px);
+}
+
+::slotted(jelly-collapsible + jelly-collapsible) {
+  border-top:    1px solid var(--jelly-color-border-default);
+  border-radius: 0;
+}

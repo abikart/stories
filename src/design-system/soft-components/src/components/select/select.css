@@ -1,0 +1,248 @@
+:host {
+  --jelly-select-padding-inline:     18px;
+  --jelly-select-font-size:          15.5px;
+  --jelly-select-radius:             16px;
+  --jelly-select-gap:                10px;
+  --jelly-select-chevron-size:       16px;
+  --jelly-select-row-height:         44px;
+  --jelly-select-row-padding-inline: 14px;
+  --jelly-select-row-radius:         11px;
+
+  --jelly-fill:   var(--jelly-color-background-muted);
+  --jelly-label:  var(--jelly-color-foreground-default);
+  --jelly-accent: var(--jelly-color-background-accent);
+  --jelly-ring:   var(--jelly-accent, var(--jelly-color-border-focus));
+
+  display: inline-block;
+  width:   240px;
+  height:  54px;
+  font:    600 var(--jelly-select-font-size)/1.2 var(--jelly-font-text);
+}
+
+:host([size="small"]) {
+  --jelly-select-padding-inline:     15px;
+  --jelly-select-font-size:          14px;
+  --jelly-select-radius:             14px;
+  --jelly-select-gap:                8px;
+  --jelly-select-chevron-size:       14px;
+  --jelly-select-row-height:         38px;
+  --jelly-select-row-padding-inline: 12px;
+  --jelly-select-row-radius:         9px;
+
+  width:  210px;
+  height: 46px;
+}
+
+:host([size="medium"]) {
+  --jelly-select-padding-inline:     18px;
+  --jelly-select-font-size:          15.5px;
+  --jelly-select-radius:             16px;
+  --jelly-select-gap:                10px;
+  --jelly-select-chevron-size:       16px;
+  --jelly-select-row-height:         44px;
+  --jelly-select-row-padding-inline: 14px;
+  --jelly-select-row-radius:         11px;
+
+  width:  240px;
+  height: 54px;
+}
+
+:host([size="large"]) {
+  --jelly-select-padding-inline:     22px;
+  --jelly-select-font-size:          16.5px;
+  --jelly-select-radius:             18px;
+  --jelly-select-gap:                11px;
+  --jelly-select-chevron-size:       18px;
+  --jelly-select-row-height:         50px;
+  --jelly-select-row-padding-inline: 16px;
+  --jelly-select-row-radius:         13px;
+
+  width:  280px;
+  height: 62px;
+}
+
+:host([open]) {
+  z-index: var(--jelly-dropdown-z-index, 9999);
+}
+
+:host([disabled]) {
+  --jelly-fill: var(--jelly-color-background-neutral);
+
+  opacity:        0.55;
+  pointer-events: none;
+}
+
+.trigger {
+  appearance:     none;
+  border:         0;
+  margin:         0;
+  background:     transparent;
+  color:          var(--jelly-label);
+  font:           inherit;
+  width:          100%;
+  height:         100%;
+  padding-block:  0;
+  padding-inline: var(--jelly-select-padding-inline);
+  display:        flex;
+  align-items:    center;
+  gap:            var(--jelly-select-gap);
+  cursor:         pointer;
+  position:       relative;
+  border-radius:  var(--jelly-select-radius);
+  text-align:     start;
+  touch-action:   manipulation;
+}
+
+/* The focus ring is painted on the canvas so it follows the jiggle;
+   this element is only a forced-colors fallback, where canvas is ignored. */
+.trigger::after {
+  content:        "";
+  position:       absolute;
+  inset:          4px;
+  border:         var(--jelly-ring-width) solid transparent;
+  border-radius:  var(--jelly-select-radius);
+  pointer-events: none;
+}
+
+.trigger:focus-visible {
+  outline: none;
+}
+
+.value {
+  flex:          1;
+  overflow:      hidden;
+  text-overflow: ellipsis;
+  white-space:   nowrap;
+}
+
+.value.placeholder {
+  color: var(--jelly-color-foreground-muted);
+}
+
+.chevron {
+  width:      var(--jelly-select-chevron-size);
+  height:     var(--jelly-select-chevron-size);
+  flex:       0 0 auto;
+  transition: transform 0.22s ease;
+}
+
+:host([open]) .chevron {
+  transform: rotate(180deg);
+}
+
+/* The panel only fades; the jelly surface (canvas) does the organic
+   unfold from frame(), so the DOM rows are never scaled or skewed.
+   It hangs below the trigger by default; when placePanel() measures
+   no viewport room below, data-side="top" re-anchors it above and
+   frame() mirrors the reveal so it still unfolds away from the trigger. */
+.panel {
+  position:           absolute;
+  inset-inline-start: 0;
+  top:                calc(100% + 10px);
+  z-index:            9999;
+  opacity:            0;
+  visibility:         hidden;
+  pointer-events:     none;
+  will-change:        opacity;
+}
+
+.panel[data-side="top"] {
+  top:    auto;
+  bottom: calc(100% + 10px);
+}
+
+:host([open]) .panel {
+  pointer-events: auto;
+}
+
+.panel-canvas {
+  position:       absolute;
+  left:           50%;
+  top:            50%;
+  transform:      translate(-50%, -50%);
+  pointer-events: none;
+}
+
+/* The list is revealed away from the trigger edge (clip) to track the
+   unfolding surface; each row settles at its natural size - never stretched. */
+.panel-mask {
+  position:      relative;
+  z-index:       1;
+  width:         100%;
+  height:        100%;
+  border-radius: 20px;
+  overflow:      hidden;
+  clip-path:     inset(0 0 100% 0 round 20px);
+  transition:    none;
+  will-change:   clip-path;
+}
+
+.list {
+  margin:     0;
+  padding:    8px;
+  box-sizing: border-box;
+  list-style: none;
+  width:      100%;
+  height:     100%;
+  overflow-y: auto;
+}
+
+.row {
+  height:         var(--jelly-select-row-height);
+  display:        flex;
+  align-items:    center;
+  gap:            10px;
+  padding-block:  0;
+  padding-inline: var(--jelly-select-row-padding-inline);
+  border-radius:  var(--jelly-select-row-radius);
+  cursor:         pointer;
+  color:          var(--jelly-label);
+  white-space:    nowrap;
+  touch-action:   manipulation;
+  will-change:    transform, opacity;
+}
+
+.row[aria-selected="true"] {
+  font-weight: 800;
+}
+
+.row.active {
+  background: color-mix(in srgb, var(--jelly-accent, var(--jelly-color-background-accent)) 15%, transparent);
+}
+
+.row .tick {
+  margin-inline-start: auto;
+  width:               15px;
+  height:              15px;
+  color:               var(--jelly-accent);
+  opacity:             0;
+}
+
+.row[aria-selected="true"] .tick {
+  opacity: 1;
+}
+
+.row[aria-disabled="true"] {
+  opacity: 0.4;
+  cursor:  not-allowed;
+}
+
+@media (forced-colors: active) {
+  .trigger::after {
+    border-color: ButtonText;
+  }
+
+  .trigger:focus-visible::after {
+    border-color: Highlight;
+  }
+
+  .panel-mask {
+    border:     1px solid CanvasText;
+    background: Canvas;
+  }
+
+  .row.active {
+    background: Highlight;
+    color:      HighlightText;
+  }
+}

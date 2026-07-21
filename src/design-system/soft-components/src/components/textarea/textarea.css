@@ -1,0 +1,103 @@
+:host {
+  --jelly-textarea-font-size:      15.5px;
+  --jelly-textarea-padding-block:  16px;
+  --jelly-textarea-padding-inline: 20px;
+  --jelly-textarea-radius:         18px;
+  --jelly-textarea-min-height:     96px;
+  --jelly-textarea-max-height:     240px;
+
+  --jelly-fill:   var(--jelly-color-background-muted);
+  --jelly-label:  var(--jelly-color-foreground-default);
+  --jelly-accent: var(--jelly-color-background-accent);
+  --jelly-ring:   var(--jelly-accent, var(--jelly-color-border-focus));
+
+  display: inline-block;
+  width:   320px;
+  font:    500 var(--jelly-textarea-font-size)/1.5 var(--jelly-font-text);
+}
+
+:host([size="small"]),
+:host([size="sm"]) {
+  --jelly-textarea-font-size:      14px;
+  --jelly-textarea-padding-block:  13px;
+  --jelly-textarea-padding-inline: 16px;
+  --jelly-textarea-radius:         15px;
+  --jelly-textarea-min-height:     76px;
+  --jelly-textarea-max-height:     200px;
+
+  width: 280px;
+}
+
+:host([size="medium"]),
+:host([size="md"]) {
+  --jelly-textarea-font-size:      15.5px;
+  --jelly-textarea-padding-block:  16px;
+  --jelly-textarea-padding-inline: 20px;
+  --jelly-textarea-radius:         18px;
+  --jelly-textarea-min-height:     96px;
+  --jelly-textarea-max-height:     240px;
+
+  width: 320px;
+}
+
+:host([size="large"]),
+:host([size="lg"]) {
+  --jelly-textarea-font-size:      16.5px;
+  --jelly-textarea-padding-block:  18px;
+  --jelly-textarea-padding-inline: 24px;
+  --jelly-textarea-radius:         20px;
+  --jelly-textarea-min-height:     124px;
+  --jelly-textarea-max-height:     300px;
+
+  width: 380px;
+}
+
+:host([disabled]) {
+  --jelly-fill: var(--jelly-color-background-neutral);
+
+  opacity:        0.55;
+  pointer-events: none;
+}
+
+textarea {
+  display:        block;
+  width:          100%;
+  box-sizing:     border-box;
+  border:         0;
+  outline:        none;
+  resize:         none;
+  background:     transparent;
+  padding-block:  var(--jelly-textarea-padding-block);
+  padding-inline: var(--jelly-textarea-padding-inline);
+  min-height:     var(--jelly-textarea-min-height);
+  max-height:     var(--jelly-textarea-max-height);
+  overflow-y:     auto;
+  font:           inherit;
+  color:          var(--jelly-label);
+  text-align:     start;
+  touch-action:   manipulation;
+}
+
+textarea::placeholder {
+  color: var(--jelly-color-foreground-muted);
+}
+
+/* The focus ring is painted on the canvas so it follows the jiggle;
+   this element is only a forced-colors fallback, where canvas is ignored. */
+.ring {
+  position:       absolute;
+  inset:          4px;
+  border:         var(--jelly-ring-width) solid transparent;
+  border-radius:  var(--jelly-textarea-radius);
+  pointer-events: none;
+}
+
+@media (forced-colors: active) {
+  .ring {
+    border-color: FieldText;
+  }
+
+  :host(:focus-within) .ring {
+    border-color: Highlight;
+  }
+}

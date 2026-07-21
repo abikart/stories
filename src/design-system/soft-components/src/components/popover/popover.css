@@ -1,0 +1,59 @@
+:host {
+  display:  inline-flex;
+  position: relative;
+
+  --jelly-popover-min-width:      180px;
+  --jelly-popover-padding-block:  12px;
+  --jelly-popover-padding-inline: 14px;
+  --jelly-popover-radius:         16px;
+  --jelly-popover-font-size:      14.5px;
+}
+
+:host([size="small"]) {
+  --jelly-popover-min-width:      150px;
+  --jelly-popover-padding-block:  9px;
+  --jelly-popover-padding-inline: 11px;
+  --jelly-popover-radius:         13px;
+  --jelly-popover-font-size:      13px;
+}
+
+:host([size="large"]) {
+  --jelly-popover-min-width:      220px;
+  --jelly-popover-padding-block:  15px;
+  --jelly-popover-padding-inline: 18px;
+  --jelly-popover-radius:         18px;
+  --jelly-popover-font-size:      16px;
+}
+
+.panel {
+  position:  fixed;
+  left:      0;
+  top:       0;
+  z-index:   9998;
+  min-width: var(--jelly-popover-min-width);
+  max-width: min(360px, calc(100vw - 24px));
+
+  background:    var(--jelly-color-background-surface);
+  border:        1px solid var(--jelly-color-border-default);
+  border-radius: var(--jelly-popover-radius);
+  box-shadow:    var(--jelly-shadow-raised);
+
+  padding-block:  var(--jelly-popover-padding-block);
+  padding-inline: var(--jelly-popover-padding-inline);
+
+  color:      var(--jelly-color-foreground-default);
+  font:       400 var(--jelly-popover-font-size)/1.5 var(--jelly-font-text);
+  outline:    none;
+
+  opacity:    0;
+  visibility: hidden;
+}
+
+.panel[data-open] {
+  opacity:    1;
+  visibility: visible;
+}
+
+@media (forced-colors: active) {
+  .panel { border-color: CanvasText; }
+}

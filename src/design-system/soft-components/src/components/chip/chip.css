@@ -1,0 +1,150 @@
+:host {
+  display: inline-flex;
+  height:  36px;
+
+  --jelly-fill:     var(--jelly-color-background-neutral);
+  --jelly-on:       var(--jelly-color-background-accent);
+  --jelly-label:    var(--jelly-color-foreground-on-neutral);
+  --jelly-label-on: var(--jelly-color-foreground-on-accent);
+  /* Focus follows the chip's visible fill: neutral while unselected,
+     then the configured variant once selected. */
+  --jelly-ring:     var(--jelly-fill, var(--jelly-color-border-focus));
+  --jelly-chip-radius: 999px;
+
+  font: 600 14px/1 var(--jelly-font-display);
+}
+
+:host([size="small"]) { height: 30px; font-size: 12.5px; }
+:host([size="large"]) { height: 42px; font-size: 15.5px; }
+
+/* A smaller, rounded-rectangle radius instead of the full pill - the same
+   shape="square" vocabulary jelly-button and jelly-badge use */
+:host([shape="square"]) { --jelly-chip-radius: 11px; }
+:host([shape="square"][size="small"]) { --jelly-chip-radius: 9px; }
+:host([shape="square"][size="large"]) { --jelly-chip-radius: 13px; }
+
+:host([selected]) {
+  --jelly-ring: var(--jelly-on, var(--jelly-color-border-focus));
+}
+
+:host([disabled]) {
+  opacity:        0.5;
+  pointer-events: none;
+}
+
+/* Removal collapses width + margin (set from JS) so neighbours slide in,
+   rather than snapping shut the instant the chip leaves the DOM */
+:host {
+  transition:
+    transform 0.28s cubic-bezier(0.4, 0, 0.2, 1),
+    opacity 0.24s ease,
+    width 0.34s cubic-bezier(0.5, 0, 0.15, 1),
+    margin 0.34s cubic-bezier(0.5, 0, 0.15, 1);
+}
+
+:host(.removing) {
+  transform: scale(0.74);
+  opacity:   0;
+  overflow:  hidden;
+}
+
+.chip {
+  display:     inline-flex;
+  align-items: center;
+  height:      100%;
+  position:    relative;
+  /* The removal animation collapses the host's width; the label must
+     clip out of view rather than wrap onto a second line */
+  white-space: nowrap;
+}
+
+.main {
+  appearance:     none;
+  border:         0;
+  background:     transparent;
+  font:           inherit;
+  color:          var(--jelly-label);
+  height:         100%;
+  padding-inline: 17px;
+  display:        inline-flex;
+  align-items:    center;
+  gap:            7px;
+  cursor:         pointer;
+  border-radius:  var(--jelly-chip-radius);
+  position:       relative;
+  outline:        none;
+  touch-action:   manipulation;
+  transition:     color 0.24s ease;
+}
+
+:host([size="small"]) .main { padding-inline: 13px; gap: 5px; }
+:host([size="large"]) .main { padding-inline: 21px; gap: 8px; }
+
+span.main {
+  cursor: default;
+}
+
+:host([removable]) .main {
+  padding-inline-end: 4px;
+}
+
+:host([selected]) .main {
+  color: var(--jelly-label-on);
+}
+
+.remove {
+  appearance:        none;
+  border:            0;
+  background:        transparent;
+  color:             var(--jelly-label);
+  cursor:            pointer;
+  touch-action:      manipulation;
+  position:          relative;
+  width:             24px;
+  height:            24px;
+  margin-inline-end: 6px;
+  padding:           0;
+  border-radius:     50%;
+  display:           inline-flex;
+  align-items:       center;
+  justify-content:   center;
+  opacity:           0.65;
+  outline:           none;
+  transition:        color 0.24s ease, opacity 0.15s ease;
+}
+
+.remove:hover {
+  opacity:    1;
+  background:  color-mix(in srgb, currentColor 10%, transparent);
+}
+
+/* The hover fill echoes the chip silhouette: round on a pill chip, a
+   rounded square on a shape="square" chip */
+:host([shape="square"]) .remove { border-radius: 7px; }
+
+.remove:focus-visible {
+  outline:        var(--jelly-ring-width) solid var(--jelly-ring-color);
+  outline-offset: var(--jelly-ring-gap);
+}
+
+:host([selected]) .remove {
+  color: var(--jelly-label-on);
+}
+
+.remove svg {
+  width:  13px;
+  height: 13px;
+}
+
+:host([size="small"]) .remove     { width: 20px; height: 20px; margin-inline-end: 5px; }
+:host([size="small"]) .remove svg { width: 11px; height: 11px; }
+/* Keep the 20px glyph but extend the hit area to the 24px WCAG minimum */
+:host([size="small"]) .remove::before { content: ""; position: absolute; inset: -2px; }
+:host([size="large"]) .remove     { width: 28px; height: 28px; margin-inline-end: 8px; }
+:host([size="large"]) .remove svg { width: 15px; height: 15px; }
+
+@media (forced-colors: active) {
+  .chip { border: 1px solid CanvasText; border-radius: 999px; }
+  :host([selected]) .chip { border-width: 3px; }
+  .main:focus-visible, .remove:focus-visible { outline: 2px solid Highlight; }
+}

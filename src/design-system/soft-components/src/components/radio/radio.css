@@ -1,0 +1,125 @@
+:host {
+  display: inline-flex;
+
+  --jelly-radio-size:      32px;
+  --jelly-radio-dot-size:  12px;
+  --jelly-radio-gap:       11px;
+  --jelly-radio-font-size: 15.5px;
+  --jelly-radio-dot-color: var(--jelly-color-background-white);
+
+  --jelly-fill:  var(--jelly-color-background-neutral);
+  --jelly-on:    var(--jelly-color-background-accent);
+  --jelly-ring:  var(--jelly-on, var(--jelly-color-border-focus));
+  --jelly-label: var(--jelly-color-foreground-muted);
+
+  font: 600 var(--jelly-radio-font-size)/1.2 var(--jelly-font-display);
+}
+
+:host([size="small"]),
+:host([size="sm"]) {
+  --jelly-radio-size:      28px;
+  --jelly-radio-dot-size:  10px;
+  --jelly-radio-gap:       9px;
+  --jelly-radio-font-size: 14px;
+}
+
+:host([size="medium"]),
+:host([size="md"]) {
+  --jelly-radio-size:      32px;
+  --jelly-radio-dot-size:  12px;
+  --jelly-radio-gap:       11px;
+  --jelly-radio-font-size: 15.5px;
+}
+
+:host([size="large"]),
+:host([size="lg"]) {
+  --jelly-radio-size:      38px;
+  --jelly-radio-dot-size:  14px;
+  --jelly-radio-gap:       13px;
+  --jelly-radio-font-size: 16.5px;
+}
+
+:host([disabled]) {
+  opacity:        0.5;
+  pointer-events: none;
+}
+
+.wrap {
+  display:      inline-flex;
+  align-items:  center;
+  gap:          var(--jelly-radio-gap);
+  cursor:       pointer;
+  position:     relative;
+  touch-action: manipulation;
+}
+
+.control {
+  position: relative;
+  width:    var(--jelly-radio-size);
+  height:   var(--jelly-radio-size);
+  flex:     0 0 auto;
+  outline:  none;
+}
+
+/* The focus ring is painted on the canvas so it follows the jiggle;
+   this ::after is only for forced-colors mode, where canvas is ignored. */
+.control::after {
+  content:        "";
+  position:       absolute;
+  inset:          -2px;
+  border:         var(--jelly-ring-width) solid transparent;
+  border-radius:  50%;
+  pointer-events: none;
+}
+
+.dot {
+  position:      absolute;
+  left:          50%;
+  top:           50%;
+  width:         var(--jelly-radio-dot-size);
+  height:        var(--jelly-radio-dot-size);
+  border-radius: 50%;
+  background:    var(--jelly-radio-dot-color);
+
+  /* The dot plops in with a real overshoot (past full size, then settles)
+     so it lands like a drop rather than simply scaling up. */
+  transform:  translate(-50%, -50%) scale(0.15);
+  opacity:    0;
+  transition: transform 0.36s cubic-bezier(0.3, 1.8, 0.45, 1), opacity 0.13s;
+}
+
+:host([checked]) .dot {
+  transform: translate(-50%, -50%) scale(1);
+  opacity:   1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :host-context(html:not([data-jelly-motion="no-preference"])) .dot {
+    transition: opacity 0.13s;
+  }
+}
+
+:host-context([data-jelly-motion="reduce"]) .dot { transition: opacity 0.13s; }
+
+.label {
+  color: var(--jelly-label);
+}
+
+.label:empty {
+  display: none;
+}
+
+@media (forced-colors: active) {
+  .control {
+    border:        1px solid ButtonBorder;
+    border-radius: 50%;
+  }
+
+  .dot {
+    background: CanvasText;
+  }
+
+  .control:focus-visible::after {
+    border-color: Highlight;
+  }
+}

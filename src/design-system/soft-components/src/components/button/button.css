@@ -1,0 +1,122 @@
+:host {
+  --jelly-button-height:         62px;
+  --jelly-button-min-width:      168px;
+  --jelly-button-padding-inline: 30px;
+  --jelly-button-font-size:      16px;
+  --jelly-button-gap:            9px;
+  --jelly-button-radius:         999px;
+
+  /* The ring tracks the button's own fill so it reads as part of the
+     control (falling back to the dedicated ring token). */
+  --jelly-ring: var(--jelly-fill, var(--jelly-color-border-focus));
+
+  font: 640 var(--jelly-button-font-size)/1 var(--jelly-font-display);
+}
+
+/* A smaller, rounded-rectangle radius instead of the full pill -
+   scales with height so it holds the same 0.32 ratio at every size */
+:host([shape="square"]) {
+  --jelly-button-radius: calc(var(--jelly-button-height) * 0.32);
+}
+
+:host([disabled]) {
+  opacity:        0.55;
+  pointer-events: none;
+}
+
+:host([block]) {
+  display: block;
+  width:   100%;
+}
+
+:host([block]) button {
+  width: 100%;
+}
+
+:host([size="small"]),
+:host([size="sm"]) {
+  --jelly-button-height:         42px;
+  --jelly-button-min-width:      42px;
+  --jelly-button-padding-inline: 16px;
+  --jelly-button-font-size:      14px;
+}
+
+:host([size="medium"]),
+:host([size="md"]) {
+  --jelly-button-height:         62px;
+  --jelly-button-min-width:      168px;
+  --jelly-button-padding-inline: 30px;
+  --jelly-button-font-size:      16px;
+}
+
+:host([size="large"]),
+:host([size="lg"]) {
+  --jelly-button-height:         72px;
+  --jelly-button-min-width:      200px;
+  --jelly-button-padding-inline: 38px;
+  --jelly-button-font-size:      18px;
+}
+
+button {
+  appearance:         none;
+  -webkit-appearance: none;
+  border:             0;
+  margin:             0;
+  background:         transparent;
+  color:              var(--jelly-label);
+  font:               inherit;
+  height:             var(--jelly-button-height);
+  min-width:          var(--jelly-button-min-width);
+  padding-block:      0;
+  padding-inline:     var(--jelly-button-padding-inline);
+  display:            inline-flex;
+  align-items:        center;
+  justify-content:    center;
+  gap:                var(--jelly-button-gap);
+  position:           relative;
+  cursor:             pointer;
+  border-radius:      var(--jelly-button-radius);
+  touch-action:       manipulation;
+  /* Glide between size / shape steps instead of snapping */
+  transition:
+    height 0.42s cubic-bezier(0.4, 0, 0.2, 1),
+    min-width 0.42s cubic-bezier(0.4, 0, 0.2, 1),
+    padding-inline 0.42s cubic-bezier(0.4, 0, 0.2, 1),
+    border-radius 0.42s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :host-context(html:not([data-jelly-motion="no-preference"])) button { transition: none; }
+}
+
+:host-context([data-jelly-motion="reduce"]) button { transition: none; }
+
+button:focus-visible {
+  outline: none;
+}
+
+/* The focus ring is painted on the canvas so it follows the jiggle;
+   this ::after is only for forced-colors mode, where canvas is ignored. */
+button::after {
+  content:        "";
+  position:       absolute;
+  inset:          -2px;
+  border:         var(--jelly-ring-width) solid transparent;
+  border-radius:  calc(var(--jelly-button-radius) + 2px);
+  pointer-events: none;
+}
+
+::slotted(svg),
+::slotted(img) {
+  pointer-events: none;
+}
+
+@media (forced-colors: active) {
+  button {
+    color: ButtonText;
+  }
+
+  button:focus-visible::after {
+    border-color: Highlight;
+  }
+}

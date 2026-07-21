@@ -1,0 +1,156 @@
+:host {
+  display: inline-flex;
+  height:  44px;
+
+  --jelly-segmented-padding:        4px;
+  --jelly-segmented-min-width:      60px;
+  --jelly-segmented-gap:            7px;
+  --jelly-segmented-padding-inline: 18px;
+  --jelly-segmented-font-size:      14.5px;
+
+  --jelly-track:    color-mix(in srgb, var(--jelly-color-background-neutral) 88%, var(--jelly-color-background-surface));
+  --jelly-pill:     var(--jelly-color-background-accent);
+  --jelly-label:    var(--jelly-color-foreground-default);
+  --jelly-label-on: var(--jelly-color-foreground-on-accent);
+
+  font: 600 var(--jelly-segmented-font-size)/1 var(--jelly-font-display);
+}
+
+:host([size="small"]),
+:host([size="sm"]) {
+  height: 36px;
+
+  --jelly-segmented-padding:        3px;
+  --jelly-segmented-min-width:      50px;
+  --jelly-segmented-gap:            5px;
+  --jelly-segmented-padding-inline: 14px;
+  --jelly-segmented-font-size:      13px;
+}
+
+:host([size="medium"]),
+:host([size="md"]) {
+  height: 44px;
+
+  --jelly-segmented-padding:        4px;
+  --jelly-segmented-min-width:      60px;
+  --jelly-segmented-gap:            7px;
+  --jelly-segmented-padding-inline: 18px;
+  --jelly-segmented-font-size:      14.5px;
+}
+
+:host([size="large"]),
+:host([size="lg"]) {
+  height: 52px;
+
+  --jelly-segmented-padding:        5px;
+  --jelly-segmented-min-width:      74px;
+  --jelly-segmented-gap:            8px;
+  --jelly-segmented-padding-inline: 22px;
+  --jelly-segmented-font-size:      16px;
+}
+
+:host([disabled]) {
+  opacity:        0.55;
+  pointer-events: none;
+}
+
+.wrap {
+  display:    flex;
+  width:      100%;
+  height:     100%;
+  box-sizing: border-box;
+  padding:    var(--jelly-segmented-padding);
+  position:   relative;
+}
+
+.segment {
+  flex:            1 1 0;
+  min-width:       var(--jelly-segmented-min-width);
+  display:         inline-flex;
+  align-items:     center;
+  justify-content: center;
+  gap:             var(--jelly-segmented-gap);
+  padding-block:   0;
+  padding-inline:  var(--jelly-segmented-padding-inline);
+  margin:          0;
+  border:          0;
+  background:      transparent;
+  color:           var(--jelly-label);
+  font:            inherit;
+  white-space:     nowrap;
+  cursor:          pointer;
+  position:        relative;
+  border-radius:   999px;
+  transition:      color 0.18s ease;
+  outline:         none;
+  touch-action:    manipulation;
+}
+
+.segment[aria-checked="true"],
+.segment[aria-selected="true"] {
+  color: var(--jelly-label-on);
+}
+
+/* The segmented control bolds its active option; tabs (tablist) keep a
+   constant weight so switching a tab never changes its typography. */
+.segment[aria-checked="true"] {
+  font-weight: 750;
+}
+
+.segment:disabled {
+  cursor:  default;
+  opacity: 0.45;
+}
+
+/* Reserve the bold width for every label by stacking an always-bold hidden
+   copy in the same grid cell as the visible one. Activating a segment bolds
+   its label without changing the control's width - that reflow was resizing
+   the canvas and flickering the pill on every switch. Tabs never bold, so
+   their reservation copy collapses to nothing. */
+.segment-top {
+  display:     inline-grid;
+  place-items: center;
+}
+
+.segment-top > span {
+  grid-area:   1 / 1;
+  white-space: nowrap;
+}
+
+.segment-bottom {
+  font-weight: 750;
+  visibility:  hidden;
+}
+
+:host([roles="tablist"]) .segment-bottom {
+  display: none;
+}
+
+/* The focus ring is painted on the canvas so it follows the jiggle;
+   this ::after is only for forced-colors mode, where canvas is ignored. */
+.segment::after {
+  content:        "";
+  position:       absolute;
+  inset:          2px;
+  border:         var(--jelly-ring-width) solid transparent;
+  border-radius:  999px;
+  pointer-events: none;
+}
+
+@media (forced-colors: active) {
+  .wrap {
+    border:        1px solid ButtonBorder;
+    border-radius: 999px;
+  }
+
+  .segment[aria-checked="true"],
+  .segment[aria-selected="true"] {
+    forced-color-adjust: none;
+    background:          SelectedItem;
+    color:               SelectedItemText;
+  }
+
+  .segment:focus-visible::after {
+    border-color: Highlight;
+  }
+}

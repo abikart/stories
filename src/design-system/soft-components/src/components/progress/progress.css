@@ -1,0 +1,18 @@
+:host {
+  display: inline-block;
+  width:   240px;
+  height:  14px;
+
+  --jelly-track:  var(--jelly-color-background-neutral);
+  --jelly-accent: var(--jelly-color-background-accent);
+}
+
+:host([size="small"]) {
+  width:  200px;
+  height: 10px;
+}
+
+:host([size="large"]) {
+  width:  300px;
+  height: 18px;
+}

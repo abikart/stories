@@ -1,0 +1,138 @@
+:host {
+  display: block;
+
+  --jelly-collapsible-padding-block:  13px;
+  --jelly-collapsible-padding-inline: 14px;
+  --jelly-collapsible-gap:            10px;
+  --jelly-collapsible-header-font:    15px;
+  --jelly-collapsible-body-font:      14.5px;
+  --jelly-collapsible-chevron:        16px;
+  --jelly-collapsible-radius:         12px;
+}
+
+:host([size="small"]) {
+  --jelly-collapsible-padding-block:  10px;
+  --jelly-collapsible-padding-inline: 12px;
+  --jelly-collapsible-gap:            8px;
+  --jelly-collapsible-header-font:    13.5px;
+  --jelly-collapsible-body-font:      13px;
+  --jelly-collapsible-chevron:        14px;
+  --jelly-collapsible-radius:         10px;
+}
+
+:host([size="large"]) {
+  --jelly-collapsible-padding-block:  16px;
+  --jelly-collapsible-padding-inline: 18px;
+  --jelly-collapsible-gap:            12px;
+  --jelly-collapsible-header-font:    16.5px;
+  --jelly-collapsible-body-font:      15.5px;
+  --jelly-collapsible-chevron:        18px;
+  --jelly-collapsible-radius:         14px;
+}
+
+.head {
+  appearance:     none;
+  width:          100%;
+  box-sizing:     border-box;
+  border:         0;
+  margin:         0;
+  background:     transparent;
+  cursor:         pointer;
+  touch-action:   manipulation;
+  text-align:     start;
+
+  display:        flex;
+  align-items:    center;
+  gap:            var(--jelly-collapsible-gap);
+  padding-block:  var(--jelly-collapsible-padding-block);
+  padding-inline: var(--jelly-collapsible-padding-inline);
+
+  font:           650 var(--jelly-collapsible-header-font)/1.3 var(--jelly-font-display);
+  color:          var(--jelly-color-foreground-default);
+  border-radius:  var(--jelly-collapsible-radius);
+}
+
+.head:hover {
+  background: color-mix(in srgb, var(--jelly-color-background-accent) 7%, transparent);
+}
+
+.head:focus-visible {
+  outline:        var(--jelly-ring-width) solid var(--jelly-ring-color);
+  outline-offset: var(--jelly-ring-gap);
+}
+
+.label {
+  flex: 1;
+}
+
+.chevron {
+  width:      var(--jelly-collapsible-chevron);
+  height:     var(--jelly-collapsible-chevron);
+  flex:       0 0 auto;
+  transition: transform .32s cubic-bezier(.34, 1.5, .5, 1);
+}
+
+/* The chevron points into the reading direction, so mirror it in RTL */
+:host(:dir(rtl)) .chevron {
+  transform: scaleX(-1);
+}
+
+:host([open]) .chevron {
+  transform: rotate(90deg);
+}
+
+.wrap {
+  display:            grid;
+  grid-template-rows: 0fr;
+  transition:         grid-template-rows .36s cubic-bezier(.28, 1.35, .5, 1);
+}
+
+:host([open]) .wrap {
+  grid-template-rows: 1fr;
+}
+
+/* Hidden content leaves the tab order and the accessibility tree while
+   collapsed (visibility: hidden does both); the delay keeps it visible
+   through the closing animation, then flips it off once fully closed. */
+.content {
+  overflow:   hidden;
+  visibility: hidden;
+  transition: visibility 0s linear .36s;
+}
+
+:host([open]) .content {
+  visibility: visible;
+  transition: visibility 0s;
+}
+
+.inner {
+  padding-block-start:  2px;
+  padding-block-end:    var(--jelly-collapsible-padding-inline);
+  padding-inline:       var(--jelly-collapsible-padding-inline);
+  color:                var(--jelly-color-foreground-default);
+  font:                 400 var(--jelly-collapsible-body-font)/1.6 var(--jelly-font-text);
+  transform-origin:     top;
+}
+
+:host([open]) .inner {
+  animation: pop .42s cubic-bezier(.34, 1.56, .64, 1);
+}
+
+@keyframes pop {
+  0%   { transform: translateY(-6px) scale(.99); }
+  100% { transform: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :host-context(html:not([data-jelly-motion="no-preference"])) :is(.wrap, .chevron, .content) { transition: none; }
+  :host([open]):host-context(html:not([data-jelly-motion="no-preference"])) .inner { animation: none; }
+  :host(:dir(rtl)):host-context(html:not([data-jelly-motion="no-preference"])) .chevron { transform: scaleX(-1); }
+}
+
+:host-context([data-jelly-motion="reduce"]) :is(.wrap, .chevron, .content) { transition: none; }
+:host([open]):host-context([data-jelly-motion="reduce"]) .inner { animation: none; }
+:host(:dir(rtl)):host-context([data-jelly-motion="reduce"]) .chevron { transform: scaleX(-1); }
+
+@media (forced-colors: active) {
+  .head:focus-visible { outline: 2px solid Highlight; }
+}

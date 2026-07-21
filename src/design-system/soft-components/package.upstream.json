@@ -1,0 +1,55 @@
+{
+  "name": "jelly-ui",
+  "version": "1.1.0",
+  "description": "A dependency-free Web Components library for soft, tactile product interfaces — real form controls meet soft-body physics.",
+  "type": "module",
+  "license": "MIT",
+  "author": "Baldvin Mar Smarason <bmson@bmson.com>",
+  "keywords": [
+    "web-components",
+    "custom-elements",
+    "ui",
+    "design-system",
+    "canvas",
+    "soft-body"
+  ],
+  "files": [
+    "dist",
+    "custom-elements.json"
+  ],
+  "main": "./dist/jelly.js",
+  "module": "./dist/jelly.js",
+  "types": "./dist/jelly.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/jelly.d.ts",
+      "import": "./dist/jelly.js"
+    },
+    "./dist/*": "./dist/*"
+  },
+  "scripts": {
+    "dev": "vite build --watch",
+    "serve": "node server.mjs",
+    "build": "vite build",
+    "build:site": "node scripts/build-site.mjs",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "docs:manifest": "cem analyze",
+    "docs:data": "node scripts/build-docs-data.mjs",
+    "docs": "npm run docs:manifest && npm run docs:data",
+    "prepublishOnly": "npm run build && npm run docs:manifest"
+  },
+  "devDependencies": {
+    "@custom-elements-manifest/analyzer": "^0.10.3",
+    "@types/node": "^22.10.0",
+    "@vitest/browser": "^2.1.8",
+    "lottie-web": "^5.13.0",
+    "playwright": "^1.49.0",
+    "typescript": "^5.7.2",
+    "vite": "^6.0.0",
+    "vite-plugin-dts": "^4.3.0",
+    "vitest": "^2.1.8"
+  },
+  "customElements": "custom-elements.json"
+}

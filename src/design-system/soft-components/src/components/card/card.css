@@ -1,0 +1,59 @@
+:host {
+  display:  block;
+  position: relative;
+
+  --jelly-fill:                var(--jelly-color-background-surface);
+  --jelly-radius:              22px;
+  --jelly-card-padding-block:  22px;
+  --jelly-card-padding-inline: 24px;
+  --jelly-card-font-size:      15px;
+
+  color: var(--jelly-color-foreground-default);
+  font:  400 var(--jelly-card-font-size)/1.55 var(--jelly-font-text);
+}
+
+:host([size="small"]) {
+  --jelly-radius:              18px;
+  --jelly-card-padding-block:  16px;
+  --jelly-card-padding-inline: 18px;
+  --jelly-card-font-size:      13.5px;
+}
+
+:host([size="large"]) {
+  --jelly-radius:              26px;
+  --jelly-card-padding-block:  28px;
+  --jelly-card-padding-inline: 30px;
+  --jelly-card-font-size:      16.5px;
+}
+
+:host([squish]) {
+  cursor: pointer;
+}
+
+.card {
+  position:       relative;
+  box-sizing:     border-box;
+  padding-block:  var(--jelly-card-padding-block);
+  padding-inline: var(--jelly-card-padding-inline);
+  outline:        none;
+  touch-action:   manipulation;
+}
+
+/* The focus ring is painted on the canvas; this ::after is only for
+   forced-colors mode, where canvas paint is disregarded */
+.card::after {
+  content:        "";
+  position:       absolute;
+  inset:          -2px;
+  border:         var(--jelly-ring-width) solid transparent;
+  border-radius:  calc(var(--jelly-radius) + 3px);
+  pointer-events: none;
+}
+
+@media (forced-colors: active) {
+  .card { border: 1px solid CanvasText; border-radius: var(--jelly-radius); }
+  .card:focus-visible::after { border-color: Highlight; }
+}
+
+::slotted(:first-child) { margin-top: 0; }
+::slotted(:last-child)  { margin-bottom: 0; }
