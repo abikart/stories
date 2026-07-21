@@ -28,7 +28,7 @@ data, and declarations before any project files were replaced.
 | `dist/jelly.js.map` | 629418 | `51c23050586f52fc55f1108b681c154a28e0355a11f8cba887b36f74ee64df7c` |
 | `dist/jelly.d.ts` | 14181 | `1004cad04d5548661ffb9ad1eb29e59bc7627e948281222cb48fa0904093a22a` |
 | `upstream/api-data.js` | 143800 | `c7a6e72a9c943465371045a1fb67d4ffe3dc19802d720c6be0aeb86729865e99` |
-| `upstream/custom-elements.json` | 260859 | `79a9cce5ec893e23f89738a0137b0d1e1713fd4f61f509b13b67c00f81d5740d` |
+| `upstream/custom-elements.json` | 260859 | `df1a8a133fd3e5f767c669d497c9f525cd187a5e8c4d97a1a35e7c54f07c8134` |
 | `upstream/jelly.d.ts` | 14181 | `1004cad04d5548661ffb9ad1eb29e59bc7627e948281222cb48fa0904093a22a` |
 | `upstream/package.js` | 295 | `b62c4e0247d812ce883cc42e03a2e45c2ea9794b43f9e664b14bbef65e73e080` |
 
