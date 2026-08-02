@@ -1,8 +1,8 @@
 # Lanternleaf geography-map production
 
-**Status:** Approved exploration
+**Status:** Superseded scale exploration
 
-**Accepted asset:** `assets/geography-map-v1.png`
+**Superseded asset:** `assets/geography-map-v1.png`
 
 **Generated:** 2026-08-02 with the built-in image-generation tool
 
@@ -44,9 +44,27 @@ the Meeting Tree anchors the composition, paths remain terrain-shaped rather
 than effect-like, there is no generated lettering, and the outer presentation
 visually dissolves into a clean white matte.
 
-Known limitations are retained as exploration status: architecture, exact route
-geometry, settlement size, stream placement, and biome boundaries are not yet
-canon.
+The owner subsequently rejected this camera scale because it reads like a small
+neighborhood and exposes individual homes. It remains versioned as evidence of
+the geography and simplification process, but it is not the target map art.
+
+The next candidate must use a regional story-atlas view: macro landforms and
+biomes first, paths second, settlement locations third, and no dwelling-level
+detail.
+
+## Midjourney regional-map prompt
+
+```text
+Hand-painted children's storybook atlas map of Lanternleaf, a small whimsical coastal realm seen from very high overhead in a nearly flat top-down view, regional map scale rather than an aerial village scene. One broad irregular coastal peninsula fills most of the composition, with the sea wrapping around its western and southern edges. The geography is the subject.
+
+Across the north: a long band of gentle rounded hills and low mountains with pale ridge marks and open windy uplands. Center-west: one broad deep-green forest region with layered tree-canopy symbols and fern-shaped edges, not individual trees. Southwest: a sheltered crescent coast with pale beach, pebble shore, tide-pool shapes, and dusty-blue watercolor sea. East and southeast: one large warm dry region with terracotta earth, pale stone ridges, sparse silver-green plant marks, and winding dry channels. A narrow river begins in the northern hills, crosses the forest, and reaches the southwest sea.
+
+Four village locations are indicated only by small understated clearings or simple hand-painted location marks integrated into their regions: one in the forest, one beside the sheltered coast, one among the northern hills, and one in the warm dry country. No individual houses, roofs, streets, courtyards, boats, pots, or settlement architecture. One small Meeting Tree landmark stands near the central crossing, important but not oversized. Fine organic paths connect the four locations and Meeting Tree across the geography, readable but subtle, with some incomplete or fading sections.
+
+Simple macro cartography, large landform shapes, broad watercolor regions, restrained repeated terrain marks, generous breathing space, clear geographic hierarchy, whimsical but believable. Soft hand-painted watercolor and delicate locally color-matched ink, broad translucent washes, gentle pigment pooling, moss green, dusty blue, warm cream, terracotta, rust, pale yellow, and silver-green. Clean solid white outer background, airy organic map edge, suitable for children ages five to seven. Original geography, not based on any existing fictional world.
+
+No generated labels; names will be added later. Not a neighborhood, not a village illustration, not an isometric diorama, not a game map. --ar 4:3 --raw --s 60 --no text, letters, numbers, labels, individual houses, cottages, streets, detailed settlements, close-up buildings, giant foreground tree, characters, decorative border, parchment, aged paper, dark ocean, compass rose, legend, neon glow, particles, 3D render, photorealism, watermark
+```
 
 ## Base prompt
 

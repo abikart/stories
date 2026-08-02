@@ -28,11 +28,12 @@ Last updated: 2026-08-02
   working villages: forest Mossgrove, coastal Pebble Cove, high Kite Hill, and
   dry Sunbank. The structure, names, and whether Lanternleaf is a region,
   peninsula, or island remain unapproved.
-- `assets/geography-map-v1.png` is the accepted 4:3 watercolor visualization of
-  that exploration. It establishes broad region placement only; names, route
-  geometry, architecture, settlement scale, and biome boundaries remain
-  non-canonical. Exact generation and rejection provenance is recorded beside
-  it in `geography-map-production.md`.
+- `assets/geography-map-v1.png` is now a superseded close-scale exploration. It
+  reads as one detailed neighborhood and exposes individual dwellings too early.
+  The target is a regional story-atlas: macro coastline and biomes, thin paths,
+  subtle settlement locations, no individual homes, and a small Meeting Tree
+  landmark. The next Midjourney prompt is recorded in
+  `geography-map-production.md`.
 - The new content model separates reading difficulty, character era, and
   chronology so simple concept stories and the serialized adventure can share
   one world without forcing one-to-one adaptations.

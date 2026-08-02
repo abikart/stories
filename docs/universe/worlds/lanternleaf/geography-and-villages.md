@@ -63,10 +63,10 @@ story rhythm.
 
 ## Geography visualization
 
-![Exploratory watercolor map of Lanternleaf showing forest, coast, hills, dry country, and the central Meeting Tree](assets/geography-map-v1.png)
+![Superseded close-scale watercolor exploration of Lanternleaf showing forest, coast, hills, dry country, and the central Meeting Tree](assets/geography-map-v1.png)
 
-The image is an **approved exploration**, not a canonical survey or final
-architecture sheet. It establishes the broad spatial reading:
+This image is a **superseded scale exploration**, not the target map treatment.
+It established the broad spatial reading:
 
 - **top:** Kite Hill and the northern hills;
 - **left:** Mossgrove in the center-west forest;
@@ -74,12 +74,39 @@ architecture sheet. It establishes the broad spatial reading:
 - **right:** Sunbank in the warm dry country; and
 - **center:** the Meeting Tree and the main path crossings.
 
-Names are omitted from the art deliberately. The map should remain usable while
-working names change, and generated lettering would conflict with the simple
-hand-painted visual language. Route geometry, building designs, village scale,
-and the number of dwellings remain exploratory. Generation and selection
-provenance is recorded in
+It renders the world too close, like one neighborhood seen as an aerial
+diorama, and overcommits to individual dwellings before settlement design. The
+next map must pull back to a regional story-atlas scale where coastline, rivers,
+hills, forest, and dry country dominate. Villages should appear only as subtle
+location marks or clearings; individual homes and streets do not belong on this
+map.
+
+Names remain outside generated art while working names change. Final labels can
+be added deliberately after geography is approved rather than entrusted to an
+image model. Generation and selection provenance is recorded in
 [`geography-map-production.md`](geography-map-production.md).
+
+### Regional map art direction
+
+Use the attached external-world reference only for **scale and cartographic
+hierarchy**:
+
+- a high, nearly flat top-down atlas view rather than a three-quarter aerial
+  scene;
+- one broad landmass and coastline readable before any local details;
+- biomes expressed as large watercolor regions and repeated terrain marks;
+- mountains, hills, rivers, forest, shore, and dry country as the primary
+  visual vocabulary;
+- paths as fine organic connections across the land;
+- villages represented by restrained location marks, not illustrated homes;
+  and
+- the Meeting Tree as one small landmark within the map, not a giant foreground
+  object.
+
+Do not copy the reference world's geography, names, border, aged paper, dark
+ocean, typography, or specific symbols. Lanternleaf retains its clean white
+matte, airy watercolor medium, gentle palette, organic contours, and original
+coast-to-hills geography.
 
 ### Mossgrove — the forest village
 
