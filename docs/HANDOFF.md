@@ -23,8 +23,11 @@ Last updated: 2026-08-02
   paths now fade directly when villages stop maintaining real connections.
 - Fern is a young fox mapmaker whose subtly magical watercolor map reflects
   current path status without explaining or solving the underlying problem. The
-  next creative decision is the concrete connection lost between the first two
-  villages.
+  first lost connection remains open until the world geography is established.
+- `geography-and-villages.md` explores a compact coast-to-hills region with four
+  working villages: forest Mossgrove, coastal Pebble Cove, high Kite Hill, and
+  dry Sunbank. The structure, names, and whether Lanternleaf is a region,
+  peninsula, or island remain unapproved.
 - The new content model separates reading difficulty, character era, and
   chronology so simple concept stories and the serialized adventure can share
   one world without forcing one-to-one adaptations.

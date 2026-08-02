@@ -12,11 +12,12 @@ reading, with one shared canon and a primary serialized adventure.
    path behavior, and episodic story engine.
 2. [Path mystery](path-mystery.md) — the current concrete cause-and-effect
    proposal for the fading routes.
+3. [Geography and villages](geography-and-villages.md) — terminology, the
+   compact four-region world, and working settlement concepts.
 
 ## Planned foundation
 
 - Reading ladder and editorial constraints
-- Small-world map and village definitions
 - Main cast and character-era sheets
 - Master chronology and primary journey outline
 - Subplot and early-reader story matrix
