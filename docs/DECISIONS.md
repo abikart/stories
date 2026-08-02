@@ -3,6 +3,20 @@
 Newest decisions go first. Record meaningful divergences, tradeoffs, and quality
 gates; do not duplicate routine implementation details.
 
+## 2026-08-02 — The living map reveals disconnection without causing it
+
+- The proposed Long Rain catalyst is retired. Lanternleaf's paths fade directly
+  when villages stop visiting, exchanging, helping, or otherwise maintaining a
+  connection in practice; no external disaster is required.
+- Fern is a young fox mapmaker whose handmade watercolor map stays synchronized
+  with current path status. Lines can fade, disappear, return, or form, but the
+  map cannot explain a conflict, prescribe a solution, or restore a route.
+- Path restoration requires a concrete act of renewed connection. The forest
+  responds organically and the map supplies the clearest magical confirmation,
+  keeping environmental visuals restrained.
+- The primary arc has a finite, child-readable progress measure: missing routes
+  return to the map as the travelers reconnect Lanternleaf's villages.
+
 ## 2026-08-02 — Lanternleaf restarts as a graded-reading adventure world
 
 - **Fern and the Silent Seed Bells** remains a successful production and

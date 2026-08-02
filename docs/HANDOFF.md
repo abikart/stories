@@ -19,8 +19,12 @@ Last updated: 2026-08-02
   `docs/universe/worlds/lanternleaf/` contains the working adventure spine and a
   separate exploration of why its living paths are fading.
 - The owner has approved the core living-path promise and its restrained,
-  daylight-readable watercolor treatment. The proposed Long Rain cause remains
-  exploration, not approved canon, and is the next creative review point.
+  daylight-readable watercolor treatment. The Long Rain proposal was retired;
+  paths now fade directly when villages stop maintaining real connections.
+- Fern is a young fox mapmaker whose subtly magical watercolor map reflects
+  current path status without explaining or solving the underlying problem. The
+  next creative decision is the concrete connection lost between the first two
+  villages.
 - The new content model separates reading difficulty, character era, and
   chronology so simple concept stories and the serialized adventure can share
   one world without forcing one-to-one adaptations.
