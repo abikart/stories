@@ -61,6 +61,26 @@ story rhythm.
 
 ## Working geography
 
+## Geography visualization
+
+![Exploratory watercolor map of Lanternleaf showing forest, coast, hills, dry country, and the central Meeting Tree](assets/geography-map-v1.png)
+
+The image is an **approved exploration**, not a canonical survey or final
+architecture sheet. It establishes the broad spatial reading:
+
+- **top:** Kite Hill and the northern hills;
+- **left:** Mossgrove in the center-west forest;
+- **lower left:** Pebble Cove on the sheltered coast;
+- **right:** Sunbank in the warm dry country; and
+- **center:** the Meeting Tree and the main path crossings.
+
+Names are omitted from the art deliberately. The map should remain usable while
+working names change, and generated lettering would conflict with the simple
+hand-painted visual language. Route geometry, building designs, village scale,
+and the number of dwellings remain exploratory. Generation and selection
+provenance is recorded in
+[`geography-map-production.md`](geography-map-production.md).
+
 ### Mossgrove — the forest village
 
 **Role:** Fern and Pip's working home village

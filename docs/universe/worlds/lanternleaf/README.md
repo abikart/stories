@@ -14,6 +14,8 @@ reading, with one shared canon and a primary serialized adventure.
    proposal for the fading routes.
 3. [Geography and villages](geography-and-villages.md) — terminology, the
    compact four-region world, and working settlement concepts.
+4. [Geography-map production](geography-map-production.md) — accepted map asset,
+   exact prompts, selection rationale, and limitations.
 
 ## Planned foundation
 
