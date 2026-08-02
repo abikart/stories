@@ -1,6 +1,6 @@
 # Session handoff
 
-Last updated: 2026-07-19
+Last updated: 2026-08-02
 
 ## Read first
 
@@ -12,6 +12,18 @@ Last updated: 2026-07-19
 
 ## Current state
 
+- Lanternleaf creative development has restarted independently of the completed
+  Fern runtime POC. **Fern and the Silent Seed Bells** is non-canon as a story;
+  its technical and production lessons remain useful.
+- `docs/universe/README.md` now registers story worlds, and
+  `docs/universe/worlds/lanternleaf/` contains the working adventure spine and a
+  separate exploration of why its living paths are fading.
+- The owner has approved the core living-path promise and its restrained,
+  daylight-readable watercolor treatment. The proposed Long Rain cause remains
+  exploration, not approved canon, and is the next creative review point.
+- The new content model separates reading difficulty, character era, and
+  chronology so simple concept stories and the serialized adventure can share
+  one world without forcing one-to-one adaptations.
 - The Fern POC is preserved at `poc-success`; the immersive MVP is complete on
   `codex/mvp-immersive-runtime` and has not been pushed.
 - V1/Pip content, superseded routes and engine code, obsolete proofs/scripts,

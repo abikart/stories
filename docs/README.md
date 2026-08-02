@@ -15,7 +15,7 @@ This is the authoritative documentation index for the active product.
 9. [Immersive MVP run](mvp/immersive-run.md)
 10. [Design-system rollout run](mvp/design-system-rollout-run.md)
 11. [Aval assessment](research/aval.md)
-12. [Universe guide](universe/world-details.md)
+12. [Universe registry](universe/README.md)
 13. [Decision log](DECISIONS.md)
 14. [Session handoff](HANDOFF.md)
 

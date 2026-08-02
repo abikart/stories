@@ -3,6 +3,28 @@
 Newest decisions go first. Record meaningful divergences, tradeoffs, and quality
 gates; do not duplicate routine implementation details.
 
+## 2026-08-02 — Lanternleaf restarts as a graded-reading adventure world
+
+- **Fern and the Silent Seed Bells** remains a successful production and
+  runtime prototype, but its plot, bell ritual, locations, and events are not
+  Lanternleaf canon. Reuse of any creative element requires deliberate approval.
+- Lanternleaf now develops around one primary travel-adventure spine, younger
+  character eras, and simpler subplot families that share a world without being
+  abridgments of the main plot.
+- Reading difficulty, character age, and canonical chronology are separate
+  dimensions. Early-reader stories may establish concepts and relationships
+  that later gain meaning in the serialized adventure.
+- The approved working promise is that Lanternleaf's living paths remember the
+  travelers who care for them; neglected connections curl up and disappear,
+  while renewed connection lets the forest open a way.
+- Path behavior must read in daylight through restrained organic watercolor
+  cues such as uncurling leaves, occasional warm undersides, directional plant
+  posture, and a clearer passage. Avoid neon outlines, particles, synchronized
+  waves, artificial symmetry, and other effect-like fantasy signaling.
+- `docs/universe/README.md` is the world registry. Lanternleaf foundation
+  documents live under `docs/universe/worlds/lanternleaf/`; story packages
+  continue to own manuscripts, production timelines, and story-level continuity.
+
 ## 2026-07-19 — Treatment rollout records negative choices and recipe fidelity
 
 - Every active route, player surface, and drag-to-guide element now has one
