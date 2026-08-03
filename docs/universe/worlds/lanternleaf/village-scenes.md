@@ -62,13 +62,26 @@ Whimsical watercolor forest storybook illustration with stark sunshine, vivid an
 
 ## Pebble Cove
 
-### Tide-pool lane exploration
+### Tide-pool lane
+
+![Watercolor environment study of curved Pebble Cove homes above tide pools, pebble paths, dune flowers, and a small boat](assets/pebble-cove-tide-pool-lane.png)
+
+This study establishes curved dune-integrated homes, sea-blue doors, woven
+grass awnings, driftwood rails, shell-marked steps, rounded pebble paths,
+shallow tide pools, and a small handmade boat.
 
 ```text
 Whimsical watercolor coastal storybook illustration with stark sunshine, vivid and diverse colors; scene: Pebble Cove at low tide, with curved homes tucked into a grassy dune above the waterline, sea-blue doors, woven grass awnings, driftwood rails, shell-marked steps, rounded pebble paths, shallow tide pools, baskets, dune flowers, and one tiny handmade boat. Airy floating vignette with loose wet-on-wet edges dissolving into pure white on all sides, broad brushstrokes, simple forms, and restrained detail. --no people, animals, text --ar 4:3 --raw --v 8.1 --hd
 ```
 
-### Return landing exploration
+### Return landing
+
+![Watercolor environment study of a sheltered Pebble Cove landing with two wooden boats, rope, baskets, drying sea plants, and dune flowers](assets/pebble-cove-return-landing.png)
+
+This study develops Pebble Cove's working shoreline through small curved boats,
+coiled rope, woven carrying baskets, drying sea plants, a shared grass-roofed
+shelter, and abundant dune flowers. Both Pebble Cove studies require exact
+frame and matte normalization before production use.
 
 ```text
 Whimsical watercolor coastal storybook illustration with stark sunshine, vivid and diverse colors; scene: a sheltered Pebble Cove landing with two small curved wooden boats resting on smooth pale pebbles, a driftwood rack with coiled ropes, woven carrying baskets, sea plants drying beside a shared bench under a grass shade, shallow blue water, dune flowers, and rounded homes safely above the tide. Airy floating vignette with loose wet-on-wet edges dissolving into pure white on all sides, broad brushstrokes, simple forms, and restrained detail. --no people, animals, text --ar 4:3 --raw --v 8.1 --hd
