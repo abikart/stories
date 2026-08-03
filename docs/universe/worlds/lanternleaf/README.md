@@ -14,6 +14,8 @@ reading, with one shared canon and a primary serialized adventure.
    proposal for the fading routes.
 3. [Geography and villages](geography-and-villages.md) — terminology, the
    compact four-region world, current map, and settlement concepts.
+4. [Village scene references](village-scenes.md) — accepted environment studies
+   and the current prompt recipe for each village.
 
 ## Planned foundation
 
