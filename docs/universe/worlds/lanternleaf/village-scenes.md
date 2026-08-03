@@ -73,3 +73,45 @@ Whimsical watercolor coastal storybook illustration with stark sunshine, vivid a
 ```text
 Whimsical watercolor coastal storybook illustration with stark sunshine, vivid and diverse colors; scene: a sheltered Pebble Cove landing with two small curved wooden boats resting on smooth pale pebbles, a driftwood rack with coiled ropes, woven carrying baskets, sea plants drying beside a shared bench under a grass shade, shallow blue water, dune flowers, and rounded homes safely above the tide. Airy floating vignette with loose wet-on-wet edges dissolving into pure white on all sides, broad brushstrokes, simple forms, and restrained detail. --no people, animals, text --ar 4:3 --raw --v 8.1 --hd
 ```
+
+## Kite Hill
+
+### Windy orchard lane
+
+![Watercolor environment study of Kite Hill homes nestled into orchard terraces on a high grassy slope](assets/kite-hill-orchard-lane.png)
+
+This study establishes hillside-integrated homes, sheltered blue-green doors,
+low windbreaks, cloth streamers, orchard terraces, a climbing meadow path, and
+wide views toward the northern ridge.
+
+```text
+Whimsical watercolor hill-country storybook illustration with stark sunshine, vivid and diverse colors; scene: Kite Hill on a breezy ridge, with rounded homes tucked into grassy slopes, sheltered blue-green doors, low stone windbreaks, cloth streamers bending in the wind, a worn meadow path climbing between orchard terraces, baskets of apples, and a faint snow-tipped ridge in the distance. Airy floating vignette with loose wet-on-wet edges dissolving into pure white on all sides, broad brushstrokes, simple forms, and restrained detail. --no people, animals, text --ar 4:3 --raw --v 8.1 --hd
+```
+
+### Kite-making terrace
+
+![Watercolor environment study of a sheltered Kite Hill workshop with a handmade kite, cloth, frames, and string](assets/kite-hill-workshop.png)
+
+This study establishes a practical wind-craft terrace, a grass-roofed shelter,
+light frames, cloth, string, outdoor racks, and a wind-protected garden. Use it
+for setting vocabulary; incidental wildlife is not a required village element.
+Both Kite Hill studies require exact frame and matte normalization before
+production use.
+
+```text
+Whimsical watercolor hill-country storybook illustration with stark sunshine, vivid and diverse colors; scene: a sheltered Kite Hill workshop terrace beneath a curved grass roof, with two handmade kites, light wooden frames, cloth pieces, spools of string, a practical outdoor rack, a low orchard, windbreak hedges, leaning meadow grass, and wide views across Lanternleaf. Airy floating vignette with loose wet-on-wet edges dissolving into pure white on all sides, broad brushstrokes, simple forms, and restrained detail. --no people, animals, text --ar 4:3 --raw --v 8.1 --hd
+```
+
+## Sunbank
+
+### Shaded water courtyard exploration
+
+```text
+Whimsical watercolor warm-country storybook illustration with stark sunshine, vivid and diverse colors; scene: a bright and carefully tended Sunbank courtyard, with rounded terracotta homes, deep woven awnings, pale stone steps, open shelves of clay vessels, one small shaded water basin, climbing vines, hardy flowers, silver-green plants, and patches of pale grass. Airy floating vignette with loose wet-on-wet edges dissolving into pure white on all sides, broad brushstrokes, simple forms, and restrained detail. --no people, animals, text --ar 4:3 --raw --v 8.1 --hd
+```
+
+### Clay repair terrace exploration
+
+```text
+Whimsical watercolor warm-country storybook illustration with stark late-afternoon sunshine, vivid and diverse colors; scene: a shaded Sunbank clay workshop on a terracotta bank, with a small rounded earthen kiln, a broad table of cracked and carefully mended pots, clay tools, water jars beneath a deep awning, woven trays of preserved fruit, smooth pale stones, climbing plants, hardy flowers, and a narrow path through dry grass. Airy floating vignette with loose wet-on-wet edges dissolving into pure white on all sides, broad brushstrokes, simple forms, and restrained detail. --no people, animals, text --ar 4:3 --raw --v 8.1 --hd
+```
