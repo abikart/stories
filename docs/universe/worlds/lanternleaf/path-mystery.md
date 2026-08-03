@@ -1,6 +1,6 @@
 # The living paths and Fern's map
 
-**Status:** Working draft v0.2
+**Status:** Working
 
 **Purpose:** Define the simple magical rule that drives the primary adventure
 
@@ -9,12 +9,12 @@
 Lanternleaf's paths reflect the active connection between places.
 
 When neighboring villages visit, exchange useful things, share news, invite one
-another, or work together, the forest keeps a recognizable route between them.
+another, or work together, the land keeps a recognizable route between them.
 When that relationship is neglected for long enough, the route gradually blends
-back into the surrounding forest. Leaves curl, stems cross the passage, familiar
-openings become harder to notice, and eventually the path is lost.
+back into the surrounding terrain. Plants cross the passage, familiar markers
+disappear, and eventually the path is lost.
 
-The forest is not judging anyone, and one argument does not erase a road. A path
+Lanternleaf is not judging anyone, and one argument does not erase a road. A path
 fades only after a connection has stopped in practice. It returns when people
 begin moving toward one another again.
 
@@ -48,8 +48,8 @@ Fern must leave the map and enter the world to learn those things.
 While checking or updating her map, Fern notices that the familiar route to a
 neighboring village has grown faint. Soon afterward, the line disappears.
 
-Fern and Pip visit the path entrance and find that the real forest matches the
-map. The route has not been blocked by a disaster; it has simply become
+Fern and Pip visit the path entrance and find that the real landscape matches
+the map. The route has not been blocked by a disaster; it has simply become
 difficult to distinguish from everything around it. Fern wants to understand
 how a path she knows so well could vanish. Pip notices small openings from above
 that help them find an imperfect way through.
@@ -60,8 +60,8 @@ The exact first conflict is not yet defined, but it must be visible and simple:
 an undelivered item, an unanswered invitation, a shared task left unfinished,
 or two groups each waiting for the other to visit first.
 
-Fern and Pip help the villages resume the connection through action. The forest
-route becomes naturally readable again. Fern later opens her map and sees that
+Fern and Pip help the villages resume the connection through action. The route
+becomes naturally readable again. Fern later opens her map and sees that
 the watercolor line has returned. That confirmation reveals the pattern and
 turns one local mystery into a larger journey: other paths on the map are fading
 too.
@@ -90,8 +90,8 @@ Fern and her companions travel between those perspectives.
 
 - Fern notices changes across the whole map.
 - Pip scouts natural openings and sees each route from another scale.
-- the Maker recognizes where practical systems or shared work broke down.
-- the Listener recognizes hesitation, misunderstanding, and unspoken needs.
+- The Maker recognizes where practical systems or shared work broke down.
+- The Listener recognizes hesitation, misunderstanding, and unspoken needs.
 
 Their advantage is not that they are wiser than every adult. They carry
 information and relationships across boundaries that others have stopped
@@ -99,9 +99,9 @@ crossing.
 
 ## Visual restraint
 
-Path restoration should look like the forest becoming passable, not like a
+Path restoration should look like the landscape becoming passable, not like a
 spell being cast. A few leaves uncurl, crossed stems lift apart, stepping stones
-become visible, or an open shape through the foliage can be recognized again.
+become visible, or an open shape through grass can be recognized again.
 The before and after may share almost all of the same painted elements.
 
 The map carries the clearest magical confirmation. Even there, use one soft

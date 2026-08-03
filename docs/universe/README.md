@@ -9,27 +9,20 @@ and production assets remain under `content/<story-id>/`.
 
 | World | Status | Working focus |
 |---|---|---|
-| [Lanternleaf](worlds/lanternleaf/README.md) | Foundation draft | A small watercolor adventure world connected by living paths |
+| [Lanternleaf](worlds/lanternleaf/README.md) | Working | A small watercolor adventure world connected by living paths |
 
 Future worlds should receive their own directory and creative rules rather than
 inheriting Lanternleaf's tone, cast, palette, or geography by default.
 
-## Existing exploration
+## Shared references
 
-- [`world-details.md`](world-details.md) remains the current written reference
-  for the soft watercolor visual language. Its world-specific content will be
-  reviewed before becoming Lanternleaf canon.
-- The images and character explorations directly under `docs/universe/` remain
-  references or experiments until a Lanternleaf bible explicitly approves
-  their roles.
-- **Fern and the Silent Seed Bells** is a production and runtime prototype, not
-  a canonical Lanternleaf story. Its plot, bell ritual, locations, and story
-  events do not define the new world. Useful production lessons and any reused
-  visual ideas must be selected deliberately.
+- [`world-details.md`](world-details.md) defines the shared soft-watercolor
+  visual language. Each world decides which parts belong to its canon.
+- Images and character studies directly under `docs/universe/` are references
+  until a world bible explicitly adopts them.
 
 ## Canon language
 
 - **Approved:** durable world truth until explicitly superseded.
 - **Working:** the current direction, open to revision during development.
 - **Exploration:** a candidate with no continuity obligation.
-- **Non-canon:** preserved for reference but excluded from world continuity.

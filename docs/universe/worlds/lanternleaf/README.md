@@ -1,6 +1,6 @@
 # Lanternleaf
 
-**Status:** Foundation draft
+**Status:** Working
 
 Lanternleaf is the first story world. It is being designed for a progression
 from adult-supported first words through approximately second-grade independent
@@ -13,9 +13,7 @@ reading, with one shared canon and a primary serialized adventure.
 2. [Path mystery](path-mystery.md) — the current concrete cause-and-effect
    proposal for the fading routes.
 3. [Geography and villages](geography-and-villages.md) — terminology, the
-   compact four-region world, and working settlement concepts.
-4. [Geography-map production](geography-map-production.md) — accepted map asset,
-   exact prompts, selection rationale, and limitations.
+   compact four-region world, current map, and settlement concepts.
 
 ## Planned foundation
 
@@ -26,5 +24,5 @@ reading, with one shared canon and a primary serialized adventure.
 - Lanternleaf visual and sound bibles
 - Canon ledger
 
-Nothing in this folder is approved canon until its document says so. During the
-foundation pass, `working` decisions are expected to change through owner review.
+Nothing in this folder is approved canon until its document says so. Working
+material may change as the remaining story decisions are made.

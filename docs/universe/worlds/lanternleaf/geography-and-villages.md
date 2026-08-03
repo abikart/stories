@@ -1,6 +1,6 @@
 # Lanternleaf geography and villages
 
-**Status:** Working geography v0.2
+**Status:** Working
 
 **Purpose:** Define a small, varied world that can sustain travel adventures and
 simple early-reader stories
@@ -61,7 +61,7 @@ story rhythm.
 
 ## Geography visualization
 
-![Working watercolor atlas map of Lanternleaf labeled with Mossgrove, Pebble Cove, Kite Hill, Sunbank, Heartwood, Winkwater, and Silverdrop Falls](assets/geography-map-v2.png)
+![Watercolor atlas map of Lanternleaf labeled with Mossgrove, Pebble Cove, Kite Hill, Sunbank, Heartwood, Winkwater, and Silverdrop Falls](assets/geography-map.png)
 
 This image is the **approved working geography reference**. It establishes:
 
@@ -74,36 +74,25 @@ This image is the **approved working geography reference**. It establishes:
 The map intentionally stops at regional character. It does not define
 individual homes, village plans, population, exact travel distance, or the
 final geometry of every living path. It also does not override Lanternleaf's
-scene medium or exact-white story matte: the imported map retains its own pale
-paper field as an owner-approved reference asset. Generation and iteration
-provenance is recorded in
-[`geography-map-production.md`](geography-map-production.md).
+scene medium or exact-white story matte; its pale paper field belongs only to
+the atlas reference.
 
-The previous close-scale image remains at `assets/geography-map-v1.png` as a
-superseded exploration. It looked like one detailed neighborhood and committed
-to individual dwellings too early.
+### Regional map rules
 
-### Regional map art direction
-
-Use the attached external-world reference only for **scale and cartographic
-hierarchy**:
-
-- a high, nearly flat top-down atlas view rather than a three-quarter aerial
+- A high, nearly flat top-down atlas view rather than a three-quarter aerial
   scene;
-- one broad landmass and coastline readable before any local details;
-- biomes expressed as large watercolor regions and repeated terrain marks;
-- mountains, hills, rivers, forest, shore, and dry country as the primary
+- One broad landmass and coastline readable before any local details;
+- Biomes expressed as large watercolor regions and repeated terrain marks;
+- Mountains, hills, rivers, forest, shore, and dry country as the primary
   visual vocabulary;
-- paths as fine organic connections across the land;
-- villages represented by restrained location marks, not illustrated homes;
+- Paths as fine organic connections across the land;
+- Villages represented by restrained location marks, not illustrated homes;
   and
 - Heartwood as one small landmark within the map, not a giant foreground
   object.
 
-Do not copy the reference world's geography, names, border, aged paper, dark
-ocean, typography, or specific symbols. Lanternleaf retains its clean white
-matte, airy watercolor medium, gentle palette, organic contours, and original
-coast-to-hills geography.
+Future map revisions retain Lanternleaf's airy watercolor medium, gentle
+palette, organic contours, and coast-to-hills geography.
 
 ### Mossgrove — the forest village
 
@@ -235,10 +224,8 @@ The living paths adapt to local terrain. Forest leaves should not be pasted onto
 a beach or dry hillside merely to repeat a motif. The shared magic is that the
 land quietly makes a route recognizable in its own materials.
 
-Because Lanternleaf is no longer exclusively a forest, the core promise may
-eventually read, "When connection returns, **Lanternleaf** opens the way," rather
-than, "the forest opens the way." This wording change remains pending owner
-approval.
+The core promise uses, "When connection returns, **Lanternleaf** opens the way,"
+so the magic belongs equally to forest, coast, hills, and warm dry country.
 
 ## Character-distribution opportunity
 

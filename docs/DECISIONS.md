@@ -3,56 +3,6 @@
 Newest decisions go first. Record meaningful divergences, tradeoffs, and quality
 gates; do not duplicate routine implementation details.
 
-## 2026-08-02 — Regional map establishes Lanternleaf's working geography
-
-- `assets/geography-map-v2.png`, imported from the owner's shared ChatGPT
-  iteration, is the working geography reference. It supersedes the detailed
-  neighborhood-scale `geography-map-v1.png` without deleting that provenance.
-- The working regional names are Mossgrove, Pebble Cove, Kite Hill, Sunbank,
-  Heartwood, Winkwater, and Silverdrop Falls.
-- Winkwater has one visible source at Silverdrop Falls in the northern ridge,
-  travels through Mossgrove, and empties into Pebble Cove. The highest northern
-  ridge carries subtle snowcaps.
-- The map controls macro placement, watershed, and regional identity. It does
-  not define individual buildings, village plans, population, exact travel
-  distance, or final living-path geometry.
-
-## 2026-08-02 — The living map reveals disconnection without causing it
-
-- The proposed Long Rain catalyst is retired. Lanternleaf's paths fade directly
-  when villages stop visiting, exchanging, helping, or otherwise maintaining a
-  connection in practice; no external disaster is required.
-- Fern is a young fox mapmaker whose handmade watercolor map stays synchronized
-  with current path status. Lines can fade, disappear, return, or form, but the
-  map cannot explain a conflict, prescribe a solution, or restore a route.
-- Path restoration requires a concrete act of renewed connection. The forest
-  responds organically and the map supplies the clearest magical confirmation,
-  keeping environmental visuals restrained.
-- The primary arc has a finite, child-readable progress measure: missing routes
-  return to the map as the travelers reconnect Lanternleaf's villages.
-
-## 2026-08-02 — Lanternleaf restarts as a graded-reading adventure world
-
-- **Fern and the Silent Seed Bells** remains a successful production and
-  runtime prototype, but its plot, bell ritual, locations, and events are not
-  Lanternleaf canon. Reuse of any creative element requires deliberate approval.
-- Lanternleaf now develops around one primary travel-adventure spine, younger
-  character eras, and simpler subplot families that share a world without being
-  abridgments of the main plot.
-- Reading difficulty, character age, and canonical chronology are separate
-  dimensions. Early-reader stories may establish concepts and relationships
-  that later gain meaning in the serialized adventure.
-- The approved working promise is that Lanternleaf's living paths remember the
-  travelers who care for them; neglected connections curl up and disappear,
-  while renewed connection lets the forest open a way.
-- Path behavior must read in daylight through restrained organic watercolor
-  cues such as uncurling leaves, occasional warm undersides, directional plant
-  posture, and a clearer passage. Avoid neon outlines, particles, synchronized
-  waves, artificial symmetry, and other effect-like fantasy signaling.
-- `docs/universe/README.md` is the world registry. Lanternleaf foundation
-  documents live under `docs/universe/worlds/lanternleaf/`; story packages
-  continue to own manuscripts, production timelines, and story-level continuity.
-
 ## 2026-07-19 — Treatment rollout records negative choices and recipe fidelity
 
 - Every active route, player surface, and drag-to-guide element now has one

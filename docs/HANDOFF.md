@@ -12,32 +12,11 @@ Last updated: 2026-08-02
 
 ## Current state
 
-- Lanternleaf creative development has restarted independently of the completed
-  Fern runtime POC. **Fern and the Silent Seed Bells** is non-canon as a story;
-  its technical and production lessons remain useful.
-- `docs/universe/README.md` now registers story worlds, and
-  `docs/universe/worlds/lanternleaf/` contains the working adventure spine and a
-  separate exploration of why its living paths are fading.
-- The owner has approved the core living-path promise and its restrained,
-  daylight-readable watercolor treatment. The Long Rain proposal was retired;
-  paths now fade directly when villages stop maintaining real connections.
-- Fern is a young fox mapmaker whose subtly magical watercolor map reflects
-  current path status without explaining or solving the underlying problem. The
-  first lost connection remains open until the world geography is established.
-- `geography-and-villages.md` explores a compact coast-to-hills region with four
-  working villages: forest Mossgrove, coastal Pebble Cove, high Kite Hill, and
-  dry Sunbank.
-- `assets/geography-map-v2.png` is the approved working regional map imported
-  from the owner's shared ChatGPT iteration. Heartwood marks the shared center;
-  Winkwater begins only at Silverdrop Falls in the subtly snowcapped northern
-  ridge, flows through Mossgrove, and empties into Pebble Cove. Exact source
-  chat, final generation ID, hash, and iteration history are recorded in
-  `geography-map-production.md`.
-- `assets/geography-map-v1.png` remains a superseded close-scale exploration;
-  do not use its neighborhood-like architecture as geography canon.
-- The new content model separates reading difficulty, character era, and
-  chronology so simple concept stories and the serialized adventure can share
-  one world without forcing one-to-one adaptations.
+- `docs/universe/worlds/lanternleaf/` is Lanternleaf's current source of truth,
+  including its adventure spine, path rules, four-region geography, and
+  `assets/geography-map.png`.
+- The next worldbuilding decision is the first concrete lost connection. The
+  reading ladder, cast sheets, chronology, and story matrix remain planned.
 - The Fern POC is preserved at `poc-success`; the immersive MVP is complete on
   `codex/mvp-immersive-runtime` and has not been pushed.
 - V1/Pip content, superseded routes and engine code, obsolete proofs/scripts,

@@ -1,20 +1,20 @@
 # Lanternleaf adventure spine
 
-**Status:** Working draft v0.3
+**Status:** Working
 
 **Scope:** World premise and primary serialized adventure
 
-**Not canon:** Names beyond Fern and Pip, exact cast species, village names,
-individual village conflicts, and final resolution mechanics
+**Open details:** Exact cast species beyond Fern, individual village conflicts,
+and final resolution mechanics
 
 ## Core promise
 
 > Lanternleaf is connected by living paths that remember the travelers who care
 > for them. When people stop visiting one another, the paths curl up and
-> disappear. When connection returns, the forest opens the way.
+> disappear. When connection returns, Lanternleaf opens the way.
 
-Lanternleaf is a small, gentle world made for adventure. Living leaf-paths wind
-between a handful of whimsical forest villages, each with its own recognizable
+Lanternleaf is a small, gentle world made for adventure. Living paths wind
+between a handful of whimsical villages, each with its own recognizable
 way of living. The world feels safe enough for young children but large enough
 to contain mystery, unfamiliar places, difficult choices, and meaningful
 character growth.
@@ -44,7 +44,7 @@ The four become a traveling group. Each Lanternleaf village has become isolated
 in a different, child-readable way: someone stopped asking for help, a useful
 tradition became too rigid, neighbors misunderstood one another, or everyday
 responsibilities left no time to visit. Whenever the friends help people resume
-a real connection, the forest makes the route recognizable again. When Fern
+a real connection, the land makes the route recognizable again. When Fern
 next opens the map, a gentle watercolor line has returned to the page.
 
 The friends travel toward the great tree where Lanternleaf's paths once met.
@@ -59,7 +59,7 @@ The friends eventually understand that restoring Lanternleaf requires more than
 finding one magical object or defeating one enemy. The map records connection;
 it does not create it. They must help the villages travel toward one another.
 As residents begin visiting, carrying useful things, sharing news, and offering
-help, the forest opens routes between them. The renewed paths do not reproduce
+help, Lanternleaf opens routes between them. The renewed paths do not reproduce
 the old map exactly; the journey creates new connections too.
 
 Fern, Pip, and their companions become Lanternleaf's first new Wayfinders: young
@@ -68,22 +68,23 @@ paths appear.
 
 ## Living-path visual language
 
-Path magic looks like the forest quietly responding, never like a visual effect
-placed over the forest.
+Path magic looks like the landscape quietly responding, never like a visual
+effect placed over it.
 
 A healthy route is communicated through a few irregular natural cues:
 
-- slightly open leaves with occasional warm undersides;
-- plants leaning loosely in the direction of travel;
-- a clearer passage through surrounding foliage;
+- terrain materials parting or aligning in a loose direction;
+- occasional natural markers such as warm leaf undersides, familiar stones, or
+  bent grass;
+- a clearer passage through the surrounding terrain;
 - gentle movement from footsteps or breeze; and
 - subtly warmer, fresher watercolor color.
 
-A fading route becomes overgrown and difficult to distinguish. Leaves curl,
-plants lean in different directions, and the open passage disappears. When a
-route returns, only a few leaves need to uncurl, stems lift, and the way becomes
-readable again. The environmental change can be so restrained that the map
-provides the clearest confirmation: its soft route line has returned.
+A fading route blends into its terrain and becomes difficult to distinguish.
+Plants cross the way, markers disappear, and the open passage is lost. When a
+route returns, only a few local elements need to shift before the way becomes
+readable again. The map provides the clearest confirmation: its soft route line
+has returned.
 
 Avoid glowing outlines, synchronized waves, floating particles, rainbow
 effects, perfectly repeated foliage, and artificial symmetry. Nighttime stories
