@@ -104,14 +104,27 @@ Whimsical watercolor hill-country storybook illustration with stark sunshine, vi
 
 ## Sunbank
 
-### Shaded water courtyard exploration
+### Shaded water courtyard
+
+![Watercolor environment study of rounded terracotta Sunbank homes, shaded terraces, clay vessels, bougainvilleas, and a carefully tended water basin](assets/sunbank-water-courtyard.png)
+
+This study establishes rounded terracotta homes, deep woven shade structures,
+pale stone stairs, open vessel shelves, carefully tended water, vivid
+bougainvilleas, and hardy silver-green planting.
 
 ```text
-Whimsical watercolor warm-country storybook illustration with stark sunshine, vivid and diverse colors; scene: a bright and carefully tended Sunbank courtyard, with rounded terracotta homes, deep woven awnings, pale stone steps, open shelves of clay vessels, one small shaded water basin, climbing vines, hardy flowers, silver-green plants, and patches of pale grass. Airy floating vignette with loose wet-on-wet edges dissolving into pure white on all sides, broad brushstrokes, simple forms, and restrained detail. --no people, animals, text --ar 4:3 --raw --v 8.1 --hd
+Whimsical watercolor warm-country storybook illustration with stark sunshine, vivid and diverse colors; scene: a bright and carefully tended Sunbank courtyard, with rounded terracotta homes, deep woven awnings, pale stone steps, open shelves of clay vessels, one small shaded water basin, bougainvilleas, hardy flowers, silver-green plants, and patches of pale grass. Airy floating vignette with loose wet-on-wet edges dissolving into pure white on all sides, broad brushstrokes, simple forms, and restrained detail. --no people, animals, text --ar 4:3 --raw --v 8.1 --hd
 ```
 
-### Clay repair terrace exploration
+### Clay repair terrace
+
+![Watercolor environment study of a shaded Sunbank clay workshop with an earthen kiln, repaired pottery, preserved fruit, and bougainvilleas](assets/sunbank-clay-terrace.png)
+
+This study develops Sunbank's practical craft life through an earthen kiln,
+repaired pottery, clay tools, preserved food, deep shade, hardy grasses, and
+bougainvilleas. Both Sunbank studies require exact frame and matte
+normalization before production use.
 
 ```text
-Whimsical watercolor warm-country storybook illustration with stark late-afternoon sunshine, vivid and diverse colors; scene: a shaded Sunbank clay workshop on a terracotta bank, with a small rounded earthen kiln, a broad table of cracked and carefully mended pots, clay tools, water jars beneath a deep awning, woven trays of preserved fruit, smooth pale stones, climbing plants, hardy flowers, and a narrow path through dry grass. Airy floating vignette with loose wet-on-wet edges dissolving into pure white on all sides, broad brushstrokes, simple forms, and restrained detail. --no people, animals, text --ar 4:3 --raw --v 8.1 --hd
+Whimsical watercolor warm-country storybook illustration with stark late-afternoon sunshine, vivid and diverse colors; scene: a shaded Sunbank clay workshop on a terracotta bank, with a small rounded earthen kiln, a broad table of cracked and carefully mended pots, clay tools, water jars beneath a deep awning, woven trays of preserved fruit, smooth pale stones, bougainvilleas, hardy flowers, and a narrow path through dry grass. Airy floating vignette with loose wet-on-wet edges dissolving into pure white on all sides, broad brushstrokes, simple forms, and restrained detail. --no people, animals, text --ar 4:3 --raw --v 8.1 --hd
 ```

@@ -165,7 +165,8 @@ single visible source of Winkwater; do not add a competing stream origin.
 
 Sunbank rests among terracotta banks, smooth pale stone, hardy gardens, shaded
 courtyards, and carefully tended water. Homes use rounded earthen forms, deep
-awnings, open shelves, clay vessels, and climbing plants trained for shade.
+awnings, open shelves, clay vessels, and bougainvilleas trained along walls and
+shade structures.
 
 Residents understand clay, heat, water care, preserving food, and making a
 little go a long way. The village should feel bright and abundant in its own
