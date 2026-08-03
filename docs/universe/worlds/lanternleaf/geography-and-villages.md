@@ -73,9 +73,10 @@ This image is the **approved working geography reference**. It establishes:
 
 The map intentionally stops at regional character. It does not define
 individual homes, village plans, population, exact travel distance, or the
-final geometry of every living path. It also does not override Lanternleaf's
-scene medium or exact-white story matte; its pale paper field belongs only to
-the atlas reference.
+final geometry of every living path. Its transparent outer field allows it to
+sit cleanly on a production surface if a story needs the regional map. Runtime
+use still follows that story package's backdrop, composition, and asset-quality
+checks.
 
 ### Regional map rules
 
