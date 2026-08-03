@@ -26,14 +26,15 @@ Last updated: 2026-08-02
   first lost connection remains open until the world geography is established.
 - `geography-and-villages.md` explores a compact coast-to-hills region with four
   working villages: forest Mossgrove, coastal Pebble Cove, high Kite Hill, and
-  dry Sunbank. The structure, names, and whether Lanternleaf is a region,
-  peninsula, or island remain unapproved.
-- `assets/geography-map-v1.png` is now a superseded close-scale exploration. It
-  reads as one detailed neighborhood and exposes individual dwellings too early.
-  The target is a regional story-atlas: macro coastline and biomes, thin paths,
-  subtle settlement locations, no individual homes, and a small Meeting Tree
-  landmark. The next Midjourney prompt is recorded in
+  dry Sunbank.
+- `assets/geography-map-v2.png` is the approved working regional map imported
+  from the owner's shared ChatGPT iteration. Heartwood marks the shared center;
+  Winkwater begins only at Silverdrop Falls in the subtly snowcapped northern
+  ridge, flows through Mossgrove, and empties into Pebble Cove. Exact source
+  chat, final generation ID, hash, and iteration history are recorded in
   `geography-map-production.md`.
+- `assets/geography-map-v1.png` remains a superseded close-scale exploration;
+  do not use its neighborhood-like architecture as geography canon.
 - The new content model separates reading difficulty, character era, and
   chronology so simple concept stories and the serialized adventure can share
   one world without forcing one-to-one adaptations.

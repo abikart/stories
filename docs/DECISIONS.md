@@ -3,6 +3,20 @@
 Newest decisions go first. Record meaningful divergences, tradeoffs, and quality
 gates; do not duplicate routine implementation details.
 
+## 2026-08-02 — Regional map establishes Lanternleaf's working geography
+
+- `assets/geography-map-v2.png`, imported from the owner's shared ChatGPT
+  iteration, is the working geography reference. It supersedes the detailed
+  neighborhood-scale `geography-map-v1.png` without deleting that provenance.
+- The working regional names are Mossgrove, Pebble Cove, Kite Hill, Sunbank,
+  Heartwood, Winkwater, and Silverdrop Falls.
+- Winkwater has one visible source at Silverdrop Falls in the northern ridge,
+  travels through Mossgrove, and empties into Pebble Cove. The highest northern
+  ridge carries subtle snowcaps.
+- The map controls macro placement, watershed, and regional identity. It does
+  not define individual buildings, village plans, population, exact travel
+  distance, or final living-path geometry.
+
 ## 2026-08-02 — The living map reveals disconnection without causing it
 
 - The proposed Long Rain catalyst is retired. Lanternleaf's paths fade directly

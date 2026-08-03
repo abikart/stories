@@ -1,17 +1,68 @@
 # Lanternleaf geography-map production
 
-**Status:** Superseded scale exploration
+**Status:** Approved working geography
 
-**Superseded asset:** `assets/geography-map-v1.png`
+**Current asset:** `assets/geography-map-v2.png`
 
-**Generated:** 2026-08-02 with the built-in image-generation tool
+**Source conversation:**
+<https://chatgpt.com/share/6a6fde0a-3a9c-83e8-8566-6682858fc058>
 
-**Accepted generation ID:** `exec-a1a3e6da-f9b7-40b6-971a-cf44b565b065`
+**Final generation ID:** `exec-6b1801a6-faa1-4251-a2cf-6764240e6443`
 
-**Accepted SHA-256:**
-`4848d72627e471530c02d16ee50e475b546ce5d223c5bc2443b7bc23c62a56d2`
+**SHA-256:**
+`5e4636522ab32217e5fa07b91e819a0d1ad954e961027fd9037adf18b3a1dfaa`
 
 **Dimensions:** 1448×1086 RGB PNG, exact 4:3
+
+**Import:** Retrieved directly from the final provider raw asset without image
+editing, scaling, or re-encoding.
+
+## Final-map iteration
+
+The shared ChatGPT conversation began from the regional story-atlas prompt
+preserved below, then made these selected changes:
+
+1. Made the river visibly begin in the northern hills, flow through Mossgrove,
+   and empty into Pebble Cove.
+2. Added the working labels Mossgrove, Pebble Cove, Kite Hill, Sunbank, and
+   Winkwater in a restrained hand-lettered style.
+3. Renamed the central Meeting Tree landmark **Heartwood**.
+4. Named the small headwater waterfall **Silverdrop Falls** and kept its label
+   smaller than the regional names.
+5. Removed a competing stream at the top of the hills so Silverdrop Falls is
+   Winkwater's only visible origin.
+6. Added subtle snowcaps to the highest northern ridge.
+
+The result was accepted because it reads as one regional geography rather than
+a neighborhood, distinguishes the four environments without settlement-level
+architecture, preserves a simple watershed, and keeps landmarks secondary to
+the land.
+
+## Scope and known limitation
+
+This asset controls macro geography, names, and watershed only. It does not
+control story-scene medium, architecture, path-state visuals, or character
+scale.
+
+The original provider PNG is preserved unchanged. Its entire outer border is a
+light neutral paper field rather than exact `#FFFFFF`; sampled border channels
+range approximately from 238 to 249. This is acceptable for the working atlas
+reference but not for production story media, which must still use the exact
+solid package matte. Create a reviewed normalized derivative later only if this
+map itself enters a runtime story surface.
+
+## Superseded local image-generation exploration
+
+**Asset:** `assets/geography-map-v1.png`
+
+**Generation ID:** `exec-a1a3e6da-f9b7-40b6-971a-cf44b565b065`
+
+**SHA-256:**
+`4848d72627e471530c02d16ee50e475b546ce5d223c5bc2443b7bc23c62a56d2`
+
+This earlier built-in image-generation candidate established the four-region
+layout but used a close aerial scale and individual dwellings. It remains only
+as process provenance.
 
 ## Reference roles
 
@@ -22,7 +73,7 @@
   handmade structures, pale distance, and broad watercolor washes only. Its
   characters, workshop, and layout were not copied.
 
-## Candidate history
+## Superseded candidate history
 
 ### Base candidate — rejected for density
 
@@ -52,7 +103,7 @@ The next candidate must use a regional story-atlas view: macro landforms and
 biomes first, paths second, settlement locations third, and no dwelling-level
 detail.
 
-## Midjourney regional-map prompt
+## Regional-map base prompt
 
 ```text
 Hand-painted children's storybook atlas map of Lanternleaf, a small whimsical coastal realm seen from very high overhead in a nearly flat top-down view, regional map scale rather than an aerial village scene. One broad irregular coastal peninsula fills most of the composition, with the sea wrapping around its western and southern edges. The geography is the subject.
