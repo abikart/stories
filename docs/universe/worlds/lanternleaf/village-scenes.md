@@ -30,7 +30,7 @@ before production use.
 
 ### Root lane beside Winkwater
 
-![Watercolor environment study of root-grown Mossgrove homes, a mapmaking worktable, stepping stones, and small bridges beside Winkwater](assets/mossgrove-root-lane.png)
+![Watercolor environment study of root-grown Mossgrove homes, a mapmaking worktable, stepping stones, and small bridges beside Winkwater](assets/scenes/mossgrove-root-lane.png)
 
 This study establishes root-integrated homes, rounded blue doors, varied
 scalloped awnings, small lanterns, practical work surfaces, abundant ferns,
@@ -48,7 +48,7 @@ Whimsical watercolor forest storybook illustration with stark sunshine, vivid an
 
 ### Paper garden
 
-![Watercolor environment study of a sheltered Mossgrove paper garden beneath arching tree roots](assets/mossgrove-paper-garden.png)
+![Watercolor environment study of a sheltered Mossgrove paper garden beneath arching tree roots](assets/scenes/mossgrove-paper-garden.png)
 
 This study develops Mossgrove's paper craft and gardens without repeating
 Winkwater, the bridge, or the residential lane. Broad worktables, drying paper,
@@ -64,7 +64,7 @@ Whimsical watercolor forest storybook illustration with stark sunshine, vivid an
 
 ### Tide-pool lane
 
-![Watercolor environment study of curved Pebble Cove homes above tide pools, pebble paths, dune flowers, and a small boat](assets/pebble-cove-tide-pool-lane.png)
+![Watercolor environment study of curved Pebble Cove homes above tide pools, pebble paths, dune flowers, and a small boat](assets/scenes/pebble-cove-tide-pool-lane.png)
 
 This study establishes curved dune-integrated homes, sea-blue doors, woven
 grass awnings, driftwood rails, shell-marked steps, rounded pebble paths,
@@ -76,7 +76,7 @@ Whimsical watercolor coastal storybook illustration with stark sunshine, vivid a
 
 ### Return landing
 
-![Watercolor environment study of a sheltered Pebble Cove landing with two wooden boats, rope, baskets, drying sea plants, and dune flowers](assets/pebble-cove-return-landing.png)
+![Watercolor environment study of a sheltered Pebble Cove landing with two wooden boats, rope, baskets, drying sea plants, and dune flowers](assets/scenes/pebble-cove-return-landing.png)
 
 This study develops Pebble Cove's working shoreline through small curved boats,
 coiled rope, woven carrying baskets, drying sea plants, a shared grass-roofed
@@ -91,7 +91,7 @@ Whimsical watercolor coastal storybook illustration with stark sunshine, vivid a
 
 ### Windy orchard lane
 
-![Watercolor environment study of Kite Hill homes nestled into orchard terraces on a high grassy slope](assets/kite-hill-orchard-lane.png)
+![Watercolor environment study of Kite Hill homes nestled into orchard terraces on a high grassy slope](assets/scenes/kite-hill-orchard-lane.png)
 
 This study establishes hillside-integrated homes, sheltered blue-green doors,
 low windbreaks, cloth streamers, orchard terraces, a climbing meadow path, and
@@ -103,7 +103,7 @@ Whimsical watercolor hill-country storybook illustration with stark sunshine, vi
 
 ### Kite-making terrace
 
-![Watercolor environment study of a sheltered Kite Hill workshop with a handmade kite, cloth, frames, and string](assets/kite-hill-workshop.png)
+![Watercolor environment study of a sheltered Kite Hill workshop with a handmade kite, cloth, frames, and string](assets/scenes/kite-hill-workshop.png)
 
 This study establishes a practical wind-craft terrace, a grass-roofed shelter,
 light frames, cloth, string, outdoor racks, and a wind-protected garden. Use it
@@ -119,7 +119,7 @@ Whimsical watercolor hill-country storybook illustration with stark sunshine, vi
 
 ### Shaded water courtyard
 
-![Watercolor environment study of rounded terracotta Sunbank homes, shaded terraces, clay vessels, bougainvilleas, and a carefully tended water basin](assets/sunbank-water-courtyard.png)
+![Watercolor environment study of rounded terracotta Sunbank homes, shaded terraces, clay vessels, bougainvilleas, and a carefully tended water basin](assets/scenes/sunbank-water-courtyard.png)
 
 This study establishes rounded terracotta homes, deep woven shade structures,
 pale stone stairs, open vessel shelves, carefully tended water, vivid
@@ -131,7 +131,7 @@ Whimsical watercolor warm-country storybook illustration with stark sunshine, vi
 
 ### Clay repair terrace
 
-![Watercolor environment study of a shaded Sunbank clay workshop with an earthen kiln, repaired pottery, preserved fruit, and bougainvilleas](assets/sunbank-clay-terrace.png)
+![Watercolor environment study of a shaded Sunbank clay workshop with an earthen kiln, repaired pottery, preserved fruit, and bougainvilleas](assets/scenes/sunbank-clay-terrace.png)
 
 This study develops Sunbank's practical craft life through an earthen kiln,
 repaired pottery, clay tools, preserved food, deep shade, hardy grasses, and
@@ -146,7 +146,7 @@ Whimsical watercolor warm-country storybook illustration with stark late-afterno
 
 ### Heartwood gathering place
 
-![Watercolor environment study of Heartwood as a great spreading tree with root rooms, gathering tables, baskets, path markers, and handmade tokens](assets/heartwood-gathering-place.png)
+![Watercolor environment study of Heartwood as a great spreading tree with root rooms, gathering tables, baskets, path markers, and handmade tokens](assets/scenes/heartwood-gathering-place.png)
 
 This study establishes Heartwood as a useful shared gathering place at the
 route crossings rather than a fifth village. The great spreading tree, open
@@ -161,7 +161,7 @@ surround to the active package matte before using it as production media.
 
 ### Silverdrop Falls
 
-![Watercolor environment study of Silverdrop Falls descending from the northern ridge into a clear pool](assets/silverdrop-falls.png)
+![Watercolor environment study of Silverdrop Falls descending from the northern ridge into a clear pool](assets/scenes/silverdrop-falls.png)
 
 This study establishes the small northern-ridge waterfall as Winkwater's single
 visible source: one clear fall over pale stone, a receiving pool, subtle
@@ -175,7 +175,7 @@ surround to the active package matte before using it as production media.
 
 ### Winkwater forest reach
 
-![Watercolor environment study of a calm forest reach of Winkwater with stepping stones, ferns, bell flowers, and sunlit banks](assets/winkwater-forest-reach.png)
+![Watercolor environment study of a calm forest reach of Winkwater with stepping stones, ferns, bell flowers, and sunlit banks](assets/scenes/winkwater-forest-reach.png)
 
 This study establishes Winkwater within the wetter woodland: a clear winding
 stream, varied shallow banks, water-smoothed stones, ferns, pendant bell

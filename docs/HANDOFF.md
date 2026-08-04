@@ -14,9 +14,10 @@ Last updated: 2026-08-04
 
 - `docs/universe/worlds/lanternleaf/` is Lanternleaf's current source of truth,
   including its adventure spine, path rules, four-region geography, and
-  `assets/geography-map.png`. Scene references now also cover Heartwood as a
-  shared gathering place, Silverdrop Falls as Winkwater's sole visible source,
-  and one representative forest reach of Winkwater.
+  `assets/map.png`. Environment studies live under `assets/scenes/` and cover
+  the four villages, Heartwood as a shared gathering place, Silverdrop Falls as
+  Winkwater's sole visible source, and one representative forest reach of
+  Winkwater.
 - The next worldbuilding decision is the first concrete lost connection. The
   reading ladder, cast sheets, chronology, and story matrix remain planned.
 - The Fern POC is preserved at `poc-success`; the immersive MVP is complete on

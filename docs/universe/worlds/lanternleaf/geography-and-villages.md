@@ -61,7 +61,7 @@ story rhythm.
 
 ## Geography visualization
 
-![Watercolor atlas map of Lanternleaf labeled with Mossgrove, Pebble Cove, Kite Hill, Sunbank, Heartwood, Winkwater, and Silverdrop Falls](assets/geography-map.png)
+![Watercolor atlas map of Lanternleaf labeled with Mossgrove, Pebble Cove, Kite Hill, Sunbank, Heartwood, Winkwater, and Silverdrop Falls](assets/map.png)
 
 This image is the **approved working geography reference**. It establishes:
 
@@ -187,7 +187,7 @@ routes from different regions cross. It is a gathering place rather than a
 fifth village. Heartwood can anchor the living map and the primary journey
 without being the source of all magic or the object that repairs every path.
 
-![Watercolor environment study of Heartwood as a great spreading tree with root rooms and a shared gathering place](assets/heartwood-gathering-place.png)
+![Watercolor environment study of Heartwood as a great spreading tree with root rooms and a shared gathering place](assets/scenes/heartwood-gathering-place.png)
 
 Its exact story role remains open even though its name and geographic placement
 are now established. The study above supplies scene vocabulary without fixing
@@ -200,9 +200,9 @@ flows continuously down through Mossgrove, and empties into Pebble Cove. The
 waterfall is the river's only visible origin. This gives Lanternleaf one simple,
 legible watershed linking hills, forest, and coast.
 
-![Watercolor environment study of Silverdrop Falls at Winkwater's northern-ridge source](assets/silverdrop-falls.png)
+![Watercolor environment study of Silverdrop Falls at Winkwater's northern-ridge source](assets/scenes/silverdrop-falls.png)
 
-![Watercolor environment study of a forest reach of Winkwater among ferns, bell flowers, and stepping stones](assets/winkwater-forest-reach.png)
+![Watercolor environment study of a forest reach of Winkwater among ferns, bell flowers, and stepping stones](assets/scenes/winkwater-forest-reach.png)
 
 These studies establish compatible scene vocabulary for the source waterfall
 and one woodland reach. They do not fix the river's exact course, crossings,
