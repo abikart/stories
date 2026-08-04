@@ -104,8 +104,9 @@ for the current cast.
 ## Reference roles
 
 - `docs/universe/fern-and-pip.png`: Mossgrove village vocabulary,
-  character-to-world scale, and inhabited foreground layering only; it does not
-  control current character identity.
+  character-to-world scale, selective character-level framing, white-space
+  emphasis, and inhabited foreground layering only; it does not control current
+  character identity or final canvas ratio.
 - `docs/universe/elephant-capybara.png`: bipedal collaboration, workshop tools,
   semantic density, and pale distance.
 - `docs/universe/hedge-frog.png`: bipedal tool use, grouped quills, handmade seed

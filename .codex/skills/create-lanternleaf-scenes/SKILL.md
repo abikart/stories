@@ -15,9 +15,12 @@ not as authority over the entire style.
 2. Read `docs/universe/worlds/lanternleaf/main-characters.md` for current cast
    identity and role status.
 3. Read `references/visual-bible.md` and `references/prompt-template.md`.
+   When combining separate character and environment references, also read
+   `references/character-scene-integration.md`.
 4. Inspect only the universe references relevant to the beat:
-   - `fern-and-pip.png` for inhabited Mossgrove scale and foreground layering,
-     never for current character identity;
+   - `fern-and-pip.png` for inhabited Mossgrove scale, selective framing,
+     white-space emphasis, and foreground layering, never for current character
+     identity or canvas ratio;
    - `elephant-capybara.png` for an inhabited workshop and semantic detail;
    - `hedge-frog.png` for bipedal tool use, handmade props, and outdoor craft;
    - `dino-reference.png` for soft-cute species simplification only.
@@ -38,6 +41,9 @@ not as authority over the entire style.
    transform yet.
 3. Compose natively at 4:3. Keep the complete semantic action inside the frame;
    there is no later responsive crop.
+   For character-scene integration, recompose the environment around plausible
+   character scale and readable white space instead of preserving a wide scene
+   and enlarging the character to fill it.
 4. Build one clear focal beat, then enrich the setting with varied recognizable
    objects and plants. Favor semantic detail over texture noise.
 5. Use locally color-matched contours, calm broad washes inside forms, and an
