@@ -1,10 +1,10 @@
-# Lanternleaf village scene references
+# Lanternleaf village and landmark scene references
 
 **Status:** Working
 
-These environment studies develop each village at story-scene scale. They
-establish useful visual vocabulary without making every pictured object
-mandatory in every story.
+These environment studies develop villages and shared landmarks at story-scene
+scale. They establish useful visual vocabulary without making every pictured
+object mandatory in every story.
 
 ## Shared scene treatment
 
@@ -141,3 +141,48 @@ normalization before production use.
 ```text
 Whimsical watercolor warm-country storybook illustration with stark late-afternoon sunshine, vivid and diverse colors; scene: a shaded Sunbank clay workshop on a terracotta bank, with a small rounded earthen kiln, a broad table of cracked and carefully mended pots, clay tools, water jars beneath a deep awning, woven trays of preserved fruit, smooth pale stones, bougainvilleas, hardy flowers, and a narrow path through dry grass. Airy floating vignette with loose wet-on-wet edges dissolving into pure white on all sides, broad brushstrokes, simple forms, and restrained detail. --no people, animals, text --ar 4:3 --raw --v 8.1 --hd
 ```
+
+## Shared landmarks
+
+### Heartwood gathering place
+
+![Watercolor environment study of Heartwood as a great spreading tree with root rooms, gathering tables, baskets, path markers, and handmade tokens](assets/heartwood-gathering-place.png)
+
+This study establishes Heartwood as a useful shared gathering place at the
+route crossings rather than a fifth village. The great spreading tree, open
+root rooms, communal tables and stools, baskets, path markers, acorn lanterns,
+and small handmade tokens suggest visits and exchange among regions. These
+details are setting vocabulary, not evidence that Heartwood is a dwelling, a
+government center, the source of Lanternleaf's magic, or an automatic solution
+to the fading paths. Its exact narrative role remains open.
+
+The stored image is a visual reference. Normalize its frame and near-white
+surround to the active package matte before using it as production media.
+
+### Silverdrop Falls
+
+![Watercolor environment study of Silverdrop Falls descending from the northern ridge into a clear pool](assets/silverdrop-falls.png)
+
+This study establishes the small northern-ridge waterfall as Winkwater's single
+visible source: one clear fall over pale stone, a receiving pool, subtle
+snowfields, sparse evergreens, hill grasses, and hardy blue flowers. The image
+defines landmark vocabulary rather than exact cliff geometry, scale, season,
+or a story-specific route. Future scenes must not add a second visible source
+for Winkwater.
+
+The stored image is a visual reference. Normalize its frame and near-white
+surround to the active package matte before using it as production media.
+
+### Winkwater forest reach
+
+![Watercolor environment study of a calm forest reach of Winkwater with stepping stones, ferns, bell flowers, and sunlit banks](assets/winkwater-forest-reach.png)
+
+This study establishes Winkwater within the wetter woodland: a clear winding
+stream, varied shallow banks, water-smoothed stones, ferns, pendant bell
+flowers, and soft sunlit openings. It is one representative forest reach, not
+the river's fixed course or a requirement that every crossing use stepping
+stones. Winkwater still begins only at Silverdrop Falls, flows continuously
+through Mossgrove, and empties into Pebble Cove.
+
+The stored image is a visual reference. Normalize its frame and near-white
+surround to the active package matte before using it as production media.
