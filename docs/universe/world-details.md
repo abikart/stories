@@ -9,8 +9,11 @@ This document defines the visual vocabulary and possibilities of the world; it i
 The written guide controls the world grammar. The images in this directory are
 role-specific references rather than interchangeable style authorities:
 
-- `fern-and-pip.png` controls Fern and Pipkin identity and their relationship to
-  an inhabited Lanternleaf village.
+- `worlds/lanternleaf/main-characters.md` controls the current Lanternleaf cast
+  names, species, pronouns, homes, and role status.
+- `fern-and-pip.png` demonstrates an inhabited Mossgrove scene,
+  character-to-world scale, and foreground layering. It does not control the
+  identity of the current cast.
 - `elephant-capybara.png` demonstrates bipedal collaboration, workshop density,
   and pale atmospheric distance.
 - `hedge-frog.png` demonstrates bipedal tool use, grouped species features,
@@ -19,7 +22,7 @@ role-specific references rather than interchangeable style authorities:
   beige paper, full-bleed setting, and posture do not override this guide.
 
 All land denizens are upright and bipedal. Explicitly flight-capable denizens
-such as Pipkin may hover while retaining the same simple, tool-capable character
+such as Zippy may hover while retaining the same simple, tool-capable character
 language. Final story media is composed natively at 4:3 even when a reference
 image uses another ratio.
 

@@ -43,7 +43,9 @@ defective output as the main identity or medium reference.
 
 - Confirm 4:3 dimensions and complete action without reliance on cropping.
 - Confirm every land denizen stands upright and can perform the authored action.
-- Confirm Fern's satchel and Pipkin's four wings when either character appears.
+- Confirm every current lead against `main-characters.md`, the accepted
+  character sheet, and the story continuity ledger. Do not invent unresolved
+  attributes as though they were canonical.
 - Compare every tracked prop and transformation with the continuity ledger.
 - Read the emotional beat at thumbnail size; inspect anatomy and tools close up.
 - Find recognizable setting details at several scales without texture noise.

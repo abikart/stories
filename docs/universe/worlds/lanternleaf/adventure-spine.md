@@ -4,8 +4,8 @@
 
 **Scope:** World premise and primary serialized adventure
 
-**Open details:** Exact cast species beyond Fern, individual village conflicts,
-and final resolution mechanics
+**Open details:** Pickle's and Pepper's exact roles, cast joining order,
+individual village conflicts, and final resolution mechanics
 
 ## Core promise
 
@@ -21,39 +21,39 @@ character growth.
 
 ## Primary adventure
 
-Fern and Pip live in a cozy village at one edge of Lanternleaf. Fern is a young
+Nibbles and Zippy begin the adventure together in Mossgrove. Nibbles is a young
 fox mapmaker: observant, careful, and happiest when she knows where she is
-going. Pip is tiny, quick, and endlessly curious. He often flies ahead before
-Fern is ready.
+going. Zippy is a tiny bee, quick and endlessly curious. He often flies ahead
+before Nibbles is ready.
 
-Fern's most important map has a little magic. It reflects the current living
+Nibbles's most important map has a little magic. It reflects the current living
 paths of Lanternleaf. One day, a familiar route to a neighboring village grows
-faint on the page and disappears. At the route's entrance, Fern and Pip find the
-same change in the forest: leaves have curled inward, plants turn in different
-directions, and the clear passage has blended into ordinary undergrowth.
+faint on the page and disappears. At the route's entrance, Nibbles and Zippy
+find the same change in the forest: leaves have curled inward, plants turn in
+different directions, and the clear passage has blended into ordinary
+undergrowth.
 
-The map cannot tell Fern why the path vanished or how to restore it. Fern and
-Pip follow irregular natural clues and find another way to the neighboring
+The map cannot tell Nibbles why the path vanished or how to restore it. Nibbles
+and Zippy follow irregular natural clues and find another way to the neighboring
 village. There they learn that visits, useful exchanges, letters, and news have
-stopped moving between the two communities. While helping with the local
-problem, they meet a practical young Maker who joins the journey. At another
-village they meet a thoughtful Listener who notices changes in the wind,
-worried voices, distant sounds, and feelings others do not say aloud.
+stopped moving between the two communities. Pickle, a young tortoise, and
+Pepper, a snow wolf from Kite Hill, later join them. Their exact specialties and
+joining order remain open.
 
 The four become a traveling group. Each Lanternleaf village has become isolated
 in a different, child-readable way: someone stopped asking for help, a useful
 tradition became too rigid, neighbors misunderstood one another, or everyday
 responsibilities left no time to visit. Whenever the friends help people resume
-a real connection, the land makes the route recognizable again. When Fern
+a real connection, the land makes the route recognizable again. When Nibbles
 next opens the map, a gentle watercolor line has returned to the page.
 
 The friends travel toward the great tree where Lanternleaf's paths once met.
 Along the way they cross unfamiliar terrain, take wrong turns, disagree, become
-separated briefly, and learn when to lead, listen, wait, or follow. Fern learns
-that a map cannot show every path before someone is willing to make it. Pip
-learns that exploring also means returning for the people who trust him. The
-Maker learns that not everything broken can be repaired alone. The Listener
-learns that noticing a problem matters only when they are willing to speak.
+separated briefly, and learn when to lead, listen, wait, or follow. Nibbles
+learns that a map cannot show every path before someone is willing to make it.
+Zippy learns that exploring also means returning for the people who trust him.
+Pickle's and Pepper's individual growth arcs will follow from their final group
+functions.
 
 The friends eventually understand that restoring Lanternleaf requires more than
 finding one magical object or defeating one enemy. The map records connection;
@@ -62,9 +62,9 @@ As residents begin visiting, carrying useful things, sharing news, and offering
 help, Lanternleaf opens routes between them. The renewed paths do not reproduce
 the old map exactly; the journey creates new connections too.
 
-Fern, Pip, and their companions become Lanternleaf's first new Wayfinders: young
-travelers who keep visiting villages, discover forgotten places, and help new
-paths appear.
+Nibbles, Zippy, Pickle, and Pepper become Lanternleaf's first new Wayfinders:
+young travelers who keep visiting villages, discover forgotten places, and help
+new paths appear.
 
 ## Living-path visual language
 
@@ -113,11 +113,11 @@ Simpler stories occur primarily during the cast's younger Seedling and Village
 eras. They establish concepts, relationships, abilities, objects, places, and
 language that gain meaning in the later journey.
 
-For example, **Fern is big. Pip is small.** can establish their relative scale
-and complementary abilities. **Pip goes up. Fern stays down.** introduces
-flight and viewpoint. **Fern waits. Pip comes back.** establishes patience and
-trust. These are complete small stories rather than vocabulary drills or
-abridged versions of more complicated plots.
+For example, **Nibbles is big. Zippy is small.** can establish their relative
+scale and complementary abilities. **Zippy goes up. Nibbles stays down.**
+introduces flight and viewpoint. **Nibbles waits. Zippy comes back.** establishes
+patience and trust. These are complete small stories rather than vocabulary
+drills or abridged versions of more complicated plots.
 
 Reading difficulty, character age, and chronological order remain separate
 metadata. A child's reading level does not determine which character era they
@@ -129,7 +129,7 @@ The living paths respond to the current relationship between places. A route
 fades when its villages stop visiting, exchanging, or helping one another. It
 returns only after people resume a meaningful connection in action.
 
-Fern's map is synchronized with that status. It can show that a route is
+Nibbles's map is synchronized with that status. It can show that a route is
 present, fading, missing, or newly formed, but it cannot reveal the social or
 practical reason, predict the solution, or restore a path by itself. This rule
 is developed in [`path-mystery.md`](path-mystery.md).

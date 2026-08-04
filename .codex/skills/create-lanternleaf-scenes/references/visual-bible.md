@@ -1,7 +1,8 @@
 # Lanternleaf visual bible
 
 `docs/universe/world-details.md` is canonical. This file condenses the rules an
-image prompt must preserve and adds continuity for Fern and Pipkin.
+image prompt must preserve. Read `docs/universe/worlds/lanternleaf/main-characters.md`
+for the current cast.
 
 ## Audience and feeling
 
@@ -10,27 +11,17 @@ image prompt must preserve and adds continuity for Fern and Pipkin.
 - Make one emotional action immediately legible, then reward a longer look with
   story-supporting environmental detail.
 
-## Fern and Pipkin
+## Current cast status
 
-### Fern
-
-- Small bipedal childlike fox; large rounded head, compact torso, short limbs,
-  full tail, and large soft triangular ears.
-- Rust-orange fur with a cream muzzle, chest, inner ears, and tail tip.
-- Round reflective deep-brown eyes, delicate white highlights, rosy cheeks,
-  tiny dark nose, and a small readable mouth.
-- Dusty-teal cross-body satchel with a flap and small warm-metal fastener.
-- Build fur from broad calm washes. Do not draw individual fur or fill the body
-  with scales, leaves, curls, hatching, or repeated dabs.
-
-### Pipkin
-
-- Small floating moth friend with a rounded mint-green head and body.
-- Two short antennae with warm-gold tips.
-- Exactly four translucent warm-gold wings with restrained vein lines.
-- Uses the same round reflective eye and rosy-cheek language as Fern.
-- Build the body from one or two broad washes with organic tonal variation, not
-  circles, scales, patches, or airbrushed volume.
+- Nibbles is a fox who uses she/her pronouns and is the working navigator and
+  mapmaker.
+- Zippy is a bee who uses he/him pronouns and is the working aerial scout and
+  messenger.
+- Pickle is a tortoise who uses he/him pronouns; his exact function is open.
+- Pepper is a snow wolf from Kite Hill who uses she/her pronouns; her exact
+  function is open.
+- Do not treat any visual design, palette, proportion, or accessory as canonical
+  until an accepted character sheet records it.
 
 ## Denizen grammar
 
@@ -40,7 +31,7 @@ image prompt must preserve and adds continuity for Fern and Pipkin.
 - Group complex anatomy such as quills or tufts into a few clear shapes.
 - Use simple handcrafted clothing and accessories with only meaningful details:
   flap, clasp, pocket, tie, handle, bead, or seam.
-- Pipkin and other explicitly flight-capable creatures may hover; do not use
+- Zippy and other explicitly flight-capable creatures may hover; do not use
   that exception to make land denizens quadrupedal.
 
 ## World and richness
@@ -112,8 +103,9 @@ image prompt must preserve and adds continuity for Fern and Pipkin.
 
 ## Reference roles
 
-- `docs/universe/fern-and-pip.png`: Fern/Pipkin identity, village vocabulary,
-  character-to-world scale, and inhabited foreground layering.
+- `docs/universe/fern-and-pip.png`: Mossgrove village vocabulary,
+  character-to-world scale, and inhabited foreground layering only; it does not
+  control current character identity.
 - `docs/universe/elephant-capybara.png`: bipedal collaboration, workshop tools,
   semantic density, and pale distance.
 - `docs/universe/hedge-frog.png`: bipedal tool use, grouped quills, handmade seed

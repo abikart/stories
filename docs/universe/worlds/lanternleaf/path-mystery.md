@@ -1,4 +1,4 @@
-# The living paths and Fern's map
+# The living paths and Nibbles's map
 
 **Status:** Working
 
@@ -18,22 +18,22 @@ Lanternleaf is not judging anyone, and one argument does not erase a road. A pat
 fades only after a connection has stopped in practice. It returns when people
 begin moving toward one another again.
 
-## Fern's living map
+## Nibbles's living map
 
-Fern is a young fox mapmaker. Her map has a small, quiet magic: it stays
+Nibbles is a young fox mapmaker. Her map has a small, quiet magic: it stays
 synchronized with Lanternleaf's living paths.
 
 - A healthy route appears as a soft watercolor line.
 - A neglected route becomes pale and incomplete.
 - A lost route disappears from the page.
-- A restored or newly made route appears when Fern next checks the map.
+- A restored or newly made route appears when Nibbles next checks the map.
 
 The map does not glow, speak, point to an answer, or animate like an interface.
 Its paper, ink, and painted landmarks remain handmade and imperfect. A route may
-return as a slightly damp-looking wash or a line Fern is certain was not there
-before.
+return as a slightly damp-looking wash or a line Nibbles is certain was not
+there before.
 
-The map is a diagnostic tool, not a solution. It cannot tell Fern:
+The map is a diagnostic tool, not a solution. It cannot tell Nibbles:
 
 - why two places became disconnected;
 - which person is right;
@@ -41,18 +41,18 @@ The map is a diagnostic tool, not a solution. It cannot tell Fern:
 - how to cross terrain where no current path exists; or
 - what route will appear in the future.
 
-Fern must leave the map and enter the world to learn those things.
+Nibbles must leave the map and enter the world to learn those things.
 
 ## Inciting incident
 
-While checking or updating her map, Fern notices that the familiar route to a
+While checking or updating her map, Nibbles notices that the familiar route to a
 neighboring village has grown faint. Soon afterward, the line disappears.
 
-Fern and Pip visit the path entrance and find that the real landscape matches
-the map. The route has not been blocked by a disaster; it has simply become
-difficult to distinguish from everything around it. Fern wants to understand
-how a path she knows so well could vanish. Pip notices small openings from above
-that help them find an imperfect way through.
+Nibbles and Zippy visit the path entrance and find that the real landscape
+matches the map. The route has not been blocked by a disaster; it has simply
+become difficult to distinguish from everything around it. Nibbles wants to
+understand how a path she knows so well could vanish. Zippy notices small
+openings from above that help them find an imperfect way through.
 
 At the neighboring village, they discover a concrete break in everyday
 connection. Something the two villages normally do for one another has stopped.
@@ -60,23 +60,23 @@ The exact first conflict is not yet defined, but it must be visible and simple:
 an undelivered item, an unanswered invitation, a shared task left unfinished,
 or two groups each waiting for the other to visit first.
 
-Fern and Pip help the villages resume the connection through action. The route
-becomes naturally readable again. Fern later opens her map and sees that
-the watercolor line has returned. That confirmation reveals the pattern and
-turns one local mystery into a larger journey: other paths on the map are fading
-too.
+Nibbles and Zippy help the villages resume the connection through action. The
+route becomes naturally readable again. Nibbles later opens her map and sees
+that the watercolor line has returned. That confirmation reveals the pattern
+and turns one local mystery into a larger journey: other paths on the map are
+fading too.
 
 ## Episode engine
 
 Each path episode follows a clear sequence:
 
-1. Fern's map reveals a faded or missing connection.
+1. Nibbles's map reveals a faded or missing connection.
 2. The friends travel to the places at both ends of the route.
 3. They discover the practical or relational reason visits stopped.
 4. Their own differences complicate the attempt to help.
 5. People resume a concrete exchange, visit, invitation, or shared task.
 6. The physical path becomes organically recognizable.
-7. Fern's map quietly confirms that the route has returned.
+7. Nibbles's map quietly confirms that the route has returned.
 
 The map gives the larger adventure a finite visual objective. At the beginning,
 several familiar routes are missing or fading. Progress can be understood by
@@ -86,12 +86,12 @@ looking at how much of the connected map has returned.
 
 Adults remain capable and active within their communities. The larger pattern
 is difficult to see because each village knows only why its own visits stopped.
-Fern and her companions travel between those perspectives.
+Nibbles and her companions travel between those perspectives.
 
-- Fern notices changes across the whole map.
-- Pip scouts natural openings and sees each route from another scale.
-- The Maker recognizes where practical systems or shared work broke down.
-- The Listener recognizes hesitation, misunderstanding, and unspoken needs.
+- Nibbles notices changes across the whole map.
+- Zippy scouts natural openings and sees each route from another scale.
+- Pickle's and Pepper's complementary perspectives will be defined with their
+  final group functions.
 
 Their advantage is not that they are wiser than every adult. They carry
 information and relationships across boundaries that others have stopped
@@ -113,7 +113,7 @@ The first lost connection must now be chosen. It should:
 
 - be understandable without exposition;
 - matter to both villages;
-- give Fern and Pip different useful roles;
+- give Nibbles and Zippy different useful roles;
 - create a complete small story before revealing the larger quest; and
 - restore the first path through a physical act of reconnection.
 

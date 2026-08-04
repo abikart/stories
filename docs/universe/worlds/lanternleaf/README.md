@@ -16,11 +16,13 @@ reading, with one shared canon and a primary serialized adventure.
    compact four-region world, current map, and settlement concepts.
 4. [Village scene references](village-scenes.md) — accepted environment studies
    and the current prompt recipe for each village.
+5. [Main characters](main-characters.md) — the current four-character roster
+   and the identity and role details still to define.
 
 ## Planned foundation
 
 - Reading ladder and editorial constraints
-- Main cast and character-era sheets
+- Character-era sheets
 - Master chronology and primary journey outline
 - Subplot and early-reader story matrix
 - Lanternleaf visual and sound bibles

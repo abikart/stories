@@ -1,6 +1,6 @@
 ---
 name: create-lanternleaf-scenes
-description: Create or revise native-4:3 Lanternleaf Forest watercolor scenes, canonical Fern and Pipkin character art, and continuity-sensitive illustrations for other bipedal forest denizens. Use for story keyframes, character or location explorations, matched scene variants, organic solid-matte compositions, and repairs to Lanternleaf visual assets for ages 5–7.
+description: Create or revise native-4:3 Lanternleaf Forest watercolor scenes, current Lanternleaf character art, and continuity-sensitive illustrations for other bipedal forest denizens. Use for story keyframes, character or location explorations, matched scene variants, organic solid-matte compositions, and repairs to Lanternleaf visual assets for ages 5–7.
 ---
 
 # Create Lanternleaf Scenes
@@ -12,9 +12,12 @@ not as authority over the entire style.
 ## Required preparation
 
 1. Read `docs/universe/world-details.md` as the visual source of truth.
-2. Read `references/visual-bible.md` and `references/prompt-template.md`.
-3. Inspect `docs/universe/fern-and-pip.png` whenever Fern or Pipkin appears.
-4. Inspect only the additional universe references relevant to the beat:
+2. Read `docs/universe/worlds/lanternleaf/main-characters.md` for current cast
+   identity and role status.
+3. Read `references/visual-bible.md` and `references/prompt-template.md`.
+4. Inspect only the universe references relevant to the beat:
+   - `fern-and-pip.png` for inhabited Mossgrove scale and foreground layering,
+     never for current character identity;
    - `elephant-capybara.png` for an inhabited workshop and semantic detail;
    - `hedge-frog.png` for bipedal tool use, handmade props, and outdoor craft;
    - `dino-reference.png` for soft-cute species simplification only.
@@ -67,8 +70,11 @@ not as authority over the entire style.
 
 1. `docs/universe/world-details.md` controls world grammar, surface, composition,
    detail hierarchy, bipedal posture, and contour language.
-2. `fern-and-pip.png` controls Fern and Pipkin identity when they appear.
-3. The most relevant additional universe image controls only its listed role.
+2. `main-characters.md` controls current names, species, pronouns, homes, and
+   role status. An accepted character sheet controls visual identity once one
+   exists.
+3. The most relevant universe image controls only its listed role;
+   `fern-and-pip.png` never controls current character identity.
 4. The target story's continuity ledger controls character, prop, location, and
    transformation state.
 
@@ -93,12 +99,15 @@ reference. Return to this hierarchy when an edit amplifies artifacts.
 
 ## Character continuity
 
-- Fern is a small upright rust-orange fox with a cream muzzle, chest, inner
-  ears, and tail tip; round reflective brown eyes, rosy cheeks, and a dusty-teal
-  cross-body satchel.
-- Pipkin is Fern's small floating mint-green moth friend with gold-tipped
-  antennae and exactly four translucent warm-gold wings. Pipkin is the canonical
-  flight-capable exception to the upright land-denizen posture.
+- The working main cast is Nibbles the fox (she/her), Zippy the bee (he/him),
+  Pickle the tortoise (he/him), and Pepper the snow wolf (she/her).
+- Nibbles is the working navigator and mapmaker. Zippy is the working aerial
+  scout and messenger. Do not invent locked visual details before their
+  character sheets are accepted.
+- Pickle's and Pepper's exact group functions, accessories, and visual designs
+  remain open. Pepper is from Kite Hill; the other open origins are recorded in
+  `main-characters.md`.
+- Zippy and other explicitly flight-capable creatures may hover.
 - Land denizens stand on two legs, use tools with their forelimbs, and retain a
   compact large-head/short-limb silhouette appropriate for ages 5–7.
 - Transformations appear only in their authored beat. Never borrow a resolved
