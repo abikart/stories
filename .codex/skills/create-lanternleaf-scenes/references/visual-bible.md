@@ -84,6 +84,10 @@ for the current cast.
 - Author natively at 4:3 with the complete action and interaction geometry in
   frame. Do not compose for a hidden 16:9 canvas or later center crop.
 - Use a cozy, slightly low viewpoint and an airy floating vignette.
+- In character-led scenes, place the camera at the focal character's eye level
+  or slightly below. Environment studies may use an elevated survey view, but
+  that camera does not carry into character integration unless the story beat
+  explicitly requires looking down.
 - Preserve noticeable, irregular matte breathing space around the vignette and
   in pale distant layers, but do not enforce a fixed painted-area percentage.
 - Let the story beat determine density. Inhabited locations should feel rich,
@@ -104,9 +108,9 @@ for the current cast.
 ## Reference roles
 
 - `docs/universe/fern-and-pip.png`: Mossgrove village vocabulary,
-  character-to-world scale, selective character-level framing, white-space
-  emphasis, and inhabited foreground layering only; it does not control current
-  character identity or final canvas ratio.
+  character-to-world scale, eye-level focal framing, selective character-level
+  scope, white-space emphasis, and inhabited foreground layering only; it does
+  not control current character identity or final canvas ratio.
 - `docs/universe/elephant-capybara.png`: bipedal collaboration, workshop tools,
   semantic density, and pale distance.
 - `docs/universe/hedge-frog.png`: bipedal tool use, grouped quills, handmade seed

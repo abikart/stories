@@ -14,7 +14,8 @@ Location: <specific place and a varied set of story-relevant inhabited details>
 Characters: <identity, posture, gesture, expression, clothing, and scale>
 Continuity now: <presence, prop, transformation, lighting, and location states>
 Scale and framing: <physical anchors that establish character size; the
-  character-level slice of the location; how white space isolates the action>
+  character-level slice of the location; eye-level or slightly low camera; how
+  white space isolates the action>
 Composition: Complete action inside one airy 4:3 floating vignette; cozy low
   viewpoint; faces and key action clearest; recognizable supporting forms at
   several scales; irregular open matte breathing space; no hard scene edge.

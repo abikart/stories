@@ -29,13 +29,17 @@ oversized.
    furniture, and major plants. When a small face becomes hard to read, move the
    camera closer and simplify the visible environment; never solve readability
    by inflating the character.
-4. Reframe or redesign the source scene around that scale. Zoom into a
+4. Place the camera at the focal character's eye level or slightly below so the
+   face, gesture, and nearby action read against architecture that rises behind
+   them. Avoid a bird's-eye, map-like, or elevated three-quarter survey view
+   unless the authored action depends on looking down.
+5. Reframe or redesign the source scene around that scale. Zoom into a
    character-level moment, shift the viewpoint, omit distant structures, and
    move supporting forms when needed for a balanced native-4:3 composition.
-5. Preserve generous, irregular solid-matte space around and within the
+6. Preserve generous, irregular solid-matte space around and within the
    vignette. Use open space to isolate the face and gesture rather than filling
    the canvas with scenery.
-6. Build foreground, character, action prop, architecture, and pale distance as
+7. Build foreground, character, action prop, architecture, and pale distance as
    one depth stack. Overlap foliage or a prop edge naturally where it confirms
    placement without hiding identity-bearing anatomy.
 
@@ -66,6 +70,10 @@ controls location vocabulary, materials, palette, and light. Reimagine crop,
 camera, object placement, and depth so the character has a plausible scale
 against <doors / table / steps / plants>.
 
+Set the camera at the character's eye level or slightly below, with the face and
+gesture in clear focus and architecture rising behind them. Do not inherit the
+environment reference's elevated overview angle.
+
 Show only the location slice needed for <one concrete action>. If the character
 is too small to read, move the camera closer and reduce the visible environment;
 do not enlarge the character. Use generous irregular solid-matte white space to
@@ -89,6 +97,8 @@ identities from composition references.
   implausible scale.
 - Confirm that a closer camera or simpler location—not character enlargement—
   provides readability.
+- Confirm that the camera sits at the focal character's eye level or slightly
+  below, with no unnecessary view across roofs, tabletops, terraces, or ground.
 - Confirm that open matte space emphasizes the focal group and the painted area
   does not become a dense rectangular environment plate.
 - Inspect overlaps, reflected color, shadows, contours, and edge softness for a

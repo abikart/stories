@@ -43,7 +43,9 @@ not as authority over the entire style.
    there is no later responsive crop.
    For character-scene integration, recompose the environment around plausible
    character scale and readable white space instead of preserving a wide scene
-   and enlarging the character to fill it.
+   and enlarging the character to fill it. Default to the focal character's eye
+   level or slightly below; do not inherit an environment study's elevated
+   survey camera unless the story action requires it.
 4. Build one clear focal beat, then enrich the setting with varied recognizable
    objects and plants. Favor semantic detail over texture noise.
 5. Use locally color-matched contours, calm broad washes inside forms, and an
