@@ -11,6 +11,10 @@ oversized.
   colors, and persistent accessories.
 - Let the environment image control location vocabulary, materials, palette,
   light, and useful spatial relationships—not exact camera or framing.
+- Name one reference as the surface authority for stroke length, fill
+  continuity, tonal transitions, contour weight, and mark frequency. It may be
+  the location reference when that image already has the desired finish; use a
+  separate accepted style reference when it does not.
 - Use `docs/universe/fern-and-pip.png` for character-to-setting proportion,
   selective character-level framing, generous white-space emphasis, and
   foreground layering only. Never copy its character identities or portrait
@@ -22,6 +26,9 @@ oversized.
 1. Choose one concrete character action and the smallest location slice needed
    to support it. Prefer one doorway, work area, crossing, garden edge, or path
    turn over a complete village overview.
+   Start with one architectural anchor, one action-bearing prop, and two to four
+   supporting plant or object groups. Complexity added before the focal action
+   is stable often returns as texture noise.
 2. Establish scale from physical anchors: door openings, stools, table height,
    steps, pots, bridge rails, tools, and nearby plants. Ask whether the character
    could plausibly pass through, perch beside, carry, or use those forms.
@@ -51,13 +58,31 @@ recurring characters across accepted story images.
 
 - Paint character and setting in the same pass with shared light direction,
   reflected local color, pigment density, contour weight, and edge softness.
-- Use long directional strokes, varied leaf and frond shapes, and connected
-  wash masses. Broad watercolor treatment does not mean repeated dabs.
+- Match the surface authority with confident broad strokes, calm continuous
+  color inside forms, gentle tonal transitions, and locally colored contours.
+- Use long directional strokes plus varied leaf and frond shapes. Broad
+  watercolor treatment does not mean many short marks or repeated dabs.
 - Give the character the clearest contours, nearby anchors moderate definition,
   and distant forms soft dissolving edges.
 - Use a restrained local contact or hover shadow and environmental overlap. A
   halo, uniformly sharp silhouette, or saturation jump makes the character read
   as a sticker.
+
+## Surface-control discipline
+
+Keep the generation prompt outcome-focused and short. Describe the desired
+finish once with terms such as `confident broad strokes`, `calm continuous
+color`, `gentle tonal transitions`, and `locally colored contours`. Do not stack
+watercolor-process synonyms such as pigment pooling, granulation, blooms,
+glaze edges, wet-on-wet shifts, dry-brush variation, and connected wash masses;
+image models may literalize that vocabulary as mottled or patchwork texture.
+
+Reduce scene scope before adding more negative terms. A close eye-level slice
+with a few large readable forms gives the model room to render smooth surfaces;
+a village overview with many tiny objects encourages short repeated marks.
+Treat source selection as part of surface control: broad walls, doors, vessels,
+water, and large plants are stronger smooth-finish anchors than a reference
+dominated by distant foliage.
 
 ## Prompt core
 
@@ -70,6 +95,11 @@ controls location vocabulary, materials, palette, and light. Reimagine crop,
 camera, object placement, and depth so the character has a plausible scale
 against <doors / table / steps / plants>.
 
+The surface-authority reference controls stroke length, fill continuity, tonal
+transitions, contour weight, and mark frequency. Match its confident broad
+strokes, calm continuous color inside forms, gentle tonal transitions, and
+locally colored contours.
+
 Set the camera at the character's eye level or slightly below, with the face and
 gesture in clear focus and architecture rising behind them. Do not inherit the
 environment reference's elevated overview angle.
@@ -79,9 +109,8 @@ is too small to read, move the camera closer and reduce the visible environment;
 do not enlarge the character. Use generous irregular solid-matte white space to
 emphasize the face and gesture.
 
-Paint everything as one watercolor illustration with shared directional
-strokes, connected wash masses, reflected colors, edge softness, foreground
-overlap, and a restrained local shadow.
+Paint everything as one watercolor illustration with shared reflected colors,
+edge softness, foreground overlap, and a restrained local shadow.
 
 Avoid oversized characters, complete-village overview framing, pasted cutout
 edges, halos, mismatched sharpness, clustered round dabs, cauliflower foliage,
@@ -103,4 +132,10 @@ identities from composition references.
   does not become a dense rectangular environment plate.
 - Inspect overlaps, reflected color, shadows, contours, and edge softness for a
   shared painting system.
+- At full size, inspect at least one large wall or ground shape, one plant group,
+  and the character. Reject interiors broken into many small tonal islands,
+  faceted patches, stippling, clustered dabs, or repeated short marks when the
+  surface authority uses calmer, longer strokes.
+- Compare mark frequency directly with the surface-authority reference rather
+  than accepting an image merely because it reads as generic watercolor.
 - Confirm exact character anatomy and continuity after recomposition.

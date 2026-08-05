@@ -30,9 +30,9 @@ Contextual does not mean minimal or empty. The world should feel abundant, inhab
 
 ## Overall Aesthetic & Medium
 
-Scenes are rendered in a soft, handcrafted watercolor medium, presenting a high-key, airy vignette that floats centrally on a piece of pristine, clean, pure white paper. The unpainted surrounding space must be made solid, clean white with no aged or visible paper texture. The watercolor should be visible through broad translucent washes, soft pigment pooling, overlapping glaze edges, and restrained wet-on-wet color movement—not through a paper-grain overlay or simulated surface noise.
+Scenes are rendered in a soft, handcrafted watercolor medium, presenting a high-key, airy vignette that floats centrally on a piece of pristine, clean, pure white paper. The unpainted surrounding space must be made solid, clean white with no aged or visible paper texture. The watercolor should be visible through confident broad strokes, smooth transparent tonal transitions, calm connected color inside forms, and occasional subtle pigment variation at natural boundaries—not through repeated blooms, mottled patches, a paper-grain overlay, or simulated surface noise.
 
-Use a hybrid watercolor-and-ink approach. Define the main character silhouettes and essential props with controlled wet-on-dry edges, then allow gentle wet-on-wet transitions inside those shapes. Paint environments more loosely, letting washes feather, overlap, and dissolve into the white field. Use distinct, fluid hand-inked contours to hold important forms together without adding surface texture. Do not use colored-pencil rendering, pencil shading, hatching, stippling, repeated short strokes, or dense surface marks.
+Use a hybrid watercolor-and-ink approach. Define the main character silhouettes and essential props with controlled edges, then allow gentle continuous tonal transitions inside those shapes. Paint environments more loosely, letting broad strokes feather, overlap, and dissolve into the white field. Use distinct, fluid hand-inked contours to hold important forms together without adding surface texture. Do not use colored-pencil rendering, pencil shading, hatching, stippling, repeated short strokes, or dense surface marks.
 
 ## Composition & Perspective
 

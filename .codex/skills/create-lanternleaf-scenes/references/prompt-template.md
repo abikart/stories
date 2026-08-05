@@ -10,6 +10,8 @@ Story matte: <exact #RRGGBB from stage.backdrop.color; default #FFFFFF>
 Story beat: <one concrete action and emotional focus>
 Reference roles: <which universe image controls identity, setting, or anatomy;
   explicitly limit each role>
+Surface authority: <which accepted reference controls stroke length, calm fill
+  continuity, tonal transitions, contour weight, and mark frequency>
 Location: <specific place and a varied set of story-relevant inhabited details>
 Characters: <identity, posture, gesture, expression, clothing, and scale>
 Continuity now: <presence, prop, transformation, lighting, and location states>
@@ -21,8 +23,8 @@ Composition: Complete action inside one airy 4:3 floating vignette; cozy low
   several scales; irregular open matte breathing space; no hard scene edge.
 Medium: Hand-painted hybrid ink and watercolor on one perfectly solid story
   matte matching the declared hex color exactly across the entire frame edge.
-  Broad translucent washes, visible glaze overlaps, restrained pigment pooling,
-  gentle wet-on-wet shifts, calm interiors, and dissolving environmental edges.
+  Confident broad strokes, calm continuous color inside forms, gentle tonal
+  transitions, and dissolving environmental edges.
 Contours: Thin, fluid, mostly continuous, and locally color-matched to each
   enclosed fill; clearer on foreground silhouettes, lighter in the environment,
   absent in distant washes. Never use one universal ink color.

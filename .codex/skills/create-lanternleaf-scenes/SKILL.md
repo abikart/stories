@@ -47,9 +47,15 @@ not as authority over the entire style.
    level or slightly below; do not inherit an environment study's elevated
    survey camera unless the story action requires it.
 4. Build one clear focal beat, then enrich the setting with varied recognizable
-   objects and plants. Favor semantic detail over texture noise.
-5. Use locally color-matched contours, calm broad washes inside forms, and an
-   organic vignette that dissolves into the package's calibrated solid matte.
+   objects and plants. Favor semantic detail over texture noise. For integrated
+   character scenes, start with one architectural anchor, one action-bearing
+   prop, and two to four supporting plant or object groups; add more only when
+   the beat needs them.
+5. Use locally color-matched contours, confident broad strokes, calm continuous
+   color inside forms, gentle tonal transitions, and an organic vignette that
+   dissolves into the package's calibrated solid matte. Do not turn watercolor
+   pigment-process terminology into a long generation prompt; follow the
+   surface discipline in `references/character-scene-integration.md`.
 6. Generate one distinct beat per image-tool call. Use 2–3 candidates when
    selection matters; do not hide unrelated beats inside one prompt.
 7. Inspect the full frame, faces and hands, continuity-bearing props, and all
@@ -94,8 +100,8 @@ reference. Return to this hierarchy when an edit amplifies artifacts.
 - Native 4:3 composition; no 16:9 action-safe framing.
 - One exact solid story matte, normally `#FFFFFF`, with no gradient, paper,
   canvas, grain, fibers, or color variation. Match `stage.backdrop.color`.
-- Broad translucent watercolor washes, organic glaze edges, restrained pigment
-  pooling, and calm fills without repeated internal motifs.
+- Confident broad watercolor strokes, smooth connected tonal transitions, and
+  calm fills without repeated internal motifs.
 - Thin, fluid, mostly continuous contours derived from the local fill color of
   each exact shape; no universal ink color.
 - Foreground faces and actions clearest, supporting objects moderately defined,

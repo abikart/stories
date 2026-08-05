@@ -54,10 +54,13 @@ for the current cast.
 - Use hybrid ink and watercolor on one exact solid output matte declared by the
   story package. Default to `#FFFFFF`; choose another color only at the series or
   story art-direction level, never per scene.
-- Show transparent layering through broad washes, overlapping glaze edges,
-  restrained pooling, wet-on-wet transitions, and loose dissolving endings.
+- Show transparent layering through confident broad strokes, calm continuous
+  color, gentle tonal transitions, and loose dissolving endings.
 - Keep each filled form calm and uninterrupted. Never tile a small brush symbol
   or simulate paper texture across it.
+- In generation prompts, describe the visible result rather than enumerating
+  pigment processes; stacked terms for pooling, granulation, blooms, glaze, or
+  wet-on-wet behavior can produce unwanted mottled texture.
 - Do not use a gradient, atmospheric color wash, beige paper, tooth, grain,
   fibers, speckles, canvas weave, pencil shading, colored pencil, or digital
   airbrush in the matte.
