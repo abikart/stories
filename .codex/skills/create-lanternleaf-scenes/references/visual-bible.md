@@ -1,8 +1,9 @@
 # Lanternleaf visual bible
 
 `docs/universe/world-details.md` is canonical. This file condenses the rules an
-image prompt must preserve. Read `docs/universe/worlds/lanternleaf/main-characters.md`
-for the current cast.
+image prompt must preserve. Read
+`docs/universe/worlds/lanternleaf/assets/characters/main-characters.md` for the
+current cast.
 
 ## Audience and feeling
 

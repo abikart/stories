@@ -12,7 +12,8 @@ not as authority over the entire style.
 ## Required preparation
 
 1. Read `docs/universe/world-details.md` as the visual source of truth.
-2. Read `docs/universe/worlds/lanternleaf/main-characters.md` for current cast
+2. Read `docs/universe/worlds/lanternleaf/assets/characters/main-characters.md`
+   for the current cast
    identity and role status.
 3. Read `references/visual-bible.md` and `references/prompt-template.md`.
    When combining separate character and environment references, also read

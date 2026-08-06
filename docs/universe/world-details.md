@@ -9,8 +9,8 @@ This document defines the visual vocabulary and possibilities of the world; it i
 The written guide controls the world grammar. The images in this directory are
 role-specific references rather than interchangeable style authorities:
 
-- `worlds/lanternleaf/main-characters.md` controls the current Lanternleaf cast
-  names, species, pronouns, homes, and role status.
+- `worlds/lanternleaf/assets/characters/main-characters.md` controls the current
+  Lanternleaf cast names, species, pronouns, homes, and role status.
 - `fern-and-pip.png` demonstrates an inhabited Mossgrove scene,
   character-to-world scale, and foreground layering. It does not control the
   identity of the current cast.
