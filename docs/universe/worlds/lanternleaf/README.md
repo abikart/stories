@@ -17,9 +17,8 @@ reading, with one shared canon and a primary serialized adventure.
 4. [Village and landmark scene references](village-scenes.md) — accepted
    environment studies for each village, Heartwood, Silverdrop Falls, and a
    forest reach of Winkwater, plus the current village prompt recipes.
-5. [Main characters](assets/characters/main-characters.md) — the current
-   four-character roster
-   and the identity and role details still to define.
+5. [Main characters](assets/characters/index.md) — the current four-character
+   roster, accepted sheets, roles, and remaining character decisions.
 
 ## Planned foundation
 

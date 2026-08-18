@@ -48,7 +48,7 @@ defective output as the main identity or medium reference.
 
 - Confirm 4:3 dimensions and complete action without reliance on cropping.
 - Confirm every land denizen stands upright and can perform the authored action.
-- Confirm every current lead against `main-characters.md`, the accepted
+- Confirm every current lead against `assets/characters/index.md`, the accepted
   character sheet, and the story continuity ledger. Do not invent unresolved
   attributes as though they were canonical.
 - Compare every tracked prop and transformation with the continuity ledger.

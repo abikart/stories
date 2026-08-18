@@ -2,7 +2,7 @@
 
 `docs/universe/world-details.md` is canonical. This file condenses the rules an
 image prompt must preserve. Read
-`docs/universe/worlds/lanternleaf/assets/characters/main-characters.md` for the
+`docs/universe/worlds/lanternleaf/assets/characters/index.md` for the
 current cast.
 
 ## Audience and feeling
@@ -14,15 +14,13 @@ current cast.
 
 ## Current cast status
 
-- Nibbles is a fox who uses she/her pronouns and is the working navigator and
-  mapmaker.
-- Zippy is a bee who uses he/him pronouns and is the working aerial scout and
-  messenger.
-- Pickle is a tortoise who uses he/him pronouns; his exact function is open.
-- Pepper is a snow wolf from Kite Hill who uses she/her pronouns; her exact
-  function is open.
-- Do not treat any visual design, palette, proportion, or accessory as canonical
-  until an accepted character sheet records it.
+- Dia is a fox who uses she/her pronouns and is the navigator and mapmaker.
+- Zippy is a bee who uses he/him pronouns and is the aerial scout and messenger.
+- Pebble is a tortoise who uses he/him pronouns and is the builder.
+- Kavi is a young elephant from Sunbank who uses she/her pronouns and is the
+  listener and storykeeper.
+- The accepted sheets in `docs/universe/worlds/lanternleaf/assets/characters/`
+  define each lead's visual design, palette, proportions, anatomy, and accessory.
 
 ## Denizen grammar
 

@@ -12,7 +12,7 @@ not as authority over the entire style.
 ## Required preparation
 
 1. Read `docs/universe/world-details.md` as the visual source of truth.
-2. Read `docs/universe/worlds/lanternleaf/assets/characters/main-characters.md`
+2. Read `docs/universe/worlds/lanternleaf/assets/characters/index.md`
    for the current cast
    identity and role status.
 3. Read `references/visual-bible.md` and `references/prompt-template.md`.
@@ -85,7 +85,7 @@ not as authority over the entire style.
 
 1. `docs/universe/world-details.md` controls world grammar, surface, composition,
    detail hierarchy, bipedal posture, and contour language.
-2. `main-characters.md` controls current names, species, pronouns, homes, and
+2. `index.md` controls current names, species, pronouns, homes, roles, and
    role status. An accepted character sheet controls visual identity once one
    exists.
 3. The most relevant universe image controls only its listed role;
@@ -114,14 +114,15 @@ reference. Return to this hierarchy when an edit amplifies artifacts.
 
 ## Character continuity
 
-- The working main cast is Nibbles the fox (she/her), Zippy the bee (he/him),
-  Pickle the tortoise (he/him), and Pepper the snow wolf (she/her).
-- Nibbles is the working navigator and mapmaker. Zippy is the working aerial
-  scout and messenger. Do not invent locked visual details before their
-  character sheets are accepted.
-- Pickle's and Pepper's exact group functions, accessories, and visual designs
-  remain open. Pepper is from Kite Hill; the other open origins are recorded in
-  `main-characters.md`.
+- The main cast is Dia the fox (she/her), Zippy the bee (he/him), Pebble the
+  tortoise (he/him), and Kavi the elephant (she/her).
+- Dia is the navigator and mapmaker, Zippy is the aerial scout and messenger,
+  Pebble is the builder, and Kavi is the listener and storykeeper.
+- Their accepted sheets in `docs/universe/worlds/lanternleaf/assets/characters/`
+  control visual identity, anatomy, proportions, palettes, and accessories.
+- Kavi is a fully upright young elephant from Sunbank. In shared scenes she is
+  approximately 1.3 times Dia's standing height and consistently wears one
+  five-bead clay bracelet on her left wrist.
 - Zippy and other explicitly flight-capable creatures may hover.
 - Land denizens stand on two legs, use tools with their forelimbs, and retain a
   compact large-head/short-limb silhouette appropriate for ages 5–7.

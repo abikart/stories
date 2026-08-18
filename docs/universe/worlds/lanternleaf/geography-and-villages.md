@@ -97,7 +97,7 @@ palette, organic contours, and coast-to-hills geography.
 
 ### Mossgrove — the forest village
 
-**Role:** Nibbles's home and the adventure's starting village
+**Role:** Dia's home and the adventure's starting village
 
 Mossgrove sits among old roots, broad ferns, shaded gardens, and small clearings
 in the middle woodland. Rounded homes grow into stumps and root systems rather
@@ -105,7 +105,7 @@ than standing apart from the forest. Worktables, map shelves, plant pots, hooks,
 and useful handmade objects make it feel inhabited.
 
 Its residents know local plants, woodland routes, paper craft, drawing, and
-small-scale making. Nibbles's mapmaking belongs naturally here without making
+small-scale making. Dia's mapmaking belongs naturally here without making
 every resident a mapmaker.
 
 Story material includes familiar routines, getting lost close to home, noticing
@@ -242,11 +242,11 @@ so the magic belongs equally to forest, coast, hills, and warm dry country.
 
 ## Character-distribution opportunity
 
-Nibbles begins in Mossgrove, and Zippy begins the adventure alongside her.
-Pepper is a snow wolf from Kite Hill. Pickle's home and Zippy's deeper village
-connection remain open. Different home regions can make the group's knowledge
-useful and give the journey personal stakes without requiring one lead from
-each village.
+Dia begins in Mossgrove, and Zippy begins the adventure alongside her. Kavi is
+a young elephant from Sunbank and joins after Pebble as the group's listener and
+storykeeper. Pebble's home and Zippy's deeper village connection remain open.
+Different home regions can make the group's knowledge useful and give the
+journey personal stakes without requiring one lead from each village.
 
 Exact origins should be decided with the character bible, not inferred from
 species stereotypes.
