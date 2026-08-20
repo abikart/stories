@@ -1,16 +1,17 @@
 # Zippy character-sheet provenance
 
 - Accepted asset: `zippy.png`
-- Accepted status: accepted after continuity repairs and solid-matte normalization
-- Revision scope: removed duplicated lower character views, made the compass persistent, replaced them with isolated sling and compass studies, locked one tapered rear-center nub, and clarified the partially occluded second wing in the flying pose
+- Accepted status: accepted after continuity, watercolor-surface, contour, and solid-matte repairs
+- Revision scope: removed duplicated lower character views, made the compass persistent, replaced them with isolated sling and compass studies, locked one tapered rear-center nub, clarified the partially occluded second wing in the flying pose, then replaced mottled brown and wooden surfaces and scalloped stripe edges with calm continuous washes and fluid contours
 - Generator: built-in `image_gen`
 - Provider request IDs: not exposed by the built-in tool
 - Edit-input SHA-256: `ddfb9355870925adb17062b84bf359faec3c79d99d8cd45c9e801c7318547928`
 - Wing-repair input provider SHA-256: `9463f3239502a852b48b15b58ef5c594302dacdbb64275a661dccdefcb9b56ea`
-- Accepted provider artifact ID: `exec-c833115d-237f-485f-97ab-588d00d15f39`
-- Accepted provider-original path at generation time: `/Users/ka/.codex/generated_images/01a0136b-9327-7770-ae13-d6f2e1ca881c/exec-c833115d-237f-485f-97ab-588d00d15f39.png`
-- Accepted provider-original SHA-256: `cae0fdcb72107a678a8fe61b178394f15c2c5cce697e11f9aff9a5a31263790f`
-- Accepted normalized SHA-256: `d9f9bceec462d7b964bd0b37ab61c57236a370045fe80fbede8d6621a1a3d500`
+- Watercolor-surface repair input SHA-256: `d9f9bceec462d7b964bd0b37ab61c57236a370045fe80fbede8d6621a1a3d500`
+- Accepted provider artifact ID: `exec-2e1ebe79-0459-4332-a3c6-693553aec0a9`
+- Accepted provider-original path at generation time: `/Users/ka/.codex/generated_images/01a0136b-9327-7770-ae13-d6f2e1ca881c/exec-2e1ebe79-0459-4332-a3c6-693553aec0a9.png`
+- Accepted provider-original SHA-256: `8977332a775422acf8b611e5e6209d89e27579d3b506d08f518d14b5e0c2183c`
+- Accepted normalized SHA-256: `cae99037bed7339113790d386f8588430f5dc4429791fff389a3a53f29c5ff8c`
 - Derivation: border-connected pixels within 10 RGB values of `#FFFFFF` normalized to exact `#FFFFFF` with `.codex/skills/create-lanternleaf-scenes/scripts/normalize_solid_matte.py`; visual content unchanged.
 
 ## Candidate audit
@@ -21,7 +22,8 @@
 | `exec-d5a117e8-8fd1-4ae5-bcf8-05c34b0fe7df` | `2ec227a4b39edaacdda399e268bfa10385196be383d03f77bb820cd0b6618c51` | Rejected | Nub sharpened, but the back-view feet were omitted. |
 | `exec-369e1abc-6a36-4f4e-bd79-e1ce4284d487` | `4c8ccc359e10ee605d5860f3a4deea3699a7f22071e8d34f499f26b2f91b4c6f` | Rejected | Feet and nub were corrected, but the back-view compass disappeared. |
 | `exec-4ad36bbd-82ba-4e18-ba01-0a303c90c9a2` | `9463f3239502a852b48b15b58ef5c594302dacdbb64275a661dccdefcb9b56ea` | Superseded | Back-view compass and anatomy were correct, but the second flying wing remained visually ambiguous. |
-| `exec-c833115d-237f-485f-97ab-588d00d15f39` | `cae0fdcb72107a678a8fe61b178394f15c2c5cce697e11f9aff9a5a31263790f` | Accepted | Far-side flying wing is independently readable; prior continuity locks remain intact. |
+| `exec-c833115d-237f-485f-97ab-588d00d15f39` | `cae0fdcb72107a678a8fe61b178394f15c2c5cce697e11f9aff9a5a31263790f` | Superseded | Far-side flying wing is independently readable and continuity locks remain intact, but brown bands and compass wood still have mottled fills and scalloped micro-edges. |
+| `exec-2e1ebe79-0459-4332-a3c6-693553aec0a9` | `8977332a775422acf8b611e5e6209d89e27579d3b506d08f518d14b5e0c2183c` | Accepted | Brown bands and wood/leather surfaces are calm unified washes; stripe boundaries are fluid continuous curves; all established anatomy, accessory, expression, and layout locks remain intact. |
 
 ## Exact prompt set
 
@@ -211,4 +213,34 @@ Keep the same native 4:3 dimensions and one perfectly solid #FFFFFF matte to eve
 No text, labels, arrows, guides, boxes, borders, extra objects, logo, or watermark.
 
 Final instruction: clarify exactly two separate wings in the bottom-left flying pose only; change nothing else.
+```
+
+### Watercolor-surface and stripe-contour repair
+
+```text
+Use case: precise-object-edit
+Asset type: canonical Lanternleaf character reference sheet for ages 5–7
+Input image: Image 1 is the edit target and sole authority for Zippy’s identity, anatomy, proportions, layout, poses, expressions, accessory construction, palette, and canvas.
+
+Change only the patchy watercolor texture and scalloped micro-linework; preserve every design and composition invariant unchanged.
+
+Primary repair:
+- Repaint every dark-brown body stripe/band on every full-body Zippy as a smooth, broad, contiguous natural watercolor field with calm continuous color and only gentle low-frequency tonal transitions. Remove all mottled patches, repeated little tonal islands, scale-like marks, pebbling, granulation simulation, and tiny brush dabs.
+- Replace the many tiny arc/scallop marks along every yellow-to-brown stripe boundary with one thin, fluid, mostly continuous, softly hand-painted boundary line following the existing band shape. The boundary must be smooth and simple, not fuzzy, jagged, beaded, furry, scalloped, or built from repeated short strokes.
+- Repaint the warm wooden compass cases and the isolated compass frame, plus the continuous leather sling, with the same clean natural watercolor discipline: broad unified warm-brown washes, gentle large-scale tonal variation, and quiet continuous surfaces. Remove patchwork facets, repeated dark blocks, noisy grain, and mottled pigment marks. Retain a subtle handmade watercolor character without becoming flat vector art.
+- Use longer confident contour strokes. Keep contours locally color-matched: deeper warm brown around brown bands, wood, and leather; deeper honey ochre around yellow; muted lavender-brown around wings. Contours remain mildly pressure-sensitive and handmade, but not constructed from tiny arcs.
+
+Absolute invariants — preserve exactly:
+- Original 1448×1086 4:3 canvas, solid pure #FFFFFF background, borderless organization, all whitespace and all panel positions/scales.
+- One canonical Zippy design in all views: exact head/body proportions, golden-yellow palette, forehead freckles, rosy cheeks, reflective eyes, two curled antennae, exact face construction, and all four existing expressions.
+- Top row remains exactly front, 3/4 front, side, back; bottom-left remains the same hovering pose; large head study, expression strip, isolated full sling assembly, enlarged compass close-up, and exactly eight circular swatches remain in the same locations.
+- Every full-body depiction keeps exactly two arms, two feet, two pale lavender wings with the same visibility/occlusion and vein structure, two antennae, and one small tapered dark-brown rear-center tail/stinger nub. Do not add, remove, merge, resize, or reposition anatomy.
+- The same wooden compass, small green leaf charm, and one continuous diagonal sling remain present and physically connected in all five full-body depictions. Keep compass size, position, face design, green-and-rust needle, cream face, clasp, and leaf exactly consistent. Keep the isolated sling and enlarged compass composition unchanged.
+- Do not alter silhouettes, poses, facial expressions, accessory state, markings, colors, wing translucency, swatches, crop, or sheet content.
+
+Medium: clean handcrafted hybrid watercolor and fine locally colored storybook contour work. Smooth broad contiguous washes, calm unified painted masses, luminous continuous color, gentle natural transitions at broad scale.
+
+Avoid: mottled watercolor, patch-by-patch rendering, repeated tiny brush marks, noisy pigment texture, stippling, granulation simulation, dry-brush fill, repeated little tonal islands, scale texture, high-frequency variation, scalloped stripe borders, strings of tiny arcs, fuzzy band edges, universal black outlines, vector-clean finish, paper grain, beige cast, gray background, text, boxes, borders, watermark, or any redesign.
+
+Final priority: preserve canonical Zippy and the full sheet exactly → smooth every brown band and wooden/leather surface → replace scalloped band boundaries with fluid continuous lines → maintain handmade natural watercolor.
 ```

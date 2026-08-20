@@ -30,7 +30,8 @@ accessory. Scene-specific tools and props appear only when the story needs them.
 The accepted sheets linked above define current visual identity:
 
 - Dia carries her mapmaking satchel and wears her short olive cloak.
-- Zippy consistently wears his wooden compass on one continuous sling.
+- Zippy consistently wears his wooden compass on one continuous sling. Each
+  visible eye has three short, soft, warm honey-brown upper eyelashes.
 - Pebble wears his builder's belt with its wooden cord bobbin.
 - Kavi wears one five-bead Sunbank clay bracelet on her left wrist. She is a
   fully upright young elephant with an oversized head, short compact body, and
